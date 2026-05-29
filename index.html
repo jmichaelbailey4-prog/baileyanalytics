@@ -34,6 +34,39 @@
             font-feature-settings: "ss01", "cv11";
         }
 
+        nav.top-nav {
+            position: fixed;
+            top: 1.5rem;
+            right: 1.5rem;
+            z-index: 10;
+            display: flex;
+            gap: 1.75rem;
+        }
+
+        nav.top-nav a {
+            color: #94A3B8;
+            text-decoration: none;
+            font-size: 0.875rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            font-weight: 500;
+            padding: 0.5rem 0.25rem;
+            border-bottom: 1px solid transparent;
+            transition: color 200ms ease, border-color 200ms ease;
+        }
+
+        nav.top-nav a:hover,
+        nav.top-nav a:focus-visible {
+            color: #F8FAFC;
+            border-bottom-color: #38BDF8;
+        }
+
+        nav.top-nav a:focus-visible {
+            outline: 2px solid #38BDF8;
+            outline-offset: 4px;
+            border-radius: 2px;
+        }
+
         main {
             max-width: 36rem;
             width: 100%;
@@ -67,6 +100,15 @@
             padding: 0.5rem 0;
             border-bottom: 1px solid transparent;
             transition: color 200ms ease, border-color 200ms ease;
+        }
+
+        p.teaser {
+            margin-top: 2.5rem;
+            font-size: 0.875rem;
+            color: #64748B;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            font-weight: 500;
         }
 
         a.email:hover,
@@ -103,10 +145,15 @@
     </style>
 </head>
 <body>
+    <nav class="top-nav">
+        <a href="/dashboards/">Dashboards</a>
+        <a href="/about.html">About</a>
+    </nav>
     <main>
         <h1>Michael Bailey</h1>
         <p class="tagline">Data analytics consulting for teams that need clarity from their data.</p>
-        <a class="email" href="mailto:hello@baileyanalytics.com">hello@baileyanalytics.com</a>
+        <a class="email" href="mailto:michael@baileyanalytics.com">michael@baileyanalytics.com</a>
+        <p class="teaser">Stay tuned. Big things coming soon.</p>
     </main>
 </body>
 </html>
