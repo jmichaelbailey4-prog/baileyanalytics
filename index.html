@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Michael Bailey — Bailey Analytics</title>
+    <meta name="description" content="Data analytics consulting for teams that need clarity from their data.">
+    <style>
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+
+        body {
+            min-height: 100vh;
+            min-height: 100dvh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+            background-color: #0A0E14;
+            color: #F8FAFC;
+            font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            line-height: 1.5;
+            font-feature-settings: "ss01", "cv11";
+        }
+
+        main {
+            max-width: 36rem;
+            width: 100%;
+            text-align: center;
+            animation: fadeIn 600ms ease-out both;
+        }
+
+        h1 {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 600;
+            letter-spacing: -0.025em;
+            line-height: 1.1;
+            color: #F8FAFC;
+            margin-bottom: 1.25rem;
+        }
+
+        p.tagline {
+            font-size: clamp(1rem, 1.5vw, 1.125rem);
+            color: #94A3B8;
+            line-height: 1.6;
+            margin-bottom: 2.5rem;
+            font-weight: 400;
+        }
+
+        a.email {
+            display: inline-block;
+            color: #38BDF8;
+            text-decoration: none;
+            font-size: 1rem;
+            letter-spacing: 0.01em;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid transparent;
+            transition: color 200ms ease, border-color 200ms ease;
+        }
+
+        a.email:hover,
+        a.email:focus-visible {
+            color: #7DD3FC;
+            border-bottom-color: #7DD3FC;
+        }
+
+        a.email:focus-visible {
+            outline: 2px solid #38BDF8;
+            outline-offset: 4px;
+            border-radius: 2px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(8px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            main {
+                animation: none;
+            }
+            a.email {
+                transition: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Michael Bailey</h1>
+        <p class="tagline">Data analytics consulting for teams that need clarity from their data.</p>
+        <a class="email" href="mailto:hello@baileyanalytics.com">hello@baileyanalytics.com</a>
+    </main>
+</body>
+</html>
