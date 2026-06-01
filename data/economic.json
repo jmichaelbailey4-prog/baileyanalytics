@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-05-31T11:52:04Z",
+  "last_updated": "2026-06-01T21:04:08Z",
   "source": "Federal Reserve Economic Data (FRED), St. Louis Fed",
   "series": {
     "UNRATE": {
@@ -492,10 +492,6 @@
       "unit": "%",
       "color": "#34D399",
       "observations": [
-        {
-          "date": "2024-05-31",
-          "value": "4.51"
-        },
         {
           "date": "2024-06-03",
           "value": "4.41"
@@ -2478,6 +2474,10 @@
         },
         {
           "date": "2026-05-28",
+          "value": "4.45"
+        },
+        {
+          "date": "2026-05-29",
           "value": "4.45"
         }
       ]
