@@ -74,3 +74,20 @@ def rule_claims(obs):
         f"Jobless claims have risen to ~{k:.0f}k, a sign of accelerating layoffs.",
         "elevated",
     )
+
+
+def rule_unemployment_trend(obs):
+    """UNRATE: a rise of >=0.5pts above the trailing 12-month low is a warning."""
+    if not obs:
+        return _NO_DATA
+    v = obs[-1][1]
+    window = [val for _, val in obs[-12:]]
+    low = min(window)
+    delta = v - low
+    if delta >= 0.5:
+        return (
+            f"Unemployment at {v:.1f}% is up {delta:.1f} points from its recent low — "
+            "the kind of rise that has preceded past downturns.",
+            "watch",
+        )
+    return (f"Unemployment is steady at {v:.1f}%, near its recent lows.", "ok")

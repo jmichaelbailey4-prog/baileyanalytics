@@ -64,5 +64,21 @@ class TestClaims(unittest.TestCase):
         self.assertEqual(narrative.rule_claims([]), ("Data unavailable.", "unknown"))
 
 
+class TestUnemploymentTrend(unittest.TestCase):
+    def test_rising_from_low_is_watch(self):
+        obs = [("m1", 3.6), ("m2", 3.7), ("m3", 3.9), ("m4", 4.1), ("m5", 4.2)]
+        text, status = narrative.rule_unemployment_trend(obs)
+        self.assertEqual(status, "watch")
+        self.assertIn("0.6", text)  # 4.2 - 3.6
+
+    def test_steady_is_ok(self):
+        obs = [("m1", 4.1), ("m2", 4.0), ("m3", 4.1), ("m4", 4.2)]
+        _, status = narrative.rule_unemployment_trend(obs)
+        self.assertEqual(status, "ok")
+
+    def test_empty_is_unknown(self):
+        self.assertEqual(narrative.rule_unemployment_trend([]), ("Data unavailable.", "unknown"))
+
+
 if __name__ == "__main__":
     unittest.main()
