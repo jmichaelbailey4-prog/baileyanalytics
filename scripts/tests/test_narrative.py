@@ -28,5 +28,23 @@ class TestYieldCurve(unittest.TestCase):
         self.assertEqual(narrative.rule_yield_curve([]), ("Data unavailable.", "unknown"))
 
 
+class TestSahm(unittest.TestCase):
+    def test_triggered_is_alert(self):
+        text, status = narrative.rule_sahm([("2026-06-01", 0.55)])
+        self.assertEqual(status, "alert")
+        self.assertIn("triggered", text)
+
+    def test_near_trigger_is_watch(self):
+        text, status = narrative.rule_sahm([("2026-06-01", 0.43)])
+        self.assertEqual(status, "watch")
+
+    def test_low_is_ok(self):
+        text, status = narrative.rule_sahm([("2026-06-01", 0.10)])
+        self.assertEqual(status, "ok")
+
+    def test_empty_is_unknown(self):
+        self.assertEqual(narrative.rule_sahm([]), ("Data unavailable.", "unknown"))
+
+
 if __name__ == "__main__":
     unittest.main()

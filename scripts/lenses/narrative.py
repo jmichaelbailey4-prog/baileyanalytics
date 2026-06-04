@@ -34,3 +34,23 @@ def rule_yield_curve(obs):
         "no recession warning from the curve right now.",
         "ok",
     )
+
+
+def rule_sahm(obs):
+    """SAHMREALTIME: trips at 0.50; 0.35-0.50 is a warning band."""
+    if not obs:
+        return _NO_DATA
+    v = obs[-1][1]
+    if v >= 0.50:
+        return (
+            f"The Sahm rule has triggered at {v:.2f}, historically consistent with "
+            "a recession already underway.",
+            "alert",
+        )
+    if v >= 0.35:
+        return (
+            f"The Sahm rule is at {v:.2f}, climbing toward its 0.50 recession "
+            "trigger but not there yet.",
+            "watch",
+        )
+    return (f"The Sahm rule is at {v:.2f}, well below its 0.50 recession trigger.", "ok")
