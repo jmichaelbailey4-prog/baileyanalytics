@@ -54,3 +54,23 @@ def rule_sahm(obs):
             "watch",
         )
     return (f"The Sahm rule is at {v:.2f}, well below its 0.50 recession trigger.", "ok")
+
+
+def rule_claims(obs):
+    """ICSA (weekly level): <250k low, 250-300k creeping, >=300k elevated."""
+    if not obs:
+        return _NO_DATA
+    v = obs[-1][1]
+    k = v / 1000
+    if v < 250000:
+        return (
+            f"Initial jobless claims are low at ~{k:.0f}k — employers aren't "
+            "shedding workers.",
+            "ok",
+        )
+    if v < 300000:
+        return (f"Jobless claims at ~{k:.0f}k are creeping up from their lows.", "watch")
+    return (
+        f"Jobless claims have risen to ~{k:.0f}k, a sign of accelerating layoffs.",
+        "elevated",
+    )

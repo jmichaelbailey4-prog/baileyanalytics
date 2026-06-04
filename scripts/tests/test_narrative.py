@@ -46,5 +46,23 @@ class TestSahm(unittest.TestCase):
         self.assertEqual(narrative.rule_sahm([]), ("Data unavailable.", "unknown"))
 
 
+class TestClaims(unittest.TestCase):
+    def test_low_is_ok(self):
+        text, status = narrative.rule_claims([("2026-06-01", 219000.0)])
+        self.assertEqual(status, "ok")
+        self.assertIn("219k", text)
+
+    def test_creeping_is_watch(self):
+        _, status = narrative.rule_claims([("2026-06-01", 275000.0)])
+        self.assertEqual(status, "watch")
+
+    def test_high_is_elevated(self):
+        _, status = narrative.rule_claims([("2026-06-01", 340000.0)])
+        self.assertEqual(status, "elevated")
+
+    def test_empty_is_unknown(self):
+        self.assertEqual(narrative.rule_claims([]), ("Data unavailable.", "unknown"))
+
+
 if __name__ == "__main__":
     unittest.main()
