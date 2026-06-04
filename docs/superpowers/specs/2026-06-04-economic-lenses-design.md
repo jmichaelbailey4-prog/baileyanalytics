@@ -83,7 +83,7 @@ their own FRED series, so almost nothing is computed by hand.
 | Cost of Living | CPI | `CPIAUCSL` | `units=pc1` → YoY % |
 | | Core CPI | `CPILFESL` | `units=pc1` |
 | | PCE | `PCEPI` | `units=pc1` |
-| | Real wages | derived: wage-growth YoY − CPI YoY (or a FRED real-earnings series) — finalize in impl |
+| | Real wages (YoY) | `CES0500000032` | `units=pc1` → real avg hourly earnings (BLS, constant 1982–84 $), YoY % |
 
 Shared series (e.g. `T10Y2Y`, `UNRATE`, `DGS10`) are fetched **once** and reused.
 
@@ -101,7 +101,7 @@ scripts/refresh_fred.py (expanded)
   1. collect every unique FRED series across all lenses (dedupe), plus helper
      series not shown directly (e.g. USREC for recession shading)
   2. fetch each once (apply per-series units transform)
-  3. compute the few derived values (e.g. payroll MoM change, real wages)
+  3. compute the few derived values (e.g. payroll MoM change)
   4. run narrative rules → per-indicator "read" + per-lens synthesis + status
   5. write output files
         │
@@ -237,7 +237,7 @@ dependencies, fits the no-build philosophy). Focus on the logic that's easy to g
 
 - **Narrative rule functions:** given representative values → assert expected `text` +
   `signal_status` (including edge cases: missing values, exactly-at-threshold, sign flips).
-- **Derived calcs:** payroll MoM change, real-wage derivation.
+- **Derived calcs:** payroll MoM change.
 - **JSON assembly:** shape/keys of `index.json` and a lens file from fixture inputs.
 - **Pipeline dry-run mode:** run against local fixture data with **no network**, to validate
   output end-to-end in CI and locally.
