@@ -91,3 +91,21 @@ def rule_unemployment_trend(obs):
             "watch",
         )
     return (f"Unemployment is steady at {v:.1f}%, near its recent lows.", "ok")
+
+
+HEADLINES = {
+    "recession-watch": {
+        "alert": "Recession signals are flashing — multiple indicators have tripped.",
+        "elevated": "Recession risk is elevated — the yield curve is warning.",
+        "watch": "No recession underway — but the warning lights are no longer all green.",
+        "ok": "The economy looks steady — no major recession signals right now.",
+        "unknown": "Some recession signals are temporarily unavailable.",
+    },
+}
+
+
+def synthesize(lens_id, statuses):
+    """Combine indicator statuses into (headline_read, overall_status)."""
+    overall = util.status_max(statuses)
+    headline = HEADLINES.get(lens_id, {}).get(overall, "")
+    return headline, overall

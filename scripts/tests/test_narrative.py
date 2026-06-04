@@ -80,5 +80,22 @@ class TestUnemploymentTrend(unittest.TestCase):
         self.assertEqual(narrative.rule_unemployment_trend([]), ("Data unavailable.", "unknown"))
 
 
+class TestSynthesize(unittest.TestCase):
+    def test_watch_headline(self):
+        headline, overall = narrative.synthesize("recession-watch", ["ok", "watch", "ok", "watch"])
+        self.assertEqual(overall, "watch")
+        self.assertIn("warning lights", headline)
+
+    def test_alert_headline(self):
+        headline, overall = narrative.synthesize("recession-watch", ["alert", "watch"])
+        self.assertEqual(overall, "alert")
+        self.assertIn("flashing", headline)
+
+    def test_unknown_lens_returns_empty_headline(self):
+        headline, overall = narrative.synthesize("does-not-exist", ["ok"])
+        self.assertEqual(overall, "ok")
+        self.assertEqual(headline, "")
+
+
 if __name__ == "__main__":
     unittest.main()
