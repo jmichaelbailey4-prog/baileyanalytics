@@ -23,5 +23,60 @@ class TestConfig(unittest.TestCase):
                 self.assertTrue(ind.context)
 
 
+import json as _json
+from lenses import build
+
+
+def _load_fixture():
+    p = pathlib.Path(__file__).resolve().parent / "fixtures" / "fetched_sample.json"
+    return _json.loads(p.read_text(encoding="utf-8"))
+
+
+class TestBuildLens(unittest.TestCase):
+    def setUp(self):
+        self.fetched = _load_fixture()
+        self.lens_json = build.build_lens(config.RECESSION_WATCH, self.fetched)
+
+    def test_top_level_shape(self):
+        lj = self.lens_json
+        self.assertEqual(lj["id"], "recession-watch")
+        self.assertEqual(lj["status"], "watch")  # un-inverted curve + near-trigger Sahm
+        self.assertIn("warning lights", lj["headline_read"])
+        self.assertEqual(len(lj["indicators"]), 4)
+        self.assertEqual(lj["recessions"], [{"start": "2020-02-01", "end": "2020-05-01"}])
+
+    def test_indicator_shape(self):
+        ind = self.lens_json["indicators"][0]
+        self.assertEqual(ind["id"], "yield-curve")
+        self.assertEqual(ind["latest"], {"date": "2026-06-02", "value": "0.30"})
+        self.assertEqual(ind["signal_status"], "watch")
+        self.assertTrue(ind["context"])
+        self.assertIn("un-inverted", ind["read"])
+        self.assertTrue(len(ind["observations"]) == 3)
+
+
+class TestBuildIndex(unittest.TestCase):
+    def test_index_entry(self):
+        lj = build.build_lens(config.RECESSION_WATCH, _load_fixture())
+        idx = build.build_index([lj])
+        entry = idx["lenses"][0]
+        self.assertEqual(entry["id"], "recession-watch")
+        self.assertEqual(entry["status"], "watch")
+        self.assertEqual(entry["key_stats"][0]["k"], "Yield curve")
+        self.assertTrue(entry["sparkline"])  # non-empty list of numbers
+
+
+class TestWriteOutputs(unittest.TestCase):
+    def test_skips_unchanged_file(self):
+        import tempfile
+        lj = build.build_lens(config.RECESSION_WATCH, _load_fixture())
+        with tempfile.TemporaryDirectory() as d:
+            out = pathlib.Path(d)
+            first = build.write_lens_file(out / "recession-watch.json", lj)
+            second = build.write_lens_file(out / "recession-watch.json", lj)
+            self.assertTrue(first)    # wrote
+            self.assertFalse(second)  # unchanged -> skipped
+
+
 if __name__ == "__main__":
     unittest.main()
