@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-04T16:39:56Z",
+  "last_updated": "2026-06-05T16:14:57Z",
   "source": "Federal Reserve Economic Data (FRED), St. Louis Fed",
   "series": {
     "UNRATE": {
@@ -8,10 +8,6 @@
       "unit": "%",
       "color": "#38BDF8",
       "observations": [
-        {
-          "date": "2016-05-01",
-          "value": "4.8"
-        },
         {
           "date": "2016-06-01",
           "value": "4.9"
@@ -483,6 +479,10 @@
         {
           "date": "2026-04-01",
           "value": "4.3"
+        },
+        {
+          "date": "2026-05-01",
+          "value": "4.3"
         }
       ]
     },
@@ -492,10 +492,6 @@
       "unit": "%",
       "color": "#34D399",
       "observations": [
-        {
-          "date": "2024-06-05",
-          "value": "4.29"
-        },
         {
           "date": "2024-06-06",
           "value": "4.28"
@@ -2479,6 +2475,10 @@
         {
           "date": "2026-06-02",
           "value": "4.46"
+        },
+        {
+          "date": "2026-06-03",
+          "value": "4.49"
         }
       ]
     }
