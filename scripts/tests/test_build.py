@@ -83,5 +83,15 @@ class TestBuildCostOfMoney(unittest.TestCase):
         self.assertEqual(lj["status"], "watch")
 
 
+class TestBuildJobMarket(unittest.TestCase):
+    def test_builds_with_derived_payrolls(self):
+        lj = build.build_lens(config.JOB_MARKET, _load_fixture())
+        self.assertEqual(lj["id"], "job-market")
+        self.assertEqual(len(lj["indicators"]), 5)
+        payrolls = next(i for i in lj["indicators"] if i["id"] == "payrolls")
+        self.assertEqual(payrolls["latest"], {"date": "2026-05-01", "value": "177000"})
+        self.assertEqual(payrolls["value_format"], "thousands")
+
+
 if __name__ == "__main__":
     unittest.main()

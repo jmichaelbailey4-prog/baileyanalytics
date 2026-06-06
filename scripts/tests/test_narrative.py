@@ -149,5 +149,57 @@ class TestMortgage(unittest.TestCase):
         self.assertEqual(narrative.rule_mortgage([]), ("Data unavailable.", "unknown"))
 
 
+class TestPayrolls(unittest.TestCase):
+    def test_healthy_is_ok(self):
+        text, status = narrative.rule_payrolls([("2026-05-01", 177000.0)])
+        self.assertEqual(status, "ok")
+        self.assertIn("177,000", text)
+
+    def test_slow_is_watch(self):
+        _, status = narrative.rule_payrolls([("2026-05-01", 60000.0)])
+        self.assertEqual(status, "watch")
+
+    def test_negative_is_alert(self):
+        text, status = narrative.rule_payrolls([("2026-05-01", -40000.0)])
+        self.assertEqual(status, "alert")
+        self.assertIn("cut", text)
+
+    def test_empty_is_unknown(self):
+        self.assertEqual(narrative.rule_payrolls([]), ("Data unavailable.", "unknown"))
+
+
+class TestJobOpenings(unittest.TestCase):
+    def test_easing_below_threshold_is_watch(self):
+        obs = [("2025-05-01", 8.0), ("2026-05-01", 7.2)]
+        text, status = narrative.rule_job_openings(obs)
+        self.assertEqual(status, "watch")
+        self.assertIn("easing", text)
+
+    def test_high_is_ok(self):
+        obs = [("2025-05-01", 9.0), ("2026-05-01", 9.2)]
+        _, status = narrative.rule_job_openings(obs)
+        self.assertEqual(status, "ok")
+
+    def test_empty_is_unknown(self):
+        self.assertEqual(narrative.rule_job_openings([]), ("Data unavailable.", "unknown"))
+
+
+class TestWageGrowth(unittest.TestCase):
+    def test_above_inflation_is_ok(self):
+        text, status = narrative.rule_wage_growth([("2026-05-01", 4.0)])
+        self.assertEqual(status, "ok")
+        self.assertIn("4.0%", text)
+
+    def test_empty_is_unknown(self):
+        self.assertEqual(narrative.rule_wage_growth([]), ("Data unavailable.", "unknown"))
+
+
+class TestJobMarketHeadline(unittest.TestCase):
+    def test_cooling_is_watch(self):
+        headline, overall = narrative.synthesize("job-market", ["watch", "ok", "watch"])
+        self.assertEqual(overall, "watch")
+        self.assertIn("cooling", headline)
+
+
 if __name__ == "__main__":
     unittest.main()

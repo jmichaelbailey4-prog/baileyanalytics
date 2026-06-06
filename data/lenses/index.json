@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-06T18:48:41Z",
+  "last_updated": "2026-06-06T23:13:07Z",
   "lenses": [
     {
       "id": "recession-watch",
@@ -43,6 +43,28 @@
         5.33,
         4.58,
         4.33
+      ]
+    },
+    {
+      "id": "job-market",
+      "title": "The Job Market",
+      "accent": "#38BDF8",
+      "status": "watch",
+      "headline_read": "The job market is cooling \u2014 still solid, but losing momentum.",
+      "key_stats": [
+        {
+          "k": "Unemployment",
+          "v": "4.20%"
+        },
+        {
+          "k": "Payrolls",
+          "v": "177,000"
+        }
+      ],
+      "sparkline": [
+        3.7,
+        4.0,
+        4.2
       ]
     }
   ]

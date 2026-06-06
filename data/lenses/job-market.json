@@ -1,0 +1,150 @@
+{
+  "id": "job-market",
+  "title": "The Job Market",
+  "accent": "#38BDF8",
+  "last_updated": "2026-06-06T23:13:07Z",
+  "status": "watch",
+  "headline_read": "The job market is cooling \u2014 still solid, but losing momentum.",
+  "recessions": [
+    {
+      "start": "2020-02-01",
+      "end": "2020-05-01"
+    }
+  ],
+  "indicators": [
+    {
+      "id": "unemployment",
+      "title": "Unemployment Rate",
+      "short": "Unemployment",
+      "unit": "%",
+      "color": "#38BDF8",
+      "series_id": "UNRATE",
+      "observations": [
+        {
+          "date": "2025-06-01",
+          "value": "3.7"
+        },
+        {
+          "date": "2026-01-01",
+          "value": "4.0"
+        },
+        {
+          "date": "2026-05-01",
+          "value": "4.2"
+        }
+      ],
+      "latest": {
+        "date": "2026-05-01",
+        "value": "4.2"
+      },
+      "context": "The share of the labor force without a job and actively looking \u2014 the single most-watched gauge of labor-market health.",
+      "read": "Unemployment at 4.2% is up 0.5 points from its recent low \u2014 the kind of rise that has preceded past downturns.",
+      "signal_status": "watch",
+      "value_format": "decimal"
+    },
+    {
+      "id": "payrolls",
+      "title": "Nonfarm Payrolls \u00b7 monthly change",
+      "short": "Payrolls",
+      "unit": "",
+      "color": "#34D399",
+      "series_id": "PAYEMS",
+      "observations": [
+        {
+          "date": "2026-04-01",
+          "value": "150000"
+        },
+        {
+          "date": "2026-05-01",
+          "value": "177000"
+        }
+      ],
+      "latest": {
+        "date": "2026-05-01",
+        "value": "177000"
+      },
+      "context": "How many jobs U.S. employers added (or cut) last month \u2014 the headline number markets and the Fed react to most.",
+      "read": "Employers added 177,000 jobs last month \u2014 a healthy clip.",
+      "signal_status": "ok",
+      "value_format": "thousands"
+    },
+    {
+      "id": "job-openings",
+      "title": "Job Openings (JOLTS)",
+      "short": "Openings",
+      "unit": "M",
+      "color": "#A78BFA",
+      "series_id": "JTSJOL",
+      "observations": [
+        {
+          "date": "2025-05-01",
+          "value": "8.0"
+        },
+        {
+          "date": "2026-05-01",
+          "value": "7.2"
+        }
+      ],
+      "latest": {
+        "date": "2026-05-01",
+        "value": "7.2"
+      },
+      "context": "The number of unfilled positions employers are trying to hire for \u2014 a direct read on how strong labor demand is.",
+      "read": "7.2 million open jobs, easing as labor demand cools.",
+      "signal_status": "watch",
+      "value_format": "decimal"
+    },
+    {
+      "id": "wage-growth",
+      "title": "Wage Growth \u00b7 year-over-year",
+      "short": "Wages",
+      "unit": "%",
+      "color": "#FBBF24",
+      "series_id": "CES0500000003",
+      "observations": [
+        {
+          "date": "2025-05-01",
+          "value": "4.1"
+        },
+        {
+          "date": "2026-05-01",
+          "value": "4.0"
+        }
+      ],
+      "latest": {
+        "date": "2026-05-01",
+        "value": "4.0"
+      },
+      "context": "How fast average hourly pay is rising versus a year ago. When it outpaces inflation, workers' buying power grows.",
+      "read": "Pay is up 4.0% from a year ago, running ahead of recent inflation.",
+      "signal_status": "ok",
+      "value_format": "decimal"
+    },
+    {
+      "id": "participation",
+      "title": "Labor-Force Participation Rate",
+      "short": "Participation",
+      "unit": "%",
+      "color": "#22D3EE",
+      "series_id": "CIVPART",
+      "observations": [
+        {
+          "date": "2025-05-01",
+          "value": "62.6"
+        },
+        {
+          "date": "2026-05-01",
+          "value": "62.5"
+        }
+      ],
+      "latest": {
+        "date": "2026-05-01",
+        "value": "62.5"
+      },
+      "context": "The share of working-age adults either working or looking for work \u2014 how many people are in the labor force at all.",
+      "read": "Now 62.50%, down 0.10 points over the past year.",
+      "signal_status": "ok",
+      "value_format": "decimal"
+    }
+  ]
+}

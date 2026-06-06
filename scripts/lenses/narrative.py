@@ -146,6 +146,45 @@ def rule_mortgage(obs):
     return (f"30-year mortgages are at {v:.2f}%, moderate by recent standards.", "ok")
 
 
+def rule_payrolls(obs):
+    """Monthly change in nonfarm payrolls (jobs added or lost)."""
+    if not obs:
+        return _NO_DATA
+    v = obs[-1][1]
+    if v < 0:
+        return (f"Employers cut {abs(v):,.0f} jobs last month — an outright contraction.", "alert")
+    if v < 75000:
+        return (f"Employers added just {v:,.0f} jobs last month — hiring has slowed sharply.", "watch")
+    if v < 150000:
+        return (f"Employers added {v:,.0f} jobs last month — a cooler but still-positive pace.", "watch")
+    return (f"Employers added {v:,.0f} jobs last month — a healthy clip.", "ok")
+
+
+def rule_job_openings(obs):
+    """JTSJOL in millions: how hungry employers are to hire."""
+    if not obs:
+        return _NO_DATA
+    v = obs[-1][1]
+    prior = _value_year_ago(obs)
+    if v < prior - 0.3:
+        trend = "easing as labor demand cools"
+    elif v > prior + 0.3:
+        trend = "rising as employers compete for workers"
+    else:
+        trend = "holding roughly steady"
+    status = "watch" if v < 7.5 else "ok"
+    return (f"{v:.1f} million open jobs, {trend}.", status)
+
+
+def rule_wage_growth(obs):
+    """Average hourly earnings, year-over-year percent."""
+    if not obs:
+        return _NO_DATA
+    v = obs[-1][1]
+    pace = "running ahead of recent inflation" if v >= 3.5 else "a modest pace"
+    return (f"Pay is up {v:.1f}% from a year ago, {pace}.", "ok")
+
+
 HEADLINES = {
     "recession-watch": {
         "alert": "Recession signals are flashing — multiple indicators have tripped.",
@@ -160,6 +199,13 @@ HEADLINES = {
         "watch": "Borrowing is still expensive — rates remain elevated.",
         "ok": "Borrowing costs have eased back toward normal.",
         "unknown": "Some rate data is temporarily unavailable.",
+    },
+    "job-market": {
+        "alert": "The job market is contracting — employers are cutting jobs.",
+        "elevated": "The job market is weakening on several fronts.",
+        "watch": "The job market is cooling — still solid, but losing momentum.",
+        "ok": "The job market is healthy — hiring and pay are holding up.",
+        "unknown": "Some labor-market data is temporarily unavailable.",
     },
 }
 

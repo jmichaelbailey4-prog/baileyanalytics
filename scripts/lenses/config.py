@@ -186,4 +186,86 @@ COST_OF_MONEY = Lens(
     ],
 )
 
-LENSES = [RECESSION_WATCH, COST_OF_MONEY]
+JOB_MARKET = Lens(
+    id="job-market",
+    title="The Job Market",
+    accent="#38BDF8",
+    indicators=[
+        Indicator(
+            id="unemployment",
+            title="Unemployment Rate",
+            short="Unemployment",
+            unit="%",
+            color="#38BDF8",
+            series_id="UNRATE",
+            limit=240,
+            rule=narrative.rule_unemployment_trend,
+            context=(
+                "The share of the labor force without a job and actively looking — the "
+                "single most-watched gauge of labor-market health."
+            ),
+        ),
+        Indicator(
+            id="payrolls",
+            title="Nonfarm Payrolls · monthly change",
+            short="Payrolls",
+            unit="",
+            color="#34D399",
+            series_id="PAYEMS",
+            limit=240,
+            rule=narrative.rule_payrolls,
+            derive=derive.payroll_change,
+            value_format="thousands",
+            context=(
+                "How many jobs U.S. employers added (or cut) last month — the headline "
+                "number markets and the Fed react to most."
+            ),
+        ),
+        Indicator(
+            id="job-openings",
+            title="Job Openings (JOLTS)",
+            short="Openings",
+            unit="M",
+            color="#A78BFA",
+            series_id="JTSJOL",
+            limit=240,
+            rule=narrative.rule_job_openings,
+            derive=derive.to_millions,
+            context=(
+                "The number of unfilled positions employers are trying to hire for — a "
+                "direct read on how strong labor demand is."
+            ),
+        ),
+        Indicator(
+            id="wage-growth",
+            title="Wage Growth · year-over-year",
+            short="Wages",
+            unit="%",
+            color="#FBBF24",
+            series_id="CES0500000003",
+            units_transform="pc1",
+            limit=240,
+            rule=narrative.rule_wage_growth,
+            context=(
+                "How fast average hourly pay is rising versus a year ago. When it outpaces "
+                "inflation, workers' buying power grows."
+            ),
+        ),
+        Indicator(
+            id="participation",
+            title="Labor-Force Participation Rate",
+            short="Participation",
+            unit="%",
+            color="#22D3EE",
+            series_id="CIVPART",
+            limit=240,
+            rule=narrative.rule_rate_trend,
+            context=(
+                "The share of working-age adults either working or looking for work — how "
+                "many people are in the labor force at all."
+            ),
+        ),
+    ],
+)
+
+LENSES = [RECESSION_WATCH, COST_OF_MONEY, JOB_MARKET]
