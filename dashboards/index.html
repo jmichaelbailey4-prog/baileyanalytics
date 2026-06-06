@@ -1,199 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sample Dashboards — Bailey Analytics</title>
-    <meta name="description" content="Free sample analytics dashboards from Bailey Analytics, demonstrating reliable, accessible data systems for decision-making.">
-    <style>
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            text-rendering: optimizeLegibility;
-        }
-
-        body {
-            min-height: 100vh;
-            min-height: 100dvh;
-            background-color: #0A0E14;
-            color: #F8FAFC;
-            font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            line-height: 1.65;
-            font-feature-settings: "ss01", "cv11";
-            padding: 6rem 1.5rem 4rem;
-        }
-
-        nav.wordmark {
-            position: fixed;
-            top: 1.5rem;
-            left: 1.5rem;
-            z-index: 10;
-        }
-
-        nav.top-nav {
-            position: fixed;
-            top: 1.5rem;
-            right: 1.5rem;
-            z-index: 10;
-            display: flex;
-            gap: 1.75rem;
-        }
-
-        nav a {
-            color: #94A3B8;
-            text-decoration: none;
-            font-size: 0.875rem;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            font-weight: 500;
-            padding: 0.5rem 0.25rem;
-            border-bottom: 1px solid transparent;
-            transition: color 200ms ease, border-color 200ms ease;
-        }
-
-        nav a:hover,
-        nav a:focus-visible {
-            color: #F8FAFC;
-            border-bottom-color: #38BDF8;
-        }
-
-        nav a:focus-visible {
-            outline: 2px solid #38BDF8;
-            outline-offset: 4px;
-            border-radius: 2px;
-        }
-
-        main {
-            max-width: 48rem;
-            margin: 0 auto;
-            animation: fadeIn 600ms ease-out both;
-        }
-
-        h1 {
-            font-size: clamp(2rem, 4.5vw, 2.75rem);
-            font-weight: 600;
-            letter-spacing: -0.02em;
-            line-height: 1.15;
-            color: #F8FAFC;
-            margin-bottom: 1rem;
-        }
-
-        p.lede {
-            color: #CBD5E1;
-            font-size: 1.0625rem;
-            margin-bottom: 3rem;
-            max-width: 36rem;
-        }
-
-        .dashboard-list {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        a.dashboard-card {
-            display: block;
-            padding: 1.75rem;
-            background-color: #0F172A;
-            border: 1px solid #1E293B;
-            border-radius: 12px;
-            text-decoration: none;
-            color: inherit;
-            transition: border-color 200ms ease, transform 200ms ease;
-        }
-
-        a.dashboard-card:hover,
-        a.dashboard-card:focus-visible {
-            border-color: #38BDF8;
-            transform: translateY(-1px);
-        }
-
-        a.dashboard-card:focus-visible {
-            outline: 2px solid #38BDF8;
-            outline-offset: 4px;
-        }
-
-        .card-eyebrow {
-            font-size: 0.75rem;
-            color: #38BDF8;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .card-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: #F8FAFC;
-            margin-bottom: 0.5rem;
-            letter-spacing: -0.01em;
-        }
-
-        .card-description {
-            color: #94A3B8;
-            font-size: 0.9375rem;
-            line-height: 1.5;
-        }
-
-        .card-meta {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-            font-size: 0.75rem;
-            color: #64748B;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(8px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            main { animation: none; }
-            nav a, a.dashboard-card { transition: none; }
-        }
-
-        @media (max-width: 640px) {
-            body { padding: 5rem 1rem 3rem; }
-            nav.top-nav { gap: 1rem; }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Economic Lenses — Bailey Analytics</title>
+  <meta name="description" content="Focused, interpretation-rich views of the U.S. economy — recession risk, the cost of money, and more. Refreshed daily from FRED.">
+  <link rel="stylesheet" href="/dashboards/lens.css">
+  <style>
+    h1 { font-size: clamp(2rem, 4.5vw, 2.75rem); font-weight: 600; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 0.75rem; }
+    p.lede { color: var(--muted); font-size: 1.0625rem; max-width: 36rem; margin-bottom: 2.5rem; }
+    .hub-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 640px) { .hub-grid { grid-template-columns: 1fr; } }
+    .hub-card { display: block; text-decoration: none; color: inherit; background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 1.25rem; transition: border-color .2s ease, transform .2s ease; }
+    .hub-card:hover, .hub-card:focus-visible { border-color: var(--blue); transform: translateY(-2px); }
+    .hub-card:focus-visible { outline: 2px solid var(--blue); outline-offset: 4px; }
+    .hub-eyebrow { font-size: .7rem; font-weight: 600; text-transform: uppercase; letter-spacing: .12em; display: flex; align-items: center; gap: .5rem; margin-bottom: .6rem; }
+    .hub-read { color: var(--text); font-size: 1rem; font-weight: 600; line-height: 1.35; margin-bottom: .85rem; }
+    .spark { width: 100%; height: 34px; display: block; margin-bottom: .85rem; }
+    .hub-stats { display: flex; gap: 1.1rem; font-size: .72rem; color: var(--muted); flex-wrap: wrap; }
+    .hub-stats b { color: var(--text); font-weight: 600; }
+    .hub-cta { margin-top: .85rem; font-size: .74rem; color: var(--blue); letter-spacing: .03em; }
+    @media (prefers-reduced-motion: reduce) { .hub-card { transition: none; } }
+  </style>
 </head>
 <body>
-    <nav class="wordmark">
-        <a href="/">Bailey Analytics</a>
-    </nav>
-    <nav class="top-nav">
-        <a href="/dashboards/">Dashboards</a>
-        <a href="/about.html">About</a>
-    </nav>
+  <nav class="wordmark"><a href="/">Bailey Analytics</a></nav>
+  <nav class="top-nav"><a href="/dashboards/">Dashboards</a><a href="/about.html">About</a></nav>
 
-    <main>
-        <h1>Sample Dashboards</h1>
-        <p class="lede">Free, public analytics dashboards built to show what reliable, well-designed data systems look like in practice. New ones added over time.</p>
+  <main>
+    <h1>Economic Lenses</h1>
+    <p class="lede">Focused views of the U.S. economy — each a small set of indicators that move together, with the context to make sense of them. Refreshed daily from FRED.</p>
+    <div class="hub-grid" id="hub-grid"><div class="status-msg">Loading&hellip;</div></div>
+    <div class="foot">
+      Data: <a href="https://fred.stlouisfed.org/" target="_blank" rel="noopener">Federal Reserve Economic Data (FRED)</a>, St. Louis Fed. Refreshed daily.
+    </div>
+  </main>
 
-        <div class="dashboard-list">
-            <a class="dashboard-card" href="/dashboards/economic.html">
-                <div class="card-eyebrow">Macroeconomics</div>
-                <div class="card-title">Economic Indicators</div>
-                <div class="card-description">U.S. unemployment rate and 10-year Treasury yield, sourced from the Federal Reserve Economic Data (FRED) service and refreshed daily.</div>
-                <div class="card-meta">
-                    <span>FRED</span>
-                    <span>Daily refresh</span>
-                </div>
-            </a>
-        </div>
-    </main>
+  <script>
+    function esc(s) { const d = document.createElement("div"); d.textContent = s; return d.innerHTML; }
+
+    function sparkline(values, accent) {
+      if (!values || values.length < 2) return "";
+      const min = Math.min(...values), max = Math.max(...values), range = (max - min) || 1;
+      const pts = values.map((v, i) => {
+        const x = (i / (values.length - 1)) * 100;
+        const y = 30 - ((v - min) / range) * 28;
+        return `${x.toFixed(1)},${y.toFixed(1)}`;
+      }).join(" ");
+      return `<svg class="spark" viewBox="0 0 100 34" preserveAspectRatio="none"><polyline points="${pts}" fill="none" stroke="${accent}" stroke-width="2"/></svg>`;
+    }
+
+    function tile(lens) {
+      const stats = (lens.key_stats || [])
+        .map(s => `<span>${esc(s.k)} <b>${esc(s.v)}</b></span>`).join("");
+      return `
+        <a class="hub-card" href="/dashboards/${encodeURIComponent(lens.id)}.html">
+          <div class="hub-eyebrow" style="color:${lens.accent}">${esc(lens.title)}
+            <span class="badge ${esc(lens.status)}">${esc(lens.status)}</span></div>
+          <div class="hub-read">${esc(lens.headline_read)}</div>
+          ${sparkline(lens.sparkline, lens.accent)}
+          <div class="hub-stats">${stats}</div>
+          <div class="hub-cta">View lens &rarr;</div>
+        </a>`;
+    }
+
+    (async function () {
+      const grid = document.getElementById("hub-grid");
+      try {
+        const res = await fetch("/data/lenses/index.json", { cache: "no-cache" });
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        const data = await res.json();
+        grid.innerHTML = (data.lenses || []).map(tile).join("");
+      } catch (err) {
+        grid.innerHTML = `<div class="status-msg error">Dashboards are still being refreshed. Check back shortly.</div>`;
+        console.error(err);
+      }
+    })();
+  </script>
 </body>
 </html>
