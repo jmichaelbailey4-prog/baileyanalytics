@@ -1,0 +1,27 @@
+{
+  "last_updated": "2026-06-05T21:56:54Z",
+  "lenses": [
+    {
+      "id": "recession-watch",
+      "title": "Recession Watch",
+      "accent": "#F87171",
+      "status": "watch",
+      "headline_read": "No recession underway \u2014 but the warning lights are no longer all green.",
+      "key_stats": [
+        {
+          "k": "Yield curve",
+          "v": "0.30%"
+        },
+        {
+          "k": "Sahm rule",
+          "v": "0.43"
+        }
+      ],
+      "sparkline": [
+        -0.4,
+        0.05,
+        0.3
+      ]
+    }
+  ]
+}
