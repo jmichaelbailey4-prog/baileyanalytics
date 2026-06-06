@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-05T21:56:54Z",
+  "last_updated": "2026-06-06T18:48:41Z",
   "lenses": [
     {
       "id": "recession-watch",
@@ -21,6 +21,28 @@
         -0.4,
         0.05,
         0.3
+      ]
+    },
+    {
+      "id": "cost-of-money",
+      "title": "The Cost of Money",
+      "accent": "#34D399",
+      "status": "watch",
+      "headline_read": "Borrowing is still expensive \u2014 rates remain elevated.",
+      "key_stats": [
+        {
+          "k": "Fed funds",
+          "v": "4.33%"
+        },
+        {
+          "k": "10-year",
+          "v": "4.38%"
+        }
+      ],
+      "sparkline": [
+        5.33,
+        4.58,
+        4.33
       ]
     }
   ]

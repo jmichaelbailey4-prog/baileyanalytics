@@ -96,6 +96,58 @@ class TestSynthesize(unittest.TestCase):
         self.assertEqual(overall, "ok")
         self.assertEqual(headline, "")
 
+    def test_cost_of_money_watch_headline(self):
+        headline, overall = narrative.synthesize("cost-of-money", ["watch", "ok", "ok"])
+        self.assertEqual(overall, "watch")
+        self.assertIn("expensive", headline)
+
+
+class TestFedFunds(unittest.TestCase):
+    def test_climbing_high_is_watch(self):
+        obs = [("2025-06-01", 3.0), ("2026-06-01", 4.5)]
+        text, status = narrative.rule_fed_funds(obs)
+        self.assertEqual(status, "watch")
+        self.assertIn("climbing", text)
+
+    def test_low_holding_is_ok(self):
+        obs = [("2025-06-01", 2.0), ("2026-06-01", 2.0)]
+        text, status = narrative.rule_fed_funds(obs)
+        self.assertEqual(status, "ok")
+        self.assertIn("steady", text)
+
+    def test_empty_is_unknown(self):
+        self.assertEqual(narrative.rule_fed_funds([]), ("Data unavailable.", "unknown"))
+
+
+class TestRateTrend(unittest.TestCase):
+    def test_up_over_year(self):
+        obs = [("2025-06-01", 3.5), ("2026-06-01", 4.4)]
+        text, status = narrative.rule_rate_trend(obs)
+        self.assertEqual(status, "ok")
+        self.assertIn("up", text)
+
+    def test_little_changed(self):
+        obs = [("2025-06-01", 4.35), ("2026-06-01", 4.38)]
+        _, status = narrative.rule_rate_trend(obs)
+        self.assertEqual(status, "ok")
+
+    def test_empty_is_unknown(self):
+        self.assertEqual(narrative.rule_rate_trend([]), ("Data unavailable.", "unknown"))
+
+
+class TestMortgage(unittest.TestCase):
+    def test_high_is_watch(self):
+        text, status = narrative.rule_mortgage([("2026-06-01", 6.84)])
+        self.assertEqual(status, "watch")
+        self.assertIn("stretched", text)
+
+    def test_moderate_is_ok(self):
+        _, status = narrative.rule_mortgage([("2026-06-01", 4.2)])
+        self.assertEqual(status, "ok")
+
+    def test_empty_is_unknown(self):
+        self.assertEqual(narrative.rule_mortgage([]), ("Data unavailable.", "unknown"))
+
 
 if __name__ == "__main__":
     unittest.main()

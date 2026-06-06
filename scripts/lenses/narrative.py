@@ -92,6 +92,60 @@ def rule_unemployment_trend(obs):
     return (f"Unemployment is steady at {v:.1f}%, near its recent lows.", "ok")
 
 
+def _value_year_ago(obs):
+    """Value from ~one year before the latest observation (frequency-agnostic)."""
+    last_date = obs[-1][0]
+    target = f"{int(last_date[:4]) - 1}{last_date[4:]}"
+    chosen = obs[0][1]
+    for d, val in obs:
+        if d <= target:
+            chosen = val
+        else:
+            break
+    return chosen
+
+
+def rule_fed_funds(obs):
+    """FEDFUNDS: the policy-rate level and its ~12-month direction."""
+    if not obs:
+        return _NO_DATA
+    v = obs[-1][1]
+    delta = v - _value_year_ago(obs)
+    if delta >= 0.25:
+        stance = "and still climbing as the Fed leans against inflation"
+    elif delta <= -0.25:
+        stance = "and easing as the Fed pivots toward cuts"
+    else:
+        stance = "holding roughly steady as the Fed waits for more data"
+    status = "watch" if v >= 4.0 else "ok"
+    return (f"The Fed's policy rate is {v:.2f}%, {stance}.", status)
+
+
+def rule_rate_trend(obs):
+    """Generic market-rate read: current level and ~12-month direction."""
+    if not obs:
+        return _NO_DATA
+    v = obs[-1][1]
+    delta = v - _value_year_ago(obs)
+    if delta >= 0.1:
+        move = f"up {delta:.2f} points over the past year"
+    elif delta <= -0.1:
+        move = f"down {abs(delta):.2f} points over the past year"
+    else:
+        move = "little changed over the past year"
+    return (f"Now {v:.2f}%, {move}.", "ok")
+
+
+def rule_mortgage(obs):
+    """MORTGAGE30US: the rate level plus an affordability read."""
+    if not obs:
+        return _NO_DATA
+    v = obs[-1][1]
+    if v >= 6.5:
+        return (f"30-year mortgages are at {v:.2f}%, keeping home affordability stretched.", "watch")
+    return (f"30-year mortgages are at {v:.2f}%, moderate by recent standards.", "ok")
+
+
 HEADLINES = {
     "recession-watch": {
         "alert": "Recession signals are flashing — multiple indicators have tripped.",
@@ -99,6 +153,13 @@ HEADLINES = {
         "watch": "No recession underway — but the warning lights are no longer all green.",
         "ok": "The economy looks steady — no major recession signals right now.",
         "unknown": "Some recession signals are temporarily unavailable.",
+    },
+    "cost-of-money": {
+        "alert": "Borrowing costs are extreme — money is very expensive.",
+        "elevated": "Borrowing costs are high and restrictive across the board.",
+        "watch": "Borrowing is still expensive — rates remain elevated.",
+        "ok": "Borrowing costs have eased back toward normal.",
+        "unknown": "Some rate data is temporarily unavailable.",
     },
 }
 

@@ -75,5 +75,13 @@ class TestWriteOutputs(unittest.TestCase):
             self.assertFalse(second)  # unchanged -> skipped
 
 
+class TestBuildCostOfMoney(unittest.TestCase):
+    def test_builds_with_five_indicators(self):
+        lj = build.build_lens(config.COST_OF_MONEY, _load_fixture())
+        self.assertEqual(lj["id"], "cost-of-money")
+        self.assertEqual(len(lj["indicators"]), 5)
+        self.assertEqual(lj["status"], "watch")
+
+
 if __name__ == "__main__":
     unittest.main()
