@@ -21,11 +21,6 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Fetch latest FRED data (legacy dashboard)
-        env:
-          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
-        run: python scripts/refresh_fred.py
-
       - name: Fetch latest FRED data (lenses)
         env:
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
