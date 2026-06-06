@@ -33,6 +33,18 @@ class TestRecessions(unittest.TestCase):
         obs = [{"date": "2026-01-01", "value": "0"}]
         self.assertEqual(recessions.recession_periods(obs), [])
 
+    def test_open_ended_with_trailing_null(self):
+        obs = [
+            {"date": "2026-01-01", "value": "0"},
+            {"date": "2026-02-01", "value": "1"},
+            {"date": "2026-03-01", "value": "."},
+        ]
+        # end should be the last non-null date, not the trailing null entry
+        self.assertEqual(
+            recessions.recession_periods(obs),
+            [{"start": "2026-02-01", "end": "2026-02-01"}],
+        )
+
 
 if __name__ == "__main__":
     unittest.main()

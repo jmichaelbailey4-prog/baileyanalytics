@@ -66,9 +66,8 @@ def build_index(lens_jsons):
     for lj in lens_jsons:
         primary = lj["indicators"][0]
         spark = [
-            util.to_float(o["value"])
-            for o in primary["observations"]
-            if o["value"] not in (None, ".")
+            f for f in (util.to_float(o["value"]) for o in primary["observations"])
+            if f is not None
         ][-40:]
         key_stats = []
         for ind in lj["indicators"][:2]:

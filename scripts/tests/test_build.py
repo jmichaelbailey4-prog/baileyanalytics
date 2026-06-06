@@ -1,9 +1,10 @@
+import json as _json
 import sys
 import pathlib
 import unittest
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1]))
-from lenses import config
+from lenses import build, config
 
 
 class TestConfig(unittest.TestCase):
@@ -21,10 +22,6 @@ class TestConfig(unittest.TestCase):
             for ind in lens.indicators:
                 self.assertTrue(callable(ind.rule))
                 self.assertTrue(ind.context)
-
-
-import json as _json
-from lenses import build
 
 
 def _load_fixture():

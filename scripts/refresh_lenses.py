@@ -39,11 +39,12 @@ def fetch_all(lenses, api_key):
         except Exception as exc:  # noqa: BLE001 - keep going, skip dependent lenses
             print(f"WARN: fetch failed for {series_id}: {exc}", file=sys.stderr)
             failed.add(key)
-    try:
-        fetched[config.USREC_KEY] = fred.fetch_observations("USREC", api_key, config.USREC_LIMIT)
-    except Exception as exc:  # noqa: BLE001 - shading is non-critical
-        print(f"WARN: USREC fetch failed: {exc}", file=sys.stderr)
-        fetched[config.USREC_KEY] = []
+    if config.USREC_KEY not in fetched:
+        try:
+            fetched[config.USREC_KEY] = fred.fetch_observations("USREC", api_key, config.USREC_LIMIT)
+        except Exception as exc:  # noqa: BLE001 - shading is non-critical
+            print(f"WARN: USREC fetch failed: {exc}", file=sys.stderr)
+            fetched[config.USREC_KEY] = []
     return fetched, failed
 
 
