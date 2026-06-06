@@ -17,14 +17,14 @@ class TestPayrollChange(unittest.TestCase):
         self.assertEqual(out[-1], {"date": "2026-05-01", "value": "177000"})
         self.assertEqual(len(out), 2)  # first month has no prior
 
-    def test_skips_nulls(self):
+    def test_resets_across_null(self):
         raw = [
             {"date": "2026-03-01", "value": "159000"},
             {"date": "2026-04-01", "value": "."},
             {"date": "2026-05-01", "value": "159327"},
         ]
-        out = derive.payroll_change(raw)
-        self.assertEqual(out, [{"date": "2026-05-01", "value": "327000"}])
+        # a null breaks the chain; we never diff across a gap (would be a false "last month")
+        self.assertEqual(derive.payroll_change(raw), [])
 
 
 class TestToMillions(unittest.TestCase):

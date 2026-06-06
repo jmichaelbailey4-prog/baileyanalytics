@@ -15,6 +15,7 @@ def payroll_change(raw):
     for obs in raw:
         v = util.to_float(obs["value"])
         if v is None:
+            prev = None  # a gap breaks the chain — never diff across a missing month
             continue
         if prev is not None:
             out.append({"date": obs["date"], "value": str(round((v - prev) * 1000))})

@@ -93,16 +93,21 @@ def rule_unemployment_trend(obs):
 
 
 def _value_year_ago(obs):
-    """Value from ~one year before the latest observation (frequency-agnostic)."""
+    """Value ~one year before the latest observation, or None if history is too short.
+
+    Frequency-agnostic (ISO date strings compare correctly). Returns None when no
+    observation is at least a year old, so callers can omit a year-over-year claim
+    rather than compare against a misleadingly-recent baseline.
+    """
     last_date = obs[-1][0]
     target = f"{int(last_date[:4]) - 1}{last_date[4:]}"
-    chosen = obs[0][1]
+    result = None
     for d, val in obs:
         if d <= target:
-            chosen = val
+            result = val
         else:
             break
-    return chosen
+    return result
 
 
 def rule_fed_funds(obs):
@@ -110,14 +115,17 @@ def rule_fed_funds(obs):
     if not obs:
         return _NO_DATA
     v = obs[-1][1]
-    delta = v - _value_year_ago(obs)
+    status = "watch" if v >= 4.0 else "ok"
+    prior = _value_year_ago(obs)
+    if prior is None:
+        return (f"The Fed's policy rate is {v:.2f}%.", status)
+    delta = v - prior
     if delta >= 0.25:
         stance = "and still climbing as the Fed leans against inflation"
     elif delta <= -0.25:
         stance = "and easing as the Fed pivots toward cuts"
     else:
         stance = "holding roughly steady as the Fed waits for more data"
-    status = "watch" if v >= 4.0 else "ok"
     return (f"The Fed's policy rate is {v:.2f}%, {stance}.", status)
 
 
@@ -126,7 +134,10 @@ def rule_rate_trend(obs):
     if not obs:
         return _NO_DATA
     v = obs[-1][1]
-    delta = v - _value_year_ago(obs)
+    prior = _value_year_ago(obs)
+    if prior is None:
+        return (f"Now {v:.2f}%.", "ok")
+    delta = v - prior
     if delta >= 0.1:
         move = f"up {delta:.2f} points over the past year"
     elif delta <= -0.1:
@@ -165,14 +176,16 @@ def rule_job_openings(obs):
     if not obs:
         return _NO_DATA
     v = obs[-1][1]
+    status = "watch" if v < 7.5 else "ok"
     prior = _value_year_ago(obs)
+    if prior is None:
+        return (f"{v:.1f} million open jobs.", status)
     if v < prior - 0.3:
         trend = "easing as labor demand cools"
     elif v > prior + 0.3:
         trend = "rising as employers compete for workers"
     else:
         trend = "holding roughly steady"
-    status = "watch" if v < 7.5 else "ok"
     return (f"{v:.1f} million open jobs, {trend}.", status)
 
 

@@ -134,6 +134,12 @@ class TestRateTrend(unittest.TestCase):
     def test_empty_is_unknown(self):
         self.assertEqual(narrative.rule_rate_trend([]), ("Data unavailable.", "unknown"))
 
+    def test_short_history_omits_year_phrase(self):
+        obs = [("2026-04-01", 4.30), ("2026-05-01", 4.38)]
+        text, status = narrative.rule_rate_trend(obs)
+        self.assertEqual(status, "ok")
+        self.assertNotIn("over the past year", text)
+
 
 class TestMortgage(unittest.TestCase):
     def test_high_is_watch(self):
