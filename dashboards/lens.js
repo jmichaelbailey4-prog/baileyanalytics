@@ -39,7 +39,7 @@
       periods.forEach(p => {
         let i0 = labels.findIndex(l => l >= p.start);
         let i1 = -1;
-        for (let i = labels.length - 1; i >= 0; i--) { if (labels[i] <= p.end) { i1 = i; break; } }
+        for (let i = labels.length - 1; i >= 0; i--) { if (labels[i] < p.end) { i1 = i; break; } }
         if (i0 === -1 || i1 === -1 || i1 < i0) return;
         const xa = x.getPixelForValue(i0), xb = x.getPixelForValue(i1);
         ctx.fillRect(xa, chartArea.top, Math.max(xb - xa, 2), chartArea.bottom - chartArea.top);
@@ -68,7 +68,7 @@
             titleColor: "#F8FAFC", bodyColor: "#CBD5E1", padding: 10,
             callbacks: {
               title: items => fmtDate(items[0].label),
-              label: ctx => ` ${ctx.parsed.y.toFixed(2)}${indicator.unit}`,
+              label: ctx => " " + fmtVal(ctx.parsed.y, indicator.unit, indicator.value_format),
             },
           },
         },
@@ -76,7 +76,7 @@
           x: { type: "category", ticks: { maxTicksLimit: 7, color: "#64748B", font: { size: 11 },
                  callback(v) { const s = this.getLabelForValue(v); return s ? s.slice(0, 4) : s; } },
                grid: { display: false }, border: { color: "#1E293B" } },
-          y: { ticks: { color: "#64748B", font: { size: 11 }, callback: v => v + indicator.unit },
+          y: { ticks: { color: "#64748B", font: { size: 11 }, callback: v => indicator.value_format === "thousands" ? Math.round(v).toLocaleString("en-US") + indicator.unit : v + indicator.unit },
                grid: { color: "#1E293B" }, border: { display: false } },
         },
       },
