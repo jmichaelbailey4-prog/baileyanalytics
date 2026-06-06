@@ -201,5 +201,44 @@ class TestJobMarketHeadline(unittest.TestCase):
         self.assertIn("cooling", headline)
 
 
+class TestInflation(unittest.TestCase):
+    def test_hot_is_elevated(self):
+        _, status = narrative.rule_inflation([("2026-05-01", 4.5)])
+        self.assertEqual(status, "elevated")
+
+    def test_above_target_is_watch(self):
+        text, status = narrative.rule_inflation([("2026-05-01", 3.1)])
+        self.assertEqual(status, "watch")
+        self.assertIn("3.1%", text)
+
+    def test_near_target_is_ok(self):
+        _, status = narrative.rule_inflation([("2026-05-01", 2.1)])
+        self.assertEqual(status, "ok")
+
+    def test_empty_is_unknown(self):
+        self.assertEqual(narrative.rule_inflation([]), ("Data unavailable.", "unknown"))
+
+
+class TestRealWages(unittest.TestCase):
+    def test_positive_is_ok(self):
+        text, status = narrative.rule_real_wages([("2026-05-01", 0.7)])
+        self.assertEqual(status, "ok")
+        self.assertIn("outpacing", text)
+
+    def test_negative_is_watch(self):
+        _, status = narrative.rule_real_wages([("2026-05-01", -0.5)])
+        self.assertEqual(status, "watch")
+
+    def test_empty_is_unknown(self):
+        self.assertEqual(narrative.rule_real_wages([]), ("Data unavailable.", "unknown"))
+
+
+class TestCostOfLivingHeadline(unittest.TestCase):
+    def test_still_above_target_is_watch(self):
+        headline, overall = narrative.synthesize("cost-of-living", ["watch", "watch", "ok"])
+        self.assertEqual(overall, "watch")
+        self.assertIn("target", headline)
+
+
 if __name__ == "__main__":
     unittest.main()

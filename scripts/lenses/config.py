@@ -268,4 +268,72 @@ JOB_MARKET = Lens(
     ],
 )
 
-LENSES = [RECESSION_WATCH, COST_OF_MONEY, JOB_MARKET]
+COST_OF_LIVING = Lens(
+    id="cost-of-living",
+    title="The Cost of Living",
+    accent="#FBBF24",
+    indicators=[
+        Indicator(
+            id="cpi",
+            title="Inflation · CPI (year-over-year)",
+            short="CPI",
+            unit="%",
+            color="#FBBF24",
+            series_id="CPIAUCSL",
+            units_transform="pc1",
+            limit=240,
+            rule=narrative.rule_inflation,
+            context=(
+                "The Consumer Price Index — the headline measure of how fast the prices "
+                "households actually pay are rising versus a year ago."
+            ),
+        ),
+        Indicator(
+            id="core-cpi",
+            title="Core CPI (year-over-year)",
+            short="Core CPI",
+            unit="%",
+            color="#FB923C",
+            series_id="CPILFESL",
+            units_transform="pc1",
+            limit=240,
+            rule=narrative.rule_inflation,
+            context=(
+                "CPI excluding volatile food and energy. Because it strips out the noisiest "
+                "prices, it's a better read on the economy's underlying inflation trend."
+            ),
+        ),
+        Indicator(
+            id="pce",
+            title="PCE Inflation (year-over-year)",
+            short="PCE",
+            unit="%",
+            color="#38BDF8",
+            series_id="PCEPI",
+            units_transform="pc1",
+            limit=240,
+            rule=narrative.rule_inflation,
+            context=(
+                "The Personal Consumption Expenditures price index — the inflation gauge "
+                "the Federal Reserve watches most closely when setting interest rates."
+            ),
+        ),
+        Indicator(
+            id="real-wages",
+            title="Real Wage Growth (year-over-year)",
+            short="Real wages",
+            unit="%",
+            color="#34D399",
+            series_id="CES0500000032",
+            units_transform="pc1",
+            limit=240,
+            rule=narrative.rule_real_wages,
+            context=(
+                "Average hourly earnings adjusted for inflation. When this is positive, "
+                "paychecks are buying more than they did a year ago; when negative, less."
+            ),
+        ),
+    ],
+)
+
+LENSES = [RECESSION_WATCH, COST_OF_MONEY, JOB_MARKET, COST_OF_LIVING]

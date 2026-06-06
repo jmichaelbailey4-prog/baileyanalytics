@@ -185,6 +185,28 @@ def rule_wage_growth(obs):
     return (f"Pay is up {v:.1f}% from a year ago, {pace}.", "ok")
 
 
+def rule_inflation(obs):
+    """A year-over-year inflation rate (CPI/core/PCE) versus the Fed's ~2% goal."""
+    if not obs:
+        return _NO_DATA
+    v = obs[-1][1]
+    if v >= 4.0:
+        return (f"Running at {v:.1f}% a year — well above the Fed's 2% goal.", "elevated")
+    if v >= 2.5:
+        return (f"Running at {v:.1f}% a year — still above the Fed's 2% goal.", "watch")
+    return (f"Running at {v:.1f}% a year — close to the Fed's 2% goal.", "ok")
+
+
+def rule_real_wages(obs):
+    """Inflation-adjusted average hourly earnings, year-over-year percent."""
+    if not obs:
+        return _NO_DATA
+    v = obs[-1][1]
+    if v < 0:
+        return (f"Down {abs(v):.1f}% from a year ago — pay isn't keeping up with prices.", "watch")
+    return (f"Up {v:.1f}% from a year ago — paychecks are outpacing inflation.", "ok")
+
+
 HEADLINES = {
     "recession-watch": {
         "alert": "Recession signals are flashing — multiple indicators have tripped.",
@@ -206,6 +228,13 @@ HEADLINES = {
         "watch": "The job market is cooling — still solid, but losing momentum.",
         "ok": "The job market is healthy — hiring and pay are holding up.",
         "unknown": "Some labor-market data is temporarily unavailable.",
+    },
+    "cost-of-living": {
+        "alert": "Inflation is severe — prices are rising fast.",
+        "elevated": "Inflation is still hot — well above the Fed's target.",
+        "watch": "Inflation has cooled but isn't beaten — still above target.",
+        "ok": "Inflation is back near the Fed's target.",
+        "unknown": "Some inflation data is temporarily unavailable.",
     },
 }
 

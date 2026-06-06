@@ -93,5 +93,13 @@ class TestBuildJobMarket(unittest.TestCase):
         self.assertEqual(payrolls["value_format"], "thousands")
 
 
+class TestBuildCostOfLiving(unittest.TestCase):
+    def test_builds_with_four_indicators(self):
+        lj = build.build_lens(config.COST_OF_LIVING, _load_fixture())
+        self.assertEqual(lj["id"], "cost-of-living")
+        self.assertEqual(len(lj["indicators"]), 4)
+        self.assertEqual(lj["status"], "watch")
+
+
 if __name__ == "__main__":
     unittest.main()

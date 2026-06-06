@@ -1,0 +1,120 @@
+{
+  "id": "cost-of-living",
+  "title": "The Cost of Living",
+  "accent": "#FBBF24",
+  "last_updated": "2026-06-06T23:14:54Z",
+  "status": "watch",
+  "headline_read": "Inflation has cooled but isn't beaten \u2014 still above target.",
+  "recessions": [
+    {
+      "start": "2020-02-01",
+      "end": "2020-05-01"
+    }
+  ],
+  "indicators": [
+    {
+      "id": "cpi",
+      "title": "Inflation \u00b7 CPI (year-over-year)",
+      "short": "CPI",
+      "unit": "%",
+      "color": "#FBBF24",
+      "series_id": "CPIAUCSL",
+      "observations": [
+        {
+          "date": "2025-05-01",
+          "value": "3.4"
+        },
+        {
+          "date": "2026-05-01",
+          "value": "3.1"
+        }
+      ],
+      "latest": {
+        "date": "2026-05-01",
+        "value": "3.1"
+      },
+      "context": "The Consumer Price Index \u2014 the headline measure of how fast the prices households actually pay are rising versus a year ago.",
+      "read": "Running at 3.1% a year \u2014 still above the Fed's 2% goal.",
+      "signal_status": "watch",
+      "value_format": "decimal"
+    },
+    {
+      "id": "core-cpi",
+      "title": "Core CPI (year-over-year)",
+      "short": "Core CPI",
+      "unit": "%",
+      "color": "#FB923C",
+      "series_id": "CPILFESL",
+      "observations": [
+        {
+          "date": "2025-05-01",
+          "value": "3.6"
+        },
+        {
+          "date": "2026-05-01",
+          "value": "3.3"
+        }
+      ],
+      "latest": {
+        "date": "2026-05-01",
+        "value": "3.3"
+      },
+      "context": "CPI excluding volatile food and energy. Because it strips out the noisiest prices, it's a better read on the economy's underlying inflation trend.",
+      "read": "Running at 3.3% a year \u2014 still above the Fed's 2% goal.",
+      "signal_status": "watch",
+      "value_format": "decimal"
+    },
+    {
+      "id": "pce",
+      "title": "PCE Inflation (year-over-year)",
+      "short": "PCE",
+      "unit": "%",
+      "color": "#38BDF8",
+      "series_id": "PCEPI",
+      "observations": [
+        {
+          "date": "2025-05-01",
+          "value": "2.9"
+        },
+        {
+          "date": "2026-05-01",
+          "value": "2.8"
+        }
+      ],
+      "latest": {
+        "date": "2026-05-01",
+        "value": "2.8"
+      },
+      "context": "The Personal Consumption Expenditures price index \u2014 the inflation gauge the Federal Reserve watches most closely when setting interest rates.",
+      "read": "Running at 2.8% a year \u2014 still above the Fed's 2% goal.",
+      "signal_status": "watch",
+      "value_format": "decimal"
+    },
+    {
+      "id": "real-wages",
+      "title": "Real Wage Growth (year-over-year)",
+      "short": "Real wages",
+      "unit": "%",
+      "color": "#34D399",
+      "series_id": "CES0500000032",
+      "observations": [
+        {
+          "date": "2025-05-01",
+          "value": "0.9"
+        },
+        {
+          "date": "2026-05-01",
+          "value": "0.7"
+        }
+      ],
+      "latest": {
+        "date": "2026-05-01",
+        "value": "0.7"
+      },
+      "context": "Average hourly earnings adjusted for inflation. When this is positive, paychecks are buying more than they did a year ago; when negative, less.",
+      "read": "Up 0.7% from a year ago \u2014 paychecks are outpacing inflation.",
+      "signal_status": "ok",
+      "value_format": "decimal"
+    }
+  ]
+}
