@@ -33,6 +33,8 @@ def build_lens(lens, fetched):
     statuses = []
     for ind in lens.indicators:
         raw = fetched.get(ind.fetch_key, [])
+        if ind.derive:
+            raw = ind.derive(raw)
         cleaned = util.clean(raw)
         text, status = ind.rule(cleaned)
         statuses.append(status)

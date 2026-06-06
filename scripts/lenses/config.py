@@ -3,7 +3,7 @@
 from dataclasses import dataclass, field
 from typing import Callable, Optional
 
-from . import narrative
+from . import derive, narrative
 
 # Helper series fetched but not displayed directly.
 USREC_KEY = "USREC:lin"
@@ -23,6 +23,7 @@ class Indicator:
     context: str          # evergreen "what it is" copy
     units_transform: Optional[str] = None
     value_format: str = "decimal"  # "decimal" (2dp) | "thousands" (whole, comma-separated)
+    derive: Optional[Callable] = None  # optional post-fetch transform of raw observations
 
     @property
     def fetch_key(self):
