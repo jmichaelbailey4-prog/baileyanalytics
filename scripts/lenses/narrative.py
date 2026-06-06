@@ -61,17 +61,16 @@ def rule_claims(obs):
     if not obs:
         return _NO_DATA
     v = obs[-1][1]
-    k = v / 1000
     if v < 250000:
         return (
-            f"Initial jobless claims are low at ~{k:.0f}k — employers aren't "
+            f"Initial jobless claims are low at {v:,.0f} — employers aren't "
             "shedding workers.",
             "ok",
         )
     if v < 300000:
-        return (f"Jobless claims at ~{k:.0f}k are creeping up from their lows.", "watch")
+        return (f"Jobless claims at {v:,.0f} are creeping up from their lows.", "watch")
     return (
-        f"Jobless claims have risen to ~{k:.0f}k, a sign of accelerating layoffs.",
+        f"Jobless claims have risen to {v:,.0f}, a sign of accelerating layoffs.",
         "elevated",
     )
 

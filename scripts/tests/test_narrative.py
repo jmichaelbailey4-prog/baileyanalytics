@@ -50,7 +50,7 @@ class TestClaims(unittest.TestCase):
     def test_low_is_ok(self):
         text, status = narrative.rule_claims([("2026-06-01", 219000.0)])
         self.assertEqual(status, "ok")
-        self.assertIn("219k", text)
+        self.assertIn("219,000", text)
 
     def test_creeping_is_watch(self):
         _, status = narrative.rule_claims([("2026-06-01", 275000.0)])

@@ -18,10 +18,12 @@ def _latest_raw(raw):
     return None
 
 
-def _fmt(value, unit):
+def _fmt(value, unit, value_format="decimal"):
     f = util.to_float(value)
     if f is None:
         return "—"
+    if value_format == "thousands":
+        return f"{round(f):,}{unit}"
     return f"{f:.2f}{unit}"
 
 
@@ -46,6 +48,7 @@ def build_lens(lens, fetched):
             "context": ind.context,
             "read": text,
             "signal_status": status,
+            "value_format": ind.value_format,
         })
     headline, overall = narrative.synthesize(lens.id, statuses)
     return {
@@ -72,7 +75,7 @@ def build_index(lens_jsons):
         key_stats = []
         for ind in lj["indicators"][:2]:
             if ind["latest"]:
-                key_stats.append({"k": ind["short"], "v": _fmt(ind["latest"]["value"], ind["unit"])})
+                key_stats.append({"k": ind["short"], "v": _fmt(ind["latest"]["value"], ind["unit"], ind.get("value_format", "decimal"))})
         lenses.append({
             "id": lj["id"],
             "title": lj["title"],

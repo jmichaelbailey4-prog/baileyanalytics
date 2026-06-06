@@ -10,9 +10,11 @@
   function fmtUpdated(iso) {
     return new Date(iso).toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" });
   }
-  function fmtVal(value, unit) {
+  function fmtVal(value, unit, fmt) {
     const f = parseFloat(value);
-    return isNaN(f) ? "—" : f.toFixed(2) + unit;
+    if (isNaN(f)) return "—";
+    if (fmt === "thousands") return Math.round(f).toLocaleString("en-US") + unit;
+    return f.toFixed(2) + unit;
   }
   function esc(s) {
     const d = document.createElement("div"); d.textContent = s; return d.innerHTML;
@@ -84,7 +86,7 @@
   function indicatorCard(indicator, recessions) {
     const el = document.createElement("div");
     el.className = "ind";
-    const latest = indicator.latest ? fmtVal(indicator.latest.value, indicator.unit) : "—";
+    const latest = indicator.latest ? fmtVal(indicator.latest.value, indicator.unit, indicator.value_format) : "—";
     el.innerHTML = `
       <div class="ind-top">
         <div class="ind-title">${esc(indicator.title)}</div>
@@ -118,7 +120,7 @@
     const scoreboard = lens.indicators.map(i => `
       <div class="signal">
         <div class="k">${esc(i.short)}</div>
-        <div class="v">${i.latest ? fmtVal(i.latest.value, i.unit) : "—"}</div>
+        <div class="v">${i.latest ? fmtVal(i.latest.value, i.unit, i.value_format) : "—"}</div>
         <div class="s ${i.signal_status}">${esc(i.signal_status)}</div>
       </div>`).join("");
     root.innerHTML = `

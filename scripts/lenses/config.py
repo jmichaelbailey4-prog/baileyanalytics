@@ -22,6 +22,7 @@ class Indicator:
     rule: Callable        # (cleaned_obs) -> (text, status)
     context: str          # evergreen "what it is" copy
     units_transform: Optional[str] = None
+    value_format: str = "decimal"  # "decimal" (2dp) | "thousands" (whole, comma-separated)
 
     @property
     def fetch_key(self):
@@ -80,6 +81,7 @@ RECESSION_WATCH = Lens(
             series_id="ICSA",
             limit=520,  # ~10y weekly
             rule=narrative.rule_claims,
+            value_format="thousands",
             context=(
                 "How many people filed for unemployment benefits last week — the "
                 "freshest read on layoffs. A sustained climb is one of the earliest "
