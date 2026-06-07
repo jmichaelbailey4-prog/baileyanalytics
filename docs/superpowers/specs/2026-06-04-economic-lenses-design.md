@@ -83,7 +83,7 @@ their own FRED series, so almost nothing is computed by hand.
 | Cost of Living | CPI | `CPIAUCSL` | `units=pc1` → YoY % |
 | | Core CPI | `CPILFESL` | `units=pc1` |
 | | PCE | `PCEPI` | `units=pc1` |
-| | Real wages (YoY) | `CES0500000032` | `units=pc1` → real avg hourly earnings (BLS, constant 1982–84 $), YoY % |
+| | Real wages (YoY) | `LES1252881600Q` | `units=pc1` → real median weekly earnings (BLS, quarterly), YoY % |
 
 Shared series (e.g. `T10Y2Y`, `UNRATE`, `DGS10`) are fetched **once** and reused.
 

@@ -318,6 +318,21 @@ COST_OF_LIVING = Lens(
                 "the Federal Reserve watches most closely when setting interest rates."
             ),
         ),
+        Indicator(
+            id="real-wages",
+            title="Real Wage Growth (year-over-year)",
+            short="Real wages",
+            unit="%",
+            color="#34D399",
+            series_id="LES1252881600Q",
+            units_transform="pc1",
+            limit=240,
+            rule=narrative.rule_real_wages,
+            context=(
+                "The typical worker's weekly paycheck adjusted for inflation (real median "
+                "earnings). When it rises, pay is outpacing prices; when it falls, the opposite."
+            ),
+        ),
     ],
 )
 
