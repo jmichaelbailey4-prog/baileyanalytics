@@ -8,7 +8,8 @@
   <link rel="stylesheet" href="/dashboards/lens.css">
   <style>
     h1 { font-size: clamp(2rem, 4.5vw, 2.75rem); font-weight: 600; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 0.75rem; }
-    p.lede { color: var(--muted); font-size: 1.0625rem; max-width: 36rem; margin-bottom: 2.5rem; }
+    p.lede { color: var(--muted); font-size: 1.0625rem; max-width: 38rem; margin-bottom: 2.5rem; }
+    p.lede strong { color: var(--text); font-weight: 600; }
     .hub-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
     @media (max-width: 640px) { .hub-grid { grid-template-columns: 1fr; } }
     .hub-card { display: block; text-decoration: none; color: inherit; background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 1.25rem; transition: border-color .2s ease, transform .2s ease; }
@@ -29,7 +30,7 @@
 
   <main>
     <h1>Economic Lenses</h1>
-    <p class="lede">Focused views of the U.S. economy — each a small set of indicators that move together, with the context to make sense of them. Refreshed daily from FRED.</p>
+    <p class="lede">Focused views of the U.S. economy — each bundles a few indicators that move together into one story. <strong>Open any lens below</strong> for the full breakdown: interactive charts, the context behind each number, and what the latest data is signaling. Refreshed daily from FRED.</p>
     <div class="hub-grid" id="hub-grid"><div class="status-msg">Loading&hellip;</div></div>
     <div class="foot">
       Data: <a href="https://fred.stlouisfed.org/" target="_blank" rel="noopener">Federal Reserve Economic Data (FRED)</a>, St. Louis Fed. Refreshed daily.
