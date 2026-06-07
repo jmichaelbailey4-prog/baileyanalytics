@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Job Market — Bailey Analytics</title>
+  <meta name="description" content="Is the U.S. job market hot or cooling? Unemployment, payrolls, job openings, wage growth, and participation — from FRED.">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <link rel="stylesheet" href="/dashboards/lens.css">
+</head>
+<body>
+  <nav class="wordmark"><a href="/">Bailey Analytics</a></nav>
+  <nav class="top-nav"><a href="/dashboards/">Dashboards</a><a href="/about.html">About</a></nav>
+  <main id="lens-root"><div class="status-msg">Loading…</div></main>
+  <script src="/dashboards/lens.js"></script>
+  <script>renderLens("/data/lenses/job-market.json");</script>
+</body>
+</html>

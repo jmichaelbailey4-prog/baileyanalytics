@@ -21,17 +21,17 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Fetch latest FRED data
+      - name: Fetch latest FRED data (lenses)
         env:
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
-        run: python scripts/refresh_fred.py
+        run: python scripts/refresh_lenses.py
 
       - name: Commit and push if data changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          if [[ -n "$(git status --porcelain data/economic.json)" ]]; then
-            git add data/economic.json
+          if [[ -n "$(git status --porcelain data/)" ]]; then
+            git add data/
             git commit -m "chore: refresh FRED data ($(date -u +%Y-%m-%d))"
             git push
           else
