@@ -76,7 +76,7 @@
           x: { type: "category", ticks: { maxTicksLimit: 7, color: "#64748B", font: { size: 11 },
                  callback(v) { const s = this.getLabelForValue(v); return s ? s.slice(0, 4) : s; } },
                grid: { display: false }, border: { color: "#1E293B" } },
-          y: { ticks: { color: "#64748B", font: { size: 11 }, callback: v => indicator.value_format === "thousands" ? Math.round(v).toLocaleString("en-US") + indicator.unit : v + indicator.unit },
+          y: { ticks: { color: "#64748B", font: { size: 11 }, callback: v => indicator.value_format === "thousands" ? Math.round(v).toLocaleString("en-US") + indicator.unit : v.toFixed(2) + indicator.unit },
                grid: { color: "#1E293B" }, border: { display: false } },
         },
       },
