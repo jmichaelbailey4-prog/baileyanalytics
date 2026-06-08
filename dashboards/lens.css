@@ -21,6 +21,7 @@ main{max-width:48rem;margin:0 auto}
 .badge.ok{background:#16261f;color:var(--green)} .badge.watch{background:#2c2517;color:var(--amber)}
 .badge.elevated{background:#3a2a17;color:#FB923C} .badge.alert{background:#3b1f24;color:var(--red)}
 .badge.unknown{background:#1d2433;color:var(--dim)}
+.badge.neutral{background:#13233a;color:var(--blue)}
 .updated{font-size:.72rem;color:var(--dim)}
 .scoreboard{display:grid;grid-template-columns:repeat(4,1fr);gap:.625rem;margin:1.5rem 0 .5rem}
 @media(max-width:620px){.scoreboard{grid-template-columns:1fr 1fr}}
@@ -29,6 +30,7 @@ main{max-width:48rem;margin:0 auto}
 .signal .v{font-size:1.15rem;font-weight:600;margin:.25rem 0 .125rem}
 .signal .s{font-size:.66rem;font-weight:600}
 .s.ok{color:var(--green)} .s.watch{color:var(--amber)} .s.elevated{color:#FB923C} .s.alert{color:var(--red)} .s.unknown{color:var(--dim)}
+.s.up{color:var(--green)} .s.down{color:var(--red)} .s.flat{color:var(--amber)} .s.info{color:var(--blue)}
 .ind{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:1.375rem;margin-top:1.125rem}
 .ind-top{display:flex;justify-content:space-between;align-items:flex-start;gap:.75rem}
 .ind-title{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);font-weight:600}
