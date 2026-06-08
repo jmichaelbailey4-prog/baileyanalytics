@@ -169,21 +169,6 @@ COST_OF_MONEY = Lens(
                 "of housing affordability for most buyers."
             ),
         ),
-        Indicator(
-            id="yield-curve",
-            title="Yield Curve · 10-Year minus 2-Year",
-            short="Yield curve",
-            unit="%",
-            color="#F87171",
-            series_id="T10Y2Y",
-            limit=2600,
-            rule=narrative.rule_yield_curve,
-            context=(
-                "The gap between 10-year and 2-year Treasury yields. When it turns "
-                "negative, short-term borrowing costs more than long-term — a sign markets "
-                "expect the Fed to cut rates ahead."
-            ),
-        ),
     ],
 )
 
