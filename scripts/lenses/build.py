@@ -131,6 +131,42 @@ def build_banking_lens(lens, series_by_key, tier_rows, ranking_rows):
     }
 
 
+def build_crypto_lens(rotation_obs, dominance_obs, btc_eth_obs):
+    """Assemble the CoinGecko/FRED crypto-structure lens JSON from three prepared
+    series. Produces the standard lens shape (no tiers/rankings), so lens.js renders
+    it with the existing single-line chart component."""
+    specs = [
+        ("crypto-rotation", "Large-vs-Small Rotation", "Alt rotation", "", "#818CF8",
+         rotation_obs, narrative.rule_crypto_rotation,
+         ("Small- and mid-cap coins' market value relative to Bitcoin and Ether, indexed to "
+          "100 at the start of the window. Rising means alts are outperforming (risk-on); "
+          "falling means a flight to the majors."), "decimal"),
+        ("btc-dominance", "Bitcoin Dominance", "BTC dominance", "%", "#FBBF24",
+         dominance_obs, narrative.rule_btc_dominance,
+         ("Bitcoin's share of total cryptocurrency market value. A rising share signals "
+          "caution; a falling share signals risk appetite. History accumulates daily."), "decimal"),
+        ("btc-eth-ratio", "Bitcoin / Ether Ratio", "BTC/ETH", "", "#A78BFA",
+         btc_eth_obs, narrative.rule_btc_eth_relative,
+         ("The price of Bitcoin divided by the price of Ether — which of the two largest coins "
+          "is leading. Sourced from FRED's decade-long price history."), "decimal"),
+    ]
+    indicators, statuses = [], []
+    for id_, title, short, unit, color, obs, rule, context, vfmt in specs:
+        text, status = rule(util.clean(obs))
+        statuses.append(status)
+        indicators.append({
+            "id": id_, "title": title, "short": short, "unit": unit, "color": color,
+            "observations": obs, "latest": _latest_raw(obs), "context": context,
+            "read": text, "signal_status": status, "value_format": vfmt,
+        })
+    headline, overall = narrative.synthesize("crypto-structure", statuses)
+    return {
+        "id": "crypto-structure", "title": "Crypto Market Structure", "accent": "#818CF8",
+        "last_updated": _now(), "status": overall, "headline_read": headline,
+        "recessions": [], "indicators": indicators,
+    }
+
+
 def build_index(lens_jsons):
     """Build the hub index from already-built lens JSONs."""
     lenses = []
