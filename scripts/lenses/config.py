@@ -24,6 +24,7 @@ class Indicator:
     units_transform: Optional[str] = None
     value_format: str = "decimal"  # "decimal" (2dp) | "thousands" (whole, comma-separated)
     derive: Optional[Callable] = None  # optional post-fetch transform of raw observations
+    source: str = "fred"  # "fred" (fetched via fred.py) | "stooq" (injected by refresh_markets)
 
     @property
     def fetch_key(self):
@@ -570,3 +571,100 @@ CATEGORIES = [
      "disclaimer": ("Public regulatory data. Not investment advice and not a judgment "
                     "of any institution's solvency.")},
 ]
+
+
+# ---------------------------------------------------------------------------
+# Markets & Financial Conditions (category #3). Two FRED-sourced lenses reuse the
+# economic Indicator/Lens pipeline unchanged; a third CoinGecko-sourced lens
+# (crypto-structure) is built separately by refresh_lenses + build.build_crypto_lens.
+# Rates are deliberately absent from the scoreboard — Cost of Money owns them.
+# ---------------------------------------------------------------------------
+
+MARKET_RISK_SENTIMENT = Lens(
+    id="market-risk-sentiment",
+    title="Risk Sentiment",
+    accent="#FB7185",
+    indicators=[
+        Indicator(
+            id="vix", title="Volatility · VIX", short="VIX", unit="", color="#FB7185",
+            series_id="VIXCLS", limit=2600, rule=narrative.rule_vix,
+            context=("The market's 'fear gauge' — the expected volatility of the S&P 500 "
+                     "over the coming month. It spikes when investors are scared and falls when calm."),
+        ),
+        Indicator(
+            id="hy-spread", title="High-Yield Credit Spread", short="HY spread", unit="%",
+            color="#FB923C", series_id="BAMLH0A0HYM2", limit=2600,
+            rule=narrative.credit_spread("high-yield", 4.0, 6.0),
+            context=("The extra yield investors demand to hold risky 'junk' corporate bonds over "
+                     "Treasuries. It widens when markets fear defaults — an early stress signal."),
+        ),
+        Indicator(
+            id="ig-spread", title="Investment-Grade Credit Spread", short="IG spread", unit="%",
+            color="#FBBF24", series_id="BAMLC0A0CM", limit=2600,
+            rule=narrative.credit_spread("investment-grade", 1.5, 2.5),
+            context=("The same risk premium for higher-quality corporate bonds. Because these "
+                     "borrowers are safer, widening here signals stress reaching the core of credit."),
+        ),
+        Indicator(
+            id="nfci", title="Financial Conditions · NFCI", short="NFCI", unit="", color="#38BDF8",
+            series_id="NFCI", limit=520, rule=narrative.rule_financial_conditions,
+            context=("The Chicago Fed's broad gauge of financial conditions across money, debt, and "
+                     "equity markets. Zero is average; positive means tighter (more stressed) than normal."),
+        ),
+    ],
+)
+
+MARKET_SCOREBOARD = Lens(
+    id="market-scoreboard",
+    title="Asset-Class Scoreboard",
+    accent="#22D3EE",
+    indicators=[
+        Indicator(
+            id="sp500", title="S&P 500", short="S&P 500", unit="", color="#34D399",
+            series_id="SP500", limit=2600, rule=narrative.market_level("The S&P 500"),
+            value_format="thousands",
+            context="The benchmark index of 500 large U.S. companies — the headline gauge of U.S. stocks.",
+        ),
+        Indicator(
+            id="oil", title="Crude Oil · WTI", short="WTI oil", unit="", color="#FB923C",
+            series_id="DCOILWTICO", limit=2600, rule=narrative.market_level("WTI crude"),
+            context=("West Texas Intermediate, the U.S. benchmark oil price (dollars per barrel) — "
+                     "a read on energy costs and global demand."),
+        ),
+        Indicator(
+            id="gold", title="Gold", short="Gold", unit="", color="#FBBF24",
+            series_id="XAUUSD", limit=2600, rule=narrative.market_level("Gold"),
+            value_format="thousands", source="yahoo",
+            context=("Gold (dollars per troy ounce) — the classic safe-haven asset investors "
+                     "flee to in times of stress. Sourced from Yahoo Finance (COMEX futures)."),
+        ),
+        Indicator(
+            id="dollar", title="U.S. Dollar · Broad Index", short="Dollar", unit="", color="#38BDF8",
+            series_id="DTWEXBGS", limit=2600, rule=narrative.market_level("The dollar index"),
+            context=("The trade-weighted value of the U.S. dollar against a broad basket of "
+                     "currencies — a strong dollar makes imports cheaper and U.S. exports pricier."),
+        ),
+        Indicator(
+            id="btc", title="Bitcoin", short="Bitcoin", unit="", color="#A78BFA",
+            series_id="CBBTCUSD", limit=2600, rule=narrative.market_level("Bitcoin"),
+            value_format="thousands",
+            context=("The price of Bitcoin in U.S. dollars (Coinbase) — the largest cryptocurrency "
+                     "and a barometer of risk appetite in digital assets."),
+        ),
+        Indicator(
+            id="eth", title="Ethereum", short="Ethereum", unit="", color="#818CF8",
+            series_id="CBETHUSD", limit=2600, rule=narrative.market_level("Ethereum"),
+            value_format="thousands",
+            context=("The price of Ether in U.S. dollars (Coinbase) — the second-largest "
+                     "cryptocurrency and the backbone of most decentralized applications."),
+        ),
+    ],
+)
+
+MARKET_FRED_LENSES = [MARKET_RISK_SENTIMENT, MARKET_SCOREBOARD]
+
+CATEGORIES.append(
+    {"id": "markets", "title": "Markets & Financial Conditions", "lenses": MARKET_FRED_LENSES,
+     "out": "markets", "back": "Markets & Financial Conditions",
+     "source_label": "FRED (St. Louis Fed) and CoinGecko", "disclaimer": ""}
+)
