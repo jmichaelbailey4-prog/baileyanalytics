@@ -452,12 +452,13 @@ BANK_PROFITABILITY = BankingLens(
          "weight_field": "ASSET", "rule": narrative.rule_roa},
     ],
     rankings=[
-        {"title": "Weakest profitability · lowest return on assets",
+        {"title": "Strongest profitability · highest return on assets",
          "subtitle": "banks over $1B in assets", "metric_field": "ROA",
          "asset_min": 1_000_000, "limit": 10, "value_label": "ROA",
          "unit": "%", "rule": narrative.rule_roa,
-         # Lowest-is-worst; floor at -2% ROA to exclude failing-bank/data anomalies.
-         "sort_order": "ASC", "min_value": -2.0},
+         # Highest-is-best; cap at 3% ROA to exclude specialty outfits (credit-card /
+         # trust banks) whose structurally huge ROA isn't a "best-run bank" signal.
+         "sort_order": "DESC", "max_value": 3.0},
     ],
 )
 

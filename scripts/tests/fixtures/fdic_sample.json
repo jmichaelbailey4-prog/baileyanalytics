@@ -1436,66 +1436,66 @@
    }
   ],
   {
-   "Weakest profitability \u00b7 lowest return on assets": [
+   "Strongest profitability \u00b7 highest return on assets": [
     {
-     "name": "BAYFIRST NATIONAL BANK",
-     "location": "SAINT PETERSBURG, FL",
-     "asset": "$1.2B",
-     "value": -1.750869941447868
+     "name": "YELLOWSTONE BANK",
+     "location": "LAUREL, MT",
+     "asset": "$1.3B",
+     "value": 2.9892300235260736
     },
     {
-     "name": "TRANSPECOS BANKS SSB",
-     "location": "PECOS, TX",
+     "name": "FIRST AMERICAN BANK",
+     "location": "ARTESIA, NM",
+     "asset": "$1.9B",
+     "value": 2.967327776434615
+    },
+    {
+     "name": "ANCHORAGE DIGITAL BANK NA",
+     "location": "SIOUX FALLS, SD",
+     "asset": "$1.1B",
+     "value": 2.940563627232861
+    },
+    {
+     "name": "OPTUM BANK INC",
+     "location": "DRAPER, UT",
+     "asset": "$21.0B",
+     "value": 2.9272492466637967
+    },
+    {
+     "name": "BCORP BANK NATIONAL ASSN",
+     "location": "SIOUX FALLS, SD",
+     "asset": "$9.9B",
+     "value": 2.871009023309259
+    },
+    {
+     "name": "FARMERS BANK&TRUST",
+     "location": "GREAT BEND, KS",
      "asset": "$1.0B",
-     "value": -1.5491209586982593
+     "value": 2.815612109026672
     },
     {
-     "name": "EREBOR BANK N A",
-     "location": "COLUMBUS, OH",
-     "asset": "$1.7B",
-     "value": -1.4110345532046793
+     "name": "INTERNATIONAL BK OF COM",
+     "location": "LAREDO, TX",
+     "asset": "$9.9B",
+     "value": 2.7990675272139622
     },
     {
-     "name": "UNION COUNTY SAVINGS BANK",
-     "location": "ELIZABETH, NJ",
-     "asset": "$1.5B",
-     "value": -1.3708155691019828
+     "name": "FIRST NB OF AMERICA",
+     "location": "EAST LANSING, MI",
+     "asset": "$6.8B",
+     "value": 2.7100250068852865
     },
     {
-     "name": "BLUE FOUNDRY BANK",
-     "location": "RUTHERFORD, NJ",
-     "asset": "$2.1B",
-     "value": -0.9624643108262572
+     "name": "FM BANK&TRUST",
+     "location": "BLYTHEVILLE, AR",
+     "asset": "$1.3B",
+     "value": 2.6190195289002647
     },
     {
-     "name": "CITIZENS ALLIANCE BANK",
-     "location": "CLARA CITY, MN",
-     "asset": "$1.5B",
-     "value": -0.8206798223633205
-    },
-    {
-     "name": "HAVEN SAVINGS BANK",
-     "location": "HOBOKEN, NJ",
-     "asset": "$1.0B",
-     "value": -0.5441691692307995
-    },
-    {
-     "name": "INTERCREDIT BANK NA",
-     "location": "MIAMI, FL",
-     "asset": "$2.0B",
-     "value": -0.4718943194100332
-    },
-    {
-     "name": "MORRIS BANK",
-     "location": "DUBLIN, GA",
-     "asset": "$1.6B",
-     "value": -0.4502893401240964
-    },
-    {
-     "name": "BENEFICIAL STATE BANK",
-     "location": "OAKLAND, CA",
-     "asset": "$2.0B",
-     "value": -0.3442506925316247
+     "name": "SYNCHRONY BANK",
+     "location": "DRAPER, UT",
+     "asset": "$114.9B",
+     "value": 2.6188483059435166
     }
    ]
   }
