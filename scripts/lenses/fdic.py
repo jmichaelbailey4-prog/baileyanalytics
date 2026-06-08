@@ -93,14 +93,16 @@ def _fmt_assets(thousands):
 
 
 def ranking(metric_field, repdte, asset_min, limit, sort_order="DESC",
-            min_base_fields=None, min_base=0, max_value=None, timeout=25):
+            min_base_fields=None, min_base=0, max_value=None, min_value=None, timeout=25):
     """Top-`limit` banks by `metric_field` for one quarter, with outlier filtering.
 
     `asset_min` (in $000s) is the size floor. To keep the ranking *insightful* rather
-    than a list of idiosyncratic distressed micro-cases, two further filters apply:
+    than a list of idiosyncratic distressed micro-cases, further filters apply:
       * `min_base_fields` + `min_base`: require a material denominator book (in $000s),
         e.g. a real CRE-loan book — so a tiny book can't post an exploded ratio.
-      * `max_value`: drop values above this sanity ceiling (a backstop for anomalies).
+      * `max_value` / `min_value`: drop values above/below a sanity bound. Use `max_value`
+        for worst-is-highest metrics (DESC) and `min_value` for worst-is-lowest metrics
+        (ASC, e.g. capital/ROA) to exclude failing-bank/data anomalies at the extreme.
     A larger candidate pool is fetched so `limit` clean rows remain after filtering.
     `sort_order` is "DESC" (worst-is-highest) or "ASC" (worst-is-lowest, e.g. capital).
     """
@@ -119,6 +121,8 @@ def ranking(metric_field, repdte, asset_min, limit, sort_order="DESC",
     for row in _rows(_get(url, timeout)):
         v = _num(row.get(metric_field))
         if max_value is not None and v > max_value:
+            continue
+        if min_value is not None and v < min_value:
             continue
         if min_base_fields and sum(_num(row.get(f)) for f in min_base_fields) < min_base:
             continue

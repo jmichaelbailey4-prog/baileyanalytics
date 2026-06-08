@@ -2,7 +2,7 @@
   "id": "bank-profitability",
   "title": "Profitability",
   "accent": "#34D399",
-  "last_updated": "2026-06-08T00:11:31Z",
+  "last_updated": "2026-06-08T00:52:06Z",
   "status": "ok",
   "headline_read": "Banks are solidly profitable.",
   "recessions": [],
@@ -729,5 +729,83 @@
       }
     ]
   },
-  "rankings": []
+  "rankings": [
+    {
+      "title": "Weakest profitability \u00b7 lowest return on assets",
+      "subtitle": "banks over $1B in assets",
+      "value_label": "ROA",
+      "rows": [
+        {
+          "name": "BAYFIRST NATIONAL BANK",
+          "location": "SAINT PETERSBURG, FL",
+          "asset": "$1.2B",
+          "value": "-1.75%",
+          "status": "elevated"
+        },
+        {
+          "name": "TRANSPECOS BANKS SSB",
+          "location": "PECOS, TX",
+          "asset": "$1.0B",
+          "value": "-1.55%",
+          "status": "elevated"
+        },
+        {
+          "name": "EREBOR BANK N A",
+          "location": "COLUMBUS, OH",
+          "asset": "$1.7B",
+          "value": "-1.41%",
+          "status": "elevated"
+        },
+        {
+          "name": "UNION COUNTY SAVINGS BANK",
+          "location": "ELIZABETH, NJ",
+          "asset": "$1.5B",
+          "value": "-1.37%",
+          "status": "elevated"
+        },
+        {
+          "name": "BLUE FOUNDRY BANK",
+          "location": "RUTHERFORD, NJ",
+          "asset": "$2.1B",
+          "value": "-0.96%",
+          "status": "elevated"
+        },
+        {
+          "name": "CITIZENS ALLIANCE BANK",
+          "location": "CLARA CITY, MN",
+          "asset": "$1.5B",
+          "value": "-0.82%",
+          "status": "elevated"
+        },
+        {
+          "name": "HAVEN SAVINGS BANK",
+          "location": "HOBOKEN, NJ",
+          "asset": "$1.0B",
+          "value": "-0.54%",
+          "status": "elevated"
+        },
+        {
+          "name": "INTERCREDIT BANK NA",
+          "location": "MIAMI, FL",
+          "asset": "$2.0B",
+          "value": "-0.47%",
+          "status": "elevated"
+        },
+        {
+          "name": "MORRIS BANK",
+          "location": "DUBLIN, GA",
+          "asset": "$1.6B",
+          "value": "-0.45%",
+          "status": "elevated"
+        },
+        {
+          "name": "BENEFICIAL STATE BANK",
+          "location": "OAKLAND, CA",
+          "asset": "$2.0B",
+          "value": "-0.34%",
+          "status": "elevated"
+        }
+      ]
+    }
+  ]
 }

@@ -87,7 +87,8 @@ def fetch_banking():
                         sort_order=spec.get("sort_order", "DESC"),
                         min_base_fields=spec.get("min_base_fields"),
                         min_base=spec.get("min_base", 0),
-                        max_value=spec.get("max_value"))
+                        max_value=spec.get("max_value"),
+                        min_value=spec.get("min_value"))
                     for spec in lens.rankings}
         result[lens.id] = (series, tiers, rankings)
     return result

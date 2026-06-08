@@ -88,6 +88,16 @@ class TestRanking(unittest.TestCase):
                                 min_base=250_000, max_value=20.0)
         self.assertEqual([r["name"] for r in rows], ["REAL STRESS"])
 
+    def test_min_value_floor_for_ascending_metrics(self):
+        payload = {"data": [
+            {"data": {"NAME": "FAILING", "CITY": "X", "STALP": "TX", "ASSET": 2000000, "EQV": 1.0}},
+            {"data": {"NAME": "THIN BUT REAL", "CITY": "Y", "STALP": "OH", "ASSET": 3000000, "EQV": 4.5}},
+        ]}
+        fake = FakeResponse(json.dumps(payload).encode())
+        with mock.patch("lenses.fdic.urllib.request.urlopen", return_value=fake):
+            rows = fdic.ranking("EQV", "20241231", 1_000_000, 10, sort_order="ASC", min_value=3.0)
+        self.assertEqual([r["name"] for r in rows], ["THIN BUT REAL"])
+
 
 class TestTiers(unittest.TestCase):
     def test_buckets_by_asset_band_and_sums(self):

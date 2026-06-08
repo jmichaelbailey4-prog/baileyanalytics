@@ -451,7 +451,14 @@ BANK_PROFITABILITY = BankingLens(
         {"key": "roa", "label": "Return on assets", "ratio_field": "ROA",
          "weight_field": "ASSET", "rule": narrative.rule_roa},
     ],
-    rankings=[],
+    rankings=[
+        {"title": "Weakest profitability · lowest return on assets",
+         "subtitle": "banks over $1B in assets", "metric_field": "ROA",
+         "asset_min": 1_000_000, "limit": 10, "value_label": "ROA",
+         "unit": "%", "rule": narrative.rule_roa,
+         # Lowest-is-worst; floor at -2% ROA to exclude failing-bank/data anomalies.
+         "sort_order": "ASC", "min_value": -2.0},
+    ],
 )
 
 BANK_CAPITAL = BankingLens(
@@ -482,7 +489,16 @@ BANK_CAPITAL = BankingLens(
         {"key": "equity", "label": "Equity/assets", "numerator": ["EQ"],
          "denominator": ["ASSET"], "scale": 100.0, "rule": narrative.rule_capital_ratio},
     ],
-    rankings=[],
+    rankings=[
+        # Spotlight uses equity-to-assets (EQV), not RBCRWAJ: smaller banks on the
+        # Community Bank Leverage Ratio framework report RBCRWAJ as 0, which poisons a
+        # lowest-RBC ranking. EQV is populated for every bank.
+        {"title": "Thinnest capital cushion · equity-to-assets",
+         "subtitle": "banks over $1B in assets", "metric_field": "EQV",
+         "asset_min": 1_000_000, "limit": 10, "value_label": "Equity/assets",
+         "unit": "%", "rule": narrative.rule_capital_ratio,
+         "sort_order": "ASC", "min_value": 3.0},
+    ],
 )
 
 BANK_CONCENTRATIONS = BankingLens(

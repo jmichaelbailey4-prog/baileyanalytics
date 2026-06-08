@@ -1435,7 +1435,70 @@
     ]
    }
   ],
-  {}
+  {
+   "Weakest profitability \u00b7 lowest return on assets": [
+    {
+     "name": "BAYFIRST NATIONAL BANK",
+     "location": "SAINT PETERSBURG, FL",
+     "asset": "$1.2B",
+     "value": -1.750869941447868
+    },
+    {
+     "name": "TRANSPECOS BANKS SSB",
+     "location": "PECOS, TX",
+     "asset": "$1.0B",
+     "value": -1.5491209586982593
+    },
+    {
+     "name": "EREBOR BANK N A",
+     "location": "COLUMBUS, OH",
+     "asset": "$1.7B",
+     "value": -1.4110345532046793
+    },
+    {
+     "name": "UNION COUNTY SAVINGS BANK",
+     "location": "ELIZABETH, NJ",
+     "asset": "$1.5B",
+     "value": -1.3708155691019828
+    },
+    {
+     "name": "BLUE FOUNDRY BANK",
+     "location": "RUTHERFORD, NJ",
+     "asset": "$2.1B",
+     "value": -0.9624643108262572
+    },
+    {
+     "name": "CITIZENS ALLIANCE BANK",
+     "location": "CLARA CITY, MN",
+     "asset": "$1.5B",
+     "value": -0.8206798223633205
+    },
+    {
+     "name": "HAVEN SAVINGS BANK",
+     "location": "HOBOKEN, NJ",
+     "asset": "$1.0B",
+     "value": -0.5441691692307995
+    },
+    {
+     "name": "INTERCREDIT BANK NA",
+     "location": "MIAMI, FL",
+     "asset": "$2.0B",
+     "value": -0.4718943194100332
+    },
+    {
+     "name": "MORRIS BANK",
+     "location": "DUBLIN, GA",
+     "asset": "$1.6B",
+     "value": -0.4502893401240964
+    },
+    {
+     "name": "BENEFICIAL STATE BANK",
+     "location": "OAKLAND, CA",
+     "asset": "$2.0B",
+     "value": -0.3442506925316247
+    }
+   ]
+  }
  ],
  "bank-capital-solvency": [
   {
@@ -2127,7 +2190,70 @@
     ]
    }
   ],
-  {}
+  {
+   "Thinnest capital cushion \u00b7 equity-to-assets": [
+    {
+     "name": "BRANNEN BANK",
+     "location": "INVERNESS, FL",
+     "asset": "$1.0B",
+     "value": 3.637682123871634
+    },
+    {
+     "name": "CITIZENS BANK&TRUST",
+     "location": "FROSTPROOF, FL",
+     "asset": "$1.5B",
+     "value": 3.912618215759934
+    },
+    {
+     "name": "BANK OF LABOR",
+     "location": "OVERLAND PARK, KS",
+     "asset": "$1.1B",
+     "value": 4.540003364110397
+    },
+    {
+     "name": "PRINCIPAL BANK",
+     "location": "DES MOINES, IA",
+     "asset": "$9.6B",
+     "value": 5.025096015985989
+    },
+    {
+     "name": "USAA FEDERAL SAVINGS BANK",
+     "location": "PHOENIX, AZ",
+     "asset": "$109.7B",
+     "value": 5.079784808972372
+    },
+    {
+     "name": "GREEN DOT BK DBA BONNEVILLE",
+     "location": "PROVO, UT",
+     "asset": "$5.9B",
+     "value": 5.110451737320798
+    },
+    {
+     "name": "CB&S BANK INC",
+     "location": "RUSSELLVILLE, AL",
+     "asset": "$2.9B",
+     "value": 5.200334188087998
+    },
+    {
+     "name": "CITIZENS BK PHILADELPHIA MS",
+     "location": "PHILADELPHIA, MS",
+     "asset": "$1.5B",
+     "value": 5.25418042045216
+    },
+    {
+     "name": "COREFIRST BANK&TRUST",
+     "location": "TOPEKA, KS",
+     "asset": "$1.3B",
+     "value": 5.717335756061552
+    },
+    {
+     "name": "JONESBORO STATE BANK",
+     "location": "JONESBORO, LA",
+     "asset": "$1.3B",
+     "value": 5.811105710302169
+    }
+   ]
+  }
  ],
  "bank-concentrations-funding": [
   {

@@ -2,7 +2,7 @@
   "id": "bank-capital-solvency",
   "title": "Capital & Solvency",
   "accent": "#38BDF8",
-  "last_updated": "2026-06-08T00:12:23Z",
+  "last_updated": "2026-06-08T00:52:06Z",
   "status": "ok",
   "headline_read": "Banks are well-capitalized.",
   "recessions": [],
@@ -745,5 +745,83 @@
       }
     ]
   },
-  "rankings": []
+  "rankings": [
+    {
+      "title": "Thinnest capital cushion \u00b7 equity-to-assets",
+      "subtitle": "banks over $1B in assets",
+      "value_label": "Equity/assets",
+      "rows": [
+        {
+          "name": "BRANNEN BANK",
+          "location": "INVERNESS, FL",
+          "asset": "$1.0B",
+          "value": "3.64%",
+          "status": "elevated"
+        },
+        {
+          "name": "CITIZENS BANK&TRUST",
+          "location": "FROSTPROOF, FL",
+          "asset": "$1.5B",
+          "value": "3.91%",
+          "status": "elevated"
+        },
+        {
+          "name": "BANK OF LABOR",
+          "location": "OVERLAND PARK, KS",
+          "asset": "$1.1B",
+          "value": "4.54%",
+          "status": "elevated"
+        },
+        {
+          "name": "PRINCIPAL BANK",
+          "location": "DES MOINES, IA",
+          "asset": "$9.6B",
+          "value": "5.03%",
+          "status": "elevated"
+        },
+        {
+          "name": "USAA FEDERAL SAVINGS BANK",
+          "location": "PHOENIX, AZ",
+          "asset": "$109.7B",
+          "value": "5.08%",
+          "status": "elevated"
+        },
+        {
+          "name": "GREEN DOT BK DBA BONNEVILLE",
+          "location": "PROVO, UT",
+          "asset": "$5.9B",
+          "value": "5.11%",
+          "status": "elevated"
+        },
+        {
+          "name": "CB&S BANK INC",
+          "location": "RUSSELLVILLE, AL",
+          "asset": "$2.9B",
+          "value": "5.20%",
+          "status": "elevated"
+        },
+        {
+          "name": "CITIZENS BK PHILADELPHIA MS",
+          "location": "PHILADELPHIA, MS",
+          "asset": "$1.5B",
+          "value": "5.25%",
+          "status": "elevated"
+        },
+        {
+          "name": "COREFIRST BANK&TRUST",
+          "location": "TOPEKA, KS",
+          "asset": "$1.3B",
+          "value": "5.72%",
+          "status": "elevated"
+        },
+        {
+          "name": "JONESBORO STATE BANK",
+          "location": "JONESBORO, LA",
+          "asset": "$1.3B",
+          "value": "5.81%",
+          "status": "elevated"
+        }
+      ]
+    }
+  ]
 }
