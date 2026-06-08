@@ -2,7 +2,7 @@
   "id": "market-scoreboard",
   "title": "Asset-Class Scoreboard",
   "accent": "#22D3EE",
-  "last_updated": "2026-06-08T19:33:47Z",
+  "last_updated": "2026-06-08T21:50:19Z",
   "status": "neutral",
   "headline_read": "How the major asset classes are moving right now.",
   "recessions": [
@@ -30910,15 +30910,15 @@
         },
         {
           "date": "2026-06-08",
-          "value": "4351.80"
+          "value": "4353.80"
         }
       ],
       "latest": {
         "date": "2026-06-08",
-        "value": "4351.80"
+        "value": "4353.80"
       },
       "context": "Gold (dollars per troy ounce) \u2014 the classic safe-haven asset investors flee to in times of stress. Sourced from Yahoo Finance (COMEX futures).",
-      "read": "Gold is up 31% over the past year, now 4,351.80.",
+      "read": "Gold is up 31% over the past year, now 4,353.80.",
       "signal_status": "up",
       "value_format": "thousands"
     },
@@ -30930,26 +30930,6 @@
       "color": "#38BDF8",
       "series_id": "DTWEXBGS",
       "observations": [
-        {
-          "date": "2016-06-13",
-          "value": "111.5036"
-        },
-        {
-          "date": "2016-06-14",
-          "value": "111.9826"
-        },
-        {
-          "date": "2016-06-15",
-          "value": "111.7671"
-        },
-        {
-          "date": "2016-06-16",
-          "value": "112.2347"
-        },
-        {
-          "date": "2016-06-17",
-          "value": "111.5332"
-        },
         {
           "date": "2016-06-20",
           "value": "110.8693"
@@ -41329,15 +41309,35 @@
         {
           "date": "2026-05-29",
           "value": "118.8783"
+        },
+        {
+          "date": "2026-06-01",
+          "value": "119.1653"
+        },
+        {
+          "date": "2026-06-02",
+          "value": "119.0359"
+        },
+        {
+          "date": "2026-06-03",
+          "value": "119.3848"
+        },
+        {
+          "date": "2026-06-04",
+          "value": "119.3615"
+        },
+        {
+          "date": "2026-06-05",
+          "value": "120.0831"
         }
       ],
       "latest": {
-        "date": "2026-05-29",
-        "value": "118.8783"
+        "date": "2026-06-05",
+        "value": "120.0831"
       },
       "context": "The trade-weighted value of the U.S. dollar against a broad basket of currencies \u2014 a strong dollar makes imports cheaper and U.S. exports pricier.",
-      "read": "The dollar index is down 2% over the past year, now 118.88.",
-      "signal_status": "down",
+      "read": "The dollar index is little changed over the past year, now 120.08.",
+      "signal_status": "flat",
       "value_format": "decimal"
     },
     {

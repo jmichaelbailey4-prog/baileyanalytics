@@ -169,21 +169,6 @@ COST_OF_MONEY = Lens(
                 "of housing affordability for most buyers."
             ),
         ),
-        Indicator(
-            id="yield-curve",
-            title="Yield Curve · 10-Year minus 2-Year",
-            short="Yield curve",
-            unit="%",
-            color="#F87171",
-            series_id="T10Y2Y",
-            limit=2600,
-            rule=narrative.rule_yield_curve,
-            context=(
-                "The gap between 10-year and 2-year Treasury yields. When it turns "
-                "negative, short-term borrowing costs more than long-term — a sign markets "
-                "expect the Fed to cut rates ahead."
-            ),
-        ),
     ],
 )
 
@@ -593,17 +578,23 @@ MARKET_RISK_SENTIMENT = Lens(
         ),
         Indicator(
             id="hy-spread", title="High-Yield Credit Spread", short="HY spread", unit="%",
-            color="#FB923C", series_id="BAMLH0A0HYM2", limit=2600,
+            color="#FB923C", series_id="BAMLH0A0HYM2",
+            limit=900,  # ICE BofA: FRED API only serves a rolling ~3y window
             rule=narrative.credit_spread("high-yield", 4.0, 6.0),
             context=("The extra yield investors demand to hold risky 'junk' corporate bonds over "
-                     "Treasuries. It widens when markets fear defaults — an early stress signal."),
+                     "Treasuries. It widens when markets fear defaults — an early stress signal. "
+                     "Note: FRED serves only a rolling ~3-year window of this ICE BofA series, so "
+                     "its chart history is shorter than the other indicators here."),
         ),
         Indicator(
             id="ig-spread", title="Investment-Grade Credit Spread", short="IG spread", unit="%",
-            color="#FBBF24", series_id="BAMLC0A0CM", limit=2600,
+            color="#FBBF24", series_id="BAMLC0A0CM",
+            limit=900,  # ICE BofA: FRED API only serves a rolling ~3y window
             rule=narrative.credit_spread("investment-grade", 1.5, 2.5),
             context=("The same risk premium for higher-quality corporate bonds. Because these "
-                     "borrowers are safer, widening here signals stress reaching the core of credit."),
+                     "borrowers are safer, widening here signals stress reaching the core of credit. "
+                     "Note: FRED serves only a rolling ~3-year window of this ICE BofA series, so "
+                     "its chart history is shorter than the other indicators here."),
         ),
         Indicator(
             id="nfci", title="Financial Conditions · NFCI", short="NFCI", unit="", color="#38BDF8",
@@ -621,39 +612,39 @@ MARKET_SCOREBOARD = Lens(
     indicators=[
         Indicator(
             id="sp500", title="S&P 500", short="S&P 500", unit="", color="#34D399",
-            series_id="SP500", limit=2600, rule=narrative.market_level("The S&P 500"),
+            series_id="SP500", limit=2600, rule=narrative.market_level("The S&P 500", up=5, down=-5),
             value_format="thousands",
             context="The benchmark index of 500 large U.S. companies — the headline gauge of U.S. stocks.",
         ),
         Indicator(
             id="oil", title="Crude Oil · WTI", short="WTI oil", unit="", color="#FB923C",
-            series_id="DCOILWTICO", limit=2600, rule=narrative.market_level("WTI crude"),
+            series_id="DCOILWTICO", limit=2600, rule=narrative.market_level("WTI crude", up=15, down=-15),
             context=("West Texas Intermediate, the U.S. benchmark oil price (dollars per barrel) — "
                      "a read on energy costs and global demand."),
         ),
         Indicator(
             id="gold", title="Gold", short="Gold", unit="", color="#FBBF24",
-            series_id="XAUUSD", limit=2600, rule=narrative.market_level("Gold"),
+            series_id="XAUUSD", limit=2600, rule=narrative.market_level("Gold", up=10, down=-10),
             value_format="thousands", source="yahoo",
             context=("Gold (dollars per troy ounce) — the classic safe-haven asset investors "
                      "flee to in times of stress. Sourced from Yahoo Finance (COMEX futures)."),
         ),
         Indicator(
             id="dollar", title="U.S. Dollar · Broad Index", short="Dollar", unit="", color="#38BDF8",
-            series_id="DTWEXBGS", limit=2600, rule=narrative.market_level("The dollar index"),
+            series_id="DTWEXBGS", limit=2600, rule=narrative.market_level("The dollar index", up=3, down=-3),
             context=("The trade-weighted value of the U.S. dollar against a broad basket of "
                      "currencies — a strong dollar makes imports cheaper and U.S. exports pricier."),
         ),
         Indicator(
             id="btc", title="Bitcoin", short="Bitcoin", unit="", color="#A78BFA",
-            series_id="CBBTCUSD", limit=2600, rule=narrative.market_level("Bitcoin"),
+            series_id="CBBTCUSD", limit=2600, rule=narrative.market_level("Bitcoin", up=25, down=-25),
             value_format="thousands",
             context=("The price of Bitcoin in U.S. dollars (Coinbase) — the largest cryptocurrency "
                      "and a barometer of risk appetite in digital assets."),
         ),
         Indicator(
             id="eth", title="Ethereum", short="Ethereum", unit="", color="#818CF8",
-            series_id="CBETHUSD", limit=2600, rule=narrative.market_level("Ethereum"),
+            series_id="CBETHUSD", limit=2600, rule=narrative.market_level("Ethereum", up=25, down=-25),
             value_format="thousands",
             context=("The price of Ether in U.S. dollars (Coinbase) — the second-largest "
                      "cryptocurrency and the backbone of most decentralized applications."),
