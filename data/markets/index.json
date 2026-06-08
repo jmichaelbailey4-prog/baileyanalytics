@@ -1,0 +1,47 @@
+{
+  "last_updated": "2026-06-08T14:17:15Z",
+  "lenses": [
+    {
+      "id": "market-risk-sentiment",
+      "title": "Risk Sentiment",
+      "accent": "#FB7185",
+      "status": "ok",
+      "headline_read": "Markets are calm \u2014 volatility and credit stress are low.",
+      "key_stats": [
+        {
+          "k": "VIX",
+          "v": "18.50"
+        },
+        {
+          "k": "HY spread",
+          "v": "3.45%"
+        }
+      ],
+      "sparkline": [
+        16.2,
+        18.5
+      ]
+    },
+    {
+      "id": "market-scoreboard",
+      "title": "Asset-Class Scoreboard",
+      "accent": "#22D3EE",
+      "status": "neutral",
+      "headline_read": "How the major asset classes are moving right now.",
+      "key_stats": [
+        {
+          "k": "S&P 500",
+          "v": "6,100"
+        },
+        {
+          "k": "WTI oil",
+          "v": "68.30"
+        }
+      ],
+      "sparkline": [
+        5400.0,
+        6100.0
+      ]
+    }
+  ]
+}

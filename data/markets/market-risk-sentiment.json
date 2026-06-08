@@ -1,0 +1,115 @@
+{
+  "id": "market-risk-sentiment",
+  "title": "Risk Sentiment",
+  "accent": "#FB7185",
+  "last_updated": "2026-06-08T14:17:15Z",
+  "status": "ok",
+  "headline_read": "Markets are calm \u2014 volatility and credit stress are low.",
+  "recessions": [],
+  "indicators": [
+    {
+      "id": "vix",
+      "title": "Volatility \u00b7 VIX",
+      "short": "VIX",
+      "unit": "",
+      "color": "#FB7185",
+      "series_id": "VIXCLS",
+      "observations": [
+        {
+          "date": "2025-06-02",
+          "value": "16.20"
+        },
+        {
+          "date": "2026-06-02",
+          "value": "18.50"
+        }
+      ],
+      "latest": {
+        "date": "2026-06-02",
+        "value": "18.50"
+      },
+      "context": "The market's 'fear gauge' \u2014 the expected volatility of the S&P 500 over the coming month. It spikes when investors are scared and falls when calm.",
+      "read": "The VIX is at 18.5 \u2014 markets are calm.",
+      "signal_status": "ok",
+      "value_format": "decimal"
+    },
+    {
+      "id": "hy-spread",
+      "title": "High-Yield Credit Spread",
+      "short": "HY spread",
+      "unit": "%",
+      "color": "#FB923C",
+      "series_id": "BAMLH0A0HYM2",
+      "observations": [
+        {
+          "date": "2025-06-02",
+          "value": "3.10"
+        },
+        {
+          "date": "2026-06-02",
+          "value": "3.45"
+        }
+      ],
+      "latest": {
+        "date": "2026-06-02",
+        "value": "3.45"
+      },
+      "context": "The extra yield investors demand to hold risky 'junk' corporate bonds over Treasuries. It widens when markets fear defaults \u2014 an early stress signal.",
+      "read": "The high-yield spread is 3.45% \u2014 tight, signaling calm credit conditions.",
+      "signal_status": "ok",
+      "value_format": "decimal"
+    },
+    {
+      "id": "ig-spread",
+      "title": "Investment-Grade Credit Spread",
+      "short": "IG spread",
+      "unit": "%",
+      "color": "#FBBF24",
+      "series_id": "BAMLC0A0CM",
+      "observations": [
+        {
+          "date": "2025-06-02",
+          "value": "1.10"
+        },
+        {
+          "date": "2026-06-02",
+          "value": "1.25"
+        }
+      ],
+      "latest": {
+        "date": "2026-06-02",
+        "value": "1.25"
+      },
+      "context": "The same risk premium for higher-quality corporate bonds. Because these borrowers are safer, widening here signals stress reaching the core of credit.",
+      "read": "The investment-grade spread is 1.25% \u2014 tight, signaling calm credit conditions.",
+      "signal_status": "ok",
+      "value_format": "decimal"
+    },
+    {
+      "id": "nfci",
+      "title": "Financial Conditions \u00b7 NFCI",
+      "short": "NFCI",
+      "unit": "",
+      "color": "#38BDF8",
+      "series_id": "NFCI",
+      "observations": [
+        {
+          "date": "2025-05-30",
+          "value": "-0.45"
+        },
+        {
+          "date": "2026-05-29",
+          "value": "-0.38"
+        }
+      ],
+      "latest": {
+        "date": "2026-05-29",
+        "value": "-0.38"
+      },
+      "context": "The Chicago Fed's broad gauge of financial conditions across money, debt, and equity markets. Zero is average; positive means tighter (more stressed) than normal.",
+      "read": "The NFCI is -0.38 \u2014 financial conditions are looser than average.",
+      "signal_status": "ok",
+      "value_format": "decimal"
+    }
+  ]
+}

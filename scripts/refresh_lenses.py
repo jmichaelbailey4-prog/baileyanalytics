@@ -19,8 +19,10 @@ from lenses import build, config, fdic, fred
 
 OUT_DIR = Path(__file__).resolve().parent.parent / "data" / "lenses"
 BANK_OUT_DIR = Path(__file__).resolve().parent.parent / "data" / "banking"
+MARKETS_OUT_DIR = Path(__file__).resolve().parent.parent / "data" / "markets"
 FIXTURE = Path(__file__).resolve().parent / "tests" / "fixtures" / "fetched_sample.json"
 FDIC_FIXTURE = Path(__file__).resolve().parent / "tests" / "fixtures" / "fdic_sample.json"
+MARKET_FIXTURE = Path(__file__).resolve().parent / "tests" / "fixtures" / "markets_sample.json"
 
 
 def unique_specs(lenses):
@@ -150,28 +152,63 @@ def refresh_banking(dry_run):
         print(f"WARN: banking refresh failed ({exc}); keeping previous banking data", file=sys.stderr)
 
 
+def refresh_markets(dry_run):
+    """Build + write the markets (FRED) lenses. Returns an exit code (0 ok, non-zero error).
+
+    Phase 1: the two FRED-sourced lenses only. The CoinGecko crypto lens is added
+    to this function in Phase 2.
+    """
+    if dry_run:
+        fetched = json.loads(MARKET_FIXTURE.read_text(encoding="utf-8"))
+        failed = set()
+    else:
+        api_key = os.environ.get("FRED_API_KEY")
+        if not api_key:
+            print("FRED_API_KEY not set", file=sys.stderr)
+            return 1
+        fetched, failed = fetch_all(config.MARKET_FRED_LENSES, api_key)
+
+    ready = [lens for lens in config.MARKET_FRED_LENSES if lens_ready(lens, failed)]
+    for lens in config.MARKET_FRED_LENSES:
+        if lens not in ready:
+            print(f"SKIP: {lens.id} (a source series failed; keeping previous data)", file=sys.stderr)
+
+    market_jsons = [build.build_lens(lens, fetched) for lens in ready]
+    written = build.write_outputs(market_jsons, MARKETS_OUT_DIR)
+    for path in written:
+        print(f"Wrote {path}")
+    if not written:
+        print("No changes — all markets data up to date.")
+    return 0
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description="Refresh dashboard data from public sources.")
     parser.add_argument("--dry-run", action="store_true", help="use fixture data, no network")
     parser.add_argument("--economic", action="store_true", help="refresh only the economic (FRED) lenses")
     parser.add_argument("--banking", action="store_true", help="refresh only the banking (FDIC) lenses")
+    parser.add_argument("--markets", action="store_true", help="refresh only the markets lenses")
     args = parser.parse_args(argv)
 
     # No source flag = refresh everything (handy for manual/local runs); each
     # flag scopes the run so a workflow can give each source its own cadence.
-    do_economic = args.economic or not args.banking
-    do_banking = args.banking or not args.economic
+    any_flag = args.economic or args.banking or args.markets
+    do_economic = args.economic or not any_flag
+    do_banking = args.banking or not any_flag
+    do_markets = args.markets or not any_flag
 
     code = 0
     if do_economic:
         code = refresh_economic(args.dry_run)
         if code:
             return code
+    if do_markets:
+        mc = refresh_markets(args.dry_run)
+        if mc:
+            code = mc
     if do_banking:
         refresh_banking(args.dry_run)
     return code
-
-    return 0
 
 
 if __name__ == "__main__":
