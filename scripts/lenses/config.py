@@ -606,39 +606,39 @@ MARKET_SCOREBOARD = Lens(
     indicators=[
         Indicator(
             id="sp500", title="S&P 500", short="S&P 500", unit="", color="#34D399",
-            series_id="SP500", limit=2600, rule=narrative.market_level("The S&P 500"),
+            series_id="SP500", limit=2600, rule=narrative.market_level("The S&P 500", up=5, down=-5),
             value_format="thousands",
             context="The benchmark index of 500 large U.S. companies — the headline gauge of U.S. stocks.",
         ),
         Indicator(
             id="oil", title="Crude Oil · WTI", short="WTI oil", unit="", color="#FB923C",
-            series_id="DCOILWTICO", limit=2600, rule=narrative.market_level("WTI crude"),
+            series_id="DCOILWTICO", limit=2600, rule=narrative.market_level("WTI crude", up=15, down=-15),
             context=("West Texas Intermediate, the U.S. benchmark oil price (dollars per barrel) — "
                      "a read on energy costs and global demand."),
         ),
         Indicator(
             id="gold", title="Gold", short="Gold", unit="", color="#FBBF24",
-            series_id="XAUUSD", limit=2600, rule=narrative.market_level("Gold"),
+            series_id="XAUUSD", limit=2600, rule=narrative.market_level("Gold", up=10, down=-10),
             value_format="thousands", source="yahoo",
             context=("Gold (dollars per troy ounce) — the classic safe-haven asset investors "
                      "flee to in times of stress. Sourced from Yahoo Finance (COMEX futures)."),
         ),
         Indicator(
             id="dollar", title="U.S. Dollar · Broad Index", short="Dollar", unit="", color="#38BDF8",
-            series_id="DTWEXBGS", limit=2600, rule=narrative.market_level("The dollar index"),
+            series_id="DTWEXBGS", limit=2600, rule=narrative.market_level("The dollar index", up=3, down=-3),
             context=("The trade-weighted value of the U.S. dollar against a broad basket of "
                      "currencies — a strong dollar makes imports cheaper and U.S. exports pricier."),
         ),
         Indicator(
             id="btc", title="Bitcoin", short="Bitcoin", unit="", color="#A78BFA",
-            series_id="CBBTCUSD", limit=2600, rule=narrative.market_level("Bitcoin"),
+            series_id="CBBTCUSD", limit=2600, rule=narrative.market_level("Bitcoin", up=25, down=-25),
             value_format="thousands",
             context=("The price of Bitcoin in U.S. dollars (Coinbase) — the largest cryptocurrency "
                      "and a barometer of risk appetite in digital assets."),
         ),
         Indicator(
             id="eth", title="Ethereum", short="Ethereum", unit="", color="#818CF8",
-            series_id="CBETHUSD", limit=2600, rule=narrative.market_level("Ethereum"),
+            series_id="CBETHUSD", limit=2600, rule=narrative.market_level("Ethereum", up=25, down=-25),
             value_format="thousands",
             context=("The price of Ether in U.S. dollars (Coinbase) — the second-largest "
                      "cryptocurrency and the backbone of most decentralized applications."),
