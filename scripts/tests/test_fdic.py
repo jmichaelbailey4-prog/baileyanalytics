@@ -98,6 +98,27 @@ class TestRanking(unittest.TestCase):
             rows = fdic.ranking("EQV", "20241231", 1_000_000, 10, sort_order="ASC", min_value=3.0)
         self.assertEqual([r["name"] for r in rows], ["THIN BUT REAL"])
 
+    def test_ratio_filters_keep_spotlight_to_mainstream_lenders(self):
+        # Two business-mix gates: loans must be >= 40% of assets (drops custody/HSA
+        # charters) AND credit cards must be <= 50% of loans (drops card monolines).
+        payload = {"data": [
+            # custody bank: 2% loans/assets — fails the loan floor
+            {"data": {"NAME": "CUSTODY BANK", "CITY": "X", "STALP": "UT", "ASSET": 5000000,
+                      "ROA": 12.0, "LNLSNET": 100000, "LNCRCD": 0}},
+            # credit-card monoline: real loan book but ~100% cards — fails the card ceiling
+            {"data": {"NAME": "CARD MONOLINE", "CITY": "Z", "STALP": "SD", "ASSET": 4000000,
+                      "ROA": 2.6, "LNLSNET": 3000000, "LNCRCD": 3000000}},
+            # mainstream lender: 60% loans, no cards — keep it
+            {"data": {"NAME": "REAL LENDER", "CITY": "Y", "STALP": "OH", "ASSET": 3000000,
+                      "ROA": 2.5, "LNLSNET": 1800000, "LNCRCD": 0}},
+        ]}
+        fake = FakeResponse(json.dumps(payload).encode())
+        filters = [{"num": ["LNLSNET"], "den": ["ASSET"], "min": 0.40},
+                   {"num": ["LNCRCD"], "den": ["LNLSNET"], "max": 0.50}]
+        with mock.patch("lenses.fdic.urllib.request.urlopen", return_value=fake):
+            rows = fdic.ranking("ROA", "20241231", 1_000_000, 10, ratio_filters=filters)
+        self.assertEqual([r["name"] for r in rows], ["REAL LENDER"])
+
 
 class TestTiers(unittest.TestCase):
     def test_buckets_by_asset_band_and_sums(self):

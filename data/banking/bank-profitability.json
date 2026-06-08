@@ -2,7 +2,7 @@
   "id": "bank-profitability",
   "title": "Profitability",
   "accent": "#34D399",
-  "last_updated": "2026-06-08T03:15:54Z",
+  "last_updated": "2026-06-08T04:32:55Z",
   "status": "ok",
   "headline_read": "Banks are solidly profitable.",
   "recessions": [],
@@ -732,7 +732,7 @@
   "rankings": [
     {
       "title": "Strongest profitability \u00b7 highest return on assets",
-      "subtitle": "banks over $1B in assets",
+      "subtitle": "mainstream lenders over $1B in assets",
       "value_label": "ROA",
       "rows": [
         {
@@ -747,13 +747,6 @@
           "location": "ARTESIA, NM",
           "asset": "$1.9B",
           "value": "2.97%",
-          "status": "ok"
-        },
-        {
-          "name": "ANCHORAGE DIGITAL BANK NA",
-          "location": "SIOUX FALLS, SD",
-          "asset": "$1.1B",
-          "value": "2.94%",
           "status": "ok"
         },
         {
@@ -799,10 +792,17 @@
           "status": "ok"
         },
         {
-          "name": "SYNCHRONY BANK",
-          "location": "DRAPER, UT",
-          "asset": "$114.9B",
-          "value": "2.62%",
+          "name": "UNITED BANK",
+          "location": "ZEBULON, GA",
+          "asset": "$2.2B",
+          "value": "2.59%",
+          "status": "ok"
+        },
+        {
+          "name": "FIRST SAVINGS BANK",
+          "location": "BERESFORD, SD",
+          "asset": "$1.6B",
+          "value": "2.57%",
           "status": "ok"
         }
       ]

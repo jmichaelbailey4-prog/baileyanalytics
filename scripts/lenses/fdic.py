@@ -92,22 +92,51 @@ def _fmt_assets(thousands):
     return f"${dollars / 1e6:.0f}m"
 
 
+def _ratio_ok(row, rf):
+    """True if Σnum/Σden for this row falls within the filter's [min, max] bounds.
+
+    An empty denominator reads as +inf when there's a numerator (fails a `max`,
+    passes nothing with a `min`) and 0 otherwise — so "loans/assets" treats a
+    no-loan bank as 0 and "credit-cards/loans" treats a no-loan bank as 0 too.
+    """
+    den = sum(_num(row.get(f)) for f in rf.get("den", []))
+    num = sum(_num(row.get(f)) for f in rf.get("num", []))
+    ratio = (num / den) if den > 0 else (float("inf") if num > 0 else 0.0)
+    if "min" in rf and ratio < rf["min"]:
+        return False
+    if "max" in rf and ratio > rf["max"]:
+        return False
+    return True
+
+
 def ranking(metric_field, repdte, asset_min, limit, sort_order="DESC",
-            min_base_fields=None, min_base=0, max_value=None, min_value=None, timeout=25):
+            min_base_fields=None, min_base=0, max_value=None, min_value=None,
+            ratio_filters=None, timeout=25):
     """Top-`limit` banks by `metric_field` for one quarter, with outlier filtering.
 
-    `asset_min` (in $000s) is the size floor. To keep the ranking *insightful* rather
-    than a list of idiosyncratic distressed micro-cases, further filters apply:
+    `asset_min` (in $000s) is the size floor. To keep the ranking *insightful* — a list
+    of mainstream institutions rather than idiosyncratic micro-cases or specialty
+    charters — further filters apply:
       * `min_base_fields` + `min_base`: require a material denominator book (in $000s),
         e.g. a real CRE-loan book — so a tiny book can't post an exploded ratio.
       * `max_value` / `min_value`: drop values above/below a sanity bound. Use `max_value`
         for worst-is-highest metrics (DESC) and `min_value` for worst-is-lowest metrics
         (ASC, e.g. capital/ROA) to exclude failing-bank/data anomalies at the extreme.
+      * `ratio_filters`: a list of business-mix gates, each a dict
+        {"num": [fields], "den": [fields], "min": x?, "max": y?}. A row is kept only if
+        every filter's Σnum/Σden lies within its bounds. Use these to require a real,
+        recognizable business model — e.g. loans >= 40% of assets AND credit-card loans
+        <= 50% of loans — so custody/HSA charters and credit-card monolines drop out and
+        the spotlight reads as mainstream lenders.
     A larger candidate pool is fetched so `limit` clean rows remain after filtering.
     `sort_order` is "DESC" (worst-is-highest) or "ASC" (worst-is-lowest, e.g. capital).
     """
+    ratio_filters = ratio_filters or []
     pool = max(limit * 8, 80)
-    fields = ["NAME", "CITY", "STALP", "ASSET", metric_field] + list(min_base_fields or [])
+    ratio_fields = [f for rf in ratio_filters for f in (list(rf.get("num", [])) + list(rf.get("den", [])))]
+    wanted = (["NAME", "CITY", "STALP", "ASSET", metric_field]
+              + list(min_base_fields or []) + ratio_fields)
+    fields = list(dict.fromkeys(wanted))  # de-dupe, preserve order (ASSET may recur)
     params = {
         "filters": f"REPDTE:{repdte} AND ASSET:[{asset_min} TO *]",
         "fields": ",".join(fields),
@@ -125,6 +154,8 @@ def ranking(metric_field, repdte, asset_min, limit, sort_order="DESC",
         if min_value is not None and v < min_value:
             continue
         if min_base_fields and sum(_num(row.get(f)) for f in min_base_fields) < min_base:
+            continue
+        if not all(_ratio_ok(row, rf) for rf in ratio_filters):
             continue
         out.append({
             "name": row.get("NAME", ""),

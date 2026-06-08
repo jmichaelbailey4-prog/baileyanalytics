@@ -453,12 +453,20 @@ BANK_PROFITABILITY = BankingLens(
     ],
     rankings=[
         {"title": "Strongest profitability · highest return on assets",
-         "subtitle": "banks over $1B in assets", "metric_field": "ROA",
+         "subtitle": "mainstream lenders over $1B in assets", "metric_field": "ROA",
          "asset_min": 1_000_000, "limit": 10, "value_label": "ROA",
          "unit": "%", "rule": narrative.rule_roa,
-         # Highest-is-best; cap at 3% ROA to exclude specialty outfits (credit-card /
-         # trust banks) whose structurally huge ROA isn't a "best-run bank" signal.
-         "sort_order": "DESC", "max_value": 3.0},
+         # Highest-is-best; cap at 3% ROA to exclude specialty outfits whose structurally
+         # huge ROA isn't a "best-run bank" signal. Plus two business-mix relevance gates
+         # so the list reads as mainstream lenders, not niche charters (see
+         # design-spotlight-mainstream-relevance): require a real loan book (loans >= 40%
+         # of assets — drops trust/custody/HSA banks) and that it isn't a credit-card
+         # monoline (credit cards <= 50% of loans — drops Synchrony-type issuers).
+         "sort_order": "DESC", "max_value": 3.0,
+         "ratio_filters": [
+             {"num": ["LNLSNET"], "den": ["ASSET"], "min": 0.40},
+             {"num": ["LNCRCD"], "den": ["LNLSNET"], "max": 0.50},
+         ]},
     ],
 )
 
