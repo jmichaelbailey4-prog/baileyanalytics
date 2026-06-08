@@ -61,6 +61,14 @@ class TestMarketConfig(unittest.TestCase):
         self.assertEqual(rules["btc"](_yr(100.0, 120.0))[1], "flat")    # +20%
         self.assertEqual(rules["btc"](_yr(100.0, 130.0))[1], "up")      # +30%
 
+    def test_ice_spread_indicators_use_short_window(self):
+        risk = next(l for l in config.MARKET_FRED_LENSES if l.id == "market-risk-sentiment")
+        by_id = {i.id: i for i in risk.indicators}
+        for ind_id in ("hy-spread", "ig-spread"):
+            ind = by_id[ind_id]
+            self.assertEqual(ind.limit, 900)
+            self.assertIn("rolling", ind.context.lower())
+
     def test_markets_category_registered(self):
         cat = next(c for c in config.CATEGORIES if c["id"] == "markets")
         self.assertEqual(cat["out"], "markets")
