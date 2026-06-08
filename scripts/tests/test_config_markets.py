@@ -32,7 +32,7 @@ class TestMarketConfig(unittest.TestCase):
     def test_gold_is_stooq_sourced(self):
         board = next(l for l in config.MARKET_FRED_LENSES if l.id == "market-scoreboard")
         gold = next(i for i in board.indicators if i.id == "gold")
-        self.assertEqual(gold.source, "stooq")
+        self.assertEqual(gold.source, "yahoo")
         self.assertEqual(gold.series_id, "XAUUSD")
 
     def test_other_scoreboard_assets_are_fred(self):

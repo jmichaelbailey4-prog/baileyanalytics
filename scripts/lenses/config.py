@@ -634,9 +634,9 @@ MARKET_SCOREBOARD = Lens(
         Indicator(
             id="gold", title="Gold", short="Gold", unit="", color="#FBBF24",
             series_id="XAUUSD", limit=2600, rule=narrative.market_level("Gold"),
-            value_format="thousands", source="stooq",
-            context=("Spot gold (dollars per troy ounce) — the classic safe-haven asset "
-                     "investors flee to in times of stress. Sourced from Stooq."),
+            value_format="thousands", source="yahoo",
+            context=("Gold (dollars per troy ounce) — the classic safe-haven asset investors "
+                     "flee to in times of stress. Sourced from Yahoo Finance (COMEX futures)."),
         ),
         Indicator(
             id="dollar", title="U.S. Dollar · Broad Index", short="Dollar", unit="", color="#38BDF8",

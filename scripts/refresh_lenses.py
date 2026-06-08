@@ -15,7 +15,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))  # make `lenses` importable
 from datetime import date
 
-from lenses import build, coingecko, config, fdic, fred, stooq, util
+from lenses import build, coingecko, config, fdic, fred, util, yahoo
 
 OUT_DIR = Path(__file__).resolve().parent.parent / "data" / "lenses"
 BANK_OUT_DIR = Path(__file__).resolve().parent.parent / "data" / "banking"
@@ -218,19 +218,19 @@ def _prior_scoreboard_gold():
 
 
 def _inject_gold(fetched, dry_run):
-    """Fetch gold from Stooq and inject it under its scoreboard fetch_key (FRED dropped
-    its gold series). Additive — on failure, fall back to prior data so the lens still
-    builds. In dry-run the markets fixture already carries XAUUSD:lin."""
+    """Fetch gold from Yahoo Finance and inject it under its scoreboard fetch_key (FRED
+    dropped its gold series). Additive — on failure, fall back to prior data so the lens
+    still builds. In dry-run the markets fixture already carries XAUUSD:lin."""
     if dry_run:
         return
     key = "XAUUSD:lin"
     try:
-        rows = stooq.gold_history()
+        rows = yahoo.gold_history()
         if not rows:
             raise ValueError("empty gold series")
         fetched[key] = rows
     except Exception as exc:  # noqa: BLE001 - never break the run on a gold failure
-        print(f"WARN: gold (Stooq) fetch failed ({exc}); keeping previous gold data", file=sys.stderr)
+        print(f"WARN: gold (Yahoo) fetch failed ({exc}); keeping previous gold data", file=sys.stderr)
         fetched[key] = _prior_scoreboard_gold()
 
 

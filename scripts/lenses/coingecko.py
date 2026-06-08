@@ -7,12 +7,14 @@ as a current point and is accumulated daily by the caller.
 """
 
 import json
+import os
 import time
 import urllib.error
 import urllib.parse
 import urllib.request
 
 BASE = "https://api.coingecko.com/api/v3"
+_UA = "baileyanalytics/1.0 (+https://baileyanalytics.com)"
 
 # Top stablecoins by id — excluded from the "small/mid-cap" basket (a price≈$1
 # heuristic backstops anything not listed here).
@@ -23,14 +25,22 @@ STABLECOINS = {
 
 
 def _get(path, params, timeout):
+    """GET a CoinGecko endpoint. Uses a free demo API key if COINGECKO_API_KEY is set
+    (raises the rate limit and stabilizes it); otherwise the keyless public tier, which
+    is aggressively rate-limited. Backs off and retries on HTTP 429."""
     url = f"{BASE}{path}?{urllib.parse.urlencode(params)}"
-    for attempt in range(3):
+    headers = {"User-Agent": _UA}
+    key = os.environ.get("COINGECKO_API_KEY")
+    if key:
+        headers["x-cg-demo-api-key"] = key
+    for attempt in range(4):
         try:
-            with urllib.request.urlopen(url, timeout=timeout) as resp:
+            req = urllib.request.Request(url, headers=headers)
+            with urllib.request.urlopen(req, timeout=timeout) as resp:
                 return json.loads(resp.read())
         except urllib.error.HTTPError as exc:
-            if exc.code == 429 and attempt < 2:
-                time.sleep(5 * (attempt + 1))
+            if exc.code == 429 and attempt < 3:
+                time.sleep(10 * (attempt + 1))
                 continue
             raise
 
@@ -101,7 +111,7 @@ def compute_rotation(large_basket, small_basket):
     return out
 
 
-def crypto_market_structure(timeout=15, throttle=1.5):
+def crypto_market_structure(timeout=15, throttle=2.5):
     """Fetch + compute today's rotation series and current BTC dominance.
 
     Returns {'rotation': [{date,value}], 'dominance_point': {date, value}}.
