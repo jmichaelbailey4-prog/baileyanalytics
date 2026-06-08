@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-08T19:34:18Z",
+  "last_updated": "2026-06-08T21:50:47Z",
   "lenses": [
     {
       "id": "market-risk-sentiment",
@@ -128,7 +128,7 @@
       "key_stats": [
         {
           "k": "Alt rotation",
-          "v": "114.21"
+          "v": "114.10"
         },
         {
           "k": "BTC dominance",
@@ -175,7 +175,7 @@
         114.07,
         113.29,
         113.12,
-        114.21
+        114.1
       ]
     }
   ]
