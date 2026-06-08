@@ -15,7 +15,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))  # make `lenses` importable
 from datetime import date
 
-from lenses import build, config, fdic, fred
+from lenses import build, coingecko, config, fdic, fred, util
 
 OUT_DIR = Path(__file__).resolve().parent.parent / "data" / "lenses"
 BANK_OUT_DIR = Path(__file__).resolve().parent.parent / "data" / "banking"
@@ -23,6 +23,8 @@ MARKETS_OUT_DIR = Path(__file__).resolve().parent.parent / "data" / "markets"
 FIXTURE = Path(__file__).resolve().parent / "tests" / "fixtures" / "fetched_sample.json"
 FDIC_FIXTURE = Path(__file__).resolve().parent / "tests" / "fixtures" / "fdic_sample.json"
 MARKET_FIXTURE = Path(__file__).resolve().parent / "tests" / "fixtures" / "markets_sample.json"
+CRYPTO_HISTORY = MARKETS_OUT_DIR / "_crypto_history.json"
+CRYPTO_FIXTURE = Path(__file__).resolve().parent / "tests" / "fixtures" / "coingecko_sample.json"
 
 
 def unique_specs(lenses):
@@ -152,11 +154,57 @@ def refresh_banking(dry_run):
         print(f"WARN: banking refresh failed ({exc}); keeping previous banking data", file=sys.stderr)
 
 
-def refresh_markets(dry_run):
-    """Build + write the markets (FRED) lenses. Returns an exit code (0 ok, non-zero error).
+def _btc_eth_ratio(fetched):
+    """BTC/ETH price ratio from already-fetched FRED series (no extra network call)."""
+    btc = {o["date"]: util.to_float(o["value"]) for o in fetched.get("CBBTCUSD:lin", [])}
+    eth = {o["date"]: util.to_float(o["value"]) for o in fetched.get("CBETHUSD:lin", [])}
+    out = []
+    for d in sorted(set(btc) & set(eth)):
+        if btc[d] is not None and eth[d] not in (None, 0):
+            out.append({"date": d, "value": round(btc[d] / eth[d], 4)})
+    return out
 
-    Phase 1: the two FRED-sourced lenses only. The CoinGecko crypto lens is added
-    to this function in Phase 2.
+
+def _load_crypto_history():
+    if CRYPTO_HISTORY.exists():
+        try:
+            return json.loads(CRYPTO_HISTORY.read_text(encoding="utf-8"))
+        except (ValueError, OSError):
+            pass
+    return {"rotation": [], "dominance": []}
+
+
+def _build_crypto(dry_run, fetched):
+    """Build the crypto-structure lens JSON, accumulating history. Additive — on any
+    failure, keep the prior crypto data (re-read it so the markets index stays complete)."""
+    try:
+        if dry_run:
+            fresh = json.loads(CRYPTO_FIXTURE.read_text(encoding="utf-8"))
+        else:
+            fresh = coingecko.crypto_market_structure()
+        hist = _load_crypto_history()
+        rotation = util.merge_series(hist.get("rotation"), fresh["rotation"])
+        dominance = util.merge_series(hist.get("dominance"), [fresh["dominance_point"]])
+        CRYPTO_HISTORY.parent.mkdir(parents=True, exist_ok=True)
+        CRYPTO_HISTORY.write_text(
+            json.dumps({"rotation": rotation, "dominance": dominance}, indent=2) + "\n",
+            encoding="utf-8")
+        return build.build_crypto_lens(rotation, dominance, _btc_eth_ratio(fetched))
+    except Exception as exc:  # noqa: BLE001 - never break the run on a crypto failure
+        print(f"WARN: crypto refresh failed ({exc}); keeping previous crypto data", file=sys.stderr)
+        prior = MARKETS_OUT_DIR / "crypto-structure.json"
+        if prior.exists():
+            try:
+                return json.loads(prior.read_text(encoding="utf-8"))
+            except (ValueError, OSError):
+                return None
+        return None
+
+
+def refresh_markets(dry_run):
+    """Build + write the markets lenses (two FRED lenses + the CoinGecko crypto lens).
+    Returns an exit code (0 ok, non-zero error). The crypto lens is additive — a
+    CoinGecko failure never aborts the run; the two FRED lenses still publish.
     """
     if dry_run:
         fetched = json.loads(MARKET_FIXTURE.read_text(encoding="utf-8"))
@@ -174,6 +222,10 @@ def refresh_markets(dry_run):
             print(f"SKIP: {lens.id} (a source series failed; keeping previous data)", file=sys.stderr)
 
     market_jsons = [build.build_lens(lens, fetched) for lens in ready]
+    crypto_json = _build_crypto(dry_run, fetched)
+    if crypto_json:
+        market_jsons.append(crypto_json)
+
     written = build.write_outputs(market_jsons, MARKETS_OUT_DIR)
     for path in written:
         print(f"Wrote {path}")

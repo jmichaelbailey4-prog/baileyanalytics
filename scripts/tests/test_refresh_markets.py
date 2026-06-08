@@ -29,5 +29,21 @@ class TestMarketsDryRun(unittest.TestCase):
         self.assertEqual(rc, 0)
 
 
+class TestCryptoBuild(unittest.TestCase):
+    def test_build_crypto_offline(self):
+        fresh = json.loads(refresh_lenses.CRYPTO_FIXTURE.read_text(encoding="utf-8"))
+        fetched = json.loads(refresh_lenses.MARKET_FIXTURE.read_text(encoding="utf-8"))
+        btc_eth = refresh_lenses._btc_eth_ratio(fetched)
+        lj = build.build_crypto_lens(fresh["rotation"], [fresh["dominance_point"]], btc_eth)
+        self.assertEqual(lj["id"], "crypto-structure")
+        self.assertTrue(lj["indicators"][2]["observations"])  # BTC/ETH ratio present
+
+    def test_btc_eth_ratio_from_fred(self):
+        fetched = json.loads(refresh_lenses.MARKET_FIXTURE.read_text(encoding="utf-8"))
+        ratio = refresh_lenses._btc_eth_ratio(fetched)
+        # 65000 / 3100 ≈ 20.97 on the latest shared date
+        self.assertAlmostEqual(ratio[-1]["value"], 65000.0 / 3100.0, places=2)
+
+
 if __name__ == "__main__":
     unittest.main()
