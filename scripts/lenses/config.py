@@ -24,6 +24,7 @@ class Indicator:
     units_transform: Optional[str] = None
     value_format: str = "decimal"  # "decimal" (2dp) | "thousands" (whole, comma-separated)
     derive: Optional[Callable] = None  # optional post-fetch transform of raw observations
+    source: str = "fred"  # "fred" (fetched via fred.py) | "stooq" (injected by refresh_markets)
 
     @property
     def fetch_key(self):
@@ -632,10 +633,10 @@ MARKET_SCOREBOARD = Lens(
         ),
         Indicator(
             id="gold", title="Gold", short="Gold", unit="", color="#FBBF24",
-            series_id="GOLDAMGBD228NLBM", limit=2600, rule=narrative.market_level("Gold"),
-            value_format="thousands",
-            context=("The London afternoon gold fixing (dollars per troy ounce) — the classic "
-                     "safe-haven asset investors flee to in times of stress."),
+            series_id="XAUUSD", limit=2600, rule=narrative.market_level("Gold"),
+            value_format="thousands", source="stooq",
+            context=("Spot gold (dollars per troy ounce) — the classic safe-haven asset "
+                     "investors flee to in times of stress. Sourced from Stooq."),
         ),
         Indicator(
             id="dollar", title="U.S. Dollar · Broad Index", short="Dollar", unit="", color="#38BDF8",

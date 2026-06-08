@@ -53,7 +53,7 @@ Framing: *"How is each major market doing?"* One indicator per asset class. Uses
 |---|---|---|---|
 | S&P 500 | `SP500` | Equities | thousands (whole, comma) |
 | WTI crude oil | `DCOILWTICO` | Energy | decimal |
-| Gold | `GOLDAMGBD228NLBM` | Safe-haven commodity | thousands |
+| Gold | `XAUUSD` via **Stooq** (FRED dropped its LBMA gold series — returns HTTP 400) | Safe-haven commodity | thousands |
 | Trade-weighted dollar | `DTWEXBGS` | Currency | decimal |
 | Bitcoin | `CBBTCUSD` | Crypto (large cap) | thousands |
 | Ethereum | `CBETHUSD` | Crypto (large cap) | thousands |

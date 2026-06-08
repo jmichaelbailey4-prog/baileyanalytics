@@ -2,7 +2,7 @@
   "id": "market-scoreboard",
   "title": "Asset-Class Scoreboard",
   "accent": "#22D3EE",
-  "last_updated": "2026-06-08T14:17:15Z",
+  "last_updated": "2026-06-08T15:32:48Z",
   "status": "neutral",
   "headline_read": "How the major asset classes are moving right now.",
   "recessions": [],
@@ -65,7 +65,7 @@
       "short": "Gold",
       "unit": "",
       "color": "#FBBF24",
-      "series_id": "GOLDAMGBD228NLBM",
+      "series_id": "XAUUSD",
       "observations": [
         {
           "date": "2025-06-02",
@@ -80,7 +80,7 @@
         "date": "2026-06-02",
         "value": "2710.00"
       },
-      "context": "The London afternoon gold fixing (dollars per troy ounce) \u2014 the classic safe-haven asset investors flee to in times of stress.",
+      "context": "Spot gold (dollars per troy ounce) \u2014 the classic safe-haven asset investors flee to in times of stress. Sourced from Stooq.",
       "read": "Gold is up 15% over the past year, now 2,710.00.",
       "signal_status": "up",
       "value_format": "thousands"

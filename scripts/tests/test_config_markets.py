@@ -20,7 +20,7 @@ class TestMarketConfig(unittest.TestCase):
         board = next(l for l in config.MARKET_FRED_LENSES if l.id == "market-scoreboard")
         series = {i.series_id for i in board.indicators}
         self.assertEqual(series,
-            {"SP500", "DCOILWTICO", "GOLDAMGBD228NLBM", "DTWEXBGS", "CBBTCUSD", "CBETHUSD"})
+            {"SP500", "DCOILWTICO", "XAUUSD", "DTWEXBGS", "CBBTCUSD", "CBETHUSD"})
 
     def test_scoreboard_has_no_treasury_series(self):
         # Rates are owned by Cost of Money; the scoreboard must not duplicate them.
@@ -28,6 +28,17 @@ class TestMarketConfig(unittest.TestCase):
         series = {i.series_id for i in board.indicators}
         self.assertNotIn("DGS10", series)
         self.assertNotIn("DGS2", series)
+
+    def test_gold_is_stooq_sourced(self):
+        board = next(l for l in config.MARKET_FRED_LENSES if l.id == "market-scoreboard")
+        gold = next(i for i in board.indicators if i.id == "gold")
+        self.assertEqual(gold.source, "stooq")
+        self.assertEqual(gold.series_id, "XAUUSD")
+
+    def test_other_scoreboard_assets_are_fred(self):
+        board = next(l for l in config.MARKET_FRED_LENSES if l.id == "market-scoreboard")
+        non_gold = [i for i in board.indicators if i.id != "gold"]
+        self.assertTrue(all(i.source == "fred" for i in non_gold))
 
     def test_markets_category_registered(self):
         cat = next(c for c in config.CATEGORIES if c["id"] == "markets")

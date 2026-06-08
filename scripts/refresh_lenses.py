@@ -15,7 +15,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))  # make `lenses` importable
 from datetime import date
 
-from lenses import build, coingecko, config, fdic, fred, util
+from lenses import build, coingecko, config, fdic, fred, stooq, util
 
 OUT_DIR = Path(__file__).resolve().parent.parent / "data" / "lenses"
 BANK_OUT_DIR = Path(__file__).resolve().parent.parent / "data" / "banking"
@@ -32,6 +32,8 @@ def unique_specs(lenses):
     specs = {}
     for lens in lenses:
         for ind in lens.indicators:
+            if getattr(ind, "source", "fred") != "fred":
+                continue  # non-FRED indicators (e.g. Stooq gold) are injected separately
             cur = specs.get(ind.fetch_key)
             limit = ind.limit if cur is None else max(cur[2], ind.limit)
             specs[ind.fetch_key] = (ind.series_id, ind.units_transform, limit)
@@ -201,10 +203,41 @@ def _build_crypto(dry_run, fetched):
         return None
 
 
+def _prior_scoreboard_gold():
+    """Prior gold observations from the existing scoreboard JSON (fallback if Stooq fails)."""
+    path = MARKETS_OUT_DIR / "market-scoreboard.json"
+    if path.exists():
+        try:
+            data = json.loads(path.read_text(encoding="utf-8"))
+            for ind in data.get("indicators", []):
+                if ind.get("id") == "gold":
+                    return ind.get("observations", [])
+        except (ValueError, OSError):
+            pass
+    return []
+
+
+def _inject_gold(fetched, dry_run):
+    """Fetch gold from Stooq and inject it under its scoreboard fetch_key (FRED dropped
+    its gold series). Additive — on failure, fall back to prior data so the lens still
+    builds. In dry-run the markets fixture already carries XAUUSD:lin."""
+    if dry_run:
+        return
+    key = "XAUUSD:lin"
+    try:
+        rows = stooq.gold_history()
+        if not rows:
+            raise ValueError("empty gold series")
+        fetched[key] = rows
+    except Exception as exc:  # noqa: BLE001 - never break the run on a gold failure
+        print(f"WARN: gold (Stooq) fetch failed ({exc}); keeping previous gold data", file=sys.stderr)
+        fetched[key] = _prior_scoreboard_gold()
+
+
 def refresh_markets(dry_run):
-    """Build + write the markets lenses (two FRED lenses + the CoinGecko crypto lens).
-    Returns an exit code (0 ok, non-zero error). The crypto lens is additive — a
-    CoinGecko failure never aborts the run; the two FRED lenses still publish.
+    """Build + write the markets lenses (FRED lenses + Stooq gold + the CoinGecko crypto
+    lens). Returns an exit code (0 ok, non-zero error). The gold and crypto pieces are
+    additive — a Stooq/CoinGecko failure never aborts the run; the FRED lenses still publish.
     """
     if dry_run:
         fetched = json.loads(MARKET_FIXTURE.read_text(encoding="utf-8"))
@@ -215,6 +248,8 @@ def refresh_markets(dry_run):
             print("FRED_API_KEY not set", file=sys.stderr)
             return 1
         fetched, failed = fetch_all(config.MARKET_FRED_LENSES, api_key)
+
+    _inject_gold(fetched, dry_run)
 
     ready = [lens for lens in config.MARKET_FRED_LENSES if lens_ready(lens, failed)]
     for lens in config.MARKET_FRED_LENSES:
