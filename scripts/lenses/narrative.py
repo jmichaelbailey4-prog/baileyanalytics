@@ -352,6 +352,105 @@ def rule_level_trend(obs):
     return ("Little changed from a year ago.", "ok")
 
 
+# --- Markets & Financial Conditions rules ---
+
+def rule_vix(obs):
+    """CBOE VIX level. <20 calm, 20-30 nervous, >=30 fearful."""
+    if not obs:
+        return _NO_DATA
+    v = obs[-1][1]
+    if v < 20:
+        return (f"The VIX is at {v:.1f} — markets are calm.", "ok")
+    if v < 30:
+        return (f"The VIX is at {v:.1f} — some nervousness, but not panic.", "watch")
+    return (f"The VIX is at {v:.1f} — markets are fearful.", "elevated")
+
+
+def credit_spread(label, calm, stressed):
+    """Factory: a credit-spread rule with its own calm/stressed thresholds (%)."""
+    def _rule(obs):
+        if not obs:
+            return _NO_DATA
+        v = obs[-1][1]
+        if v < calm:
+            return (f"The {label} spread is {v:.2f}% — tight, signaling calm credit conditions.", "ok")
+        if v < stressed:
+            return (f"The {label} spread is {v:.2f}% — widening off its lows.", "watch")
+        return (f"The {label} spread is {v:.2f}% — wide, a sign of credit stress.", "elevated")
+    return _rule
+
+
+def rule_financial_conditions(obs):
+    """Chicago Fed NFCI. <=0 looser than average, 0-0.5 a touch tight, >=0.5 tight."""
+    if not obs:
+        return _NO_DATA
+    v = obs[-1][1]
+    if v <= 0:
+        return (f"The NFCI is {v:.2f} — financial conditions are looser than average.", "ok")
+    if v < 0.5:
+        return (f"The NFCI is {v:.2f} — conditions a touch tighter than average.", "watch")
+    return (f"The NFCI is {v:.2f} — financial conditions are tight.", "elevated")
+
+
+def market_level(label, up=2.0, down=-2.0):
+    """Factory: a momentum rule for a price/level series. Reports the trailing
+    ~12-month % change and returns status 'up' / 'down' / 'flat' (momentum, not
+    severity — the lens-level badge for the scoreboard is neutral)."""
+    def _rule(obs):
+        if not obs:
+            return _NO_DATA
+        v = obs[-1][1]
+        prior = _value_year_ago(obs)
+        if prior is None or prior == 0:
+            return (f"{label} is at {v:,.2f}.", "flat")
+        pct = (v - prior) / abs(prior) * 100
+        if pct >= up:
+            return (f"{label} is up {pct:.0f}% over the past year, now {v:,.2f}.", "up")
+        if pct <= down:
+            return (f"{label} is down {abs(pct):.0f}% over the past year, now {v:,.2f}.", "down")
+        return (f"{label} is little changed over the past year, now {v:,.2f}.", "flat")
+    return _rule
+
+
+def rule_crypto_rotation(obs):
+    """Large-vs-small rotation index (base 100). Compares the latest value to ~90
+    observations ago to read risk-on (alts outperforming) vs risk-off (flight to majors)."""
+    if not obs:
+        return _NO_DATA
+    v = obs[-1][1]
+    base = obs[max(0, len(obs) - 90)][1] or v
+    if v >= base * 1.03:
+        return ("Small- and mid-cap coins are outperforming Bitcoin and Ether — a risk-on "
+                "rotation into alts.", "info")
+    if v <= base * 0.97:
+        return ("Capital is rotating back toward Bitcoin and Ether — a risk-off tilt within "
+                "crypto.", "info")
+    return ("Large and small caps are moving roughly in step — no clear rotation.", "info")
+
+
+def rule_btc_dominance(obs):
+    """Bitcoin's share of total crypto market value (%)."""
+    if not obs:
+        return _NO_DATA
+    v = obs[-1][1]
+    return (f"Bitcoin is {v:.0f}% of total crypto market value.", "info")
+
+
+def rule_btc_eth_relative(obs):
+    """BTC/ETH price ratio — which of the two majors is leading over the past year."""
+    if not obs:
+        return _NO_DATA
+    v = obs[-1][1]
+    prior = _value_year_ago(obs)
+    if prior is None or prior == 0:
+        return (f"The Bitcoin/Ether ratio is {v:.2f}.", "info")
+    if v >= prior * 1.05:
+        return (f"Bitcoin has gained on Ether over the past year (ratio {v:.2f}).", "info")
+    if v <= prior * 0.95:
+        return (f"Ether has gained on Bitcoin over the past year (ratio {v:.2f}).", "info")
+    return (f"Bitcoin and Ether have held their relative value (ratio {v:.2f}).", "info")
+
+
 HEADLINES = {
     "recession-watch": {
         "alert": "Recession signals are flashing — multiple indicators have tripped.",
@@ -409,11 +508,33 @@ HEADLINES = {
         "ok": "Funding is stable and concentrations are contained.",
         "unknown": "Some concentration/funding data is temporarily unavailable.",
     },
+    "market-risk-sentiment": {
+        "alert": "Markets are pricing acute stress.",
+        "elevated": "Risk is elevated — volatility and credit spreads are climbing.",
+        "watch": "A few cracks are showing — sentiment is no longer all calm.",
+        "ok": "Markets are calm — volatility and credit stress are low.",
+        "unknown": "Some risk indicators are temporarily unavailable.",
+    },
+    "market-scoreboard": {
+        "neutral": "How the major asset classes are moving right now.",
+    },
+    "crypto-structure": {
+        "neutral": "How capital is rotating across the crypto market.",
+    },
 }
 
 
+NEUTRAL_LENSES = {"market-scoreboard", "crypto-structure"}
+
+
 def synthesize(lens_id, statuses):
-    """Combine indicator statuses into (headline_read, overall_status)."""
+    """Combine indicator statuses into (headline_read, overall_status).
+
+    Severity lenses aggregate to their worst status. NEUTRAL_LENSES (the markets
+    scoreboard and crypto structure) carry no good/bad verdict, so they always
+    report a fixed neutral headline + 'neutral' badge regardless of indicators."""
+    if lens_id in NEUTRAL_LENSES:
+        return HEADLINES.get(lens_id, {}).get("neutral", ""), "neutral"
     overall = util.status_max(statuses)
     headline = HEADLINES.get(lens_id, {}).get(overall, "")
     return headline, overall
