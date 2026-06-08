@@ -25,7 +25,19 @@ class TestMarketsDryRun(unittest.TestCase):
         self.assertTrue(statuses <= {"up", "down", "flat"})
 
     def test_markets_flag_runs_dry(self):
-        rc = refresh_lenses.main(["--markets", "--dry-run"])
+        # Redirect output to a temp dir so the dry-run never clobbers tracked
+        # data/markets/ files (both the lens dir and the crypto-history file).
+        import tempfile
+        with tempfile.TemporaryDirectory() as td:
+            tmp = pathlib.Path(td)
+            orig_dir, orig_hist = refresh_lenses.MARKETS_OUT_DIR, refresh_lenses.CRYPTO_HISTORY
+            refresh_lenses.MARKETS_OUT_DIR = tmp
+            refresh_lenses.CRYPTO_HISTORY = tmp / "_crypto_history.json"
+            try:
+                rc = refresh_lenses.main(["--markets", "--dry-run"])
+            finally:
+                refresh_lenses.MARKETS_OUT_DIR = orig_dir
+                refresh_lenses.CRYPTO_HISTORY = orig_hist
         self.assertEqual(rc, 0)
 
 
