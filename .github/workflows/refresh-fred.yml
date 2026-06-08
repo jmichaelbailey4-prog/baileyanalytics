@@ -26,6 +26,11 @@ jobs:
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
         run: python scripts/refresh_lenses.py --economic
 
+      - name: Fetch latest markets data (FRED + CoinGecko)
+        env:
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+        run: python scripts/refresh_lenses.py --markets
+
       - name: Commit and push if data changed
         run: |
           git config user.name "github-actions[bot]"
