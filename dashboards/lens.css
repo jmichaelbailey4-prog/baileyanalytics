@@ -48,3 +48,25 @@ main{max-width:48rem;margin:0 auto}
 .status-msg{text-align:center;color:var(--dim);font-size:.9rem;padding:4rem 0}
 .status-msg.error{color:var(--red)}
 @media(max-width:640px){body{padding:5rem 1rem 3rem}nav.top-nav{gap:1rem}}
+
+/* Banking tier & ranking tables (category #2). Scoped so the bare status
+   classes used elsewhere don't bleed background colors into table cells. */
+.tbl-sec{margin-top:1.75rem}
+.tbl-lab{font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:var(--blue);font-weight:600}
+.tbl-sub{font-size:.8rem;color:var(--muted);margin:.25rem 0 .65rem}
+.lens-table{width:100%;border-collapse:collapse;font-size:.85rem}
+.lens-table th{text-align:left;color:var(--dim);font-size:.65rem;text-transform:uppercase;letter-spacing:.07em;font-weight:600;padding:.5rem .55rem;border-bottom:1px solid var(--border)}
+.lens-table td{padding:.6rem .55rem;border-bottom:1px solid #131c2e;color:#E2E8F0;background:transparent}
+.lens-table td.num,.lens-table th.num{text-align:right;font-variant-numeric:tabular-nums}
+.lens-table td.ok{color:var(--green)}
+.lens-table td.watch{color:var(--amber)}
+.lens-table td.elevated{color:#FB923C}
+.lens-table td.alert{color:var(--red)}
+.lens-table .bankname{color:var(--text);font-weight:500}
+.lens-table .bankloc{color:var(--dim);font-size:.72rem}
+.tpill{display:inline-block;font-size:.6rem;padding:.1rem .5rem;border-radius:999px;border:1px solid currentColor;text-transform:uppercase;letter-spacing:.05em;background:transparent}
+.tpill.ok{color:var(--green)}
+.tpill.watch{color:var(--amber)}
+.tpill.elevated{color:#FB923C}
+.tpill.alert{color:var(--red)}
+.tpill.unknown{color:var(--dim)}

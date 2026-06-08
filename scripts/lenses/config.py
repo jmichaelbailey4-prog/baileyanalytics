@@ -337,3 +337,211 @@ COST_OF_LIVING = Lens(
 )
 
 LENSES = [RECESSION_WATCH, COST_OF_MONEY, JOB_MARKET, COST_OF_LIVING]
+
+
+# ---------------------------------------------------------------------------
+# Banking System Health (category #2) — sourced from the FDIC BankFind /financials
+# endpoint (per-bank, quarterly). Design decisions verified live 2026-06-07:
+#   * National series = quarterly aggregation across all banks (one fetch/quarter).
+#     Charts, tiers, and spotlights all come from the SAME endpoint, so figures are
+#     consistent and match the FDIC Quarterly Banking Profile.
+#   * Prefer FDIC's per-bank RATIO fields (NCLNLSR, NTLNLSR, ROA, NIMY, LNLSDEPR,
+#     RBCRWAJ) which are already annualized where relevant — loan/asset-weighted,
+#     this gives the correct national rate with no YTD de-cumulation.
+#   * Use sum-then-ratio only for reliable dollar fields (EQ/ASSET, DEPUNINS/DEP,
+#     CRE/EQ). (NALTOT is null in /financials — never use it.)
+# Each metric is a dict in one of two shapes, shared by indicators and tiers:
+#   {"ratio_field": F, "weight_field": W}            -> weighted average of a ratio
+#   {"numerator": [...], "denominator": [...], "scale": S}  -> sum-then-ratio
+# ---------------------------------------------------------------------------
+
+TIERS = [
+    ("Community (<$10B)", 0, 10_000_000),
+    ("Regional ($10B–$250B)", 10_000_000, 250_000_000),
+    ("Large (>$250B)", 250_000_000, None),
+]
+
+
+@dataclass(frozen=True)
+class BankingIndicator:
+    id: str
+    title: str
+    short: str
+    unit: str
+    color: str
+    metric: dict          # {"ratio_field","weight_field"} or {"numerator","denominator","scale"}
+    rule: Callable
+    context: str
+    value_format: str = "decimal"
+    source: str = "fdic"
+
+
+@dataclass(frozen=True)
+class BankingLens:
+    id: str
+    title: str
+    accent: str
+    indicators: list = field(default_factory=list)
+    tier_metrics: list = field(default_factory=list)
+    rankings: list = field(default_factory=list)
+
+
+BANK_ASSET_QUALITY = BankingLens(
+    id="bank-asset-quality",
+    title="Asset Quality",
+    accent="#FBBF24",
+    indicators=[
+        BankingIndicator(
+            id="noncurrent", title="Noncurrent Loan Rate · loans 90+ days past due",
+            short="Noncurrent", unit="%", color="#FBBF24",
+            metric={"ratio_field": "NCLNLSR", "weight_field": "LNLSNET"},
+            rule=narrative.rule_noncurrent,
+            context=("The share of all bank loans that are 90+ days late or no longer "
+                     "accruing interest — the broadest gauge of credit going bad."),
+        ),
+        BankingIndicator(
+            id="charge-offs", title="Net Charge-Off Rate · annualized", short="Charge-offs",
+            unit="%", color="#FB923C",
+            metric={"ratio_field": "NTLNLSR", "weight_field": "LNLSNET"},
+            rule=narrative.rule_charge_offs,
+            context=("Loans banks have given up on and written off as losses, as a share "
+                     "of total loans — money that's gone, not just late."),
+        ),
+    ],
+    tier_metrics=[
+        {"key": "noncurrent", "label": "Noncurrent", "ratio_field": "NCLNLSR",
+         "weight_field": "LNLSNET", "rule": narrative.rule_noncurrent},
+        {"key": "charge-offs", "label": "Charge-offs", "ratio_field": "NTLNLSR",
+         "weight_field": "LNLSNET", "rule": narrative.rule_charge_offs},
+    ],
+    rankings=[
+        {"title": "Highest commercial-real-estate delinquency",
+         "subtitle": "banks over $1B in assets with a material CRE book", "metric_field": "NCRER",
+         "asset_min": 1_000_000, "limit": 10, "value_label": "CRE delinq.",
+         "unit": "%", "rule": narrative.rule_noncurrent,
+         # Materiality: require >= $250M of CRE loans so tiny books can't post an
+         # exploded ratio; cap at 20% as a backstop against idiosyncratic distress.
+         "min_base_fields": ["LNRENRES", "LNREMULT"], "min_base": 250_000, "max_value": 20.0},
+    ],
+)
+
+BANK_PROFITABILITY = BankingLens(
+    id="bank-profitability",
+    title="Profitability",
+    accent="#34D399",
+    indicators=[
+        BankingIndicator(
+            id="net-margin", title="Net Interest Margin · annualized", short="Margin",
+            unit="%", color="#34D399",
+            metric={"ratio_field": "NIMY", "weight_field": "ASSET"},
+            rule=narrative.rule_net_margin,
+            context=("The spread banks earn between what they make on loans and pay on "
+                     "deposits, relative to assets — the core engine of bank earnings."),
+        ),
+        BankingIndicator(
+            id="roa", title="Return on Assets · annualized", short="ROA",
+            unit="%", color="#38BDF8",
+            metric={"ratio_field": "ROA", "weight_field": "ASSET"},
+            rule=narrative.rule_roa,
+            context=("Industry profit measured against total assets — the standard "
+                     "yardstick for how efficiently banks turn assets into earnings."),
+        ),
+    ],
+    tier_metrics=[
+        {"key": "roa", "label": "Return on assets", "ratio_field": "ROA",
+         "weight_field": "ASSET", "rule": narrative.rule_roa},
+    ],
+    rankings=[],
+)
+
+BANK_CAPITAL = BankingLens(
+    id="bank-capital-solvency",
+    title="Capital & Solvency",
+    accent="#38BDF8",
+    indicators=[
+        BankingIndicator(
+            id="risk-based-capital", title="Total Risk-Based Capital Ratio", short="Risk-based capital",
+            unit="%", color="#38BDF8",
+            metric={"ratio_field": "RBCRWAJ", "weight_field": "ASSET"},
+            rule=narrative.rule_risk_based_capital,
+            context=("Capital measured against risk-weighted assets — the regulators' "
+                     "headline solvency gauge. Banks are 'well-capitalized' above 10%."),
+        ),
+        BankingIndicator(
+            id="equity-assets", title="Equity-to-Assets", short="Equity/assets",
+            unit="%", color="#34D399",
+            metric={"numerator": ["EQ"], "denominator": ["ASSET"], "scale": 100.0},
+            rule=narrative.rule_capital_ratio,
+            context=("Shareholder equity as a share of total assets — a simpler, "
+                     "unweighted view of the cushion between losses and insolvency."),
+        ),
+    ],
+    tier_metrics=[
+        {"key": "risk-based", "label": "Risk-based cap.", "ratio_field": "RBCRWAJ",
+         "weight_field": "ASSET", "rule": narrative.rule_risk_based_capital},
+        {"key": "equity", "label": "Equity/assets", "numerator": ["EQ"],
+         "denominator": ["ASSET"], "scale": 100.0, "rule": narrative.rule_capital_ratio},
+    ],
+    rankings=[],
+)
+
+BANK_CONCENTRATIONS = BankingLens(
+    id="bank-concentrations-funding",
+    title="Concentrations & Funding",
+    accent="#A78BFA",
+    indicators=[
+        BankingIndicator(
+            id="uninsured", title="Uninsured-Deposit Share", short="Uninsured dep.",
+            unit="%", color="#FBBF24",
+            metric={"numerator": ["DEPUNINS"], "denominator": ["DEP"], "scale": 100.0},
+            rule=narrative.rule_uninsured_share,
+            context=("The share of deposits above the $250k FDIC insurance cap — the "
+                     "money most likely to flee in a panic, as it did at Silicon Valley Bank."),
+        ),
+        BankingIndicator(
+            id="loans-deposits", title="Loans-to-Deposits", short="Loans/dep.",
+            unit="%", color="#34D399",
+            metric={"ratio_field": "LNLSDEPR", "weight_field": "DEP"},
+            rule=narrative.rule_loans_deposits,
+            context=("How much of deposits banks have lent out — a gauge of how "
+                     "stretched the system's funding is."),
+        ),
+        BankingIndicator(
+            id="cre-concentration", title="CRE Concentration · % of capital",
+            short="CRE/capital", unit="%", color="#FB923C",
+            metric={"numerator": ["LNRENRES", "LNREMULT"], "denominator": ["EQ"], "scale": 100.0},
+            rule=narrative.rule_cre_concentration,
+            context=("Commercial real-estate loans measured against capital. Above "
+                     "~300% is the level bank supervisors flag as a concentration risk."),
+        ),
+    ],
+    tier_metrics=[
+        {"key": "uninsured", "label": "Uninsured dep.", "numerator": ["DEPUNINS"],
+         "denominator": ["DEP"], "scale": 100.0, "rule": narrative.rule_uninsured_share},
+        {"key": "loans-dep", "label": "Loans/dep.", "ratio_field": "LNLSDEPR",
+         "weight_field": "DEP", "rule": narrative.rule_loans_deposits},
+    ],
+    rankings=[
+        {"title": "Most stretched funding · loans-to-deposits",
+         "subtitle": "banks over $1B in assets", "metric_field": "LNLSDEPR",
+         "asset_min": 1_000_000, "limit": 10, "value_label": "Loans/dep.",
+         "unit": "%", "rule": narrative.rule_loans_deposits,
+         # Cap at 150%: above that is typically a non-deposit-funded niche/industrial
+         # bank, not "stretched funding" in the systemic sense this lens is about.
+         "max_value": 150.0},
+    ],
+)
+
+BANKING_LENSES = [BANK_ASSET_QUALITY, BANK_PROFITABILITY, BANK_CAPITAL, BANK_CONCENTRATIONS]
+
+CATEGORIES = [
+    {"id": "economic", "title": "Economic Lenses", "lenses": LENSES, "out": "lenses",
+     "back": "Economic Lenses",
+     "source_label": "Federal Reserve Economic Data (FRED), St. Louis Fed",
+     "disclaimer": ""},
+    {"id": "banking", "title": "Banking System Health", "lenses": BANKING_LENSES,
+     "out": "banking", "back": "Banking System Health",
+     "source_label": "FDIC, quarterly bank Call Reports",
+     "disclaimer": ("Public regulatory data. Not investment advice and not a judgment "
+                    "of any institution's solvency.")},
+]

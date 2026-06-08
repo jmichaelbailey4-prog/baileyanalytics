@@ -116,7 +116,51 @@
     return el;
   }
 
-  function render(root, lens) {
+  // Per-category chrome. Economic is the default so existing pages — which call
+  // renderLens(url) with no options — render exactly as before.
+  const DEFAULT_OPTS = {
+    back: "Economic Lenses",
+    href: "/dashboards/",
+    foot: 'Data: <a href="https://fred.stlouisfed.org/" target="_blank" rel="noopener">Federal Reserve Economic Data (FRED)</a>, ' +
+      'St. Louis Fed. Refreshed daily. The "read" is generated from the latest values by a fixed rule set.',
+  };
+
+  function tiersHtml(tiers) {
+    if (!tiers) return "";
+    const head = `<th>Bank tier</th>` +
+      tiers.columns.map(c => `<th class="num">${esc(c.label)}</th>`).join("");
+    const body = tiers.rows.map(r =>
+      `<tr><td>${esc(r.tier)}</td>` +
+      r.values.map(v => `<td class="num ${esc(v.status || "")}">${esc(v.value)}</td>`).join("") +
+      `</tr>`).join("");
+    return `<section class="tbl-sec">
+      <div class="tbl-lab">${esc(tiers.label)}</div>
+      <div class="tbl-sub">${esc(tiers.subtitle || "")}</div>
+      <table class="lens-table"><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table>
+    </section>`;
+  }
+
+  function rankingsHtml(rankings) {
+    return (rankings || []).map(rk => {
+      const body = rk.rows.map(row =>
+        `<tr>
+          <td><span class="bankname">${esc(row.name)}</span><br><span class="bankloc">${esc(row.location)}</span></td>
+          <td class="num ${esc(row.status || "")}">${esc(row.value)}</td>
+          <td class="num">${esc(row.asset)}</td>
+          <td><span class="tpill ${esc(row.status || "")}">${esc(row.status || "")}</span></td>
+        </tr>`).join("");
+      return `<section class="tbl-sec">
+        <div class="tbl-lab">Bank spotlight — ranked</div>
+        <div class="tbl-sub">${esc(rk.subtitle || rk.title)}</div>
+        <table class="lens-table"><thead><tr>
+          <th>Bank</th><th class="num">${esc(rk.value_label)}</th><th class="num">Assets</th><th>Signal</th>
+        </tr></thead><tbody>${body}</tbody></table>
+      </section>`;
+    }).join("");
+  }
+
+  function render(root, lens, opts) {
+    opts = Object.assign({}, DEFAULT_OPTS, opts || {});
     const scoreboard = lens.indicators.map(i => `
       <div class="signal">
         <div class="k">${esc(i.short)}</div>
@@ -124,7 +168,7 @@
         <div class="s ${i.signal_status}">${esc(i.signal_status)}</div>
       </div>`).join("");
     root.innerHTML = `
-      <a class="back" href="/dashboards/">← Economic Lenses</a>
+      <a class="back" href="${esc(opts.href)}">← ${esc(opts.back)}</a>
       <div class="eyebrow" style="color:${lens.accent}">${esc(lens.title)}</div>
       <div class="read-hero">${esc(lens.headline_read)}</div>
       <div class="badgerow">
@@ -133,20 +177,19 @@
       </div>
       <div class="scoreboard">${scoreboard}</div>
       <div class="indicators"></div>
-      <div class="foot">
-        Data: <a href="https://fred.stlouisfed.org/" target="_blank" rel="noopener">Federal Reserve Economic Data (FRED)</a>,
-        St. Louis Fed. Refreshed daily. The "read" is generated from the latest values by a fixed rule set.
-      </div>`;
+      ${tiersHtml(lens.tiers)}
+      ${rankingsHtml(lens.rankings)}
+      <div class="foot">${opts.foot}</div>`;
     const holder = root.querySelector(".indicators");
     lens.indicators.forEach(i => holder.appendChild(indicatorCard(i, lens.recessions || [])));
   }
 
-  window.renderLens = async function (jsonUrl) {
+  window.renderLens = async function (jsonUrl, opts) {
     const root = document.getElementById("lens-root");
     try {
       const res = await fetch(jsonUrl, { cache: "no-cache" });
       if (!res.ok) throw new Error("HTTP " + res.status);
-      render(root, await res.json());
+      render(root, await res.json(), opts);
     } catch (err) {
       root.innerHTML = `<div class="status-msg error">Data is still being refreshed. Check back shortly.</div>`;
       console.error(err);

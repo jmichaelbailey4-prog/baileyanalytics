@@ -220,6 +220,138 @@ def rule_real_wages(obs):
     return (f"Up {v:.1f}% from a year ago — paychecks are outpacing inflation.", "ok")
 
 
+# --- Banking System Health rules (FDIC Call Report metrics) ---
+
+def rule_noncurrent(obs):
+    """Noncurrent loan rate (% of loans 90+ days late). <1 ok, 1-2 watch, >=2 elevated."""
+    if not obs:
+        return _NO_DATA
+    v = obs[-1][1]
+    if v < 1.0:
+        return (f"Just {v:.2f}% of loans are 90+ days past due — low by historical standards.", "ok")
+    if v < 2.0:
+        return (f"Noncurrent loans are at {v:.2f}%, creeping up off recent lows.", "watch")
+    return (f"Noncurrent loans have climbed to {v:.2f}% — elevated and worth watching.", "elevated")
+
+
+def rule_charge_offs(obs):
+    """Net charge-off rate (% of loans). <0.6 ok, 0.6-1.2 watch, >=1.2 elevated."""
+    if not obs:
+        return _NO_DATA
+    v = obs[-1][1]
+    if v < 0.6:
+        return (f"Banks are writing off {v:.2f}% of loans as losses — a benign level.", "ok")
+    if v < 1.2:
+        return (f"Loan losses are running at {v:.2f}%, above the calm-period norm.", "watch")
+    return (f"Loan losses have reached {v:.2f}% — a meaningful drag on earnings.", "elevated")
+
+
+def rule_coverage(obs):
+    """Allowance coverage (allowance as % of noncurrent loans). Higher = safer."""
+    if not obs:
+        return _NO_DATA
+    v = obs[-1][1]
+    if v >= 150:
+        return (f"Reserves cover {v:.0f}% of problem loans — a comfortable cushion.", "ok")
+    if v >= 100:
+        return (f"Reserves cover {v:.0f}% of problem loans — adequate but not generous.", "watch")
+    return (f"Reserves cover only {v:.0f}% of problem loans — a thin cushion.", "elevated")
+
+
+def rule_cre_concentration(obs):
+    """CRE loans as % of equity capital. >300 is the interagency 'concentration' flag."""
+    if not obs:
+        return _NO_DATA
+    v = obs[-1][1]
+    if v >= 300:
+        return (f"Commercial real estate equals {v:.0f}% of capital — above the supervisory concentration flag.", "elevated")
+    if v >= 200:
+        return (f"Commercial real estate is {v:.0f}% of capital — a notable concentration.", "watch")
+    return (f"Commercial real estate is {v:.0f}% of capital — a manageable share.", "ok")
+
+
+def rule_uninsured_share(obs):
+    """Uninsured deposits as % of total deposits. Higher = more flight-prone."""
+    if not obs:
+        return _NO_DATA
+    v = obs[-1][1]
+    if v >= 40:
+        return (f"{v:.1f}% of deposits sit above the FDIC insurance cap — flight-prone if confidence cracks.", "watch")
+    return (f"{v:.1f}% of deposits are uninsured — a moderate, manageable share.", "ok")
+
+
+def rule_capital_ratio(obs):
+    """Equity-to-assets (%). Banks historically run ~9-11%. >=9 ok, 7.5-9 watch, <7.5 thin."""
+    if not obs:
+        return _NO_DATA
+    v = obs[-1][1]
+    if v < 7.5:
+        return (f"Equity is {v:.1f}% of assets — a thin capital cushion.", "elevated")
+    if v < 9:
+        return (f"Equity is {v:.1f}% of assets — adequate, but on the lighter side.", "watch")
+    return (f"Equity is {v:.1f}% of assets — a healthy capital cushion.", "ok")
+
+
+def rule_risk_based_capital(obs):
+    """Total risk-based capital ratio (%). Regulators: >=10 well-capitalized, 8-10 adequate, <8 thin."""
+    if not obs:
+        return _NO_DATA
+    v = obs[-1][1]
+    if v >= 10:
+        return (f"The total risk-based capital ratio is {v:.1f}% — comfortably 'well-capitalized'.", "ok")
+    if v >= 8:
+        return (f"Risk-based capital is {v:.1f}% — adequate, but below the well-capitalized line.", "watch")
+    return (f"Risk-based capital is {v:.1f}% — below regulatory minimums.", "elevated")
+
+
+def rule_net_margin(obs):
+    """Net interest income as % of assets (NIM proxy). Higher = healthier earnings."""
+    if not obs:
+        return _NO_DATA
+    v = obs[-1][1]
+    if v < 2.5:
+        return (f"Net interest margin is {v:.2f}% — compressed, squeezing bank earnings.", "watch")
+    return (f"Net interest margin is {v:.2f}% — a healthy spread on lending.", "ok")
+
+
+def rule_roa(obs):
+    """Return on assets (%). >=1.0 ok, 0.5-1.0 watch, <0.5 elevated."""
+    if not obs:
+        return _NO_DATA
+    v = obs[-1][1]
+    if v >= 1.0:
+        return (f"Banks earned {v:.2f}% on their assets — solid profitability.", "ok")
+    if v >= 0.5:
+        return (f"Return on assets is {v:.2f}% — subdued profitability.", "watch")
+    return (f"Return on assets is just {v:.2f}% — earnings are weak.", "elevated")
+
+
+def rule_loans_deposits(obs):
+    """Loans as % of deposits. >=90 stretched funding, else comfortable."""
+    if not obs:
+        return _NO_DATA
+    v = obs[-1][1]
+    if v >= 90:
+        return (f"Banks have lent out {v:.0f}% of deposits — funding is stretched.", "watch")
+    return (f"Banks have lent out {v:.0f}% of deposits — comfortable funding headroom.", "ok")
+
+
+def rule_level_trend(obs):
+    """Generic level metric ($000s) read as a year-over-year direction. Always 'ok' status."""
+    if not obs:
+        return _NO_DATA
+    v = obs[-1][1]
+    prior = _value_year_ago(obs)
+    if prior is None or prior == 0:
+        return (f"Latest reading: {v:,.0f}.", "ok")
+    pct = (v - prior) / abs(prior) * 100
+    if pct >= 5:
+        return (f"Up {pct:.0f}% from a year ago.", "ok")
+    if pct <= -5:
+        return (f"Down {abs(pct):.0f}% from a year ago.", "ok")
+    return ("Little changed from a year ago.", "ok")
+
+
 HEADLINES = {
     "recession-watch": {
         "alert": "Recession signals are flashing — multiple indicators have tripped.",
@@ -248,6 +380,34 @@ HEADLINES = {
         "watch": "Inflation has cooled but isn't beaten — still above target.",
         "ok": "Inflation is back near the Fed's target.",
         "unknown": "Some inflation data is temporarily unavailable.",
+    },
+    "bank-asset-quality": {
+        "alert": "Loan losses are mounting — credit quality is deteriorating fast.",
+        "elevated": "Problem loans are elevated — commercial real estate is the pressure point.",
+        "watch": "Loan books are healthy overall, but problem loans are creeping up.",
+        "ok": "Bank loan quality is strong — few loans are going bad.",
+        "unknown": "Some asset-quality data is temporarily unavailable.",
+    },
+    "bank-profitability": {
+        "alert": "Bank earnings are collapsing.",
+        "elevated": "Bank profitability is under real pressure.",
+        "watch": "Bank earnings are holding, but margins are tightening.",
+        "ok": "Banks are solidly profitable.",
+        "unknown": "Some profitability data is temporarily unavailable.",
+    },
+    "bank-capital-solvency": {
+        "alert": "Bank capital is dangerously thin.",
+        "elevated": "Capital cushions are thinner than supervisors prefer.",
+        "watch": "Capital is adequate but worth watching.",
+        "ok": "Banks are well-capitalized.",
+        "unknown": "Some capital data is temporarily unavailable.",
+    },
+    "bank-concentrations-funding": {
+        "alert": "Funding and concentration risks are acute.",
+        "elevated": "Concentration or funding risk is elevated.",
+        "watch": "Some concentration and funding risks are building.",
+        "ok": "Funding is stable and concentrations are contained.",
+        "unknown": "Some concentration/funding data is temporarily unavailable.",
     },
 }
 

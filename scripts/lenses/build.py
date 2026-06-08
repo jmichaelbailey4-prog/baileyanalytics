@@ -65,6 +65,72 @@ def build_lens(lens, fetched):
     }
 
 
+def _status_of(value, rule):
+    """Run a single value through a narrative rule to get its status string."""
+    obs = [("x", value)] if value is not None else []
+    _, status = rule(obs)
+    return status
+
+
+def build_banking_lens(lens, series_by_key, tier_rows, ranking_rows):
+    """Assemble one banking lens JSON: time-series indicators + tiers + rankings.
+
+    series_by_key: {indicator_id: [{date, value}]}
+    tier_rows:     [{tier, values:[{value}]}]  (from fdic.tier_aggregates, metric order)
+    ranking_rows:  {ranking_title: [{name, location, asset, value}]}
+    """
+    indicators, statuses = [], []
+    for ind in lens.indicators:
+        raw = series_by_key.get(ind.id, [])
+        cleaned = util.clean(raw)
+        text, status = ind.rule(cleaned)
+        statuses.append(status)
+        indicators.append({
+            "id": ind.id, "title": ind.title, "short": ind.short, "unit": ind.unit,
+            "color": ind.color, "observations": raw, "latest": _latest_raw(raw),
+            "context": ind.context, "read": text, "signal_status": status,
+            "value_format": ind.value_format,
+        })
+    headline, overall = narrative.synthesize(lens.id, statuses)
+
+    tiers = None
+    if lens.tier_metrics and tier_rows:
+        columns = [{"key": m["key"], "label": m["label"]} for m in lens.tier_metrics]
+        rows = []
+        for tr in tier_rows:
+            cells = []
+            for m, cell in zip(lens.tier_metrics, tr["values"]):
+                v = cell.get("value")
+                cells.append({
+                    "value": "—" if v is None else f"{v:.2f}%",
+                    "status": _status_of(v, m["rule"]),
+                })
+            rows.append({"tier": tr["tier"], "values": cells})
+        tiers = {"label": "Across the system — by bank size",
+                 "subtitle": "Where is the stress concentrated?",
+                 "columns": columns, "rows": rows}
+
+    rankings = []
+    for spec in lens.rankings:
+        rows = []
+        for r in ranking_rows.get(spec["title"], []):
+            v = r.get("value")
+            fv = None if v in (None, "") else float(v)
+            rows.append({
+                "name": r["name"], "location": r["location"], "asset": r["asset"],
+                "value": "—" if fv is None else f"{fv:.2f}{spec.get('unit', '')}",
+                "status": _status_of(fv, spec["rule"]),
+            })
+        rankings.append({"title": spec["title"], "subtitle": spec["subtitle"],
+                         "value_label": spec["value_label"], "rows": rows})
+
+    return {
+        "id": lens.id, "title": lens.title, "accent": lens.accent, "last_updated": _now(),
+        "status": overall, "headline_read": headline, "recessions": [],
+        "indicators": indicators, "tiers": tiers, "rankings": rankings,
+    }
+
+
 def build_index(lens_jsons):
     """Build the hub index from already-built lens JSONs."""
     lenses = []

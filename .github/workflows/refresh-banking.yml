@@ -1,9 +1,11 @@
-name: Refresh FRED data
+name: Refresh banking data
 
 on:
   schedule:
-    # Daily at 06:00 UTC (just after FRED's typical morning publish window)
-    - cron: "0 6 * * *"
+    # Weekly, Mondays 07:00 UTC. Call Report data only updates quarterly (plus a
+    # revision trickle), so weekly is plenty; use "Run workflow" to refresh on demand
+    # when a new quarter is filed.
+    - cron: "0 7 * * 1"
   workflow_dispatch:
 
 permissions:
@@ -21,10 +23,10 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Fetch latest FRED data (economic lenses)
-        env:
-          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
-        run: python scripts/refresh_lenses.py --economic
+      - name: Fetch latest FDIC data (banking lenses)
+        # No API key needed — FDIC BankFind is public. Full re-fetch each run so
+        # restated Call Reports self-heal (~3 min; quarterly aggregation, no cache).
+        run: python scripts/refresh_lenses.py --banking
 
       - name: Commit and push if data changed
         run: |
@@ -32,7 +34,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           if [[ -n "$(git status --porcelain data/)" ]]; then
             git add data/
-            git commit -m "chore: refresh FRED data ($(date -u +%Y-%m-%d))"
+            git commit -m "chore: refresh banking data ($(date -u +%Y-%m-%d))"
             git push
           else
             echo "No data changes — skipping commit."
