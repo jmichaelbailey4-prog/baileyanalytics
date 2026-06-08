@@ -27,3 +27,16 @@ def status_max(statuses):
     if not known:
         return "unknown"
     return max(known, key=lambda s: STATUS_ORDER[s])
+
+
+def merge_series(old, new):
+    """Merge two [{'date','value'}] lists by date; `new` wins on conflicts. Sorted.
+
+    Used to accumulate crypto history across daily refreshes so it grows past
+    CoinGecko's free 365-day window: today's recomputed points refresh the recent
+    window, while older points beyond the window persist from prior runs.
+    """
+    merged = {p["date"]: p["value"] for p in (old or [])}
+    for p in (new or []):
+        merged[p["date"]] = p["value"]
+    return [{"date": d, "value": merged[d]} for d in sorted(merged)]

@@ -32,5 +32,20 @@ class TestUtil(unittest.TestCase):
         self.assertEqual(util.status_max(["unknown", "unknown"]), "unknown")
 
 
+class TestMergeSeries(unittest.TestCase):
+    def test_new_wins_and_old_is_retained(self):
+        old = [{"date": "2026-01-01", "value": 1.0}, {"date": "2026-01-02", "value": 2.0}]
+        new = [{"date": "2026-01-02", "value": 9.0}, {"date": "2026-01-03", "value": 3.0}]
+        self.assertEqual(util.merge_series(old, new), [
+            {"date": "2026-01-01", "value": 1.0},
+            {"date": "2026-01-02", "value": 9.0},
+            {"date": "2026-01-03", "value": 3.0},
+        ])
+
+    def test_handles_none(self):
+        self.assertEqual(util.merge_series(None, [{"date": "2026-01-01", "value": 1.0}]),
+                         [{"date": "2026-01-01", "value": 1.0}])
+
+
 if __name__ == "__main__":
     unittest.main()
