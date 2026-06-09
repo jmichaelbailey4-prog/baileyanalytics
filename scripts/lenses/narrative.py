@@ -502,13 +502,13 @@ def generation_share(label):
         v = obs[-1][1]
         prior = _value_year_ago(obs)
         if prior is None:
-            return (f"{label} make up {v:.1f}% of electricity generation.", "info")
+            return (f"{label}: {v:.1f}% of U.S. electricity generation.", "info")
         delta = v - prior
         if delta >= 0.5:
-            return (f"{label} have risen to {v:.1f}% of electricity generation (up {delta:.1f} points in a year).", "info")
+            return (f"{label}: {v:.1f}% of U.S. electricity generation, up {delta:.1f} points over the past year.", "info")
         if delta <= -0.5:
-            return (f"{label} have slipped to {v:.1f}% of electricity generation (down {abs(delta):.1f} points in a year).", "info")
-        return (f"{label} hold steady at {v:.1f}% of electricity generation.", "info")
+            return (f"{label}: {v:.1f}% of U.S. electricity generation, down {abs(delta):.1f} points over the past year.", "info")
+        return (f"{label}: {v:.1f}% of U.S. electricity generation, steady over the past year.", "info")
     return _rule
 
 
