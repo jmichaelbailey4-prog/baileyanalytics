@@ -34,6 +34,12 @@ jobs:
           COINGECKO_API_KEY: ${{ secrets.COINGECKO_API_KEY }}
         run: python scripts/refresh_lenses.py --markets
 
+      - name: Fetch latest energy data (EIA + FRED)
+        env:
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+          EIA_API_KEY: ${{ secrets.EIA_API_KEY }}
+        run: python scripts/refresh_lenses.py --energy
+
       - name: Commit and push if data changed
         run: |
           git config user.name "github-actions[bot]"
