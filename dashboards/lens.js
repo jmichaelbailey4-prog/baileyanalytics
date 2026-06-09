@@ -74,7 +74,8 @@
         },
         scales: {
           x: { type: "category", ticks: { maxTicksLimit: 7, color: "#64748B", font: { size: 11 },
-                 callback(v) { const s = this.getLabelForValue(v); return s ? s.slice(0, 4) : s; } },
+                 callback(v) { const s = this.getLabelForValue(v); if (!s) return s;
+                   return (years && years <= 1) ? MONTHS[+s.slice(5, 7) - 1] : s.slice(0, 4); } },
                grid: { display: false }, border: { color: "#1E293B" } },
           y: { ticks: { color: "#64748B", font: { size: 11 }, callback: v => indicator.value_format === "thousands" ? Math.round(v).toLocaleString("en-US") + indicator.unit : v.toFixed(2) + indicator.unit },
                grid: { color: "#1E293B" }, border: { display: false } },
@@ -83,7 +84,7 @@
     });
   }
 
-  function indicatorCard(indicator, recessions) {
+  function indicatorCard(indicator, recessions, defaultRange) {
     const el = document.createElement("div");
     el.className = "ind";
     const latest = indicator.latest ? fmtVal(indicator.latest.value, indicator.unit, indicator.value_format) : "—";
@@ -100,11 +101,12 @@
       </div>`;
     const canvas = el.querySelector("canvas");
     const rangesBox = el.querySelector(".ranges");
-    let chart = makeChart(canvas, indicator, recessions, RANGES.Max);
+    const startKey = (defaultRange in RANGES) ? defaultRange : "1Y";
+    let chart = makeChart(canvas, indicator, recessions, RANGES[startKey]);
     Object.keys(RANGES).forEach(key => {
       const btn = document.createElement("button");
       btn.textContent = key;
-      if (key === "Max") btn.classList.add("active");
+      if (key === startKey) btn.classList.add("active");
       btn.addEventListener("click", () => {
         rangesBox.querySelectorAll("button").forEach(b => b.classList.remove("active"));
         btn.classList.add("active");
@@ -181,7 +183,8 @@
       ${rankingsHtml(lens.rankings)}
       <div class="foot">${opts.foot}</div>`;
     const holder = root.querySelector(".indicators");
-    lens.indicators.forEach(i => holder.appendChild(indicatorCard(i, lens.recessions || [])));
+    const defaultRange = opts.defaultRange || "1Y";
+    lens.indicators.forEach(i => holder.appendChild(indicatorCard(i, lens.recessions || [], defaultRange)));
   }
 
   window.renderLens = async function (jsonUrl, opts) {
