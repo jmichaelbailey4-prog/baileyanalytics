@@ -15,14 +15,16 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))  # make `lenses` importable
 from datetime import date
 
-from lenses import build, coingecko, config, fdic, fred, util, yahoo
+from lenses import build, coingecko, config, eia, fdic, fred, util, yahoo
 
 OUT_DIR = Path(__file__).resolve().parent.parent / "data" / "lenses"
 BANK_OUT_DIR = Path(__file__).resolve().parent.parent / "data" / "banking"
 MARKETS_OUT_DIR = Path(__file__).resolve().parent.parent / "data" / "markets"
+ENERGY_OUT_DIR = Path(__file__).resolve().parent.parent / "data" / "energy"
 FIXTURE = Path(__file__).resolve().parent / "tests" / "fixtures" / "fetched_sample.json"
 FDIC_FIXTURE = Path(__file__).resolve().parent / "tests" / "fixtures" / "fdic_sample.json"
 MARKET_FIXTURE = Path(__file__).resolve().parent / "tests" / "fixtures" / "markets_sample.json"
+ENERGY_FIXTURE = Path(__file__).resolve().parent / "tests" / "fixtures" / "energy_sample.json"
 CRYPTO_HISTORY = MARKETS_OUT_DIR / "_crypto_history.json"
 CRYPTO_FIXTURE = Path(__file__).resolve().parent / "tests" / "fixtures" / "coingecko_sample.json"
 
@@ -269,20 +271,110 @@ def refresh_markets(dry_run):
     return 0
 
 
+def _prior_energy_obs(lens_id, ind_id):
+    """Prior observations for one energy indicator from its existing lens JSON
+    (fallback when an EIA fetch or the key is unavailable)."""
+    path = ENERGY_OUT_DIR / f"{lens_id}.json"
+    if path.exists():
+        try:
+            data = json.loads(path.read_text(encoding="utf-8"))
+            for ind in data.get("indicators", []):
+                if ind.get("id") == ind_id:
+                    return ind.get("observations", [])
+        except (ValueError, OSError):
+            pass
+    return []
+
+
+def _inject_generation_shares(fetched, api_key):
+    """Compute renewables/natural-gas share of generation + total net generation
+    from EIA's generation-mix dataset, inject under their indicator fetch_keys."""
+    mix = eia.generation_mix(api_key)
+    fetched["NET_GEN_TOTAL:lin"] = mix["total"]
+    fetched["RENEW_SHARE:lin"] = util.pct_share(mix["renewable"], mix["total"])
+    fetched["NG_SHARE:lin"] = util.pct_share(mix["natgas"], mix["total"])
+
+
+def _inject_eia(fetched, dry_run):
+    """Populate every EIA indicator (lenses 1-3). Additive: on a missing key or a
+    fetch failure, fall back to prior data so the FRED commodities lens and any
+    unaffected lenses still publish. In dry-run the fixture already carries the keys."""
+    if dry_run:
+        return
+    api_key = os.environ.get("EIA_API_KEY")
+    computed = {"renewables-share", "natgas-share", "net-generation"}
+    if not api_key:
+        print("WARN: EIA_API_KEY not set; keeping previous energy data", file=sys.stderr)
+        for lens in config.ENERGY_EIA_LENSES:
+            for ind in lens.indicators:
+                fetched[ind.fetch_key] = _prior_energy_obs(lens.id, ind.id)
+        return
+    # Directly-routed EIA indicators
+    for lens in config.ENERGY_EIA_LENSES:
+        for ind in lens.indicators:
+            if ind.id in computed or not ind.eia_route:
+                continue
+            try:
+                fetched[ind.fetch_key] = eia.fetch_series(
+                    ind.eia_route, ind.eia_facets, ind.eia_freq, api_key, ind.limit, ind.eia_col)
+            except Exception as exc:  # noqa: BLE001 - keep prior on failure
+                print(f"WARN: EIA fetch failed for {ind.series_id}: {exc}", file=sys.stderr)
+                fetched[ind.fetch_key] = _prior_energy_obs(lens.id, ind.id)
+    # Computed generation shares (renewables/natgas/total)
+    try:
+        _inject_generation_shares(fetched, api_key)
+    except Exception as exc:  # noqa: BLE001 - keep prior on failure
+        print(f"WARN: EIA generation mix failed ({exc}); keeping previous data", file=sys.stderr)
+        for ind_id, key in (("net-generation", "NET_GEN_TOTAL:lin"),
+                            ("renewables-share", "RENEW_SHARE:lin"),
+                            ("natgas-share", "NG_SHARE:lin")):
+            fetched[key] = _prior_energy_obs("energy-electricity", ind_id)
+
+
+def refresh_energy(dry_run):
+    """Build + write the energy lenses (EIA lenses 1-3 + the FRED commodities lens).
+    Additive — an EIA failure never aborts the run; the FRED lens still publishes."""
+    if dry_run:
+        fetched = json.loads(ENERGY_FIXTURE.read_text(encoding="utf-8"))
+        failed = set()
+    else:
+        api_key = os.environ.get("FRED_API_KEY")
+        if not api_key:
+            print("FRED_API_KEY not set", file=sys.stderr)
+            return 1
+        fetched, failed = fetch_all(config.ENERGY_LENSES, api_key)
+
+    _inject_eia(fetched, dry_run)
+
+    ready = [lens for lens in config.ENERGY_LENSES if lens_ready(lens, failed)]
+    for lens in config.ENERGY_LENSES:
+        if lens not in ready:
+            print(f"SKIP: {lens.id} (a source series failed; keeping previous data)", file=sys.stderr)
+
+    written = build.write_outputs([build.build_lens(lens, fetched) for lens in ready], ENERGY_OUT_DIR)
+    for path in written:
+        print(f"Wrote {path}")
+    if not written:
+        print("No changes — all energy data up to date.")
+    return 0
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description="Refresh dashboard data from public sources.")
     parser.add_argument("--dry-run", action="store_true", help="use fixture data, no network")
     parser.add_argument("--economic", action="store_true", help="refresh only the economic (FRED) lenses")
     parser.add_argument("--banking", action="store_true", help="refresh only the banking (FDIC) lenses")
     parser.add_argument("--markets", action="store_true", help="refresh only the markets lenses")
+    parser.add_argument("--energy", action="store_true", help="refresh only the energy lenses")
     args = parser.parse_args(argv)
 
     # No source flag = refresh everything (handy for manual/local runs); each
     # flag scopes the run so a workflow can give each source its own cadence.
-    any_flag = args.economic or args.banking or args.markets
+    any_flag = args.economic or args.banking or args.markets or args.energy
     do_economic = args.economic or not any_flag
     do_banking = args.banking or not any_flag
     do_markets = args.markets or not any_flag
+    do_energy = args.energy or not any_flag
 
     code = 0
     if do_economic:
@@ -293,6 +385,10 @@ def main(argv=None):
         mc = refresh_markets(args.dry_run)
         if mc:
             code = mc
+    if do_energy:
+        ec = refresh_energy(args.dry_run)
+        if ec:
+            code = ec
     if do_banking:
         refresh_banking(args.dry_run)
     return code
