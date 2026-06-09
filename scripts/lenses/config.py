@@ -24,7 +24,11 @@ class Indicator:
     units_transform: Optional[str] = None
     value_format: str = "decimal"  # "decimal" (2dp) | "thousands" (whole, comma-separated)
     derive: Optional[Callable] = None  # optional post-fetch transform of raw observations
-    source: str = "fred"  # "fred" (fetched via fred.py) | "stooq" (injected by refresh_markets)
+    source: str = "fred"  # "fred" | "yahoo" | "eia" (non-FRED sources are injected by refresh_*)
+    eia_route: str = ""             # EIA v2 route, e.g. "petroleum/pri/gnd" (empty = computed/injected)
+    eia_facets: tuple = ()          # ((key, value), ...) -> facets[key][]=value
+    eia_freq: str = ""              # "daily" | "weekly" | "monthly"
+    eia_col: str = "value"          # data column to request/read
 
     @property
     def fetch_key(self):
