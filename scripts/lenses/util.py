@@ -40,3 +40,20 @@ def merge_series(old, new):
     for p in (new or []):
         merged[p["date"]] = p["value"]
     return [{"date": d, "value": merged[d]} for d in sorted(merged)]
+
+
+def pct_share(numerator, denominator):
+    """Percent share (numerator / denominator * 100) on dates present in both.
+
+    Inputs are [{'date','value'}] (values numeric or numeric strings). Returns
+    [{'date','value'}] with the share rounded to 1 dp as a string, sorted by date.
+    Skips dates where the denominator is missing or zero.
+    """
+    den = {p["date"]: to_float(p["value"]) for p in (denominator or [])}
+    out = []
+    for p in (numerator or []):
+        d = den.get(p["date"])
+        n = to_float(p["value"])
+        if n is not None and d:
+            out.append({"date": p["date"], "value": f"{n / d * 100:.1f}"})
+    return sorted(out, key=lambda r: r["date"])

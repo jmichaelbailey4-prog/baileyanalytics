@@ -451,6 +451,67 @@ def rule_btc_eth_relative(obs):
     return (f"Bitcoin and Ether have held their relative value (ratio {v:.2f}).", "info")
 
 
+# --- Energy & Commodities rules ---
+
+def consumer_cost(label, watch, elevated, alert):
+    """Factory: consumer-cost severity from trailing-12-month % change. Rising fast
+    means household stress; falling/flat is ok. Thresholds are YoY-% bands."""
+    def _rule(obs):
+        if not obs:
+            return _NO_DATA
+        v = obs[-1][1]
+        prior = _value_year_ago(obs)
+        if prior is None or prior == 0:
+            return (f"{label} is at {v:,.2f}.", "ok")
+        pct = (v - prior) / abs(prior) * 100
+        if pct >= alert:
+            return (f"{label} costs have surged {pct:.0f}% over the past year — acute pressure on households.", "alert")
+        if pct >= elevated:
+            return (f"{label} costs are up {pct:.0f}% over the past year — a real squeeze.", "elevated")
+        if pct >= watch:
+            return (f"{label} costs are up {pct:.0f}% over the past year — climbing.", "watch")
+        if pct <= -watch:
+            return (f"{label} costs have fallen {abs(pct):.0f}% over the past year — relief for households.", "ok")
+        return (f"{label} costs are roughly flat over the past year.", "ok")
+    return _rule
+
+
+def energy_level(label):
+    """Descriptive `info`: latest level + trailing-12-month direction. No verdict."""
+    def _rule(obs):
+        if not obs:
+            return _NO_DATA
+        v = obs[-1][1]
+        prior = _value_year_ago(obs)
+        if prior is None or prior == 0:
+            return (f"{label} is at {v:,.0f}.", "info")
+        pct = (v - prior) / abs(prior) * 100
+        if pct >= 3:
+            return (f"{label} is up {pct:.0f}% from a year ago, now {v:,.0f}.", "info")
+        if pct <= -3:
+            return (f"{label} is down {abs(pct):.0f}% from a year ago, now {v:,.0f}.", "info")
+        return (f"{label} is little changed from a year ago, now {v:,.0f}.", "info")
+    return _rule
+
+
+def generation_share(label):
+    """Descriptive `info` for an electricity generation share (%) + its direction."""
+    def _rule(obs):
+        if not obs:
+            return _NO_DATA
+        v = obs[-1][1]
+        prior = _value_year_ago(obs)
+        if prior is None:
+            return (f"{label}: {v:.1f}% of U.S. electricity generation.", "info")
+        delta = v - prior
+        if delta >= 0.5:
+            return (f"{label}: {v:.1f}% of U.S. electricity generation, up {delta:.1f} points over the past year.", "info")
+        if delta <= -0.5:
+            return (f"{label}: {v:.1f}% of U.S. electricity generation, down {abs(delta):.1f} points over the past year.", "info")
+        return (f"{label}: {v:.1f}% of U.S. electricity generation, steady over the past year.", "info")
+    return _rule
+
+
 HEADLINES = {
     "recession-watch": {
         "alert": "Recession signals are flashing — multiple indicators have tripped.",
@@ -520,6 +581,34 @@ HEADLINES = {
     },
     "crypto-structure": {
         "neutral": "How capital is rotating across the crypto market.",
+    },
+    "energy-oil-fuels": {
+        "alert": "Fuel costs are spiking — acute pressure at the pump.",
+        "elevated": "Fuel costs are well above last year.",
+        "watch": "Fuel costs are climbing.",
+        "ok": "Fuel costs are stable or easing.",
+        "unknown": "Some fuel data is temporarily unavailable.",
+    },
+    "energy-natural-gas": {
+        "alert": "Natural gas costs are spiking.",
+        "elevated": "Natural gas is well above last year.",
+        "watch": "Natural gas costs are climbing.",
+        "ok": "Natural gas costs are stable or easing.",
+        "unknown": "Some natural-gas data is temporarily unavailable.",
+    },
+    "energy-electricity": {
+        "alert": "Power bills are spiking.",
+        "elevated": "Electricity prices are well above last year.",
+        "watch": "Electricity prices are climbing.",
+        "ok": "Power bills are steady.",
+        "unknown": "Some electricity data is temporarily unavailable.",
+    },
+    "energy-commodities": {
+        "alert": "Commodity costs are surging.",
+        "elevated": "Commodity and food costs are well above last year.",
+        "watch": "Commodity costs are climbing.",
+        "ok": "Commodity costs are stable or easing.",
+        "unknown": "Some commodity data is temporarily unavailable.",
     },
 }
 

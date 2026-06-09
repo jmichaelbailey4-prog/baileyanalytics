@@ -24,7 +24,11 @@ class Indicator:
     units_transform: Optional[str] = None
     value_format: str = "decimal"  # "decimal" (2dp) | "thousands" (whole, comma-separated)
     derive: Optional[Callable] = None  # optional post-fetch transform of raw observations
-    source: str = "fred"  # "fred" (fetched via fred.py) | "stooq" (injected by refresh_markets)
+    source: str = "fred"  # "fred" | "yahoo" | "eia" (non-FRED sources are injected by refresh_*)
+    eia_route: str = ""             # EIA v2 route, e.g. "petroleum/pri/gnd" (empty = computed/injected)
+    eia_facets: tuple = ()          # ((key, value), ...) -> facets[key][]=value
+    eia_freq: str = ""              # "daily" | "weekly" | "monthly"
+    eia_col: str = "value"          # data column to request/read
 
     @property
     def fetch_key(self):
@@ -658,4 +662,166 @@ CATEGORIES.append(
     {"id": "markets", "title": "Markets & Financial Conditions", "lenses": MARKET_FRED_LENSES,
      "out": "markets", "back": "Markets & Financial Conditions",
      "source_label": "FRED (St. Louis Fed) and CoinGecko", "disclaimer": ""}
+)
+
+
+# --- Energy & Commodities (EIA + FRED) ---
+
+ENERGY_OIL_FUELS = Lens(
+    id="energy-oil-fuels", title="Oil & Fuels", accent="#FB923C",
+    indicators=[
+        Indicator(
+            id="gasoline", title="Retail Gasoline · Regular", short="Gasoline", unit="",
+            color="#FB923C", series_id="EMM_EPMR_PTE_NUS_DPG", limit=520,
+            rule=narrative.consumer_cost("Gasoline", 10, 25, 40), value_format="decimal",
+            source="eia", eia_route="petroleum/pri/gnd",
+            eia_facets=(("series", "EMM_EPMR_PTE_NUS_DPG"),), eia_freq="weekly",
+            context=("The U.S. average retail price for a gallon of regular gasoline — the "
+                     "energy cost households feel most directly."),
+        ),
+        Indicator(
+            id="diesel", title="Retail Diesel · On-Highway", short="Diesel", unit="",
+            color="#FBBF24", series_id="EMD_EPD2D_PTE_NUS_DPG", limit=520,
+            rule=narrative.consumer_cost("Diesel", 10, 25, 40), value_format="decimal",
+            source="eia", eia_route="petroleum/pri/gnd",
+            eia_facets=(("series", "EMD_EPD2D_PTE_NUS_DPG"),), eia_freq="weekly",
+            context=("The U.S. average on-highway diesel price — the fuel that moves freight, "
+                     "so it feeds into the price of nearly everything."),
+        ),
+        Indicator(
+            id="crude-production", title="U.S. Crude Oil Production", short="Crude output", unit="",
+            color="#34D399", series_id="WCRFPUS2", limit=520,
+            rule=narrative.energy_level("U.S. crude production"), value_format="thousands",
+            source="eia", eia_route="petroleum/sum/sndw",
+            eia_facets=(("series", "WCRFPUS2"),), eia_freq="weekly",
+            context=("U.S. field production of crude oil (thousand barrels per day) — the supply "
+                     "side that, with demand, sets the price of oil."),
+        ),
+        Indicator(
+            id="crude-stocks", title="Crude Inventories · excl. SPR", short="Crude stocks", unit="",
+            color="#38BDF8", series_id="WCESTUS1", limit=520,
+            rule=narrative.energy_level("Crude inventories"), value_format="thousands",
+            source="eia", eia_route="petroleum/stoc/wstk",
+            eia_facets=(("series", "WCESTUS1"),), eia_freq="weekly",
+            context=("Commercial crude oil inventories (thousand barrels, excluding the Strategic "
+                     "Petroleum Reserve) — low stocks point to upward price pressure."),
+        ),
+    ],
+)
+
+ENERGY_NATURAL_GAS = Lens(
+    id="energy-natural-gas", title="Natural Gas", accent="#60A5FA",
+    indicators=[
+        Indicator(
+            id="henry-hub", title="Henry Hub Spot Price", short="Henry Hub", unit="",
+            color="#60A5FA", series_id="RNGWHHD", limit=900,
+            rule=narrative.consumer_cost("Natural gas", 20, 50, 100), value_format="decimal",
+            source="eia", eia_route="natural-gas/pri/fut",
+            eia_facets=(("series", "RNGWHHD"),), eia_freq="daily",
+            context=("The U.S. benchmark natural-gas price ($/MMBtu) — it drives home heating "
+                     "bills and a large share of electricity generation cost."),
+        ),
+        Indicator(
+            id="gas-storage", title="Working Gas in Storage · Lower 48", short="Gas storage", unit="",
+            color="#38BDF8", series_id="NW2_EPG0_SWO_R48_BCF", limit=520,
+            rule=narrative.energy_level("Gas in storage"), value_format="thousands",
+            source="eia", eia_route="natural-gas/stor/wkly",
+            eia_facets=(("series", "NW2_EPG0_SWO_R48_BCF"),), eia_freq="weekly",
+            context=("Working natural gas held in underground storage (Bcf) — the cushion that "
+                     "buffers winter demand; low storage means price risk."),
+        ),
+        Indicator(
+            id="gas-production", title="U.S. Dry Gas Production", short="Gas output", unit="",
+            color="#34D399", series_id="N9070US2", limit=240,
+            rule=narrative.energy_level("Dry gas production"), value_format="thousands",
+            source="eia", eia_route="natural-gas/prod/sum",
+            eia_facets=(("series", "N9070US2"),), eia_freq="monthly",
+            context=("U.S. dry natural-gas production — record output has reshaped both home "
+                     "energy costs and the country's role as an exporter."),
+        ),
+        Indicator(
+            id="lng-exports", title="U.S. LNG Exports", short="LNG exports", unit="",
+            color="#A78BFA", series_id="N9133US2", limit=240,
+            rule=narrative.energy_level("LNG exports"), value_format="thousands",
+            source="eia", eia_route="natural-gas/move/expc",
+            eia_facets=(("series", "N9133US2"),), eia_freq="monthly",
+            context=("U.S. liquefied natural gas exports — a fast-growing link between domestic "
+                     "gas prices and global demand."),
+        ),
+    ],
+)
+
+ENERGY_ELECTRICITY = Lens(
+    id="energy-electricity", title="Electricity & the Grid", accent="#FBBF24",
+    indicators=[
+        Indicator(
+            id="electricity-price", title="Retail Electricity · Residential", short="Power price", unit="",
+            color="#FBBF24", series_id="ELEC_PRICE_RES_US", limit=240,
+            rule=narrative.consumer_cost("Electricity", 5, 10, 20), value_format="decimal",
+            source="eia", eia_route="electricity/retail-sales",
+            eia_facets=(("sectorid", "RES"), ("stateid", "US")), eia_freq="monthly", eia_col="price",
+            context=("The U.S. average residential electricity price (cents per kWh) — the power "
+                     "bill households pay every month."),
+        ),
+        Indicator(
+            id="renewables-share", title="Renewables · Share of Generation", short="Renewables", unit="%",
+            color="#34D399", series_id="RENEW_SHARE", limit=240,
+            rule=narrative.generation_share("Renewables"), value_format="decimal",
+            source="eia",  # computed/injected (no eia_route)
+            context=("The share of U.S. electricity generated from renewables (wind, solar, hydro, "
+                     "and more) — the clearest single read on the energy transition."),
+        ),
+        Indicator(
+            id="natgas-share", title="Natural Gas · Share of Generation", short="Gas share", unit="%",
+            color="#60A5FA", series_id="NG_SHARE", limit=240,
+            rule=narrative.generation_share("Natural gas"), value_format="decimal",
+            source="eia",  # computed/injected
+            context=("The share of U.S. electricity generated from natural gas — still the single "
+                     "largest source, and the swing fuel that balances the grid."),
+        ),
+        Indicator(
+            id="net-generation", title="Total Net Generation", short="Net generation", unit="",
+            color="#38BDF8", series_id="NET_GEN_TOTAL", limit=240,
+            rule=narrative.energy_level("Net generation"), value_format="thousands",
+            source="eia",  # computed/injected (total from generation_mix)
+            context=("Total U.S. net electricity generation (GWh) — a read on how much power the "
+                     "economy is consuming."),
+        ),
+    ],
+)
+
+ENERGY_COMMODITIES = Lens(
+    id="energy-commodities", title="Commodities & Materials", accent="#A3E635",
+    indicators=[
+        Indicator(
+            id="food-index", title="Global Food Price Index", short="Food", unit="",
+            color="#A3E635", series_id="PFOODINDEXM", limit=300,
+            rule=narrative.consumer_cost("Food", 5, 12, 25), value_format="decimal",
+            context=("The IMF's global food commodity price index — the upstream driver of grocery "
+                     "inflation."),
+        ),
+        Indicator(
+            id="copper", title="Copper · “Dr. Copper”", short="Copper", unit="",
+            color="#FB923C", series_id="PCOPPUSDM", limit=300,
+            rule=narrative.energy_level("Copper"), value_format="thousands",
+            context=("The global price of copper ($/metric ton) — nicknamed “Dr. Copper” "
+                     "for its knack of signalling the direction of the global economy."),
+        ),
+        Indicator(
+            id="broad-commodities", title="Broad Commodity Index", short="Commodities", unit="",
+            color="#38BDF8", series_id="PALLFNFINDEXM", limit=300,
+            rule=narrative.energy_level("Commodities"), value_format="decimal",
+            context=("The IMF's all-commodity price index — a single gauge of raw-input cost "
+                     "pressure across the economy."),
+        ),
+    ],
+)
+
+ENERGY_EIA_LENSES = [ENERGY_OIL_FUELS, ENERGY_NATURAL_GAS, ENERGY_ELECTRICITY]
+ENERGY_LENSES = ENERGY_EIA_LENSES + [ENERGY_COMMODITIES]
+
+CATEGORIES.append(
+    {"id": "energy", "title": "Energy & Commodities", "lenses": ENERGY_LENSES,
+     "out": "energy", "back": "Energy & Commodities",
+     "source_label": "U.S. Energy Information Administration (EIA) and FRED", "disclaimer": ""}
 )

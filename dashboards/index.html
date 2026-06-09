@@ -48,8 +48,12 @@
     <p class="cat-sub">What markets are pricing — risk sentiment, the major asset classes, and crypto market structure. Refreshed daily from FRED and CoinGecko. <a href="/dashboards/markets/" style="color:var(--blue);text-decoration:none">Overview &rarr;</a></p>
     <div class="hub-grid" id="markets-grid"><div class="status-msg">Loading&hellip;</div></div>
 
+    <h2 class="cat-head"><span class="dot" style="background:#FB923C"></span>Energy &amp; Commodities</h2>
+    <p class="cat-sub">The physical economy — what fuel and power cost, how energy is produced, and the commodity prices that feed inflation. Refreshed from the U.S. EIA and FRED. <a href="/dashboards/energy/" style="color:var(--blue);text-decoration:none">Overview &rarr;</a></p>
+    <div class="hub-grid" id="energy-grid"><div class="status-msg">Loading&hellip;</div></div>
+
     <div class="foot">
-      Data: <a href="https://fred.stlouisfed.org/" target="_blank" rel="noopener">FRED</a> (St. Louis Fed) and the <a href="https://banks.data.fdic.gov/" target="_blank" rel="noopener">FDIC</a>. Public data, refreshed regularly.
+      Data: <a href="https://fred.stlouisfed.org/" target="_blank" rel="noopener">FRED</a> (St. Louis Fed), the <a href="https://banks.data.fdic.gov/" target="_blank" rel="noopener">FDIC</a>, and the <a href="https://www.eia.gov/opendata/" target="_blank" rel="noopener">U.S. EIA</a>. Public data, refreshed regularly.
     </div>
   </main>
 
@@ -104,6 +108,14 @@
     };
     loadGrid("/data/markets/index.json", "markets-grid",
              id => `/dashboards/markets/${encodeURIComponent(MARKET_SLUGS[id] || id)}.html`);
+    const ENERGY_SLUGS = {
+      "energy-oil-fuels": "oil-fuels",
+      "energy-natural-gas": "natural-gas",
+      "energy-electricity": "electricity",
+      "energy-commodities": "commodities"
+    };
+    loadGrid("/data/energy/index.json", "energy-grid",
+             id => `/dashboards/energy/${encodeURIComponent(ENERGY_SLUGS[id] || id)}.html`);
   </script>
 </body>
 </html>

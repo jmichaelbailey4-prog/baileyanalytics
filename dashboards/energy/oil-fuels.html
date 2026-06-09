@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Profitability — Bailey Analytics</title>
-  <meta name="description" content="How profitable U.S. banks are — net interest margin and return on assets, from FDIC Call Reports.">
+  <title>Oil &amp; Fuels — Bailey Analytics</title>
+  <meta name="description" content="What you pay at the pump and the supply behind it — retail gasoline and diesel, U.S. crude production and inventories, from the U.S. EIA.">
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   <link rel="stylesheet" href="/dashboards/lens.css">
 </head>
@@ -14,11 +14,10 @@
   <main id="lens-root"><div class="status-msg">Loading&hellip;</div></main>
   <script src="/dashboards/lens.js"></script>
   <script>
-    renderLens("/data/banking/bank-profitability.json", {
-      back: "Banking System Health",
-      href: "/dashboards/banking/",
-      defaultRange: "5Y",
-      foot: 'Source: FDIC, bank Call Reports (year-end). The “read” is generated from the latest values by a fixed rule set. Public regulatory data — not investment advice, and not a judgment of any institution’s solvency.'
+    renderLens("/data/energy/energy-oil-fuels.json", {
+      back: "Energy & Commodities",
+      href: "/dashboards/energy/",
+      foot: 'Data: <a href="https://www.eia.gov/opendata/" target="_blank" rel="noopener">U.S. EIA</a>. Refreshed daily. The "read" is generated from the latest values by a fixed rule set.'
     });
   </script>
 </body>
