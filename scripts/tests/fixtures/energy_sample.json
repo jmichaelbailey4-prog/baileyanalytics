@@ -1,0 +1,66 @@
+{
+  "EMM_EPMR_PTE_NUS_DPG:lin": [
+    {"date": "2025-01-01", "value": "3.10"},
+    {"date": "2026-01-01", "value": "3.80"}
+  ],
+  "EMD_EPD2D_PTE_NUS_DPG:lin": [
+    {"date": "2025-01-01", "value": "3.90"},
+    {"date": "2026-01-01", "value": "3.95"}
+  ],
+  "WCRFPUS2:lin": [
+    {"date": "2025-01-01", "value": "13200"},
+    {"date": "2026-01-01", "value": "13500"}
+  ],
+  "WCESTUS1:lin": [
+    {"date": "2025-01-01", "value": "420000"},
+    {"date": "2026-01-01", "value": "430000"}
+  ],
+  "RNGWHHD:lin": [
+    {"date": "2025-01-01", "value": "3.00"},
+    {"date": "2026-01-01", "value": "4.20"}
+  ],
+  "NW2_EPG0_SWO_R48_BCF:lin": [
+    {"date": "2025-01-01", "value": "3100"},
+    {"date": "2026-01-01", "value": "2900"}
+  ],
+  "N9070US2:lin": [
+    {"date": "2025-01-01", "value": "3400"},
+    {"date": "2026-01-01", "value": "3600"}
+  ],
+  "N9133US2:lin": [
+    {"date": "2025-01-01", "value": "380"},
+    {"date": "2026-01-01", "value": "460"}
+  ],
+  "ELEC_PRICE_RES_US:lin": [
+    {"date": "2025-01-01", "value": "16.2"},
+    {"date": "2026-01-01", "value": "17.0"}
+  ],
+  "RENEW_SHARE:lin": [
+    {"date": "2025-01-01", "value": "21.0"},
+    {"date": "2026-01-01", "value": "24.0"}
+  ],
+  "NG_SHARE:lin": [
+    {"date": "2025-01-01", "value": "42.0"},
+    {"date": "2026-01-01", "value": "41.0"}
+  ],
+  "NET_GEN_TOTAL:lin": [
+    {"date": "2025-01-01", "value": "330000"},
+    {"date": "2026-01-01", "value": "335000"}
+  ],
+  "PFOODINDEXM:lin": [
+    {"date": "2025-01-01", "value": "120.0"},
+    {"date": "2026-01-01", "value": "128.0"}
+  ],
+  "PCOPPUSDM:lin": [
+    {"date": "2025-01-01", "value": "9000"},
+    {"date": "2026-01-01", "value": "9500"}
+  ],
+  "PALLFNFINDEXM:lin": [
+    {"date": "2025-01-01", "value": "150.0"},
+    {"date": "2026-01-01", "value": "158.0"}
+  ],
+  "USREC:lin": [
+    {"date": "2025-01-01", "value": "0"},
+    {"date": "2026-01-01", "value": "0"}
+  ]
+}
