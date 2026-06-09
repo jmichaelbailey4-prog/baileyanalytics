@@ -47,5 +47,17 @@ class TestMergeSeries(unittest.TestCase):
                          [{"date": "2026-01-01", "value": 1.0}])
 
 
+class TestPctShare(unittest.TestCase):
+    def test_matched_dates_only_and_rounded(self):
+        num = [{"date": "2026-01", "value": "30"}, {"date": "2026-02", "value": "40"}]
+        den = [{"date": "2026-01", "value": "120"}, {"date": "2026-03", "value": "200"}]
+        # only 2026-01 is in both: 30/120 = 25.0%
+        self.assertEqual(util.pct_share(num, den), [{"date": "2026-01", "value": "25.0"}])
+
+    def test_skips_zero_denominator(self):
+        self.assertEqual(util.pct_share([{"date": "d", "value": "5"}],
+                                        [{"date": "d", "value": "0"}]), [])
+
+
 if __name__ == "__main__":
     unittest.main()
