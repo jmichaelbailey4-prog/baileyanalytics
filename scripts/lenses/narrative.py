@@ -733,6 +733,34 @@ HEADLINES = {
         "ok": "Commodity costs are stable or easing.",
         "unknown": "Some commodity data is temporarily unavailable.",
     },
+    "housing-home-prices": {
+        "alert": "The housing market is flashing red — prices or sales are at an extreme.",
+        "elevated": "The housing market is out of balance — prices and sales are under strain.",
+        "watch": "The housing market is shifting — prices or sales are moving off balance.",
+        "ok": "The housing market looks balanced — prices and sales are steady.",
+        "unknown": "Some home-price data is temporarily unavailable.",
+    },
+    "housing-affordability": {
+        "alert": "Buying a home is out of reach for the typical family.",
+        "elevated": "Housing affordability is badly stretched.",
+        "watch": "Housing affordability is tightening.",
+        "ok": "Housing is broadly affordable for the typical family.",
+        "unknown": "Some affordability data is temporarily unavailable.",
+    },
+    "housing-supply-construction": {
+        "alert": "Housing supply is at an extreme — construction or inventory is flashing red.",
+        "elevated": "Housing supply is out of balance — inventory or construction is strained.",
+        "watch": "Housing supply is shifting — construction and inventory bear watching.",
+        "ok": "Housing supply looks healthy — construction and inventory are in balance.",
+        "unknown": "Some construction data is temporarily unavailable.",
+    },
+    "housing-rent-shelter": {
+        "alert": "Rents are surging — acute pressure on renters.",
+        "elevated": "Rents are rising fast and the rental market is strained.",
+        "watch": "Rents are climbing — renters are feeling it.",
+        "ok": "The rental market is balanced — rents are behaving.",
+        "unknown": "Some rental data is temporarily unavailable.",
+    },
 }
 
 

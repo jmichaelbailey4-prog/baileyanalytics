@@ -110,5 +110,22 @@ class TestLevelPoints(unittest.TestCase):
         self.assertIn("little changed", text)
 
 
+class TestHousingHeadlines(unittest.TestCase):
+    LENS_IDS = ["housing-home-prices", "housing-affordability",
+                "housing-supply-construction", "housing-rent-shelter"]
+
+    def test_every_lens_has_all_severity_headlines(self):
+        for lid in self.LENS_IDS:
+            for status in ("alert", "elevated", "watch", "ok", "unknown"):
+                self.assertTrue(narrative.HEADLINES.get(lid, {}).get(status),
+                                f"missing {lid}/{status}")
+
+    def test_synthesize_aggregates_to_worst(self):
+        headline, overall = narrative.synthesize(
+            "housing-affordability", ["elevated", "ok", "info", "ok"])
+        self.assertEqual(overall, "elevated")
+        self.assertTrue(headline)
+
+
 if __name__ == "__main__":
     unittest.main()
