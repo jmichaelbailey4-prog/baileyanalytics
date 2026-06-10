@@ -88,3 +88,34 @@ def _flatten_lenses(category_indices):
                 "sparkline": lens.get("sparkline", []),
             })
     return flat
+
+
+def detect_transitions(prior_statuses, flat_lenses):
+    """Lenses whose severity status changed vs. prior_statuses. Only ok/watch/
+    elevated/alert transitions count (neutral/info/unknown are skipped). Sorted
+    worsening-first by size of the severity jump, then improving."""
+    out = []
+    for r in flat_lenses:
+        new = r["status"]
+        old = prior_statuses.get(r["lens_id"])
+        if old is None or old == new:
+            continue
+        if old not in SEVERITY or new not in SEVERITY:
+            continue
+        jump = SEVERITY[new] - SEVERITY[old]
+        out.append({
+            "lens_id": r["lens_id"],
+            "lens_title": r["lens_title"],
+            "category": r["category"],
+            "href": r["href"],
+            "from_status": old,
+            "to_status": new,
+            "direction": "worsening" if jump > 0 else "improving",
+            "headline": r["headline"],
+            "_jump": jump,
+        })
+    # Worsening (positive jump) first, largest jump first; then improving.
+    out.sort(key=lambda t: -t["_jump"])
+    for t in out:
+        del t["_jump"]
+    return out

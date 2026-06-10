@@ -91,5 +91,56 @@ class TestFlatten(unittest.TestCase):
         self.assertEqual(flat, [])
 
 
+class TestDetectTransitions(unittest.TestCase):
+    def _flat(self, *pairs):
+        # pairs: (lens_id, status)
+        return [{"lens_id": i, "lens_title": i.title(), "category": "economic",
+                 "href": "/x", "status": s, "headline": f"{i} read.",
+                 "key_stats": [], "sparkline": []} for i, s in pairs]
+
+    def test_status_change_is_a_transition(self):
+        prior = {"job-market": "watch"}
+        flat = self._flat(("job-market", "elevated"))
+        out = brief.detect_transitions(prior, flat)
+        self.assertEqual(len(out), 1)
+        t = out[0]
+        self.assertEqual(t["from_status"], "watch")
+        self.assertEqual(t["to_status"], "elevated")
+        self.assertEqual(t["direction"], "worsening")
+        self.assertEqual(t["lens_id"], "job-market")
+        self.assertEqual(t["headline"], "job-market read.")
+
+    def test_unchanged_status_is_not_a_transition(self):
+        prior = {"job-market": "watch"}
+        flat = self._flat(("job-market", "watch"))
+        self.assertEqual(brief.detect_transitions(prior, flat), [])
+
+    def test_first_run_no_prior_yields_no_transitions(self):
+        flat = self._flat(("job-market", "elevated"))
+        self.assertEqual(brief.detect_transitions({}, flat), [])
+
+    def test_new_lens_not_in_prior_is_skipped(self):
+        prior = {"job-market": "ok"}
+        flat = self._flat(("brand-new", "alert"))
+        self.assertEqual(brief.detect_transitions(prior, flat), [])
+
+    def test_neutral_lens_excluded(self):
+        prior = {"crypto-structure": "neutral"}
+        flat = [{"lens_id": "crypto-structure", "lens_title": "Crypto", "category": "markets",
+                 "href": "/x", "status": "ok", "headline": "h", "key_stats": [], "sparkline": []}]
+        # 'neutral' is not in SEVERITY, so a neutral->ok change is not a transition
+        self.assertEqual(brief.detect_transitions(prior, flat), [])
+
+    def test_worsening_sorts_before_improving_and_by_jump(self):
+        prior = {"a": "ok", "b": "watch", "c": "alert"}
+        flat = self._flat(("a", "alert"), ("b", "ok"), ("c", "elevated"))
+        out = brief.detect_transitions(prior, flat)
+        # a: ok->alert (+3 worsening), c: alert->elevated (-1 improving),
+        # b: watch->ok (-1 improving). Worsening first, then improving.
+        self.assertEqual(out[0]["lens_id"], "a")
+        self.assertEqual(out[0]["direction"], "worsening")
+        self.assertTrue(all(t["direction"] == "improving" for t in out[1:]))
+
+
 if __name__ == "__main__":
     unittest.main()
