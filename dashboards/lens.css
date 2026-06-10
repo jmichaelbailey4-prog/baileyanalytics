@@ -98,3 +98,31 @@ p.lede strong{color:var(--text);font-weight:600}
 .tpill.elevated{color:#FB923C}
 .tpill.alert{color:var(--red)}
 .tpill.unknown{color:var(--dim)}
+
+/* ---- Today's Brief ---- */
+.brief-panel{background:var(--panel);border:1px solid var(--border);border-radius:14px;
+  padding:1.1rem 1.2rem;margin-bottom:2rem}
+.brief-head{font-size:1.05rem;font-weight:600;letter-spacing:-.01em;display:flex;
+  align-items:baseline;gap:.7rem;flex-wrap:wrap;margin-bottom:.9rem}
+.brief-counts{font-size:.78rem;font-weight:500;color:var(--muted)}
+.brief-sec-label{font-size:.66rem;text-transform:uppercase;letter-spacing:.12em;
+  color:var(--dim);margin:.8rem 0 .45rem}
+.brief-trans{display:flex;align-items:center;gap:.7rem;flex-wrap:wrap;text-decoration:none;
+  color:inherit;padding:.5rem .6rem;border-radius:9px;transition:background-color .15s ease}
+.brief-trans:hover{background:rgba(255,255,255,.03)}
+.brief-trans-title{font-weight:600;font-size:.86rem}
+.brief-arrow{display:inline-flex;align-items:center;gap:.4rem;color:var(--dim);font-size:.8rem}
+.brief-trans-read{color:var(--muted);font-size:.8rem;flex:1 1 14rem;min-width:0}
+.brief-moves{display:flex;flex-direction:column;gap:.15rem}
+.brief-move{display:flex;align-items:baseline;gap:.7rem;justify-content:space-between;
+  text-decoration:none;color:inherit;padding:.4rem .6rem;border-radius:9px;
+  transition:background-color .15s ease}
+.brief-move:hover{background:rgba(255,255,255,.03)}
+.brief-move-title{font-weight:600;font-size:.84rem}
+.brief-move-stat{font-size:.78rem;color:var(--muted)}
+.brief-move-stat b{color:var(--text);font-weight:600}
+.brief-quiet{color:var(--muted);font-size:.84rem;padding:.3rem .2rem}
+@media(max-width:640px){
+  .brief-trans{gap:.4rem}
+  .brief-trans-read{flex-basis:100%}
+}
