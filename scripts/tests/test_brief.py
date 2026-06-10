@@ -30,5 +30,33 @@ class TestPctChange(unittest.TestCase):
         self.assertIsNone(brief.pct_change(None))
 
 
+class TestLensHref(unittest.TestCase):
+    def test_economic_is_flat_dashboards(self):
+        self.assertEqual(brief.lens_href("economic", "fiscal-health"),
+                         "/dashboards/fiscal-health.html")
+
+    def test_banking_strips_bank_prefix(self):
+        self.assertEqual(brief.lens_href("banking", "bank-asset-quality"),
+                         "/dashboards/banking/asset-quality.html")
+
+    def test_markets_uses_slug_map(self):
+        self.assertEqual(brief.lens_href("markets", "market-risk-sentiment"),
+                         "/dashboards/markets/risk-sentiment.html")
+        self.assertEqual(brief.lens_href("markets", "crypto-structure"),
+                         "/dashboards/markets/crypto-structure.html")
+
+    def test_energy_uses_slug_map(self):
+        self.assertEqual(brief.lens_href("energy", "energy-oil-fuels"),
+                         "/dashboards/energy/oil-fuels.html")
+
+    def test_consumer_uses_slug_map(self):
+        self.assertEqual(brief.lens_href("consumer", "consumer-credit"),
+                         "/dashboards/consumer/credit-stress.html")
+
+    def test_housing_uses_slug_map(self):
+        self.assertEqual(brief.lens_href("housing", "housing-home-prices"),
+                         "/dashboards/housing/home-prices.html")
+
+
 if __name__ == "__main__":
     unittest.main()
