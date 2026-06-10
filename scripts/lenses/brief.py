@@ -194,6 +194,11 @@ def build_brief(category_indices, prior_state):
         "generated_at": _now(),
         "transitions": transitions,
         "top_moves": moves,
+        # Every lens (id/title/category/href/status), so the brief page can group
+        # and deep-link without re-deriving the slug maps client-side.
+        "lenses": [{"lens_id": r["lens_id"], "lens_title": r["lens_title"],
+                    "category": r["category"], "href": r["href"], "status": r["status"]}
+                   for r in flat],
         "status_counts": _status_counts(flat),
     }
     new_state = {"captured_at": today["generated_at"],

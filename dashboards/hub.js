@@ -42,13 +42,18 @@
     return `${d} day${d === 1 ? "" : "s"} ago`;
   }
 
+  // Shared card renderer: also used by /dashboards/brief.html.
+  window.renderHubTiles = function (grid, lenses, hrefFor) {
+    grid.innerHTML = (lenses || []).map(l => tile(l, hrefFor(l.id))).join("");
+  };
+
   window.loadHubGrid = async function (gridId, url, hrefFor) {
     const grid = document.getElementById(gridId);
     try {
       const res = await fetch(url, { cache: "no-cache" });
       if (!res.ok) throw new Error("HTTP " + res.status);
       const data = await res.json();
-      grid.innerHTML = (data.lenses || []).map(l => tile(l, hrefFor(l.id))).join("");
+      renderHubTiles(grid, data.lenses, hrefFor);
       const ago = data.last_updated && relTime(data.last_updated);
       if (ago) grid.insertAdjacentHTML("afterend", `<div class="hub-fresh">Data last changed ${esc(ago)}</div>`);
     } catch (err) {

@@ -281,7 +281,8 @@
             padding: 0.7rem 0.9rem; margin-bottom: 1rem;
             background: var(--panel); border: 1px solid var(--border); border-radius: 10px;
         }
-        .brief-strip-counts { color: var(--text); font-weight: 600; }
+        .brief-strip-counts { color: var(--text); font-weight: 600; text-decoration: none; }
+        .brief-strip-counts:hover { text-decoration: underline; }
         .brief-strip-lead { color: var(--blue); text-decoration: none; }
         .brief-strip-lead:hover { text-decoration: underline; }
     </style>
@@ -329,7 +330,7 @@
 
         // One tile per dashboard category. To add a category, append a line here.
         const CATEGORIES = [
-            { title: "Economy", url: "/data/lenses/index.json",  href: "/dashboards/" },
+            { title: "Economy", url: "/data/lenses/index.json",  href: "/dashboards/economic/" },
             { title: "Consumer", url: "/data/consumer/index.json", href: "/dashboards/consumer/" },
             { title: "Banking", url: "/data/banking/index.json", href: "/dashboards/banking/" },
             { title: "Markets", url: "/data/markets/index.json", href: "/dashboards/markets/" },
