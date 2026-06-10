@@ -62,6 +62,21 @@ class TestBuildIndex(unittest.TestCase):
         self.assertEqual(entry["key_stats"][0]["k"], "Yield curve")
         self.assertTrue(entry["sparkline"])  # non-empty list of numbers
 
+    def test_key_stats_carry_delta_vs_prior_observation(self):
+        lj = build.build_lens(config.RECESSION_WATCH, _load_fixture())
+        stat = build.build_index([lj])["lenses"][0]["key_stats"][0]
+        # fixture yield curve: 0.05 (2025-01-01) -> 0.30 (2026-06-02) => +0.25
+        self.assertEqual(stat["d"], "0.25%")
+        self.assertEqual(stat["dir"], "up")
+
+    def test_no_delta_with_single_observation(self):
+        lj = build.build_lens(config.RECESSION_WATCH, _load_fixture())
+        for ind in lj["indicators"]:
+            ind["observations"] = ind["observations"][-1:]
+        stat = build.build_index([lj])["lenses"][0]["key_stats"][0]
+        self.assertNotIn("d", stat)
+        self.assertNotIn("dir", stat)
+
 
 class TestFmt(unittest.TestCase):
     """_fmt must mirror lens.js fmtVal: $ is a prefix, word units get a space,
@@ -84,6 +99,10 @@ class TestFmt(unittest.TestCase):
 
     def test_single_letter_unit_stays_tight(self):
         self.assertEqual(build._fmt("4.17", "M"), "4.17M")
+
+    def test_dollar_compound_units_prefix_and_suffix(self):
+        self.assertEqual(build._fmt("2.4", "$T"), "$2.40T")
+        self.assertEqual(build._fmt("1012.3", "$B", "thousands"), "$1,012B")
 
     def test_missing_value(self):
         self.assertEqual(build._fmt(None, "%"), "—")

@@ -589,6 +589,40 @@ def generation_share(label):
     return _rule
 
 
+# --- Fiscal Health rules ---
+
+def rule_debt_gdp(obs):
+    """GFDEGDQ188S: federal debt as % of GDP. <90 ok, 90-110 watch,
+    110-130 elevated, >=130 alert."""
+    if not obs:
+        return _NO_DATA
+    v = obs[-1][1]
+    if v >= 130:
+        return (f"Federal debt is {v:.0f}% of GDP — uncharted territory for the U.S.", "alert")
+    if v >= 110:
+        return (f"Federal debt is {v:.0f}% of GDP — larger than the entire economy.", "elevated")
+    if v >= 90:
+        return (f"Federal debt is {v:.0f}% of GDP — high by historical standards.", "watch")
+    return (f"Federal debt is {v:.0f}% of GDP — a manageable level.", "ok")
+
+
+def rule_deficit_12m(obs):
+    """Trailing-12-month deficit in $trillions (positive = deficit).
+    <0.8 ok, 0.8-1.5 watch, 1.5-2.5 elevated, >=2.5 alert (COVID peak ~$3T)."""
+    if not obs:
+        return _NO_DATA
+    v = obs[-1][1]
+    if v >= 2.5:
+        return (f"The U.S. has borrowed ${v:.1f} trillion over the past year — crisis-era scale.", "alert")
+    if v >= 1.5:
+        return (f"The U.S. has borrowed ${v:.1f} trillion over the past year — heavy borrowing for a growing economy.", "elevated")
+    if v >= 0.8:
+        return (f"The U.S. has borrowed ${v:.1f} trillion over the past year — a sizable structural deficit.", "watch")
+    if v >= 0:
+        return (f"The deficit is ${v:.1f} trillion over the past year — moderate by recent standards.", "ok")
+    return (f"The government ran a ${abs(v):.1f} trillion surplus over the past year.", "ok")
+
+
 # --- Housing & Real Estate rules ---
 
 def market_health(label, hot, cold):
@@ -736,6 +770,13 @@ HEADLINES = {
         "watch": "Inflation has cooled but isn't beaten — still above target.",
         "ok": "Inflation is back near the Fed's target.",
         "unknown": "Some inflation data is temporarily unavailable.",
+    },
+    "fiscal-health": {
+        "alert": "Fiscal stress is acute — debt, deficits, or interest costs are at extremes.",
+        "elevated": "The U.S. is borrowing heavily — debt and interest costs are climbing.",
+        "watch": "Deficits and debt are drifting higher — worth watching.",
+        "ok": "Government finances are on a sustainable track.",
+        "unknown": "Some fiscal data is temporarily unavailable.",
     },
     "bank-asset-quality": {
         "alert": "Loan losses are mounting — credit quality is deteriorating fast.",

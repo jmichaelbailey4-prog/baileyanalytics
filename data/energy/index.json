@@ -10,11 +10,15 @@
       "key_stats": [
         {
           "k": "Gasoline",
-          "v": "$4.15"
+          "v": "$4.15",
+          "d": "$0.16",
+          "dir": "down"
         },
         {
           "k": "Diesel",
-          "v": "$5.21"
+          "v": "$5.21",
+          "d": "$0.14",
+          "dir": "down"
         }
       ],
       "sparkline": [
@@ -69,11 +73,15 @@
       "key_stats": [
         {
           "k": "Henry Hub",
-          "v": "$3.07"
+          "v": "$3.07",
+          "d": "$0.27",
+          "dir": "down"
         },
         {
           "k": "Gas storage",
-          "v": "2,578 Bcf"
+          "v": "2,578 Bcf",
+          "d": "95 Bcf",
+          "dir": "up"
         }
       ],
       "sparkline": [
@@ -128,11 +136,15 @@
       "key_stats": [
         {
           "k": "Power price",
-          "v": "18.83\u00a2/kWh"
+          "v": "18.83\u00a2/kWh",
+          "d": "1.18\u00a2/kWh",
+          "dir": "up"
         },
         {
           "k": "Renewables",
-          "v": "32.50%"
+          "v": "32.50%",
+          "d": "6.70%",
+          "dir": "up"
         }
       ],
       "sparkline": [
@@ -187,11 +199,15 @@
       "key_stats": [
         {
           "k": "Food",
-          "v": "30.20%"
+          "v": "30.20%",
+          "d": "18.60%",
+          "dir": "up"
         },
         {
           "k": "Copper",
-          "v": "$13,484"
+          "v": "$13,484",
+          "d": "$593",
+          "dir": "up"
         }
       ],
       "sparkline": [

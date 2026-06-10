@@ -313,6 +313,29 @@ class TestYoyInfo(unittest.TestCase):
         self.assertEqual(narrative.yoy_info("X")([]), ("Data unavailable.", "unknown"))
 
 
+class TestFiscalRules(unittest.TestCase):
+    def test_debt_gdp_bands(self):
+        self.assertEqual(narrative.rule_debt_gdp([("d", 135.0)])[1], "alert")
+        self.assertEqual(narrative.rule_debt_gdp([("d", 121.0)])[1], "elevated")
+        self.assertEqual(narrative.rule_debt_gdp([("d", 95.0)])[1], "watch")
+        self.assertEqual(narrative.rule_debt_gdp([("d", 75.0)])[1], "ok")
+        self.assertIn("121% of GDP", narrative.rule_debt_gdp([("d", 121.0)])[0])
+
+    def test_deficit_bands(self):
+        self.assertEqual(narrative.rule_deficit_12m([("d", 3.1)])[1], "alert")
+        self.assertEqual(narrative.rule_deficit_12m([("d", 1.9)])[1], "elevated")
+        self.assertEqual(narrative.rule_deficit_12m([("d", 1.0)])[1], "watch")
+        self.assertEqual(narrative.rule_deficit_12m([("d", 0.5)])[1], "ok")
+        text, status = narrative.rule_deficit_12m([("d", -0.2)])
+        self.assertEqual(status, "ok")
+        self.assertIn("surplus", text)
+        self.assertIn("$1.9 trillion", narrative.rule_deficit_12m([("d", 1.9)])[0])
+
+    def test_empty(self):
+        self.assertEqual(narrative.rule_debt_gdp([]), ("Data unavailable.", "unknown"))
+        self.assertEqual(narrative.rule_deficit_12m([]), ("Data unavailable.", "unknown"))
+
+
 class TestEnergyLevelFmt(unittest.TestCase):
     def test_custom_format(self):
         rule = narrative.energy_level("The number of homes for sale", fmt="{:,.2f} million")

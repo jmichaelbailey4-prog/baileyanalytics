@@ -15,7 +15,7 @@
     if (isNaN(f)) return "—";
     const num = (fmt === "thousands") ? Math.round(f).toLocaleString("en-US") : f.toFixed(2);
     if (!unit) return num;
-    if (unit === "$") return "$" + num;
+    if (unit[0] === "$") return "$" + num + unit.slice(1); // "$" / "$T" / "$B"
     // word units ("months", "Bcf") read better with a space; symbols ("%", "M", "k") stay tight
     return (unit.length > 1 && /^[a-z]/i.test(unit)) ? num + " " + unit : num + unit;
   }

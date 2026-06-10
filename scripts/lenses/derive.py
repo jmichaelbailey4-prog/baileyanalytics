@@ -23,6 +23,29 @@ def payroll_change(raw):
     return out
 
 
+def trailing_12m_deficit(raw):
+    """MTSDS133FMS (monthly federal surplus/deficit, $millions, deficits negative)
+    -> the trailing-12-month deficit in $trillions, positive = deficit.
+
+    Each output point sums the 12 most recent monthly values (the monthly series
+    is wildly seasonal — April runs a surplus), flips the sign so a deficit reads
+    as a positive size, and rescales millions -> trillions. The first 11 months
+    have no full window and are dropped; a missing month breaks the window.
+    """
+    values = []
+    out = []
+    for obs in raw:
+        v = util.to_float(obs["value"])
+        if v is None:
+            values = []  # a gap would understate the year — restart the window
+            continue
+        values.append(v)
+        if len(values) >= 12:
+            window = sum(values[-12:])
+            out.append({"date": obs["date"], "value": f"{-window / 1_000_000:.2f}"})
+    return out
+
+
 def yoy_pct(raw):
     """Convert a level/index series into its year-over-year % change, 1 decimal.
 

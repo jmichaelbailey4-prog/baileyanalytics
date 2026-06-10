@@ -10,11 +10,15 @@
       "key_stats": [
         {
           "k": "Noncurrent",
-          "v": "0.98%"
+          "v": "0.98%",
+          "d": "0.02%",
+          "dir": "up"
         },
         {
           "k": "Charge-offs",
-          "v": "0.57%"
+          "v": "0.57%",
+          "d": "0.04%",
+          "dir": "down"
         }
       ],
       "sparkline": [
@@ -69,11 +73,15 @@
       "key_stats": [
         {
           "k": "Margin",
-          "v": "3.27%"
+          "v": "3.27%",
+          "d": "0.01%",
+          "dir": "down"
         },
         {
           "k": "ROA",
-          "v": "1.25%"
+          "v": "1.25%",
+          "d": "0.06%",
+          "dir": "up"
         }
       ],
       "sparkline": [
@@ -128,11 +136,15 @@
       "key_stats": [
         {
           "k": "Risk-based capital",
-          "v": "15.16%"
+          "v": "15.16%",
+          "d": "0.20%",
+          "dir": "down"
         },
         {
           "k": "Equity/assets",
-          "v": "9.97%"
+          "v": "9.97%",
+          "d": "0.24%",
+          "dir": "down"
         }
       ],
       "sparkline": [
@@ -187,11 +199,15 @@
       "key_stats": [
         {
           "k": "Uninsured dep.",
-          "v": "40.48%"
+          "v": "40.48%",
+          "d": "0.26%",
+          "dir": "up"
         },
         {
           "k": "Loans/dep.",
-          "v": "65.76%"
+          "v": "65.76%",
+          "d": "0.38%",
+          "dir": "down"
         }
       ],
       "sparkline": [

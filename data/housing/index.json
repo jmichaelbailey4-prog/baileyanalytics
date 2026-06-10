@@ -10,11 +10,15 @@
       "key_stats": [
         {
           "k": "Case-Shiller",
-          "v": "0.70%"
+          "v": "0.70%",
+          "d": "0.10%",
+          "dir": "down"
         },
         {
           "k": "Home sales",
-          "v": "4.17M"
+          "v": "4.17M",
+          "d": "0.13M",
+          "dir": "up"
         }
       ],
       "sparkline": [
@@ -69,11 +73,15 @@
       "key_stats": [
         {
           "k": "Affordability",
-          "v": "105.60"
+          "v": "105.60",
+          "d": "2.40",
+          "dir": "down"
         },
         {
           "k": "Debt service",
-          "v": "5.92%"
+          "v": "5.92%",
+          "d": "0.03%",
+          "dir": "up"
         }
       ],
       "sparkline": [
@@ -100,11 +108,15 @@
       "key_stats": [
         {
           "k": "Months' supply",
-          "v": "9.40 months"
+          "v": "9.40 months",
+          "d": "0.70 months",
+          "dir": "up"
         },
         {
           "k": "Listings",
-          "v": "1.06M"
+          "v": "1.06M",
+          "d": "0.06M",
+          "dir": "up"
         }
       ],
       "sparkline": [
@@ -159,7 +171,9 @@
       "key_stats": [
         {
           "k": "Rent CPI",
-          "v": "2.90%"
+          "v": "2.90%",
+          "d": "0.10%",
+          "dir": "up"
         },
         {
           "k": "OER",

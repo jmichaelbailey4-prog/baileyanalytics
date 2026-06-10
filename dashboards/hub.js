@@ -16,7 +16,10 @@
 
   function tile(lens, href) {
     const stats = (lens.key_stats || [])
-      .map(s => `<span>${esc(s.k)} <b>${esc(s.v)}</b></span>`).join("");
+      .map(s => {
+        const delta = s.d ? ` <i class="delta ${esc(s.dir || "")}">${esc(s.d)}</i>` : "";
+        return `<span>${esc(s.k)} <b>${esc(s.v)}</b>${delta}</span>`;
+      }).join("");
     return `
       <a class="hub-card" href="${href}">
         <div class="hub-eyebrow" style="color:${lens.accent}">${esc(lens.title)}

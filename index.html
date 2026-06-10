@@ -215,6 +215,9 @@
         .lens .spark { width: 100%; height: 30px; display: block; margin: 0.7rem 0 0.5rem; }
         .lens .stat { font-size: 0.72rem; color: var(--muted); }
         .lens .stat b { color: var(--text); font-weight: 600; }
+        .delta { font-style: normal; font-size: 0.66rem; color: var(--faint); white-space: nowrap; }
+        .delta.up::before { content: "▲"; }
+        .delta.down::before { content: "▼"; }
 
         /* desktop hides the compact chip value */
         .lens .chip-val, .lens .chip-k { display: none; }
@@ -334,13 +337,14 @@
 
         function tile(cat, lens, status) {
             const stat = (lens.key_stats || [])[0] || { k: "", v: "—" };
+            const delta = stat.d ? ` <i class="delta ${esc(stat.dir || "")}">${esc(stat.d)}</i>` : "";
             return `
                 <a class="lens" href="${cat.href}">
                     <div class="eb" style="color:${lens.accent}">${esc(cat.title)}
                         <span class="pill ${esc(status)}">${esc(status)}</span></div>
                     <div class="read">${esc(lens.headline_read)}</div>
                     ${sparkline(lens.sparkline, lens.accent)}
-                    <div class="stat">${esc(stat.k)} <b>${esc(stat.v)}</b></div>
+                    <div class="stat">${esc(stat.k)} <b>${esc(stat.v)}</b>${delta}</div>
                     <div class="chip-val" style="color:${lens.accent}">${esc(stat.v)}</div>
                     <div class="chip-k">${esc(stat.k)}</div>
                 </a>`;

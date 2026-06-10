@@ -27,8 +27,8 @@ def _fmt(value, unit, value_format="decimal"):
     num = f"{round(f):,}" if value_format == "thousands" else f"{f:.2f}"
     if not unit:
         return num
-    if unit == "$":
-        return f"${num}"
+    if unit.startswith("$"):  # "$" -> "$4.15"; "$T" -> "$2.40T"; "$B" -> "$1,012B"
+        return f"${num}{unit[1:]}"
     if len(unit) > 1 and unit[0].isalpha():
         return f"{num} {unit}"
     return f"{num}{unit}"
@@ -179,6 +179,20 @@ def build_crypto_lens(rotation_obs, dominance_obs, btc_eth_obs):
     }
 
 
+def _delta(ind):
+    """Change of the latest observation vs the one before it, as
+    {"d": "0.25%", "dir": "up"} — or {} when there's no prior point or no move.
+    `dir` carries the sign (the UI renders it as ▲/▼). The cadence is the
+    series' own: daily series read "since yesterday", quarterly ones "since
+    last quarter"."""
+    values = [f for f in (util.to_float(o["value"]) for o in ind["observations"]) if f is not None]
+    if len(values) < 2 or values[-1] == values[-2]:
+        return {}
+    diff = values[-1] - values[-2]
+    return {"d": _fmt(abs(diff), ind["unit"], ind.get("value_format", "decimal")),
+            "dir": "up" if diff > 0 else "down"}
+
+
 def build_index(lens_jsons):
     """Build the hub index from already-built lens JSONs."""
     lenses = []
@@ -191,7 +205,9 @@ def build_index(lens_jsons):
         key_stats = []
         for ind in lj["indicators"][:2]:
             if ind["latest"]:
-                key_stats.append({"k": ind["short"], "v": _fmt(ind["latest"]["value"], ind["unit"], ind.get("value_format", "decimal"))})
+                stat = {"k": ind["short"], "v": _fmt(ind["latest"]["value"], ind["unit"], ind.get("value_format", "decimal"))}
+                stat.update(_delta(ind))
+                key_stats.append(stat)
         lenses.append({
             "id": lj["id"],
             "title": lj["title"],

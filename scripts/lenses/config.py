@@ -312,7 +312,78 @@ COST_OF_LIVING = Lens(
     ],
 )
 
-LENSES = [RECESSION_WATCH, COST_OF_MONEY, JOB_MARKET, COST_OF_LIVING]
+FISCAL_HEALTH = Lens(
+    id="fiscal-health",
+    title="Fiscal Health",
+    accent="#A78BFA",
+    indicators=[
+        Indicator(
+            id="debt-gdp",
+            title="Federal Debt · % of GDP",
+            short="Debt/GDP",
+            unit="%",
+            color="#A78BFA",
+            series_id="GFDEGDQ188S",
+            limit=80,  # ~20y quarterly
+            rule=narrative.rule_debt_gdp,
+            context=(
+                "Total federal debt measured against the size of the economy — the "
+                "single most-cited gauge of fiscal sustainability. It crossed 100% "
+                "around 2013 and has kept climbing."
+            ),
+        ),
+        Indicator(
+            id="deficit-12m",
+            title="Federal Deficit · trailing 12 months",
+            short="Deficit",
+            unit="$T",
+            color="#F87171",
+            series_id="MTSDS133FMS",
+            limit=252,  # ~21y monthly; the derive consumes 12 months per point
+            rule=narrative.rule_deficit_12m,
+            derive=derive.trailing_12m_deficit,
+            context=(
+                "How much the government borrowed over the past 12 months, from the "
+                "monthly Treasury statement. The rolling year smooths out tax season "
+                "— this is the number the 'deficit debate' is actually about."
+            ),
+        ),
+        Indicator(
+            id="interest-cost",
+            title="Federal Interest Cost · annual rate",
+            short="Interest cost",
+            unit="$B",
+            color="#FBBF24",
+            series_id="A091RC1Q027SBEA",
+            limit=80,
+            value_format="thousands",
+            rule=narrative.energy_level("The government's interest bill", fmt="${:,.0f} billion"),
+            context=(
+                "What the government pays per year to service its debt (quarterly, "
+                "annualized). Rising rates turned this into one of the largest items "
+                "in the federal budget — crowding out everything else."
+            ),
+        ),
+        Indicator(
+            id="receipts",
+            title="Federal Receipts · year-over-year",
+            short="Receipts",
+            unit="%",
+            color="#34D399",
+            series_id="W006RC1Q027SBEA",
+            limit=100,
+            derive=derive.yoy_pct,
+            rule=narrative.yoy_info("The federal tax take"),
+            context=(
+                "How fast federal tax revenue is growing versus a year ago. Healthy "
+                "receipts growth shrinks the deficit without any policy change; "
+                "shrinking receipts usually mean a weakening economy."
+            ),
+        ),
+    ],
+)
+
+LENSES = [RECESSION_WATCH, COST_OF_MONEY, JOB_MARKET, COST_OF_LIVING, FISCAL_HEALTH]
 
 
 # ---------------------------------------------------------------------------
