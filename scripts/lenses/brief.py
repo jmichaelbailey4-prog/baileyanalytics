@@ -2,6 +2,8 @@
 the most significant moves. Pure synthesis over already-built index.json data —
 no network, no disk I/O (callers pass data in and get data out)."""
 
+from datetime import datetime, timezone
+
 # Severity ladder for transition direction. Mirrors the home page's SEVERITY
 # (index.html) and util.STATUS_ORDER; neutral/info/unknown are intentionally
 # absent — only these four can "transition".
@@ -149,3 +151,37 @@ def rank_moves(flat_lenses, transition_ids, limit=5):
         })
     candidates.sort(key=lambda m: -abs(m["pct_change"]))
     return candidates[:limit]
+
+
+def _now():
+    return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def _status_counts(flat_lenses):
+    counts = {"ok": 0, "watch": 0, "elevated": 0, "alert": 0, "neutral": 0}
+    for r in flat_lenses:
+        s = r["status"]
+        if s in counts:
+            counts[s] += 1
+    return counts
+
+
+def build_brief(category_indices, prior_state):
+    """Assemble (today_json, new_state) from per-category index data and the
+    prior state. prior_state shape: {"statuses": {lens_id: status}}."""
+    prior_statuses = (prior_state or {}).get("statuses", {})
+    flat = _flatten_lenses(category_indices)
+
+    transitions = detect_transitions(prior_statuses, flat)
+    transition_ids = {t["lens_id"] for t in transitions}
+    moves = rank_moves(flat, transition_ids, limit=max(0, 5 - len(transitions)))
+
+    today = {
+        "generated_at": _now(),
+        "transitions": transitions,
+        "top_moves": moves,
+        "status_counts": _status_counts(flat),
+    }
+    new_state = {"captured_at": today["generated_at"],
+                 "statuses": {r["lens_id"]: r["status"] for r in flat}}
+    return today, new_state

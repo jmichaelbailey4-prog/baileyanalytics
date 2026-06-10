@@ -191,5 +191,70 @@ class TestRankMoves(unittest.TestCase):
         self.assertEqual(len(moves), 1)
 
 
+class TestBuildBrief(unittest.TestCase):
+    def _indices(self):
+        return {
+            "economic": {"lenses": [
+                {"id": "job-market", "title": "Job Market", "accent": "#a",
+                 "status": "elevated", "headline_read": "Hiring is slowing.",
+                 "key_stats": [{"k": "Unemployment", "v": "4.50%", "d": "0.20%", "dir": "up"}],
+                 "sparkline": [4.0, 4.5]},
+                {"id": "fiscal-health", "title": "Fiscal Health", "accent": "#a",
+                 "status": "ok", "headline_read": "Finances steady.",
+                 "key_stats": [{"k": "Debt-to-GDP", "v": "124.50%", "d": "0.30%", "dir": "up"}],
+                 "sparkline": [100.0, 112.0]},  # +12% move
+            ]},
+            "markets": {"lenses": [
+                {"id": "crypto-structure", "title": "Crypto", "accent": "#b",
+                 "status": "neutral", "headline_read": "Crypto mixed.",
+                 "key_stats": [{"k": "BTC dominance", "v": "56.00%", "d": "2.00%", "dir": "up"}],
+                 "sparkline": [50.0, 56.0]},  # +12% move
+            ]},
+        }
+
+    def test_transition_detected_and_state_returned(self):
+        prior = {"statuses": {"job-market": "watch", "fiscal-health": "ok",
+                              "crypto-structure": "neutral"}}
+        today, state = brief.build_brief(self._indices(), prior)
+        self.assertEqual(len(today["transitions"]), 1)
+        self.assertEqual(today["transitions"][0]["lens_id"], "job-market")
+        self.assertEqual(today["transitions"][0]["to_status"], "elevated")
+        # new state captures every current status
+        self.assertEqual(state["statuses"]["job-market"], "elevated")
+        self.assertEqual(state["statuses"]["crypto-structure"], "neutral")
+
+    def test_moves_exclude_the_transition_lens(self):
+        prior = {"statuses": {"job-market": "watch", "fiscal-health": "ok",
+                              "crypto-structure": "neutral"}}
+        today, _ = brief.build_brief(self._indices(), prior)
+        ids = [m["lens_id"] for m in today["top_moves"]]
+        self.assertNotIn("job-market", ids)
+        self.assertIn("fiscal-health", ids)   # +12% move
+        self.assertIn("crypto-structure", ids) # neutral but eligible
+
+    def test_status_counts_tally(self):
+        today, _ = brief.build_brief(self._indices(), {"statuses": {}})
+        self.assertEqual(today["status_counts"],
+                         {"ok": 1, "watch": 0, "elevated": 1, "alert": 0, "neutral": 1})
+
+    def test_first_run_empty_prior(self):
+        today, state = brief.build_brief(self._indices(), {})
+        self.assertEqual(today["transitions"], [])
+        self.assertTrue(today["top_moves"])  # moves still populate
+        self.assertIn("generated_at", today)
+        self.assertEqual(state["statuses"]["job-market"], "elevated")
+
+    def test_combined_headline_count_capped_at_five(self):
+        # 6 transitions -> 0 move slots
+        prior_statuses = {f"l{i}": "ok" for i in range(6)}
+        idx = {"economic": {"lenses": [
+            {"id": f"l{i}", "title": f"L{i}", "accent": "#a", "status": "alert",
+             "headline_read": "h", "key_stats": [{"k": "x", "v": "1", "d": "1", "dir": "up"}],
+             "sparkline": [1.0, 2.0]} for i in range(6)]}}
+        today, _ = brief.build_brief(idx, {"statuses": prior_statuses})
+        self.assertEqual(len(today["transitions"]), 6)
+        self.assertEqual(today["top_moves"], [])
+
+
 if __name__ == "__main__":
     unittest.main()
