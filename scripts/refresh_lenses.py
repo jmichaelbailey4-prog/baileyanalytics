@@ -468,12 +468,12 @@ def refresh_brief(dry_run):
     try:
         indices = _load_brief_indices(dry_run)
         today, new_state = brief.build_brief(indices, _load_prior_state())
-        BRIEF_OUT_DIR.mkdir(parents=True, exist_ok=True)
-        (BRIEF_OUT_DIR / "today.json").write_text(
-            json.dumps(today, indent=2) + "\n", encoding="utf-8")
-        (BRIEF_OUT_DIR / "_prior_state.json").write_text(
-            json.dumps(new_state, indent=2) + "\n", encoding="utf-8")
-        print(f"Wrote {BRIEF_OUT_DIR / 'today.json'}")
+        # Content-aware writes (skip when only the timestamp changed) keep the
+        # workflow's "no data change -> no commit" path intact on quiet days.
+        wrote = build.write_lens_file(BRIEF_OUT_DIR / "today.json", today)
+        build.write_lens_file(BRIEF_OUT_DIR / "_prior_state.json", new_state)
+        print(f"Wrote {BRIEF_OUT_DIR / 'today.json'}" if wrote
+              else "No brief changes — Today's Brief is up to date.")
     except Exception as exc:  # noqa: BLE001 - never break the run on a brief failure
         print(f"WARN: brief build failed ({exc}); keeping previous brief", file=sys.stderr)
 
