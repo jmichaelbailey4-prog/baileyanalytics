@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Today's Brief — Bailey Analytics</title>
+  <meta name="description" content="What changed across the dashboards today — status changes, the biggest movers, and every lens currently on alert, elevated, or on watch.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Bailey Analytics">
+  <meta property="og:title" content="Today's Brief — Bailey Analytics">
+  <meta property="og:description" content="What changed across the dashboards today — status changes, the biggest movers, and every lens currently on alert, elevated, or on watch.">
+  <meta property="og:url" content="https://baileyanalytics.com/dashboards/brief.html">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="/dashboards/lens.css">
+  <style>
+    .sec-head { font-size: 1.4rem; font-weight: 600; letter-spacing: -0.01em; margin: 2.25rem 0 0.3rem; scroll-margin-top: 1rem; }
+    .sec-sub { color: var(--muted); font-size: .92rem; max-width: 42rem; margin-bottom: 1.15rem; }
+  </style>
+</head>
+<body>
+  <nav class="wordmark"><a href="/">Bailey Analytics</a></nav>
+  <nav class="top-nav"><a href="/dashboards/">Dashboards</a><a href="/about.html">About</a></nav>
+
+  <main>
+    <a class="back" href="/dashboards/">&larr; Dashboards</a>
+    <h1>Today&rsquo;s Brief</h1>
+    <p class="lede">What changed and what matters across all six dashboard categories — status changes first, then the day&rsquo;s biggest movers, then every lens that currently warrants attention. <strong>Open any card</strong> for the full charts and context.</p>
+    <div class="hub-fresh" id="asof"></div>
+
+    <section id="transitions-sec">
+      <h2 class="sec-head">Status changes today</h2>
+      <p class="sec-sub">Lenses whose overall status moved since the prior data — the headline events.</p>
+      <div id="transitions"><div class="status-msg">Loading&hellip;</div></div>
+    </section>
+
+    <section id="moves-sec" hidden>
+      <h2 class="sec-head" id="moves">Biggest movers</h2>
+      <p class="sec-sub">The lenses whose lead indicator moved the most, judged against that indicator&rsquo;s own typical day-to-day swing.</p>
+      <div class="hub-grid" id="moves-grid"></div>
+    </section>
+
+    <section id="alert-sec" hidden>
+      <h2 class="sec-head" id="alert">On alert</h2>
+      <p class="sec-sub">Readings at levels that have historically meant real stress.</p>
+      <div class="hub-grid" id="alert-grid"></div>
+    </section>
+
+    <section id="elevated-sec" hidden>
+      <h2 class="sec-head" id="elevated">Elevated</h2>
+      <p class="sec-sub">Clearly outside comfortable ranges and worth following closely.</p>
+      <div class="hub-grid" id="elevated-grid"></div>
+    </section>
+
+    <section id="watch-sec" hidden>
+      <h2 class="sec-head" id="watch">On watch</h2>
+      <p class="sec-sub">First warnings — not stressed yet, but moving the wrong way.</p>
+      <div class="hub-grid" id="watch-grid"></div>
+    </section>
+
+    <div class="foot">
+      Data: <a href="https://fred.stlouisfed.org/" target="_blank" rel="noopener">FRED</a> (St. Louis Fed), the <a href="https://banks.data.fdic.gov/" target="_blank" rel="noopener">FDIC</a>, the <a href="https://www.eia.gov/opendata/" target="_blank" rel="noopener">U.S. EIA</a>, and <a href="https://www.coingecko.com/" target="_blank" rel="noopener">CoinGecko</a>. Public data, refreshed regularly.
+    </div>
+  </main>
+
+  <script defer src="/dashboards/hub.js"></script>
+  <script defer src="/dashboards/brief.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", async () => {
+    const DIRS = ["lenses", "consumer", "banking", "markets", "energy", "housing"];
+    let brief;
+    try {
+      const res = await fetch("/data/brief/today.json", { cache: "no-cache" });
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      brief = await res.json();
+    } catch (err) {
+      document.getElementById("transitions").innerHTML =
+        `<div class="status-msg error">The brief is still being refreshed. Check back shortly.</div>`;
+      console.error(err);
+      return;
+    }
+
+    const stamp = brief.generated_at && new Date(brief.generated_at);
+    if (stamp && !isNaN(stamp)) {
+      document.getElementById("asof").textContent =
+        "As of " + stamp.toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" });
+    }
+
+    document.getElementById("transitions").innerHTML =
+      (brief.transitions || []).length
+        ? renderBriefTransitions(brief.transitions)
+        : `<div class="status-msg">No status changes today.</div>`;
+
+    // Card data (sparkline, stats, headline) comes from the category indexes.
+    const byId = {};
+    await Promise.allSettled(DIRS.map(async dir => {
+      const res = await fetch(`/data/${dir}/index.json`, { cache: "no-cache" });
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      (await res.json()).lenses.forEach(l => { byId[l.id] = l; });
+    }));
+
+    const meta = brief.lenses || [];
+    const hrefById = {};
+    meta.forEach(m => { hrefById[m.lens_id] = m.href; });
+    const hrefFor = id => hrefById[id] || "/dashboards/";
+
+    function fill(name, ids) {
+      const lenses = ids.map(id => byId[id]).filter(Boolean);
+      if (!lenses.length) return;
+      document.getElementById(`${name}-sec`).hidden = false;
+      renderHubTiles(document.getElementById(`${name}-grid`), lenses, hrefFor);
+    }
+    fill("moves", (brief.top_moves || []).map(m => m.lens_id));
+    for (const s of ["alert", "elevated", "watch"])
+      fill(s, meta.filter(m => m.status === s).map(m => m.lens_id));
+  });</script>
+</body>
+</html>
