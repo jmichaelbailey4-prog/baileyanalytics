@@ -2,7 +2,7 @@
   "id": "energy-oil-fuels",
   "title": "Oil & Fuels",
   "accent": "#FB923C",
-  "last_updated": "2026-06-09T19:01:29Z",
+  "last_updated": "2026-06-10T17:44:43Z",
   "status": "alert",
   "headline_read": "Fuel costs are spiking \u2014 acute pressure at the pump.",
   "recessions": [
@@ -4221,10 +4221,6 @@
       "series_id": "WCRFPUS2",
       "observations": [
         {
-          "date": "2016-06-17",
-          "value": "8677"
-        },
-        {
           "date": "2016-06-24",
           "value": "8622"
         },
@@ -6299,14 +6295,18 @@
         {
           "date": "2026-05-29",
           "value": "13707"
+        },
+        {
+          "date": "2026-06-05",
+          "value": "13799"
         }
       ],
       "latest": {
-        "date": "2026-05-29",
-        "value": "13707"
+        "date": "2026-06-05",
+        "value": "13799"
       },
       "context": "U.S. field production of crude oil (thousand barrels per day) \u2014 the supply side that, with demand, sets the price of oil.",
-      "read": "U.S. crude production is little changed from a year ago, now 13,707.",
+      "read": "U.S. crude production is little changed from a year ago, now 13,799.",
       "signal_status": "info",
       "value_format": "thousands"
     },
@@ -6318,10 +6318,6 @@
       "color": "#38BDF8",
       "series_id": "WCESTUS1",
       "observations": [
-        {
-          "date": "2016-06-17",
-          "value": "499994"
-        },
         {
           "date": "2016-06-24",
           "value": "495941"
@@ -8397,14 +8393,18 @@
         {
           "date": "2026-05-29",
           "value": "433712"
+        },
+        {
+          "date": "2026-06-05",
+          "value": "426485"
         }
       ],
       "latest": {
-        "date": "2026-05-29",
-        "value": "433712"
+        "date": "2026-06-05",
+        "value": "426485"
       },
       "context": "Commercial crude oil inventories (thousand barrels, excluding the Strategic Petroleum Reserve) \u2014 low stocks point to upward price pressure.",
-      "read": "Crude inventories is little changed from a year ago, now 433,712.",
+      "read": "Crude inventories is little changed from a year ago, now 426,485.",
       "signal_status": "info",
       "value_format": "thousands"
     }
