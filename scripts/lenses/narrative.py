@@ -512,6 +512,40 @@ def generation_share(label):
     return _rule
 
 
+# --- Housing & Real Estate rules ---
+
+def market_health(label, hot, cold):
+    """Factory: two-sided market-health severity from the trailing-12-month % change.
+    `hot` and `cold` are (watch, elevated, alert) YoY-% thresholds — hot positive
+    (overheating), cold negative (freezing). Both extremes raise severity."""
+    hot_w, hot_e, hot_a = hot
+    cold_w, cold_e, cold_a = cold
+
+    def _rule(obs):
+        if not obs:
+            return _NO_DATA
+        v = obs[-1][1]
+        prior = _value_year_ago(obs)
+        if prior is None or prior == 0:
+            return (f"{label}: latest reading {v:,.0f}.", "ok")
+        pct = (v - prior) / abs(prior) * 100
+        if pct >= hot_a:
+            return (f"{label}: up {pct:.0f}% from a year ago — overheating.", "alert")
+        if pct >= hot_e:
+            return (f"{label}: up {pct:.0f}% from a year ago — running hot.", "elevated")
+        if pct >= hot_w:
+            return (f"{label}: up {pct:.0f}% from a year ago — heating up.", "watch")
+        if pct <= cold_a:
+            return (f"{label}: down {abs(pct):.0f}% from a year ago — a deep freeze.", "alert")
+        if pct <= cold_e:
+            return (f"{label}: down {abs(pct):.0f}% from a year ago — cooling sharply.", "elevated")
+        if pct <= cold_w:
+            return (f"{label}: down {abs(pct):.0f}% from a year ago — cooling.", "watch")
+        return (f"{label}: little changed from a year ago ({pct:+.0f}%).", "ok")
+
+    return _rule
+
+
 HEADLINES = {
     "recession-watch": {
         "alert": "Recession signals are flashing — multiple indicators have tripped.",
