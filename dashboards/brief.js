@@ -4,11 +4,20 @@
 (function () {
   function esc(s) { const d = document.createElement("div"); d.textContent = s; return d.innerHTML; }
 
-  function countsLine(c) {
+  function countsText(c) {
     const parts = [];
     if (c.alert) parts.push(`${c.alert} alert`);
     if (c.elevated) parts.push(`${c.elevated} elevated`);
     if (c.watch) parts.push(`${c.watch} on watch`);
+    return parts.length ? parts.join(" · ") : "All clear across the dashboards";
+  }
+
+  // Same counts, but each one deep-links into the brief page's status section.
+  function countsLinks(c) {
+    const parts = [];
+    for (const s of ["alert", "elevated", "watch"]) {
+      if (c[s]) parts.push(`<a href="/dashboards/brief.html#${s}">${c[s]} ${s === "watch" ? "on watch" : s}</a>`);
+    }
     return parts.length ? parts.join(" · ") : "All clear across the dashboards";
   }
 
@@ -24,24 +33,18 @@
     </a>`;
   }
 
-  function moveRow(m) {
-    const delta = m.delta ? `<i class="delta ${esc(m.dir || "")}">${esc(m.delta)}</i>` : "";
-    return `<a class="brief-move" href="${m.href}">
-      <span class="brief-move-title">${esc(m.lens_title)}</span>
-      <span class="brief-move-stat">${esc(m.stat_label)} <b>${esc(m.stat_value)}</b> ${delta}</span>
-    </a>`;
-  }
+  // Used by /dashboards/brief.html so transition markup lives in one place.
+  window.renderBriefTransitions = transitions => (transitions || []).map(transitionRow).join("");
 
   function fullPanel(data) {
     const trans = (data.transitions || []).map(transitionRow).join("");
-    const moves = (data.top_moves || []).map(moveRow).join("");
-    const quiet = !trans && !moves;
+    const movers = (data.top_moves || []).length
+      ? `<a class="brief-link" href="/dashboards/brief.html#moves">Biggest movers &rarr;</a>` : "";
     return `
       <div class="brief-head">Today&rsquo;s Brief
-        <span class="brief-counts">${esc(countsLine(data.status_counts || {}))}</span></div>
+        <span class="brief-counts">${countsLinks(data.status_counts || {})}</span></div>
       ${trans ? `<div class="brief-sec-label">Status changes</div>${trans}` : ""}
-      ${moves ? `<div class="brief-sec-label">Biggest moves</div><div class="brief-moves">${moves}</div>` : ""}
-      ${quiet ? `<div class="brief-quiet">Markets are quiet today — no status changes.</div>` : ""}`;
+      <div class="brief-links">${movers}<a class="brief-link" href="/dashboards/brief.html">Full brief &rarr;</a></div>`;
   }
 
   function compactStrip(data) {
@@ -49,7 +52,7 @@
     const lead = t0
       ? `<a class="brief-strip-lead" href="${t0.href}">${esc(t0.lens_title)}: ${esc(t0.from_status)} &rarr; ${esc(t0.to_status)}</a>`
       : "";
-    return `<span class="brief-strip-counts">${esc(countsLine(data.status_counts || {}))}</span>${lead}`;
+    return `<a class="brief-strip-counts" href="/dashboards/brief.html">${esc(countsText(data.status_counts || {}))}</a>${lead}`;
   }
 
   window.loadBrief = async function (elId, opts) {
