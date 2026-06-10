@@ -275,5 +275,25 @@ class TestBuildBrief(unittest.TestCase):
         self.assertEqual(today["top_moves"], [])
 
 
+class TestBriefLensesList(unittest.TestCase):
+    def test_today_includes_flat_lenses_list(self):
+        idx = {"economic": {"lenses": [
+            {"id": "fiscal-health", "title": "Fiscal Health", "accent": "#a",
+             "status": "elevated", "headline_read": "h",
+             "key_stats": [], "sparkline": []}]},
+               "housing": {"lenses": [
+            {"id": "housing-home-prices", "title": "Price Stability", "accent": "#b",
+             "status": "ok", "headline_read": "h2",
+             "key_stats": [], "sparkline": []}]}}
+        today, _ = brief.build_brief(idx, {})
+        self.assertEqual(len(today["lenses"]), 2)
+        fiscal = next(l for l in today["lenses"] if l["lens_id"] == "fiscal-health")
+        self.assertEqual(fiscal, {"lens_id": "fiscal-health", "lens_title": "Fiscal Health",
+                                  "category": "economic", "href": "/dashboards/fiscal-health.html",
+                                  "status": "elevated"})
+        homes = next(l for l in today["lenses"] if l["lens_id"] == "housing-home-prices")
+        self.assertEqual(homes["href"], "/dashboards/housing/home-prices.html")
+
+
 if __name__ == "__main__":
     unittest.main()

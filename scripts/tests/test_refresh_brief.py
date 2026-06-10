@@ -27,6 +27,8 @@ class TestBriefDryRun(unittest.TestCase):
             self.assertIn("status_counts", today)
             # fixture has fiscal-health elevated -> captured in state
             self.assertEqual(state["statuses"]["fiscal-health"], "elevated")
+            self.assertTrue(any(l["lens_id"] == "fiscal-health" and l["status"] == "elevated"
+                                for l in today["lenses"]))
 
     def test_unchanged_rerun_does_not_rewrite(self):
         # An identical second run must be a no-op (content-aware write), so the
