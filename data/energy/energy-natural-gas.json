@@ -2,7 +2,7 @@
   "id": "energy-natural-gas",
   "title": "Natural Gas",
   "accent": "#60A5FA",
-  "last_updated": "2026-06-09T19:01:29Z",
+  "last_updated": "2026-06-10T17:44:43Z",
   "status": "ok",
   "headline_read": "Natural gas costs are stable or easing.",
   "recessions": [
@@ -25,12 +25,8 @@
       "series_id": "RNGWHHD",
       "observations": [
         {
-          "date": "2022-10-19",
-          "value": "5.63"
-        },
-        {
-          "date": "2022-10-24",
-          "value": "4.81"
+          "date": "2022-10-26",
+          "value": "5.28"
         },
         {
           "date": "2022-10-31",
@@ -367,22 +363,6 @@
         {
           "date": "2024-06-03",
           "value": "2.55"
-        },
-        {
-          "date": "2024-06-04",
-          "value": "2.58"
-        },
-        {
-          "date": "2024-06-05",
-          "value": "2.27"
-        },
-        {
-          "date": "2024-06-06",
-          "value": "2.3"
-        },
-        {
-          "date": "2024-06-07",
-          "value": "2.46"
         },
         {
           "date": "2024-06-10",
@@ -2343,14 +2323,34 @@
         {
           "date": "2026-06-01",
           "value": "3.07"
+        },
+        {
+          "date": "2026-06-02",
+          "value": "2.97"
+        },
+        {
+          "date": "2026-06-03",
+          "value": "2.97"
+        },
+        {
+          "date": "2026-06-04",
+          "value": "3.08"
+        },
+        {
+          "date": "2026-06-05",
+          "value": "3.05"
+        },
+        {
+          "date": "2026-06-08",
+          "value": "3.1"
         }
       ],
       "latest": {
-        "date": "2026-06-01",
-        "value": "3.07"
+        "date": "2026-06-08",
+        "value": "3.1"
       },
       "context": "The U.S. benchmark natural-gas price ($/MMBtu) \u2014 it drives home heating bills and a large share of electricity generation cost.",
-      "read": "Natural gas costs are up 7% over the past year.",
+      "read": "Natural gas costs are up 16% over the past year.",
       "signal_status": "ok",
       "value_format": "decimal"
     },
