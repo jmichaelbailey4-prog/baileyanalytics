@@ -59,6 +59,10 @@ jobs:
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
         run: python scripts/refresh_lenses.py --consumer
 
+      - name: Rebuild Today's Brief (no network)
+        if: ${{ success() || failure() }}
+        run: python scripts/refresh_lenses.py --brief
+
       - name: Commit and push if data changed
         if: ${{ success() || failure() }}
         run: |

@@ -28,6 +28,10 @@ jobs:
         # restated Call Reports self-heal (~3 min; quarterly aggregation, no cache).
         run: python scripts/refresh_lenses.py --banking
 
+      - name: Rebuild Today's Brief (no network)
+        if: ${{ success() || failure() }}
+        run: python scripts/refresh_lenses.py --brief
+
       - name: Commit and push if data changed
         run: |
           git config user.name "github-actions[bot]"
