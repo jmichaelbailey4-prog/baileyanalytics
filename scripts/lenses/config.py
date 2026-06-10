@@ -816,7 +816,7 @@ CATEGORIES.append(
 # --- Housing & Real Estate (FRED) ---
 
 HOUSING_HOME_PRICES = Lens(
-    id="housing-home-prices", title="Home Prices", accent="#F472B6",
+    id="housing-home-prices", title="Price Stability", accent="#F472B6",
     indicators=[
         Indicator(
             id="case-shiller", title="Case-Shiller National Home Price Index",
@@ -828,11 +828,11 @@ HOUSING_HOME_PRICES = Lens(
         ),
         Indicator(
             id="existing-home-sales", title="Existing-Home Sales · annual rate",
-            short="Home sales", unit="", color="#38BDF8",
-            series_id="EXHOSLUSM495S", limit=240, value_format="thousands",
+            short="Home sales", unit="M", color="#38BDF8",
+            series_id="EXHOSLUSM495S", limit=240, derive=derive.units_to_millions,
             rule=narrative.market_health("Home sales", hot=(10, 20, 30), cold=(-10, -20, -30)),
-            context=("How many existing homes are selling, at an annual rate — the market's "
-                     "pulse. A collapse in sales is how a housing freeze shows up first."),
+            context=("How many existing homes are selling, in millions at an annual rate — the "
+                     "market's pulse. A collapse in sales is how a housing freeze shows up first."),
         ),
         Indicator(
             id="median-price", title="Median Sales Price of Houses Sold",
@@ -848,14 +848,6 @@ HOUSING_HOME_PRICES = Lens(
 HOUSING_AFFORDABILITY = Lens(
     id="housing-affordability", title="Affordability & Financing", accent="#FBBF24",
     indicators=[
-        Indicator(
-            id="mortgage-rate", title="30-Year Fixed Mortgage Rate",
-            short="30-yr mortgage", unit="%", color="#FBBF24",
-            series_id="MORTGAGE30US", limit=1040,
-            rule=narrative.rule_mortgage,
-            context=("The average rate on a 30-year fixed home loan — the single biggest driver "
-                     "of what a buyer can afford each month."),
-        ),
         Indicator(
             id="affordability-index", title="Housing Affordability Index (NAR)",
             short="Affordability", unit="", color="#F472B6",
@@ -881,6 +873,14 @@ HOUSING_AFFORDABILITY = Lens(
             context=("The share of single-family mortgages at commercial banks that are past "
                      "due (quarterly) — where affordability stress turns into credit stress."),
         ),
+        Indicator(
+            id="mortgage-rate", title="30-Year Fixed Mortgage Rate",
+            short="30-yr mortgage", unit="%", color="#FBBF24",
+            series_id="MORTGAGE30US", limit=1040,
+            rule=narrative.rule_mortgage,
+            context=("The average rate on a 30-year fixed home loan — the input behind the "
+                     "affordability squeeze above: it sets what a buyer can afford each month."),
+        ),
     ],
 )
 
@@ -888,28 +888,12 @@ HOUSING_SUPPLY_CONSTRUCTION = Lens(
     id="housing-supply-construction", title="Supply & Construction", accent="#34D399",
     indicators=[
         Indicator(
-            id="housing-starts", title="Housing Starts · annual rate",
-            short="Starts", unit="", color="#34D399",
-            series_id="HOUST", limit=240, value_format="thousands",
-            rule=narrative.market_health("Homebuilding", hot=(20, 35, 50), cold=(-10, -20, -35)),
-            context=("New homes started each month, in thousands at an annual rate — the "
-                     "construction industry's output, and a classic leading indicator."),
-        ),
-        Indicator(
-            id="building-permits", title="Building Permits · annual rate",
-            short="Permits", unit="", color="#A78BFA",
-            series_id="PERMIT", limit=240, value_format="thousands",
-            rule=narrative.market_health("Permitting", hot=(20, 35, 50), cold=(-10, -20, -35)),
-            context=("Permits pulled for new housing units — the step before starts, so it "
-                     "leads the rest of the construction pipeline."),
-        ),
-        Indicator(
-            id="months-supply", title="Months' Supply of New Houses",
-            short="Months' supply", unit="mo", color="#FBBF24",
+            id="months-supply", title="Months of New-Home Supply",
+            short="Months' supply", unit="months", color="#FBBF24",
             series_id="MSACSR", limit=240,
             rule=narrative.rule_months_supply,
-            context=("How long it would take to sell every new home on the market at the "
-                     "current sales pace. Roughly 4-6 months is balanced; more is a glut, "
+            context=("How many months it would take to sell every new home on the market at "
+                     "the current sales pace. Roughly 4-6 months is balanced; more is a glut, "
                      "less is a squeeze."),
         ),
         Indicator(
@@ -919,6 +903,23 @@ HOUSING_SUPPLY_CONSTRUCTION = Lens(
             rule=narrative.energy_level("The number of homes for sale"),
             context=("Homes listed for sale nationwide (Realtor.com count, since 2016) — "
                      "the inventory buyers actually get to choose from."),
+        ),
+        Indicator(
+            id="housing-starts", title="Housing Starts · thousands, annual rate",
+            short="Starts", unit="", color="#34D399",
+            series_id="HOUST", limit=240, value_format="thousands",
+            rule=narrative.market_health("Homebuilding", hot=(20, 35, 50), cold=(-10, -20, -35)),
+            context=("New homes started each month, in thousands of units at an annual rate "
+                     "(1,465 means ~1.47 million homes/year) — the construction industry's "
+                     "output, and a classic leading indicator."),
+        ),
+        Indicator(
+            id="building-permits", title="Building Permits · thousands, annual rate",
+            short="Permits", unit="", color="#A78BFA",
+            series_id="PERMIT", limit=240, value_format="thousands",
+            rule=narrative.market_health("Permitting", hot=(20, 35, 50), cold=(-10, -20, -35)),
+            context=("Permits pulled for new housing units, in thousands at an annual rate — "
+                     "the step before starts, so it leads the rest of the construction pipeline."),
         ),
     ],
 )

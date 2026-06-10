@@ -37,6 +37,12 @@ class TestBuildHousing(unittest.TestCase):
         ms = next(i for i in lj["indicators"] if i["id"] == "months-supply")
         self.assertEqual(ms["signal_status"], "elevated")  # 9.4 months = glut
 
+    def test_home_sales_derived_to_millions(self):
+        lj = build.build_lens(config.HOUSING_HOME_PRICES, _fetched())
+        sales = next(i for i in lj["indicators"] if i["id"] == "existing-home-sales")
+        self.assertEqual(sales["latest"]["value"], "4.17")  # 4,170,000 -> 4.17M
+        self.assertEqual(sales["unit"], "M")
+
     def test_rent_shelter_watch_from_rent_cpi(self):
         lj = build.build_lens(config.HOUSING_RENT_SHELTER, _fetched())
         self.assertEqual(lj["status"], "watch")  # rent +4.4% YoY

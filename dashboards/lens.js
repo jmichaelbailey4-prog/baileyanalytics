@@ -13,8 +13,11 @@
   function fmtVal(value, unit, fmt) {
     const f = parseFloat(value);
     if (isNaN(f)) return "—";
-    if (fmt === "thousands") return Math.round(f).toLocaleString("en-US") + unit;
-    return f.toFixed(2) + unit;
+    const num = (fmt === "thousands") ? Math.round(f).toLocaleString("en-US") : f.toFixed(2);
+    if (!unit) return num;
+    if (unit === "$") return "$" + num;
+    // word units ("months") read better with a space; symbols ("%", "M", "k") stay tight
+    return (unit.length > 1 && /^[a-z]/.test(unit)) ? num + " " + unit : num + unit;
   }
   function esc(s) {
     const d = document.createElement("div"); d.textContent = s; return d.innerHTML;
@@ -77,7 +80,7 @@
                  callback(v) { const s = this.getLabelForValue(v); if (!s) return s;
                    return (years && years <= 1) ? MONTHS[+s.slice(5, 7) - 1] : s.slice(0, 4); } },
                grid: { display: false }, border: { color: "#1E293B" } },
-          y: { ticks: { color: "#64748B", font: { size: 11 }, callback: v => indicator.value_format === "thousands" ? Math.round(v).toLocaleString("en-US") + indicator.unit : v.toFixed(2) + indicator.unit },
+          y: { ticks: { color: "#64748B", font: { size: 11 }, callback: v => fmtVal(v, indicator.unit, indicator.value_format) },
                grid: { color: "#1E293B" }, border: { display: false } },
         },
       },

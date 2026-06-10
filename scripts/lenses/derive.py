@@ -32,3 +32,14 @@ def to_millions(raw):
             continue
         out.append({"date": obs["date"], "value": f"{v / 1000:.1f}"})
     return out
+
+
+def units_to_millions(raw):
+    """Convert a level reported in raw units into millions, 2 decimals (4170000 -> '4.17')."""
+    out = []
+    for obs in raw:
+        v = util.to_float(obs["value"])
+        if v is None:
+            continue
+        out.append({"date": obs["date"], "value": f"{v / 1_000_000:.2f}"})
+    return out

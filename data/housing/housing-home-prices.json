@@ -1,8 +1,8 @@
 {
   "id": "housing-home-prices",
-  "title": "Home Prices",
+  "title": "Price Stability",
   "accent": "#F472B6",
-  "last_updated": "2026-06-10T13:54:32Z",
+  "last_updated": "2026-06-10T14:15:20Z",
   "status": "ok",
   "headline_read": "The housing market looks balanced \u2014 prices and sales are steady.",
   "recessions": [
@@ -998,75 +998,71 @@
       "id": "existing-home-sales",
       "title": "Existing-Home Sales \u00b7 annual rate",
       "short": "Home sales",
-      "unit": "",
+      "unit": "M",
       "color": "#38BDF8",
       "series_id": "EXHOSLUSM495S",
       "observations": [
         {
-          "date": "2025-04-01",
-          "value": "."
-        },
-        {
           "date": "2025-05-01",
-          "value": "4040000.0"
+          "value": "4.04"
         },
         {
           "date": "2025-06-01",
-          "value": "3980000.0"
+          "value": "3.98"
         },
         {
           "date": "2025-07-01",
-          "value": "4030000.0"
+          "value": "4.03"
         },
         {
           "date": "2025-08-01",
-          "value": "4030000.0"
+          "value": "4.03"
         },
         {
           "date": "2025-09-01",
-          "value": "4080000.0"
+          "value": "4.08"
         },
         {
           "date": "2025-10-01",
-          "value": "4110000.0"
+          "value": "4.11"
         },
         {
           "date": "2025-11-01",
-          "value": "4090000.0"
+          "value": "4.09"
         },
         {
           "date": "2025-12-01",
-          "value": "4270000.0"
+          "value": "4.27"
         },
         {
           "date": "2026-01-01",
-          "value": "4020000.0"
+          "value": "4.02"
         },
         {
           "date": "2026-02-01",
-          "value": "4130000.0"
+          "value": "4.13"
         },
         {
           "date": "2026-03-01",
-          "value": "4010000.0"
+          "value": "4.01"
         },
         {
           "date": "2026-04-01",
-          "value": "4040000.0"
+          "value": "4.04"
         },
         {
           "date": "2026-05-01",
-          "value": "4170000.0"
+          "value": "4.17"
         }
       ],
       "latest": {
         "date": "2026-05-01",
-        "value": "4170000.0"
+        "value": "4.17"
       },
-      "context": "How many existing homes are selling, at an annual rate \u2014 the market's pulse. A collapse in sales is how a housing freeze shows up first.",
+      "context": "How many existing homes are selling, in millions at an annual rate \u2014 the market's pulse. A collapse in sales is how a housing freeze shows up first.",
       "read": "Home sales: little changed from a year ago (+3%).",
       "signal_status": "ok",
-      "value_format": "thousands"
+      "value_format": "decimal"
     },
     {
       "id": "median-price",
