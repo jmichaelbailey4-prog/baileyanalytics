@@ -66,6 +66,8 @@
   <script defer src="/dashboards/hub.js"></script>
   <script defer src="/dashboards/brief.js"></script>
   <script>document.addEventListener("DOMContentLoaded", async () => {
+    // One data dir per dashboard category (economic lives in "lenses").
+    // To add a category, append a line here — same drill as the home page.
     const DIRS = ["lenses", "consumer", "banking", "markets", "energy", "housing"];
     let brief;
     try {
@@ -92,11 +94,12 @@
 
     // Card data (sparkline, stats, headline) comes from the category indexes.
     const byId = {};
-    await Promise.allSettled(DIRS.map(async dir => {
+    const results = await Promise.allSettled(DIRS.map(async dir => {
       const res = await fetch(`/data/${dir}/index.json`, { cache: "no-cache" });
       if (!res.ok) throw new Error("HTTP " + res.status);
       (await res.json()).lenses.forEach(l => { byId[l.id] = l; });
     }));
+    results.forEach(r => { if (r.status === "rejected") console.error(r.reason); });
 
     const meta = brief.lenses || [];
     const hrefById = {};
@@ -112,6 +115,14 @@
     fill("moves", (brief.top_moves || []).map(m => m.lens_id));
     for (const s of ["alert", "elevated", "watch"])
       fill(s, meta.filter(m => m.status === s).map(m => m.lens_id));
+
+    // The browser's own fragment scroll fired while these sections were still
+    // hidden (no layout box), so deep links like #alert landed at the top —
+    // re-run it now that the target is visible.
+    if (location.hash) {
+      const target = document.getElementById(location.hash.slice(1));
+      if (target && !target.closest("[hidden]")) target.scrollIntoView();
+    }
   });</script>
 </body>
 </html>

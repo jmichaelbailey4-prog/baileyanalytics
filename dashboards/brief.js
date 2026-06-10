@@ -13,10 +13,12 @@
   }
 
   // Same counts, but each one deep-links into the brief page's status section.
+  // Counts are coerced to numbers before interpolation — this string becomes HTML.
   function countsLinks(c) {
     const parts = [];
     for (const s of ["alert", "elevated", "watch"]) {
-      if (c[s]) parts.push(`<a href="/dashboards/brief.html#${s}">${c[s]} ${s === "watch" ? "on watch" : s}</a>`);
+      const n = Number(c[s]);
+      if (n) parts.push(`<a href="/dashboards/brief.html#${s}">${n} ${s === "watch" ? "on watch" : s}</a>`);
     }
     return parts.length ? parts.join(" · ") : "All clear across the dashboards";
   }
