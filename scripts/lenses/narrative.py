@@ -874,6 +874,89 @@ def level_points(label):
     return _rule
 
 
+# --- Corporate & Business Health rules ---
+
+def yoy_contraction_band(label, watch, elevated, alert, verb="are"):
+    """Factory: one-sided severity for an already-YoY % series where FALLING is
+    the stress signal (profits, business applications, capex orders). Thresholds
+    are YoY-% values, descending (e.g. 0, -5, -15). Label reads as a plural
+    subject ("Corporate profits"); pass verb="is" for singular ones."""
+    def _rule(obs):
+        if not obs:
+            return _NO_DATA
+        v = obs[-1][1]
+        if v <= alert:
+            return (f"{label} {verb} down {abs(v):.1f}% from a year ago — a severe contraction.", "alert")
+        if v <= elevated:
+            return (f"{label} {verb} down {abs(v):.1f}% from a year ago — contracting sharply.", "elevated")
+        if v < watch:
+            return (f"{label} {verb} down {abs(v):.1f}% from a year ago — shrinking.", "watch")
+        if v >= 1:
+            return (f"{label} {verb} growing {v:.1f}% a year.", "ok")
+        return (f"{label} {verb} roughly flat versus a year ago ({v:+.1f}%).", "ok")
+    return _rule
+
+
+def rule_baa_spread(obs):
+    """BAA10YM: Moody's Baa yield minus the 10-year Treasury, in points.
+    <2.0 ok, 2.0-2.5 watch, 2.5-3.5 elevated, >=3.5 alert (2008 ~6, COVID ~3.5)."""
+    if not obs:
+        return _NO_DATA
+    v = obs[-1][1]
+    if v >= 3.5:
+        return (f"The Baa spread is {v:.2f} points — crisis-grade pricing of corporate credit risk.", "alert")
+    if v >= 2.5:
+        return (f"The Baa spread is {v:.2f} points — wide, a sign of building credit stress.", "elevated")
+    if v >= 2.0:
+        return (f"The Baa spread is {v:.2f} points — drifting wider off its lows.", "watch")
+    return (f"The Baa spread is {v:.2f} points — corporate credit is priced calm.", "ok")
+
+
+def rule_lending_standards(obs):
+    """DRTSCILM: net % of banks tightening C&I standards (SLOOS).
+    <=0 ok, 0-20 watch, 20-50 elevated, >50 alert (2008 ~84, COVID ~71)."""
+    if not obs:
+        return _NO_DATA
+    v = obs[-1][1]
+    if v > 50:
+        return (f"A net {v:.0f}% of banks are tightening business-loan standards — a credit crunch.", "alert")
+    if v >= 20:
+        return (f"A net {v:.0f}% of banks are tightening business-loan standards — broad tightening, a classic late-cycle signal.", "elevated")
+    if v > 0:
+        return (f"A net {v:.0f}% of banks are tightening business-loan standards — mild tightening.", "watch")
+    if v < 0:
+        return (f"A net {abs(v):.0f}% of banks are easing business-loan standards — credit is getting easier.", "ok")
+    return ("Banks are neither tightening nor easing business-loan standards on balance.", "ok")
+
+
+def rule_business_delinquency(obs):
+    """DRBLACBS: % of bank business loans past due.
+    <1.5 ok, 1.5-2.5 watch, 2.5-4.0 elevated, >=4.0 alert (2009 peak ~4.4)."""
+    if not obs:
+        return _NO_DATA
+    v = obs[-1][1]
+    if v >= 4.0:
+        return (f"Business-loan delinquencies are at {v:.2f}% — crisis-level borrower distress.", "alert")
+    if v >= 2.5:
+        return (f"Business-loan delinquencies have climbed to {v:.2f}% — real borrower stress.", "elevated")
+    if v >= 1.5:
+        return (f"Business-loan delinquencies are at {v:.2f}%, creeping up off their lows.", "watch")
+    return (f"Just {v:.2f}% of business loans are delinquent — borrowers are keeping up.", "ok")
+
+
+def rule_inventories_sales(obs):
+    """ISRATIO: total-business inventories-to-sales ratio (months of sales).
+    <1.40 ok, 1.40-1.50 watch, >=1.50 elevated (2008 peaked ~1.48, COVID ~1.74)."""
+    if not obs:
+        return _NO_DATA
+    v = obs[-1][1]
+    if v >= 1.50:
+        return (f"Inventories equal {v:.2f} months of sales — an overhang that typically forces production cuts.", "elevated")
+    if v >= 1.40:
+        return (f"Inventories equal {v:.2f} months of sales — stocks are building up.", "watch")
+    return (f"Inventories equal {v:.2f} months of sales — lean and healthy.", "ok")
+
+
 HEADLINES = {
     "recession-watch": {
         "alert": "Recession signals are flashing — multiple indicators have tripped.",
@@ -1041,6 +1124,34 @@ HEADLINES = {
         "watch": "Rents are climbing — renters are feeling it.",
         "ok": "The rental market is balanced — rents are behaving.",
         "unknown": "Some rental data is temporarily unavailable.",
+    },
+    "business-profitability": {
+        "alert": "Corporate profits are collapsing.",
+        "elevated": "Corporate profits are contracting — earnings are under real pressure.",
+        "watch": "Corporate profit growth is stalling.",
+        "ok": "Corporate America is profitable — earnings are growing.",
+        "unknown": "Some profit data is temporarily unavailable.",
+    },
+    "business-formation": {
+        "alert": "Business formation has collapsed.",
+        "elevated": "Business formation is contracting — fewer new firms are being started.",
+        "watch": "Business formation is losing steam.",
+        "ok": "New businesses are forming at a healthy clip.",
+        "unknown": "Some formation data is temporarily unavailable.",
+    },
+    "business-investment": {
+        "alert": "Business investment is collapsing — capex and sales are contracting hard.",
+        "elevated": "Business investment is contracting.",
+        "watch": "Business investment is wobbling — orders or sales are slipping.",
+        "ok": "Businesses are investing — orders and sales are growing.",
+        "unknown": "Some investment data is temporarily unavailable.",
+    },
+    "business-credit": {
+        "alert": "Business credit is in crisis — lending is seizing up.",
+        "elevated": "Business credit is tightening — stress is building.",
+        "watch": "Business credit bears watching — conditions are tightening at the margin.",
+        "ok": "Business credit is flowing — spreads and delinquencies are low.",
+        "unknown": "Some business-credit data is temporarily unavailable.",
     },
 }
 
