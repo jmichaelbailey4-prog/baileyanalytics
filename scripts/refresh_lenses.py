@@ -15,7 +15,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))  # make `lenses` importable
 from datetime import date
 
-from lenses import build, coingecko, config, eia, fdic, fred, util, yahoo
+from lenses import brief, build, coingecko, config, eia, fdic, fred, util, yahoo
 
 OUT_DIR = Path(__file__).resolve().parent.parent / "data" / "lenses"
 BANK_OUT_DIR = Path(__file__).resolve().parent.parent / "data" / "banking"
@@ -31,6 +31,20 @@ HOUSING_FIXTURE = Path(__file__).resolve().parent / "tests" / "fixtures" / "hous
 CONSUMER_FIXTURE = Path(__file__).resolve().parent / "tests" / "fixtures" / "consumer_sample.json"
 CRYPTO_HISTORY = MARKETS_OUT_DIR / "_crypto_history.json"
 CRYPTO_FIXTURE = Path(__file__).resolve().parent / "tests" / "fixtures" / "coingecko_sample.json"
+BRIEF_OUT_DIR = Path(__file__).resolve().parent.parent / "data" / "brief"
+BRIEF_FIXTURE = Path(__file__).resolve().parent / "tests" / "fixtures" / "brief_indices_sample.json"
+
+# category -> the module-global out-dir whose index.json feeds the brief.
+# 'economic' lives in data/lenses/ (not data/economic/).
+def _brief_index_dirs():
+    return {
+        "economic": OUT_DIR,
+        "banking": BANK_OUT_DIR,
+        "markets": MARKETS_OUT_DIR,
+        "energy": ENERGY_OUT_DIR,
+        "housing": HOUSING_OUT_DIR,
+        "consumer": CONSUMER_OUT_DIR,
+    }
 
 
 def unique_specs(lenses):
@@ -421,6 +435,49 @@ def refresh_consumer(dry_run):
     return 0
 
 
+def _load_brief_indices(dry_run):
+    """Return {category: index_json}. Dry-run reads one fixture file; live reads
+    each category's index.json from its out-dir, skipping any not yet present."""
+    if dry_run:
+        return json.loads(BRIEF_FIXTURE.read_text(encoding="utf-8"))
+    indices = {}
+    for category, out_dir in _brief_index_dirs().items():
+        path = out_dir / "index.json"
+        if path.exists():
+            try:
+                indices[category] = json.loads(path.read_text(encoding="utf-8"))
+            except (ValueError, OSError):
+                pass
+    return indices
+
+
+def _load_prior_state():
+    path = BRIEF_OUT_DIR / "_prior_state.json"
+    if path.exists():
+        try:
+            return json.loads(path.read_text(encoding="utf-8"))
+        except (ValueError, OSError):
+            pass
+    return {}
+
+
+def refresh_brief(dry_run):
+    """Build + write data/brief/today.json and _prior_state.json from the current
+    per-category index.json files. Additive — never raises; a missing category is
+    simply absent from the brief."""
+    try:
+        indices = _load_brief_indices(dry_run)
+        today, new_state = brief.build_brief(indices, _load_prior_state())
+        BRIEF_OUT_DIR.mkdir(parents=True, exist_ok=True)
+        (BRIEF_OUT_DIR / "today.json").write_text(
+            json.dumps(today, indent=2) + "\n", encoding="utf-8")
+        (BRIEF_OUT_DIR / "_prior_state.json").write_text(
+            json.dumps(new_state, indent=2) + "\n", encoding="utf-8")
+        print(f"Wrote {BRIEF_OUT_DIR / 'today.json'}")
+    except Exception as exc:  # noqa: BLE001 - never break the run on a brief failure
+        print(f"WARN: brief build failed ({exc}); keeping previous brief", file=sys.stderr)
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description="Refresh dashboard data from public sources.")
     parser.add_argument("--dry-run", action="store_true", help="use fixture data, no network")
@@ -430,18 +487,20 @@ def main(argv=None):
     parser.add_argument("--energy", action="store_true", help="refresh only the energy lenses")
     parser.add_argument("--housing", action="store_true", help="refresh only the housing lenses")
     parser.add_argument("--consumer", action="store_true", help="refresh only the consumer (FRED) lenses")
+    parser.add_argument("--brief", action="store_true", help="rebuild only Today's Brief from existing indices")
     args = parser.parse_args(argv)
 
     # No source flag = refresh everything (handy for manual/local runs); each
     # flag scopes the run so a workflow can give each source its own cadence.
     any_flag = (args.economic or args.banking or args.markets or args.energy
-                or args.housing or args.consumer)
+                or args.housing or args.consumer or args.brief)
     do_economic = args.economic or not any_flag
     do_banking = args.banking or not any_flag
     do_markets = args.markets or not any_flag
     do_energy = args.energy or not any_flag
     do_housing = args.housing or not any_flag
     do_consumer = args.consumer or not any_flag
+    do_brief = args.brief or not any_flag
 
     code = 0
     if do_economic:
@@ -466,6 +525,8 @@ def main(argv=None):
             code = cc
     if do_banking:
         refresh_banking(args.dry_run)
+    if do_brief:
+        refresh_brief(args.dry_run)
     return code
 
 
