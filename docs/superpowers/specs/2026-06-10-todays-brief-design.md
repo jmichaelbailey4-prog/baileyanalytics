@@ -47,8 +47,7 @@ A single static file `data/brief/today.json`:
       "stat_label": "Debt-to-GDP",
       "stat_value": "124.50%",
       "delta": "0.30%",
-      "dir": "up",
-      "pct_change": 0.24
+      "dir": "up"
     }
   ],
   "status_counts": { "alert": 0, "elevated": 2, "watch": 5, "ok": 14, "neutral": 2 }
@@ -60,11 +59,16 @@ A single static file `data/brief/today.json`:
   the lens's *current* `headline_read` (already plain-English). `direction` is
   `worsening`/`improving`, derived from `STATUS_ORDER` movement.
 - **`top_moves`** — up to 5 total items (transitions count toward the 5). Remaining
-  slots filled by non-transitioning lenses ranked by **% change of the primary
-  indicator**, computed from the `sparkline` array already in each `index.json`
-  (`(spark[-1] - spark[-2]) / spark[-2]`). The displayed `delta`/`dir` come straight
-  from the lens's first `key_stat` (the `{d, dir}` fields). `pct_change` is the
-  ranking key (signed, percent).
+  slots filled by non-transitioning lenses ranked by the **significance of the
+  primary indicator's latest move** — a dimensionless **z-score**: `|latest step| ÷
+  pstdev(prior steps)`, computed from the `sparkline` array already in each
+  `index.json`. (Implemented as `move_score`; **supersedes the original
+  relative-%-change idea**, which over-weighted rate-valued series with small
+  values — e.g. a 0.1-point move in a 0.8% series scored as +12%. The z-score judges
+  each move against that series' own typical step, so level series like gasoline
+  price and rate series like Food YoY are comparable.) The displayed `delta`/`dir`
+  come straight from the lens's first `key_stat`; the score itself is internal to
+  ranking and never written to the JSON.
 - **`status_counts`** — tally across all lenses for the at-a-glance home-page line
   ("2 elevated · 5 on watch").
 
@@ -74,12 +78,15 @@ A single static file `data/brief/today.json`:
    definition. Sorted worsening-first by magnitude of `STATUS_ORDER` jump
    (e.g. `ok → alert` outranks `watch → elevated`), then improving.
 2. **Moves fill the rest.** Up to `5 − len(transitions)` non-transitioning lenses,
-   ranked by `abs(pct_change)` descending, where `pct_change` is the primary
-   indicator's last-vs-prior % change from the `sparkline`.
-3. **Why % change, not raw delta:** raw deltas aren't comparable across units (a
-   0.25% yield-curve move vs. a $2.4T debt move). % change is the simplest
-   cross-unit-comparable metric, and the sparkline already carries the raw numeric
-   primary series — no re-parsing of formatted strings.
+   ranked by `move_score` (the latest-step z-score) descending, keeping only moves
+   of at least `MOVE_THRESHOLD_SIGMA` (1.0 — roughly one typical step).
+3. **Why a z-score, not raw delta or % change:** raw deltas aren't comparable across
+   units (a 0.25-point yield-curve move vs. a $2.4T debt move); % change breaks on
+   rate-valued series with small denominators (a 0.1-point move in a 0.8% series
+   looks like +12%). Normalizing the latest step by the series' own prior-step
+   volatility is dimensionless and comparable across every unit, and the sparkline
+   already carries the raw numeric primary series — no re-parsing of formatted
+   strings.
 4. **Neutral/info lenses** (markets scoreboard, crypto — `narrative.NEUTRAL_LENSES`)
    are **eligible for `top_moves`** (a big BTC-dominance swing is newsworthy) but
    **excluded from transition detection** (they have no severity to transition).

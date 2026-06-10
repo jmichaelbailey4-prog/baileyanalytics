@@ -2,6 +2,7 @@
 the most significant moves. Pure synthesis over already-built index.json data —
 no network, no disk I/O (callers pass data in and get data out)."""
 
+import statistics
 from datetime import datetime, timezone
 
 # Severity ladder for transition direction. Mirrors the home page's SEVERITY
@@ -10,16 +11,25 @@ from datetime import datetime, timezone
 SEVERITY = {"ok": 0, "watch": 1, "elevated": 2, "alert": 3}
 
 
-def pct_change(sparkline):
-    """Signed percent change of the last point vs the one before it, or None when
-    there are <2 points or the prior value is zero. The sparkline already carries
-    the primary indicator's raw numeric series (build.build_index)."""
-    if not sparkline or len(sparkline) < 2:
+def move_score(sparkline):
+    """Significance of a series' latest step, normalized by the volatility of its
+    earlier steps — a dimensionless z-score, so moves are comparable across
+    indicators measured in different units (a 0.1-point move in a normally-quiet
+    rate and a 50-point move in the S&P are each judged against their own typical
+    step). The sparkline carries the primary indicator's raw numeric series
+    (build.build_index). Returns a non-negative score; None when there's too
+    little history (<4 points) or the series didn't move; inf when a perfectly
+    flat series moves at all (so it ranks first but never reaches the JSON)."""
+    if not sparkline or len(sparkline) < 4:
         return None
-    prior, latest = sparkline[-2], sparkline[-1]
-    if prior == 0:
+    steps = [sparkline[i] - sparkline[i - 1] for i in range(1, len(sparkline))]
+    latest = steps[-1]
+    if latest == 0:
         return None
-    return (latest - prior) / prior * 100.0
+    vol = statistics.pstdev(steps[:-1])  # volatility of the PRIOR steps
+    if vol == 0:
+        return float("inf")
+    return abs(latest) / vol
 
 
 # Lens-id -> page-slug maps, mirroring dashboards/index.html (keep in sync).
@@ -123,22 +133,24 @@ def detect_transitions(prior_statuses, flat_lenses):
     return out
 
 
-MOVE_THRESHOLD_PCT = 0.5  # ignore moves smaller than this (noise floor)
+MOVE_THRESHOLD_SIGMA = 1.0  # ignore moves smaller than ~1 typical step (noise floor)
 
 
 def rank_moves(flat_lenses, transition_ids, limit=5):
-    """Up to `limit` non-transition lenses ranked by |pct_change| of the primary
-    indicator (descending), filtered to moves >= MOVE_THRESHOLD_PCT. Carries the
-    first key_stat's display fields straight through."""
-    candidates = []
+    """Up to `limit` non-transition lenses ranked by the significance of the
+    primary indicator's latest move (move_score, descending), keeping only moves
+    of at least MOVE_THRESHOLD_SIGMA. Carries the first key_stat's display fields
+    straight through. The score is used only for ranking — it never reaches the
+    output (so a flat-series inf can't produce invalid JSON)."""
+    scored = []
     for r in flat_lenses:
         if r["lens_id"] in transition_ids:
             continue
-        pc = pct_change(r["sparkline"])
-        if pc is None or abs(pc) < MOVE_THRESHOLD_PCT:
+        score = move_score(r["sparkline"])
+        if score is None or score < MOVE_THRESHOLD_SIGMA:
             continue
         stat = (r["key_stats"] or [{}])[0]
-        candidates.append({
+        scored.append((score, {
             "lens_id": r["lens_id"],
             "lens_title": r["lens_title"],
             "category": r["category"],
@@ -147,10 +159,9 @@ def rank_moves(flat_lenses, transition_ids, limit=5):
             "stat_value": stat.get("v", "—"),
             "delta": stat.get("d", ""),
             "dir": stat.get("dir", ""),
-            "pct_change": pc,
-        })
-    candidates.sort(key=lambda m: -abs(m["pct_change"]))
-    return candidates[:limit]
+        }))
+    scored.sort(key=lambda x: -x[0])
+    return [move for _, move in scored[:limit]]
 
 
 def _now():

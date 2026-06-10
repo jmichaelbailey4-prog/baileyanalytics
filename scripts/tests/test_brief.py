@@ -7,27 +7,27 @@ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1]))
 from lenses import brief
 
 
-class TestPctChange(unittest.TestCase):
-    def test_normal_rise(self):
-        self.assertAlmostEqual(brief.pct_change([100.0, 110.0]), 10.0)
+class TestMoveScore(unittest.TestCase):
+    def test_score_is_latest_step_over_prior_volatility(self):
+        # steps = [2, -1, 8]; prior steps [2, -1] -> pstdev 1.5; latest 8 -> 8/1.5
+        self.assertAlmostEqual(brief.move_score([1.0, 3.0, 2.0, 10.0]), 8.0 / 1.5)
 
-    def test_normal_fall(self):
-        self.assertAlmostEqual(brief.pct_change([200.0, 150.0]), -25.0)
+    def test_larger_final_step_scores_higher(self):
+        small = brief.move_score([1.0, 3.0, 2.0, 4.0])
+        big = brief.move_score([1.0, 3.0, 2.0, 10.0])
+        self.assertGreater(big, small)
 
-    def test_uses_last_two_only(self):
-        self.assertAlmostEqual(brief.pct_change([1.0, 2.0, 4.0, 5.0]), 25.0)
+    def test_too_few_points_is_none(self):
+        self.assertIsNone(brief.move_score([1.0, 2.0, 3.0]))
+        self.assertIsNone(brief.move_score([1.0, 2.0]))
+        self.assertIsNone(brief.move_score([]))
+        self.assertIsNone(brief.move_score(None))
 
-    def test_single_point_is_none(self):
-        self.assertIsNone(brief.pct_change([5.0]))
+    def test_no_move_is_none(self):
+        self.assertIsNone(brief.move_score([1.0, 2.0, 3.0, 3.0]))  # latest step is 0
 
-    def test_empty_is_none(self):
-        self.assertIsNone(brief.pct_change([]))
-
-    def test_zero_prior_is_none(self):
-        self.assertIsNone(brief.pct_change([0.0, 3.0]))
-
-    def test_none_arg_is_none(self):
-        self.assertIsNone(brief.pct_change(None))
+    def test_flat_prior_then_move_is_inf(self):
+        self.assertEqual(brief.move_score([5.0, 5.0, 5.0, 9.0]), float("inf"))
 
 
 class TestLensHref(unittest.TestCase):
@@ -143,29 +143,33 @@ class TestDetectTransitions(unittest.TestCase):
 
 
 class TestRankMoves(unittest.TestCase):
+    # All sparklines share the prior pattern [0,1,0,1] (prior-step volatility
+    # pstdev([1,-1,1]) ≈ 0.9428); the 5th point sets the final step, hence the score.
     def _lens(self, lens_id, spark, d="1.00%", dir_="up", k="Stat", v="1.00%"):
         return {"lens_id": lens_id, "lens_title": lens_id.title(), "category": "economic",
                 "href": "/x", "status": "ok", "headline": "h",
                 "key_stats": [{"k": k, "v": v, "d": d, "dir": dir_}], "sparkline": spark}
 
-    def test_ranks_by_abs_pct_change_desc(self):
-        flat = [self._lens("small", [100.0, 101.0]),   # +1%
-                self._lens("big", [100.0, 110.0]),     # +10%
-                self._lens("mid", [100.0, 95.0])]      # -5%
+    def test_ranks_by_significance_desc(self):
+        flat = [self._lens("small", [0.0, 1.0, 0.0, 1.0, 2.5]),   # step +1.5 -> ~1.6σ
+                self._lens("big", [0.0, 1.0, 0.0, 1.0, 10.0]),    # step +9   -> ~9.5σ
+                self._lens("mid", [0.0, 1.0, 0.0, 1.0, -4.0])]    # step -5   -> ~5.3σ
         moves = brief.rank_moves(flat, transition_ids=set(), limit=5)
         self.assertEqual([m["lens_id"] for m in moves], ["big", "mid", "small"])
 
     def test_excludes_transition_lenses(self):
-        flat = [self._lens("big", [100.0, 110.0]), self._lens("mid", [100.0, 95.0])]
+        flat = [self._lens("big", [0.0, 1.0, 0.0, 1.0, 10.0]),
+                self._lens("mid", [0.0, 1.0, 0.0, 1.0, -4.0])]
         moves = brief.rank_moves(flat, transition_ids={"big"}, limit=5)
         self.assertEqual([m["lens_id"] for m in moves], ["mid"])
 
     def test_threshold_filters_small_moves(self):
-        flat = [self._lens("tiny", [100.0, 100.3])]   # +0.3% < 0.5%
+        # step +0.5 -> ~0.53σ, below the 1.0σ floor
+        flat = [self._lens("tiny", [0.0, 1.0, 0.0, 1.0, 1.5])]
         self.assertEqual(brief.rank_moves(flat, set(), limit=5), [])
 
     def test_limit_caps_results(self):
-        flat = [self._lens(f"l{i}", [100.0, 100.0 + i + 1]) for i in range(6)]
+        flat = [self._lens(f"l{i}", [0.0, 1.0, 0.0, 1.0, 5.0 + i]) for i in range(6)]
         moves = brief.rank_moves(flat, set(), limit=3)
         self.assertEqual(len(moves), 3)
 
@@ -173,19 +177,21 @@ class TestRankMoves(unittest.TestCase):
         flat = [self._lens("flat", [100.0])]
         self.assertEqual(brief.rank_moves(flat, set(), limit=5), [])
 
-    def test_move_carries_display_fields(self):
-        flat = [self._lens("big", [100.0, 110.0], d="10.00%", dir_="up",
+    def test_move_carries_display_fields_without_score(self):
+        flat = [self._lens("big", [0.0, 1.0, 0.0, 1.0, 10.0], d="10.00%", dir_="up",
                             k="Debt-to-GDP", v="124.50%")]
         m = brief.rank_moves(flat, set(), limit=5)[0]
         self.assertEqual(m["stat_label"], "Debt-to-GDP")
         self.assertEqual(m["stat_value"], "124.50%")
         self.assertEqual(m["delta"], "10.00%")
         self.assertEqual(m["dir"], "up")
-        self.assertAlmostEqual(m["pct_change"], 10.0)
         self.assertEqual(m["href"], "/x")
+        # the ranking score is internal — it must not leak into the output (it can be inf)
+        self.assertNotIn("score", m)
+        self.assertNotIn("pct_change", m)
 
     def test_neutral_lens_eligible_for_moves(self):
-        crypto = self._lens("crypto-structure", [50.0, 56.0])
+        crypto = self._lens("crypto-structure", [50.0, 51.0, 50.0, 51.0, 56.0])
         crypto["status"] = "neutral"
         moves = brief.rank_moves([crypto], set(), limit=5)
         self.assertEqual(len(moves), 1)
@@ -193,22 +199,24 @@ class TestRankMoves(unittest.TestCase):
 
 class TestBuildBrief(unittest.TestCase):
     def _indices(self):
+        # sparklines share the [x,x+1,x,x+1] prior pattern; the final point is a
+        # clear (>1σ) move so each lens qualifies as a mover when not a transition.
         return {
             "economic": {"lenses": [
                 {"id": "job-market", "title": "Job Market", "accent": "#a",
                  "status": "elevated", "headline_read": "Hiring is slowing.",
                  "key_stats": [{"k": "Unemployment", "v": "4.50%", "d": "0.20%", "dir": "up"}],
-                 "sparkline": [4.0, 4.5]},
+                 "sparkline": [4.0, 4.2, 4.0, 4.2, 4.5]},
                 {"id": "fiscal-health", "title": "Fiscal Health", "accent": "#a",
                  "status": "ok", "headline_read": "Finances steady.",
                  "key_stats": [{"k": "Debt-to-GDP", "v": "124.50%", "d": "0.30%", "dir": "up"}],
-                 "sparkline": [100.0, 112.0]},  # +12% move
+                 "sparkline": [100.0, 101.0, 100.0, 101.0, 112.0]},  # big final step
             ]},
             "markets": {"lenses": [
                 {"id": "crypto-structure", "title": "Crypto", "accent": "#b",
                  "status": "neutral", "headline_read": "Crypto mixed.",
                  "key_stats": [{"k": "BTC dominance", "v": "56.00%", "d": "2.00%", "dir": "up"}],
-                 "sparkline": [50.0, 56.0]},  # +12% move
+                 "sparkline": [50.0, 51.0, 50.0, 51.0, 56.0]},  # big final step
             ]},
         }
 
@@ -228,8 +236,8 @@ class TestBuildBrief(unittest.TestCase):
                               "crypto-structure": "neutral"}}
         today, _ = brief.build_brief(self._indices(), prior)
         ids = [m["lens_id"] for m in today["top_moves"]]
-        self.assertNotIn("job-market", ids)
-        self.assertIn("fiscal-health", ids)   # +12% move
+        self.assertNotIn("job-market", ids)    # it's the transition, excluded from moves
+        self.assertIn("fiscal-health", ids)    # big final step
         self.assertIn("crypto-structure", ids) # neutral but eligible
 
     def test_status_counts_tally(self):
@@ -250,7 +258,7 @@ class TestBuildBrief(unittest.TestCase):
         idx = {"economic": {"lenses": [
             {"id": f"l{i}", "title": f"L{i}", "accent": "#a", "status": "alert",
              "headline_read": "h", "key_stats": [{"k": "x", "v": "1", "d": "1", "dir": "up"}],
-             "sparkline": [1.0, 2.0]} for i in range(6)]}}
+             "sparkline": [1.0, 2.0, 3.0, 4.0]} for i in range(6)]}}
         today, _ = brief.build_brief(idx, {"statuses": prior_statuses})
         self.assertEqual(len(today["transitions"]), 6)
         self.assertEqual(today["top_moves"], [])
