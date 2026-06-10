@@ -1,0 +1,68 @@
+{
+  "generated_at": "2026-06-10T19:45:59Z",
+  "transitions": [],
+  "top_moves": [
+    {
+      "lens_id": "energy-commodities",
+      "lens_title": "Commodities & Materials",
+      "category": "energy",
+      "href": "/dashboards/energy/commodities.html",
+      "stat_label": "Food",
+      "stat_value": "30.20%",
+      "delta": "18.60%",
+      "dir": "up",
+      "pct_change": 160.34482758620692
+    },
+    {
+      "lens_id": "consumer-income-savings",
+      "lens_title": "Income & Savings",
+      "category": "consumer",
+      "href": "/dashboards/consumer/income-savings.html",
+      "stat_label": "Saving rate",
+      "stat_value": "2.60%",
+      "delta": "0.60%",
+      "dir": "down",
+      "pct_change": -18.750000000000004
+    },
+    {
+      "lens_id": "consumer-spending",
+      "lens_title": "Spending",
+      "category": "consumer",
+      "href": "/dashboards/consumer/spending.html",
+      "stat_label": "Retail sales",
+      "stat_value": "4.87%",
+      "delta": "0.72%",
+      "dir": "up",
+      "pct_change": 17.38532463653617
+    },
+    {
+      "lens_id": "housing-home-prices",
+      "lens_title": "Price Stability",
+      "category": "housing",
+      "href": "/dashboards/housing/home-prices.html",
+      "stat_label": "Case-Shiller",
+      "stat_value": "0.70%",
+      "delta": "0.10%",
+      "dir": "down",
+      "pct_change": -12.50000000000001
+    },
+    {
+      "lens_id": "cost-of-living",
+      "lens_title": "The Cost of Living",
+      "category": "economic",
+      "href": "/dashboards/cost-of-living.html",
+      "stat_label": "CPI",
+      "stat_value": "4.17%",
+      "delta": "0.39%",
+      "dir": "up",
+      "pct_change": 10.249652708870812
+    }
+  ],
+  "status_counts": {
+    "ok": 12,
+    "watch": 2,
+    "elevated": 6,
+    "alert": 3,
+    "neutral": 2
+  }
+}

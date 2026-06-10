@@ -1,0 +1,30 @@
+{
+  "captured_at": "2026-06-10T19:45:59Z",
+  "statuses": {
+    "recession-watch": "ok",
+    "cost-of-money": "ok",
+    "job-market": "ok",
+    "cost-of-living": "elevated",
+    "fiscal-health": "elevated",
+    "consumer-spending": "ok",
+    "consumer-credit": "watch",
+    "consumer-income-savings": "elevated",
+    "consumer-sentiment": "alert",
+    "bank-asset-quality": "ok",
+    "bank-profitability": "ok",
+    "bank-capital-solvency": "ok",
+    "bank-concentrations-funding": "watch",
+    "market-risk-sentiment": "ok",
+    "market-scoreboard": "neutral",
+    "market-liquidity": "ok",
+    "crypto-structure": "neutral",
+    "energy-oil-fuels": "alert",
+    "energy-natural-gas": "ok",
+    "energy-electricity": "elevated",
+    "energy-commodities": "alert",
+    "housing-home-prices": "ok",
+    "housing-affordability": "elevated",
+    "housing-supply-construction": "elevated",
+    "housing-rent-shelter": "ok"
+  }
+}
