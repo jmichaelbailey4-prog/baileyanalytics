@@ -76,13 +76,14 @@ class TestWriteOutputs(unittest.TestCase):
 
 
 class TestBuildCostOfMoney(unittest.TestCase):
-    def test_builds_with_four_indicators(self):
+    def test_builds_with_three_indicators(self):
         lj = build.build_lens(config.COST_OF_MONEY, _load_fixture())
         self.assertEqual(lj["id"], "cost-of-money")
-        self.assertEqual(len(lj["indicators"]), 4)
-        self.assertEqual(lj["status"], "watch")
+        self.assertEqual(len(lj["indicators"]), 3)
+        self.assertEqual(lj["status"], "watch")  # fed funds 4.33 >= 4.0
         ids = [i["id"] for i in lj["indicators"]]
         self.assertNotIn("yield-curve", ids)
+        self.assertNotIn("mortgage-30y", ids)
 
 
 class TestBuildJobMarket(unittest.TestCase):

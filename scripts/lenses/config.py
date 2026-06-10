@@ -159,20 +159,6 @@ COST_OF_MONEY = Lens(
                 "expect the Fed to set rates over the next couple of years."
             ),
         ),
-        Indicator(
-            id="mortgage-30y",
-            title="30-Year Fixed Mortgage Rate",
-            short="30-yr mortgage",
-            unit="%",
-            color="#FBBF24",
-            series_id="MORTGAGE30US",
-            limit=520,
-            rule=narrative.rule_mortgage,
-            context=(
-                "The average rate on a 30-year fixed home loan — the single biggest driver "
-                "of housing affordability for most buyers."
-            ),
-        ),
     ],
 )
 
@@ -824,4 +810,162 @@ CATEGORIES.append(
     {"id": "energy", "title": "Energy & Commodities", "lenses": ENERGY_LENSES,
      "out": "energy", "back": "Energy & Commodities",
      "source_label": "U.S. Energy Information Administration (EIA) and FRED", "disclaimer": ""}
+)
+
+
+# --- Housing & Real Estate (FRED) ---
+
+HOUSING_HOME_PRICES = Lens(
+    id="housing-home-prices", title="Home Prices", accent="#F472B6",
+    indicators=[
+        Indicator(
+            id="case-shiller", title="Case-Shiller National Home Price Index",
+            short="Case-Shiller", unit="", color="#F472B6",
+            series_id="CSUSHPINSA", limit=240,
+            rule=narrative.market_health("Home prices", hot=(6, 10, 15), cold=(-2, -5, -10)),
+            context=("The S&P Case-Shiller national index — the most-watched measure of U.S. "
+                     "home prices. Reported with a ~2-month lag."),
+        ),
+        Indicator(
+            id="existing-home-sales", title="Existing-Home Sales · annual rate",
+            short="Home sales", unit="", color="#38BDF8",
+            series_id="EXHOSLUSM495S", limit=240, value_format="thousands",
+            rule=narrative.market_health("Home sales", hot=(10, 20, 30), cold=(-10, -20, -30)),
+            context=("How many existing homes are selling, at an annual rate — the market's "
+                     "pulse. A collapse in sales is how a housing freeze shows up first."),
+        ),
+        Indicator(
+            id="median-price", title="Median Sales Price of Houses Sold",
+            short="Median price", unit="$", color="#34D399",
+            series_id="MSPUS", limit=80, value_format="thousands",
+            rule=narrative.energy_level("The median sale price"),
+            context=("The median price of homes actually sold (quarterly) — a dollars-and-cents "
+                     "companion to the Case-Shiller index."),
+        ),
+    ],
+)
+
+HOUSING_AFFORDABILITY = Lens(
+    id="housing-affordability", title="Affordability & Financing", accent="#FBBF24",
+    indicators=[
+        Indicator(
+            id="mortgage-rate", title="30-Year Fixed Mortgage Rate",
+            short="30-yr mortgage", unit="%", color="#FBBF24",
+            series_id="MORTGAGE30US", limit=1040,
+            rule=narrative.rule_mortgage,
+            context=("The average rate on a 30-year fixed home loan — the single biggest driver "
+                     "of what a buyer can afford each month."),
+        ),
+        Indicator(
+            id="affordability-index", title="Housing Affordability Index (NAR)",
+            short="Affordability", unit="", color="#F472B6",
+            series_id="FIXHAI", limit=240,
+            rule=narrative.rule_affordability,
+            context=("The National Association of Realtors index: 100 means the median-income "
+                     "family can just barely afford the median home. Higher is better — "
+                     "the historical norm is 130-180."),
+        ),
+        Indicator(
+            id="debt-service", title="Mortgage Debt Service · % of income",
+            short="Debt service", unit="%", color="#38BDF8",
+            series_id="MDSP", limit=80,
+            rule=narrative.level_points("The mortgage-payment share of disposable income"),
+            context=("Mortgage payments as a share of household disposable income (quarterly) — "
+                     "how heavy the aggregate mortgage burden actually is."),
+        ),
+        Indicator(
+            id="delinquency", title="Mortgage Delinquency Rate · banks",
+            short="Delinquency", unit="%", color="#F87171",
+            series_id="DRSFRMACBS", limit=80,
+            rule=narrative.rule_mortgage_delinquency,
+            context=("The share of single-family mortgages at commercial banks that are past "
+                     "due (quarterly) — where affordability stress turns into credit stress."),
+        ),
+    ],
+)
+
+HOUSING_SUPPLY_CONSTRUCTION = Lens(
+    id="housing-supply-construction", title="Supply & Construction", accent="#34D399",
+    indicators=[
+        Indicator(
+            id="housing-starts", title="Housing Starts · annual rate",
+            short="Starts", unit="", color="#34D399",
+            series_id="HOUST", limit=240, value_format="thousands",
+            rule=narrative.market_health("Homebuilding", hot=(20, 35, 50), cold=(-10, -20, -35)),
+            context=("New homes started each month, in thousands at an annual rate — the "
+                     "construction industry's output, and a classic leading indicator."),
+        ),
+        Indicator(
+            id="building-permits", title="Building Permits · annual rate",
+            short="Permits", unit="", color="#A78BFA",
+            series_id="PERMIT", limit=240, value_format="thousands",
+            rule=narrative.market_health("Permitting", hot=(20, 35, 50), cold=(-10, -20, -35)),
+            context=("Permits pulled for new housing units — the step before starts, so it "
+                     "leads the rest of the construction pipeline."),
+        ),
+        Indicator(
+            id="months-supply", title="Months' Supply of New Houses",
+            short="Months' supply", unit="mo", color="#FBBF24",
+            series_id="MSACSR", limit=240,
+            rule=narrative.rule_months_supply,
+            context=("How long it would take to sell every new home on the market at the "
+                     "current sales pace. Roughly 4-6 months is balanced; more is a glut, "
+                     "less is a squeeze."),
+        ),
+        Indicator(
+            id="active-listings", title="Active Listings (Realtor.com)",
+            short="Listings", unit="", color="#38BDF8",
+            series_id="ACTLISCOUUS", limit=240, value_format="thousands",
+            rule=narrative.energy_level("Active listings"),
+            context=("Homes listed for sale nationwide (Realtor.com count, since 2016) — "
+                     "the inventory buyers actually get to choose from."),
+        ),
+    ],
+)
+
+HOUSING_RENT_SHELTER = Lens(
+    id="housing-rent-shelter", title="Rent & Shelter", accent="#A78BFA",
+    indicators=[
+        Indicator(
+            id="rent-cpi", title="CPI: Rent of Primary Residence",
+            short="Rent CPI", unit="", color="#A78BFA",
+            series_id="CUSR0000SEHA", limit=240,
+            rule=narrative.consumer_cost("Rent", 4, 6, 9),
+            context=("The rent component of the Consumer Price Index — what tenants actually "
+                     "pay. It moves slowly but relentlessly, and it is a third of core CPI."),
+        ),
+        Indicator(
+            id="owners-equivalent-rent", title="CPI: Owners' Equivalent Rent",
+            short="OER", unit="", color="#38BDF8",
+            series_id="CUSR0000SEHC", limit=240,
+            rule=narrative.energy_level("Owners' equivalent rent"),
+            context=("What homeowners would pay to rent their own homes — the largest single "
+                     "component of the CPI, and the bridge between home prices and inflation."),
+        ),
+        Indicator(
+            id="rental-vacancy", title="Rental Vacancy Rate",
+            short="Vacancy", unit="%", color="#34D399",
+            series_id="RRVRUSQ156N", limit=80,
+            rule=narrative.rule_rental_vacancy,
+            context=("The share of rental units sitting empty (quarterly). Low vacancy gives "
+                     "landlords pricing power; high vacancy hands it back to renters."),
+        ),
+        Indicator(
+            id="homeownership", title="Homeownership Rate",
+            short="Ownership", unit="%", color="#F472B6",
+            series_id="RHORUSQ156N", limit=80,
+            rule=narrative.level_points("The homeownership rate"),
+            context=("The share of households that own their home (quarterly) — the long arc "
+                     "of whether owning is gaining or losing ground versus renting."),
+        ),
+    ],
+)
+
+HOUSING_LENSES = [HOUSING_HOME_PRICES, HOUSING_AFFORDABILITY,
+                  HOUSING_SUPPLY_CONSTRUCTION, HOUSING_RENT_SHELTER]
+
+CATEGORIES.append(
+    {"id": "housing", "title": "Housing & Real Estate", "lenses": HOUSING_LENSES,
+     "out": "housing", "back": "Housing & Real Estate",
+     "source_label": "Federal Reserve Economic Data (FRED), St. Louis Fed", "disclaimer": ""}
 )
