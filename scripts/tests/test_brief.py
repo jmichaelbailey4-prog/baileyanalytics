@@ -142,5 +142,54 @@ class TestDetectTransitions(unittest.TestCase):
         self.assertTrue(all(t["direction"] == "improving" for t in out[1:]))
 
 
+class TestRankMoves(unittest.TestCase):
+    def _lens(self, lens_id, spark, d="1.00%", dir_="up", k="Stat", v="1.00%"):
+        return {"lens_id": lens_id, "lens_title": lens_id.title(), "category": "economic",
+                "href": "/x", "status": "ok", "headline": "h",
+                "key_stats": [{"k": k, "v": v, "d": d, "dir": dir_}], "sparkline": spark}
+
+    def test_ranks_by_abs_pct_change_desc(self):
+        flat = [self._lens("small", [100.0, 101.0]),   # +1%
+                self._lens("big", [100.0, 110.0]),     # +10%
+                self._lens("mid", [100.0, 95.0])]      # -5%
+        moves = brief.rank_moves(flat, transition_ids=set(), limit=5)
+        self.assertEqual([m["lens_id"] for m in moves], ["big", "mid", "small"])
+
+    def test_excludes_transition_lenses(self):
+        flat = [self._lens("big", [100.0, 110.0]), self._lens("mid", [100.0, 95.0])]
+        moves = brief.rank_moves(flat, transition_ids={"big"}, limit=5)
+        self.assertEqual([m["lens_id"] for m in moves], ["mid"])
+
+    def test_threshold_filters_small_moves(self):
+        flat = [self._lens("tiny", [100.0, 100.3])]   # +0.3% < 0.5%
+        self.assertEqual(brief.rank_moves(flat, set(), limit=5), [])
+
+    def test_limit_caps_results(self):
+        flat = [self._lens(f"l{i}", [100.0, 100.0 + i + 1]) for i in range(6)]
+        moves = brief.rank_moves(flat, set(), limit=3)
+        self.assertEqual(len(moves), 3)
+
+    def test_sparkline_too_short_is_skipped(self):
+        flat = [self._lens("flat", [100.0])]
+        self.assertEqual(brief.rank_moves(flat, set(), limit=5), [])
+
+    def test_move_carries_display_fields(self):
+        flat = [self._lens("big", [100.0, 110.0], d="10.00%", dir_="up",
+                            k="Debt-to-GDP", v="124.50%")]
+        m = brief.rank_moves(flat, set(), limit=5)[0]
+        self.assertEqual(m["stat_label"], "Debt-to-GDP")
+        self.assertEqual(m["stat_value"], "124.50%")
+        self.assertEqual(m["delta"], "10.00%")
+        self.assertEqual(m["dir"], "up")
+        self.assertAlmostEqual(m["pct_change"], 10.0)
+        self.assertEqual(m["href"], "/x")
+
+    def test_neutral_lens_eligible_for_moves(self):
+        crypto = self._lens("crypto-structure", [50.0, 56.0])
+        crypto["status"] = "neutral"
+        moves = brief.rank_moves([crypto], set(), limit=5)
+        self.assertEqual(len(moves), 1)
+
+
 if __name__ == "__main__":
     unittest.main()

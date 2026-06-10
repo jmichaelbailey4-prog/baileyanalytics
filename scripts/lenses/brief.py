@@ -119,3 +119,33 @@ def detect_transitions(prior_statuses, flat_lenses):
     for t in out:
         del t["_jump"]
     return out
+
+
+MOVE_THRESHOLD_PCT = 0.5  # ignore moves smaller than this (noise floor)
+
+
+def rank_moves(flat_lenses, transition_ids, limit=5):
+    """Up to `limit` non-transition lenses ranked by |pct_change| of the primary
+    indicator (descending), filtered to moves >= MOVE_THRESHOLD_PCT. Carries the
+    first key_stat's display fields straight through."""
+    candidates = []
+    for r in flat_lenses:
+        if r["lens_id"] in transition_ids:
+            continue
+        pc = pct_change(r["sparkline"])
+        if pc is None or abs(pc) < MOVE_THRESHOLD_PCT:
+            continue
+        stat = (r["key_stats"] or [{}])[0]
+        candidates.append({
+            "lens_id": r["lens_id"],
+            "lens_title": r["lens_title"],
+            "category": r["category"],
+            "href": r["href"],
+            "stat_label": stat.get("k", ""),
+            "stat_value": stat.get("v", "—"),
+            "delta": stat.get("d", ""),
+            "dir": stat.get("dir", ""),
+            "pct_change": pc,
+        })
+    candidates.sort(key=lambda m: -abs(m["pct_change"]))
+    return candidates[:limit]
