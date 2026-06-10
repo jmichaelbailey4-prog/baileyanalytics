@@ -148,13 +148,17 @@ def rule_rate_trend(obs):
 
 
 def rule_mortgage(obs):
-    """MORTGAGE30US: the rate level plus an affordability read."""
+    """MORTGAGE30US level bands: <5.5 ok, 5.5-6.5 watch, 6.5-7.5 elevated, >=7.5 alert."""
     if not obs:
         return _NO_DATA
     v = obs[-1][1]
+    if v >= 7.5:
+        return (f"30-year mortgages are at {v:.2f}% — punishing rates that freeze out most buyers.", "alert")
     if v >= 6.5:
-        return (f"30-year mortgages are at {v:.2f}%, keeping home affordability stretched.", "watch")
-    return (f"30-year mortgages are at {v:.2f}%, moderate by recent standards.", "ok")
+        return (f"30-year mortgages are at {v:.2f}% — high enough to keep affordability stretched.", "elevated")
+    if v >= 5.5:
+        return (f"30-year mortgages are at {v:.2f}% — above the comfort zone for most budgets.", "watch")
+    return (f"30-year mortgages are at {v:.2f}% — moderate by recent standards.", "ok")
 
 
 def rule_payrolls(obs):
@@ -543,6 +547,91 @@ def market_health(label, hot, cold):
             return (f"{label}: down {abs(pct):.0f}% from a year ago — cooling.", "watch")
         return (f"{label}: little changed from a year ago ({pct:+.0f}%).", "ok")
 
+    return _rule
+
+
+def rule_affordability(obs):
+    """FIXHAI: NAR affordability index. 100 = the median family barely qualifies
+    for the median home. >=130 ok, 110-130 watch, 95-110 elevated, <95 alert."""
+    if not obs:
+        return _NO_DATA
+    v = obs[-1][1]
+    if v >= 130:
+        return (f"The affordability index is {v:.0f} — the median family comfortably affords the median home.", "ok")
+    if v >= 110:
+        return (f"The affordability index is {v:.0f} — affordable, but with less cushion than usual.", "watch")
+    if v >= 95:
+        return (f"The affordability index is {v:.0f} — the median family barely qualifies for the median home.", "elevated")
+    return (f"The affordability index is {v:.0f} — the median home is out of reach for the median family.", "alert")
+
+
+def rule_mortgage_delinquency(obs):
+    """DRSFRMACBS: % of bank single-family mortgages past due.
+    <2 ok, 2-4 watch, 4-7 elevated, >=7 alert (2009 peak ~11)."""
+    if not obs:
+        return _NO_DATA
+    v = obs[-1][1]
+    if v < 2:
+        return (f"Just {v:.1f}% of mortgages are delinquent — homeowners are keeping up.", "ok")
+    if v < 4:
+        return (f"Mortgage delinquencies are at {v:.1f}% — creeping up off their lows.", "watch")
+    if v < 7:
+        return (f"Mortgage delinquencies have climbed to {v:.1f}% — real homeowner stress.", "elevated")
+    return (f"Mortgage delinquencies are at {v:.1f}% — crisis-level homeowner distress.", "alert")
+
+
+def rule_months_supply(obs):
+    """MSACSR: months' supply of new houses. 4-6 balanced; low = tight (hot),
+    high = glut (cold). <3 elevated, 3-4 watch, 4-6 ok, 6-8 watch, 8-10 elevated, >10 alert."""
+    if not obs:
+        return _NO_DATA
+    v = obs[-1][1]
+    if v < 3:
+        return (f"Just {v:.1f} months of new-home supply — a tight market that props up prices.", "elevated")
+    if v < 4:
+        return (f"{v:.1f} months of new-home supply — on the tight side.", "watch")
+    if v <= 6:
+        return (f"{v:.1f} months of new-home supply — a balanced market.", "ok")
+    if v <= 8:
+        return (f"{v:.1f} months of new-home supply — inventory is building up.", "watch")
+    if v <= 10:
+        return (f"{v:.1f} months of new-home supply — a glut that pressures prices and builders.", "elevated")
+    return (f"{v:.1f} months of new-home supply — a severe glut.", "alert")
+
+
+def rule_rental_vacancy(obs):
+    """RRVRUSQ156N: rental vacancy %. 6-8 healthy; low = rent pressure (hot),
+    high = glut (cold). <5 elevated, 5-6 watch, 6-8 ok, 8-10 watch, >10 elevated."""
+    if not obs:
+        return _NO_DATA
+    v = obs[-1][1]
+    if v < 5:
+        return (f"Rental vacancy is just {v:.1f}% — a tight market that pushes rents up.", "elevated")
+    if v < 6:
+        return (f"Rental vacancy is {v:.1f}% — on the tight side, supporting rent growth.", "watch")
+    if v <= 8:
+        return (f"Rental vacancy is {v:.1f}% — a healthy balance between renters and landlords.", "ok")
+    if v <= 10:
+        return (f"Rental vacancy is {v:.1f}% — loosening in renters' favor.", "watch")
+    return (f"Rental vacancy is {v:.1f}% — a glut of empty rentals.", "elevated")
+
+
+def level_points(label):
+    """Descriptive `info` for a %-level series: latest value + ~12-month change in
+    points. Label must read as a singular subject ("The homeownership rate")."""
+    def _rule(obs):
+        if not obs:
+            return _NO_DATA
+        v = obs[-1][1]
+        prior = _value_year_ago(obs)
+        if prior is None:
+            return (f"{label} is {v:.1f}%.", "info")
+        delta = v - prior
+        if delta >= 0.2:
+            return (f"{label} is {v:.1f}%, up {delta:.1f} points from a year ago.", "info")
+        if delta <= -0.2:
+            return (f"{label} is {v:.1f}%, down {abs(delta):.1f} points from a year ago.", "info")
+        return (f"{label} is {v:.1f}%, little changed from a year ago.", "info")
     return _rule
 
 

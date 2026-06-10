@@ -54,5 +54,61 @@ class TestMarketHealth(unittest.TestCase):
         self.assertEqual(self.rule([]), ("Data unavailable.", "unknown"))
 
 
+class TestAffordability(unittest.TestCase):
+    def test_bands(self):
+        cases = [(135.0, "ok"), (115.0, "watch"), (105.6, "elevated"), (90.0, "alert")]
+        for v, want in cases:
+            _, status = narrative.rule_affordability([("2026-05-01", v)])
+            self.assertEqual(status, want, f"index {v}")
+
+    def test_empty_is_unknown(self):
+        self.assertEqual(narrative.rule_affordability([]), ("Data unavailable.", "unknown"))
+
+
+class TestMortgageDelinquency(unittest.TestCase):
+    def test_bands(self):
+        cases = [(1.89, "ok"), (2.5, "watch"), (5.0, "elevated"), (9.0, "alert")]
+        for v, want in cases:
+            _, status = narrative.rule_mortgage_delinquency([("2026-01-01", v)])
+            self.assertEqual(status, want, f"rate {v}")
+
+
+class TestMonthsSupply(unittest.TestCase):
+    def test_two_sided_bands(self):
+        cases = [(2.5, "elevated"), (3.5, "watch"), (5.0, "ok"),
+                 (7.0, "watch"), (9.4, "elevated"), (11.0, "alert")]
+        for v, want in cases:
+            text, status = narrative.rule_months_supply([("2026-04-01", v)])
+            self.assertEqual(status, want, f"supply {v}: {text}")
+
+    def test_glut_text_mentions_glut(self):
+        text, _ = narrative.rule_months_supply([("2026-04-01", 9.4)])
+        self.assertIn("glut", text)
+
+
+class TestRentalVacancy(unittest.TestCase):
+    def test_two_sided_bands(self):
+        cases = [(4.5, "elevated"), (5.5, "watch"), (7.3, "ok"),
+                 (9.0, "watch"), (11.0, "elevated")]
+        for v, want in cases:
+            _, status = narrative.rule_rental_vacancy([("2026-01-01", v)])
+            self.assertEqual(status, want, f"vacancy {v}")
+
+
+class TestLevelPoints(unittest.TestCase):
+    def test_info_with_direction(self):
+        rule = narrative.level_points("The homeownership rate")
+        text, status = rule([("2025-01-01", 65.7), ("2026-01-01", 65.3)])
+        self.assertEqual(status, "info")
+        self.assertIn("65.3%", text)
+        self.assertIn("down 0.4 points", text)
+
+    def test_info_steady(self):
+        rule = narrative.level_points("The homeownership rate")
+        text, status = rule([("2025-01-01", 65.3), ("2026-01-01", 65.3)])
+        self.assertEqual(status, "info")
+        self.assertIn("little changed", text)
+
+
 if __name__ == "__main__":
     unittest.main()

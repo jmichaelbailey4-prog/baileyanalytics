@@ -142,10 +142,18 @@ class TestRateTrend(unittest.TestCase):
 
 
 class TestMortgage(unittest.TestCase):
-    def test_high_is_watch(self):
+    def test_punishing_is_alert(self):
+        _, status = narrative.rule_mortgage([("2026-06-01", 7.8)])
+        self.assertEqual(status, "alert")
+
+    def test_high_is_elevated(self):
         text, status = narrative.rule_mortgage([("2026-06-01", 6.84)])
-        self.assertEqual(status, "watch")
+        self.assertEqual(status, "elevated")
         self.assertIn("stretched", text)
+
+    def test_above_comfort_is_watch(self):
+        _, status = narrative.rule_mortgage([("2026-06-01", 5.9)])
+        self.assertEqual(status, "watch")
 
     def test_moderate_is_ok(self):
         _, status = narrative.rule_mortgage([("2026-06-01", 4.2)])
