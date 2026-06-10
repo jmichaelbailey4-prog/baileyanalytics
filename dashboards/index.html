@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboards — Bailey Analytics</title>
-  <meta name="description" content="Plain-English dashboards built from public data — the U.S. economy, banking system health, markets, energy and commodities, and housing. Refreshed daily from FRED, FDIC, EIA, and CoinGecko.">
+  <meta name="description" content="Plain-English dashboards built from public data — the U.S. economy, the consumer, banking system health, markets, energy and commodities, and housing. Refreshed daily from FRED, FDIC, EIA, and CoinGecko.">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Bailey Analytics">
   <meta property="og:title" content="Dashboards — Bailey Analytics">
-  <meta property="og:description" content="Plain-English dashboards built from public data — the U.S. economy, banking system health, markets, energy and commodities, and housing. Refreshed daily from FRED, FDIC, EIA, and CoinGecko.">
+  <meta property="og:description" content="Plain-English dashboards built from public data — the U.S. economy, the consumer, banking system health, markets, energy and commodities, and housing. Refreshed daily from FRED, FDIC, EIA, and CoinGecko.">
   <meta property="og:url" content="https://baileyanalytics.com/dashboards/">
   <meta name="twitter:card" content="summary">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -32,12 +32,16 @@
     <p class="cat-sub">The U.S. economy — recession risk, the cost of money, the job market, the cost of living, and the government's finances. Refreshed daily from FRED.</p>
     <div class="hub-grid" id="econ-grid"><div class="status-msg">Loading&hellip;</div></div>
 
+    <h2 class="cat-head"><span class="dot" style="background:#E879F9"></span>The Consumer</h2>
+    <p class="cat-sub">Two-thirds of the economy — household spending, the credit behind it, income and savings, and how consumers feel. Refreshed daily from FRED. <a href="/dashboards/consumer/" style="color:var(--blue);text-decoration:none">Overview &rarr;</a></p>
+    <div class="hub-grid" id="consumer-grid"><div class="status-msg">Loading&hellip;</div></div>
+
     <h2 class="cat-head"><span class="dot" style="background:#FBBF24"></span>Banking System Health</h2>
     <p class="cat-sub">The health of the U.S. banking system, from FDIC Call Reports — asset quality, profitability, capital, and funding. <a href="/dashboards/banking/" style="color:var(--blue);text-decoration:none">Overview &rarr;</a></p>
     <div class="hub-grid" id="bank-grid"><div class="status-msg">Loading&hellip;</div></div>
 
     <h2 class="cat-head"><span class="dot" style="background:#22D3EE"></span>Markets &amp; Financial Conditions</h2>
-    <p class="cat-sub">What markets are pricing — risk sentiment, the major asset classes, and crypto market structure. Refreshed daily from FRED and CoinGecko. <a href="/dashboards/markets/" style="color:var(--blue);text-decoration:none">Overview &rarr;</a></p>
+    <p class="cat-sub">What markets are pricing — risk sentiment, the major asset classes, Fed liquidity, and crypto market structure. Refreshed daily from FRED and CoinGecko. <a href="/dashboards/markets/" style="color:var(--blue);text-decoration:none">Overview &rarr;</a></p>
     <div class="hub-grid" id="markets-grid"><div class="status-msg">Loading&hellip;</div></div>
 
     <h2 class="cat-head"><span class="dot" style="background:#FB923C"></span>Energy &amp; Commodities</h2>
@@ -49,7 +53,7 @@
     <div class="hub-grid" id="housing-grid"><div class="status-msg">Loading&hellip;</div></div>
 
     <div class="foot">
-      Data: <a href="https://fred.stlouisfed.org/" target="_blank" rel="noopener">FRED</a> (St. Louis Fed), the <a href="https://banks.data.fdic.gov/" target="_blank" rel="noopener">FDIC</a>, and the <a href="https://www.eia.gov/opendata/" target="_blank" rel="noopener">U.S. EIA</a>, and <a href="https://www.coingecko.com/" target="_blank" rel="noopener">CoinGecko</a>. Public data, refreshed regularly.
+      Data: <a href="https://fred.stlouisfed.org/" target="_blank" rel="noopener">FRED</a> (St. Louis Fed), the <a href="https://banks.data.fdic.gov/" target="_blank" rel="noopener">FDIC</a>, the <a href="https://www.eia.gov/opendata/" target="_blank" rel="noopener">U.S. EIA</a>, and <a href="https://www.coingecko.com/" target="_blank" rel="noopener">CoinGecko</a>. Public data, refreshed regularly.
     </div>
   </main>
 
@@ -61,6 +65,7 @@
     const MARKET_SLUGS = {
       "market-risk-sentiment": "risk-sentiment",
       "market-scoreboard": "scoreboard",
+      "market-liquidity": "liquidity",
       "crypto-structure": "crypto-structure"
     };
     loadHubGrid("markets-grid", "/data/markets/index.json",
@@ -73,6 +78,14 @@
     };
     loadHubGrid("energy-grid", "/data/energy/index.json",
                 id => `/dashboards/energy/${encodeURIComponent(ENERGY_SLUGS[id] || id)}.html`);
+    const CONSUMER_SLUGS = {
+      "consumer-spending": "spending",
+      "consumer-credit": "credit-stress",
+      "consumer-income-savings": "income-savings",
+      "consumer-sentiment": "sentiment"
+    };
+    loadHubGrid("consumer-grid", "/data/consumer/index.json",
+                id => `/dashboards/consumer/${encodeURIComponent(CONSUMER_SLUGS[id] || id)}.html`);
     const HOUSING_SLUGS = {
       "housing-home-prices": "home-prices",
       "housing-affordability": "affordability",

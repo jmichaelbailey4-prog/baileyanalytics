@@ -23,6 +23,20 @@ def payroll_change(raw):
     return out
 
 
+def scaled(divisor, decimals):
+    """Factory: rescale a level series (e.g. $millions -> $trillions with
+    scaled(1_000_000, 2)). Returns a derive callable for Indicator.derive."""
+    def _derive(raw):
+        out = []
+        for obs in raw:
+            v = util.to_float(obs["value"])
+            if v is None:
+                continue
+            out.append({"date": obs["date"], "value": f"{v / divisor:.{decimals}f}"})
+        return out
+    return _derive
+
+
 def trailing_12m_deficit(raw):
     """MTSDS133FMS (monthly federal surplus/deficit, $millions, deficits negative)
     -> the trailing-12-month deficit in $trillions, positive = deficit.

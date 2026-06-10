@@ -291,9 +291,11 @@ class TestYoyBandTwoSided(unittest.TestCase):
         self.assertEqual(rule([("d", -11.0)])[1], "alert")
 
     def test_text(self):
-        text, _ = narrative.yoy_band_two_sided("Home prices", hot=(6, 10, 15), cold=(-2, -5, -10))([("d", 3.2)])
+        rule = narrative.yoy_band_two_sided("Home prices", hot=(6, 10, 15), cold=(-2, -5, -10))
+        text, _ = rule([("d", 3.2)])
         self.assertIn("3.2%", text)
-        self.assertIn("little changed", text)
+        self.assertIn("steady pace", text)  # 1%..watch reads as steady growth, not "flat"
+        self.assertIn("little changed", rule([("d", 0.4)])[0])
 
     def test_empty(self):
         rule = narrative.yoy_band_two_sided("X", hot=(6, 10, 15), cold=(-2, -5, -10))
@@ -346,6 +348,71 @@ class TestEnergyLevelFmt(unittest.TestCase):
     def test_default_format_unchanged(self):
         text, _ = narrative.energy_level("Copper")([("2026-05-01", 13484.2)])
         self.assertIn("13,484", text)
+
+
+class TestConsumerRules(unittest.TestCase):
+    def test_delinquency_factory_bands(self):
+        rule = narrative.consumer_delinquency("Credit-card", 2.5, 4, 6)
+        self.assertEqual(rule([("d", 6.5)])[1], "alert")
+        self.assertEqual(rule([("d", 4.5)])[1], "elevated")
+        self.assertEqual(rule([("d", 2.92)])[1], "watch")
+        self.assertEqual(rule([("d", 1.8)])[1], "ok")
+        self.assertIn("Credit-card delinquencies", rule([("d", 2.92)])[0])
+
+    def test_revolving_credit(self):
+        self.assertEqual(narrative.rule_revolving_credit([("d", 13.0)])[1], "elevated")
+        self.assertEqual(narrative.rule_revolving_credit([("d", 9.0)])[1], "watch")
+        self.assertEqual(narrative.rule_revolving_credit([("d", 4.0)])[1], "ok")
+        text, status = narrative.rule_revolving_credit([("d", -3.0)])
+        self.assertEqual(status, "ok")
+        self.assertIn("paying down", text)
+
+    def test_debt_service(self):
+        self.assertEqual(narrative.rule_debt_service([("d", 13.1)])[1], "alert")
+        self.assertEqual(narrative.rule_debt_service([("d", 12.3)])[1], "elevated")
+        self.assertEqual(narrative.rule_debt_service([("d", 11.3)])[1], "watch")
+        self.assertEqual(narrative.rule_debt_service([("d", 9.8)])[1], "ok")
+
+    def test_saving_rate(self):
+        self.assertEqual(narrative.rule_saving_rate([("d", 2.6)])[1], "elevated")
+        self.assertEqual(narrative.rule_saving_rate([("d", 4.0)])[1], "watch")
+        self.assertEqual(narrative.rule_saving_rate([("d", 6.5)])[1], "ok")
+
+    def test_real_income(self):
+        self.assertEqual(narrative.rule_real_income([("d", -2.5)])[1], "elevated")
+        self.assertEqual(narrative.rule_real_income([("d", -0.5)])[1], "watch")
+        self.assertEqual(narrative.rule_real_income([("d", 1.2)])[1], "ok")
+
+    def test_sentiment(self):
+        self.assertEqual(narrative.rule_sentiment([("d", 49.8)])[1], "alert")
+        self.assertEqual(narrative.rule_sentiment([("d", 62.0)])[1], "elevated")
+        self.assertEqual(narrative.rule_sentiment([("d", 78.0)])[1], "watch")
+        self.assertEqual(narrative.rule_sentiment([("d", 95.0)])[1], "ok")
+
+    def test_inflation_expectations(self):
+        self.assertEqual(narrative.rule_inflation_expectations([("d", 5.6)])[1], "alert")
+        self.assertEqual(narrative.rule_inflation_expectations([("d", 4.7)])[1], "elevated")
+        self.assertEqual(narrative.rule_inflation_expectations([("d", 3.4)])[1], "watch")
+        self.assertEqual(narrative.rule_inflation_expectations([("d", 2.8)])[1], "ok")
+
+    def test_m2_growth(self):
+        self.assertEqual(narrative.rule_m2_growth([("d", 11.0)])[1], "elevated")
+        self.assertEqual(narrative.rule_m2_growth([("d", 8.0)])[1], "watch")
+        self.assertEqual(narrative.rule_m2_growth([("d", 4.0)])[1], "ok")
+        self.assertEqual(narrative.rule_m2_growth([("d", -1.5)])[1], "watch")
+        self.assertEqual(narrative.rule_m2_growth([("d", -4.0)])[1], "elevated")
+
+    def test_two_sided_verb_override(self):
+        rule = narrative.yoy_band_two_sided("Real consumer spending", hot=(4, 6, 9), cold=(-1, -3, -5), verb="is")
+        text, _ = rule([("d", 2.0)])
+        self.assertIn("Real consumer spending is", text)
+
+    def test_empty_rules_unknown(self):
+        for rule in [narrative.rule_revolving_credit, narrative.rule_debt_service,
+                     narrative.rule_saving_rate, narrative.rule_real_income,
+                     narrative.rule_sentiment, narrative.rule_inflation_expectations,
+                     narrative.rule_m2_growth]:
+            self.assertEqual(rule([]), ("Data unavailable.", "unknown"))
 
 
 if __name__ == "__main__":

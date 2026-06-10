@@ -53,6 +53,12 @@ jobs:
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
         run: python scripts/refresh_lenses.py --housing
 
+      - name: Fetch latest consumer data (FRED)
+        if: ${{ success() || failure() }}
+        env:
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+        run: python scripts/refresh_lenses.py --consumer
+
       - name: Commit and push if data changed
         if: ${{ success() || failure() }}
         run: |

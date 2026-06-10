@@ -13,10 +13,10 @@ class TestMarketsDryRun(unittest.TestCase):
         fetched = json.loads(refresh_lenses.MARKET_FIXTURE.read_text(encoding="utf-8"))
         return [build.build_lens(l, fetched) for l in config.MARKET_FRED_LENSES]
 
-    def test_builds_two_fred_market_lenses(self):
+    def test_builds_three_fred_market_lenses(self):
         jsons = self._build()
         self.assertEqual({j["id"] for j in jsons},
-                         {"market-risk-sentiment", "market-scoreboard"})
+                         {"market-risk-sentiment", "market-scoreboard", "market-liquidity"})
 
     def test_scoreboard_status_is_neutral_and_has_momentum_signals(self):
         board = next(j for j in self._build() if j["id"] == "market-scoreboard")

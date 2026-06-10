@@ -528,10 +528,10 @@ def yoy_band(label, watch, elevated, alert):
     return _rule
 
 
-def yoy_band_two_sided(label, hot, cold):
+def yoy_band_two_sided(label, hot, cold, verb="are"):
     """Factory: two-sided market-health severity for an already-YoY % series.
     Same bands and tone as `market_health`. Label reads as a plural subject
-    ("Home prices")."""
+    ("Home prices"); pass verb="is" for singular ones ("Real spending")."""
     hot_w, hot_e, hot_a = hot
     cold_w, cold_e, cold_a = cold
 
@@ -540,18 +540,22 @@ def yoy_band_two_sided(label, hot, cold):
             return _NO_DATA
         v = obs[-1][1]
         if v >= hot_a:
-            return (f"{label} are up {v:.1f}% from a year ago — overheating.", "alert")
+            return (f"{label} {verb} up {v:.1f}% from a year ago — overheating.", "alert")
         if v >= hot_e:
-            return (f"{label} are up {v:.1f}% from a year ago — running hot.", "elevated")
+            return (f"{label} {verb} up {v:.1f}% from a year ago — running hot.", "elevated")
         if v >= hot_w:
-            return (f"{label} are up {v:.1f}% from a year ago — heating up.", "watch")
+            return (f"{label} {verb} up {v:.1f}% from a year ago — heating up.", "watch")
         if v <= cold_a:
-            return (f"{label} are down {abs(v):.1f}% from a year ago — a deep freeze.", "alert")
+            return (f"{label} {verb} down {abs(v):.1f}% from a year ago — a deep freeze.", "alert")
         if v <= cold_e:
-            return (f"{label} are down {abs(v):.1f}% from a year ago — cooling sharply.", "elevated")
+            return (f"{label} {verb} down {abs(v):.1f}% from a year ago — cooling sharply.", "elevated")
         if v <= cold_w:
-            return (f"{label} are down {abs(v):.1f}% from a year ago — cooling.", "watch")
-        return (f"{label} are little changed from a year ago ({v:+.1f}%).", "ok")
+            return (f"{label} {verb} down {abs(v):.1f}% from a year ago — cooling.", "watch")
+        if v >= 1:
+            return (f"{label} {verb} up {v:.1f}% from a year ago — a steady pace.", "ok")
+        if v <= -1:
+            return (f"{label} {verb} down {abs(v):.1f}% from a year ago.", "ok")
+        return (f"{label} {verb} little changed from a year ago ({v:+.1f}%).", "ok")
 
     return _rule
 
@@ -587,6 +591,130 @@ def generation_share(label):
             return (f"{label}: {v:.1f}% of U.S. electricity generation, down {abs(delta):.1f} points over the past year.", "info")
         return (f"{label}: {v:.1f}% of U.S. electricity generation, steady over the past year.", "info")
     return _rule
+
+
+# --- Markets: Liquidity & the Fed ---
+
+def rule_m2_growth(obs):
+    """M2 year-over-year %. Very fast growth is historically inflationary; an
+    outright contraction is rare and signals monetary squeeze.
+    >=10 elevated, 7-10 watch, -1..7 ok, -3..-1 watch, <=-3 elevated."""
+    if not obs:
+        return _NO_DATA
+    v = obs[-1][1]
+    if v >= 10:
+        return (f"M2 is growing {v:.1f}% a year — unusually fast, and historically inflationary.", "elevated")
+    if v >= 7:
+        return (f"M2 is growing {v:.1f}% a year — on the fast side.", "watch")
+    if v <= -3:
+        return (f"M2 is shrinking {abs(v):.1f}% a year — a rare monetary contraction.", "elevated")
+    if v <= -1:
+        return (f"M2 is shrinking {abs(v):.1f}% a year — liquidity is being drained.", "watch")
+    return (f"M2 is growing {v:.1f}% a year — a normal pace.", "ok")
+
+
+# --- The Consumer rules ---
+
+def consumer_delinquency(label, watch, elevated, alert):
+    """Factory: delinquency-rate bands (%) with consumer-credit wording."""
+    def _rule(obs):
+        if not obs:
+            return _NO_DATA
+        v = obs[-1][1]
+        if v >= alert:
+            return (f"{label} delinquencies have hit {v:.1f}% — crisis-level consumer distress.", "alert")
+        if v >= elevated:
+            return (f"{label} delinquencies have climbed to {v:.1f}% — real borrower stress.", "elevated")
+        if v >= watch:
+            return (f"{label} delinquencies are at {v:.1f}%, creeping up off their lows.", "watch")
+        return (f"{label} delinquencies are low at {v:.1f}% — borrowers are keeping up.", "ok")
+    return _rule
+
+
+def rule_revolving_credit(obs):
+    """Revolving (credit-card) balances, year-over-year %. Fast growth means
+    households are leaning on cards; shrinking balances mean paying down."""
+    if not obs:
+        return _NO_DATA
+    v = obs[-1][1]
+    if v >= 12:
+        return (f"Card balances are growing {v:.1f}% a year — households are leaning hard on credit.", "elevated")
+    if v >= 8:
+        return (f"Card balances are growing {v:.1f}% a year — faster than incomes.", "watch")
+    if v <= -1:
+        return (f"Card balances are shrinking {abs(v):.1f}% a year — households are paying down debt.", "ok")
+    return (f"Card balances are growing {v:.1f}% a year — a sustainable pace.", "ok")
+
+
+def rule_debt_service(obs):
+    """TDSP: household debt service as % of disposable income.
+    <10.5 ok, 10.5-12 watch, 12-13 elevated, >=13 alert (2007 peak ~13.2)."""
+    if not obs:
+        return _NO_DATA
+    v = obs[-1][1]
+    if v >= 13:
+        return (f"Debt payments eat {v:.1f}% of household income — at the 2007 danger level.", "alert")
+    if v >= 12:
+        return (f"Debt payments eat {v:.1f}% of household income — a heavy and rising burden.", "elevated")
+    if v >= 10.5:
+        return (f"Debt payments take {v:.1f}% of household income — above the comfortable range.", "watch")
+    return (f"Debt payments take {v:.1f}% of household income — a manageable burden.", "ok")
+
+
+def rule_saving_rate(obs):
+    """PSAVERT: personal saving rate (%). Low savings = no cushion when
+    shocks hit. <3 elevated, 3-5 watch, >=5 ok."""
+    if not obs:
+        return _NO_DATA
+    v = obs[-1][1]
+    if v < 3:
+        return (f"Households are saving just {v:.1f}% of income — almost no cushion left.", "elevated")
+    if v < 5:
+        return (f"The saving rate is {v:.1f}% — thinner than the historical norm.", "watch")
+    return (f"Households are saving {v:.1f}% of income — a healthy cushion.", "ok")
+
+
+def rule_real_income(obs):
+    """Real disposable income, year-over-year %. Falling real income is the
+    root of most consumer stress. <=-2 elevated, <0 watch, >=0 ok."""
+    if not obs:
+        return _NO_DATA
+    v = obs[-1][1]
+    if v <= -2:
+        return (f"Real income is down {abs(v):.1f}% from a year ago — purchasing power is eroding fast.", "elevated")
+    if v < 0:
+        return (f"Real income is down {abs(v):.1f}% from a year ago — paychecks aren't keeping up.", "watch")
+    return (f"Real income is up {v:.1f}% from a year ago — purchasing power is growing.", "ok")
+
+
+def rule_sentiment(obs):
+    """UMCSENT: U. Michigan consumer sentiment. Long-run range roughly 50-110;
+    the 2022 record low was ~50. >=85 ok, 70-85 watch, 55-70 elevated, <55 alert."""
+    if not obs:
+        return _NO_DATA
+    v = obs[-1][1]
+    if v < 55:
+        return (f"Consumer sentiment is {v:.0f} — near record lows; households are deeply pessimistic.", "alert")
+    if v < 70:
+        return (f"Consumer sentiment is {v:.0f} — recession-grade gloom.", "elevated")
+    if v < 85:
+        return (f"Consumer sentiment is {v:.0f} — downbeat but not despairing.", "watch")
+    return (f"Consumer sentiment is {v:.0f} — households feel fine.", "ok")
+
+
+def rule_inflation_expectations(obs):
+    """MICH: 1-year-ahead inflation expectations (%). The Fed watches this for
+    de-anchoring. <=3 ok, 3-4 watch, 4-5.5 elevated, >=5.5 alert."""
+    if not obs:
+        return _NO_DATA
+    v = obs[-1][1]
+    if v >= 5.5:
+        return (f"Households expect {v:.1f}% inflation next year — expectations are de-anchoring.", "alert")
+    if v >= 4:
+        return (f"Households expect {v:.1f}% inflation next year — well above the Fed's comfort zone.", "elevated")
+    if v > 3:
+        return (f"Households expect {v:.1f}% inflation next year — a touch high.", "watch")
+    return (f"Households expect {v:.1f}% inflation next year — expectations remain anchored.", "ok")
 
 
 # --- Fiscal Health rules ---
@@ -652,6 +780,10 @@ def market_health(label, hot, cold):
             return (f"{label}: down {abs(pct):.0f}% from a year ago — cooling sharply.", "elevated")
         if pct <= cold_w:
             return (f"{label}: down {abs(pct):.0f}% from a year ago — cooling.", "watch")
+        if pct >= 1:
+            return (f"{label}: up {pct:.0f}% from a year ago — a steady pace.", "ok")
+        if pct <= -1:
+            return (f"{label}: down {abs(pct):.0f}% from a year ago.", "ok")
         return (f"{label}: little changed from a year ago ({pct:+.0f}%).", "ok")
 
     return _rule
@@ -818,6 +950,41 @@ HEADLINES = {
     },
     "crypto-structure": {
         "neutral": "How capital is rotating across the crypto market.",
+    },
+    "market-liquidity": {
+        "alert": "Monetary conditions are at an extreme — liquidity is the story.",
+        "elevated": "Liquidity is moving sharply — the monetary backdrop is shifting.",
+        "watch": "Liquidity is tightening at the margin — worth watching.",
+        "ok": "Liquidity is ample — no monetary squeeze in sight.",
+        "unknown": "Some liquidity data is temporarily unavailable.",
+    },
+    "consumer-spending": {
+        "alert": "Consumer spending is at an extreme — demand is flashing red.",
+        "elevated": "Consumer spending is under strain — demand is bending.",
+        "watch": "Consumer spending is wobbling — still growing, but losing steam.",
+        "ok": "Consumers are still spending at a healthy pace.",
+        "unknown": "Some spending data is temporarily unavailable.",
+    },
+    "consumer-credit": {
+        "alert": "Consumer credit is cracking — delinquencies at crisis levels.",
+        "elevated": "Consumer credit stress is real — late payments are climbing.",
+        "watch": "Consumer credit bears watching — debt loads are creeping up.",
+        "ok": "Consumer credit is healthy — households are keeping up with their debts.",
+        "unknown": "Some credit data is temporarily unavailable.",
+    },
+    "consumer-income-savings": {
+        "alert": "Household finances are in distress — incomes and savings are exhausted.",
+        "elevated": "Household cushions are thin — savings or real incomes are stretched.",
+        "watch": "Household finances are tightening — cushions are shrinking.",
+        "ok": "Household finances are solid — incomes and savings are holding up.",
+        "unknown": "Some income data is temporarily unavailable.",
+    },
+    "consumer-sentiment": {
+        "alert": "Consumers are deeply pessimistic — sentiment is near record lows.",
+        "elevated": "Consumer mood is grim — confidence is at recession levels.",
+        "watch": "Consumers are uneasy — confidence is below normal.",
+        "ok": "Consumers are confident — the mood is healthy.",
+        "unknown": "Some sentiment data is temporarily unavailable.",
     },
     "energy-oil-fuels": {
         "alert": "Fuel costs are spiking — acute pressure at the pump.",

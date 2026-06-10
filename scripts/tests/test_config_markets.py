@@ -12,9 +12,9 @@ def _yr(a, b):
 
 
 class TestMarketConfig(unittest.TestCase):
-    def test_two_fred_market_lenses(self):
+    def test_three_fred_market_lenses(self):
         ids = [l.id for l in config.MARKET_FRED_LENSES]
-        self.assertEqual(ids, ["market-risk-sentiment", "market-scoreboard"])
+        self.assertEqual(ids, ["market-risk-sentiment", "market-scoreboard", "market-liquidity"])
 
     def test_risk_sentiment_series(self):
         risk = next(l for l in config.MARKET_FRED_LENSES if l.id == "market-risk-sentiment")

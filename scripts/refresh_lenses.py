@@ -22,11 +22,13 @@ BANK_OUT_DIR = Path(__file__).resolve().parent.parent / "data" / "banking"
 MARKETS_OUT_DIR = Path(__file__).resolve().parent.parent / "data" / "markets"
 ENERGY_OUT_DIR = Path(__file__).resolve().parent.parent / "data" / "energy"
 HOUSING_OUT_DIR = Path(__file__).resolve().parent.parent / "data" / "housing"
+CONSUMER_OUT_DIR = Path(__file__).resolve().parent.parent / "data" / "consumer"
 FIXTURE = Path(__file__).resolve().parent / "tests" / "fixtures" / "fetched_sample.json"
 FDIC_FIXTURE = Path(__file__).resolve().parent / "tests" / "fixtures" / "fdic_sample.json"
 MARKET_FIXTURE = Path(__file__).resolve().parent / "tests" / "fixtures" / "markets_sample.json"
 ENERGY_FIXTURE = Path(__file__).resolve().parent / "tests" / "fixtures" / "energy_sample.json"
 HOUSING_FIXTURE = Path(__file__).resolve().parent / "tests" / "fixtures" / "housing_sample.json"
+CONSUMER_FIXTURE = Path(__file__).resolve().parent / "tests" / "fixtures" / "consumer_sample.json"
 CRYPTO_HISTORY = MARKETS_OUT_DIR / "_crypto_history.json"
 CRYPTO_FIXTURE = Path(__file__).resolve().parent / "tests" / "fixtures" / "coingecko_sample.json"
 
@@ -390,6 +392,35 @@ def refresh_housing(dry_run):
     return 0
 
 
+def refresh_consumer(dry_run):
+    """Build + write the consumer (FRED) lenses. Returns an exit code (0 ok, non-zero error)."""
+    if dry_run:
+        fetched = json.loads(CONSUMER_FIXTURE.read_text(encoding="utf-8"))
+        failed = set()
+    else:
+        api_key = os.environ.get("FRED_API_KEY")
+        if not api_key:
+            print("FRED_API_KEY not set", file=sys.stderr)
+            return 1
+        fetched, failed = fetch_all(config.CONSUMER_LENSES, api_key)
+
+    ready = [lens for lens in config.CONSUMER_LENSES if lens_ready(lens, failed)]
+    for lens in config.CONSUMER_LENSES:
+        if lens not in ready:
+            print(f"SKIP: {lens.id} (a source series failed; keeping previous data)", file=sys.stderr)
+    if not ready:
+        print("No consumer lenses could be built", file=sys.stderr)
+        return 2
+
+    written = build.write_outputs([build.build_lens(lens, fetched) for lens in ready],
+                                  CONSUMER_OUT_DIR)
+    for path in written:
+        print(f"Wrote {path}")
+    if not written:
+        print("No changes — all consumer data up to date.")
+    return 0
+
+
 def main(argv=None):
     parser = argparse.ArgumentParser(description="Refresh dashboard data from public sources.")
     parser.add_argument("--dry-run", action="store_true", help="use fixture data, no network")
@@ -398,16 +429,19 @@ def main(argv=None):
     parser.add_argument("--markets", action="store_true", help="refresh only the markets lenses")
     parser.add_argument("--energy", action="store_true", help="refresh only the energy lenses")
     parser.add_argument("--housing", action="store_true", help="refresh only the housing lenses")
+    parser.add_argument("--consumer", action="store_true", help="refresh only the consumer (FRED) lenses")
     args = parser.parse_args(argv)
 
     # No source flag = refresh everything (handy for manual/local runs); each
     # flag scopes the run so a workflow can give each source its own cadence.
-    any_flag = args.economic or args.banking or args.markets or args.energy or args.housing
+    any_flag = (args.economic or args.banking or args.markets or args.energy
+                or args.housing or args.consumer)
     do_economic = args.economic or not any_flag
     do_banking = args.banking or not any_flag
     do_markets = args.markets or not any_flag
     do_energy = args.energy or not any_flag
     do_housing = args.housing or not any_flag
+    do_consumer = args.consumer or not any_flag
 
     code = 0
     if do_economic:
@@ -426,6 +460,10 @@ def main(argv=None):
         hc = refresh_housing(args.dry_run)
         if hc:
             code = hc
+    if do_consumer:
+        cc = refresh_consumer(args.dry_run)
+        if cc:
+            code = cc
     if do_banking:
         refresh_banking(args.dry_run)
     return code

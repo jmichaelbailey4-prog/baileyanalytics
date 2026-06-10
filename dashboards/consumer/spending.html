@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spending — Bailey Analytics</title>
+  <meta name="description" content="Are U.S. households still spending? Retail sales, real consumer spending, and vehicle sales in plain English, from FRED.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Bailey Analytics">
+  <meta property="og:title" content="Spending — Bailey Analytics">
+  <meta property="og:description" content="Are U.S. households still spending? Retail sales, real consumer spending, and vehicle sales in plain English, from FRED.">
+  <meta property="og:url" content="https://baileyanalytics.com/dashboards/consumer/spending.html">
+  <meta name="twitter:card" content="summary">
+  <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="/dashboards/lens.css">
+</head>
+<body>
+  <nav class="wordmark"><a href="/">Bailey Analytics</a></nav>
+  <nav class="top-nav"><a href="/dashboards/">Dashboards</a><a href="/about.html">About</a></nav>
+  <main id="lens-root"><div class="status-msg">Loading…</div></main>
+  <script defer src="/dashboards/lens.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", () => {
+    renderLens("/data/consumer/consumer-spending.json", {
+      back: "The Consumer",
+      href: "/dashboards/consumer/",
+      foot: 'Data: <a href="https://fred.stlouisfed.org/" target="_blank" rel="noopener">Federal Reserve Economic Data (FRED)</a>, St. Louis Fed. Refreshed daily. The "read" is generated from the latest values by a fixed rule set.'
+    });
+  });</script>
+</body>
+</html>

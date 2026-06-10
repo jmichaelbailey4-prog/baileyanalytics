@@ -58,6 +58,16 @@ class TestYoyPct(unittest.TestCase):
         self.assertEqual(derive.yoy_pct(raw), [])
 
 
+class TestScaled(unittest.TestCase):
+    def test_millions_to_trillions(self):
+        d = derive.scaled(1_000_000, 2)
+        self.assertEqual(d([{"date": "2026-06-03", "value": "6711495"}]),
+                         [{"date": "2026-06-03", "value": "6.71"}])
+
+    def test_skips_nulls(self):
+        self.assertEqual(derive.scaled(1000, 1)([{"date": "x", "value": "."}]), [])
+
+
 class TestTrailing12mDeficit(unittest.TestCase):
     def test_rolls_12_months_to_trillions_positive_deficit(self):
         # 11 months of -150,000 ($M) then a +50,000 surplus month, then -200,000

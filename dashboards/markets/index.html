@@ -32,7 +32,7 @@
   <script>document.addEventListener("DOMContentLoaded", () => {
     loadHubGrid("hub-grid", "/data/markets/index.json",
       id => {
-        const SLUGS = { "market-risk-sentiment": "risk-sentiment", "market-scoreboard": "scoreboard",
+        const SLUGS = { "market-risk-sentiment": "risk-sentiment", "market-scoreboard": "scoreboard", "market-liquidity": "liquidity",
                         "crypto-structure": "crypto-structure" };
         return `/dashboards/markets/${encodeURIComponent(SLUGS[id] || id)}.html`;
       });

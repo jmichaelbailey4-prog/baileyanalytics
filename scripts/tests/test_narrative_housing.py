@@ -42,7 +42,12 @@ class TestMarketHealth(unittest.TestCase):
         self.assertEqual(status, "watch")
 
     def test_steady_is_ok(self):
-        text, status = self.rule(_yoy(100.0, 101.0))  # +1%
+        text, status = self.rule(_yoy(100.0, 101.0))  # +1% -> steady growth, not "flat"
+        self.assertEqual(status, "ok")
+        self.assertIn("steady pace", text)
+
+    def test_flat_is_little_changed(self):
+        text, status = self.rule(_yoy(100.0, 100.4))  # +0.4%
         self.assertEqual(status, "ok")
         self.assertIn("little changed", text)
 

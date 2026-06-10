@@ -713,12 +713,179 @@ MARKET_SCOREBOARD = Lens(
     ],
 )
 
-MARKET_FRED_LENSES = [MARKET_RISK_SENTIMENT, MARKET_SCOREBOARD]
+MARKET_LIQUIDITY = Lens(
+    id="market-liquidity",
+    title="Liquidity & the Fed",
+    accent="#2DD4BF",
+    indicators=[
+        Indicator(
+            id="m2-growth", title="M2 Money Supply · year-over-year", short="M2 growth",
+            unit="%", color="#2DD4BF", series_id="M2SL", units_transform="pc1", limit=300,
+            rule=narrative.rule_m2_growth,
+            context=("How fast the broad money supply is growing versus a year ago. Double-digit "
+                     "growth (2020-21) preceded the inflation surge; the 2022-23 contraction was "
+                     "the first since the Great Depression."),
+        ),
+        Indicator(
+            id="fed-balance-sheet", title="Fed Balance Sheet · total assets", short="Fed assets",
+            unit="$T", color="#38BDF8", series_id="WALCL", limit=520,
+            derive=derive.scaled(1_000_000, 2),
+            rule=narrative.energy_level("The Fed's balance sheet", fmt="${:,.2f} trillion"),
+            context=("Everything the Federal Reserve holds, in trillions. Rising means the Fed is "
+                     "injecting liquidity (QE); falling means it's draining (QT) — the tide that "
+                     "lifts or lowers all markets."),
+        ),
+        Indicator(
+            id="bank-reserves", title="Bank Reserves at the Fed", short="Reserves",
+            unit="$T", color="#34D399", series_id="WRESBAL", limit=520,
+            derive=derive.scaled(1_000_000, 2),
+            rule=narrative.energy_level("The level of bank reserves", fmt="${:,.2f} trillion"),
+            context=("Cash banks park at the Fed — the system's core liquidity buffer. When QT "
+                     "drains reserves too low, funding markets seize up (as in September 2019)."),
+        ),
+        Indicator(
+            id="reverse-repo", title="Overnight Reverse Repo", short="Reverse repo",
+            unit="$B", color="#A78BFA", series_id="RRPONTSYD", limit=1300,
+            rule=narrative.energy_level("The overnight reverse-repo facility", fmt="${:,.1f} billion"),
+            context=("Spare cash money-market funds park at the Fed overnight. It acts as the "
+                     "system's overflow tank: a high balance means excess liquidity; near zero "
+                     "means the buffer is spent and QT bites reserves directly."),
+        ),
+    ],
+)
+
+MARKET_FRED_LENSES = [MARKET_RISK_SENTIMENT, MARKET_SCOREBOARD, MARKET_LIQUIDITY]
 
 CATEGORIES.append(
     {"id": "markets", "title": "Markets & Financial Conditions", "lenses": MARKET_FRED_LENSES,
      "out": "markets", "back": "Markets & Financial Conditions",
      "source_label": "FRED (St. Louis Fed) and CoinGecko", "disclaimer": ""}
+)
+
+
+# --- The Consumer (FRED) ---
+# Household spending is ~68% of GDP; this category answers the question the
+# price-pressure categories raise: are households cracking or absorbing it?
+
+CONSUMER_SPENDING = Lens(
+    id="consumer-spending", title="Spending", accent="#34D399",
+    indicators=[
+        Indicator(
+            id="retail-sales", title="Retail Sales · year-over-year", short="Retail sales",
+            unit="%", color="#34D399", series_id="RSAFS", units_transform="pc1", limit=240,
+            rule=narrative.yoy_band_two_sided("Retail sales", hot=(8, 15, 25), cold=(-1, -4, -8)),
+            context=("How fast retail and food-service sales are growing versus a year ago "
+                     "(nominal — inflation is part of the number). A stall here is how consumer "
+                     "recessions announce themselves."),
+        ),
+        Indicator(
+            id="real-spending", title="Real Consumer Spending · year-over-year", short="Real spending",
+            unit="%", color="#38BDF8", series_id="PCEC96", units_transform="pc1", limit=240,
+            rule=narrative.yoy_band_two_sided("Real consumer spending", hot=(4, 6, 9),
+                                              cold=(-0.5, -2, -4), verb="is"),
+            context=("Total household consumption adjusted for inflation — the cleanest read on "
+                     "whether people are actually buying more, or just paying more."),
+        ),
+        Indicator(
+            id="auto-sales", title="Vehicle Sales · annual rate", short="Auto sales",
+            unit="M", color="#FBBF24", series_id="TOTALSA", limit=240,
+            rule=narrative.energy_level("The pace of vehicle sales", fmt="{:,.1f} million"),
+            context=("Light-vehicle sales in millions at an annual rate — the classic big-ticket "
+                     "purchase. Households delay new cars first when budgets tighten."),
+        ),
+    ],
+)
+
+CONSUMER_CREDIT = Lens(
+    id="consumer-credit", title="Credit Stress", accent="#F87171",
+    indicators=[
+        Indicator(
+            id="card-delinquency", title="Credit-Card Delinquency Rate", short="Card delinq.",
+            unit="%", color="#F87171", series_id="DRCCLACBS", limit=80,
+            rule=narrative.consumer_delinquency("Credit-card", 2.5, 4, 6),
+            context=("The share of bank credit-card balances 30+ days past due (quarterly). "
+                     "Cards go bad first — this is the earliest warning in consumer credit. "
+                     "The 2009 peak was about 6.8%."),
+        ),
+        Indicator(
+            id="consumer-delinquency", title="Consumer-Loan Delinquency Rate", short="Loan delinq.",
+            unit="%", color="#FB923C", series_id="DRCLACBS", limit=80,
+            rule=narrative.consumer_delinquency("Consumer-loan", 2.5, 3.5, 4.5),
+            context=("Delinquency across all consumer loans at banks — cards, autos, and "
+                     "personal loans together (quarterly)."),
+        ),
+        Indicator(
+            id="revolving-credit", title="Card Balances · year-over-year", short="Card balances",
+            unit="%", color="#A78BFA", series_id="REVOLSL", units_transform="pc1", limit=240,
+            rule=narrative.rule_revolving_credit,
+            context=("How fast revolving credit (mostly credit cards) is growing. Balances "
+                     "growing much faster than incomes mean households are borrowing to keep up."),
+        ),
+        Indicator(
+            id="debt-service", title="Household Debt Service · % of income", short="Debt service",
+            unit="%", color="#FBBF24", series_id="TDSP", limit=80,
+            rule=narrative.rule_debt_service,
+            context=("All required debt payments — mortgage and consumer — as a share of "
+                     "disposable income (quarterly). The 2007 peak was about 13%."),
+        ),
+    ],
+)
+
+CONSUMER_INCOME = Lens(
+    id="consumer-income-savings", title="Income & Savings", accent="#FBBF24",
+    indicators=[
+        Indicator(
+            id="saving-rate", title="Personal Saving Rate", short="Saving rate",
+            unit="%", color="#FBBF24", series_id="PSAVERT", limit=240,
+            rule=narrative.rule_saving_rate,
+            context=("The share of after-tax income households save each month. A thin saving "
+                     "rate means no shock absorber — the historical norm is 5-8%."),
+        ),
+        Indicator(
+            id="real-income", title="Real Disposable Income · year-over-year", short="Real income",
+            unit="%", color="#34D399", series_id="DSPIC96", units_transform="pc1", limit=240,
+            rule=narrative.rule_real_income,
+            context=("After-tax household income adjusted for inflation. When it falls, spending "
+                     "can only be sustained by savings or debt — and both run out."),
+        ),
+        Indicator(
+            id="net-worth", title="Household Net Worth · year-over-year", short="Net worth",
+            unit="%", color="#38BDF8", series_id="BOGZ1FL192090005Q", units_transform="pc1", limit=80,
+            rule=narrative.yoy_info("Household net worth"),
+            context=("Everything households own minus everything they owe (quarterly). Driven by "
+                     "home prices and markets — the wealth effect behind spending confidence."),
+        ),
+    ],
+)
+
+CONSUMER_SENTIMENT = Lens(
+    id="consumer-sentiment", title="Sentiment & Expectations", accent="#38BDF8",
+    indicators=[
+        Indicator(
+            id="sentiment", title="Consumer Sentiment (U. Michigan)", short="Sentiment",
+            unit="", color="#38BDF8", series_id="UMCSENT", limit=240,
+            rule=narrative.rule_sentiment,
+            context=("The University of Michigan's monthly survey of how households feel about "
+                     "their finances and the economy. Long-run range roughly 50-110; the 2022 "
+                     "record low was about 50."),
+        ),
+        Indicator(
+            id="inflation-expectations", title="Inflation Expectations · 1-year ahead", short="Inflation exp.",
+            unit="%", color="#FBBF24", series_id="MICH", limit=240,
+            rule=narrative.rule_inflation_expectations,
+            context=("What households expect inflation to be over the next year, from the same "
+                     "Michigan survey. The Fed watches this closely: once expectations de-anchor, "
+                     "inflation feeds on itself."),
+        ),
+    ],
+)
+
+CONSUMER_LENSES = [CONSUMER_SPENDING, CONSUMER_CREDIT, CONSUMER_INCOME, CONSUMER_SENTIMENT]
+
+CATEGORIES.append(
+    {"id": "consumer", "title": "The Consumer", "lenses": CONSUMER_LENSES,
+     "out": "consumer", "back": "The Consumer",
+     "source_label": "Federal Reserve Economic Data (FRED), St. Louis Fed", "disclaimer": ""}
 )
 
 
