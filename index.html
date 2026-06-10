@@ -154,7 +154,8 @@
 
         .lens-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            /* one row of category tiles; wraps gracefully as categories are added */
+            grid-template-columns: repeat(auto-fit, minmax(10.5rem, 1fr));
             gap: 0.85rem;
         }
 
@@ -197,6 +198,7 @@
         .pill.elevated { color: #FB923C; }
         .pill.alert { color: #F87171; }
         .pill.unknown { color: var(--faint); }
+        .pill.neutral { color: var(--blue); }
 
         .lens .read {
             color: var(--text);
@@ -277,18 +279,20 @@
         </div>
 
         <section class="lenses-wrap" id="lenses" hidden>
-            <div class="seclabel"><span class="dot"></span> Live now · Economic Lenses <span class="line"></span></div>
+            <div class="seclabel"><span class="dot"></span> Live now · Across the dashboards <span class="line"></span></div>
             <div class="lens-grid" id="lens-grid"></div>
             <div class="cta-wrap"><a class="cta" href="/dashboards/">View all dashboards &rarr;</a></div>
             <div class="foot">
-                Refreshed daily from <a href="https://fred.stlouisfed.org/" target="_blank" rel="noopener">FRED</a>, St. Louis Fed.
+                Built from public data — <a href="https://fred.stlouisfed.org/" target="_blank" rel="noopener">FRED</a>,
+                the <a href="https://banks.data.fdic.gov/" target="_blank" rel="noopener">FDIC</a>,
+                the <a href="https://www.eia.gov/opendata/" target="_blank" rel="noopener">U.S. EIA</a>,
+                and <a href="https://www.coingecko.com/" target="_blank" rel="noopener">CoinGecko</a> — refreshed daily.
             </div>
         </section>
     </main>
 
     <script>
         function esc(s) { const d = document.createElement("div"); d.textContent = s; return d.innerHTML; }
-        function shortTitle(t) { return t.replace(/^The\s+/i, ""); }
 
         function sparkline(values, accent) {
             if (!values || values.length < 2) return "";
@@ -301,13 +305,33 @@
             return `<svg class="spark" aria-hidden="true" viewBox="0 0 100 30" preserveAspectRatio="none"><polyline points="${pts}" fill="none" stroke="${esc(accent)}" stroke-width="2"/></svg>`;
         }
 
-        function tile(lens) {
+        // One tile per dashboard category. To add a category, append a line here.
+        const CATEGORIES = [
+            { title: "Economy", url: "/data/lenses/index.json",  href: "/dashboards/" },
+            { title: "Banking", url: "/data/banking/index.json", href: "/dashboards/banking/" },
+            { title: "Markets", url: "/data/markets/index.json", href: "/dashboards/markets/" },
+            { title: "Energy",  url: "/data/energy/index.json",  href: "/dashboards/energy/" },
+            { title: "Housing", url: "/data/housing/index.json", href: "/dashboards/housing/" },
+        ];
+        const SEVERITY = { ok: 0, watch: 1, elevated: 2, alert: 3 };
+
+        // The lens that drives the category badge: worst severity wins;
+        // neutral/unknown lenses (e.g. the markets scoreboard) never drive it.
+        function worstLens(lenses) {
+            let worst = null;
+            for (const l of lenses) {
+                if (!(l.status in SEVERITY)) continue;
+                if (!worst || SEVERITY[l.status] > SEVERITY[worst.status]) worst = l;
+            }
+            return worst || lenses[0];
+        }
+
+        function tile(cat, lens, status) {
             const stat = (lens.key_stats || [])[0] || { k: "", v: "—" };
-            const status = esc(lens.status || "unknown");
             return `
-                <a class="lens" href="/dashboards/${encodeURIComponent(lens.id)}.html">
-                    <div class="eb" style="color:${lens.accent}">${esc(shortTitle(lens.title))}
-                        <span class="pill ${status}">${status}</span></div>
+                <a class="lens" href="${cat.href}">
+                    <div class="eb" style="color:${lens.accent}">${esc(cat.title)}
+                        <span class="pill ${esc(status)}">${esc(status)}</span></div>
                     <div class="read">${esc(lens.headline_read)}</div>
                     ${sparkline(lens.sparkline, lens.accent)}
                     <div class="stat">${esc(stat.k)} <b>${esc(stat.v)}</b></div>
@@ -317,18 +341,20 @@
         }
 
         (async function () {
-            try {
-                const res = await fetch("/data/lenses/index.json", { cache: "no-cache" });
+            const results = await Promise.allSettled(CATEGORIES.map(async cat => {
+                const res = await fetch(cat.url, { cache: "no-cache" });
                 if (!res.ok) throw new Error("HTTP " + res.status);
                 const data = await res.json();
-                const lenses = data.lenses || [];
-                if (!lenses.length) return;
-                document.getElementById("lens-grid").innerHTML = lenses.map(tile).join("");
-                document.getElementById("lenses").hidden = false;
-            } catch (err) {
-                // Leave the section hidden — the hero stands on its own.
-                console.error(err);
-            }
+                const lens = worstLens(data.lenses || []);
+                if (!lens) throw new Error("no lenses");
+                const status = lens.status || "unknown";
+                return tile(cat, lens, status);
+            }));
+            const tiles = results.filter(r => r.status === "fulfilled").map(r => r.value);
+            results.forEach(r => { if (r.status === "rejected") console.error(r.reason); });
+            if (!tiles.length) return; // leave the section hidden — the hero stands on its own
+            document.getElementById("lens-grid").innerHTML = tiles.join("");
+            document.getElementById("lenses").hidden = false;
         })();
     </script>
 </body>
