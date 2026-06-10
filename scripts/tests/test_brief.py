@@ -58,5 +58,38 @@ class TestLensHref(unittest.TestCase):
                          "/dashboards/housing/home-prices.html")
 
 
+def _indices():
+    return {
+        "economic": {"lenses": [
+            {"id": "fiscal-health", "title": "Fiscal Health", "accent": "#a",
+             "status": "elevated", "headline_read": "Debt is climbing.",
+             "key_stats": [{"k": "Debt-to-GDP", "v": "124.50%", "d": "0.30%", "dir": "up"}],
+             "sparkline": [120.0, 124.0]},
+        ]},
+        "markets": {"lenses": [
+            {"id": "crypto-structure", "title": "Crypto Market Structure", "accent": "#b",
+             "status": "neutral", "headline_read": "Crypto is mixed.",
+             "key_stats": [{"k": "BTC dominance", "v": "56.00%", "d": "2.00%", "dir": "up"}],
+             "sparkline": [50.0, 56.0]},
+        ]},
+    }
+
+
+class TestFlatten(unittest.TestCase):
+    def test_flattens_with_category_and_href(self):
+        flat = brief._flatten_lenses(_indices())
+        self.assertEqual(len(flat), 2)
+        fiscal = next(r for r in flat if r["lens_id"] == "fiscal-health")
+        self.assertEqual(fiscal["category"], "economic")
+        self.assertEqual(fiscal["href"], "/dashboards/fiscal-health.html")
+        self.assertEqual(fiscal["status"], "elevated")
+        self.assertEqual(fiscal["headline"], "Debt is climbing.")
+        self.assertEqual(fiscal["lens_title"], "Fiscal Health")
+
+    def test_skips_missing_categories(self):
+        flat = brief._flatten_lenses({"economic": None, "markets": {"lenses": []}})
+        self.assertEqual(flat, [])
+
+
 if __name__ == "__main__":
     unittest.main()

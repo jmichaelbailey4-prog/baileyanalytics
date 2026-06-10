@@ -62,3 +62,29 @@ def lens_href(category, lens_id):
     if category == "housing":
         return f"/dashboards/housing/{_HOUSING_SLUGS.get(lens_id, lens_id)}.html"
     return "/dashboards/"
+
+
+# Category order for the brief (drives tie-break ordering only).
+CATEGORIES = ["economic", "consumer", "banking", "markets", "energy", "housing"]
+
+
+def _flatten_lenses(category_indices):
+    """Flatten {category: index_json} into a list of lens records carrying
+    category, href, status, headline, key_stats, and sparkline."""
+    flat = []
+    for category in CATEGORIES:
+        index = category_indices.get(category)
+        if not index:
+            continue
+        for lens in index.get("lenses", []):
+            flat.append({
+                "lens_id": lens["id"],
+                "lens_title": lens["title"],
+                "category": category,
+                "href": lens_href(category, lens["id"]),
+                "status": lens.get("status", "unknown"),
+                "headline": lens.get("headline_read", ""),
+                "key_stats": lens.get("key_stats", []),
+                "sparkline": lens.get("sparkline", []),
+            })
+    return flat
