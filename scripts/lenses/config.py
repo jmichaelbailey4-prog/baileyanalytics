@@ -780,11 +780,11 @@ ENERGY_COMMODITIES = Lens(
     id="energy-commodities", title="Commodities & Materials", accent="#A3E635",
     indicators=[
         Indicator(
-            id="food-index", title="Global Food Price Index", short="Food", unit="",
-            color="#A3E635", series_id="PFOODINDEXM", limit=300,
-            rule=narrative.consumer_cost("Food", 5, 12, 25), value_format="decimal",
-            context=("The IMF's global food commodity price index — the upstream driver of grocery "
-                     "inflation."),
+            id="food-index", title="Global Food Prices · year-over-year", short="Food", unit="%",
+            color="#A3E635", series_id="PFOODINDEXM", limit=300, derive=derive.yoy_pct,
+            rule=narrative.yoy_band("Food", 5, 12, 25), value_format="decimal",
+            context=("How fast the IMF's global food commodity index is rising versus a year "
+                     "ago — the upstream driver of grocery inflation."),
         ),
         Indicator(
             id="copper", title="Copper · “Dr. Copper”", short="Copper", unit="$",
@@ -794,11 +794,11 @@ ENERGY_COMMODITIES = Lens(
                      "for its knack of signalling the direction of the global economy."),
         ),
         Indicator(
-            id="broad-commodities", title="Broad Commodity Index", short="Commodities", unit="",
-            color="#38BDF8", series_id="PALLFNFINDEXM", limit=300,
-            rule=narrative.energy_level("Commodities"), value_format="decimal",
-            context=("The IMF's all-commodity price index — a single gauge of raw-input cost "
-                     "pressure across the economy."),
+            id="broad-commodities", title="Broad Commodities · year-over-year", short="Commodities", unit="%",
+            color="#38BDF8", series_id="PALLFNFINDEXM", limit=300, derive=derive.yoy_pct,
+            rule=narrative.yoy_info("The broad commodity index"), value_format="decimal",
+            context=("How fast the IMF's all-commodity price index is rising versus a year ago "
+                     "— a single gauge of raw-input cost pressure across the economy."),
         ),
     ],
 )
@@ -819,12 +819,13 @@ HOUSING_HOME_PRICES = Lens(
     id="housing-home-prices", title="Price Stability", accent="#F472B6",
     indicators=[
         Indicator(
-            id="case-shiller", title="Case-Shiller National Home Price Index",
-            short="Case-Shiller", unit="", color="#F472B6",
-            series_id="CSUSHPINSA", limit=240,
-            rule=narrative.market_health("Home prices", hot=(6, 10, 15), cold=(-2, -5, -10)),
-            context=("The S&P Case-Shiller national index — the most-watched measure of U.S. "
-                     "home prices. Reported with a ~2-month lag."),
+            id="case-shiller", title="Case-Shiller Home Prices · year-over-year",
+            short="Case-Shiller", unit="%", color="#F472B6",
+            series_id="CSUSHPINSA", limit=300, derive=derive.yoy_pct,
+            rule=narrative.yoy_band_two_sided("Home prices", hot=(6, 10, 15), cold=(-2, -5, -10)),
+            context=("How fast U.S. home prices are rising or falling versus a year ago, from "
+                     "the S&P Case-Shiller national index — the most-watched measure of home "
+                     "prices. Roughly 0-5% a year is normal; reported with a ~2-month lag."),
         ),
         Indicator(
             id="existing-home-sales", title="Existing-Home Sales · annual rate",
@@ -897,12 +898,12 @@ HOUSING_SUPPLY_CONSTRUCTION = Lens(
                      "less is a squeeze."),
         ),
         Indicator(
-            id="active-listings", title="Active Listings (Realtor.com)",
-            short="Listings", unit="", color="#38BDF8",
-            series_id="ACTLISCOUUS", limit=240, value_format="thousands",
-            rule=narrative.energy_level("The number of homes for sale"),
-            context=("Homes listed for sale nationwide (Realtor.com count, since 2016) — "
-                     "the inventory buyers actually get to choose from."),
+            id="active-listings", title="Active Listings (Realtor.com) · millions",
+            short="Listings", unit="M", color="#38BDF8",
+            series_id="ACTLISCOUUS", limit=240, derive=derive.units_to_millions,
+            rule=narrative.energy_level("The number of homes for sale", fmt="{:,.2f} million"),
+            context=("Homes listed for sale nationwide, in millions (Realtor.com count, "
+                     "since 2016) — the inventory buyers actually get to choose from."),
         ),
         Indicator(
             id="housing-starts", title="Housing Starts · thousands, annual rate",
@@ -928,20 +929,22 @@ HOUSING_RENT_SHELTER = Lens(
     id="housing-rent-shelter", title="Rent & Shelter", accent="#A78BFA",
     indicators=[
         Indicator(
-            id="rent-cpi", title="CPI: Rent of Primary Residence",
-            short="Rent CPI", unit="", color="#A78BFA",
-            series_id="CUSR0000SEHA", limit=240,
-            rule=narrative.consumer_cost("Rent", 4, 6, 9),
-            context=("The rent component of the Consumer Price Index — what tenants actually "
-                     "pay. It moves slowly but relentlessly, and it is a third of core CPI."),
+            id="rent-cpi", title="Rent Inflation · CPI rent, year-over-year",
+            short="Rent CPI", unit="%", color="#A78BFA",
+            series_id="CUSR0000SEHA", limit=300, derive=derive.yoy_pct,
+            rule=narrative.yoy_band("Rent", 4, 6, 9),
+            context=("How fast the rent tenants actually pay is rising versus a year ago, from "
+                     "the rent component of the Consumer Price Index. It moves slowly but "
+                     "relentlessly, and it is a third of core CPI."),
         ),
         Indicator(
-            id="owners-equivalent-rent", title="CPI: Owners' Equivalent Rent",
-            short="OER", unit="", color="#38BDF8",
-            series_id="CUSR0000SEHC", limit=240,
-            rule=narrative.energy_level("Owners' equivalent rent"),
-            context=("What homeowners would pay to rent their own homes — the largest single "
-                     "component of the CPI, and the bridge between home prices and inflation."),
+            id="owners-equivalent-rent", title="Owners' Equivalent Rent · year-over-year",
+            short="OER", unit="%", color="#38BDF8",
+            series_id="CUSR0000SEHC", limit=300, derive=derive.yoy_pct,
+            rule=narrative.yoy_info("Owners' equivalent rent"),
+            context=("How fast the implied rent on owner-occupied homes is rising — the largest "
+                     "single component of the CPI, and the bridge between home prices and "
+                     "inflation."),
         ),
         Indicator(
             id="rental-vacancy", title="Rental Vacancy Rate",

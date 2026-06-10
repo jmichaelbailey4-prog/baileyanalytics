@@ -23,6 +23,27 @@ def payroll_change(raw):
     return out
 
 
+def yoy_pct(raw):
+    """Convert a level/index series into its year-over-year % change, 1 decimal.
+
+    For each observation, the prior value is the one dated exactly one year
+    earlier (FRED monthly dates are first-of-month, so the match is exact).
+    Points without a valid year-ago value are dropped — the displayed series
+    is the rate of change, which is what index-level series actually mean.
+    """
+    by_date = {obs["date"]: util.to_float(obs["value"]) for obs in raw}
+    out = []
+    for obs in raw:
+        v = util.to_float(obs["value"])
+        if v is None:
+            continue
+        d = obs["date"]
+        prior = by_date.get(f"{int(d[:4]) - 1}{d[4:]}")
+        if prior:
+            out.append({"date": d, "value": f"{(v - prior) / abs(prior) * 100:.1f}"})
+    return out
+
+
 def to_millions(raw):
     """Convert a level reported in thousands into millions, 1 decimal (7200 -> '7.2')."""
     out = []

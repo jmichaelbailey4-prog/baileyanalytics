@@ -18,9 +18,11 @@ class TestBuildCryptoLens(unittest.TestCase):
         self.assertEqual(lj["id"], "crypto-structure")
         self.assertEqual(lj["status"], "neutral")
         ids = [i["id"] for i in lj["indicators"]]
-        self.assertEqual(ids, ["crypto-rotation", "btc-dominance", "btc-eth-ratio"])
-        self.assertEqual(lj["indicators"][0]["observations"], self.rotation)
-        self.assertEqual(lj["indicators"][0]["latest"]["value"], 108.0)
+        # dominance leads — it's the crypto stat that reads instantly on the hub
+        self.assertEqual(ids, ["btc-dominance", "crypto-rotation", "btc-eth-ratio"])
+        self.assertEqual(lj["indicators"][0]["observations"], self.dominance)
+        self.assertEqual(lj["indicators"][0]["latest"]["value"], 54.0)
+        self.assertEqual(lj["indicators"][1]["observations"], self.rotation)
 
     def test_renders_in_index(self):
         lj = build.build_crypto_lens(self.rotation, self.dominance, self.btc_eth)

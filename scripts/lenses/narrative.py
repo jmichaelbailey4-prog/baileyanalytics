@@ -476,25 +476,98 @@ def consumer_cost(label, watch, elevated, alert):
             return (f"{label} costs are up {pct:.0f}% over the past year — climbing.", "watch")
         if pct <= -watch:
             return (f"{label} costs have fallen {abs(pct):.0f}% over the past year — relief for households.", "ok")
+        if pct >= 1:
+            return (f"{label} costs are up {pct:.0f}% over the past year.", "ok")
+        if pct <= -1:
+            return (f"{label} costs are down {abs(pct):.0f}% over the past year.", "ok")
         return (f"{label} costs are roughly flat over the past year.", "ok")
     return _rule
 
 
-def energy_level(label):
-    """Descriptive `info`: latest level + trailing-12-month direction. No verdict."""
+def energy_level(label, fmt="{:,.0f}"):
+    """Descriptive `info`: latest level + trailing-12-month direction. No verdict.
+    `fmt` formats the displayed level (e.g. "{:,.2f} million" for derived counts)."""
     def _rule(obs):
         if not obs:
             return _NO_DATA
         v = obs[-1][1]
+        latest = fmt.format(v)
         prior = _value_year_ago(obs)
         if prior is None or prior == 0:
-            return (f"{label} is at {v:,.0f}.", "info")
+            return (f"{label} is at {latest}.", "info")
         pct = (v - prior) / abs(prior) * 100
         if pct >= 3:
-            return (f"{label} is up {pct:.0f}% from a year ago, now {v:,.0f}.", "info")
+            return (f"{label} is up {pct:.0f}% from a year ago, now {latest}.", "info")
         if pct <= -3:
-            return (f"{label} is down {abs(pct):.0f}% from a year ago, now {v:,.0f}.", "info")
-        return (f"{label} is little changed from a year ago, now {v:,.0f}.", "info")
+            return (f"{label} is down {abs(pct):.0f}% from a year ago, now {latest}.", "info")
+        return (f"{label} is little changed from a year ago, now {latest}.", "info")
+    return _rule
+
+
+def yoy_band(label, watch, elevated, alert):
+    """Factory: one-sided consumer-cost severity for a series that is ALREADY a
+    year-over-year % rate (e.g. a `derive.yoy_pct` series). Same bands and tone
+    as `consumer_cost`, but the latest value is the rate itself."""
+    def _rule(obs):
+        if not obs:
+            return _NO_DATA
+        v = obs[-1][1]
+        if v >= alert:
+            return (f"{label} costs are rising {v:.1f}% a year — acute pressure on households.", "alert")
+        if v >= elevated:
+            return (f"{label} costs are rising {v:.1f}% a year — a real squeeze.", "elevated")
+        if v >= watch:
+            return (f"{label} costs are rising {v:.1f}% a year — climbing.", "watch")
+        if v <= -watch:
+            return (f"{label} costs are falling {abs(v):.1f}% a year — relief for households.", "ok")
+        if v >= 1:
+            return (f"{label} costs are rising {v:.1f}% a year.", "ok")
+        if v <= -1:
+            return (f"{label} costs are falling {abs(v):.1f}% a year.", "ok")
+        return (f"{label} costs are roughly flat versus a year ago ({v:+.1f}%).", "ok")
+    return _rule
+
+
+def yoy_band_two_sided(label, hot, cold):
+    """Factory: two-sided market-health severity for an already-YoY % series.
+    Same bands and tone as `market_health`. Label reads as a plural subject
+    ("Home prices")."""
+    hot_w, hot_e, hot_a = hot
+    cold_w, cold_e, cold_a = cold
+
+    def _rule(obs):
+        if not obs:
+            return _NO_DATA
+        v = obs[-1][1]
+        if v >= hot_a:
+            return (f"{label} are up {v:.1f}% from a year ago — overheating.", "alert")
+        if v >= hot_e:
+            return (f"{label} are up {v:.1f}% from a year ago — running hot.", "elevated")
+        if v >= hot_w:
+            return (f"{label} are up {v:.1f}% from a year ago — heating up.", "watch")
+        if v <= cold_a:
+            return (f"{label} are down {abs(v):.1f}% from a year ago — a deep freeze.", "alert")
+        if v <= cold_e:
+            return (f"{label} are down {abs(v):.1f}% from a year ago — cooling sharply.", "elevated")
+        if v <= cold_w:
+            return (f"{label} are down {abs(v):.1f}% from a year ago — cooling.", "watch")
+        return (f"{label} are little changed from a year ago ({v:+.1f}%).", "ok")
+
+    return _rule
+
+
+def yoy_info(label):
+    """Descriptive `info` for an already-YoY % series. Label must read as a
+    singular subject ("Owners' equivalent rent")."""
+    def _rule(obs):
+        if not obs:
+            return _NO_DATA
+        v = obs[-1][1]
+        if v >= 0.5:
+            return (f"{label} is rising {v:.1f}% a year.", "info")
+        if v <= -0.5:
+            return (f"{label} is falling {abs(v):.1f}% a year.", "info")
+        return (f"{label} is roughly flat versus a year ago.", "info")
     return _rule
 
 

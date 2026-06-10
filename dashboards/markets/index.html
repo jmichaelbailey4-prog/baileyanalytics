@@ -5,27 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Markets & Financial Conditions — Bailey Analytics</title>
   <meta name="description" content="What are markets pricing right now? Plain-English reads on risk sentiment, the major asset classes, and crypto market structure — from FRED and CoinGecko.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Bailey Analytics">
+  <meta property="og:title" content="Markets & Financial Conditions — Bailey Analytics">
+  <meta property="og:description" content="What are markets pricing right now? Plain-English reads on risk sentiment, the major asset classes, and crypto market structure — from FRED and CoinGecko.">
+  <meta property="og:url" content="https://baileyanalytics.com/dashboards/markets/">
+  <meta name="twitter:card" content="summary">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="stylesheet" href="/dashboards/lens.css">
-  <style>
-    h1 { font-size: clamp(2rem, 4.5vw, 2.75rem); font-weight: 600; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 0.75rem; }
-    .back { font-size: .8rem; color: var(--dim); text-decoration: none; display: inline-block; margin-bottom: 1rem; }
-    .back:hover { color: var(--muted); }
-    p.lede { color: var(--muted); font-size: 1.0625rem; max-width: 40rem; margin-bottom: 2.5rem; }
-    p.lede strong { color: var(--text); font-weight: 600; }
-    .hub-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    @media (max-width: 640px) { .hub-grid { grid-template-columns: 1fr; } }
-    .hub-card { display: block; text-decoration: none; color: inherit; background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 1.25rem; transition: border-color .2s ease, transform .2s ease; }
-    .hub-card:hover, .hub-card:focus-visible { border-color: var(--blue); transform: translateY(-2px); }
-    .hub-card:focus-visible { outline: 2px solid var(--blue); outline-offset: 4px; }
-    .hub-eyebrow { font-size: .7rem; font-weight: 600; text-transform: uppercase; letter-spacing: .12em; display: flex; align-items: center; gap: .5rem; margin-bottom: .6rem; }
-    .hub-read { color: var(--text); font-size: 1rem; font-weight: 600; line-height: 1.35; margin-bottom: .85rem; }
-    .spark { width: 100%; height: 34px; display: block; margin-bottom: .85rem; }
-    .hub-stats { display: flex; gap: 1.1rem; font-size: .72rem; color: var(--muted); flex-wrap: wrap; }
-    .hub-stats b { color: var(--text); font-weight: 600; }
-    .hub-cta { margin-top: .85rem; font-size: .74rem; color: var(--blue); letter-spacing: .03em; }
-    @media (prefers-reduced-motion: reduce) { .hub-card { transition: none; } }
-  </style>
 </head>
 <body>
   <nav class="wordmark"><a href="/">Bailey Analytics</a></nav>
@@ -41,52 +28,14 @@
     </div>
   </main>
 
-  <script>
-    function esc(s) { const d = document.createElement("div"); d.textContent = s; return d.innerHTML; }
-
-    function sparkline(values, accent) {
-      if (!values || values.length < 2) return "";
-      const min = Math.min(...values), max = Math.max(...values), range = (max - min) || 1;
-      const pts = values.map((v, i) => {
-        const x = (i / (values.length - 1)) * 100;
-        const y = 30 - ((v - min) / range) * 28;
-        return `${x.toFixed(1)},${y.toFixed(1)}`;
-      }).join(" ");
-      return `<svg class="spark" aria-hidden="true" viewBox="0 0 100 34" preserveAspectRatio="none"><polyline points="${pts}" fill="none" stroke="${esc(accent)}" stroke-width="2"/></svg>`;
-    }
-
-    const SLUGS = {
-      "market-risk-sentiment": "risk-sentiment",
-      "market-scoreboard": "scoreboard",
-      "crypto-structure": "crypto-structure"
-    };
-    function tile(lens) {
-      const slug = SLUGS[lens.id] || lens.id;
-      const stats = (lens.key_stats || [])
-        .map(s => `<span>${esc(s.k)} <b>${esc(s.v)}</b></span>`).join("");
-      return `
-        <a class="hub-card" href="/dashboards/markets/${encodeURIComponent(slug)}.html">
-          <div class="hub-eyebrow" style="color:${lens.accent}">${esc(lens.title)}
-            <span class="badge ${esc(lens.status)}">${esc(lens.status)}</span></div>
-          <div class="hub-read">${esc(lens.headline_read)}</div>
-          ${sparkline(lens.sparkline, lens.accent)}
-          <div class="hub-stats">${stats}</div>
-          <div class="hub-cta">View lens &rarr;</div>
-        </a>`;
-    }
-
-    (async function () {
-      const grid = document.getElementById("hub-grid");
-      try {
-        const res = await fetch("/data/markets/index.json", { cache: "no-cache" });
-        if (!res.ok) throw new Error("HTTP " + res.status);
-        const data = await res.json();
-        grid.innerHTML = (data.lenses || []).map(tile).join("");
-      } catch (err) {
-        grid.innerHTML = `<div class="status-msg error">Dashboards are still being refreshed. Check back shortly.</div>`;
-        console.error(err);
-      }
-    })();
-  </script>
+  <script defer src="/dashboards/hub.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", () => {
+    loadHubGrid("hub-grid", "/data/markets/index.json",
+      id => {
+        const SLUGS = { "market-risk-sentiment": "risk-sentiment", "market-scoreboard": "scoreboard",
+                        "crypto-structure": "crypto-structure" };
+        return `/dashboards/markets/${encodeURIComponent(SLUGS[id] || id)}.html`;
+      });
+  });</script>
 </body>
 </html>

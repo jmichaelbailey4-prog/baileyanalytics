@@ -2,8 +2,13 @@ name: Refresh FRED data
 
 on:
   schedule:
-    # Daily at 06:00 UTC (just after FRED's typical morning publish window)
+    # Daily at 06:00 UTC (just after FRED's typical morning publish window).
+    # GitHub cron is best-effort and occasionally skips a slot entirely
+    # (observed 2026-06-10), so a 13:00 UTC backup run self-heals the same
+    # day; write_outputs skips commits when nothing changed, so the second
+    # run is free when the first one worked.
     - cron: "0 6 * * *"
+    - cron: "0 13 * * *"
   workflow_dispatch:
 
 permissions:

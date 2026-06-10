@@ -59,5 +59,33 @@ class TestPctShare(unittest.TestCase):
                                         [{"date": "d", "value": "0"}]), [])
 
 
+class TestThinObservations(unittest.TestCase):
+    def test_recent_window_kept_in_full(self):
+        obs = [{"date": f"2026-05-{d:02d}", "value": str(d)} for d in range(1, 31)]
+        self.assertEqual(util.thin_observations(obs, keep_years=2), obs)
+
+    def test_old_daily_points_thinned_to_weekly(self):
+        # daily points from 2020 (old) plus one recent anchor in 2026
+        old = [{"date": f"2020-03-{d:02d}", "value": str(d)} for d in range(2, 16)]  # 14 days
+        recent = [{"date": "2026-05-01", "value": "x"}]
+        out = util.thin_observations(old + recent, keep_years=2)
+        old_kept = [o for o in out if o["date"].startswith("2020")]
+        # Mar 2 2020 is a Monday: the 14 days cover ISO weeks 10 and 11 -> 2 survivors
+        self.assertEqual([o["date"] for o in old_kept], ["2020-03-02", "2020-03-09"])
+        self.assertIn(recent[0], out)
+
+    def test_old_monthly_points_untouched(self):
+        obs = [{"date": f"20{y:02d}-{m:02d}-01", "value": "1"} for y in range(20, 27) for m in (1, 7)]
+        self.assertEqual(util.thin_observations(obs, keep_years=2), obs)
+
+    def test_eia_monthly_dates_pass_through(self):
+        # EIA monthly periods have no day part ("YYYY-MM"); they never thin
+        obs = [{"date": f"20{y:02d}-{m:02d}", "value": "1"} for y in range(20, 27) for m in (1, 7)]
+        self.assertEqual(util.thin_observations(obs, keep_years=2), obs)
+
+    def test_empty(self):
+        self.assertEqual(util.thin_observations([], keep_years=2), [])
+
+
 if __name__ == "__main__":
     unittest.main()

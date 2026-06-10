@@ -254,5 +254,76 @@ class TestCostOfLivingHeadline(unittest.TestCase):
         self.assertIn("target", headline)
 
 
+class TestYoyBand(unittest.TestCase):
+    """One-sided cost severity applied to a series that is ALREADY a YoY % rate."""
+
+    def test_bands(self):
+        rule = narrative.yoy_band("Rent", 4, 6, 9)
+        self.assertEqual(rule([("d", 10.0)])[1], "alert")
+        self.assertEqual(rule([("d", 7.0)])[1], "elevated")
+        self.assertEqual(rule([("d", 4.5)])[1], "watch")
+        self.assertEqual(rule([("d", 1.0)])[1], "ok")
+        self.assertEqual(rule([("d", -5.0)])[1], "ok")
+
+    def test_text_uses_value_directly(self):
+        text, _ = narrative.yoy_band("Rent", 4, 6, 9)([("d", 4.5)])
+        self.assertIn("4.5%", text)
+
+    def test_falling_reads_as_relief(self):
+        text, _ = narrative.yoy_band("Rent", 4, 6, 9)([("d", -5.0)])
+        self.assertIn("falling", text)
+
+    def test_empty(self):
+        self.assertEqual(narrative.yoy_band("Rent", 4, 6, 9)([]), ("Data unavailable.", "unknown"))
+
+
+class TestYoyBandTwoSided(unittest.TestCase):
+    """Two-sided market-health severity applied to an already-YoY % series."""
+
+    def test_hot_and_cold_bands(self):
+        rule = narrative.yoy_band_two_sided("Home prices", hot=(6, 10, 15), cold=(-2, -5, -10))
+        self.assertEqual(rule([("d", 16.0)])[1], "alert")
+        self.assertEqual(rule([("d", 11.0)])[1], "elevated")
+        self.assertEqual(rule([("d", 7.0)])[1], "watch")
+        self.assertEqual(rule([("d", 2.0)])[1], "ok")
+        self.assertEqual(rule([("d", -3.0)])[1], "watch")
+        self.assertEqual(rule([("d", -6.0)])[1], "elevated")
+        self.assertEqual(rule([("d", -11.0)])[1], "alert")
+
+    def test_text(self):
+        text, _ = narrative.yoy_band_two_sided("Home prices", hot=(6, 10, 15), cold=(-2, -5, -10))([("d", 3.2)])
+        self.assertIn("3.2%", text)
+        self.assertIn("little changed", text)
+
+    def test_empty(self):
+        rule = narrative.yoy_band_two_sided("X", hot=(6, 10, 15), cold=(-2, -5, -10))
+        self.assertEqual(rule([]), ("Data unavailable.", "unknown"))
+
+
+class TestYoyInfo(unittest.TestCase):
+    def test_directions(self):
+        rule = narrative.yoy_info("Owners' equivalent rent")
+        text, status = rule([("d", 3.4)])
+        self.assertEqual(status, "info")
+        self.assertIn("rising 3.4%", text)
+        self.assertIn("falling 2.0%", rule([("d", -2.0)])[0])
+        self.assertIn("roughly flat", rule([("d", 0.1)])[0])
+
+    def test_empty(self):
+        self.assertEqual(narrative.yoy_info("X")([]), ("Data unavailable.", "unknown"))
+
+
+class TestEnergyLevelFmt(unittest.TestCase):
+    def test_custom_format(self):
+        rule = narrative.energy_level("The number of homes for sale", fmt="{:,.2f} million")
+        text, status = rule([("2025-05-01", 1.00), ("2026-05-01", 1.06)])
+        self.assertEqual(status, "info")
+        self.assertIn("1.06 million", text)
+
+    def test_default_format_unchanged(self):
+        text, _ = narrative.energy_level("Copper")([("2026-05-01", 13484.2)])
+        self.assertIn("13,484", text)
+
+
 if __name__ == "__main__":
     unittest.main()

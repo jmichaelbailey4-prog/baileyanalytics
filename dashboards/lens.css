@@ -53,6 +53,24 @@ main{max-width:48rem;margin:0 auto}
 .status-msg.error{color:var(--red)}
 @media(max-width:640px){body{padding:5rem 1rem 3rem}nav.top-nav{gap:1rem}}
 
+/* Hub pages (dashboards index + category hubs) — shared with hub.js */
+h1{font-size:clamp(2rem,4.5vw,2.75rem);font-weight:600;letter-spacing:-.02em;line-height:1.15;margin-bottom:.75rem}
+p.lede{color:var(--muted);font-size:1.0625rem;max-width:40rem;margin-bottom:2.25rem}
+p.lede strong{color:var(--text);font-weight:600}
+.hub-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media(max-width:640px){.hub-grid{grid-template-columns:1fr}}
+.hub-card{display:block;text-decoration:none;color:inherit;background:var(--panel);border:1px solid var(--border);
+  border-radius:14px;padding:1.25rem;transition:border-color .2s ease,transform .2s ease}
+.hub-card:hover,.hub-card:focus-visible{border-color:var(--blue);transform:translateY(-2px)}
+.hub-card:focus-visible{outline:2px solid var(--blue);outline-offset:4px}
+.hub-eyebrow{font-size:.7rem;font-weight:600;text-transform:uppercase;letter-spacing:.12em;display:flex;align-items:center;gap:.5rem;margin-bottom:.6rem}
+.hub-read{color:var(--text);font-size:1rem;font-weight:600;line-height:1.35;margin-bottom:.85rem}
+.spark{width:100%;height:34px;display:block;margin-bottom:.85rem}
+.hub-stats{display:flex;gap:1.1rem;font-size:.72rem;color:var(--muted);flex-wrap:wrap}
+.hub-stats b{color:var(--text);font-weight:600}
+.hub-cta{margin-top:.85rem;font-size:.74rem;color:var(--blue);letter-spacing:.03em}
+@media(prefers-reduced-motion:reduce){.hub-card{transition:none}.hub-card:hover{transform:none}}
+
 /* Banking tier & ranking tables (category #2). Scoped so the bare status
    classes used elsewhere don't bleed background colors into table cells. */
 .tbl-sec{margin-top:1.75rem;overflow-x:auto;-webkit-overflow-scrolling:touch}

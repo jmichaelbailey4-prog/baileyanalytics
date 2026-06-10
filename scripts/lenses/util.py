@@ -1,6 +1,36 @@
 """Small pure helpers shared across the pipeline."""
 
+from datetime import date
+
 STATUS_ORDER = {"unknown": -1, "ok": 0, "watch": 1, "elevated": 2, "alert": 3}
+
+
+def thin_observations(raw_observations, keep_years=2):
+    """Shrink a published series: keep every point in the trailing `keep_years`
+    window, thin older points to one per ISO week (the first observation of
+    each week). Daily series shed ~80% of their old points; weekly and slower
+    cadences pass through unchanged, since at most one point falls in a week.
+
+    Rules only look back ~1 year from the latest point, so they are unaffected.
+    """
+    if not raw_observations:
+        return raw_observations
+    last = raw_observations[-1]["date"]
+    boundary = f"{int(last[:4]) - keep_years}{last[4:]}"
+    out, seen_weeks = [], set()
+    for obs in raw_observations:
+        if obs["date"] >= boundary:
+            out.append(obs)
+            continue
+        parts = obs["date"].split("-")
+        if len(parts) < 3:  # EIA monthly periods are "YYYY-MM" — monthly never thins
+            out.append(obs)
+            continue
+        week = date(int(parts[0]), int(parts[1]), int(parts[2])).isocalendar()[:2]
+        if week not in seen_weeks:
+            seen_weeks.add(week)
+            out.append(obs)
+    return out
 
 
 def to_float(value):

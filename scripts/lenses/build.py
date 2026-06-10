@@ -42,6 +42,8 @@ def build_lens(lens, fetched):
         raw = fetched.get(ind.fetch_key, [])
         if ind.derive:
             raw = ind.derive(raw)
+        # thin AFTER derive: diffs/YoY need the full-resolution chain
+        raw = util.thin_observations(raw)
         cleaned = util.clean(raw)
         text, status = ind.rule(cleaned)
         statuses.append(status)
@@ -142,16 +144,18 @@ def build_crypto_lens(rotation_obs, dominance_obs, btc_eth_obs):
     """Assemble the CoinGecko/FRED crypto-structure lens JSON from three prepared
     series. Produces the standard lens shape (no tiers/rankings), so lens.js renders
     it with the existing single-line chart component."""
+    # Dominance leads: it's the one crypto-structure number that reads instantly
+    # on the hub ("BTC dominance 56%"); the rotation index is explained on-page.
     specs = [
+        ("btc-dominance", "Bitcoin Dominance", "BTC dominance", "%", "#FBBF24",
+         dominance_obs, narrative.rule_btc_dominance,
+         ("Bitcoin's share of total cryptocurrency market value. A rising share signals "
+          "caution; a falling share signals risk appetite. History accumulates daily."), "decimal"),
         ("crypto-rotation", "Large-vs-Small Rotation", "Alt rotation", "", "#818CF8",
          rotation_obs, narrative.rule_crypto_rotation,
          ("Small- and mid-cap coins' market value relative to Bitcoin and Ether, indexed to "
           "100 at the start of the window. Rising means alts are outperforming (risk-on); "
           "falling means a flight to the majors."), "decimal"),
-        ("btc-dominance", "Bitcoin Dominance", "BTC dominance", "%", "#FBBF24",
-         dominance_obs, narrative.rule_btc_dominance,
-         ("Bitcoin's share of total cryptocurrency market value. A rising share signals "
-          "caution; a falling share signals risk appetite. History accumulates daily."), "decimal"),
         ("btc-eth-ratio", "Bitcoin / Ether Ratio", "BTC/ETH", "", "#A78BFA",
          btc_eth_obs, narrative.rule_btc_eth_relative,
          ("The price of Bitcoin divided by the price of Ether — which of the two largest coins "
@@ -159,6 +163,7 @@ def build_crypto_lens(rotation_obs, dominance_obs, btc_eth_obs):
     ]
     indicators, statuses = [], []
     for id_, title, short, unit, color, obs, rule, context, vfmt in specs:
+        obs = util.thin_observations(obs)
         text, status = rule(util.clean(obs))
         statuses.append(status)
         indicators.append({
