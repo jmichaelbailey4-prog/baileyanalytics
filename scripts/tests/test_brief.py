@@ -90,6 +90,17 @@ class TestFlatten(unittest.TestCase):
         flat = brief._flatten_lenses({"economic": None, "markets": {"lenses": []}})
         self.assertEqual(flat, [])
 
+    def test_skips_lens_without_id(self):
+        idx = {"economic": {"lenses": [{"title": "No ID"},
+                                       {"id": "ok-lens", "title": "OK"}]}}
+        flat = brief._flatten_lenses(idx)
+        self.assertEqual([r["lens_id"] for r in flat], ["ok-lens"])
+
+    def test_tolerates_missing_title(self):
+        idx = {"economic": {"lenses": [{"id": "x"}]}}
+        flat = brief._flatten_lenses(idx)
+        self.assertEqual(flat[0]["lens_title"], "")
+
 
 class TestDetectTransitions(unittest.TestCase):
     def _flat(self, *pairs):

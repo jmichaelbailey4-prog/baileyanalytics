@@ -89,11 +89,14 @@ def _flatten_lenses(category_indices):
         if not index:
             continue
         for lens in index.get("lenses", []):
+            lens_id = lens.get("id")
+            if not lens_id:  # a lens with no id can't be linked or keyed — skip it
+                continue
             flat.append({
-                "lens_id": lens["id"],
-                "lens_title": lens["title"],
+                "lens_id": lens_id,
+                "lens_title": lens.get("title", ""),
                 "category": category,
-                "href": lens_href(category, lens["id"]),
+                "href": lens_href(category, lens_id),
                 "status": lens.get("status", "unknown"),
                 "headline": lens.get("headline_read", ""),
                 "key_stats": lens.get("key_stats", []),
