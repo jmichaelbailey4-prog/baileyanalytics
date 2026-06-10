@@ -31,6 +31,17 @@
       </a>`;
   }
 
+  // "3 hours ago" / "2 days ago". Slow-moving sources (banking) legitimately go
+  // days between data changes, so this informs without crying wolf.
+  function relTime(iso) {
+    const h = (Date.now() - new Date(iso).getTime()) / 3.6e6;
+    if (!isFinite(h) || h < 0) return "";
+    if (h < 1) return "just now";
+    if (h < 36) return `${Math.round(h)} hour${Math.round(h) === 1 ? "" : "s"} ago`;
+    const d = Math.round(h / 24);
+    return `${d} day${d === 1 ? "" : "s"} ago`;
+  }
+
   window.loadHubGrid = async function (gridId, url, hrefFor) {
     const grid = document.getElementById(gridId);
     try {
@@ -38,6 +49,8 @@
       if (!res.ok) throw new Error("HTTP " + res.status);
       const data = await res.json();
       grid.innerHTML = (data.lenses || []).map(l => tile(l, hrefFor(l.id))).join("");
+      const ago = data.last_updated && relTime(data.last_updated);
+      if (ago) grid.insertAdjacentHTML("afterend", `<div class="hub-fresh">Data last changed ${esc(ago)}</div>`);
     } catch (err) {
       grid.innerHTML = `<div class="status-msg error">Dashboards are still being refreshed. Check back shortly.</div>`;
       console.error(err);

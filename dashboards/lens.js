@@ -7,6 +7,16 @@
     const [y, m, d] = s.split("-");
     return `${MONTHS[+m - 1]} ${d ? +d + ", " : ""}${y}`;
   }
+  function fmtMonth(s) {
+    const [y, m] = s.split("-");
+    return `${MONTHS[+m - 1]} ${y}`;
+  }
+  // Monthly/quarterly series date every point on the 1st; showing "May 1, 2026"
+  // would imply daily precision the data doesn't have.
+  function isMonthly(observations) {
+    return observations.length > 0 &&
+      observations.every(o => o.date.length < 10 || o.date.slice(8) === "01");
+  }
   function fmtUpdated(iso) {
     return new Date(iso).toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" });
   }
@@ -55,6 +65,7 @@
     const obs = cutoff(indicator.observations, years).filter(o => o.value !== "." && o.value !== null);
     const labels = obs.map(o => o.date);
     const values = obs.map(o => parseFloat(o.value));
+    const monthly = isMonthly(indicator.observations);
     return new Chart(canvas.getContext("2d"), {
       type: "line",
       plugins: [recessionPlugin],
@@ -70,7 +81,7 @@
             backgroundColor: "#0A0E14", borderColor: "#1E293B", borderWidth: 1,
             titleColor: "#F8FAFC", bodyColor: "#CBD5E1", padding: 10,
             callbacks: {
-              title: items => fmtDate(items[0].label),
+              title: items => monthly ? fmtMonth(items[0].label) : fmtDate(items[0].label),
               label: ctx => " " + fmtVal(ctx.parsed.y, indicator.unit, indicator.value_format),
             },
           },
@@ -91,7 +102,8 @@
     const el = document.createElement("div");
     el.className = "ind";
     const latest = indicator.latest ? fmtVal(indicator.latest.value, indicator.unit, indicator.value_format) : "—";
-    const asOf = indicator.latest ? `<div class="ind-asof">as of ${fmtDate(indicator.latest.date)}</div>` : "";
+    const fmtAsOf = isMonthly(indicator.observations) ? fmtMonth : fmtDate;
+    const asOf = indicator.latest ? `<div class="ind-asof">as of ${fmtAsOf(indicator.latest.date)}</div>` : "";
     el.innerHTML = `
       <div class="ind-top">
         <div class="ind-title">${esc(indicator.title)}</div>
