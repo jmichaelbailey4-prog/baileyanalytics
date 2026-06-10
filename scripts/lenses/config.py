@@ -916,7 +916,7 @@ HOUSING_SUPPLY_CONSTRUCTION = Lens(
             id="active-listings", title="Active Listings (Realtor.com)",
             short="Listings", unit="", color="#38BDF8",
             series_id="ACTLISCOUUS", limit=240, value_format="thousands",
-            rule=narrative.energy_level("Active listings"),
+            rule=narrative.energy_level("The number of homes for sale"),
             context=("Homes listed for sale nationwide (Realtor.com count, since 2016) — "
                      "the inventory buyers actually get to choose from."),
         ),
