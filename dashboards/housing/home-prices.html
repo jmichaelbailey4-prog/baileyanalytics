@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Prices — Bailey Analytics</title>
+  <meta name="description" content="Is the U.S. housing market overheating or freezing? Case-Shiller home prices, existing-home sales, and the median sale price, in plain English.">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <link rel="stylesheet" href="/dashboards/lens.css">
+</head>
+<body>
+  <nav class="wordmark"><a href="/">Bailey Analytics</a></nav>
+  <nav class="top-nav"><a href="/dashboards/">Dashboards</a><a href="/about.html">About</a></nav>
+  <main id="lens-root"><div class="status-msg">Loading&hellip;</div></main>
+  <script src="/dashboards/lens.js"></script>
+  <script>
+    renderLens("/data/housing/housing-home-prices.json", {
+      back: "Housing & Real Estate",
+      href: "/dashboards/housing/",
+      foot: 'Data: <a href="https://fred.stlouisfed.org/" target="_blank" rel="noopener">Federal Reserve Economic Data (FRED)</a>, St. Louis Fed. Refreshed daily. The "read" is generated from the latest values by a fixed rule set.'
+    });
+  </script>
+</body>
+</html>

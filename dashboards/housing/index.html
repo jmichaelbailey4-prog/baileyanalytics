@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Housing &amp; Real Estate — Bailey Analytics</title>
+  <meta name="description" content="The U.S. housing market in plain English — home prices and sales, affordability, construction and inventory, and rents. Built from FRED data.">
+  <link rel="stylesheet" href="/dashboards/lens.css">
+  <style>
+    h1 { font-size: clamp(2rem, 4.5vw, 2.75rem); font-weight: 600; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 0.75rem; }
+    .back { font-size: .8rem; color: var(--dim); text-decoration: none; display: inline-block; margin-bottom: 1rem; }
+    .back:hover { color: var(--muted); }
+    p.lede { color: var(--muted); font-size: 1.0625rem; max-width: 40rem; margin-bottom: 2.5rem; }
+    p.lede strong { color: var(--text); font-weight: 600; }
+    .hub-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    @media (max-width: 640px) { .hub-grid { grid-template-columns: 1fr; } }
+    .hub-card { display: block; text-decoration: none; color: inherit; background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 1.25rem; transition: border-color .2s ease, transform .2s ease; }
+    .hub-card:hover, .hub-card:focus-visible { border-color: var(--blue); transform: translateY(-2px); }
+    .hub-card:focus-visible { outline: 2px solid var(--blue); outline-offset: 4px; }
+    .hub-eyebrow { font-size: .7rem; font-weight: 600; text-transform: uppercase; letter-spacing: .12em; display: flex; align-items: center; gap: .5rem; margin-bottom: .6rem; }
+    .hub-read { color: var(--text); font-size: 1rem; font-weight: 600; line-height: 1.35; margin-bottom: .85rem; }
+    .spark { width: 100%; height: 34px; display: block; margin-bottom: .85rem; }
+    .hub-stats { display: flex; gap: 1.1rem; font-size: .72rem; color: var(--muted); flex-wrap: wrap; }
+    .hub-stats b { color: var(--text); font-weight: 600; }
+    .hub-cta { margin-top: .85rem; font-size: .74rem; color: var(--blue); letter-spacing: .03em; }
+    @media (prefers-reduced-motion: reduce) { .hub-card { transition: none; } }
+  </style>
+</head>
+<body>
+  <nav class="wordmark"><a href="/">Bailey Analytics</a></nav>
+  <nav class="top-nav"><a href="/dashboards/">Dashboards</a><a href="/about.html">About</a></nav>
+
+  <main>
+    <a class="back" href="/dashboards/">&larr; Dashboards</a>
+    <h1>Housing &amp; Real Estate</h1>
+    <p class="lede">Where housing actually stands — what homes cost and how fast they're selling, whether a typical family can afford to buy, how much is being built, and what's happening to rents. <strong>Open any lens</strong> for interactive charts and the context behind each number.</p>
+    <div class="hub-grid" id="hub-grid"><div class="status-msg">Loading&hellip;</div></div>
+    <div class="foot">
+      Data: <a href="https://fred.stlouisfed.org/" target="_blank" rel="noopener">FRED</a>, St. Louis Fed. Public data, refreshed daily.
+    </div>
+  </main>
+
+  <script>
+    function esc(s) { const d = document.createElement("div"); d.textContent = s; return d.innerHTML; }
+
+    function sparkline(values, accent) {
+      if (!values || values.length < 2) return "";
+      const min = Math.min(...values), max = Math.max(...values), range = (max - min) || 1;
+      const pts = values.map((v, i) => {
+        const x = (i / (values.length - 1)) * 100;
+        const y = 30 - ((v - min) / range) * 28;
+        return `${x.toFixed(1)},${y.toFixed(1)}`;
+      }).join(" ");
+      return `<svg class="spark" viewBox="0 0 100 34" preserveAspectRatio="none"><polyline points="${pts}" fill="none" stroke="${esc(accent)}" stroke-width="2"/></svg>`;
+    }
+
+    const SLUGS = {
+      "housing-home-prices": "home-prices",
+      "housing-affordability": "affordability",
+      "housing-supply-construction": "supply-construction",
+      "housing-rent-shelter": "rent-shelter"
+    };
+    function tile(lens) {
+      const slug = SLUGS[lens.id] || lens.id;
+      const stats = (lens.key_stats || [])
+        .map(s => `<span>${esc(s.k)} <b>${esc(s.v)}</b></span>`).join("");
+      return `
+        <a class="hub-card" href="/dashboards/housing/${encodeURIComponent(slug)}.html">
+          <div class="hub-eyebrow" style="color:${lens.accent}">${esc(lens.title)}
+            <span class="badge ${esc(lens.status)}">${esc(lens.status)}</span></div>
+          <div class="hub-read">${esc(lens.headline_read)}</div>
+          ${sparkline(lens.sparkline, lens.accent)}
+          <div class="hub-stats">${stats}</div>
+          <div class="hub-cta">View lens &rarr;</div>
+        </a>`;
+    }
+
+    (async function () {
+      const grid = document.getElementById("hub-grid");
+      try {
+        const res = await fetch("/data/housing/index.json", { cache: "no-cache" });
+        if (!res.ok) throw new Error("HTTP " + res.status);
+        const data = await res.json();
+        grid.innerHTML = (data.lenses || []).map(tile).join("");
+      } catch (err) {
+        grid.innerHTML = `<div class="status-msg error">Dashboards are still being refreshed. Check back shortly.</div>`;
+        console.error(err);
+      }
+    })();
+  </script>
+</body>
+</html>
