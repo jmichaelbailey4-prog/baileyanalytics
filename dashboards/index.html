@@ -28,6 +28,8 @@
     <h1>Dashboards</h1>
     <p class="lede">Focused, interpretation-rich views built from public data — each bundles indicators that move together into one plain-English story. <strong>Open any lens</strong> for interactive charts, the context behind each number, and what the latest data is signaling.</p>
 
+    <section class="brief-panel" id="brief-panel" hidden></section>
+
     <h2 class="cat-head"><span class="dot"></span>Economic Lenses</h2>
     <p class="cat-sub">The U.S. economy — recession risk, the cost of money, the job market, the cost of living, and the government's finances. Refreshed daily from FRED.</p>
     <div class="hub-grid" id="econ-grid"><div class="status-msg">Loading&hellip;</div></div>
@@ -58,7 +60,9 @@
   </main>
 
   <script defer src="/dashboards/hub.js"></script>
+  <script defer src="/dashboards/brief.js"></script>
   <script>document.addEventListener("DOMContentLoaded", () => {
+    loadBrief("brief-panel", { compact: false });
     loadHubGrid("econ-grid", "/data/lenses/index.json", id => `/dashboards/${encodeURIComponent(id)}.html`);
     loadHubGrid("bank-grid", "/data/banking/index.json",
                 id => `/dashboards/banking/${encodeURIComponent(id.replace(/^bank-/, ""))}.html`);

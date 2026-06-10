@@ -221,8 +221,12 @@ def build_index(lens_jsons):
 
 
 def _strip_volatile(d):
+    """Drop fields that change every run (timestamps) so write_lens_file only
+    rewrites when the substantive content changed. Covers lens/index files
+    (last_updated) and the brief (generated_at / captured_at)."""
     out = dict(d)
-    out.pop("last_updated", None)
+    for key in ("last_updated", "generated_at", "captured_at"):
+        out.pop(key, None)
     return out
 
 

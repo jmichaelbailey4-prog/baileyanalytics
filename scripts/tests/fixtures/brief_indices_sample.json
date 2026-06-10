@@ -1,0 +1,33 @@
+{
+  "economic": {
+    "last_updated": "2026-06-10T13:00:00Z",
+    "lenses": [
+      {"id": "recession-watch", "title": "Recession Watch", "accent": "#F87171",
+       "status": "ok", "headline_read": "The economy looks steady.",
+       "key_stats": [{"k": "Yield curve", "v": "0.40%", "d": "0.04%", "dir": "up"}],
+       "sparkline": [0.30, 0.36, 0.30, 0.36, 0.40]},
+      {"id": "fiscal-health", "title": "Fiscal Health", "accent": "#F87171",
+       "status": "elevated", "headline_read": "Debt and interest costs are climbing.",
+       "key_stats": [{"k": "Debt-to-GDP", "v": "124.50%", "d": "13.50%", "dir": "up"}],
+       "sparkline": [110.0, 111.0, 110.0, 111.0, 124.5]}
+    ]
+  },
+  "markets": {
+    "last_updated": "2026-06-10T13:00:00Z",
+    "lenses": [
+      {"id": "crypto-structure", "title": "Crypto Market Structure", "accent": "#818CF8",
+       "status": "neutral", "headline_read": "Bitcoin dominance is rising.",
+       "key_stats": [{"k": "BTC dominance", "v": "56.00%", "d": "5.00%", "dir": "up"}],
+       "sparkline": [50.0, 51.0, 50.0, 51.0, 56.0]}
+    ]
+  },
+  "consumer": {
+    "last_updated": "2026-06-10T13:00:00Z",
+    "lenses": [
+      {"id": "consumer-sentiment", "title": "Consumer Sentiment", "accent": "#E879F9",
+       "status": "watch", "headline_read": "Confidence is softening.",
+       "key_stats": [{"k": "Sentiment", "v": "61.00", "d": "1.50", "dir": "down"}],
+       "sparkline": [63.0, 62.5, 63.0, 62.5, 61.0]}
+    ]
+  }
+}

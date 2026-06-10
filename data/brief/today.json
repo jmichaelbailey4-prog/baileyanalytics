@@ -1,0 +1,63 @@
+{
+  "generated_at": "2026-06-10T20:01:48Z",
+  "transitions": [],
+  "top_moves": [
+    {
+      "lens_id": "energy-commodities",
+      "lens_title": "Commodities & Materials",
+      "category": "energy",
+      "href": "/dashboards/energy/commodities.html",
+      "stat_label": "Food",
+      "stat_value": "30.20%",
+      "delta": "18.60%",
+      "dir": "up"
+    },
+    {
+      "lens_id": "energy-electricity",
+      "lens_title": "Electricity & the Grid",
+      "category": "energy",
+      "href": "/dashboards/energy/electricity.html",
+      "stat_label": "Power price",
+      "stat_value": "18.83\u00a2/kWh",
+      "delta": "1.18\u00a2/kWh",
+      "dir": "up"
+    },
+    {
+      "lens_id": "consumer-income-savings",
+      "lens_title": "Income & Savings",
+      "category": "consumer",
+      "href": "/dashboards/consumer/income-savings.html",
+      "stat_label": "Saving rate",
+      "stat_value": "2.60%",
+      "delta": "0.60%",
+      "dir": "down"
+    },
+    {
+      "lens_id": "energy-oil-fuels",
+      "lens_title": "Oil & Fuels",
+      "category": "energy",
+      "href": "/dashboards/energy/oil-fuels.html",
+      "stat_label": "Gasoline",
+      "stat_value": "$4.15",
+      "delta": "$0.16",
+      "dir": "down"
+    },
+    {
+      "lens_id": "cost-of-living",
+      "lens_title": "The Cost of Living",
+      "category": "economic",
+      "href": "/dashboards/cost-of-living.html",
+      "stat_label": "CPI",
+      "stat_value": "4.17%",
+      "delta": "0.39%",
+      "dir": "up"
+    }
+  ],
+  "status_counts": {
+    "ok": 12,
+    "watch": 2,
+    "elevated": 6,
+    "alert": 3,
+    "neutral": 2
+  }
+}
