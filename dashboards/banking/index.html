@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Banking System Health — Bailey Analytics</title>
   <meta name="description" content="Is the U.S. banking system healthy? Plain-English reads on asset quality, profitability, capital, and funding — built from public FDIC Call Reports.">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="stylesheet" href="/dashboards/lens.css">
   <style>
     h1 { font-size: clamp(2rem, 4.5vw, 2.75rem); font-weight: 600; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 0.75rem; }
@@ -36,7 +37,7 @@
     <p class="lede">Is the U.S. banking system healthy, and where is stress building? Each lens turns the banks' own regulatory filings into a plain-English read. <strong>Open any lens</strong> for the system-wide trend, a breakdown by bank size, and a ranked spotlight of individual banks.</p>
     <div class="hub-grid" id="hub-grid"><div class="status-msg">Loading&hellip;</div></div>
     <div class="foot">
-      Source: <a href="https://banks.data.fdic.gov/" target="_blank" rel="noopener">FDIC</a>, bank Call Reports (year-end). Public regulatory data — not investment advice, and not a judgment of any institution's solvency.
+      Source: <a href="https://banks.data.fdic.gov/" target="_blank" rel="noopener">FDIC</a>, quarterly bank Call Reports. Public regulatory data — not investment advice, and not a judgment of any institution's solvency.
     </div>
   </main>
 
@@ -51,7 +52,7 @@
         const y = 30 - ((v - min) / range) * 28;
         return `${x.toFixed(1)},${y.toFixed(1)}`;
       }).join(" ");
-      return `<svg class="spark" viewBox="0 0 100 34" preserveAspectRatio="none"><polyline points="${pts}" fill="none" stroke="${esc(accent)}" stroke-width="2"/></svg>`;
+      return `<svg class="spark" aria-hidden="true" viewBox="0 0 100 34" preserveAspectRatio="none"><polyline points="${pts}" fill="none" stroke="${esc(accent)}" stroke-width="2"/></svg>`;
     }
 
     function tile(lens) {

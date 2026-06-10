@@ -5,20 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Crypto Market Structure — Bailey Analytics</title>
   <meta name="description" content="How capital rotates across crypto — large-vs-small-cap performance, Bitcoin dominance, and the BTC/ETH ratio, from CoinGecko and FRED.">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="stylesheet" href="/dashboards/lens.css">
 </head>
 <body>
   <nav class="wordmark"><a href="/">Bailey Analytics</a></nav>
   <nav class="top-nav"><a href="/dashboards/">Dashboards</a><a href="/about.html">About</a></nav>
   <main id="lens-root"><div class="status-msg">Loading&hellip;</div></main>
-  <script src="/dashboards/lens.js"></script>
-  <script>
+  <script defer src="/dashboards/lens.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", () => {
     renderLens("/data/markets/crypto-structure.json", {
       back: "Markets & Financial Conditions",
       href: "/dashboards/markets/",
       foot: 'Data: <a href="https://www.coingecko.com/" target="_blank" rel="noopener">CoinGecko</a> (market structure) and <a href="https://fred.stlouisfed.org/" target="_blank" rel="noopener">FRED</a> (BTC/ETH prices). Rotation history accumulates daily. The "read" is generated from the latest values by a fixed rule set.'
     });
-  </script>
+  });</script>
 </body>
 </html>

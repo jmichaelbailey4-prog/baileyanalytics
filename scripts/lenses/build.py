@@ -19,12 +19,19 @@ def _latest_raw(raw):
 
 
 def _fmt(value, unit, value_format="decimal"):
+    """Format a value + unit the way lens.js fmtVal does: '$' is a prefix,
+    word units ('months', 'Bcf') get a space, symbol units ('%', 'M') stay tight."""
     f = util.to_float(value)
     if f is None:
         return "—"
-    if value_format == "thousands":
-        return f"{round(f):,}{unit}"
-    return f"{f:.2f}{unit}"
+    num = f"{round(f):,}" if value_format == "thousands" else f"{f:.2f}"
+    if not unit:
+        return num
+    if unit == "$":
+        return f"${num}"
+    if len(unit) > 1 and unit[0].isalpha():
+        return f"{num} {unit}"
+    return f"{num}{unit}"
 
 
 def build_lens(lens, fetched):

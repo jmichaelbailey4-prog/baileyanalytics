@@ -10438,7 +10438,7 @@
       "id": "oil",
       "title": "Crude Oil \u00b7 WTI",
       "short": "WTI oil",
-      "unit": "",
+      "unit": "$",
       "color": "#FB923C",
       "series_id": "DCOILWTICO",
       "observations": [
@@ -20856,7 +20856,7 @@
       "id": "gold",
       "title": "Gold",
       "short": "Gold",
-      "unit": "",
+      "unit": "$",
       "color": "#FBBF24",
       "series_id": "XAUUSD",
       "observations": [
@@ -41344,7 +41344,7 @@
       "id": "btc",
       "title": "Bitcoin",
       "short": "Bitcoin",
-      "unit": "",
+      "unit": "$",
       "color": "#A78BFA",
       "series_id": "CBBTCUSD",
       "observations": [
@@ -51762,7 +51762,7 @@
       "id": "eth",
       "title": "Ethereum",
       "short": "Ethereum",
-      "unit": "",
+      "unit": "$",
       "color": "#818CF8",
       "series_id": "CBETHUSD",
       "observations": [

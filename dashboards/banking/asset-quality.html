@@ -5,21 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Asset Quality — Bailey Analytics</title>
   <meta name="description" content="A plain-English read on U.S. bank loan quality — noncurrent loans, charge-offs, and reserve coverage, from FDIC Call Reports.">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="stylesheet" href="/dashboards/lens.css">
 </head>
 <body>
   <nav class="wordmark"><a href="/">Bailey Analytics</a></nav>
   <nav class="top-nav"><a href="/dashboards/">Dashboards</a><a href="/about.html">About</a></nav>
   <main id="lens-root"><div class="status-msg">Loading&hellip;</div></main>
-  <script src="/dashboards/lens.js"></script>
-  <script>
+  <script defer src="/dashboards/lens.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", () => {
     renderLens("/data/banking/bank-asset-quality.json", {
       back: "Banking System Health",
       href: "/dashboards/banking/",
       defaultRange: "5Y",
-      foot: 'Source: FDIC, bank Call Reports (year-end). The “read” is generated from the latest values by a fixed rule set. Public regulatory data — not investment advice, and not a judgment of any institution’s solvency.'
+      foot: 'Source: FDIC, quarterly bank Call Reports. The “read” is generated from the latest values by a fixed rule set. Public regulatory data — not investment advice, and not a judgment of any institution’s solvency.'
     });
-  </script>
+  });</script>
 </body>
 </html>

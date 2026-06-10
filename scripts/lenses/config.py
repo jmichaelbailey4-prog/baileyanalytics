@@ -607,13 +607,13 @@ MARKET_SCOREBOARD = Lens(
             context="The benchmark index of 500 large U.S. companies — the headline gauge of U.S. stocks.",
         ),
         Indicator(
-            id="oil", title="Crude Oil · WTI", short="WTI oil", unit="", color="#FB923C",
+            id="oil", title="Crude Oil · WTI", short="WTI oil", unit="$", color="#FB923C",
             series_id="DCOILWTICO", limit=2600, rule=narrative.market_level("WTI crude", up=15, down=-15),
             context=("West Texas Intermediate, the U.S. benchmark oil price (dollars per barrel) — "
                      "a read on energy costs and global demand."),
         ),
         Indicator(
-            id="gold", title="Gold", short="Gold", unit="", color="#FBBF24",
+            id="gold", title="Gold", short="Gold", unit="$", color="#FBBF24",
             series_id="XAUUSD", limit=2600, rule=narrative.market_level("Gold", up=10, down=-10),
             value_format="thousands", source="yahoo",
             context=("Gold (dollars per troy ounce) — the classic safe-haven asset investors "
@@ -626,14 +626,14 @@ MARKET_SCOREBOARD = Lens(
                      "currencies — a strong dollar makes imports cheaper and U.S. exports pricier."),
         ),
         Indicator(
-            id="btc", title="Bitcoin", short="Bitcoin", unit="", color="#A78BFA",
+            id="btc", title="Bitcoin", short="Bitcoin", unit="$", color="#A78BFA",
             series_id="CBBTCUSD", limit=2600, rule=narrative.market_level("Bitcoin", up=25, down=-25),
             value_format="thousands",
             context=("The price of Bitcoin in U.S. dollars (Coinbase) — the largest cryptocurrency "
                      "and a barometer of risk appetite in digital assets."),
         ),
         Indicator(
-            id="eth", title="Ethereum", short="Ethereum", unit="", color="#818CF8",
+            id="eth", title="Ethereum", short="Ethereum", unit="$", color="#818CF8",
             series_id="CBETHUSD", limit=2600, rule=narrative.market_level("Ethereum", up=25, down=-25),
             value_format="thousands",
             context=("The price of Ether in U.S. dollars (Coinbase) — the second-largest "
@@ -657,7 +657,7 @@ ENERGY_OIL_FUELS = Lens(
     id="energy-oil-fuels", title="Oil & Fuels", accent="#FB923C",
     indicators=[
         Indicator(
-            id="gasoline", title="Retail Gasoline · Regular", short="Gasoline", unit="",
+            id="gasoline", title="Retail Gasoline · Regular", short="Gasoline", unit="$",
             color="#FB923C", series_id="EMM_EPMR_PTE_NUS_DPG", limit=520,
             rule=narrative.consumer_cost("Gasoline", 10, 25, 40), value_format="decimal",
             source="eia", eia_route="petroleum/pri/gnd",
@@ -666,7 +666,7 @@ ENERGY_OIL_FUELS = Lens(
                      "energy cost households feel most directly."),
         ),
         Indicator(
-            id="diesel", title="Retail Diesel · On-Highway", short="Diesel", unit="",
+            id="diesel", title="Retail Diesel · On-Highway", short="Diesel", unit="$",
             color="#FBBF24", series_id="EMD_EPD2D_PTE_NUS_DPG", limit=520,
             rule=narrative.consumer_cost("Diesel", 10, 25, 40), value_format="decimal",
             source="eia", eia_route="petroleum/pri/gnd",
@@ -699,7 +699,7 @@ ENERGY_NATURAL_GAS = Lens(
     id="energy-natural-gas", title="Natural Gas", accent="#60A5FA",
     indicators=[
         Indicator(
-            id="henry-hub", title="Henry Hub Spot Price", short="Henry Hub", unit="",
+            id="henry-hub", title="Henry Hub Spot Price", short="Henry Hub", unit="$",
             color="#60A5FA", series_id="RNGWHHD", limit=900,
             rule=narrative.consumer_cost("Natural gas", 20, 50, 100), value_format="decimal",
             source="eia", eia_route="natural-gas/pri/fut",
@@ -708,7 +708,7 @@ ENERGY_NATURAL_GAS = Lens(
                      "bills and a large share of electricity generation cost."),
         ),
         Indicator(
-            id="gas-storage", title="Working Gas in Storage · Lower 48", short="Gas storage", unit="",
+            id="gas-storage", title="Working Gas in Storage · Lower 48", short="Gas storage", unit="Bcf",
             color="#38BDF8", series_id="NW2_EPG0_SWO_R48_BCF", limit=520,
             rule=narrative.energy_level("Gas in storage"), value_format="thousands",
             source="eia", eia_route="natural-gas/stor/wkly",
@@ -741,7 +741,7 @@ ENERGY_ELECTRICITY = Lens(
     id="energy-electricity", title="Electricity & the Grid", accent="#FBBF24",
     indicators=[
         Indicator(
-            id="electricity-price", title="Retail Electricity · Residential", short="Power price", unit="",
+            id="electricity-price", title="Retail Electricity · Residential", short="Power price", unit="¢/kWh",
             color="#FBBF24", series_id="ELEC_PRICE_RES_US", limit=240,
             rule=narrative.consumer_cost("Electricity", 5, 10, 20), value_format="decimal",
             source="eia", eia_route="electricity/retail-sales",
@@ -787,7 +787,7 @@ ENERGY_COMMODITIES = Lens(
                      "inflation."),
         ),
         Indicator(
-            id="copper", title="Copper · “Dr. Copper”", short="Copper", unit="",
+            id="copper", title="Copper · “Dr. Copper”", short="Copper", unit="$",
             color="#FB923C", series_id="PCOPPUSDM", limit=300,
             rule=narrative.energy_level("Copper"), value_format="thousands",
             context=("The global price of copper ($/metric ton) — nicknamed “Dr. Copper” "

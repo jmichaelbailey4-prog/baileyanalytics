@@ -63,6 +63,32 @@ class TestBuildIndex(unittest.TestCase):
         self.assertTrue(entry["sparkline"])  # non-empty list of numbers
 
 
+class TestFmt(unittest.TestCase):
+    """_fmt must mirror lens.js fmtVal: $ is a prefix, word units get a space,
+    symbol units stay tight."""
+
+    def test_percent_stays_tight(self):
+        self.assertEqual(build._fmt("4.30", "%"), "4.30%")
+
+    def test_dollar_is_prefix(self):
+        self.assertEqual(build._fmt("4.146", "$"), "$4.15")
+
+    def test_dollar_prefix_thousands(self):
+        self.assertEqual(build._fmt("13484.2", "$", "thousands"), "$13,484")
+
+    def test_word_unit_gets_space(self):
+        self.assertEqual(build._fmt("9.4", "months"), "9.40 months")
+
+    def test_capitalized_word_unit_gets_space(self):
+        self.assertEqual(build._fmt("2578", "Bcf", "thousands"), "2,578 Bcf")
+
+    def test_single_letter_unit_stays_tight(self):
+        self.assertEqual(build._fmt("4.17", "M"), "4.17M")
+
+    def test_missing_value(self):
+        self.assertEqual(build._fmt(None, "%"), "—")
+
+
 class TestWriteOutputs(unittest.TestCase):
     def test_skips_unchanged_file(self):
         import tempfile

@@ -10,11 +10,11 @@
       "key_stats": [
         {
           "k": "Gasoline",
-          "v": "4.15"
+          "v": "$4.15"
         },
         {
           "k": "Diesel",
-          "v": "5.21"
+          "v": "$5.21"
         }
       ],
       "sparkline": [
@@ -69,11 +69,11 @@
       "key_stats": [
         {
           "k": "Henry Hub",
-          "v": "3.07"
+          "v": "$3.07"
         },
         {
           "k": "Gas storage",
-          "v": "2,578"
+          "v": "2,578 Bcf"
         }
       ],
       "sparkline": [
@@ -128,7 +128,7 @@
       "key_stats": [
         {
           "k": "Power price",
-          "v": "18.83"
+          "v": "18.83\u00a2/kWh"
         },
         {
           "k": "Renewables",
@@ -191,7 +191,7 @@
         },
         {
           "k": "Copper",
-          "v": "13,484"
+          "v": "$13,484"
         }
       ],
       "sparkline": [

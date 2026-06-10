@@ -1238,7 +1238,7 @@
       "id": "copper",
       "title": "Copper \u00b7 \u201cDr. Copper\u201d",
       "short": "Copper",
-      "unit": "",
+      "unit": "$",
       "color": "#FB923C",
       "series_id": "PCOPPUSDM",
       "observations": [

@@ -20,7 +20,7 @@
       "id": "gasoline",
       "title": "Retail Gasoline \u00b7 Regular",
       "short": "Gasoline",
-      "unit": "",
+      "unit": "$",
       "color": "#FB923C",
       "series_id": "EMM_EPMR_PTE_NUS_DPG",
       "observations": [
@@ -2118,7 +2118,7 @@
       "id": "diesel",
       "title": "Retail Diesel \u00b7 On-Highway",
       "short": "Diesel",
-      "unit": "",
+      "unit": "$",
       "color": "#FBBF24",
       "series_id": "EMD_EPD2D_PTE_NUS_DPG",
       "observations": [

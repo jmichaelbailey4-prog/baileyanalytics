@@ -20,7 +20,7 @@
       "id": "henry-hub",
       "title": "Henry Hub Spot Price",
       "short": "Henry Hub",
-      "unit": "",
+      "unit": "$",
       "color": "#60A5FA",
       "series_id": "RNGWHHD",
       "observations": [
@@ -3638,7 +3638,7 @@
       "id": "gas-storage",
       "title": "Working Gas in Storage \u00b7 Lower 48",
       "short": "Gas storage",
-      "unit": "",
+      "unit": "Bcf",
       "color": "#38BDF8",
       "series_id": "NW2_EPG0_SWO_R48_BCF",
       "observations": [

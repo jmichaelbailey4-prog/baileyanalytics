@@ -20,7 +20,7 @@
       "id": "electricity-price",
       "title": "Retail Electricity \u00b7 Residential",
       "short": "Power price",
-      "unit": "",
+      "unit": "\u00a2/kWh",
       "color": "#FBBF24",
       "series_id": "ELEC_PRICE_RES_US",
       "observations": [

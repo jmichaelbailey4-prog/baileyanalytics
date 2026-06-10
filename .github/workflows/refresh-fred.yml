@@ -27,6 +27,7 @@ jobs:
         run: python scripts/refresh_lenses.py --economic
 
       - name: Fetch latest markets data (FRED + CoinGecko + Yahoo)
+        if: ${{ success() || failure() }}
         env:
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
           # Optional: a free CoinGecko demo key raises the rate limit for the crypto
@@ -35,17 +36,20 @@ jobs:
         run: python scripts/refresh_lenses.py --markets
 
       - name: Fetch latest energy data (EIA + FRED)
+        if: ${{ success() || failure() }}
         env:
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
           EIA_API_KEY: ${{ secrets.EIA_API_KEY }}
         run: python scripts/refresh_lenses.py --energy
 
       - name: Fetch latest housing data (FRED)
+        if: ${{ success() || failure() }}
         env:
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
         run: python scripts/refresh_lenses.py --housing
 
       - name: Commit and push if data changed
+        if: ${{ success() || failure() }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

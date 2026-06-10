@@ -16,8 +16,8 @@
     const num = (fmt === "thousands") ? Math.round(f).toLocaleString("en-US") : f.toFixed(2);
     if (!unit) return num;
     if (unit === "$") return "$" + num;
-    // word units ("months") read better with a space; symbols ("%", "M", "k") stay tight
-    return (unit.length > 1 && /^[a-z]/.test(unit)) ? num + " " + unit : num + unit;
+    // word units ("months", "Bcf") read better with a space; symbols ("%", "M", "k") stay tight
+    return (unit.length > 1 && /^[a-z]/i.test(unit)) ? num + " " + unit : num + unit;
   }
   function esc(s) {
     const d = document.createElement("div"); d.textContent = s; return d.innerHTML;
@@ -91,13 +91,14 @@
     const el = document.createElement("div");
     el.className = "ind";
     const latest = indicator.latest ? fmtVal(indicator.latest.value, indicator.unit, indicator.value_format) : "—";
+    const asOf = indicator.latest ? `<div class="ind-asof">as of ${fmtDate(indicator.latest.date)}</div>` : "";
     el.innerHTML = `
       <div class="ind-top">
         <div class="ind-title">${esc(indicator.title)}</div>
-        <div class="ind-val" style="color:${indicator.color}">${latest}</div>
+        <div class="ind-num"><div class="ind-val" style="color:${indicator.color}">${latest}</div>${asOf}</div>
       </div>
-      <div class="ranges"></div>
-      <div class="chart-box"><canvas></canvas></div>
+      <div class="ranges" role="group" aria-label="Chart range"></div>
+      <div class="chart-box"><canvas role="img" aria-label="${esc(indicator.title)} — line chart"></canvas></div>
       <div class="context">
         <div class="ctx-block"><div class="lbl">What it is</div><p>${esc(indicator.context)}</p></div>
         <div class="ctx-block read"><div class="lbl">The read right now</div><p>${esc(indicator.read)}</p></div>
@@ -109,10 +110,15 @@
     Object.keys(RANGES).forEach(key => {
       const btn = document.createElement("button");
       btn.textContent = key;
+      btn.setAttribute("aria-pressed", String(key === startKey));
       if (key === startKey) btn.classList.add("active");
       btn.addEventListener("click", () => {
-        rangesBox.querySelectorAll("button").forEach(b => b.classList.remove("active"));
+        rangesBox.querySelectorAll("button").forEach(b => {
+          b.classList.remove("active");
+          b.setAttribute("aria-pressed", "false");
+        });
         btn.classList.add("active");
+        btn.setAttribute("aria-pressed", "true");
         chart.destroy();
         chart = makeChart(canvas, indicator, recessions, RANGES[key]);
       });

@@ -5,18 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Cost of Money — Bailey Analytics</title>
   <meta name="description" content="What it costs to borrow in the U.S. — the Fed funds rate and Treasury yields, from FRED.">
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="stylesheet" href="/dashboards/lens.css">
 </head>
 <body>
   <nav class="wordmark"><a href="/">Bailey Analytics</a></nav>
   <nav class="top-nav"><a href="/dashboards/">Dashboards</a><a href="/about.html">About</a></nav>
   <main id="lens-root"><div class="status-msg">Loading…</div></main>
-  <script src="/dashboards/lens.js"></script>
-  <script>
+  <script defer src="/dashboards/lens.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", () => {
     renderLens("/data/lenses/cost-of-money.json", {
       foot: 'Data: <a href="https://fred.stlouisfed.org/" target="_blank" rel="noopener">Federal Reserve Economic Data (FRED)</a>, St. Louis Fed. Refreshed daily. The "read" is generated from the latest values by a fixed rule set. Mortgage rates now live in <a href="/dashboards/housing/affordability.html">Housing &rarr; Affordability &amp; Financing</a>.'
     });
-  </script>
+  });</script>
 </body>
 </html>
