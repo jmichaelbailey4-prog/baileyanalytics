@@ -2,9 +2,9 @@
   "id": "global-growth",
   "title": "Global Growth",
   "accent": "#34D399",
-  "last_updated": "2026-06-11T01:29:35Z",
-  "status": "watch",
-  "headline_read": "Global growth is running below trend.",
+  "last_updated": "2026-06-11T01:36:59Z",
+  "status": "ok",
+  "headline_read": "The world economy is growing around its long-run trend.",
   "recessions": [
     {
       "start": "2008-01-01",
@@ -207,19 +207,15 @@
         {
           "date": "2025",
           "value": "3.441279"
-        },
-        {
-          "date": "2026",
-          "value": "3.055974"
         }
       ],
       "latest": {
-        "date": "2026",
-        "value": "3.055974"
+        "date": "2025",
+        "value": "3.441279"
       },
       "context": "The IMF's measure of how fast the whole world economy is growing each year. The long-run trend is about 3.5%; below 2% is what economists call a global recession \u2014 it has happened only a handful of times since 1980.",
-      "read": "The world economy is growing 3.1% in 2026 \u2014 below its long-run trend. The IMF projects 3.2% for 2027.",
-      "signal_status": "watch",
+      "read": "The world economy grew 3.4% in 2025 \u2014 around its long-run trend. The IMF projects 3.1% for 2026.",
+      "signal_status": "ok",
       "value_format": "decimal"
     },
     {
@@ -413,18 +409,14 @@
         {
           "date": "2025",
           "value": "4.958804"
-        },
-        {
-          "date": "2026",
-          "value": "4.41261"
         }
       ],
       "latest": {
-        "date": "2026",
-        "value": "4.41261"
+        "date": "2025",
+        "value": "4.958804"
       },
       "context": "China's annual growth rate (IMF WEO). The world's second-largest economy and its biggest growth engine \u2014 China's slowdown from double digits to under 5% reshapes demand for everything.",
-      "read": "China's economy grew 4.4% in 2026, slowing from 5.0% the year before.",
+      "read": "China's economy grew 5.0% in 2025, matching the year before.",
       "signal_status": "info",
       "value_format": "decimal"
     },
@@ -571,18 +563,14 @@
         {
           "date": "2025",
           "value": "1.401599"
-        },
-        {
-          "date": "2026",
-          "value": "1.086909"
         }
       ],
       "latest": {
-        "date": "2026",
-        "value": "1.086909"
+        "date": "2025",
+        "value": "1.401599"
       },
       "context": "The euro area's annual growth rate (IMF WEO) \u2014 the world's third-largest economic bloc, and the one most exposed to energy shocks and trade disruption.",
-      "read": "The euro area's economy grew 1.1% in 2026, slowing from 1.4% the year before.",
+      "read": "The euro area's economy grew 1.4% in 2025, up from 0.9% the year before.",
       "signal_status": "info",
       "value_format": "decimal"
     },
@@ -777,18 +765,14 @@
         {
           "date": "2025",
           "value": "4.133379"
-        },
-        {
-          "date": "2026",
-          "value": "4.423129"
         }
       ],
       "latest": {
-        "date": "2026",
-        "value": "4.423129"
+        "date": "2025",
+        "value": "4.133379"
       },
       "context": "World consumer-price inflation (IMF WEO) \u2014 the global backdrop behind every central bank's rate decisions. The pre-pandemic norm was about 3-4%.",
-      "read": "World consumer prices are rising 4.4% in 2026, up from 4.1% the year before.",
+      "read": "World consumer prices are rising 4.1% in 2025, easing from 5.8% the year before.",
       "signal_status": "info",
       "value_format": "decimal"
     },

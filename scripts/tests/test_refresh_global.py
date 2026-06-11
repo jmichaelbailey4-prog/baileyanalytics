@@ -49,7 +49,7 @@ class TestGlobalDryRun(unittest.TestCase):
     def test_dry_run_populates_forecasts(self):
         _, _, _, forecasts = self.run_dry()
         self.assertIn("G001.NGDP_RPCH", forecasts)
-        self.assertEqual(forecasts["G001.NGDP_RPCH"]["year"], "2027")
+        self.assertEqual(forecasts["G001.NGDP_RPCH"]["year"], "2026")
 
     def test_scoped_run_leaves_other_categories_alone(self):
         _, _, others, _ = self.run_dry()

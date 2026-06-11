@@ -36,22 +36,44 @@ class TestParseWeo(unittest.TestCase):
         for obs in series["G001.NGDP_RPCH"]:
             self.assertIsInstance(obs["value"], str)
 
+    def test_skips_non_numeric_obs_values(self):
+        # WEO uses 'n/a'/'--' for country gaps; one bad value must not poison
+        # the series (or, downstream, abort the whole IMF injection).
+        xml = (b'<root><Series COUNTRY="G001" INDICATOR="NGDP_RPCH">'
+               b'<Obs TIME_PERIOD="2024" OBS_VALUE="3.3"/>'
+               b'<Obs TIME_PERIOD="2025" OBS_VALUE="n/a"/>'
+               b'<Obs TIME_PERIOD="2026" OBS_VALUE="--"/>'
+               b'</Series></root>')
+        series = imf.parse_weo(xml)
+        self.assertEqual(series["G001.NGDP_RPCH"],
+                         [{"date": "2024", "value": "3.3"}])
+
 
 class TestSplitActuals(unittest.TestCase):
-    OBS = [{"date": "2025", "value": "3.4"}, {"date": "2026", "value": "3.1"},
-           {"date": "2027", "value": "3.2"}, {"date": "2028", "value": "3.2"}]
+    OBS = [{"date": "2024", "value": "3.3"}, {"date": "2025", "value": "3.4"},
+           {"date": "2026", "value": "3.1"}, {"date": "2027", "value": "3.2"}]
 
-    def test_truncates_at_current_year(self):
+    def test_truncates_at_last_completed_year(self):
+        # Mid-2026 the WEO "2026" value is itself a projection — it must not
+        # be charted or feed hub deltas.
         actuals, _ = imf.split_actuals(self.OBS, today=datetime.date(2026, 6, 10))
-        self.assertEqual([o["date"] for o in actuals], ["2025", "2026"])
+        self.assertEqual([o["date"] for o in actuals], ["2024", "2025"])
 
-    def test_forecast_is_next_year(self):
+    def test_forecast_is_nearest_forward_projection(self):
         _, forecast = imf.split_actuals(self.OBS, today=datetime.date(2026, 6, 10))
-        self.assertEqual(forecast, {"year": "2027", "value": 3.2})
+        self.assertEqual(forecast, {"year": "2026", "value": 3.1})
 
-    def test_no_forecast_when_next_year_absent(self):
+    def test_no_forecast_when_no_forward_obs(self):
         _, forecast = imf.split_actuals(self.OBS[:2], today=datetime.date(2026, 6, 10))
         self.assertIsNone(forecast)
+
+    def test_skips_non_year_periods_and_non_numeric_values(self):
+        obs = [{"date": "2024-Q1", "value": "3.3"}, {"date": "2025", "value": "n/a"},
+               {"date": "2024", "value": "3.3"}, {"date": "2026", "value": "--"},
+               {"date": "2027", "value": "3.2"}]
+        actuals, forecast = imf.split_actuals(obs, today=datetime.date(2026, 6, 10))
+        self.assertEqual([o["date"] for o in actuals], ["2024"])
+        self.assertEqual(forecast, {"year": "2027", "value": 3.2})
 
 
 class TestForecastFor(unittest.TestCase):

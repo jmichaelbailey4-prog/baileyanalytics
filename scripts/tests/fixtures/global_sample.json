@@ -20,23 +20,19 @@
     {"date": "2009", "value": "-0.1"},
     {"date": "2020", "value": "-2.7"},
     {"date": "2024", "value": "3.3"},
-    {"date": "2025", "value": "3.441279"},
-    {"date": "2026", "value": "3.055974"}
+    {"date": "2025", "value": "3.441279"}
   ],
   "WEO_CHN_NGDP_RPCH:lin": [
     {"date": "2024", "value": "5.2"},
-    {"date": "2025", "value": "4.958804"},
-    {"date": "2026", "value": "4.41261"}
+    {"date": "2025", "value": "4.958804"}
   ],
   "WEO_G163_NGDP_RPCH:lin": [
     {"date": "2024", "value": "0.4"},
-    {"date": "2025", "value": "0.8"},
-    {"date": "2026", "value": "1.3"}
+    {"date": "2025", "value": "0.8"}
   ],
   "WEO_G001_PCPIPCH:lin": [
     {"date": "2024", "value": "5.7"},
-    {"date": "2025", "value": "5.0"},
-    {"date": "2026", "value": "4.423129"}
+    {"date": "2025", "value": "5.0"}
   ],
   "CLVMEURSCAB1GQEA19:pc1": [
     {"date": "2025-01-01", "value": "0.80"},
@@ -75,6 +71,6 @@
     {"date": "2026-05-01", "value": "0"}
   ],
   "_forecasts": {
-    "G001.NGDP_RPCH": {"year": "2027", "value": 3.223795}
+    "G001.NGDP_RPCH": {"year": "2026", "value": 3.055974}
   }
 }

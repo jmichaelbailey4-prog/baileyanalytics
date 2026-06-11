@@ -41,6 +41,13 @@ class TestParseGscpi(unittest.TestCase):
                          sorted(o["date"] for o in obs))
         self.assertEqual(obs[0]["value"], "-0.40")
 
+    def test_dates_parse_without_locale(self):
+        # %b strptime is locale-dependent; the explicit month map must accept
+        # any casing and reject junk without raising.
+        text = "30-SEP-1997,0.5\n31-dec-2024,1.0\nGSCPI,notes\n30-Foo-2024,2.0\n"
+        obs = nyfed.parse_gscpi(text)
+        self.assertEqual([o["date"] for o in obs], ["1997-09", "2024-12"])
+
 
 class TestGscpiFetch(unittest.TestCase):
     def test_browser_user_agent_and_url(self):

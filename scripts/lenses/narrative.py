@@ -933,26 +933,27 @@ def world_growth(forecast):
     """Factory: IMF world real-GDP growth (annual level). Bands: >=3.2 ok /
     2.5-3.2 watch / 2.0-2.5 elevated / <2.0 alert (sub-2% ≈ global recession).
     `forecast` is a zero-arg callable (imf.forecast_for) returning
-    {"year","value"} or None; when present, the next-year IMF projection is
-    appended in prose — never charted or key-stat'ed."""
+    {"year","value"} or None; when present, the nearest forward IMF projection
+    (normally the current year) is appended in prose — never charted or
+    key-stat'ed."""
     def _rule(obs):
         if not obs:
             return _NO_DATA
         year, v = obs[-1]
         if v >= 3.2:
-            text, status = (f"The world economy is growing {v:.1f}% in {year} — around "
+            text, status = (f"The world economy grew {v:.1f}% in {year} — around "
                             "its long-run trend.", "ok")
         elif v >= 2.5:
-            text, status = (f"The world economy is growing {v:.1f}% in {year} — below "
+            text, status = (f"The world economy grew {v:.1f}% in {year} — below "
                             "its long-run trend.", "watch")
         elif v >= 2.0:
-            text, status = (f"The world economy is growing just {v:.1f}% in {year} — "
+            text, status = (f"The world economy grew just {v:.1f}% in {year} — "
                             "near stall speed.", "elevated")
         elif v >= 0:
-            text, status = (f"The world economy is growing only {v:.1f}% in {year} — "
+            text, status = (f"The world economy grew only {v:.1f}% in {year} — "
                             "global recession territory.", "alert")
         else:
-            text, status = (f"The world economy is shrinking {abs(v):.1f}% in {year} — "
+            text, status = (f"The world economy shrank {abs(v):.1f}% in {year} — "
                             "a global recession.", "alert")
         f = forecast()
         if f:

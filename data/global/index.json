@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-11T01:29:36Z",
+  "last_updated": "2026-06-11T01:36:59Z",
   "lenses": [
     {
       "id": "global-dollar-currencies",
@@ -68,23 +68,24 @@
       "id": "global-growth",
       "title": "Global Growth",
       "accent": "#34D399",
-      "status": "watch",
-      "headline_read": "Global growth is running below trend.",
+      "status": "ok",
+      "headline_read": "The world economy is growing around its long-run trend.",
       "key_stats": [
         {
           "k": "World growth",
-          "v": "3.06%",
-          "d": "0.39%",
-          "dir": "down"
+          "v": "3.44%",
+          "d": "0.03%",
+          "dir": "up"
         },
         {
           "k": "China",
-          "v": "4.41%",
-          "d": "0.55%",
+          "v": "4.96%",
+          "d": "0.04%",
           "dir": "down"
         }
       ],
       "sparkline": [
+        3.370384,
         3.947889,
         4.527897,
         3.728091,
@@ -123,8 +124,7 @@
         3.773925,
         3.327812,
         3.416268,
-        3.441279,
-        3.055974
+        3.441279
       ]
     },
     {

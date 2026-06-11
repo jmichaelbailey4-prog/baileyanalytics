@@ -12,7 +12,6 @@ secretly binary .xls (unparseable with stdlib).
 """
 
 import csv
-import datetime
 import io
 import urllib.request
 
@@ -23,6 +22,23 @@ _UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
        "(KHTML, like Gecko) Chrome/124.0 Safari/537.36")
 
 _NA = "#N/A"
+
+# Explicit English month map — strptime's %b is locale-dependent and would
+# yield zero rows on a non-English system.
+_MONTHS = {"jan": 1, "feb": 2, "mar": 3, "apr": 4, "may": 5, "jun": 6,
+           "jul": 7, "aug": 8, "sep": 9, "oct": 10, "nov": 11, "dec": 12}
+
+
+def _month_key(raw):
+    """'30-Sep-1997' -> '1997-09'; None for header/junk rows."""
+    parts = raw.strip().split("-")
+    if len(parts) != 3:
+        return None
+    day, mon, year = parts
+    month = _MONTHS.get(mon[:3].lower())
+    if month is None or not (day.isdigit() and year.isdigit() and len(year) == 4):
+        return None
+    return f"{int(year):04d}-{month:02d}"
 
 
 def parse_gscpi(text):
@@ -36,9 +52,8 @@ def parse_gscpi(text):
     for row in csv.reader(io.StringIO(text)):
         if not row:
             continue
-        try:
-            d = datetime.datetime.strptime(row[0].strip(), "%d-%b-%Y")
-        except ValueError:
+        key = _month_key(row[0])
+        if key is None:
             continue  # header / junk row
         value = None
         for cell in row[1:]:
@@ -51,7 +66,7 @@ def parse_gscpi(text):
                 continue
         if value is None:
             continue
-        out.append({"date": d.strftime("%Y-%m"), "value": f"{value:.2f}"})
+        out.append({"date": key, "value": f"{value:.2f}"})
     out.sort(key=lambda o: o["date"])
     return out
 

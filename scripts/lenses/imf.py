@@ -6,11 +6,13 @@ Akamai-blocked). It returns StructureSpecific XML regardless of Accept headers:
 Series elements carry COUNTRY/INDICATOR attributes, child Obs carry
 TIME_PERIOD/OBS_VALUE. Countries and indicators batch with `+`.
 
-WEO publishes projections years ahead; charts and key stats must use actuals
-only (<= current year). `split_actuals` does the truncation and hands back the
-next-year forecast, which reaches lens reads in prose via the late-binding
-`FORECASTS` registry (populated by the injector at fetch time, read by
-narrative rules at build time through `forecast_for`).
+WEO publishes projections years ahead — and its current-year value is itself
+a projection for most of the year. Charts and key stats use actuals only
+(<= the last completed year); `split_actuals` does the truncation and hands
+back the nearest forward projection (normally the current year), which reaches
+lens reads in prose via the late-binding `FORECASTS` registry (populated by
+the injector at fetch time, read by narrative rules at build time through
+`forecast_for`).
 """
 
 import datetime
@@ -62,6 +64,10 @@ def parse_weo(xml_bytes):
             value = child.get("OBS_VALUE")
             if period is None or value is None:
                 continue
+            try:
+                float(value)
+            except ValueError:
+                continue  # WEO uses 'n/a'/'--' for country gaps
             obs.append({"date": period, "value": value})
         obs.sort(key=lambda o: o["date"])
         series[f"{country}.{indicator}"] = obs
@@ -69,20 +75,30 @@ def parse_weo(xml_bytes):
 
 
 def split_actuals(obs, today=None):
-    """Split annual obs into (actuals <= current year, next-year forecast).
+    """Split annual obs into (actuals through the last completed year, nearest
+    forward IMF projection).
 
-    Returns (list, {"year","value"} or None). The forecast value is a float so
-    narrative prose can format it directly.
+    WEO's current-year value is itself a projection for most of the year, so
+    actuals stop at `today.year - 1` — hub deltas and charts never include a
+    projected point. The first observation after that (normally the current
+    year) comes back as {"year","value"} for prose use; its value is a float
+    so narrative rules can format it directly. Non-year periods and
+    non-numeric values are skipped.
     """
     if today is None:
         today = datetime.date.today()
-    current = today.year
-    actuals = [o for o in obs if int(o["date"]) <= current]
-    forecast = None
-    for o in obs:
-        if int(o["date"]) == current + 1:
-            forecast = {"year": o["date"], "value": float(o["value"])}
-            break
+    last_actual = today.year - 1
+    actuals, forecast = [], None
+    for o in obs:  # oldest-first per parse_weo
+        try:
+            year = int(o["date"])
+            value = float(o["value"])
+        except (TypeError, ValueError):
+            continue
+        if year <= last_actual:
+            actuals.append(o)
+        elif forecast is None:
+            forecast = {"year": o["date"], "value": value}
     return actuals, forecast
 
 

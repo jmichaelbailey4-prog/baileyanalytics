@@ -56,7 +56,9 @@ class TestGlobalBuildIntegration(unittest.TestCase):
 
     def test_expected_statuses(self):
         self.assertEqual(self.built["global-dollar-currencies"]["status"], "ok")
-        self.assertEqual(self.built["global-growth"]["status"], "watch")
+        # 2026 is a WEO projection, so the latest charted actual is 2025
+        # (3.4% -> ok); the 2026 estimate reaches the read in prose only.
+        self.assertEqual(self.built["global-growth"]["status"], "ok")
         self.assertEqual(self.built["global-trade-supply"]["status"], "elevated")
         self.assertEqual(self.built["global-uncertainty"]["status"], "alert")
 
@@ -69,14 +71,14 @@ class TestGlobalBuildIntegration(unittest.TestCase):
     def test_world_growth_read_mentions_forecast(self):
         growth = self.built["global-growth"]
         world = next(i for i in growth["indicators"] if i["id"] == "world-growth")
-        self.assertIn("IMF projects 3.2% for 2027", world["read"])
+        self.assertIn("IMF projects 3.1% for 2026", world["read"])
 
     def test_annual_observations_survive_as_years(self):
         growth = self.built["global-growth"]
         world = next(i for i in growth["indicators"] if i["id"] == "world-growth")
         for o in world["observations"]:
             self.assertRegex(o["date"], r"^\d{4}$")
-        self.assertEqual(world["latest"]["date"], "2026")
+        self.assertEqual(world["latest"]["date"], "2025")
 
     def test_hub_index_formats_key_stats(self):
         index = build.build_index(list(self.built.values()))
