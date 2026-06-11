@@ -220,7 +220,10 @@ def build_index(lens_jsons):
             "key_stats": key_stats,
             "sparkline": spark,
         })
-    return {"last_updated": _now(), "lenses": lenses}
+    # Category-level status: balanced blend, not worst-of — the home tiles wear it.
+    return {"last_updated": _now(),
+            "status": util.status_blend([lj["status"] for lj in lens_jsons]),
+            "lenses": lenses}
 
 
 def _strip_volatile(d):
