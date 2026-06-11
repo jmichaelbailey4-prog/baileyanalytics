@@ -59,6 +59,27 @@ def status_max(statuses):
     return max(known, key=lambda s: STATUS_ORDER[s])
 
 
+def status_blend(statuses):
+    """Category-level status: the quadratic mean (RMS) of lens severities, banded
+    back to a token. Squaring makes bad readings count more than good ones offset,
+    without letting a single stressed lens brand the whole category (that's the
+    worst-lens callout's job on the home tile). One watch among four ok lenses
+    stays ok (0.5 < 0.6); a category reads alert only when stress is broad
+    (e.g. alert+alert+elevated+elevated ≈ 2.55). neutral/info/unknown are
+    excluded; with no severity lenses at all the category is 'neutral'."""
+    sev = [STATUS_ORDER[s] for s in statuses if STATUS_ORDER.get(s, -1) >= 0]
+    if not sev:
+        return "neutral"
+    score = (sum(v * v for v in sev) / len(sev)) ** 0.5
+    if score < 0.6:
+        return "ok"
+    if score < 1.5:
+        return "watch"
+    if score < 2.5:
+        return "elevated"
+    return "alert"
+
+
 def merge_series(old, new):
     """Merge two [{'date','value'}] lists by date; `new` wins on conflicts. Sorted.
 
