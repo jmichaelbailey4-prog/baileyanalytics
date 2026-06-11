@@ -59,6 +59,31 @@ class TestPctShare(unittest.TestCase):
                                         [{"date": "d", "value": "0"}]), [])
 
 
+class TestSpreadFfill(unittest.TestCase):
+    def test_subtracts_with_forward_fill(self):
+        # daily minuend, monthly subtrahend: each a-date uses the latest b at or before it
+        a = [{"date": "2026-01-02", "value": "4.20"}, {"date": "2026-02-03", "value": "4.00"}]
+        b = [{"date": "2026-01-01", "value": "4.50"}, {"date": "2026-02-01", "value": "4.40"}]
+        self.assertEqual(util.spread_ffill(a, b), [
+            {"date": "2026-01-02", "value": "-0.30"},
+            {"date": "2026-02-03", "value": "-0.40"},
+        ])
+
+    def test_skips_dates_before_subtrahend_starts(self):
+        a = [{"date": "2025-12-31", "value": "4.20"}]
+        b = [{"date": "2026-01-01", "value": "4.50"}]
+        self.assertEqual(util.spread_ffill(a, b), [])
+
+    def test_skips_missing_values(self):
+        a = [{"date": "2026-01-02", "value": "."}, {"date": "2026-01-03", "value": "4.00"}]
+        b = [{"date": "2026-01-01", "value": "4.50"}]
+        self.assertEqual(util.spread_ffill(a, b),
+                         [{"date": "2026-01-03", "value": "-0.50"}])
+
+    def test_handles_none(self):
+        self.assertEqual(util.spread_ffill(None, []), [])
+
+
 class TestThinObservations(unittest.TestCase):
     def test_recent_window_kept_in_full(self):
         obs = [{"date": f"2026-05-{d:02d}", "value": str(d)} for d in range(1, 31)]

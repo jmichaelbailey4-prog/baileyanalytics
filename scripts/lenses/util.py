@@ -102,6 +102,26 @@ def merge_series(old, new):
     return [{"date": d, "value": merged[d]} for d in sorted(merged)]
 
 
+def spread_ffill(minuend, subtrahend):
+    """a - b on a's dates, forward-filling b (e.g. a daily yield minus a monthly
+    policy rate). Skips a-dates before b begins and missing values on either
+    side. Returns [{'date','value'}] with 2-dp string values, sorted by date."""
+    if not minuend or not subtrahend:
+        return []
+    b = sorted((p["date"], to_float(p["value"])) for p in subtrahend)
+    out, bi, last_b = [], 0, None
+    for p in sorted(minuend, key=lambda r: r["date"]):
+        a = to_float(p["value"])
+        while bi < len(b) and b[bi][0] <= p["date"]:
+            if b[bi][1] is not None:
+                last_b = b[bi][1]
+            bi += 1
+        if a is None or last_b is None:
+            continue
+        out.append({"date": p["date"], "value": f"{a - last_b:.2f}"})
+    return out
+
+
 def pct_share(numerator, denominator):
     """Percent share (numerator / denominator * 100) on dates present in both.
 

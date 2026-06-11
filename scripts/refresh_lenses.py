@@ -156,6 +156,12 @@ def refresh_economic(dry_run):
             return 1
         fetched, failed = fetch_all(config.LENSES, api_key)
 
+    # Computed: 2y-vs-Fed spread for the rate-expectations indicator (mirrors
+    # the business-shares pattern; falls back to prior data if an input failed).
+    spread = util.spread_ffill(fetched.get("DGS2:lin"), fetched.get("FEDFUNDS:lin"))
+    fetched["DGS2_FEDFUNDS_SPREAD:lin"] = (
+        spread or _prior_obs(OUT_DIR, "cost-of-money", "rate-expectations"))
+
     ready = [lens for lens in config.LENSES if lens_ready(lens, failed)]
     for lens in config.LENSES:
         if lens not in ready:

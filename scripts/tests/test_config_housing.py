@@ -27,8 +27,9 @@ class TestHousingConfig(unittest.TestCase):
                         hits.append(lens.id)
         self.assertEqual(hits, ["housing-affordability"])
 
-    def test_cost_of_money_has_three_indicators(self):
-        self.assertEqual(len(config.COST_OF_MONEY.indicators), 3)
+    def test_cost_of_money_has_no_mortgage(self):
+        # mortgage moved to Housing; the lens is 3 policy rates + computed spread
+        self.assertEqual(len(config.COST_OF_MONEY.indicators), 4)
         ids = [i.id for i in config.COST_OF_MONEY.indicators]
         self.assertNotIn("mortgage-30y", ids)
 

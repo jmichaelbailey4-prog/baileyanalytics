@@ -160,6 +160,23 @@ COST_OF_MONEY = Lens(
                 "expect the Fed to set rates over the next couple of years."
             ),
         ),
+        Indicator(
+            id="rate-expectations",
+            title="Rate Expectations · 2-Year minus Fed Funds",
+            short="2y vs Fed",
+            unit="%",
+            color="#FBBF24",
+            series_id="DGS2_FEDFUNDS_SPREAD",
+            limit=2600,
+            source="computed",
+            rule=narrative.rule_rate_expectations,
+            context=(
+                "The 2-year Treasury yield minus the Fed's current policy rate — the bond "
+                "market's verdict on where the Fed goes next. Well below zero means markets "
+                "are pricing rate cuts; above zero, hikes. Computed from the two series "
+                "charted above."
+            ),
+        ),
     ],
 )
 

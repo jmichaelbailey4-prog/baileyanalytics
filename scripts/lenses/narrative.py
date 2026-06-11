@@ -147,6 +147,26 @@ def rule_rate_trend(obs):
     return (f"Now {v:.2f}%, {move}.", "ok")
 
 
+def rule_rate_expectations(obs):
+    """DGS2 minus the fed funds rate: the bond market's pricing of the Fed's
+    next moves. Descriptive (info) — it carries no good/bad verdict, so it
+    never drives the lens badge."""
+    if not obs:
+        return _NO_DATA
+    v = obs[-1][1]
+    if v <= -0.75:
+        return (f"The 2-year yield sits {abs(v):.2f} points below the Fed's rate — "
+                "markets are pricing meaningful rate cuts ahead.", "info")
+    if v <= -0.25:
+        return (f"The 2-year yield is {abs(v):.2f} points below the Fed's rate — "
+                "markets lean toward rate cuts.", "info")
+    if v < 0.25:
+        return ("The 2-year yield is roughly in line with the Fed's rate — "
+                "markets expect the Fed to hold near current levels.", "info")
+    return (f"The 2-year yield is {v:.2f} points above the Fed's rate — "
+            "markets are pricing rate hikes ahead.", "info")
+
+
 def rule_mortgage(obs):
     """MORTGAGE30US level bands: <5.5 ok, 5.5-6.5 watch, 6.5-7.5 elevated, >=7.5 alert."""
     if not obs:
