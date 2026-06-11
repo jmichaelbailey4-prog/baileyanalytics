@@ -15,7 +15,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))  # make `lenses` importable
 from datetime import date
 
-from lenses import brief, build, coingecko, config, eia, fdic, fred, util, yahoo
+from lenses import brief, build, coingecko, config, eia, epu, fdic, fred, imf, nyfed, util, yahoo
 
 OUT_DIR = Path(__file__).resolve().parent.parent / "data" / "lenses"
 BANK_OUT_DIR = Path(__file__).resolve().parent.parent / "data" / "banking"
@@ -23,12 +23,14 @@ MARKETS_OUT_DIR = Path(__file__).resolve().parent.parent / "data" / "markets"
 ENERGY_OUT_DIR = Path(__file__).resolve().parent.parent / "data" / "energy"
 HOUSING_OUT_DIR = Path(__file__).resolve().parent.parent / "data" / "housing"
 CONSUMER_OUT_DIR = Path(__file__).resolve().parent.parent / "data" / "consumer"
+GLOBAL_OUT_DIR = Path(__file__).resolve().parent.parent / "data" / "global"
 FIXTURE = Path(__file__).resolve().parent / "tests" / "fixtures" / "fetched_sample.json"
 FDIC_FIXTURE = Path(__file__).resolve().parent / "tests" / "fixtures" / "fdic_sample.json"
 MARKET_FIXTURE = Path(__file__).resolve().parent / "tests" / "fixtures" / "markets_sample.json"
 ENERGY_FIXTURE = Path(__file__).resolve().parent / "tests" / "fixtures" / "energy_sample.json"
 HOUSING_FIXTURE = Path(__file__).resolve().parent / "tests" / "fixtures" / "housing_sample.json"
 CONSUMER_FIXTURE = Path(__file__).resolve().parent / "tests" / "fixtures" / "consumer_sample.json"
+GLOBAL_FIXTURE = Path(__file__).resolve().parent / "tests" / "fixtures" / "global_sample.json"
 CRYPTO_HISTORY = MARKETS_OUT_DIR / "_crypto_history.json"
 CRYPTO_FIXTURE = Path(__file__).resolve().parent / "tests" / "fixtures" / "coingecko_sample.json"
 BRIEF_OUT_DIR = Path(__file__).resolve().parent.parent / "data" / "brief"
@@ -44,6 +46,7 @@ def _brief_index_dirs():
         "energy": ENERGY_OUT_DIR,
         "housing": HOUSING_OUT_DIR,
         "consumer": CONSUMER_OUT_DIR,
+        "global": GLOBAL_OUT_DIR,
     }
 
 
@@ -289,10 +292,10 @@ def refresh_markets(dry_run):
     return 0
 
 
-def _prior_energy_obs(lens_id, ind_id):
-    """Prior observations for one energy indicator from its existing lens JSON
-    (fallback when an EIA fetch or the key is unavailable)."""
-    path = ENERGY_OUT_DIR / f"{lens_id}.json"
+def _prior_obs(out_dir, lens_id, ind_id):
+    """Prior observations for one indicator from its existing lens JSON
+    (fallback when an injected source's fetch fails)."""
+    path = out_dir / f"{lens_id}.json"
     if path.exists():
         try:
             data = json.loads(path.read_text(encoding="utf-8"))
@@ -302,6 +305,10 @@ def _prior_energy_obs(lens_id, ind_id):
         except (ValueError, OSError):
             pass
     return []
+
+
+def _prior_energy_obs(lens_id, ind_id):
+    return _prior_obs(ENERGY_OUT_DIR, lens_id, ind_id)
 
 
 def _inject_generation_shares(fetched, api_key):
@@ -435,6 +442,98 @@ def refresh_consumer(dry_run):
     return 0
 
 
+def _inject_global(fetched, dry_run):
+    """Populate the non-FRED global indicators (IMF WEO, NY Fed GSCPI, the two
+    EPU files). Additive: each source is guarded individually, falling back to
+    prior data so a single failed source never blanks the others. IMF actuals
+    are truncated at the current year; next-year forecasts land in the
+    late-binding imf.FORECASTS registry the narrative rules read at build time.
+
+    In dry-run the fixture already carries every key; only the `_forecasts`
+    side key needs lifting into the registry."""
+    if dry_run:
+        imf.FORECASTS.update(fetched.get("_forecasts", {}))
+        return
+
+    # Lens id by indicator, for prior-data fallback lookups.
+    homes = {ind.id: (lens.id, ind) for lens in config.GLOBAL_LENSES
+             for ind in lens.indicators}
+    imf_inds = [ind for _, ind in homes.values() if ind.source == "imf"]
+
+    # IMF WEO — one batched request for every country x indicator.
+    try:
+        countries = sorted({ind.imf_key.split(".")[0] for ind in imf_inds})
+        indicators = sorted({ind.imf_key.split(".")[1] for ind in imf_inds})
+        series = imf.weo_series(countries, indicators)
+        for ind in imf_inds:
+            actuals, forecast = imf.split_actuals(series.get(ind.imf_key, []))
+            if not actuals:
+                raise ValueError(f"empty WEO series {ind.imf_key}")
+            fetched[ind.fetch_key] = actuals
+            if forecast:
+                imf.FORECASTS[ind.imf_key] = forecast
+    except Exception as exc:  # noqa: BLE001 - keep prior on failure
+        print(f"WARN: IMF WEO fetch failed ({exc}); keeping previous data", file=sys.stderr)
+        for ind in imf_inds:
+            fetched[ind.fetch_key] = _prior_obs(GLOBAL_OUT_DIR, homes[ind.id][0], ind.id)
+
+    # NY Fed GSCPI
+    try:
+        rows = nyfed.gscpi()
+        if not rows:
+            raise ValueError("empty GSCPI series")
+        fetched["GSCPI:lin"] = rows
+    except Exception as exc:  # noqa: BLE001 - keep prior on failure
+        print(f"WARN: GSCPI fetch failed ({exc}); keeping previous data", file=sys.stderr)
+        fetched["GSCPI:lin"] = _prior_obs(GLOBAL_OUT_DIR, "global-trade-supply", "gscpi")
+
+    # EPU — the two files are independent downloads, guarded individually.
+    for key, fetch, ind_id in (("USEPU:lin", epu.us_epu, "us-epu"),
+                               ("GEPU:lin", epu.global_epu, "gepu")):
+        try:
+            rows = fetch()
+            if not rows:
+                raise ValueError("empty EPU series")
+            fetched[key] = rows
+        except Exception as exc:  # noqa: BLE001 - keep prior on failure
+            print(f"WARN: EPU fetch failed for {key} ({exc}); keeping previous data",
+                  file=sys.stderr)
+            fetched[key] = _prior_obs(GLOBAL_OUT_DIR, "global-uncertainty", ind_id)
+
+
+def refresh_global(dry_run):
+    """Build + write the Global Economy lenses (FRED + IMF + NY Fed + EPU).
+    Returns an exit code (0 ok, non-zero error). The injected sources are
+    additive — a failure falls back to prior data and never aborts the run."""
+    if dry_run:
+        fetched = json.loads(GLOBAL_FIXTURE.read_text(encoding="utf-8"))
+        failed = set()
+    else:
+        api_key = os.environ.get("FRED_API_KEY")
+        if not api_key:
+            print("FRED_API_KEY not set", file=sys.stderr)
+            return 1
+        fetched, failed = fetch_all(config.GLOBAL_LENSES, api_key)
+
+    _inject_global(fetched, dry_run)
+
+    ready = [lens for lens in config.GLOBAL_LENSES if lens_ready(lens, failed)]
+    for lens in config.GLOBAL_LENSES:
+        if lens not in ready:
+            print(f"SKIP: {lens.id} (a source series failed; keeping previous data)", file=sys.stderr)
+    if not ready:
+        print("No global lenses could be built", file=sys.stderr)
+        return 2
+
+    written = build.write_outputs([build.build_lens(lens, fetched) for lens in ready],
+                                  GLOBAL_OUT_DIR)
+    for path in written:
+        print(f"Wrote {path}")
+    if not written:
+        print("No changes — all global data up to date.")
+    return 0
+
+
 def _load_brief_indices(dry_run):
     """Return {category: index_json}. Dry-run reads one fixture file; live reads
     each category's index.json from its out-dir, skipping any not yet present."""
@@ -487,19 +586,23 @@ def main(argv=None):
     parser.add_argument("--energy", action="store_true", help="refresh only the energy lenses")
     parser.add_argument("--housing", action="store_true", help="refresh only the housing lenses")
     parser.add_argument("--consumer", action="store_true", help="refresh only the consumer (FRED) lenses")
+    # `global` is a Python keyword, so argparse needs an explicit dest.
+    parser.add_argument("--global", dest="global_econ", action="store_true",
+                        help="refresh only the Global Economy lenses")
     parser.add_argument("--brief", action="store_true", help="rebuild only Today's Brief from existing indices")
     args = parser.parse_args(argv)
 
     # No source flag = refresh everything (handy for manual/local runs); each
     # flag scopes the run so a workflow can give each source its own cadence.
     any_flag = (args.economic or args.banking or args.markets or args.energy
-                or args.housing or args.consumer or args.brief)
+                or args.housing or args.consumer or args.global_econ or args.brief)
     do_economic = args.economic or not any_flag
     do_banking = args.banking or not any_flag
     do_markets = args.markets or not any_flag
     do_energy = args.energy or not any_flag
     do_housing = args.housing or not any_flag
     do_consumer = args.consumer or not any_flag
+    do_global = args.global_econ or not any_flag
     do_brief = args.brief or not any_flag
 
     code = 0
@@ -523,6 +626,10 @@ def main(argv=None):
         cc = refresh_consumer(args.dry_run)
         if cc:
             code = cc
+    if do_global:
+        gc = refresh_global(args.dry_run)
+        if gc:
+            code = gc
     if do_banking:
         refresh_banking(args.dry_run)
     if do_brief:
