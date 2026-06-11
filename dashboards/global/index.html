@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Global Economy — Bailey Analytics</title>
+  <meta name="description" content="The world economy in plain English — the dollar and major currencies, global growth, trade and supply chains, and policy uncertainty. Built from FRED, IMF, NY Fed, and policyuncertainty.com data.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Bailey Analytics">
+  <meta property="og:title" content="Global Economy — Bailey Analytics">
+  <meta property="og:description" content="The world economy in plain English — the dollar and major currencies, global growth, trade and supply chains, and policy uncertainty. Built from FRED, IMF, NY Fed, and policyuncertainty.com data.">
+  <meta property="og:url" content="https://baileyanalytics.com/dashboards/global/">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="/dashboards/lens.css">
+</head>
+<body>
+  <nav class="wordmark"><a href="/">Bailey Analytics</a></nav>
+  <nav class="top-nav"><a href="/dashboards/">Dashboards</a><a href="/about.html">About</a></nav>
+
+  <main>
+    <a class="back" href="/dashboards/">&larr; Dashboards</a>
+    <h1>Global Economy</h1>
+    <p class="lede">The world beyond U.S. borders — where the dollar is pushing global conditions, how fast the world economy is growing, whether trade and supply chains are flowing, and how much policy itself is the risk. <strong>Open any lens</strong> for interactive charts and the context behind each number.</p>
+    <div class="hub-grid" id="hub-grid"><div class="status-msg">Loading&hellip;</div></div>
+    <div class="foot">
+      Data: <a href="https://fred.stlouisfed.org/" target="_blank" rel="noopener">FRED</a> (St. Louis Fed), the <a href="https://www.imf.org/en/Publications/WEO" target="_blank" rel="noopener">IMF World Economic Outlook</a>, the <a href="https://www.newyorkfed.org/research/policy/gscpi" target="_blank" rel="noopener">New York Fed</a>, and <a href="https://www.policyuncertainty.com/" target="_blank" rel="noopener">policyuncertainty.com</a>. Public data, refreshed daily.
+    </div>
+  </main>
+
+  <script defer src="/dashboards/hub.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", () => {
+    loadHubGrid("hub-grid", "/data/global/index.json",
+      id => {
+        const SLUGS = { "global-dollar-currencies": "dollar-currencies", "global-growth": "growth",
+                        "global-trade-supply": "trade-supply", "global-uncertainty": "uncertainty" };
+        return `/dashboards/global/${encodeURIComponent(SLUGS[id] || id)}.html`;
+      });
+  });</script>
+</body>
+</html>

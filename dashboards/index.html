@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboards — Bailey Analytics</title>
-  <meta name="description" content="Plain-English dashboards built from public data — the U.S. economy, the consumer, banking system health, markets, energy and commodities, and housing. Refreshed daily from FRED, FDIC, EIA, and CoinGecko.">
+  <meta name="description" content="Plain-English dashboards built from public data — the U.S. economy, the consumer, banking system health, markets, energy and commodities, housing, and the global economy. Refreshed daily from FRED, FDIC, EIA, IMF, and more.">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Bailey Analytics">
   <meta property="og:title" content="Dashboards — Bailey Analytics">
-  <meta property="og:description" content="Plain-English dashboards built from public data — the U.S. economy, the consumer, banking system health, markets, energy and commodities, and housing. Refreshed daily from FRED, FDIC, EIA, and CoinGecko.">
+  <meta property="og:description" content="Plain-English dashboards built from public data — the U.S. economy, the consumer, banking system health, markets, energy and commodities, housing, and the global economy. Refreshed daily from FRED, FDIC, EIA, IMF, and more.">
   <meta property="og:url" content="https://baileyanalytics.com/dashboards/">
   <meta name="twitter:card" content="summary">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -54,8 +54,12 @@
     <p class="cat-sub">The housing market — home prices and sales, affordability, construction and inventory, and rents. Refreshed daily from FRED. <a href="/dashboards/housing/" style="color:var(--blue);text-decoration:none">Overview &rarr;</a></p>
     <div class="hub-grid" id="housing-grid"><div class="status-msg">Loading&hellip;</div></div>
 
+    <h2 class="cat-head"><span class="dot" style="background:#38BDF8"></span>Global Economy</h2>
+    <p class="cat-sub">The world beyond U.S. borders — the dollar and major currencies, global growth, trade and supply chains, and policy uncertainty. Refreshed daily from FRED, the IMF, the NY Fed, and policyuncertainty.com. <a href="/dashboards/global/" style="color:var(--blue);text-decoration:none">Overview &rarr;</a></p>
+    <div class="hub-grid" id="global-grid"><div class="status-msg">Loading&hellip;</div></div>
+
     <div class="foot">
-      Data: <a href="https://fred.stlouisfed.org/" target="_blank" rel="noopener">FRED</a> (St. Louis Fed), the <a href="https://banks.data.fdic.gov/" target="_blank" rel="noopener">FDIC</a>, the <a href="https://www.eia.gov/opendata/" target="_blank" rel="noopener">U.S. EIA</a>, and <a href="https://www.coingecko.com/" target="_blank" rel="noopener">CoinGecko</a>. Public data, refreshed regularly.
+      Data: <a href="https://fred.stlouisfed.org/" target="_blank" rel="noopener">FRED</a> (St. Louis Fed), the <a href="https://banks.data.fdic.gov/" target="_blank" rel="noopener">FDIC</a>, the <a href="https://www.eia.gov/opendata/" target="_blank" rel="noopener">U.S. EIA</a>, the <a href="https://www.imf.org/en/Publications/WEO" target="_blank" rel="noopener">IMF</a>, the <a href="https://www.newyorkfed.org/research/policy/gscpi" target="_blank" rel="noopener">NY Fed</a>, <a href="https://www.policyuncertainty.com/" target="_blank" rel="noopener">policyuncertainty.com</a>, and <a href="https://www.coingecko.com/" target="_blank" rel="noopener">CoinGecko</a>. Public data, refreshed regularly.
     </div>
   </main>
 
@@ -98,6 +102,14 @@
     };
     loadHubGrid("housing-grid", "/data/housing/index.json",
                 id => `/dashboards/housing/${encodeURIComponent(HOUSING_SLUGS[id] || id)}.html`);
+    const GLOBAL_SLUGS = {
+      "global-dollar-currencies": "dollar-currencies",
+      "global-growth": "growth",
+      "global-trade-supply": "trade-supply",
+      "global-uncertainty": "uncertainty"
+    };
+    loadHubGrid("global-grid", "/data/global/index.json",
+                id => `/dashboards/global/${encodeURIComponent(GLOBAL_SLUGS[id] || id)}.html`);
   });</script>
 </body>
 </html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Global Growth — Bailey Analytics</title>
+  <meta name="description" content="Is the world economy growing or stalling? World, China, and euro-area GDP growth and world inflation from the IMF World Economic Outlook, in plain English.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Bailey Analytics">
+  <meta property="og:title" content="Global Growth — Bailey Analytics">
+  <meta property="og:description" content="Is the world economy growing or stalling? World, China, and euro-area GDP growth and world inflation from the IMF World Economic Outlook, in plain English.">
+  <meta property="og:url" content="https://baileyanalytics.com/dashboards/global/growth.html">
+  <meta name="twitter:card" content="summary">
+  <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="/dashboards/lens.css">
+</head>
+<body>
+  <nav class="wordmark"><a href="/">Bailey Analytics</a></nav>
+  <nav class="top-nav"><a href="/dashboards/">Dashboards</a><a href="/about.html">About</a></nav>
+  <main id="lens-root"><div class="status-msg">Loading&hellip;</div></main>
+  <script defer src="/dashboards/lens.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", () => {
+    renderLens("/data/global/global-growth.json", {
+      back: "Global Economy",
+      href: "/dashboards/global/",
+      defaultRange: "Max",
+      foot: 'Data: the <a href="https://www.imf.org/en/Publications/WEO" target="_blank" rel="noopener">IMF World Economic Outlook</a> (annual; charts show actual and current-year figures only — next-year projections appear in the read) and <a href="https://fred.stlouisfed.org/" target="_blank" rel="noopener">FRED</a>, St. Louis Fed. The "read" is generated from the latest values by a fixed rule set.'
+    });
+  });</script>
+</body>
+</html>

@@ -9,6 +9,7 @@
   }
   function fmtMonth(s) {
     const [y, m] = s.split("-");
+    if (!m) return y; // annual series ("2026") label the year alone
     return `${MONTHS[+m - 1]} ${y}`;
   }
   // Monthly/quarterly series date every point on the 1st; showing "May 1, 2026"
@@ -23,11 +24,13 @@
   function fmtVal(value, unit, fmt) {
     const f = parseFloat(value);
     if (isNaN(f)) return "—";
-    const num = (fmt === "thousands") ? Math.round(f).toLocaleString("en-US") : f.toFixed(2);
-    if (!unit) return num;
-    if (unit[0] === "$") return "$" + num + unit.slice(1); // "$" / "$T" / "$B"
+    const sign = f < 0 ? "-" : "";
+    const a = Math.abs(f);
+    const num = (fmt === "thousands") ? Math.round(a).toLocaleString("en-US") : a.toFixed(2);
+    if (!unit) return sign + num;
+    if (unit[0] === "$") return sign + "$" + num + unit.slice(1); // "$" / "$T" / "-$55.90B"
     // word units ("months", "Bcf") read better with a space; symbols ("%", "M", "k") stay tight
-    return (unit.length > 1 && /^[a-z]/i.test(unit)) ? num + " " + unit : num + unit;
+    return sign + ((unit.length > 1 && /^[a-z]/i.test(unit)) ? num + " " + unit : num + unit);
   }
   function esc(s) {
     const d = document.createElement("div"); d.textContent = s; return d.innerHTML;
@@ -89,7 +92,8 @@
         scales: {
           x: { type: "category", ticks: { maxTicksLimit: 7, color: "#64748B", font: { size: 11 },
                  callback(v) { const s = this.getLabelForValue(v); if (!s) return s;
-                   return (years && years <= 1) ? MONTHS[+s.slice(5, 7) - 1] : s.slice(0, 4); } },
+                   // annual labels ("2026") have no month part — always show the year
+                   return (years && years <= 1 && s.length >= 7) ? MONTHS[+s.slice(5, 7) - 1] : s.slice(0, 4); } },
                grid: { display: false }, border: { color: "#1E293B" } },
           y: { ticks: { color: "#64748B", font: { size: 11 }, callback: v => fmtVal(v, indicator.unit, indicator.value_format) },
                grid: { color: "#1E293B" }, border: { display: false } },

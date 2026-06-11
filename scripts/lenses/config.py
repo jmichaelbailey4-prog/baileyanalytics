@@ -3,7 +3,7 @@
 from dataclasses import dataclass, field
 from typing import Callable, Optional
 
-from . import derive, narrative
+from . import derive, imf, narrative
 
 # Helper series fetched but not displayed directly.
 USREC_KEY = "USREC:lin"
@@ -29,6 +29,7 @@ class Indicator:
     eia_facets: tuple = ()          # ((key, value), ...) -> facets[key][]=value
     eia_freq: str = ""              # "daily" | "weekly" | "monthly"
     eia_col: str = "value"          # data column to request/read
+    imf_key: str = ""               # IMF WEO "COUNTRY.INDICATOR" (source == "imf" only)
 
     @property
     def fetch_key(self):
@@ -691,12 +692,6 @@ MARKET_SCOREBOARD = Lens(
                      "flee to in times of stress. Sourced from Yahoo Finance (COMEX futures)."),
         ),
         Indicator(
-            id="dollar", title="U.S. Dollar · Broad Index", short="Dollar", unit="", color="#38BDF8",
-            series_id="DTWEXBGS", limit=2600, rule=narrative.market_level("The dollar index", up=3, down=-3),
-            context=("The trade-weighted value of the U.S. dollar against a broad basket of "
-                     "currencies — a strong dollar makes imports cheaper and U.S. exports pricier."),
-        ),
-        Indicator(
             id="btc", title="Bitcoin", short="Bitcoin", unit="$", color="#A78BFA",
             series_id="CBBTCUSD", limit=2600, rule=narrative.market_level("Bitcoin", up=25, down=-25),
             value_format="thousands",
@@ -1210,4 +1205,186 @@ CATEGORIES.append(
     {"id": "housing", "title": "Housing & Real Estate", "lenses": HOUSING_LENSES,
      "out": "housing", "back": "Housing & Real Estate",
      "source_label": "Federal Reserve Economic Data (FRED), St. Louis Fed", "disclaimer": ""}
+)
+
+
+# --- Global Economy (FRED + IMF WEO + NY Fed + policyuncertainty.com) ---
+# Every other category is US-domestic; this one covers the world: the dollar,
+# global growth, trade & supply chains, and policy uncertainty. The dollar
+# index (DTWEXBGS) moved here from the Markets scoreboard — one home per number.
+
+GLOBAL_DOLLAR_CURRENCIES = Lens(
+    id="global-dollar-currencies", title="The Dollar & Currencies", accent="#38BDF8",
+    indicators=[
+        Indicator(
+            id="dollar-yoy", title="Broad Dollar Index · year-over-year",
+            short="Dollar YoY", unit="%", color="#38BDF8",
+            series_id="DTWEXBGS", units_transform="pc1", limit=2600,
+            rule=narrative.rule_dollar_yoy,
+            context=("How fast the trade-weighted dollar is rising or falling versus a "
+                     "year ago. Big moves in either direction are destabilizing: a "
+                     "surging dollar squeezes the world's dollar borrowers and crushes "
+                     "emerging markets; a sliding one imports inflation."),
+        ),
+        Indicator(
+            id="euro", title="Euro · dollars per euro", short="Euro", unit="$",
+            color="#34D399", series_id="DEXUSEU", limit=2600,
+            rule=narrative.fx_yoy("The euro"),
+            context=("How many dollars one euro buys. The world's second currency — "
+                     "a rising number means a stronger euro (and a weaker dollar) — "
+                     "and the cleanest mirror on dollar strength."),
+        ),
+        Indicator(
+            id="yen", title="Japanese Yen · yen per dollar", short="Yen", unit="",
+            color="#FB7185", series_id="DEXJPUS", limit=2600,
+            rule=narrative.fx_yoy("The yen", weaker_when_up=True),
+            context=("How many yen one dollar buys — a rising number means a WEAKER "
+                     "yen. Japan's currency anchors Asia's funding markets; a violent "
+                     "yen move tends to ripple through global markets."),
+        ),
+        Indicator(
+            id="yuan", title="Chinese Yuan · yuan per dollar", short="Yuan", unit="",
+            color="#FBBF24", series_id="DEXCHUS", limit=2600,
+            rule=narrative.fx_yoy("The yuan", weaker_when_up=True),
+            context=("How many yuan one dollar buys — a rising number means a WEAKER "
+                     "yuan. Beijing manages this rate; a deliberate slide makes Chinese "
+                     "exports cheaper and tends to escalate trade tensions."),
+        ),
+    ],
+)
+
+GLOBAL_GROWTH = Lens(
+    id="global-growth", title="Global Growth", accent="#34D399",
+    indicators=[
+        Indicator(
+            id="world-growth", title="World Real GDP Growth · annual",
+            short="World growth", unit="%", color="#34D399",
+            series_id="WEO_G001_NGDP_RPCH", limit=60,
+            source="imf", imf_key="G001.NGDP_RPCH",
+            rule=narrative.world_growth(imf.forecast_for("G001.NGDP_RPCH")),
+            context=("The IMF's measure of how fast the whole world economy is growing "
+                     "each year. The long-run trend is about 3.5%; below 2% is what "
+                     "economists call a global recession — it has happened only a "
+                     "handful of times since 1980."),
+        ),
+        Indicator(
+            id="china-growth", title="China Real GDP Growth · annual",
+            short="China", unit="%", color="#F87171",
+            series_id="WEO_CHN_NGDP_RPCH", limit=60,
+            source="imf", imf_key="CHN.NGDP_RPCH",
+            rule=narrative.annual_growth("China's economy"),
+            context=("China's annual growth rate (IMF WEO). The world's second-largest "
+                     "economy and its biggest growth engine — China's slowdown from "
+                     "double digits to under 5% reshapes demand for everything."),
+        ),
+        Indicator(
+            id="euro-growth", title="Euro Area Real GDP Growth · annual",
+            short="Euro area", unit="%", color="#38BDF8",
+            series_id="WEO_G163_NGDP_RPCH", limit=60,
+            source="imf", imf_key="G163.NGDP_RPCH",
+            rule=narrative.annual_growth("The euro area's economy"),
+            context=("The euro area's annual growth rate (IMF WEO) — the world's "
+                     "third-largest economic bloc, and the one most exposed to energy "
+                     "shocks and trade disruption."),
+        ),
+        Indicator(
+            id="world-inflation", title="World Inflation · annual",
+            short="World inflation", unit="%", color="#FBBF24",
+            series_id="WEO_G001_PCPIPCH", limit=60,
+            source="imf", imf_key="G001.PCPIPCH",
+            rule=narrative.rule_world_inflation,
+            context=("World consumer-price inflation (IMF WEO) — the global backdrop "
+                     "behind every central bank's rate decisions. The pre-pandemic "
+                     "norm was about 3-4%."),
+        ),
+        Indicator(
+            id="ea-gdp-quarterly", title="Euro Area Real GDP · year-over-year",
+            short="EA quarterly", unit="%", color="#A78BFA",
+            series_id="CLVMEURSCAB1GQEA19", units_transform="pc1", limit=120,
+            rule=narrative.yoy_info("Euro-area real GDP"),
+            context=("The euro area's quarterly GDP versus a year earlier — the only "
+                     "quarterly pulse in this lens, so it updates between the IMF's "
+                     "April and October forecast rounds."),
+        ),
+    ],
+)
+
+GLOBAL_TRADE_SUPPLY = Lens(
+    id="global-trade-supply", title="Trade & Supply Chain", accent="#FBBF24",
+    indicators=[
+        Indicator(
+            id="gscpi", title="Global Supply Chain Pressure Index",
+            short="Supply chain", unit="σ", color="#FBBF24",
+            series_id="GSCPI", limit=400, source="nyfed",
+            rule=narrative.rule_gscpi,
+            context=("The NY Fed's gauge of global supply-chain strain — shipping "
+                     "costs, delivery times, and backlogs rolled into one index, "
+                     "measured in standard deviations from normal. The COVID logjam "
+                     "peaked near 4.5σ; negative means looser than normal."),
+        ),
+        Indicator(
+            id="trade-balance", title="U.S. Trade Deficit · goods & services",
+            short="Trade deficit", unit="$B", color="#38BDF8",
+            series_id="BOPGSTB", limit=300,
+            derive=derive.scaled(-1000, 1),  # balance is negative; show deficit size
+            rule=narrative.rule_trade_deficit,
+            context=("How much more the U.S. imports than it exports, in billions per "
+                     "month. The U.S. has run a deficit every year since 1976 — what "
+                     "matters is whether it is widening or narrowing, and why."),
+        ),
+        Indicator(
+            id="import-prices", title="Import Prices · year-over-year",
+            short="Import prices", unit="%", color="#FB923C",
+            series_id="IR", units_transform="pc1", limit=300,
+            rule=narrative.yoy_band("Import", 4, 8, 12),
+            context=("How fast the prices of everything the U.S. imports are rising "
+                     "versus a year ago. Tariffs, a weaker dollar, and supply shocks "
+                     "all show up here first — before they reach store shelves."),
+        ),
+        Indicator(
+            id="china-exports", title="China Exports · year-over-year",
+            short="China exports", unit="%", color="#F87171",
+            series_id="XTEXVA01CNM667S", units_transform="pc1", limit=300,
+            rule=narrative.yoy_info("China's export trade"),
+            context=("The growth of China's exports versus a year ago — the single "
+                     "best pulse on global goods demand, since China ships roughly "
+                     "a seventh of the world's exports."),
+        ),
+    ],
+)
+
+GLOBAL_UNCERTAINTY = Lens(
+    id="global-uncertainty", title="Uncertainty & Risk", accent="#A78BFA",
+    indicators=[
+        Indicator(
+            id="us-epu", title="U.S. Economic Policy Uncertainty",
+            short="US uncertainty", unit="", color="#A78BFA",
+            series_id="USEPU", limit=1600, source="epu", value_format="thousands",
+            rule=narrative.epu_band("U.S. policy uncertainty"),
+            context=("The Baker/Bloom/Davis index of U.S. economic policy uncertainty, "
+                     "built by counting newspaper coverage of policy-driven economic "
+                     "uncertainty. The long-run norm is about 100; it spikes around "
+                     "elections, debt-ceiling standoffs, trade wars, and crises."),
+        ),
+        Indicator(
+            id="gepu", title="Global Economic Policy Uncertainty",
+            short="Global uncertainty", unit="", color="#38BDF8",
+            series_id="GEPU", limit=400, source="epu", value_format="thousands",
+            rule=narrative.epu_band("Global policy uncertainty", cap="watch"),
+            context=("The same newspaper-based uncertainty measure aggregated across "
+                     "21 countries (GDP-weighted). Note: it publishes with a lag of "
+                     "about six months, so it reads as a sanity check on the timelier "
+                     "U.S. index above, not a live signal."),
+        ),
+    ],
+)
+
+GLOBAL_LENSES = [GLOBAL_DOLLAR_CURRENCIES, GLOBAL_GROWTH,
+                 GLOBAL_TRADE_SUPPLY, GLOBAL_UNCERTAINTY]
+
+CATEGORIES.append(
+    {"id": "global", "title": "Global Economy", "lenses": GLOBAL_LENSES,
+     "out": "global", "back": "Global Economy",
+     "source_label": "FRED, IMF World Economic Outlook, NY Fed, and policyuncertainty.com",
+     "disclaimer": ""}
 )

@@ -57,6 +57,12 @@ _HOUSING_SLUGS = {
     "housing-supply-construction": "supply-construction",
     "housing-rent-shelter": "rent-shelter",
 }
+_GLOBAL_SLUGS = {
+    "global-dollar-currencies": "dollar-currencies",
+    "global-growth": "growth",
+    "global-trade-supply": "trade-supply",
+    "global-uncertainty": "uncertainty",
+}
 
 
 def lens_href(category, lens_id):
@@ -73,11 +79,15 @@ def lens_href(category, lens_id):
         return f"/dashboards/consumer/{_CONSUMER_SLUGS.get(lens_id, lens_id)}.html"
     if category == "housing":
         return f"/dashboards/housing/{_HOUSING_SLUGS.get(lens_id, lens_id)}.html"
+    if category == "global":
+        return f"/dashboards/global/{_GLOBAL_SLUGS.get(lens_id, lens_id)}.html"
     return "/dashboards/"
 
 
-# Category order for the brief (drives tie-break ordering only).
-CATEGORIES = ["economic", "consumer", "banking", "markets", "energy", "housing"]
+# The categories the brief covers, in tie-break order. _flatten_lenses reads
+# ONLY this list — a category id missing here is silently excluded from the
+# brief entirely, so every shipped category must appear.
+CATEGORIES = ["economic", "consumer", "banking", "markets", "energy", "housing", "global"]
 
 
 def _flatten_lenses(category_indices):
