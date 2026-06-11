@@ -15,7 +15,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))  # make `lenses` importable
 from datetime import date
 
-from lenses import brief, build, coingecko, config, eia, epu, fdic, fred, imf, nyfed, util, yahoo
+from lenses import brief, build, coingecko, config, eia, epu, fdic, feed, fred, imf, nyfed, util, yahoo
 
 OUT_DIR = Path(__file__).resolve().parent.parent / "data" / "lenses"
 BANK_OUT_DIR = Path(__file__).resolve().parent.parent / "data" / "banking"
@@ -37,6 +37,9 @@ CRYPTO_HISTORY = MARKETS_OUT_DIR / "_crypto_history.json"
 CRYPTO_FIXTURE = Path(__file__).resolve().parent / "tests" / "fixtures" / "coingecko_sample.json"
 BRIEF_OUT_DIR = Path(__file__).resolve().parent.parent / "data" / "brief"
 BRIEF_FIXTURE = Path(__file__).resolve().parent / "tests" / "fixtures" / "brief_indices_sample.json"
+# Repo root, so GitHub Pages serves it at /feed.xml (the workflow commit step
+# must include this path alongside data/).
+FEED_PATH = Path(__file__).resolve().parent.parent / "feed.xml"
 
 # category -> the module-global out-dir whose index.json feeds the brief.
 # 'economic' lives in data/lenses/ (not data/economic/).
@@ -641,6 +644,18 @@ def refresh_brief(dry_run):
         build.write_lens_file(BRIEF_OUT_DIR / "_prior_state.json", new_state)
         print(f"Wrote {BRIEF_OUT_DIR / 'today.json'}" if wrote
               else "No brief changes — Today's Brief is up to date.")
+        # RSS: one item per day, rolling 30 days, regenerated only when the
+        # brief changed (keeps the quiet-day "no data change -> no commit" path).
+        if wrote:
+            items_path = BRIEF_OUT_DIR / "_feed_items.json"
+            try:
+                existing = json.loads(items_path.read_text(encoding="utf-8"))
+            except (ValueError, OSError):
+                existing = []
+            items = feed.merge_items(existing, feed.build_item(today))
+            items_path.write_text(json.dumps(items, indent=2) + "\n", encoding="utf-8")
+            FEED_PATH.write_text(feed.render_feed(items) + "\n", encoding="utf-8")
+            print(f"Wrote {FEED_PATH}")
     except Exception as exc:  # noqa: BLE001 - never break the run on a brief failure
         print(f"WARN: brief build failed ({exc}); keeping previous brief", file=sys.stderr)
 
