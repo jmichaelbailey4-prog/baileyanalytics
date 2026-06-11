@@ -127,3 +127,19 @@ p.lede strong{color:var(--text);font-weight:600}
   .brief-trans{gap:.4rem}
   .brief-trans-read{flex-basis:100%}
 }
+
+/* --- The State of Things (panel, page cards, steady chips) --- */
+.state-panel{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:1rem 1.15rem;margin-bottom:1.5rem}
+.state-verdict{display:flex;align-items:baseline;gap:.7rem;flex-wrap:wrap}
+.state-sentence{font-size:1.02rem;font-weight:600;line-height:1.45}
+.state-link{color:var(--blue);text-decoration:none;font-size:.85rem;white-space:nowrap}
+.state-link:hover{text-decoration:underline}
+.state-card{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:1rem 1.15rem;margin-bottom:.85rem}
+.state-cat{display:flex;align-items:center;gap:.6rem;font-weight:600;font-size:1.05rem;color:var(--text);text-decoration:none;margin-bottom:.55rem}
+.state-cat:hover{color:var(--blue)}
+.state-lens{display:flex;align-items:baseline;gap:.6rem;flex-wrap:wrap;padding:.35rem 0;color:var(--text);text-decoration:none}
+.state-lens:hover .state-lens-read{text-decoration:underline}
+.state-lens-title{color:var(--muted);font-size:.85rem;flex:none}
+.state-lens-read{font-size:.95rem}
+.state-steady{display:inline-flex;align-items:center;gap:.5rem;background:var(--panel);border:1px solid var(--border);border-radius:999px;padding:.4rem .9rem;margin:0 .5rem .5rem 0;color:var(--text);text-decoration:none;font-size:.9rem}
+.state-steady:hover{border-color:var(--blue)}
