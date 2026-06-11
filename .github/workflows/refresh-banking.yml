@@ -32,6 +32,10 @@ jobs:
         if: ${{ success() || failure() }}
         run: python scripts/refresh_lenses.py --brief
 
+      - name: Rebuild The State of Things (no network)
+        if: ${{ success() || failure() }}
+        run: python scripts/refresh_lenses.py --state
+
       - name: Commit and push if data changed
         run: |
           git config user.name "github-actions[bot]"
