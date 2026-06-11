@@ -117,9 +117,12 @@ FRED/EIA (published thinning costs nothing — training never reads baked
 JSON), apply the indicator's `derive`, then **rolling-origin backtesting**:
 stand at many past dates, fit each model only on data strictly before the
 origin, predict one step, compare to the actual. Champion = lowest backtest
-MAE, **but it ships only if it beats seasonal-naive; otherwise the baseline
-itself ships** — every rostered indicator always has a publishable
-prediction. The 80% band is the empirical 10th–90th percentile of the
+MAE, **but a non-baseline champion must beat seasonal-naive by a 5% skill
+margin (`MIN_SKILL`); otherwise the baseline itself ships** — a ~2% backtest
+edge on a random walk is sampling luck (measured during implementation), and
+every rostered indicator always has a publishable prediction. SARIMA's
+seasonal component is capped at s ≤ 12 (a 52-week seasonal state space makes
+fits take tens of seconds; weekly FRED series are seasonally adjusted anyway). The 80% band is the empirical 10th–90th percentile of the
 champion's backtest errors, centered on the point — bands history earned, not
 parametric formulas.
 
@@ -209,8 +212,10 @@ that made them, so the record can show accuracy by era honestly.
   English ("would keep this Elevated"), the `why` sentence, and **"Last call
   ✓/✗ — we said X, actual was Y"** (the most recent grade rides with the new
   open prediction for one full cycle — that is the aging visual), linking to
-  the track record. No changes inside `lens.js`; missing script or JSON →
-  pages render exactly as today.
+  the track record. Two additive lines in `lens.js` (a `data-indicator`
+  attribute on each card and a `lens:rendered` event) are the hook;
+  everything else lives in `predict.js`. Missing script or JSON → pages
+  render exactly as today.
 - **Track Record page — `dashboards/track-record.html` + `track-record.js`**
   (reads `track-record.json` + `recent.json`): (1) headline calibration stat
   with explainer — "we aim for ~80%, not 100% — a forecaster who's never
