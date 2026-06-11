@@ -2,7 +2,7 @@
   "id": "crypto-structure",
   "title": "Crypto Market Structure",
   "accent": "#818CF8",
-  "last_updated": "2026-06-11T01:45:04Z",
+  "last_updated": "2026-06-11T17:58:55Z",
   "status": "neutral",
   "headline_read": "How capital is rotating across the crypto market.",
   "recessions": [],
@@ -29,11 +29,15 @@
         {
           "date": "2026-06-10",
           "value": 56.21040128343532
+        },
+        {
+          "date": "2026-06-11",
+          "value": 56.302704587543914
         }
       ],
       "latest": {
-        "date": "2026-06-10",
-        "value": 56.21040128343532
+        "date": "2026-06-11",
+        "value": 56.302704587543914
       },
       "context": "Bitcoin's share of total cryptocurrency market value. A rising share signals caution; a falling share signals risk appetite. History accumulates daily.",
       "read": "Bitcoin is 56% of total crypto market value.",
@@ -1521,12 +1525,12 @@
         },
         {
           "date": "2026-06-11",
-          "value": 113.6
+          "value": 113.68
         }
       ],
       "latest": {
         "date": "2026-06-11",
-        "value": 113.6
+        "value": 113.68
       },
       "context": "Small- and mid-cap coins' market value relative to Bitcoin and Ether, indexed to 100 at the start of the window. Rising means alts are outperforming (risk-on); falling means a flight to the majors.",
       "read": "Small- and mid-cap coins are outperforming Bitcoin and Ether \u2014 a risk-on rotation into alts.",
@@ -1545,88 +1549,88 @@
           "value": 33.79
         },
         {
-          "date": "2019-05-06",
-          "value": 33.249
+          "date": "2019-05-01",
+          "value": 33.6143
         },
         {
-          "date": "2019-06-03",
-          "value": 32.5813
+          "date": "2019-06-01",
+          "value": 32.331
         },
         {
           "date": "2019-07-01",
           "value": 35.9839
         },
         {
-          "date": "2019-08-05",
-          "value": 50.6131
+          "date": "2019-08-01",
+          "value": 47.8601
         },
         {
-          "date": "2019-09-02",
-          "value": 58.132
+          "date": "2019-09-01",
+          "value": 56.9127
         },
         {
-          "date": "2019-10-07",
-          "value": 45.529
+          "date": "2019-10-01",
+          "value": 47.2251
         },
         {
-          "date": "2019-11-04",
-          "value": 50.5803
+          "date": "2019-11-01",
+          "value": 50.4931
         },
         {
-          "date": "2019-12-02",
-          "value": 49.0649
+          "date": "2019-12-01",
+          "value": 48.9718
         },
         {
-          "date": "2020-01-06",
-          "value": 53.8777
+          "date": "2020-01-01",
+          "value": 55.1659
         },
         {
-          "date": "2020-02-03",
-          "value": 49.0089
+          "date": "2020-02-01",
+          "value": 51.0902
         },
         {
-          "date": "2020-03-02",
-          "value": 38.4817
+          "date": "2020-03-01",
+          "value": 39.18
         },
         {
-          "date": "2020-04-06",
-          "value": 42.8049
+          "date": "2020-04-01",
+          "value": 48.8115
         },
         {
-          "date": "2020-05-04",
-          "value": 42.9509
+          "date": "2020-05-01",
+          "value": 41.695
         },
         {
           "date": "2020-06-01",
           "value": 41.0664
         },
         {
-          "date": "2020-07-06",
-          "value": 38.6421
+          "date": "2020-07-01",
+          "value": 39.9736
         },
         {
-          "date": "2020-08-03",
-          "value": 29.0562
+          "date": "2020-08-01",
+          "value": 30.4564
         },
         {
-          "date": "2020-09-07",
-          "value": 29.2977
+          "date": "2020-09-01",
+          "value": 25.0168
         },
         {
-          "date": "2020-10-05",
-          "value": 30.4157
+          "date": "2020-10-01",
+          "value": 30.1337
         },
         {
-          "date": "2020-11-02",
-          "value": 35.4207
+          "date": "2020-11-01",
+          "value": 34.6937
         },
         {
-          "date": "2020-12-07",
-          "value": 32.4966
+          "date": "2020-12-01",
+          "value": 32.0703
         },
         {
-          "date": "2021-01-04",
-          "value": 30.5974
+          "date": "2021-01-01",
+          "value": 40.2067
         },
         {
           "date": "2021-02-01",
@@ -1637,16 +1641,20 @@
           "value": 31.5673
         },
         {
-          "date": "2021-04-05",
-          "value": 28.0038
+          "date": "2021-04-01",
+          "value": 29.8653
         },
         {
-          "date": "2021-05-03",
-          "value": 16.6163
+          "date": "2021-05-01",
+          "value": 19.6216
         },
         {
-          "date": "2021-06-07",
-          "value": 12.9663
+          "date": "2021-06-01",
+          "value": 13.9112
+        },
+        {
+          "date": "2021-06-10",
+          "value": 14.8549
         },
         {
           "date": "2021-06-14",

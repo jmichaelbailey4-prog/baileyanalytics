@@ -2,9 +2,9 @@
   "id": "market-risk-sentiment",
   "title": "Risk Sentiment",
   "accent": "#FB7185",
-  "last_updated": "2026-06-10T16:58:37Z",
-  "status": "ok",
-  "headline_read": "Markets are calm \u2014 volatility and credit stress are low.",
+  "last_updated": "2026-06-11T17:58:28Z",
+  "status": "watch",
+  "headline_read": "A few cracks are showing \u2014 sentiment is no longer all calm.",
   "recessions": [
     {
       "start": "2008-01-01",
@@ -25,44 +25,44 @@
       "series_id": "VIXCLS",
       "observations": [
         {
-          "date": "2016-06-22",
-          "value": "21.17"
+          "date": "2016-06-23",
+          "value": "17.25"
         },
         {
-          "date": "2016-07-04",
-          "value": "."
+          "date": "2016-07-01",
+          "value": "14.77"
         },
         {
           "date": "2016-08-01",
           "value": "12.44"
         },
         {
-          "date": "2016-09-05",
-          "value": "."
+          "date": "2016-09-01",
+          "value": "13.48"
         },
         {
           "date": "2016-10-03",
           "value": "13.57"
         },
         {
-          "date": "2016-11-07",
-          "value": "18.71"
+          "date": "2016-11-01",
+          "value": "18.56"
         },
         {
-          "date": "2016-12-05",
-          "value": "12.14"
+          "date": "2016-12-01",
+          "value": "14.07"
         },
         {
           "date": "2017-01-02",
           "value": "."
         },
         {
-          "date": "2017-02-06",
-          "value": "11.37"
+          "date": "2017-02-01",
+          "value": "11.81"
         },
         {
-          "date": "2017-03-06",
-          "value": "11.24"
+          "date": "2017-03-01",
+          "value": "12.54"
         },
         {
           "date": "2017-04-03",
@@ -73,64 +73,64 @@
           "value": "10.11"
         },
         {
-          "date": "2017-06-05",
-          "value": "10.07"
+          "date": "2017-06-01",
+          "value": "9.89"
         },
         {
           "date": "2017-07-03",
           "value": "11.22"
         },
         {
-          "date": "2017-08-07",
-          "value": "9.93"
+          "date": "2017-08-01",
+          "value": "10.09"
         },
         {
-          "date": "2017-09-04",
-          "value": "."
+          "date": "2017-09-01",
+          "value": "10.13"
         },
         {
           "date": "2017-10-02",
           "value": "9.45"
         },
         {
-          "date": "2017-11-06",
-          "value": "9.4"
+          "date": "2017-11-01",
+          "value": "10.2"
         },
         {
-          "date": "2017-12-04",
-          "value": "11.68"
+          "date": "2017-12-01",
+          "value": "11.43"
         },
         {
           "date": "2018-01-01",
           "value": "."
         },
         {
-          "date": "2018-02-05",
-          "value": "37.32"
+          "date": "2018-02-01",
+          "value": "13.47"
         },
         {
-          "date": "2018-03-05",
-          "value": "18.73"
+          "date": "2018-03-01",
+          "value": "22.47"
         },
         {
           "date": "2018-04-02",
           "value": "23.62"
         },
         {
-          "date": "2018-05-07",
-          "value": "14.75"
+          "date": "2018-05-01",
+          "value": "15.49"
         },
         {
-          "date": "2018-06-04",
-          "value": "12.74"
+          "date": "2018-06-01",
+          "value": "13.46"
         },
         {
           "date": "2018-07-02",
           "value": "15.6"
         },
         {
-          "date": "2018-08-06",
-          "value": "11.27"
+          "date": "2018-08-01",
+          "value": "13.15"
         },
         {
           "date": "2018-09-03",
@@ -141,32 +141,32 @@
           "value": "12.0"
         },
         {
-          "date": "2018-11-05",
-          "value": "19.96"
+          "date": "2018-11-01",
+          "value": "19.34"
         },
         {
           "date": "2018-12-03",
           "value": "16.44"
         },
         {
-          "date": "2019-01-07",
-          "value": "21.4"
+          "date": "2019-01-01",
+          "value": "."
         },
         {
-          "date": "2019-02-04",
-          "value": "15.73"
+          "date": "2019-02-01",
+          "value": "16.14"
         },
         {
-          "date": "2019-03-04",
-          "value": "14.63"
+          "date": "2019-03-01",
+          "value": "13.57"
         },
         {
           "date": "2019-04-01",
           "value": "13.4"
         },
         {
-          "date": "2019-05-06",
-          "value": "15.44"
+          "date": "2019-05-01",
+          "value": "14.8"
         },
         {
           "date": "2019-06-03",
@@ -177,28 +177,28 @@
           "value": "14.06"
         },
         {
-          "date": "2019-08-05",
-          "value": "24.59"
+          "date": "2019-08-01",
+          "value": "17.87"
         },
         {
           "date": "2019-09-02",
           "value": "."
         },
         {
-          "date": "2019-10-07",
-          "value": "17.86"
+          "date": "2019-10-01",
+          "value": "18.56"
         },
         {
-          "date": "2019-11-04",
-          "value": "12.83"
+          "date": "2019-11-01",
+          "value": "12.3"
         },
         {
           "date": "2019-12-02",
           "value": "14.91"
         },
         {
-          "date": "2020-01-06",
-          "value": "13.85"
+          "date": "2020-01-01",
+          "value": "."
         },
         {
           "date": "2020-02-03",
@@ -209,44 +209,44 @@
           "value": "33.42"
         },
         {
-          "date": "2020-04-06",
-          "value": "45.24"
+          "date": "2020-04-01",
+          "value": "57.06"
         },
         {
-          "date": "2020-05-04",
-          "value": "35.97"
+          "date": "2020-05-01",
+          "value": "37.19"
         },
         {
           "date": "2020-06-01",
           "value": "28.23"
         },
         {
-          "date": "2020-07-06",
-          "value": "27.94"
+          "date": "2020-07-01",
+          "value": "28.62"
         },
         {
           "date": "2020-08-03",
           "value": "24.28"
         },
         {
-          "date": "2020-09-07",
-          "value": "."
+          "date": "2020-09-01",
+          "value": "26.12"
         },
         {
-          "date": "2020-10-05",
-          "value": "27.96"
+          "date": "2020-10-01",
+          "value": "26.7"
         },
         {
           "date": "2020-11-02",
           "value": "37.13"
         },
         {
-          "date": "2020-12-07",
-          "value": "21.3"
+          "date": "2020-12-01",
+          "value": "20.77"
         },
         {
-          "date": "2021-01-04",
-          "value": "26.97"
+          "date": "2021-01-01",
+          "value": "."
         },
         {
           "date": "2021-02-01",
@@ -257,16 +257,20 @@
           "value": "23.35"
         },
         {
-          "date": "2021-04-05",
-          "value": "17.91"
+          "date": "2021-04-01",
+          "value": "17.33"
         },
         {
           "date": "2021-05-03",
           "value": "18.31"
         },
         {
-          "date": "2021-06-07",
-          "value": "16.42"
+          "date": "2021-06-01",
+          "value": "17.9"
+        },
+        {
+          "date": "2021-06-10",
+          "value": "16.1"
         },
         {
           "date": "2021-06-14",
@@ -2979,15 +2983,19 @@
         {
           "date": "2026-06-09",
           "value": "19.87"
+        },
+        {
+          "date": "2026-06-10",
+          "value": "22.22"
         }
       ],
       "latest": {
-        "date": "2026-06-09",
-        "value": "19.87"
+        "date": "2026-06-10",
+        "value": "22.22"
       },
       "context": "The market's 'fear gauge' \u2014 the expected volatility of the S&P 500 over the coming month. It spikes when investors are scared and falls when calm.",
-      "read": "The VIX is at 19.9 \u2014 markets are calm.",
-      "signal_status": "ok",
+      "read": "The VIX is at 22.2 \u2014 some nervousness, but not panic.",
+      "signal_status": "watch",
       "value_format": "decimal"
     },
     {
@@ -5329,14 +5337,18 @@
         {
           "date": "2026-06-09",
           "value": "2.78"
+        },
+        {
+          "date": "2026-06-10",
+          "value": "2.80"
         }
       ],
       "latest": {
-        "date": "2026-06-09",
-        "value": "2.78"
+        "date": "2026-06-10",
+        "value": "2.80"
       },
       "context": "The extra yield investors demand to hold risky 'junk' corporate bonds over Treasuries. It widens when markets fear defaults \u2014 an early stress signal. Note: FRED serves only a rolling ~3-year window of this ICE BofA series, so its chart history is shorter than the other indicators here.",
-      "read": "The high-yield spread is 2.78% \u2014 tight, signaling calm credit conditions.",
+      "read": "The high-yield spread is 2.80% \u2014 tight, signaling calm credit conditions.",
       "signal_status": "ok",
       "value_format": "decimal"
     },
@@ -7679,10 +7691,14 @@
         {
           "date": "2026-06-09",
           "value": "0.75"
+        },
+        {
+          "date": "2026-06-10",
+          "value": "0.75"
         }
       ],
       "latest": {
-        "date": "2026-06-09",
+        "date": "2026-06-10",
         "value": "0.75"
       },
       "context": "The same risk premium for higher-quality corporate bonds. Because these borrowers are safer, widening here signals stress reaching the core of credit. Note: FRED serves only a rolling ~3-year window of this ICE BofA series, so its chart history is shorter than the other indicators here.",

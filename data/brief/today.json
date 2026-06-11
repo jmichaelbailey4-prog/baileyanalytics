@@ -1,6 +1,17 @@
 {
-  "generated_at": "2026-06-11T02:07:53Z",
-  "transitions": [],
+  "generated_at": "2026-06-11T17:59:16Z",
+  "transitions": [
+    {
+      "lens_id": "market-risk-sentiment",
+      "lens_title": "Risk Sentiment",
+      "category": "markets",
+      "href": "/dashboards/markets/risk-sentiment.html",
+      "from_status": "ok",
+      "to_status": "watch",
+      "direction": "worsening",
+      "headline": "A few cracks are showing \u2014 sentiment is no longer all calm."
+    }
+  ],
   "top_moves": [
     {
       "lens_id": "energy-commodities",
@@ -40,16 +51,6 @@
       "stat_label": "Saving rate",
       "stat_value": "2.60%",
       "delta": "0.60%",
-      "dir": "down"
-    },
-    {
-      "lens_id": "energy-oil-fuels",
-      "lens_title": "Oil & Fuels",
-      "category": "energy",
-      "href": "/dashboards/energy/oil-fuels.html",
-      "stat_label": "Gasoline",
-      "stat_value": "$4.15",
-      "delta": "$0.16",
       "dir": "down"
     }
   ],
@@ -178,7 +179,7 @@
       "lens_title": "Risk Sentiment",
       "category": "markets",
       "href": "/dashboards/markets/risk-sentiment.html",
-      "status": "ok"
+      "status": "watch"
     },
     {
       "lens_id": "market-scoreboard",
@@ -287,8 +288,8 @@
     }
   ],
   "status_counts": {
-    "ok": 17,
-    "watch": 3,
+    "ok": 16,
+    "watch": 4,
     "elevated": 8,
     "alert": 3,
     "neutral": 2
