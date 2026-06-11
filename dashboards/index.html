@@ -71,57 +71,15 @@
   <script defer src="/dashboards/brief.js"></script>
   <script>document.addEventListener("DOMContentLoaded", () => {
     loadBrief("brief-panel", { compact: false });
-    loadHubGrid("econ-grid", "/data/lenses/index.json", id => `/dashboards/${encodeURIComponent(id)}.html`, "econ-badge");
-    loadHubGrid("bank-grid", "/data/banking/index.json",
-                id => `/dashboards/banking/${encodeURIComponent(id.replace(/^bank-/, ""))}.html`, "bank-badge");
-    const BUSINESS_SLUGS = {
-      "business-profitability": "profitability",
-      "business-formation": "formation",
-      "business-investment": "investment",
-      "business-credit": "credit"
-    };
-    loadHubGrid("business-grid", "/data/business/index.json",
-                id => `/dashboards/business/${encodeURIComponent(BUSINESS_SLUGS[id] || id)}.html`, "business-badge");
-    const MARKET_SLUGS = {
-      "market-risk-sentiment": "risk-sentiment",
-      "market-scoreboard": "scoreboard",
-      "market-liquidity": "liquidity",
-      "crypto-structure": "crypto-structure"
-    };
-    loadHubGrid("markets-grid", "/data/markets/index.json",
-                id => `/dashboards/markets/${encodeURIComponent(MARKET_SLUGS[id] || id)}.html`, "markets-badge");
-    const ENERGY_SLUGS = {
-      "energy-oil-fuels": "oil-fuels",
-      "energy-natural-gas": "natural-gas",
-      "energy-electricity": "electricity",
-      "energy-commodities": "commodities"
-    };
-    loadHubGrid("energy-grid", "/data/energy/index.json",
-                id => `/dashboards/energy/${encodeURIComponent(ENERGY_SLUGS[id] || id)}.html`, "energy-badge");
-    const CONSUMER_SLUGS = {
-      "consumer-spending": "spending",
-      "consumer-credit": "credit-stress",
-      "consumer-income-savings": "income-savings",
-      "consumer-sentiment": "sentiment"
-    };
-    loadHubGrid("consumer-grid", "/data/consumer/index.json",
-                id => `/dashboards/consumer/${encodeURIComponent(CONSUMER_SLUGS[id] || id)}.html`, "consumer-badge");
-    const HOUSING_SLUGS = {
-      "housing-home-prices": "home-prices",
-      "housing-affordability": "affordability",
-      "housing-supply-construction": "supply-construction",
-      "housing-rent-shelter": "rent-shelter"
-    };
-    loadHubGrid("housing-grid", "/data/housing/index.json",
-                id => `/dashboards/housing/${encodeURIComponent(HOUSING_SLUGS[id] || id)}.html`, "housing-badge");
-    const GLOBAL_SLUGS = {
-      "global-dollar-currencies": "dollar-currencies",
-      "global-growth": "growth",
-      "global-trade-supply": "trade-supply",
-      "global-uncertainty": "uncertainty"
-    };
-    loadHubGrid("global-grid", "/data/global/index.json",
-                id => `/dashboards/global/${encodeURIComponent(GLOBAL_SLUGS[id] || id)}.html`, "global-badge");
+    loadHubGrid("econ-grid", "/data/lenses/index.json", id => lensHref("economic", id), "econ-badge");
+    loadHubGrid("consumer-grid", "/data/consumer/index.json", id => lensHref("consumer", id), "consumer-badge");
+    loadHubGrid("bank-grid", "/data/banking/index.json", id => lensHref("banking", id),
+                { badgeId: "bank-badge", staleDays: 120 });
+    loadHubGrid("business-grid", "/data/business/index.json", id => lensHref("business", id), "business-badge");
+    loadHubGrid("markets-grid", "/data/markets/index.json", id => lensHref("markets", id), "markets-badge");
+    loadHubGrid("energy-grid", "/data/energy/index.json", id => lensHref("energy", id), "energy-badge");
+    loadHubGrid("housing-grid", "/data/housing/index.json", id => lensHref("housing", id), "housing-badge");
+    loadHubGrid("global-grid", "/data/global/index.json", id => lensHref("global", id), "global-badge");
   });</script>
 </body>
 </html>

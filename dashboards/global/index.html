@@ -30,12 +30,7 @@
 
   <script defer src="/dashboards/hub.js"></script>
   <script>document.addEventListener("DOMContentLoaded", () => {
-    loadHubGrid("hub-grid", "/data/global/index.json",
-      id => {
-        const SLUGS = { "global-dollar-currencies": "dollar-currencies", "global-growth": "growth",
-                        "global-trade-supply": "trade-supply", "global-uncertainty": "uncertainty" };
-        return `/dashboards/global/${encodeURIComponent(SLUGS[id] || id)}.html`;
-      }, "cat-badge");
+    loadHubGrid("hub-grid", "/data/global/index.json", id => lensHref("global", id), "cat-badge");
   });</script>
 </body>
 </html>

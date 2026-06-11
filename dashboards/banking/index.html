@@ -30,8 +30,7 @@
 
   <script defer src="/dashboards/hub.js"></script>
   <script>document.addEventListener("DOMContentLoaded", () => {
-    loadHubGrid("hub-grid", "/data/banking/index.json",
-      id => `/dashboards/banking/${encodeURIComponent(id.replace(/^bank-/, ""))}.html`, "cat-badge");
+    loadHubGrid("hub-grid", "/data/banking/index.json", id => lensHref("banking", id), { badgeId: "cat-badge", staleDays: 120 });
   });</script>
 </body>
 </html>

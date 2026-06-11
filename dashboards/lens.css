@@ -77,6 +77,7 @@ p.lede strong{color:var(--text);font-weight:600}
 .delta.down::before{content:"▼"}
 .hub-cta{margin-top:.85rem;font-size:.74rem;color:var(--blue);letter-spacing:.03em}
 .hub-fresh{font-size:.68rem;color:var(--dim);margin-top:.5rem}
+.hub-fresh.stale{color:var(--amber)}
 @media(prefers-reduced-motion:reduce){.hub-card{transition:none}.hub-card:hover{transform:none}}
 
 /* Banking tier & ranking tables (category #2). Scoped so the bare status

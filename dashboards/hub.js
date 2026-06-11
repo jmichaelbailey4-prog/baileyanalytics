@@ -50,16 +50,32 @@
     grid.innerHTML = (lenses || []).map(l => tile(l, hrefFor(l.id))).join("");
   };
 
-  // badgeId (optional): element that receives the category's blended status
-  // (index.json `status`) as a badge — used by hub h1s and the dashboards index.
-  window.loadHubGrid = async function (gridId, url, hrefFor, badgeId) {
+  // Public page path for a lens id. Mirrors brief.py lens_href — keep in sync.
+  // Rule: page slug = lens id minus its category prefix ("bank-" for banking,
+  // "market-" for markets, "<category>-" otherwise), with one true override.
+  window.lensHref = function (category, id) {
+    if (category === "economic") return `/dashboards/${encodeURIComponent(id)}.html`;
+    const overrides = { "consumer-credit": "credit-stress" };
+    const prefixes = { banking: "bank-", markets: "market-" };
+    const pre = prefixes[category] || category + "-";
+    const slug = overrides[id] || (id.indexOf(pre) === 0 ? id.slice(pre.length) : id);
+    return `/dashboards/${encodeURIComponent(category)}/${encodeURIComponent(slug)}.html`;
+  };
+
+  // opts: a badge-element id string, or { badgeId, staleDays }. badgeId receives
+  // the category's blended status (index.json `status`); staleDays (default 10)
+  // is how long without a data change before the freshness stamp turns amber —
+  // banking passes 120 because its quarterly source legitimately goes quiet.
+  window.loadHubGrid = async function (gridId, url, hrefFor, opts) {
+    if (typeof opts === "string") opts = { badgeId: opts };
+    opts = opts || {};
     const grid = document.getElementById(gridId);
     try {
       const res = await fetch(url, { cache: "no-cache" });
       if (!res.ok) throw new Error("HTTP " + res.status);
       const data = await res.json();
       renderHubTiles(grid, data.lenses, hrefFor);
-      const badge = badgeId && data.status && document.getElementById(badgeId);
+      const badge = opts.badgeId && data.status && document.getElementById(opts.badgeId);
       if (badge) {
         badge.className = `badge ${esc(data.status)}`;
         badge.textContent = data.status;
@@ -67,7 +83,12 @@
         badge.hidden = false;
       }
       const ago = data.last_updated && relTime(data.last_updated);
-      if (ago) grid.insertAdjacentHTML("afterend", `<div class="hub-fresh">Data last changed ${esc(ago)}</div>`);
+      if (ago) {
+        const ageH = (Date.now() - new Date(data.last_updated).getTime()) / 3.6e6;
+        const stale = ageH > (opts.staleDays || 10) * 24;
+        grid.insertAdjacentHTML("afterend",
+          `<div class="hub-fresh${stale ? " stale" : ""}">Data last changed ${esc(ago)}${stale ? " — the refresh may be delayed" : ""}</div>`);
+      }
     } catch (err) {
       grid.innerHTML = `<div class="status-msg error">Dashboards are still being refreshed. Check back shortly.</div>`;
       console.error(err);

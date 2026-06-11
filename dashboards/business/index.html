@@ -30,12 +30,7 @@
 
   <script defer src="/dashboards/hub.js"></script>
   <script>document.addEventListener("DOMContentLoaded", () => {
-    loadHubGrid("hub-grid", "/data/business/index.json",
-      id => {
-        const SLUGS = { "business-profitability": "profitability", "business-formation": "formation",
-                        "business-investment": "investment", "business-credit": "credit" };
-        return `/dashboards/business/${encodeURIComponent(SLUGS[id] || id)}.html`;
-      }, "cat-badge");
+    loadHubGrid("hub-grid", "/data/business/index.json", id => lensHref("business", id), "cat-badge");
   });</script>
 </body>
 </html>

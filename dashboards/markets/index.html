@@ -30,12 +30,7 @@
 
   <script defer src="/dashboards/hub.js"></script>
   <script>document.addEventListener("DOMContentLoaded", () => {
-    loadHubGrid("hub-grid", "/data/markets/index.json",
-      id => {
-        const SLUGS = { "market-risk-sentiment": "risk-sentiment", "market-scoreboard": "scoreboard", "market-liquidity": "liquidity",
-                        "crypto-structure": "crypto-structure" };
-        return `/dashboards/markets/${encodeURIComponent(SLUGS[id] || id)}.html`;
-      }, "cat-badge");
+    loadHubGrid("hub-grid", "/data/markets/index.json", id => lensHref("markets", id), "cat-badge");
   });</script>
 </body>
 </html>

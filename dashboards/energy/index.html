@@ -30,12 +30,7 @@
 
   <script defer src="/dashboards/hub.js"></script>
   <script>document.addEventListener("DOMContentLoaded", () => {
-    loadHubGrid("hub-grid", "/data/energy/index.json",
-      id => {
-        const SLUGS = { "energy-oil-fuels": "oil-fuels", "energy-natural-gas": "natural-gas",
-                        "energy-electricity": "electricity", "energy-commodities": "commodities" };
-        return `/dashboards/energy/${encodeURIComponent(SLUGS[id] || id)}.html`;
-      }, "cat-badge");
+    loadHubGrid("hub-grid", "/data/energy/index.json", id => lensHref("energy", id), "cat-badge");
   });</script>
 </body>
 </html>

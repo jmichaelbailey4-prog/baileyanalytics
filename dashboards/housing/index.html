@@ -30,12 +30,7 @@
 
   <script defer src="/dashboards/hub.js"></script>
   <script>document.addEventListener("DOMContentLoaded", () => {
-    loadHubGrid("hub-grid", "/data/housing/index.json",
-      id => {
-        const SLUGS = { "housing-home-prices": "home-prices", "housing-affordability": "affordability",
-                        "housing-supply-construction": "supply-construction", "housing-rent-shelter": "rent-shelter" };
-        return `/dashboards/housing/${encodeURIComponent(SLUGS[id] || id)}.html`;
-      }, "cat-badge");
+    loadHubGrid("hub-grid", "/data/housing/index.json", id => lensHref("housing", id), "cat-badge");
   });</script>
 </body>
 </html>
