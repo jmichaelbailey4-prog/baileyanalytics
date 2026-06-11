@@ -263,5 +263,49 @@ class TestBuildState(unittest.TestCase):
         self.assertEqual(len(out["steady"]), 8)
 
 
+class TestWatching(unittest.TestCase):
+    def _open(self, key, implied, current, due):
+        lens = key.split("/")[1]
+        return {"key": key, "indicator": key.split("/")[2], "lens": lens,
+                "category": key.split("/")[0], "title": "T", "lens_title": "L",
+                "due": due, "point": 4.31, "unit": "%", "value_format": "decimal",
+                "implied_status": implied, "current_status": current,
+                "href": f"/dashboards/{lens}.html"}
+
+    def test_badge_changes_rank_first_alertward_before_okward(self):
+        opens = [
+            self._open("economic/cost-of-living/cpi", "elevated", "elevated", "2026-07-15"),
+            self._open("economic/recession-watch/jobless-claims", "watch", "ok", "2026-06-18"),
+            self._open("housing/home-prices/case-shiller", "ok", "watch", "2026-06-30"),
+        ]
+        block = state.build_watching(opens)
+        self.assertEqual(block[0]["key"], "economic/recession-watch/jobless-claims")
+        self.assertTrue(block[0]["change"])
+        self.assertEqual(block[1]["key"], "housing/home-prices/case-shiller")
+        self.assertEqual(block[2]["key"], "economic/cost-of-living/cpi")
+        self.assertFalse(block[2]["change"])
+
+    def test_capped_at_three_and_no_change_sorted_by_due(self):
+        opens = [self._open(f"economic/l{i}/i{i}", "ok", "ok", f"2026-07-{10 + i:02d}")
+                 for i in range(5)]
+        block = state.build_watching(opens)
+        self.assertEqual(len(block), 3)
+        self.assertEqual([b["due"] for b in block],
+                         ["2026-07-10", "2026-07-11", "2026-07-12"])
+
+    def test_build_state_carries_watching_when_given(self):
+        indices = {"economic": {"status": "ok", "lenses": [
+            {"id": "recession-watch", "title": "RW", "status": "ok", "headline_read": "x"}]}}
+        out = state.build_state(indices, None, open_predictions=[
+            self._open("economic/recession-watch/jobless-claims", "watch", "ok", "2026-06-18")])
+        self.assertIn("watching", out)
+        self.assertEqual(out["watching"][0]["point_fmt"], "4.31%")
+
+    def test_build_state_omits_watching_by_default(self):
+        indices = {"economic": {"status": "ok", "lenses": []}}
+        out = state.build_state(indices, None)
+        self.assertNotIn("watching", out)
+
+
 if __name__ == "__main__":
     unittest.main()

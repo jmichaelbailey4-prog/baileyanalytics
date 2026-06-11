@@ -682,13 +682,26 @@ def _load_brief_today():
     return None
 
 
+def _load_open_predictions():
+    """Open predictions for the state page's watching block (None when the
+    prediction pipeline hasn't run — the block is simply omitted)."""
+    path = Path(__file__).resolve().parent.parent / "data" / "predictions" / "open.json"
+    if path.exists():
+        try:
+            return json.loads(path.read_text(encoding="utf-8")).get("predictions", [])
+        except (ValueError, OSError):
+            pass
+    return None
+
+
 def refresh_state(dry_run):
     """Build + write data/state/today.json (The State of Things) from the
     per-category index.json files plus today's brief. Additive — never raises;
     runs after refresh_brief so the 'what changed' count is fresh."""
     try:
         indices = _load_brief_indices(dry_run)
-        today = state.build_state(indices, _load_brief_today())
+        today = state.build_state(indices, _load_brief_today(),
+                                  open_predictions=_load_open_predictions())
         wrote = build.write_lens_file(STATE_OUT_DIR / "today.json", today)
         print(f"Wrote {STATE_OUT_DIR / 'today.json'}" if wrote
               else "No state changes — The State of Things is up to date.")

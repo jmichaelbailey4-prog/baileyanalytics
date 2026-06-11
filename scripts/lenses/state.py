@@ -242,7 +242,41 @@ def _steady_clause(cat):
             or f"conditions are steady in {NOUN.get(cat['category'], cat['title'].lower())}")
 
 
-def build_state(category_indices, brief_today):
+WATCHING_CAP = 3
+
+
+def build_watching(open_predictions):
+    """'What we're watching next': up to 3 open predictions ranked by
+    consequence — predicted badge changes first (alert-ward before ok-ward,
+    bigger jumps first), then nearest-due. Spec: predictions design §7."""
+    from . import build as _build  # _fmt: keep hub/page formatting identical
+    sev = util.STATUS_ORDER
+
+    def _is_change(p):
+        return (p.get("implied_status") != p.get("current_status")
+                and p.get("implied_status") in sev and p.get("current_status") in sev)
+
+    def _rank(p):
+        if _is_change(p):
+            dist = sev[p["implied_status"]] - sev[p["current_status"]]
+            # alert-ward (positive dist) first, bigger jumps first, then due
+            return (0, 0 if dist > 0 else 1, -abs(dist), p.get("due") or "9999")
+        return (1, 0, 0, p.get("due") or "9999")
+
+    ranked = sorted((p for p in open_predictions or []), key=_rank)[:WATCHING_CAP]
+    return [{
+        "key": p["key"], "indicator": p["indicator"], "lens": p["lens"],
+        "category": p["category"], "title": p.get("title", ""),
+        "lens_title": p.get("lens_title", ""), "due": p.get("due"),
+        "point_fmt": _build._fmt(p.get("point"), p.get("unit", ""),
+                                 p.get("value_format", "decimal")),
+        "implied_status": p.get("implied_status"),
+        "current_status": p.get("current_status"),
+        "change": _is_change(p), "href": p.get("href", "/dashboards/"),
+    } for p in ranked]
+
+
+def build_state(category_indices, brief_today, open_predictions=None):
     """Assemble the State of Things JSON from per-category index data and
     today's brief (or None). Pure — no network, no disk I/O."""
     generated = _now()
@@ -276,5 +310,7 @@ def build_state(category_indices, brief_today):
     if brief_today and isinstance(brief_today.get("transitions"), list):
         out["changed"] = {"transitions": len(brief_today["transitions"]),
                           "href": BRIEF_HREF}
+    if open_predictions:
+        out["watching"] = build_watching(open_predictions)
     out["categories"] = [_public(c) for c in cats]
     return out
