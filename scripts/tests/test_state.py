@@ -190,6 +190,15 @@ class TestBuildState(unittest.TestCase):
         self.assertEqual(lenses[0]["headline"], "Read 0.")
         self.assertEqual(lenses[0]["href"], "/dashboards/energy/0.html")
 
+    def test_pressure_cards_only_quote_stressed_lenses(self):
+        # An ok lens never belongs in a Pressure Points card, even when the
+        # category has nothing else to show (e.g. one alert + one ok lens).
+        indices = todays_indices()
+        indices["energy"] = cat_index(["alert", "ok"], status="elevated", prefix="energy")
+        out = self.build(indices)
+        lenses = out["pressure_points"][0]["lenses"]
+        self.assertEqual([l["status"] for l in lenses], ["alert"])
+
     def test_blend_falls_back_when_index_has_no_status(self):
         indices = todays_indices()
         del indices["energy"]["status"]  # stale/fixture-style index

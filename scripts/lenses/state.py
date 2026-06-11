@@ -209,8 +209,9 @@ def _public(cat):
 
 def _worst_lenses(cat):
     """The lens cards a pressure category wears: worst first, capped, with the
-    verbatim headline_read and the shared slug logic for hrefs."""
-    sev = [l for l in cat["lenses"] if util.STATUS_ORDER.get(l.get("status"), -1) >= 0]
+    verbatim headline_read and the shared slug logic for hrefs. Only stressed
+    lenses (watch+) qualify — an ok lens never explains a pressure point."""
+    sev = [l for l in cat["lenses"] if util.STATUS_ORDER.get(l.get("status"), -1) >= 1]
     sev.sort(key=lambda l: -util.STATUS_ORDER[l["status"]])  # stable: config order ties
     return [{"id": l["id"], "title": l.get("title", ""), "status": l["status"],
              "headline": l.get("headline_read", ""),
