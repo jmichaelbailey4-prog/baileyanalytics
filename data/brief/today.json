@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-10T20:47:26Z",
+  "generated_at": "2026-06-11T02:07:53Z",
   "transitions": [],
   "top_moves": [
     {
@@ -23,6 +23,16 @@
       "dir": "up"
     },
     {
+      "lens_id": "market-scoreboard",
+      "lens_title": "Asset-Class Scoreboard",
+      "category": "markets",
+      "href": "/dashboards/markets/scoreboard.html",
+      "stat_label": "S&P 500",
+      "stat_value": "7,267",
+      "delta": "120",
+      "dir": "down"
+    },
+    {
       "lens_id": "consumer-income-savings",
       "lens_title": "Income & Savings",
       "category": "consumer",
@@ -41,16 +51,6 @@
       "stat_value": "$4.15",
       "delta": "$0.16",
       "dir": "down"
-    },
-    {
-      "lens_id": "cost-of-living",
-      "lens_title": "The Cost of Living",
-      "category": "economic",
-      "href": "/dashboards/cost-of-living.html",
-      "stat_label": "CPI",
-      "stat_value": "4.17%",
-      "delta": "0.39%",
-      "dir": "up"
     }
   ],
   "lenses": [
@@ -146,6 +146,34 @@
       "status": "watch"
     },
     {
+      "lens_id": "business-profitability",
+      "lens_title": "Profitability",
+      "category": "business",
+      "href": "/dashboards/business/profitability.html",
+      "status": "ok"
+    },
+    {
+      "lens_id": "business-formation",
+      "lens_title": "Business Formation",
+      "category": "business",
+      "href": "/dashboards/business/formation.html",
+      "status": "ok"
+    },
+    {
+      "lens_id": "business-investment",
+      "lens_title": "Investment & Activity",
+      "category": "business",
+      "href": "/dashboards/business/investment.html",
+      "status": "ok"
+    },
+    {
+      "lens_id": "business-credit",
+      "lens_title": "Credit & Stress",
+      "category": "business",
+      "href": "/dashboards/business/credit.html",
+      "status": "watch"
+    },
+    {
       "lens_id": "market-risk-sentiment",
       "lens_title": "Risk Sentiment",
       "category": "markets",
@@ -228,12 +256,40 @@
       "category": "housing",
       "href": "/dashboards/housing/rent-shelter.html",
       "status": "ok"
+    },
+    {
+      "lens_id": "global-dollar-currencies",
+      "lens_title": "The Dollar & Currencies",
+      "category": "global",
+      "href": "/dashboards/global/dollar-currencies.html",
+      "status": "ok"
+    },
+    {
+      "lens_id": "global-growth",
+      "lens_title": "Global Growth",
+      "category": "global",
+      "href": "/dashboards/global/growth.html",
+      "status": "ok"
+    },
+    {
+      "lens_id": "global-trade-supply",
+      "lens_title": "Trade & Supply Chain",
+      "category": "global",
+      "href": "/dashboards/global/trade-supply.html",
+      "status": "elevated"
+    },
+    {
+      "lens_id": "global-uncertainty",
+      "lens_title": "Uncertainty & Risk",
+      "category": "global",
+      "href": "/dashboards/global/uncertainty.html",
+      "status": "elevated"
     }
   ],
   "status_counts": {
-    "ok": 12,
-    "watch": 2,
-    "elevated": 6,
+    "ok": 17,
+    "watch": 3,
+    "elevated": 8,
     "alert": 3,
     "neutral": 2
   }
