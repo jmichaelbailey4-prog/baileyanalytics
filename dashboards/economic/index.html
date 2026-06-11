@@ -20,7 +20,7 @@
 
   <main>
     <a class="back" href="/dashboards/">&larr; Dashboards</a>
-    <h1>Economic Lenses</h1>
+    <h1>Economic Lenses <span class="badge" id="cat-badge" hidden></span></h1>
     <p class="lede">Where the U.S. economy actually stands — recession risk, what money costs, how the job market is holding up, what living costs are doing, and the government&rsquo;s finances. <strong>Open any lens</strong> for interactive charts and the context behind each number.</p>
     <div class="hub-grid" id="hub-grid"><div class="status-msg">Loading&hellip;</div></div>
     <div class="foot">
@@ -31,7 +31,7 @@
   <script defer src="/dashboards/hub.js"></script>
   <script>document.addEventListener("DOMContentLoaded", () => {
     loadHubGrid("hub-grid", "/data/lenses/index.json",
-      id => `/dashboards/${encodeURIComponent(id)}.html`);
+      id => `/dashboards/${encodeURIComponent(id)}.html`, "cat-badge");
   });</script>
 </body>
 </html>

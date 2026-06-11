@@ -4,6 +4,16 @@
 (function () {
   function esc(s) { const d = document.createElement("div"); d.textContent = s; return d.innerHTML; }
 
+  // Category-id -> display name. Lenses shown outside their home category
+  // (transitions, brief cards) carry this so "Bank Profitability" vs
+  // "Corporate Profits" never needs guessing. Keep in step with brief.py.
+  const CAT_LABELS = {
+    economic: "Economy", consumer: "Consumer", banking: "Banking",
+    business: "Business", markets: "Markets", energy: "Energy",
+    housing: "Housing", global: "Global",
+  };
+  window.briefCategoryLabel = id => CAT_LABELS[id] || "";
+
   function countsText(c) {
     const parts = [];
     if (c.alert) parts.push(`${c.alert} alert`);
@@ -24,7 +34,9 @@
   }
 
   function transitionRow(t) {
+    const cat = CAT_LABELS[t.category];
     return `<a class="brief-trans" href="${t.href}">
+      ${cat ? `<span class="brief-cat">${esc(cat)}</span>` : ""}
       <span class="brief-trans-title">${esc(t.lens_title)}</span>
       <span class="brief-arrow">
         <span class="badge ${esc(t.from_status)}">${esc(t.from_status)}</span>

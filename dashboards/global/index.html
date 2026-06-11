@@ -20,7 +20,7 @@
 
   <main>
     <a class="back" href="/dashboards/">&larr; Dashboards</a>
-    <h1>Global Economy</h1>
+    <h1>Global Economy <span class="badge" id="cat-badge" hidden></span></h1>
     <p class="lede">The world beyond U.S. borders — where the dollar is pushing global conditions, how fast the world economy is growing, whether trade and supply chains are flowing, and how much policy itself is the risk. <strong>Open any lens</strong> for interactive charts and the context behind each number.</p>
     <div class="hub-grid" id="hub-grid"><div class="status-msg">Loading&hellip;</div></div>
     <div class="foot">
@@ -35,7 +35,7 @@
         const SLUGS = { "global-dollar-currencies": "dollar-currencies", "global-growth": "growth",
                         "global-trade-supply": "trade-supply", "global-uncertainty": "uncertainty" };
         return `/dashboards/global/${encodeURIComponent(SLUGS[id] || id)}.html`;
-      });
+      }, "cat-badge");
   });</script>
 </body>
 </html>

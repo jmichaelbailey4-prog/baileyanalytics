@@ -20,7 +20,7 @@
 
   <main>
     <a class="back" href="/dashboards/">&larr; Dashboards</a>
-    <h1>Markets &amp; Financial Conditions</h1>
+    <h1>Markets &amp; Financial Conditions <span class="badge" id="cat-badge" hidden></span></h1>
     <p class="lede">What are markets pricing right now? Each lens turns public market data into a plain-English read — the stress in volatility and credit, where the major asset classes are headed, and how capital is rotating across crypto. <strong>Open any lens</strong> for interactive charts and the context behind each number.</p>
     <div class="hub-grid" id="hub-grid"><div class="status-msg">Loading&hellip;</div></div>
     <div class="foot">
@@ -35,7 +35,7 @@
         const SLUGS = { "market-risk-sentiment": "risk-sentiment", "market-scoreboard": "scoreboard", "market-liquidity": "liquidity",
                         "crypto-structure": "crypto-structure" };
         return `/dashboards/markets/${encodeURIComponent(SLUGS[id] || id)}.html`;
-      });
+      }, "cat-badge");
   });</script>
 </body>
 </html>

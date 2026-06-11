@@ -475,7 +475,7 @@ BANK_ASSET_QUALITY = BankingLens(
 
 BANK_PROFITABILITY = BankingLens(
     id="bank-profitability",
-    title="Profitability",
+    title="Bank Profitability",
     accent="#34D399",
     indicators=[
         BankingIndicator(
@@ -763,7 +763,7 @@ CATEGORIES.append(
 # price-pressure categories raise: are households cracking or absorbing it?
 
 CONSUMER_SPENDING = Lens(
-    id="consumer-spending", title="Spending", accent="#34D399",
+    id="consumer-spending", title="Consumer Spending", accent="#34D399",
     indicators=[
         Indicator(
             id="retail-sales", title="Retail Sales · year-over-year", short="Retail sales",
@@ -792,7 +792,7 @@ CONSUMER_SPENDING = Lens(
 )
 
 CONSUMER_CREDIT = Lens(
-    id="consumer-credit", title="Credit Stress", accent="#F87171",
+    id="consumer-credit", title="Consumer Credit Stress", accent="#F87171",
     indicators=[
         Indicator(
             id="card-delinquency", title="Credit-Card Delinquency Rate", short="Card delinq.",
@@ -827,7 +827,7 @@ CONSUMER_CREDIT = Lens(
 )
 
 CONSUMER_INCOME = Lens(
-    id="consumer-income-savings", title="Income & Savings", accent="#FBBF24",
+    id="consumer-income-savings", title="Household Income & Savings", accent="#FBBF24",
     indicators=[
         Indicator(
             id="saving-rate", title="Personal Saving Rate", short="Saving rate",
@@ -854,7 +854,7 @@ CONSUMER_INCOME = Lens(
 )
 
 CONSUMER_SENTIMENT = Lens(
-    id="consumer-sentiment", title="Sentiment & Expectations", accent="#38BDF8",
+    id="consumer-sentiment", title="Consumer Sentiment", accent="#38BDF8",
     indicators=[
         Indicator(
             id="sentiment", title="Consumer Sentiment (U. Michigan)", short="Sentiment",
@@ -1049,7 +1049,7 @@ CATEGORIES.append(
 # --- Housing & Real Estate (FRED) ---
 
 HOUSING_HOME_PRICES = Lens(
-    id="housing-home-prices", title="Price Stability", accent="#F472B6",
+    id="housing-home-prices", title="Home-Price Stability", accent="#F472B6",
     indicators=[
         Indicator(
             id="case-shiller", title="Case-Shiller Home Prices · year-over-year",
@@ -1398,7 +1398,7 @@ CATEGORIES.append(
 # GDP is fetched solely as a share denominator and gets no chart of its own.
 
 BUSINESS_PROFITABILITY = Lens(
-    id="business-profitability", title="Profitability", accent="#34D399",
+    id="business-profitability", title="Corporate Profits", accent="#34D399",
     indicators=[
         Indicator(
             id="profit-growth", title="Corporate Profits · year-over-year",
@@ -1470,7 +1470,7 @@ BUSINESS_FORMATION = Lens(
 )
 
 BUSINESS_INVESTMENT = Lens(
-    id="business-investment", title="Investment & Activity", accent="#FBBF24",
+    id="business-investment", title="Business Investment", accent="#FBBF24",
     indicators=[
         Indicator(
             id="core-capex", title="Core Capital-Goods Orders · year-over-year",
@@ -1502,7 +1502,7 @@ BUSINESS_INVESTMENT = Lens(
 )
 
 BUSINESS_CREDIT = Lens(
-    id="business-credit", title="Credit & Stress", accent="#F87171",
+    id="business-credit", title="Business Credit", accent="#F87171",
     indicators=[
         Indicator(
             id="baa-spread", title="Baa Corporate Spread · over 10-Year Treasury",

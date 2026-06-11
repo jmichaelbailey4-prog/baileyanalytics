@@ -25,7 +25,7 @@
   <main>
     <a class="back" href="/dashboards/">&larr; Dashboards</a>
     <h1>Today&rsquo;s Brief</h1>
-    <p class="lede">What changed and what matters across all six dashboard categories — status changes first, then the day&rsquo;s biggest movers, then every lens that currently warrants attention. <strong>Open any card</strong> for the full charts and context.</p>
+    <p class="lede">What changed and what matters across every dashboard category — status changes first, then the day&rsquo;s biggest movers, then every lens that currently warrants attention. <strong>Open any card</strong> for the full charts and context.</p>
     <div class="hub-fresh" id="asof"></div>
 
     <section id="transitions-sec">
@@ -59,7 +59,7 @@
     </section>
 
     <div class="foot">
-      Data: <a href="https://fred.stlouisfed.org/" target="_blank" rel="noopener">FRED</a> (St. Louis Fed), the <a href="https://banks.data.fdic.gov/" target="_blank" rel="noopener">FDIC</a>, the <a href="https://www.eia.gov/opendata/" target="_blank" rel="noopener">U.S. EIA</a>, and <a href="https://www.coingecko.com/" target="_blank" rel="noopener">CoinGecko</a>. Public data, refreshed regularly.
+      Data: <a href="https://fred.stlouisfed.org/" target="_blank" rel="noopener">FRED</a> (St. Louis Fed), the <a href="https://banks.data.fdic.gov/" target="_blank" rel="noopener">FDIC</a>, the <a href="https://www.eia.gov/opendata/" target="_blank" rel="noopener">U.S. EIA</a>, the <a href="https://www.imf.org/en/Publications/WEO" target="_blank" rel="noopener">IMF</a>, the <a href="https://www.newyorkfed.org/research/policy/gscpi" target="_blank" rel="noopener">NY Fed</a>, <a href="https://www.policyuncertainty.com/" target="_blank" rel="noopener">policyuncertainty.com</a>, and <a href="https://www.coingecko.com/" target="_blank" rel="noopener">CoinGecko</a>. Public data, refreshed regularly.
     </div>
   </main>
 
@@ -102,12 +102,14 @@
     results.forEach(r => { if (r.status === "rejected") console.error(r.reason); });
 
     const meta = brief.lenses || [];
-    const hrefById = {};
-    meta.forEach(m => { hrefById[m.lens_id] = m.href; });
+    const hrefById = {}, catById = {};
+    meta.forEach(m => { hrefById[m.lens_id] = m.href; catById[m.lens_id] = m.category; });
     const hrefFor = id => hrefById[id] || "/dashboards/";
 
     function fill(name, ids) {
-      const lenses = ids.map(id => byId[id]).filter(Boolean);
+      // Cards here sit outside their home category — label each with it.
+      const lenses = ids.map(id => byId[id]).filter(Boolean)
+        .map(l => Object.assign({}, l, { category_label: briefCategoryLabel(catById[l.id]) }));
       if (!lenses.length) return;
       document.getElementById(`${name}-sec`).hidden = false;
       renderHubTiles(document.getElementById(`${name}-grid`), lenses, hrefFor);

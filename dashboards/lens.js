@@ -197,7 +197,7 @@
     root.innerHTML = `
       <a class="back" href="${esc(opts.href)}">← ${esc(opts.back)}</a>
       <div class="eyebrow" style="color:${lens.accent}">${esc(lens.title)}</div>
-      <div class="read-hero">${esc(lens.headline_read)}</div>
+      <h1 class="read-hero">${esc(lens.headline_read)}</h1>
       <div class="badgerow">
         <span class="badge ${lens.status}">${esc(lens.status)}</span>
         <span class="updated">Updated ${fmtUpdated(lens.last_updated)} · ${lens.indicators.length} signals</span>

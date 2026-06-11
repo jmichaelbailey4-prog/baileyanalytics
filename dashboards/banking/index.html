@@ -20,7 +20,7 @@
 
   <main>
     <a class="back" href="/dashboards/">&larr; Dashboards</a>
-    <h1>Banking System Health</h1>
+    <h1>Banking System Health <span class="badge" id="cat-badge" hidden></span></h1>
     <p class="lede">Is the U.S. banking system healthy, and where is stress building? Each lens turns the banks' own regulatory filings into a plain-English read. <strong>Open any lens</strong> for the system-wide trend, a breakdown by bank size, and a ranked spotlight of individual banks.</p>
     <div class="hub-grid" id="hub-grid"><div class="status-msg">Loading&hellip;</div></div>
     <div class="foot">
@@ -31,7 +31,7 @@
   <script defer src="/dashboards/hub.js"></script>
   <script>document.addEventListener("DOMContentLoaded", () => {
     loadHubGrid("hub-grid", "/data/banking/index.json",
-      id => `/dashboards/banking/${encodeURIComponent(id.replace(/^bank-/, ""))}.html`);
+      id => `/dashboards/banking/${encodeURIComponent(id.replace(/^bank-/, ""))}.html`, "cat-badge");
   });</script>
 </body>
 </html>

@@ -4,7 +4,7 @@
   "lenses": [
     {
       "id": "business-profitability",
-      "title": "Profitability",
+      "title": "Corporate Profits",
       "accent": "#34D399",
       "status": "ok",
       "headline_read": "Corporate America is profitable \u2014 earnings are growing.",
@@ -130,7 +130,7 @@
     },
     {
       "id": "business-investment",
-      "title": "Investment & Activity",
+      "title": "Business Investment",
       "accent": "#FBBF24",
       "status": "ok",
       "headline_read": "Businesses are investing \u2014 orders and sales are growing.",
@@ -193,7 +193,7 @@
     },
     {
       "id": "business-credit",
-      "title": "Credit & Stress",
+      "title": "Business Credit",
       "accent": "#F87171",
       "status": "watch",
       "headline_read": "Business credit bears watching \u2014 conditions are tightening at the margin.",

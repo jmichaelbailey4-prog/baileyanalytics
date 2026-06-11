@@ -20,9 +20,12 @@
         const delta = s.d ? ` <i class="delta ${esc(s.dir || "")}">${esc(s.d)}</i>` : "";
         return `<span>${esc(s.k)} <b>${esc(s.v)}</b>${delta}</span>`;
       }).join("");
+    // Cross-category pages (the brief) set category_label so a lens named
+    // outside its home category still says where it lives.
+    const cat = lens.category_label ? `<span class="hub-cat">${esc(lens.category_label)}</span> · ` : "";
     return `
       <a class="hub-card" href="${href}">
-        <div class="hub-eyebrow" style="color:${lens.accent}">${esc(lens.title)}
+        <div class="hub-eyebrow" style="color:${lens.accent}">${cat}${esc(lens.title)}
           <span class="badge ${esc(lens.status)}">${esc(lens.status)}</span></div>
         <div class="hub-read">${esc(lens.headline_read)}</div>
         ${sparkline(lens.sparkline, lens.accent)}
@@ -47,13 +50,22 @@
     grid.innerHTML = (lenses || []).map(l => tile(l, hrefFor(l.id))).join("");
   };
 
-  window.loadHubGrid = async function (gridId, url, hrefFor) {
+  // badgeId (optional): element that receives the category's blended status
+  // (index.json `status`) as a badge — used by hub h1s and the dashboards index.
+  window.loadHubGrid = async function (gridId, url, hrefFor, badgeId) {
     const grid = document.getElementById(gridId);
     try {
       const res = await fetch(url, { cache: "no-cache" });
       if (!res.ok) throw new Error("HTTP " + res.status);
       const data = await res.json();
       renderHubTiles(grid, data.lenses, hrefFor);
+      const badge = badgeId && data.status && document.getElementById(badgeId);
+      if (badge) {
+        badge.className = `badge ${esc(data.status)}`;
+        badge.textContent = data.status;
+        badge.title = "Overall category status — balanced across all lenses";
+        badge.hidden = false;
+      }
       const ago = data.last_updated && relTime(data.last_updated);
       if (ago) grid.insertAdjacentHTML("afterend", `<div class="hub-fresh">Data last changed ${esc(ago)}</div>`);
     } catch (err) {

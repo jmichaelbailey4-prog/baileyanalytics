@@ -34,7 +34,7 @@
     },
     {
       "lens_id": "consumer-income-savings",
-      "lens_title": "Income & Savings",
+      "lens_title": "Household Income & Savings",
       "category": "consumer",
       "href": "/dashboards/consumer/income-savings.html",
       "stat_label": "Saving rate",
@@ -91,28 +91,28 @@
     },
     {
       "lens_id": "consumer-spending",
-      "lens_title": "Spending",
+      "lens_title": "Consumer Spending",
       "category": "consumer",
       "href": "/dashboards/consumer/spending.html",
       "status": "ok"
     },
     {
       "lens_id": "consumer-credit",
-      "lens_title": "Credit Stress",
+      "lens_title": "Consumer Credit Stress",
       "category": "consumer",
       "href": "/dashboards/consumer/credit-stress.html",
       "status": "watch"
     },
     {
       "lens_id": "consumer-income-savings",
-      "lens_title": "Income & Savings",
+      "lens_title": "Household Income & Savings",
       "category": "consumer",
       "href": "/dashboards/consumer/income-savings.html",
       "status": "elevated"
     },
     {
       "lens_id": "consumer-sentiment",
-      "lens_title": "Sentiment & Expectations",
+      "lens_title": "Consumer Sentiment",
       "category": "consumer",
       "href": "/dashboards/consumer/sentiment.html",
       "status": "alert"
@@ -126,7 +126,7 @@
     },
     {
       "lens_id": "bank-profitability",
-      "lens_title": "Profitability",
+      "lens_title": "Bank Profitability",
       "category": "banking",
       "href": "/dashboards/banking/profitability.html",
       "status": "ok"
@@ -147,7 +147,7 @@
     },
     {
       "lens_id": "business-profitability",
-      "lens_title": "Profitability",
+      "lens_title": "Corporate Profits",
       "category": "business",
       "href": "/dashboards/business/profitability.html",
       "status": "ok"
@@ -161,14 +161,14 @@
     },
     {
       "lens_id": "business-investment",
-      "lens_title": "Investment & Activity",
+      "lens_title": "Business Investment",
       "category": "business",
       "href": "/dashboards/business/investment.html",
       "status": "ok"
     },
     {
       "lens_id": "business-credit",
-      "lens_title": "Credit & Stress",
+      "lens_title": "Business Credit",
       "category": "business",
       "href": "/dashboards/business/credit.html",
       "status": "watch"
@@ -231,7 +231,7 @@
     },
     {
       "lens_id": "housing-home-prices",
-      "lens_title": "Price Stability",
+      "lens_title": "Home-Price Stability",
       "category": "housing",
       "href": "/dashboards/housing/home-prices.html",
       "status": "ok"

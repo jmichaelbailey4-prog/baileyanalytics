@@ -160,8 +160,8 @@
 
         .lens-grid {
             display: grid;
-            /* category tiles; 16rem min yields a balanced 3×2 at six categories
-               and keeps wrapping gracefully as more are added */
+            /* category tiles; 16rem min keeps the grid balanced at eight
+               categories and wraps gracefully as more are added */
             grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
             gap: 0.85rem;
         }
@@ -370,13 +370,14 @@
             const stat = (lens.key_stats || [])[0] || { k: "", v: "—" };
             const delta = stat.d ? ` <i class="delta ${esc(stat.dir || "")}">${esc(stat.d)}</i>` : "";
             // The headline below comes from one lens — name it, and when that
-            // lens runs hotter than the category's balanced badge, flag it.
+            // lens runs hotter than the category's balanced badge, say so
+            // explicitly ("worst: alert") instead of a second bare status pill.
             const flag = (SEVERITY[lens.status] || 0) > (SEVERITY[status] || 0)
-                ? ` <span class="pill ${esc(lens.status)}">${esc(lens.status)}</span>` : "";
+                ? ` <span class="pill ${esc(lens.status)}" title="This lens runs hotter than the category overall">worst: ${esc(lens.status)}</span>` : "";
             return `
                 <a class="lens" href="${cat.href}">
                     <div class="eb" style="color:${lens.accent}">${esc(cat.title)}
-                        <span class="pill ${esc(status)}">${esc(status)}</span></div>
+                        <span class="pill ${esc(status)}" title="Overall category status — balanced across all lenses">${esc(status)}</span></div>
                     <div class="lead">${esc(lens.title)}${flag}</div>
                     <div class="read">${esc(lens.headline_read)}</div>
                     ${sparkline(lens.sparkline, lens.accent)}
@@ -403,7 +404,11 @@
             if (!tiles.length) return; // leave the section hidden — the hero stands on its own
             document.getElementById("lens-grid").innerHTML = tiles.join("");
             document.getElementById("lenses").hidden = false;
-            loadBrief("brief-strip", { compact: true });
+            // brief.js loads deferred; this inline script can win the race on a
+            // warm cache, so don't assume loadBrief exists yet.
+            const showBrief = () => { if (typeof loadBrief === "function") loadBrief("brief-strip", { compact: true }); };
+            if (typeof loadBrief === "function") showBrief();
+            else window.addEventListener("DOMContentLoaded", showBrief);
         })();
     </script>
 </body>
