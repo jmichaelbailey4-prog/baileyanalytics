@@ -170,7 +170,9 @@ MIN_CATEGORIES = 4
 INSUFFICIENT_SENTENCE = "Not enough data to read the overall picture right now."
 PRESSURE_CAP = 3          # categories in the Pressure Points block
 LENSES_PER_PRESSURE = 2   # worst lenses quoted per pressure category
-CLAUSE_CAP = {"contained-pressure": 2, "spreading-stress": 3, "broad-stress": 3}
+# Contained keeps the sentence tight (2 clauses); other shapes use the full
+# pressure list, which PRESSURE_CAP already bounds.
+CLAUSE_CAP = {"contained-pressure": 2}
 ANCHOR_CAP = 2            # steady clauses named in the sentence
 WATCH_NOUN_CAP = 4        # watch categories named in mixed-watch sentences
 BRIEF_HREF = "/dashboards/brief.html"
@@ -229,13 +231,15 @@ def _steady(cats, pressure_ids):
 
 def _pressure_clause(cat):
     clause = PRESSURE_CLAUSES.get(cat["category"], {}).get(cat["status"])
-    # Unauthored copy (a brand-new category) degrades to generic copy, never a crash.
-    return clause or f"{NOUN.get(cat['category'], cat['title'].lower())} is under real stress"
+    # Unauthored copy (a brand-new category) degrades to generic copy, never a
+    # crash. Phrased so the noun is never the subject — grammatical whether the
+    # noun phrase is singular or plural ("housing" / "household finances").
+    return clause or f"stress is showing in {NOUN.get(cat['category'], cat['title'].lower())}"
 
 
 def _steady_clause(cat):
     return (STEADY_CLAUSES.get(cat["category"])
-            or f"{NOUN.get(cat['category'], cat['title'].lower())} is steady")
+            or f"conditions are steady in {NOUN.get(cat['category'], cat['title'].lower())}")
 
 
 def build_state(category_indices, brief_today):
@@ -259,7 +263,7 @@ def build_state(category_indices, brief_today):
         anchors = [cid for cid in ANCHOR_PRIORITY
                    if cid in by_id and by_id[cid]["status"] == "ok"][:ANCHOR_CAP]
         anchor = _join([_steady_clause(by_id[cid]) for cid in anchors])
-        p_clauses = [_pressure_clause(c) for c in pressure[:CLAUSE_CAP.get(shape, 0)]]
+        p_clauses = [_pressure_clause(c) for c in pressure[:CLAUSE_CAP.get(shape, PRESSURE_CAP)]]
         watch_nouns = [NOUN.get(c["category"], c["title"].lower())
                        for c in cats if c["status"] == "watch"][:WATCH_NOUN_CAP]
         sentence = _sentence(shape, _variant(generated[:10], shape),

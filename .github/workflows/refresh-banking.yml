@@ -37,6 +37,7 @@ jobs:
         run: python scripts/refresh_lenses.py --state
 
       - name: Commit and push if data changed
+        if: ${{ success() || failure() }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

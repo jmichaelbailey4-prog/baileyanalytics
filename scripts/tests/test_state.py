@@ -247,7 +247,7 @@ class TestBuildState(unittest.TestCase):
         saved = state.PRESSURE_CLAUSES.pop("energy")
         try:
             out = self.build(todays_indices())
-            self.assertIn("energy costs is under real stress",
+            self.assertIn("stress is showing in energy costs",
                           out["verdict"]["sentence"])
         finally:
             state.PRESSURE_CLAUSES["energy"] = saved
