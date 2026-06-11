@@ -874,6 +874,200 @@ def level_points(label):
     return _rule
 
 
+# --- Global Economy rules ---
+
+def rule_dollar_yoy(obs):
+    """Broad dollar index, already YoY % (pc1). Two-sided: |YoY| <5 ok /
+    5-9 watch / 9-12 elevated / >=12 alert. Both a surging and a sliding
+    dollar raise severity; text is direction-aware."""
+    if not obs:
+        return _NO_DATA
+    v = obs[-1][1]
+    direction = "up" if v >= 0 else "down"
+    mag = abs(v)
+    if mag >= 12:
+        return (f"The dollar is {direction} {mag:.1f}% against major currencies over the "
+                "past year — a violent move that squeezes the global financial system.",
+                "alert")
+    if mag >= 9:
+        return (f"The dollar is {direction} {mag:.1f}% against major currencies over the "
+                "past year — a sharp run by historical standards.", "elevated")
+    if mag >= 5:
+        return (f"The dollar is {direction} {mag:.1f}% against major currencies over the "
+                "past year — a sizable swing.", "watch")
+    if mag >= 1:
+        return (f"The dollar is {direction} {mag:.1f}% against major currencies over the "
+                "past year — a normal drift.", "ok")
+    return (f"The dollar is little changed against major currencies over the past year "
+            f"({v:+.1f}%).", "ok")
+
+
+def fx_yoy(label, weaker_when_up=False):
+    """Factory: descriptive `info` read of a currency pair's ~12-month move.
+
+    `weaker_when_up=True` for pairs quoted foreign-currency-per-USD (yen,
+    yuan), where a rising rate means the foreign currency WEAKENED. The
+    default suits USD-per-foreign quotes (euro), where up = stronger."""
+    def _rule(obs):
+        if not obs:
+            return _NO_DATA
+        v = obs[-1][1]
+        prior = _value_year_ago(obs)
+        if prior is None or prior == 0:
+            return (f"{label} is at {v:,.2f} versus the dollar.", "info")
+        pct = (v - prior) / abs(prior) * 100
+        if weaker_when_up:
+            pct = -pct
+        if pct >= 1:
+            return (f"{label} has strengthened {pct:.1f}% against the dollar over the "
+                    "past year.", "info")
+        if pct <= -1:
+            return (f"{label} has weakened {abs(pct):.1f}% against the dollar over the "
+                    "past year.", "info")
+        return (f"{label} is little changed against the dollar over the past year.",
+                "info")
+    return _rule
+
+
+def world_growth(forecast):
+    """Factory: IMF world real-GDP growth (annual level). Bands: >=3.2 ok /
+    2.5-3.2 watch / 2.0-2.5 elevated / <2.0 alert (sub-2% ≈ global recession).
+    `forecast` is a zero-arg callable (imf.forecast_for) returning
+    {"year","value"} or None; when present, the next-year IMF projection is
+    appended in prose — never charted or key-stat'ed."""
+    def _rule(obs):
+        if not obs:
+            return _NO_DATA
+        year, v = obs[-1]
+        if v >= 3.2:
+            text, status = (f"The world economy is growing {v:.1f}% in {year} — around "
+                            "its long-run trend.", "ok")
+        elif v >= 2.5:
+            text, status = (f"The world economy is growing {v:.1f}% in {year} — below "
+                            "its long-run trend.", "watch")
+        elif v >= 2.0:
+            text, status = (f"The world economy is growing just {v:.1f}% in {year} — "
+                            "near stall speed.", "elevated")
+        elif v >= 0:
+            text, status = (f"The world economy is growing only {v:.1f}% in {year} — "
+                            "global recession territory.", "alert")
+        else:
+            text, status = (f"The world economy is shrinking {abs(v):.1f}% in {year} — "
+                            "a global recession.", "alert")
+        f = forecast()
+        if f:
+            text += f" The IMF projects {f['value']:.1f}% for {f['year']}."
+        return text, status
+    return _rule
+
+
+def annual_growth(label):
+    """Factory: descriptive `info` read of an annual real-GDP growth series.
+    Reports the latest year and the direction versus the prior year."""
+    def _rule(obs):
+        if not obs:
+            return _NO_DATA
+        year, v = obs[-1]
+        if v < 0:
+            text = f"{label} shrank {abs(v):.1f}% in {year}"
+        else:
+            text = f"{label} grew {v:.1f}% in {year}"
+        if len(obs) >= 2:
+            prior = obs[-2][1]
+            if v < prior - 0.2:
+                text += f", slowing from {prior:.1f}% the year before"
+            elif v > prior + 0.2:
+                text += f", up from {prior:.1f}% the year before"
+            else:
+                text += f", matching the year before"
+        return text + ".", "info"
+    return _rule
+
+
+def rule_world_inflation(obs):
+    """IMF world consumer-price inflation (annual level). Descriptive `info`
+    with the direction versus the prior year."""
+    if not obs:
+        return _NO_DATA
+    year, v = obs[-1]
+    text = f"World consumer prices are rising {v:.1f}% in {year}"
+    if len(obs) >= 2:
+        prior = obs[-2][1]
+        if v < prior - 0.2:
+            text += f", easing from {prior:.1f}% the year before"
+        elif v > prior + 0.2:
+            text += f", up from {prior:.1f}% the year before"
+        else:
+            text += f", about the same as the year before"
+    return text + ".", "info"
+
+
+def rule_gscpi(obs):
+    """NY Fed Global Supply Chain Pressure Index (σ from historical mean).
+    <0.5 ok / 0.5-1.5 watch / 1.5-2.5 elevated / >=2.5 alert; negative =
+    looser than normal (ok). COVID peaked near 4.5σ."""
+    if not obs:
+        return _NO_DATA
+    v = obs[-1][1]
+    if v >= 2.5:
+        return (f"Supply-chain pressure is {v:.1f}σ above normal — extreme disruption "
+                "(the COVID peak was about 4.5σ).", "alert")
+    if v >= 1.5:
+        return (f"Supply-chain pressure is {v:.1f}σ above normal — real strain in "
+                "global logistics.", "elevated")
+    if v >= 0.5:
+        return (f"Supply-chain pressure is {v:.1f}σ above normal — tighter than "
+                "usual.", "watch")
+    if v >= 0:
+        return (f"Supply chains are running normally ({v:+.1f}σ from the historical "
+                "mean).", "ok")
+    return (f"Supply chains are running looser than normal ({v:.1f}σ) — no pressure.",
+            "ok")
+
+
+def rule_trade_balance(obs):
+    """U.S. goods & services trade balance in $B/month (negative = deficit).
+    Descriptive `info`: deficit wider/narrower/about the same vs a year ago."""
+    if not obs:
+        return _NO_DATA
+    v = obs[-1][1]
+    if v >= 0:
+        return (f"The U.S. is running a ${v:.1f}B monthly trade surplus — rare in "
+                "modern history.", "info")
+    prior = _value_year_ago(obs)
+    text = f"The U.S. trade deficit is ${abs(v):.1f}B a month"
+    if prior is not None and prior < 0:
+        if abs(v) > abs(prior) * 1.05:
+            text += ", wider than a year ago"
+        elif abs(v) < abs(prior) * 0.95:
+            text += ", narrower than a year ago"
+        else:
+            text += ", about the same as a year ago"
+    return text + ".", "info"
+
+
+def epu_band(label):
+    """Factory: Baker/Bloom/Davis Economic Policy Uncertainty level bands.
+    Long-run norm ≈ 100: <120 ok / 120-200 watch / 200-300 elevated /
+    >=300 alert. Label must read as a singular subject."""
+    def _rule(obs):
+        if not obs:
+            return _NO_DATA
+        v = obs[-1][1]
+        if v >= 300:
+            return (f"{label} is at {v:.0f} — extreme by historical standards "
+                    "(the long-run norm is about 100).", "alert")
+        if v >= 200:
+            return (f"{label} is at {v:.0f} — far above its long-run norm of "
+                    "about 100.", "elevated")
+        if v >= 120:
+            return (f"{label} is at {v:.0f} — above its long-run norm of about 100.",
+                    "watch")
+        return (f"{label} is at {v:.0f} — a normal level (the long-run norm is "
+                "about 100).", "ok")
+    return _rule
+
+
 HEADLINES = {
     "recession-watch": {
         "alert": "Recession signals are flashing — multiple indicators have tripped.",
@@ -1041,6 +1235,34 @@ HEADLINES = {
         "watch": "Rents are climbing — renters are feeling it.",
         "ok": "The rental market is balanced — rents are behaving.",
         "unknown": "Some rental data is temporarily unavailable.",
+    },
+    "global-dollar-currencies": {
+        "alert": "The dollar is moving violently — a global financial squeeze.",
+        "elevated": "The dollar is on a sharp run — global conditions are shifting fast.",
+        "watch": "The dollar is swinging — a sizable move against world currencies.",
+        "ok": "Currency markets are calm — the dollar is near where it was a year ago.",
+        "unknown": "Some currency data is temporarily unavailable.",
+    },
+    "global-growth": {
+        "alert": "The world economy is in recession territory.",
+        "elevated": "Global growth is near stall speed.",
+        "watch": "Global growth is running below trend.",
+        "ok": "The world economy is growing around its long-run trend.",
+        "unknown": "Some global growth data is temporarily unavailable.",
+    },
+    "global-trade-supply": {
+        "alert": "Global trade is severely disrupted — supply chains or import costs are at extremes.",
+        "elevated": "Global trade is under real strain — supply chains or import costs are stressed.",
+        "watch": "Trade frictions are building — supply chains or import costs bear watching.",
+        "ok": "Global trade is flowing normally — supply chains are running smoothly.",
+        "unknown": "Some trade data is temporarily unavailable.",
+    },
+    "global-uncertainty": {
+        "alert": "Policy uncertainty is extreme — governments themselves are the biggest risk in the outlook.",
+        "elevated": "Policy uncertainty is high — what governments do next is a major source of risk.",
+        "watch": "Policy uncertainty is above its historical norm.",
+        "ok": "The policy backdrop is calm — uncertainty is at normal levels.",
+        "unknown": "Some uncertainty data is temporarily unavailable.",
     },
 }
 
