@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Business Credit &amp; Stress — Bailey Analytics</title>
+  <meta name="description" content="Is business credit tightening? The Baa corporate spread, bank lending standards, business-loan delinquencies, and C&amp;I loan growth, from FRED.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Bailey Analytics">
+  <meta property="og:title" content="Business Credit &amp; Stress — Bailey Analytics">
+  <meta property="og:description" content="Is business credit tightening? The Baa corporate spread, bank lending standards, business-loan delinquencies, and C&amp;I loan growth, from FRED.">
+  <meta property="og:url" content="https://baileyanalytics.com/dashboards/business/credit.html">
+  <meta name="twitter:card" content="summary">
+  <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="/dashboards/lens.css">
+</head>
+<body>
+  <nav class="wordmark"><a href="/">Bailey Analytics</a></nav>
+  <nav class="top-nav"><a href="/dashboards/">Dashboards</a><a href="/about.html">About</a></nav>
+  <main id="lens-root"><div class="status-msg">Loading…</div></main>
+  <script defer src="/dashboards/lens.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", () => {
+    renderLens("/data/business/business-credit.json", {
+      back: "Corporate & Business Health",
+      href: "/dashboards/business/",
+      foot: 'Data: <a href="https://fred.stlouisfed.org/" target="_blank" rel="noopener">Federal Reserve Economic Data (FRED)</a>, St. Louis Fed. Refreshed daily. The "read" is generated from the latest values by a fixed rule set. Market-priced credit spreads (ICE BofA high-yield and investment-grade) live on the <a href="/dashboards/markets/risk-sentiment.html">Risk Sentiment</a> lens.'
+    });
+  });</script>
+</body>
+</html>

@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboards — Bailey Analytics</title>
-  <meta name="description" content="Plain-English dashboards built from public data — the U.S. economy, the consumer, banking system health, markets, energy and commodities, and housing. Refreshed daily from FRED, FDIC, EIA, and CoinGecko.">
+  <meta name="description" content="Plain-English dashboards built from public data — the U.S. economy, the consumer, banking system health, corporate and business health, markets, energy and commodities, and housing. Refreshed daily from FRED, FDIC, EIA, and CoinGecko.">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Bailey Analytics">
   <meta property="og:title" content="Dashboards — Bailey Analytics">
-  <meta property="og:description" content="Plain-English dashboards built from public data — the U.S. economy, the consumer, banking system health, markets, energy and commodities, and housing. Refreshed daily from FRED, FDIC, EIA, and CoinGecko.">
+  <meta property="og:description" content="Plain-English dashboards built from public data — the U.S. economy, the consumer, banking system health, corporate and business health, markets, energy and commodities, and housing. Refreshed daily from FRED, FDIC, EIA, and CoinGecko.">
   <meta property="og:url" content="https://baileyanalytics.com/dashboards/">
   <meta name="twitter:card" content="summary">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -42,6 +42,10 @@
     <p class="cat-sub">The health of the U.S. banking system, from FDIC Call Reports — asset quality, profitability, capital, and funding. <a href="/dashboards/banking/" style="color:var(--blue);text-decoration:none">Overview &rarr;</a></p>
     <div class="hub-grid" id="bank-grid"><div class="status-msg">Loading&hellip;</div></div>
 
+    <h2 class="cat-head"><span class="dot" style="background:#34D399"></span>Corporate &amp; Business Health</h2>
+    <p class="cat-sub">The business side of the economy — profits, new-business formation, investment, and business credit. Refreshed daily from FRED. <a href="/dashboards/business/" style="color:var(--blue);text-decoration:none">Overview &rarr;</a></p>
+    <div class="hub-grid" id="business-grid"><div class="status-msg">Loading&hellip;</div></div>
+
     <h2 class="cat-head"><span class="dot" style="background:#22D3EE"></span>Markets &amp; Financial Conditions</h2>
     <p class="cat-sub">What markets are pricing — risk sentiment, the major asset classes, Fed liquidity, and crypto market structure. Refreshed daily from FRED and CoinGecko. <a href="/dashboards/markets/" style="color:var(--blue);text-decoration:none">Overview &rarr;</a></p>
     <div class="hub-grid" id="markets-grid"><div class="status-msg">Loading&hellip;</div></div>
@@ -66,6 +70,14 @@
     loadHubGrid("econ-grid", "/data/lenses/index.json", id => `/dashboards/${encodeURIComponent(id)}.html`);
     loadHubGrid("bank-grid", "/data/banking/index.json",
                 id => `/dashboards/banking/${encodeURIComponent(id.replace(/^bank-/, ""))}.html`);
+    const BUSINESS_SLUGS = {
+      "business-profitability": "profitability",
+      "business-formation": "formation",
+      "business-investment": "investment",
+      "business-credit": "credit"
+    };
+    loadHubGrid("business-grid", "/data/business/index.json",
+                id => `/dashboards/business/${encodeURIComponent(BUSINESS_SLUGS[id] || id)}.html`);
     const MARKET_SLUGS = {
       "market-risk-sentiment": "risk-sentiment",
       "market-scoreboard": "scoreboard",
