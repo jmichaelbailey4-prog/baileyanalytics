@@ -1,0 +1,48 @@
+name: Prediction tournament
+
+on:
+  schedule:
+    # Weekly, Sunday 05:00 UTC, before Monday's daily runs pick up the new
+    # champions. GitHub cron silently skips slots sometimes (observed
+    # 2026-06-10), so a second slot self-heals; models.json writes are
+    # content-aware, so the rerun is free when the first worked.
+    - cron: "0 5 * * 0"
+    - cron: "0 12 * * 0"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  tournament:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install pipeline dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run the model tournament (full-history backtests)
+        env:
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+          EIA_API_KEY: ${{ secrets.EIA_API_KEY }}
+        run: python scripts/predict.py tournament
+
+      - name: Commit and push if models changed
+        if: ${{ success() || failure() }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [[ -n "$(git status --porcelain data/predictions/)" ]]; then
+            git add data/predictions/
+            git commit -m "chore: weekly prediction tournament ($(date -u +%Y-%m-%d))"
+            git push
+          else
+            echo "No model changes — skipping commit."
+          fi

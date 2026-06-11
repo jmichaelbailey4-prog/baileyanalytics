@@ -26,6 +26,9 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Install pipeline dependencies
+        run: pip install -r requirements.txt
+
       - name: Fetch latest FRED data (economic lenses)
         env:
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
@@ -70,6 +73,13 @@ jobs:
         env:
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
         run: python scripts/refresh_lenses.py --global
+
+      - name: Grade and predict (daily prediction loop)
+        if: ${{ success() || failure() }}
+        env:
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+          EIA_API_KEY: ${{ secrets.EIA_API_KEY }}
+        run: python scripts/predict.py daily
 
       - name: Rebuild Today's Brief (no network)
         if: ${{ success() || failure() }}
