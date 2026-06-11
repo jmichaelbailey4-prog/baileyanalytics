@@ -16,9 +16,10 @@
   <link rel="stylesheet" href="/dashboards/lens.css">
 </head>
 <body>
+  <noscript><style>.js-only{display:none}</style></noscript>
   <nav class="wordmark"><a href="/">Bailey Analytics</a></nav>
   <nav class="top-nav"><a href="/dashboards/">Dashboards</a><a href="/about.html">About</a></nav>
-  <main id="lens-root"><div class="status-msg">Loading&hellip;</div></main>
+  <main id="lens-root"><div class="status-msg"><span class="js-only">Loading&hellip;</span><noscript>The interactive dashboards require JavaScript.</noscript></div></main>
   <script defer src="/dashboards/lens.js"></script>
   <script>document.addEventListener("DOMContentLoaded", () => {
     renderLens("/data/banking/bank-capital-solvency.json", {
