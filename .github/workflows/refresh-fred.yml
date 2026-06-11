@@ -59,6 +59,12 @@ jobs:
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
         run: python scripts/refresh_lenses.py --consumer
 
+      - name: Fetch latest business data (FRED)
+        if: ${{ success() || failure() }}
+        env:
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+        run: python scripts/refresh_lenses.py --business
+
       - name: Rebuild Today's Brief (no network)
         if: ${{ success() || failure() }}
         run: python scripts/refresh_lenses.py --brief
