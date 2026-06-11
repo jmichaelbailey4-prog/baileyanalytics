@@ -24,6 +24,7 @@ ENERGY_OUT_DIR = Path(__file__).resolve().parent.parent / "data" / "energy"
 HOUSING_OUT_DIR = Path(__file__).resolve().parent.parent / "data" / "housing"
 CONSUMER_OUT_DIR = Path(__file__).resolve().parent.parent / "data" / "consumer"
 GLOBAL_OUT_DIR = Path(__file__).resolve().parent.parent / "data" / "global"
+BUSINESS_OUT_DIR = Path(__file__).resolve().parent.parent / "data" / "business"
 FIXTURE = Path(__file__).resolve().parent / "tests" / "fixtures" / "fetched_sample.json"
 FDIC_FIXTURE = Path(__file__).resolve().parent / "tests" / "fixtures" / "fdic_sample.json"
 MARKET_FIXTURE = Path(__file__).resolve().parent / "tests" / "fixtures" / "markets_sample.json"
@@ -31,6 +32,7 @@ ENERGY_FIXTURE = Path(__file__).resolve().parent / "tests" / "fixtures" / "energ
 HOUSING_FIXTURE = Path(__file__).resolve().parent / "tests" / "fixtures" / "housing_sample.json"
 CONSUMER_FIXTURE = Path(__file__).resolve().parent / "tests" / "fixtures" / "consumer_sample.json"
 GLOBAL_FIXTURE = Path(__file__).resolve().parent / "tests" / "fixtures" / "global_sample.json"
+BUSINESS_FIXTURE = Path(__file__).resolve().parent / "tests" / "fixtures" / "business_sample.json"
 CRYPTO_HISTORY = MARKETS_OUT_DIR / "_crypto_history.json"
 CRYPTO_FIXTURE = Path(__file__).resolve().parent / "tests" / "fixtures" / "coingecko_sample.json"
 BRIEF_OUT_DIR = Path(__file__).resolve().parent.parent / "data" / "brief"
@@ -46,6 +48,7 @@ def _brief_index_dirs():
         "energy": ENERGY_OUT_DIR,
         "housing": HOUSING_OUT_DIR,
         "consumer": CONSUMER_OUT_DIR,
+        "business": BUSINESS_OUT_DIR,
         "global": GLOBAL_OUT_DIR,
     }
 
@@ -442,6 +445,71 @@ def refresh_consumer(dry_run):
     return 0
 
 
+def _prior_business_obs(lens_id, ind_id):
+    """Prior observations for one business indicator from its existing lens JSON
+    (fallback when a share input is unavailable)."""
+    path = BUSINESS_OUT_DIR / f"{lens_id}.json"
+    if path.exists():
+        try:
+            data = json.loads(path.read_text(encoding="utf-8"))
+            for ind in data.get("indicators", []):
+                if ind.get("id") == ind_id:
+                    return ind.get("observations", [])
+        except (ValueError, OSError):
+            pass
+    return []
+
+
+def _inject_business_shares(fetched, api_key):
+    """Compute the two cross-series shares and inject them under their computed
+    fetch keys (mirrors the electricity generation-share pattern). The high-
+    propensity share needs no extra network call; the profit share needs GDP,
+    fetched here solely as the denominator (dry-run fixtures carry GDP:lin).
+    Additive: a missing input falls back to prior published data."""
+    hp = util.pct_share(fetched.get("BAHBATOTALSAUS:lin"), fetched.get("BABATOTALSAUS:lin"))
+    fetched["BFS_HP_SHARE:lin"] = hp or _prior_business_obs("business-formation", "hp-share")
+    gdp = fetched.get("GDP:lin")
+    if gdp is None and api_key:
+        try:
+            gdp = fred.fetch_observations("GDP", api_key, 104)
+        except Exception as exc:  # noqa: BLE001 - keep prior on failure
+            print(f"WARN: GDP fetch failed ({exc}); keeping previous profit share", file=sys.stderr)
+    share = util.pct_share(fetched.get("CP:lin"), gdp) if gdp else []
+    fetched["CP_GDP_SHARE:lin"] = share or _prior_business_obs("business-profitability", "profit-share")
+
+
+def refresh_business(dry_run):
+    """Build + write the business (FRED) lenses. Returns an exit code (0 ok, non-zero error)."""
+    api_key = None
+    if dry_run:
+        fetched = json.loads(BUSINESS_FIXTURE.read_text(encoding="utf-8"))
+        failed = set()
+    else:
+        api_key = os.environ.get("FRED_API_KEY")
+        if not api_key:
+            print("FRED_API_KEY not set", file=sys.stderr)
+            return 1
+        fetched, failed = fetch_all(config.BUSINESS_LENSES, api_key)
+
+    _inject_business_shares(fetched, api_key)
+
+    ready = [lens for lens in config.BUSINESS_LENSES if lens_ready(lens, failed)]
+    for lens in config.BUSINESS_LENSES:
+        if lens not in ready:
+            print(f"SKIP: {lens.id} (a source series failed; keeping previous data)", file=sys.stderr)
+    if not ready:
+        print("No business lenses could be built", file=sys.stderr)
+        return 2
+
+    written = build.write_outputs([build.build_lens(lens, fetched) for lens in ready],
+                                  BUSINESS_OUT_DIR)
+    for path in written:
+        print(f"Wrote {path}")
+    if not written:
+        print("No changes — all business data up to date.")
+    return 0
+
+
 def _inject_global(fetched, dry_run):
     """Populate the non-FRED global indicators (IMF WEO, NY Fed GSCPI, the two
     EPU files). Additive: each source is guarded individually, falling back to
@@ -589,19 +657,21 @@ def main(argv=None):
     # `global` is a Python keyword, so argparse needs an explicit dest.
     parser.add_argument("--global", dest="global_econ", action="store_true",
                         help="refresh only the Global Economy lenses")
+    parser.add_argument("--business", action="store_true", help="refresh only the business (FRED) lenses")
     parser.add_argument("--brief", action="store_true", help="rebuild only Today's Brief from existing indices")
     args = parser.parse_args(argv)
 
     # No source flag = refresh everything (handy for manual/local runs); each
     # flag scopes the run so a workflow can give each source its own cadence.
     any_flag = (args.economic or args.banking or args.markets or args.energy
-                or args.housing or args.consumer or args.global_econ or args.brief)
+                or args.housing or args.consumer or args.global_econ or args.business or args.brief)
     do_economic = args.economic or not any_flag
     do_banking = args.banking or not any_flag
     do_markets = args.markets or not any_flag
     do_energy = args.energy or not any_flag
     do_housing = args.housing or not any_flag
     do_consumer = args.consumer or not any_flag
+    do_business = args.business or not any_flag
     do_global = args.global_econ or not any_flag
     do_brief = args.brief or not any_flag
 
@@ -630,6 +700,10 @@ def main(argv=None):
         gc = refresh_global(args.dry_run)
         if gc:
             code = gc
+    if do_business:
+        bc = refresh_business(args.dry_run)
+        if bc:
+            code = bc
     if do_banking:
         refresh_banking(args.dry_run)
     if do_brief:

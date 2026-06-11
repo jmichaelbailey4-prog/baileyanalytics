@@ -59,6 +59,12 @@ jobs:
           FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
         run: python scripts/refresh_lenses.py --consumer
 
+      - name: Fetch latest business data (FRED)
+        if: ${{ success() || failure() }}
+        env:
+          FRED_API_KEY: ${{ secrets.FRED_API_KEY }}
+        run: python scripts/refresh_lenses.py --business
+
       - name: Fetch latest global data (FRED + IMF + NY Fed + EPU)
         if: ${{ success() || failure() }}
         env:

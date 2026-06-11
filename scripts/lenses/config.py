@@ -24,7 +24,7 @@ class Indicator:
     units_transform: Optional[str] = None
     value_format: str = "decimal"  # "decimal" (2dp) | "thousands" (whole, comma-separated)
     derive: Optional[Callable] = None  # optional post-fetch transform of raw observations
-    source: str = "fred"  # "fred" | "yahoo" | "eia" (non-FRED sources are injected by refresh_*)
+    source: str = "fred"  # "fred" | "yahoo" | "eia" | "computed" (non-FRED sources are injected by refresh_*)
     eia_route: str = ""             # EIA v2 route, e.g. "petroleum/pri/gnd" (empty = computed/injected)
     eia_facets: tuple = ()          # ((key, value), ...) -> facets[key][]=value
     eia_freq: str = ""              # "daily" | "weekly" | "monthly"
@@ -1387,4 +1387,169 @@ CATEGORIES.append(
      "out": "global", "back": "Global Economy",
      "source_label": "FRED, IMF World Economic Outlook, NY Fed, and policyuncertainty.com",
      "disclaimer": ""}
+)
+
+
+# --- Corporate & Business Health (FRED) ---
+# The "strategic" leg: are profits growing, are new firms forming, is capex
+# expanding, is credit tightening? Pure FRED. Two cross-series shares
+# (profits/GDP, high-propensity/total applications) are computed at refresh
+# time via util.pct_share and injected under source="computed" fetch keys;
+# GDP is fetched solely as a share denominator and gets no chart of its own.
+
+BUSINESS_PROFITABILITY = Lens(
+    id="business-profitability", title="Profitability", accent="#34D399",
+    indicators=[
+        Indicator(
+            id="profit-growth", title="Corporate Profits · year-over-year",
+            short="Profit growth", unit="%", color="#34D399",
+            series_id="CP", limit=104, derive=derive.yoy_pct,
+            rule=narrative.yoy_contraction_band("Corporate profits", 0, -5, -15),
+            context=("How fast after-tax corporate profits are growing versus a year ago "
+                     "(quarterly, all U.S. corporations — about $3.9 trillion a year). "
+                     "Falling profits are how downturns reach hiring and investment."),
+        ),
+        Indicator(
+            id="nonfinancial-profits", title="Nonfinancial Corporate Profits · year-over-year",
+            short="Nonfin. profits", unit="%", color="#38BDF8",
+            series_id="NFCPATAX", limit=104, derive=derive.yoy_pct,
+            rule=narrative.yoy_info("Nonfinancial corporate profit"),
+            context=("The same after-tax profit growth for nonfinancial corporations only — "
+                     "the 'Main Street corporates' read, with banks stripped out."),
+        ),
+        Indicator(
+            id="profit-share", title="Corporate Profits · share of GDP",
+            short="Profit share", unit="%", color="#A78BFA",
+            series_id="CP_GDP_SHARE", limit=104, source="computed",
+            rule=narrative.level_points("The corporate-profit share of GDP"),
+            context=("After-tax corporate profits as a share of GDP — the closest public "
+                     "proxy for economy-wide profit margins. The post-war norm is 5-7%; "
+                     "the 2020s have run near record highs above 11%."),
+        ),
+        Indicator(
+            id="proprietors-income", title="Proprietors' Income · year-over-year",
+            short="Proprietors", unit="%", color="#FBBF24",
+            series_id="PROPINC", limit=104, derive=derive.yoy_pct,
+            rule=narrative.yoy_info("Proprietors' income"),
+            context=("Income of unincorporated businesses — sole proprietors and "
+                     "partnerships. The closest thing to a small-business earnings line."),
+        ),
+    ],
+)
+
+BUSINESS_FORMATION = Lens(
+    id="business-formation", title="Business Formation", accent="#38BDF8",
+    indicators=[
+        Indicator(
+            id="applications", title="Business Applications · year-over-year",
+            short="Applications", unit="%", color="#38BDF8",
+            series_id="BABATOTALSAUS", limit=300, derive=derive.yoy_pct,
+            rule=narrative.yoy_contraction_band("Business applications", 0, -5, -15),
+            context=("How fast new business applications are growing versus a year ago "
+                     "(Census Business Formation Statistics — roughly half a million "
+                     "applications a month). Falling applications mean fading dynamism."),
+        ),
+        Indicator(
+            id="high-propensity", title="High-Propensity Applications · year-over-year",
+            short="High-propensity", unit="%", color="#A78BFA",
+            series_id="BAHBATOTALSAUS", limit=300, derive=derive.yoy_pct,
+            rule=narrative.yoy_info("High-propensity application volume"),
+            context=("Growth in applications with characteristics that make them likely to "
+                     "become employer businesses — the quality signal inside the headline count."),
+        ),
+        Indicator(
+            id="hp-share", title="High-Propensity Share of Applications",
+            short="HP share", unit="%", color="#FBBF24",
+            series_id="BFS_HP_SHARE", limit=300, source="computed",
+            rule=narrative.level_points("The high-propensity share of applications"),
+            context=("What fraction of all business applications look likely to become "
+                     "employers — formation quality over time. It ran near half before "
+                     "the pandemic-era boom in solo ventures pushed it below a third."),
+        ),
+    ],
+)
+
+BUSINESS_INVESTMENT = Lens(
+    id="business-investment", title="Investment & Activity", accent="#FBBF24",
+    indicators=[
+        Indicator(
+            id="core-capex", title="Core Capital-Goods Orders · year-over-year",
+            short="Core capex", unit="%", color="#FBBF24",
+            series_id="NEWORDER", limit=300, derive=derive.yoy_pct,
+            rule=narrative.yoy_contraction_band("Core capital-goods orders", 0, -3, -10),
+            context=("Orders for nondefense capital goods excluding aircraft — the cleanest "
+                     "monthly read on whether businesses are investing in equipment. "
+                     "(Headline durable goods is skipped here: aircraft orders make it noise.)"),
+        ),
+        Indicator(
+            id="real-sales", title="Real Business Sales · year-over-year",
+            short="Real sales", unit="%", color="#34D399",
+            series_id="CMRMTSPL", limit=300, derive=derive.yoy_pct,
+            rule=narrative.yoy_contraction_band("Real business sales", 0, -2, -6),
+            context=("Real manufacturing and trade sales — total business volume adjusted "
+                     "for inflation, one of the inputs NBER uses to date recessions."),
+        ),
+        Indicator(
+            id="inventories-sales", title="Inventories-to-Sales Ratio",
+            short="Inv./sales", unit="", color="#38BDF8",
+            series_id="ISRATIO", limit=240,
+            rule=narrative.rule_inventories_sales,
+            context=("Total business inventories measured against a month of sales. Rising "
+                     "means goods are piling up unsold — the overhang that precedes "
+                     "production cuts. The COVID spike hit 1.74; 2008 peaked near 1.48."),
+        ),
+    ],
+)
+
+BUSINESS_CREDIT = Lens(
+    id="business-credit", title="Credit & Stress", accent="#F87171",
+    indicators=[
+        Indicator(
+            id="baa-spread", title="Baa Corporate Spread · over 10-Year Treasury",
+            short="Baa spread", unit="%", color="#F87171",
+            series_id="BAA10YM", limit=240,
+            rule=narrative.rule_baa_spread,
+            context=("The extra yield investors demand to hold Moody's Baa-rated corporate "
+                     "bonds over 10-year Treasuries — the price of ordinary corporate credit "
+                     "risk, with history back to 1953. 2008 peaked near 6 points. (A different "
+                     "index family from the ICE BofA spreads on the Markets risk lens.)"),
+        ),
+        Indicator(
+            id="lending-standards", title="Lending Standards · net % of banks tightening",
+            short="Standards", unit="%", color="#FBBF24",
+            series_id="DRTSCILM", limit=80,
+            rule=narrative.rule_lending_standards,
+            context=("From the Fed's quarterly loan-officer survey: the share of banks "
+                     "tightening standards on commercial & industrial loans minus the share "
+                     "easing. Sustained tightening above ~20% has preceded every modern recession."),
+        ),
+        Indicator(
+            id="delinquency", title="Business-Loan Delinquency Rate",
+            short="Delinquency", unit="%", color="#FB923C",
+            series_id="DRBLACBS", limit=80,
+            rule=narrative.rule_business_delinquency,
+            context=("The share of commercial & industrial loans at banks that are past due "
+                     "(quarterly) — where business credit stress stops being a forecast and "
+                     "shows up as missed payments. The 2009 peak was about 4.4%."),
+        ),
+        Indicator(
+            id="ci-loan-growth", title="C&I Loan Growth · year-over-year",
+            short="C&I loans", unit="%", color="#A78BFA",
+            series_id="BUSLOANS", limit=300, derive=derive.yoy_pct,
+            rule=narrative.yoy_band_two_sided("C&I lending", hot=(10, 20, 30),
+                                              cold=(-0.5, -5, -12), verb="is"),
+            context=("How fast bank lending to businesses is growing. Outright contraction "
+                     "is a credit squeeze; double-digit booms (2020 hit +30%) have their own "
+                     "way of ending badly."),
+        ),
+    ],
+)
+
+BUSINESS_LENSES = [BUSINESS_PROFITABILITY, BUSINESS_FORMATION,
+                   BUSINESS_INVESTMENT, BUSINESS_CREDIT]
+
+CATEGORIES.append(
+    {"id": "business", "title": "Corporate & Business Health", "lenses": BUSINESS_LENSES,
+     "out": "business", "back": "Corporate & Business Health",
+     "source_label": "Federal Reserve Economic Data (FRED), St. Louis Fed", "disclaimer": ""}
 )
