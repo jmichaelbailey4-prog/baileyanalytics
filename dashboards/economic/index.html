@@ -13,6 +13,7 @@
   <meta name="twitter:card" content="summary">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="stylesheet" href="/dashboards/lens.css">
+  <noscript><style>.js-only{display:none}</style></noscript>
 </head>
 <body>
   <nav class="wordmark"><a href="/">Bailey Analytics</a></nav>
@@ -20,9 +21,9 @@
 
   <main>
     <a class="back" href="/dashboards/">&larr; Dashboards</a>
-    <h1>Economic Lenses</h1>
+    <h1>Economic Lenses <span class="badge" id="cat-badge" hidden></span></h1>
     <p class="lede">Where the U.S. economy actually stands — recession risk, what money costs, how the job market is holding up, what living costs are doing, and the government&rsquo;s finances. <strong>Open any lens</strong> for interactive charts and the context behind each number.</p>
-    <div class="hub-grid" id="hub-grid"><div class="status-msg">Loading&hellip;</div></div>
+    <div class="hub-grid" id="hub-grid"><div class="status-msg"><span class="js-only">Loading&hellip;</span><noscript>The interactive dashboards require JavaScript.</noscript></div></div>
     <div class="foot">
       Data: <a href="https://fred.stlouisfed.org/" target="_blank" rel="noopener">FRED</a>, St. Louis Fed. Public data, refreshed daily.
     </div>
@@ -30,8 +31,7 @@
 
   <script defer src="/dashboards/hub.js"></script>
   <script>document.addEventListener("DOMContentLoaded", () => {
-    loadHubGrid("hub-grid", "/data/lenses/index.json",
-      id => `/dashboards/${encodeURIComponent(id)}.html`);
+    loadHubGrid("hub-grid", "/data/lenses/index.json", id => lensHref("economic", id), "cat-badge");
   });</script>
 </body>
 </html>

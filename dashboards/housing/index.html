@@ -13,6 +13,7 @@
   <meta name="twitter:card" content="summary">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="stylesheet" href="/dashboards/lens.css">
+  <noscript><style>.js-only{display:none}</style></noscript>
 </head>
 <body>
   <nav class="wordmark"><a href="/">Bailey Analytics</a></nav>
@@ -20,9 +21,9 @@
 
   <main>
     <a class="back" href="/dashboards/">&larr; Dashboards</a>
-    <h1>Housing &amp; Real Estate</h1>
+    <h1>Housing &amp; Real Estate <span class="badge" id="cat-badge" hidden></span></h1>
     <p class="lede">Where housing actually stands — what homes cost and how fast they're selling, whether a typical family can afford to buy, how much is being built, and what's happening to rents. <strong>Open any lens</strong> for interactive charts and the context behind each number.</p>
-    <div class="hub-grid" id="hub-grid"><div class="status-msg">Loading&hellip;</div></div>
+    <div class="hub-grid" id="hub-grid"><div class="status-msg"><span class="js-only">Loading&hellip;</span><noscript>The interactive dashboards require JavaScript.</noscript></div></div>
     <div class="foot">
       Data: <a href="https://fred.stlouisfed.org/" target="_blank" rel="noopener">FRED</a>, St. Louis Fed. Public data, refreshed daily.
     </div>
@@ -30,12 +31,7 @@
 
   <script defer src="/dashboards/hub.js"></script>
   <script>document.addEventListener("DOMContentLoaded", () => {
-    loadHubGrid("hub-grid", "/data/housing/index.json",
-      id => {
-        const SLUGS = { "housing-home-prices": "home-prices", "housing-affordability": "affordability",
-                        "housing-supply-construction": "supply-construction", "housing-rent-shelter": "rent-shelter" };
-        return `/dashboards/housing/${encodeURIComponent(SLUGS[id] || id)}.html`;
-      });
+    loadHubGrid("hub-grid", "/data/housing/index.json", id => lensHref("housing", id), "cat-badge");
   });</script>
 </body>
 </html>

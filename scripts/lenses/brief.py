@@ -32,64 +32,24 @@ def move_score(sparkline):
     return abs(latest) / vol
 
 
-# Lens-id -> page-slug maps, mirroring dashboards/index.html (keep in sync).
-_MARKET_SLUGS = {
-    "market-risk-sentiment": "risk-sentiment",
-    "market-scoreboard": "scoreboard",
-    "market-liquidity": "liquidity",
-    "crypto-structure": "crypto-structure",
-}
-_ENERGY_SLUGS = {
-    "energy-oil-fuels": "oil-fuels",
-    "energy-natural-gas": "natural-gas",
-    "energy-electricity": "electricity",
-    "energy-commodities": "commodities",
-}
-_CONSUMER_SLUGS = {
-    "consumer-spending": "spending",
-    "consumer-credit": "credit-stress",
-    "consumer-income-savings": "income-savings",
-    "consumer-sentiment": "sentiment",
-}
-_HOUSING_SLUGS = {
-    "housing-home-prices": "home-prices",
-    "housing-affordability": "affordability",
-    "housing-supply-construction": "supply-construction",
-    "housing-rent-shelter": "rent-shelter",
-}
-_BUSINESS_SLUGS = {
-    "business-profitability": "profitability",
-    "business-formation": "formation",
-    "business-investment": "investment",
-    "business-credit": "credit",
-}
-_GLOBAL_SLUGS = {
-    "global-dollar-currencies": "dollar-currencies",
-    "global-growth": "growth",
-    "global-trade-supply": "trade-supply",
-    "global-uncertainty": "uncertainty",
-}
+# Page-slug rule: lens ids are "<prefix>-<slug>" and pages strip the category
+# prefix. Two irregular prefixes (banking ids use "bank-", markets "market-";
+# markets' crypto-structure has no prefix, so the strip is a no-op) and one
+# true override where the page name differs from the stripped id.
+_SLUG_OVERRIDES = {"consumer-credit": "credit-stress"}
+_ID_PREFIXES = {"banking": "bank-", "markets": "market-"}
 
 
 def lens_href(category, lens_id):
-    """Public page path for a lens, mirroring dashboards/index.html slug logic."""
+    """Public page path for a lens. Mirrors dashboards/hub.js lensHref — keep in sync."""
     if category == "economic":
         return f"/dashboards/{lens_id}.html"
-    if category == "banking":
-        return f"/dashboards/banking/{lens_id.replace('bank-', '', 1)}.html"
-    if category == "markets":
-        return f"/dashboards/markets/{_MARKET_SLUGS.get(lens_id, lens_id)}.html"
-    if category == "energy":
-        return f"/dashboards/energy/{_ENERGY_SLUGS.get(lens_id, lens_id)}.html"
-    if category == "consumer":
-        return f"/dashboards/consumer/{_CONSUMER_SLUGS.get(lens_id, lens_id)}.html"
-    if category == "housing":
-        return f"/dashboards/housing/{_HOUSING_SLUGS.get(lens_id, lens_id)}.html"
-    if category == "business":
-        return f"/dashboards/business/{_BUSINESS_SLUGS.get(lens_id, lens_id)}.html"
-    if category == "global":
-        return f"/dashboards/global/{_GLOBAL_SLUGS.get(lens_id, lens_id)}.html"
-    return "/dashboards/"
+    if category not in CATEGORIES:
+        return "/dashboards/"
+    prefix = _ID_PREFIXES.get(category, category + "-")
+    slug = _SLUG_OVERRIDES.get(lens_id) or (
+        lens_id[len(prefix):] if lens_id.startswith(prefix) else lens_id)
+    return f"/dashboards/{category}/{slug}.html"
 
 
 # The categories the brief covers, in tie-break order. _flatten_lenses reads

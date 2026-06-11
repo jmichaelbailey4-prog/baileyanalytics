@@ -13,6 +13,7 @@
   <meta name="twitter:card" content="summary">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="stylesheet" href="/dashboards/lens.css">
+  <noscript><style>.js-only{display:none}</style></noscript>
 </head>
 <body>
   <nav class="wordmark"><a href="/">Bailey Analytics</a></nav>
@@ -20,9 +21,9 @@
 
   <main>
     <a class="back" href="/dashboards/">&larr; Dashboards</a>
-    <h1>Global Economy</h1>
+    <h1>Global Economy <span class="badge" id="cat-badge" hidden></span></h1>
     <p class="lede">The world beyond U.S. borders — where the dollar is pushing global conditions, how fast the world economy is growing, whether trade and supply chains are flowing, and how much policy itself is the risk. <strong>Open any lens</strong> for interactive charts and the context behind each number.</p>
-    <div class="hub-grid" id="hub-grid"><div class="status-msg">Loading&hellip;</div></div>
+    <div class="hub-grid" id="hub-grid"><div class="status-msg"><span class="js-only">Loading&hellip;</span><noscript>The interactive dashboards require JavaScript.</noscript></div></div>
     <div class="foot">
       Data: <a href="https://fred.stlouisfed.org/" target="_blank" rel="noopener">FRED</a> (St. Louis Fed), the <a href="https://www.imf.org/en/Publications/WEO" target="_blank" rel="noopener">IMF World Economic Outlook</a>, the <a href="https://www.newyorkfed.org/research/policy/gscpi" target="_blank" rel="noopener">New York Fed</a>, and <a href="https://www.policyuncertainty.com/" target="_blank" rel="noopener">policyuncertainty.com</a>. Public data, refreshed daily.
     </div>
@@ -30,12 +31,7 @@
 
   <script defer src="/dashboards/hub.js"></script>
   <script>document.addEventListener("DOMContentLoaded", () => {
-    loadHubGrid("hub-grid", "/data/global/index.json",
-      id => {
-        const SLUGS = { "global-dollar-currencies": "dollar-currencies", "global-growth": "growth",
-                        "global-trade-supply": "trade-supply", "global-uncertainty": "uncertainty" };
-        return `/dashboards/global/${encodeURIComponent(SLUGS[id] || id)}.html`;
-      });
+    loadHubGrid("hub-grid", "/data/global/index.json", id => lensHref("global", id), "cat-badge");
   });</script>
 </body>
 </html>

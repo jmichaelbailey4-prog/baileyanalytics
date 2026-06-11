@@ -80,8 +80,8 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          if [[ -n "$(git status --porcelain data/)" ]]; then
-            git add data/
+          if [[ -n "$(git status --porcelain data/ feed.xml)" ]]; then
+            git add data/ feed.xml
             git commit -m "chore: refresh FRED data ($(date -u +%Y-%m-%d))"
             git push
           else

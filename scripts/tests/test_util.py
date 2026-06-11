@@ -59,19 +59,53 @@ class TestPctShare(unittest.TestCase):
                                         [{"date": "d", "value": "0"}]), [])
 
 
+class TestSpreadFfill(unittest.TestCase):
+    def test_subtracts_with_forward_fill(self):
+        # daily minuend, monthly subtrahend: each a-date uses the latest b at or before it
+        a = [{"date": "2026-01-02", "value": "4.20"}, {"date": "2026-02-03", "value": "4.00"}]
+        b = [{"date": "2026-01-01", "value": "4.50"}, {"date": "2026-02-01", "value": "4.40"}]
+        self.assertEqual(util.spread_ffill(a, b), [
+            {"date": "2026-01-02", "value": "-0.30"},
+            {"date": "2026-02-03", "value": "-0.40"},
+        ])
+
+    def test_skips_dates_before_subtrahend_starts(self):
+        a = [{"date": "2025-12-31", "value": "4.20"}]
+        b = [{"date": "2026-01-01", "value": "4.50"}]
+        self.assertEqual(util.spread_ffill(a, b), [])
+
+    def test_skips_missing_values(self):
+        a = [{"date": "2026-01-02", "value": "."}, {"date": "2026-01-03", "value": "4.00"}]
+        b = [{"date": "2026-01-01", "value": "4.50"}]
+        self.assertEqual(util.spread_ffill(a, b),
+                         [{"date": "2026-01-03", "value": "-0.50"}])
+
+    def test_handles_none(self):
+        self.assertEqual(util.spread_ffill(None, []), [])
+
+
 class TestThinObservations(unittest.TestCase):
     def test_recent_window_kept_in_full(self):
         obs = [{"date": f"2026-05-{d:02d}", "value": str(d)} for d in range(1, 31)]
         self.assertEqual(util.thin_observations(obs, keep_years=2), obs)
 
-    def test_old_daily_points_thinned_to_weekly(self):
-        # daily points from 2020 (old) plus one recent anchor in 2026
-        old = [{"date": f"2020-03-{d:02d}", "value": str(d)} for d in range(2, 16)]  # 14 days
+    def test_mid_window_daily_points_thinned_to_weekly(self):
+        # daily points 2-5 years back thin to one per ISO week
+        old = [{"date": f"2024-03-{d:02d}", "value": str(d)} for d in range(4, 18)]  # 14 days
         recent = [{"date": "2026-05-01", "value": "x"}]
         out = util.thin_observations(old + recent, keep_years=2)
-        old_kept = [o for o in out if o["date"].startswith("2020")]
-        # Mar 2 2020 is a Monday: the 14 days cover ISO weeks 10 and 11 -> 2 survivors
-        self.assertEqual([o["date"] for o in old_kept], ["2020-03-02", "2020-03-09"])
+        kept = [o["date"] for o in out if o["date"].startswith("2024")]
+        # Mar 4 2024 is a Monday: the 14 days cover ISO weeks 10 and 11 -> 2 survivors
+        self.assertEqual(kept, ["2024-03-04", "2024-03-11"])
+        self.assertIn(recent[0], out)
+
+    def test_old_daily_points_thinned_to_monthly(self):
+        # daily points more than 5 years back thin to one per calendar month
+        old = [{"date": f"2020-03-{d:02d}", "value": str(d)} for d in range(2, 16)]
+        recent = [{"date": "2026-05-01", "value": "x"}]
+        out = util.thin_observations(old + recent, keep_years=2)
+        kept = [o["date"] for o in out if o["date"].startswith("2020")]
+        self.assertEqual(kept, ["2020-03-02"])
         self.assertIn(recent[0], out)
 
     def test_old_monthly_points_untouched(self):

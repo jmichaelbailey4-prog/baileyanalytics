@@ -13,6 +13,7 @@
   <meta name="twitter:card" content="summary">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="stylesheet" href="/dashboards/lens.css">
+  <noscript><style>.js-only{display:none}</style></noscript>
 </head>
 <body>
   <nav class="wordmark"><a href="/">Bailey Analytics</a></nav>
@@ -20,9 +21,9 @@
 
   <main>
     <a class="back" href="/dashboards/">&larr; Dashboards</a>
-    <h1>The Consumer</h1>
+    <h1>The Consumer <span class="badge" id="cat-badge" hidden></span></h1>
     <p class="lede">Household spending is two-thirds of the U.S. economy — this is whether it's holding. What households are buying, whether the borrowing behind it is sustainable, the income and savings underneath, and how people actually feel. <strong>Open any lens</strong> for interactive charts and the context behind each number.</p>
-    <div class="hub-grid" id="hub-grid"><div class="status-msg">Loading&hellip;</div></div>
+    <div class="hub-grid" id="hub-grid"><div class="status-msg"><span class="js-only">Loading&hellip;</span><noscript>The interactive dashboards require JavaScript.</noscript></div></div>
     <div class="foot">
       Data: <a href="https://fred.stlouisfed.org/" target="_blank" rel="noopener">FRED</a>, St. Louis Fed. Public data, refreshed daily.
     </div>
@@ -30,12 +31,7 @@
 
   <script defer src="/dashboards/hub.js"></script>
   <script>document.addEventListener("DOMContentLoaded", () => {
-    loadHubGrid("hub-grid", "/data/consumer/index.json",
-      id => {
-        const SLUGS = { "consumer-spending": "spending", "consumer-credit": "credit-stress",
-                        "consumer-income-savings": "income-savings", "consumer-sentiment": "sentiment" };
-        return `/dashboards/consumer/${encodeURIComponent(SLUGS[id] || id)}.html`;
-      });
+    loadHubGrid("hub-grid", "/data/consumer/index.json", id => lensHref("consumer", id), "cat-badge");
   });</script>
 </body>
 </html>

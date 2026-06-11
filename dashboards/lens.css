@@ -55,6 +55,9 @@ main{max-width:48rem;margin:0 auto}
 
 /* Hub pages (dashboards index + category hubs) — shared with hub.js */
 h1{font-size:clamp(2rem,4.5vw,2.75rem);font-weight:600;letter-spacing:-.02em;line-height:1.15;margin-bottom:.75rem}
+h1 .badge,.cat-head .badge{vertical-align:middle;flex:none}
+/* category prefix on cross-category cards (Today's Brief) */
+.hub-cat{color:var(--dim);font-weight:600}
 p.lede{color:var(--muted);font-size:1.0625rem;max-width:40rem;margin-bottom:2.25rem}
 p.lede strong{color:var(--text);font-weight:600}
 .hub-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
@@ -74,6 +77,7 @@ p.lede strong{color:var(--text);font-weight:600}
 .delta.down::before{content:"▼"}
 .hub-cta{margin-top:.85rem;font-size:.74rem;color:var(--blue);letter-spacing:.03em}
 .hub-fresh{font-size:.68rem;color:var(--dim);margin-top:.5rem}
+.hub-fresh.stale{color:var(--amber)}
 @media(prefers-reduced-motion:reduce){.hub-card{transition:none}.hub-card:hover{transform:none}}
 
 /* Banking tier & ranking tables (category #2). Scoped so the bare status
@@ -111,6 +115,7 @@ p.lede strong{color:var(--text);font-weight:600}
   color:inherit;padding:.5rem .6rem;border-radius:9px;transition:background-color .15s ease}
 .brief-trans:hover{background:rgba(255,255,255,.03)}
 .brief-trans-title{font-weight:600;font-size:.86rem}
+.brief-cat{font-size:.62rem;color:var(--dim);text-transform:uppercase;letter-spacing:.08em;font-weight:600;flex:none}
 .brief-arrow{display:inline-flex;align-items:center;gap:.4rem;color:var(--dim);font-size:.8rem}
 .brief-trans-read{color:var(--muted);font-size:.8rem;flex:1 1 14rem;min-width:0}
 .brief-counts a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--border)}

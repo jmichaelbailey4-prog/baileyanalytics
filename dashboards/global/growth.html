@@ -14,11 +14,12 @@
   <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="stylesheet" href="/dashboards/lens.css">
+  <noscript><style>.js-only{display:none}</style></noscript>
 </head>
 <body>
   <nav class="wordmark"><a href="/">Bailey Analytics</a></nav>
   <nav class="top-nav"><a href="/dashboards/">Dashboards</a><a href="/about.html">About</a></nav>
-  <main id="lens-root"><div class="status-msg">Loading&hellip;</div></main>
+  <main id="lens-root"><div class="status-msg"><span class="js-only">Loading&hellip;</span><noscript>The interactive dashboards require JavaScript.</noscript></div></main>
   <script defer src="/dashboards/lens.js"></script>
   <script>document.addEventListener("DOMContentLoaded", () => {
     renderLens("/data/global/global-growth.json", {

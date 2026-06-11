@@ -4,7 +4,7 @@
   "lenses": [
     {
       "id": "consumer-spending",
-      "title": "Spending",
+      "title": "Consumer Spending",
       "accent": "#34D399",
       "status": "ok",
       "headline_read": "Consumers are still spending at a healthy pace.",
@@ -67,7 +67,7 @@
     },
     {
       "id": "consumer-credit",
-      "title": "Credit Stress",
+      "title": "Consumer Credit Stress",
       "accent": "#F87171",
       "status": "watch",
       "headline_read": "Consumer credit bears watching \u2014 debt loads are creeping up.",
@@ -130,7 +130,7 @@
     },
     {
       "id": "consumer-income-savings",
-      "title": "Income & Savings",
+      "title": "Household Income & Savings",
       "accent": "#FBBF24",
       "status": "elevated",
       "headline_read": "Household cushions are thin \u2014 savings or real incomes are stretched.",
@@ -193,7 +193,7 @@
     },
     {
       "id": "consumer-sentiment",
-      "title": "Sentiment & Expectations",
+      "title": "Consumer Sentiment",
       "accent": "#38BDF8",
       "status": "alert",
       "headline_read": "Consumers are deeply pessimistic \u2014 sentiment is near record lows.",

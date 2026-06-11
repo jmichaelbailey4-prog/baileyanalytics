@@ -20,9 +20,12 @@
         const delta = s.d ? ` <i class="delta ${esc(s.dir || "")}">${esc(s.d)}</i>` : "";
         return `<span>${esc(s.k)} <b>${esc(s.v)}</b>${delta}</span>`;
       }).join("");
+    // Cross-category pages (the brief) set category_label so a lens named
+    // outside its home category still says where it lives.
+    const cat = lens.category_label ? `<span class="hub-cat">${esc(lens.category_label)}</span> · ` : "";
     return `
       <a class="hub-card" href="${href}">
-        <div class="hub-eyebrow" style="color:${lens.accent}">${esc(lens.title)}
+        <div class="hub-eyebrow" style="color:${lens.accent}">${cat}${esc(lens.title)}
           <span class="badge ${esc(lens.status)}">${esc(lens.status)}</span></div>
         <div class="hub-read">${esc(lens.headline_read)}</div>
         ${sparkline(lens.sparkline, lens.accent)}
@@ -47,15 +50,45 @@
     grid.innerHTML = (lenses || []).map(l => tile(l, hrefFor(l.id))).join("");
   };
 
-  window.loadHubGrid = async function (gridId, url, hrefFor) {
+  // Public page path for a lens id. Mirrors brief.py lens_href — keep in sync.
+  // Rule: page slug = lens id minus its category prefix ("bank-" for banking,
+  // "market-" for markets, "<category>-" otherwise), with one true override.
+  window.lensHref = function (category, id) {
+    if (category === "economic") return `/dashboards/${encodeURIComponent(id)}.html`;
+    const overrides = { "consumer-credit": "credit-stress" };
+    const prefixes = { banking: "bank-", markets: "market-" };
+    const pre = prefixes[category] || category + "-";
+    const slug = overrides[id] || (id.indexOf(pre) === 0 ? id.slice(pre.length) : id);
+    return `/dashboards/${encodeURIComponent(category)}/${encodeURIComponent(slug)}.html`;
+  };
+
+  // opts: a badge-element id string, or { badgeId, staleDays }. badgeId receives
+  // the category's blended status (index.json `status`); staleDays (default 10)
+  // is how long without a data change before the freshness stamp turns amber —
+  // banking passes 120 because its quarterly source legitimately goes quiet.
+  window.loadHubGrid = async function (gridId, url, hrefFor, opts) {
+    if (typeof opts === "string") opts = { badgeId: opts };
+    opts = opts || {};
     const grid = document.getElementById(gridId);
     try {
       const res = await fetch(url, { cache: "no-cache" });
       if (!res.ok) throw new Error("HTTP " + res.status);
       const data = await res.json();
       renderHubTiles(grid, data.lenses, hrefFor);
+      const badge = opts.badgeId && data.status && document.getElementById(opts.badgeId);
+      if (badge) {
+        badge.className = `badge ${esc(data.status)}`;
+        badge.textContent = data.status;
+        badge.title = "Overall category status — balanced across all lenses";
+        badge.hidden = false;
+      }
       const ago = data.last_updated && relTime(data.last_updated);
-      if (ago) grid.insertAdjacentHTML("afterend", `<div class="hub-fresh">Data last changed ${esc(ago)}</div>`);
+      if (ago) {
+        const ageH = (Date.now() - new Date(data.last_updated).getTime()) / 3.6e6;
+        const stale = ageH > (opts.staleDays || 10) * 24;
+        grid.insertAdjacentHTML("afterend",
+          `<div class="hub-fresh${stale ? " stale" : ""}">Data last changed ${esc(ago)}${stale ? " — the refresh may be delayed" : ""}</div>`);
+      }
     } catch (err) {
       grid.innerHTML = `<div class="status-msg error">Dashboards are still being refreshed. Check back shortly.</div>`;
       console.error(err);

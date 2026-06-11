@@ -11,6 +11,7 @@
     <meta property="og:description" content="Daily plain-English dashboards on the U.S. and global economy — recession risk, the consumer, banking and business health, markets, energy, housing, and the world. Built from public data, refreshed every day.">
     <meta property="og:url" content="https://baileyanalytics.com/">
     <meta name="twitter:card" content="summary">
+  <link rel="alternate" type="application/rss+xml" title="Bailey Analytics — Today&#39;s Brief" href="/feed.xml">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <style>
         :root {
@@ -137,6 +138,13 @@
             border-radius: 6px;
         }
 
+        .asof {
+            font-size: 0.75rem;
+            color: var(--faint);
+            margin-top: 0.9rem;
+            letter-spacing: 0.04em;
+        }
+
         /* ---- Live lenses section ---- */
         .lenses-wrap { margin-top: 3rem; }
 
@@ -160,8 +168,8 @@
 
         .lens-grid {
             display: grid;
-            /* category tiles; 16rem min yields a balanced 3×2 at six categories
-               and keeps wrapping gracefully as more are added */
+            /* category tiles; 16rem min keeps the grid balanced at eight
+               categories and wraps gracefully as more are added */
             grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
             gap: 0.85rem;
         }
@@ -306,6 +314,7 @@
             <h1>Bailey Analytics</h1>
             <p class="tagline">Daily, plain-English dashboards on the U.S. and global economy — recession risk, the consumer, banking and business health, markets, energy, housing, and the world — built from public data.</p>
             <a class="email" href="mailto:michael@baileyanalytics.com">michael@baileyanalytics.com</a>
+            <div class="asof" id="hero-asof" hidden></div>
         </div>
 
         <section class="lenses-wrap" id="lenses" hidden>
@@ -370,13 +379,14 @@
             const stat = (lens.key_stats || [])[0] || { k: "", v: "—" };
             const delta = stat.d ? ` <i class="delta ${esc(stat.dir || "")}">${esc(stat.d)}</i>` : "";
             // The headline below comes from one lens — name it, and when that
-            // lens runs hotter than the category's balanced badge, flag it.
+            // lens runs hotter than the category's balanced badge, say so
+            // explicitly ("worst: alert") instead of a second bare status pill.
             const flag = (SEVERITY[lens.status] || 0) > (SEVERITY[status] || 0)
-                ? ` <span class="pill ${esc(lens.status)}">${esc(lens.status)}</span>` : "";
+                ? ` <span class="pill ${esc(lens.status)}" title="This lens runs hotter than the category overall">worst: ${esc(lens.status)}</span>` : "";
             return `
                 <a class="lens" href="${cat.href}">
                     <div class="eb" style="color:${lens.accent}">${esc(cat.title)}
-                        <span class="pill ${esc(status)}">${esc(status)}</span></div>
+                        <span class="pill ${esc(status)}" title="Overall category status — balanced across all lenses">${esc(status)}</span></div>
                     <div class="lead">${esc(lens.title)}${flag}</div>
                     <div class="read">${esc(lens.headline_read)}</div>
                     ${sparkline(lens.sparkline, lens.accent)}
@@ -396,14 +406,27 @@
                 // Badge = the category's balanced status baked by the pipeline;
                 // fall back to the worst lens's status for a stale/cached index.
                 const status = data.status || lens.status || "unknown";
-                return tile(cat, lens, status);
+                return { html: tile(cat, lens, status), updated: data.last_updated };
             }));
-            const tiles = results.filter(r => r.status === "fulfilled").map(r => r.value);
+            const ok = results.filter(r => r.status === "fulfilled").map(r => r.value);
+            const tiles = ok.map(v => v.html);
             results.forEach(r => { if (r.status === "rejected") console.error(r.reason); });
             if (!tiles.length) return; // leave the section hidden — the hero stands on its own
+            // The hero's "alive" signal: the freshest data change across categories.
+            const newest = ok.map(v => v.updated).filter(Boolean).sort().pop();
+            if (newest) {
+                const el = document.getElementById("hero-asof");
+                el.textContent = "Live data — updated " + new Date(newest).toLocaleDateString(undefined,
+                    { year: "numeric", month: "long", day: "numeric" });
+                el.hidden = false;
+            }
             document.getElementById("lens-grid").innerHTML = tiles.join("");
             document.getElementById("lenses").hidden = false;
-            loadBrief("brief-strip", { compact: true });
+            // brief.js loads deferred; this inline script can win the race on a
+            // warm cache, so don't assume loadBrief exists yet.
+            const showBrief = () => { if (typeof loadBrief === "function") loadBrief("brief-strip", { compact: true }); };
+            if (typeof loadBrief === "function") showBrief();
+            else window.addEventListener("DOMContentLoaded", showBrief);
         })();
     </script>
 </body>

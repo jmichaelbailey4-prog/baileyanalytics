@@ -5,26 +5,35 @@ from datetime import date
 STATUS_ORDER = {"unknown": -1, "ok": 0, "watch": 1, "elevated": 2, "alert": 3}
 
 
-def thin_observations(raw_observations, keep_years=2):
+def thin_observations(raw_observations, keep_years=2, monthly_after_years=5):
     """Shrink a published series: keep every point in the trailing `keep_years`
-    window, thin older points to one per ISO week (the first observation of
-    each week). Daily series shed ~80% of their old points; weekly and slower
-    cadences pass through unchanged, since at most one point falls in a week.
+    window, thin to one per ISO week out to `monthly_after_years`, and one per
+    calendar month beyond that. Weekly and slower cadences pass through the
+    weekly tier unchanged; monthly and slower pass through both.
 
     Rules only look back ~1 year from the latest point, so they are unaffected.
+    This thins only the *published* JSON — sources retain full history, so
+    nothing is lost for future modeling work.
     """
     if not raw_observations:
         return raw_observations
     last = raw_observations[-1]["date"]
-    boundary = f"{int(last[:4]) - keep_years}{last[4:]}"
-    out, seen_weeks = [], set()
+    weekly_boundary = f"{int(last[:4]) - keep_years}{last[4:]}"
+    monthly_boundary = f"{int(last[:4]) - monthly_after_years}{last[4:]}"
+    out, seen_weeks, seen_months = [], set(), set()
     for obs in raw_observations:
-        if obs["date"] >= boundary:
+        if obs["date"] >= weekly_boundary:
             out.append(obs)
             continue
         parts = obs["date"].split("-")
         if len(parts) < 3:  # EIA monthly periods are "YYYY-MM" — monthly never thins
             out.append(obs)
+            continue
+        if obs["date"] < monthly_boundary:
+            month = (parts[0], parts[1])
+            if month not in seen_months:
+                seen_months.add(month)
+                out.append(obs)
             continue
         week = date(int(parts[0]), int(parts[1]), int(parts[2])).isocalendar()[:2]
         if week not in seen_weeks:
@@ -91,6 +100,26 @@ def merge_series(old, new):
     for p in (new or []):
         merged[p["date"]] = p["value"]
     return [{"date": d, "value": merged[d]} for d in sorted(merged)]
+
+
+def spread_ffill(minuend, subtrahend):
+    """a - b on a's dates, forward-filling b (e.g. a daily yield minus a monthly
+    policy rate). Skips a-dates before b begins and missing values on either
+    side. Returns [{'date','value'}] with 2-dp string values, sorted by date."""
+    if not minuend or not subtrahend:
+        return []
+    b = sorted((p["date"], to_float(p["value"])) for p in subtrahend)
+    out, bi, last_b = [], 0, None
+    for p in sorted(minuend, key=lambda r: r["date"]):
+        a = to_float(p["value"])
+        while bi < len(b) and b[bi][0] <= p["date"]:
+            if b[bi][1] is not None:
+                last_b = b[bi][1]
+            bi += 1
+        if a is None or last_b is None:
+            continue
+        out.append({"date": p["date"], "value": f"{a - last_b:.2f}"})
+    return out
 
 
 def pct_share(numerator, denominator):
