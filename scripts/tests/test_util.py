@@ -64,14 +64,23 @@ class TestThinObservations(unittest.TestCase):
         obs = [{"date": f"2026-05-{d:02d}", "value": str(d)} for d in range(1, 31)]
         self.assertEqual(util.thin_observations(obs, keep_years=2), obs)
 
-    def test_old_daily_points_thinned_to_weekly(self):
-        # daily points from 2020 (old) plus one recent anchor in 2026
-        old = [{"date": f"2020-03-{d:02d}", "value": str(d)} for d in range(2, 16)]  # 14 days
+    def test_mid_window_daily_points_thinned_to_weekly(self):
+        # daily points 2-5 years back thin to one per ISO week
+        old = [{"date": f"2024-03-{d:02d}", "value": str(d)} for d in range(4, 18)]  # 14 days
         recent = [{"date": "2026-05-01", "value": "x"}]
         out = util.thin_observations(old + recent, keep_years=2)
-        old_kept = [o for o in out if o["date"].startswith("2020")]
-        # Mar 2 2020 is a Monday: the 14 days cover ISO weeks 10 and 11 -> 2 survivors
-        self.assertEqual([o["date"] for o in old_kept], ["2020-03-02", "2020-03-09"])
+        kept = [o["date"] for o in out if o["date"].startswith("2024")]
+        # Mar 4 2024 is a Monday: the 14 days cover ISO weeks 10 and 11 -> 2 survivors
+        self.assertEqual(kept, ["2024-03-04", "2024-03-11"])
+        self.assertIn(recent[0], out)
+
+    def test_old_daily_points_thinned_to_monthly(self):
+        # daily points more than 5 years back thin to one per calendar month
+        old = [{"date": f"2020-03-{d:02d}", "value": str(d)} for d in range(2, 16)]
+        recent = [{"date": "2026-05-01", "value": "x"}]
+        out = util.thin_observations(old + recent, keep_years=2)
+        kept = [o["date"] for o in out if o["date"].startswith("2020")]
+        self.assertEqual(kept, ["2020-03-02"])
         self.assertIn(recent[0], out)
 
     def test_old_monthly_points_untouched(self):

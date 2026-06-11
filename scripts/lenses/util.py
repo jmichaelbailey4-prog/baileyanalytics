@@ -5,26 +5,35 @@ from datetime import date
 STATUS_ORDER = {"unknown": -1, "ok": 0, "watch": 1, "elevated": 2, "alert": 3}
 
 
-def thin_observations(raw_observations, keep_years=2):
+def thin_observations(raw_observations, keep_years=2, monthly_after_years=5):
     """Shrink a published series: keep every point in the trailing `keep_years`
-    window, thin older points to one per ISO week (the first observation of
-    each week). Daily series shed ~80% of their old points; weekly and slower
-    cadences pass through unchanged, since at most one point falls in a week.
+    window, thin to one per ISO week out to `monthly_after_years`, and one per
+    calendar month beyond that. Weekly and slower cadences pass through the
+    weekly tier unchanged; monthly and slower pass through both.
 
     Rules only look back ~1 year from the latest point, so they are unaffected.
+    This thins only the *published* JSON — sources retain full history, so
+    nothing is lost for future modeling work.
     """
     if not raw_observations:
         return raw_observations
     last = raw_observations[-1]["date"]
-    boundary = f"{int(last[:4]) - keep_years}{last[4:]}"
-    out, seen_weeks = [], set()
+    weekly_boundary = f"{int(last[:4]) - keep_years}{last[4:]}"
+    monthly_boundary = f"{int(last[:4]) - monthly_after_years}{last[4:]}"
+    out, seen_weeks, seen_months = [], set(), set()
     for obs in raw_observations:
-        if obs["date"] >= boundary:
+        if obs["date"] >= weekly_boundary:
             out.append(obs)
             continue
         parts = obs["date"].split("-")
         if len(parts) < 3:  # EIA monthly periods are "YYYY-MM" — monthly never thins
             out.append(obs)
+            continue
+        if obs["date"] < monthly_boundary:
+            month = (parts[0], parts[1])
+            if month not in seen_months:
+                seen_months.add(month)
+                out.append(obs)
             continue
         week = date(int(parts[0]), int(parts[1]), int(parts[2])).isocalendar()[:2]
         if week not in seen_weeks:
