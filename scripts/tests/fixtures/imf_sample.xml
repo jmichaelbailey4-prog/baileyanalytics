@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<message:StructureSpecificData xmlns:message="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message" xmlns:ss="http://www.sdmx.org/resources/sdmxml/schemas/v2_1/data/structurespecific">
+  <message:DataSet>
+    <Series COUNTRY="G001" INDICATOR="NGDP_RPCH" FREQUENCY="A">
+      <Obs TIME_PERIOD="2025" OBS_VALUE="3.441279"/>
+      <Obs TIME_PERIOD="2026" OBS_VALUE="3.055974"/>
+      <Obs TIME_PERIOD="2027" OBS_VALUE="3.223795"/>
+      <Obs TIME_PERIOD="2028" OBS_VALUE="3.239925"/>
+    </Series>
+    <Series COUNTRY="CHN" INDICATOR="NGDP_RPCH" FREQUENCY="A">
+      <Obs TIME_PERIOD="2026" OBS_VALUE="4.41261"/>
+      <Obs TIME_PERIOD="2025" OBS_VALUE="4.958804"/>
+    </Series>
+    <Series COUNTRY="G001" INDICATOR="PCPIPCH" FREQUENCY="A">
+      <Obs TIME_PERIOD="2026" OBS_VALUE="4.423129"/>
+    </Series>
+  </message:DataSet>
+</message:StructureSpecificData>
