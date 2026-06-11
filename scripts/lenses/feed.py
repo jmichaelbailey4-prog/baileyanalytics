@@ -46,9 +46,10 @@ def render_feed(items):
     """Render RSS 2.0 XML. Item pubDates are midnight UTC of the brief date."""
     out = [
         '<?xml version="1.0" encoding="UTF-8"?>',
-        '<rss version="2.0"><channel>',
+        '<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel>',
         "<title>Bailey Analytics — Today&#39;s Brief</title>",
         f"<link>{BRIEF_URL}</link>",
+        f'<atom:link href="{SITE}/feed.xml" rel="self" type="application/rss+xml"/>',
         "<description>Daily plain-English status changes and movers across the "
         "Bailey Analytics economic dashboards.</description>",
     ]

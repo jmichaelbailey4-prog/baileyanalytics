@@ -652,16 +652,21 @@ def refresh_brief(dry_run):
               else "No brief changes — Today's Brief is up to date.")
         # RSS: one item per day, rolling 30 days, regenerated only when the
         # brief changed (keeps the quiet-day "no data change -> no commit" path).
+        # Guarded separately: a feed hiccup must not read as a brief failure.
         if wrote:
-            items_path = BRIEF_OUT_DIR / "_feed_items.json"
             try:
-                existing = json.loads(items_path.read_text(encoding="utf-8"))
-            except (ValueError, OSError):
-                existing = []
-            items = feed.merge_items(existing, feed.build_item(today))
-            items_path.write_text(json.dumps(items, indent=2) + "\n", encoding="utf-8")
-            FEED_PATH.write_text(feed.render_feed(items) + "\n", encoding="utf-8")
-            print(f"Wrote {FEED_PATH}")
+                items_path = BRIEF_OUT_DIR / "_feed_items.json"
+                try:
+                    existing = json.loads(items_path.read_text(encoding="utf-8"))
+                except (ValueError, OSError):
+                    existing = []
+                items = feed.merge_items(existing, feed.build_item(today))
+                items_path.write_text(json.dumps(items, indent=2) + "\n", encoding="utf-8")
+                FEED_PATH.write_text(feed.render_feed(items) + "\n", encoding="utf-8")
+                print(f"Wrote {FEED_PATH}")
+            except Exception as exc:  # noqa: BLE001 - feed is additive
+                print(f"WARN: feed build failed ({exc}); keeping previous feed.xml",
+                      file=sys.stderr)
     except Exception as exc:  # noqa: BLE001 - never break the run on a brief failure
         print(f"WARN: brief build failed ({exc}); keeping previous brief", file=sys.stderr)
 

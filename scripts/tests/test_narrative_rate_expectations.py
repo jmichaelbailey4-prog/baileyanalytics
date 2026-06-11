@@ -1,4 +1,4 @@
-﻿import pathlib
+import pathlib
 import sys
 import unittest
 
