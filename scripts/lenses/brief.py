@@ -57,6 +57,12 @@ _HOUSING_SLUGS = {
     "housing-supply-construction": "supply-construction",
     "housing-rent-shelter": "rent-shelter",
 }
+_BUSINESS_SLUGS = {
+    "business-profitability": "profitability",
+    "business-formation": "formation",
+    "business-investment": "investment",
+    "business-credit": "credit",
+}
 
 
 def lens_href(category, lens_id):
@@ -73,11 +79,13 @@ def lens_href(category, lens_id):
         return f"/dashboards/consumer/{_CONSUMER_SLUGS.get(lens_id, lens_id)}.html"
     if category == "housing":
         return f"/dashboards/housing/{_HOUSING_SLUGS.get(lens_id, lens_id)}.html"
+    if category == "business":
+        return f"/dashboards/business/{_BUSINESS_SLUGS.get(lens_id, lens_id)}.html"
     return "/dashboards/"
 
 
 # Category order for the brief (drives tie-break ordering only).
-CATEGORIES = ["economic", "consumer", "banking", "markets", "energy", "housing"]
+CATEGORIES = ["economic", "consumer", "banking", "business", "markets", "energy", "housing"]
 
 
 def _flatten_lenses(category_indices):

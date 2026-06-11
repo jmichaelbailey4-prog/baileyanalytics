@@ -57,6 +57,13 @@ class TestLensHref(unittest.TestCase):
         self.assertEqual(brief.lens_href("housing", "housing-home-prices"),
                          "/dashboards/housing/home-prices.html")
 
+    def test_business_lens_hrefs(self):
+        self.assertEqual(brief.lens_href("business", "business-profitability"),
+                         "/dashboards/business/profitability.html")
+        self.assertEqual(brief.lens_href("business", "business-credit"),
+                         "/dashboards/business/credit.html")
+        self.assertIn("business", brief.CATEGORIES)
+
 
 def _indices():
     return {
