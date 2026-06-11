@@ -133,3 +133,34 @@ def classify_shape(overall, has_pressure):
     if overall == "watch":
         return "contained-pressure" if has_pressure else "mixed-watch"
     return "all-clear"
+
+
+def _variant(iso_date, shape):
+    """Deterministic daily rotation: same sentence all day (no intraday commit
+    churn), varies across days, reproducible for any given date."""
+    return zlib.crc32(iso_date.encode("utf-8")) % len(SKELETONS[shape])
+
+
+def _sentence(shape, variant_idx, p_clauses, anchor, watch_nouns):
+    """Fill the chosen skeleton. p_clauses/watch_nouns are ordered lists of
+    lowercase fragments; anchor is a pre-joined clause ('' when no category is
+    ok, which selects the variant's fallback template)."""
+    tpl = SKELETONS[shape][variant_idx]
+    p = _join(p_clauses)
+    w = _join(watch_nouns)
+    if shape == "broad-stress":
+        return tpl["p"].format(p=p)
+    if shape in ("contained-pressure", "spreading-stress"):
+        return tpl["a"].format(p=p, a=anchor) if anchor else tpl["no_a"].format(p=p)
+    if shape == "mixed-watch":
+        return tpl["a"].format(w=w, a=anchor) if anchor else tpl["no_a"].format(w=w)
+    # all-clear: an ok category always exists (RMS < 0.6 forces at least one 0),
+    # so the anchor is never empty here — only the watch slot varies.
+    if not watch_nouns:
+        return tpl["no_watch"].format(a=anchor)
+    n = len(watch_nouns)
+    fields = {"a": anchor, "w": w,
+              "thing": "thing" if n == 1 else "things",
+              "is": "is" if n == 1 else "are",
+              "lone": "the lone watch item" if n == 1 else "the watch items"}
+    return tpl["watch"].format(**fields)
