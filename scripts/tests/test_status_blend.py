@@ -38,6 +38,12 @@ class TestStatusBlend(unittest.TestCase):
     def test_single_lens_alert_is_alert(self):
         self.assertEqual(util.status_blend(["alert"]), "alert")
 
+    def test_one_alert_among_three_ok_is_elevated(self):
+        # RMS = sqrt(9/4) = exactly 1.5, the watch/elevated edge: a lone alert
+        # lifts the category one notch (the alert itself is the tile callout's
+        # job). Changing this band is a deliberate semantic decision.
+        self.assertEqual(util.status_blend(["alert", "ok", "ok", "ok"]), "elevated")
+
     def test_neutral_info_unknown_excluded(self):
         self.assertEqual(util.status_blend(["ok", "neutral", "info", "unknown", "ok"]),
                          "ok")
