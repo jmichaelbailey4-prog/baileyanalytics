@@ -118,5 +118,141 @@ class TestSentence(unittest.TestCase):
         self.assertIn("little of the board reads steady", s)
 
 
+def cat_index(lens_statuses, *, status=None, prefix="lens"):
+    """Minimal category index: one lens per status, optional baked blend."""
+    lenses = [{"id": f"{prefix}-{i}", "title": f"Lens {i}", "status": s,
+               "headline_read": f"Read {i}."} for i, s in enumerate(lens_statuses)]
+    out = {"last_updated": "2026-06-11T00:00:00Z", "lenses": lenses}
+    if status is not None:
+        out["status"] = status
+    return out
+
+
+def todays_indices():
+    """Mirror of the real 2026-06-11 data: energy/consumer elevated, three
+    watch, three ok. Energy's lens mix (two alerts) outscores consumer's one."""
+    return {
+        "economic": cat_index(["ok", "ok", "ok", "elevated", "elevated"],
+                              status="watch", prefix="economic"),
+        "consumer": cat_index(["ok", "watch", "elevated", "alert"],
+                              status="elevated", prefix="consumer"),
+        "banking": cat_index(["ok", "ok", "ok", "watch"], status="ok", prefix="bank"),
+        "business": cat_index(["ok", "ok", "ok", "watch"], status="ok", prefix="business"),
+        "markets": cat_index(["ok", "neutral", "ok", "neutral"], status="ok", prefix="market"),
+        "energy": cat_index(["alert", "ok", "elevated", "alert"],
+                            status="elevated", prefix="energy"),
+        "housing": cat_index(["ok", "elevated", "elevated", "ok"],
+                             status="watch", prefix="housing"),
+        "global": cat_index(["ok", "ok", "elevated", "elevated"],
+                            status="watch", prefix="global"),
+    }
+
+
+class TestBuildState(unittest.TestCase):
+    def build(self, indices, brief_today=None):
+        orig = state._now
+        state._now = lambda: "2026-06-11T12:00:00Z"
+        try:
+            return state.build_state(indices, brief_today)
+        finally:
+            state._now = orig
+
+    def test_todays_picture(self):
+        out = self.build(todays_indices(), {"transitions": [1, 2]})
+        self.assertEqual(out["verdict"]["status"], "watch")
+        self.assertEqual(out["verdict"]["shape"], "contained-pressure")
+        s = out["verdict"]["sentence"]
+        # Energy (RMS 2.35) outranks consumer (1.87); both clauses present, in order.
+        e = "energy and commodity costs are squeezing budgets"
+        c = "household finances are stretched thin"
+        self.assertIn(e, s)
+        self.assertIn(c, s)
+        self.assertLess(s.index(e), s.index(c))
+        self.assertIn("banks are solid", s)  # top anchor by priority
+        self.assertEqual([p["category"] for p in out["pressure_points"]],
+                         ["energy", "consumer"])
+        # Steady: watch categories first (canonical order), then the rest.
+        self.assertEqual([c_["category"] for c_ in out["steady"]],
+                         ["economic", "housing", "global", "banking", "business", "markets"])
+        self.assertEqual(out["changed"], {"transitions": 2,
+                                          "href": "/dashboards/brief.html"})
+        self.assertEqual(len(out["categories"]), 8)
+        self.assertEqual(out["categories"][0]["href"], "/dashboards/economic/")
+
+    def test_pressure_lens_cards(self):
+        out = self.build(todays_indices())
+        energy = out["pressure_points"][0]
+        self.assertEqual(energy["title"], "Energy & Commodities")
+        self.assertEqual(energy["href"], "/dashboards/energy/")
+        lenses = energy["lenses"]
+        self.assertEqual(len(lenses), 2)  # capped, worst first
+        self.assertEqual([l["status"] for l in lenses], ["alert", "alert"])
+        self.assertEqual(lenses[0]["headline"], "Read 0.")
+        self.assertEqual(lenses[0]["href"], "/dashboards/energy/0.html")
+
+    def test_blend_falls_back_when_index_has_no_status(self):
+        indices = todays_indices()
+        del indices["energy"]["status"]  # stale/fixture-style index
+        out = self.build(indices)
+        # recomputed from lenses: sqrt(22/4) ~ 2.35 -> elevated, still ranked first
+        self.assertEqual(out["pressure_points"][0]["category"], "energy")
+        self.assertEqual(out["pressure_points"][0]["status"], "elevated")
+
+    def test_clause_cap_contained_is_two_but_block_shows_three(self):
+        indices = todays_indices()
+        indices["housing"] = cat_index(["elevated", "elevated", "ok", "ok"],
+                                       status="elevated", prefix="housing")
+        out = self.build(indices)
+        self.assertEqual(out["verdict"]["shape"], "contained-pressure")
+        self.assertEqual(len(out["pressure_points"]), 3)
+        # housing (RMS 1.41) ranks below energy and consumer -> not in the sentence
+        self.assertNotIn("housing market", out["verdict"]["sentence"])
+
+    def test_rank_tie_falls_to_canonical_order(self):
+        indices = {
+            "economic": cat_index(["ok"], status="ok", prefix="economic"),
+            "consumer": cat_index(["elevated"], status="elevated", prefix="consumer"),
+            "banking": cat_index(["ok"], status="ok", prefix="bank"),
+            "energy": cat_index(["elevated"], status="elevated", prefix="energy"),
+        }
+        out = self.build(indices)
+        # equal RMS (2.0) -> brief.CATEGORIES order: consumer before energy
+        self.assertEqual([p["category"] for p in out["pressure_points"]],
+                         ["consumer", "energy"])
+
+    def test_insufficient_categories(self):
+        indices = {"economic": cat_index(["ok"], status="ok"),
+                   "energy": cat_index(["alert"], status="alert")}
+        out = self.build(indices, {"transitions": []})
+        self.assertEqual(out["verdict"]["status"], "unknown")
+        self.assertEqual(out["verdict"]["shape"], "insufficient")
+        self.assertEqual(out["pressure_points"], [])
+        self.assertEqual(len(out["categories"]), 2)
+        self.assertEqual(out["changed"]["transitions"], 0)
+
+    def test_missing_brief_omits_changed(self):
+        out = self.build(todays_indices(), None)
+        self.assertNotIn("changed", out)
+
+    def test_missing_copy_degrades_not_crashes(self):
+        saved = state.PRESSURE_CLAUSES.pop("energy")
+        try:
+            out = self.build(todays_indices())
+            self.assertIn("energy costs is under real stress",
+                          out["verdict"]["sentence"])
+        finally:
+            state.PRESSURE_CLAUSES["energy"] = saved
+
+    def test_all_ok_is_all_clear(self):
+        indices = {cid: cat_index(["ok", "ok"], status="ok", prefix=cid)
+                   for cid in ["economic", "consumer", "banking", "business",
+                               "markets", "energy", "housing", "global"]}
+        out = self.build(indices)
+        self.assertEqual(out["verdict"]["status"], "ok")
+        self.assertEqual(out["verdict"]["shape"], "all-clear")
+        self.assertEqual(out["pressure_points"], [])
+        self.assertEqual(len(out["steady"]), 8)
+
+
 if __name__ == "__main__":
     unittest.main()

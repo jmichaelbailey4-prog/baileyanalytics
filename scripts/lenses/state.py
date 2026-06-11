@@ -164,3 +164,112 @@ def _sentence(shape, variant_idx, p_clauses, anchor, watch_nouns):
               "is": "is" if n == 1 else "are",
               "lone": "the lone watch item" if n == 1 else "the watch items"}
     return tpl["watch"].format(**fields)
+
+
+MIN_CATEGORIES = 4
+INSUFFICIENT_SENTENCE = "Not enough data to read the overall picture right now."
+PRESSURE_CAP = 3          # categories in the Pressure Points block
+LENSES_PER_PRESSURE = 2   # worst lenses quoted per pressure category
+CLAUSE_CAP = {"contained-pressure": 2, "spreading-stress": 3, "broad-stress": 3}
+ANCHOR_CAP = 2            # steady clauses named in the sentence
+WATCH_NOUN_CAP = 4        # watch categories named in mixed-watch sentences
+BRIEF_HREF = "/dashboards/brief.html"
+
+
+def _now():
+    return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def _categories(category_indices):
+    """Flatten {category: index_json} into canonical-order records. The blend
+    is recomputed from lens statuses when an index lacks the baked category
+    status (stale index or fixture) — mirrors the home page's fallback."""
+    cats = []
+    for cid in brief.CATEGORIES:
+        index = category_indices.get(cid)
+        if not index:
+            continue
+        lenses = [l for l in index.get("lenses", []) if l.get("id")]
+        statuses = [l.get("status", "unknown") for l in lenses]
+        cats.append({
+            "category": cid,
+            "title": TITLES.get(cid, cid),
+            "status": index.get("status") or util.status_blend(statuses),
+            "href": f"/dashboards/{cid}/",
+            "score": util.status_score(statuses) or 0.0,
+            "lenses": lenses,
+        })
+    return cats
+
+
+def _public(cat):
+    return {"category": cat["category"], "title": cat["title"],
+            "status": cat["status"], "href": cat["href"]}
+
+
+def _worst_lenses(cat):
+    """The lens cards a pressure category wears: worst first, capped, with the
+    verbatim headline_read and the shared slug logic for hrefs."""
+    sev = [l for l in cat["lenses"] if util.STATUS_ORDER.get(l.get("status"), -1) >= 0]
+    sev.sort(key=lambda l: -util.STATUS_ORDER[l["status"]])  # stable: config order ties
+    return [{"id": l["id"], "title": l.get("title", ""), "status": l["status"],
+             "headline": l.get("headline_read", ""),
+             "href": brief.lens_href(cat["category"], l["id"])}
+            for l in sev[:LENSES_PER_PRESSURE]]
+
+
+def _steady(cats, pressure_ids):
+    """Everything not under pressure — watch first (most interesting), then the
+    rest, canonical order within each group."""
+    rest = [c for c in cats if c["category"] not in pressure_ids]
+    return ([_public(c) for c in rest if c["status"] == "watch"]
+            + [_public(c) for c in rest if c["status"] != "watch"])
+
+
+def _pressure_clause(cat):
+    clause = PRESSURE_CLAUSES.get(cat["category"], {}).get(cat["status"])
+    # Unauthored copy (a brand-new category) degrades to generic copy, never a crash.
+    return clause or f"{NOUN.get(cat['category'], cat['title'].lower())} is under real stress"
+
+
+def _steady_clause(cat):
+    return (STEADY_CLAUSES.get(cat["category"])
+            or f"{NOUN.get(cat['category'], cat['title'].lower())} is steady")
+
+
+def build_state(category_indices, brief_today):
+    """Assemble the State of Things JSON from per-category index data and
+    today's brief (or None). Pure — no network, no disk I/O."""
+    generated = _now()
+    cats = _categories(category_indices)
+    overall = util.status_blend([c["status"] for c in cats])
+
+    if len(cats) < MIN_CATEGORIES or overall not in brief.SEVERITY:
+        out = {"generated_at": generated,
+               "verdict": {"status": "unknown", "shape": "insufficient",
+                           "sentence": INSUFFICIENT_SENTENCE},
+               "pressure_points": [],
+               "steady": _steady(cats, set())}
+    else:
+        pressure = sorted([c for c in cats if c["status"] in PRESSURE_STATUSES],
+                          key=lambda c: -c["score"])[:PRESSURE_CAP]
+        shape = classify_shape(overall, bool(pressure))
+        by_id = {c["category"]: c for c in cats}
+        anchors = [cid for cid in ANCHOR_PRIORITY
+                   if cid in by_id and by_id[cid]["status"] == "ok"][:ANCHOR_CAP]
+        anchor = _join([_steady_clause(by_id[cid]) for cid in anchors])
+        p_clauses = [_pressure_clause(c) for c in pressure[:CLAUSE_CAP.get(shape, 0)]]
+        watch_nouns = [NOUN.get(c["category"], c["title"].lower())
+                       for c in cats if c["status"] == "watch"][:WATCH_NOUN_CAP]
+        sentence = _sentence(shape, _variant(generated[:10], shape),
+                             p_clauses, anchor, watch_nouns)
+        out = {"generated_at": generated,
+               "verdict": {"status": overall, "shape": shape, "sentence": sentence},
+               "pressure_points": [dict(_public(c), lenses=_worst_lenses(c))
+                                   for c in pressure],
+               "steady": _steady(cats, {c["category"] for c in pressure})}
+    if brief_today and isinstance(brief_today.get("transitions"), list):
+        out["changed"] = {"transitions": len(brief_today["transitions"]),
+                          "href": BRIEF_HREF}
+    out["categories"] = [_public(c) for c in cats]
+    return out
