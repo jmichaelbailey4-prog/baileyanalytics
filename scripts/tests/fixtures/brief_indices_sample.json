@@ -29,5 +29,40 @@
        "key_stats": [{"k": "Sentiment", "v": "61.00", "d": "1.50", "dir": "down"}],
        "sparkline": [63.0, 62.5, 63.0, 62.5, 61.0]}
     ]
+  },
+  "banking": {
+    "last_updated": "2026-06-10T13:00:00Z",
+    "lenses": [
+      {"id": "bank-asset-quality", "title": "Asset Quality", "accent": "#FBBF24",
+       "status": "ok", "headline_read": "Bank loan quality is strong.",
+       "key_stats": [{"k": "Noncurrent rate", "v": "0.90%", "d": "0.02%", "dir": "down"}],
+       "sparkline": [0.9, 0.9, 0.9, 0.9]},
+      {"id": "bank-profitability", "title": "Bank Profitability", "accent": "#FBBF24",
+       "status": "ok", "headline_read": "Banks are solidly profitable.",
+       "key_stats": [{"k": "ROA", "v": "1.20%", "d": "0.01%", "dir": "up"}],
+       "sparkline": [1.2, 1.2, 1.2, 1.2]}
+    ]
+  },
+  "energy": {
+    "last_updated": "2026-06-10T13:00:00Z",
+    "lenses": [
+      {"id": "energy-oil-fuels", "title": "Oil & Fuels", "accent": "#FB923C",
+       "status": "alert", "headline_read": "Fuel costs are spiking.",
+       "key_stats": [{"k": "Gasoline", "v": "$4.10", "d": "$0.30", "dir": "up"}],
+       "sparkline": [4.1, 4.1, 4.1, 4.1]},
+      {"id": "energy-natural-gas", "title": "Natural Gas", "accent": "#FB923C",
+       "status": "ok", "headline_read": "Natural gas costs are stable.",
+       "key_stats": [{"k": "Henry Hub", "v": "$2.90", "d": "$0.01", "dir": "down"}],
+       "sparkline": [2.9, 2.9, 2.9, 2.9]}
+    ]
+  },
+  "housing": {
+    "last_updated": "2026-06-10T13:00:00Z",
+    "lenses": [
+      {"id": "housing-home-prices", "title": "Home-Price Stability", "accent": "#F472B6",
+       "status": "ok", "headline_read": "The housing market looks balanced.",
+       "key_stats": [{"k": "Case-Shiller YoY", "v": "3.10%", "d": "0.10%", "dir": "down"}],
+       "sparkline": [3.1, 3.1, 3.1, 3.1]}
+    ]
   }
 }

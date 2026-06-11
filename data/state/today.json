@@ -1,0 +1,146 @@
+{
+  "generated_at": "2026-06-11T18:38:08Z",
+  "verdict": {
+    "status": "watch",
+    "shape": "contained-pressure",
+    "sentence": "Pressure is real but contained: energy and commodity costs are squeezing budgets and household finances are stretched thin; meanwhile banks are solid and markets are calm."
+  },
+  "pressure_points": [
+    {
+      "category": "energy",
+      "title": "Energy & Commodities",
+      "status": "elevated",
+      "href": "/dashboards/energy/",
+      "lenses": [
+        {
+          "id": "energy-oil-fuels",
+          "title": "Oil & Fuels",
+          "status": "alert",
+          "headline": "Fuel costs are spiking \u2014 acute pressure at the pump.",
+          "href": "/dashboards/energy/oil-fuels.html"
+        },
+        {
+          "id": "energy-commodities",
+          "title": "Commodities & Materials",
+          "status": "alert",
+          "headline": "Commodity costs are surging.",
+          "href": "/dashboards/energy/commodities.html"
+        }
+      ]
+    },
+    {
+      "category": "consumer",
+      "title": "The Consumer",
+      "status": "elevated",
+      "href": "/dashboards/consumer/",
+      "lenses": [
+        {
+          "id": "consumer-sentiment",
+          "title": "Consumer Sentiment",
+          "status": "alert",
+          "headline": "Consumers are deeply pessimistic \u2014 sentiment is near record lows.",
+          "href": "/dashboards/consumer/sentiment.html"
+        },
+        {
+          "id": "consumer-income-savings",
+          "title": "Household Income & Savings",
+          "status": "elevated",
+          "headline": "Household cushions are thin \u2014 savings or real incomes are stretched.",
+          "href": "/dashboards/consumer/income-savings.html"
+        }
+      ]
+    }
+  ],
+  "steady": [
+    {
+      "category": "economic",
+      "title": "Economic Lenses",
+      "status": "watch",
+      "href": "/dashboards/economic/"
+    },
+    {
+      "category": "housing",
+      "title": "Housing & Real Estate",
+      "status": "watch",
+      "href": "/dashboards/housing/"
+    },
+    {
+      "category": "global",
+      "title": "Global Economy",
+      "status": "watch",
+      "href": "/dashboards/global/"
+    },
+    {
+      "category": "banking",
+      "title": "Banking System Health",
+      "status": "ok",
+      "href": "/dashboards/banking/"
+    },
+    {
+      "category": "business",
+      "title": "Corporate & Business Health",
+      "status": "ok",
+      "href": "/dashboards/business/"
+    },
+    {
+      "category": "markets",
+      "title": "Markets & Financial Conditions",
+      "status": "ok",
+      "href": "/dashboards/markets/"
+    }
+  ],
+  "changed": {
+    "transitions": 0,
+    "href": "/dashboards/brief.html"
+  },
+  "categories": [
+    {
+      "category": "economic",
+      "title": "Economic Lenses",
+      "status": "watch",
+      "href": "/dashboards/economic/"
+    },
+    {
+      "category": "consumer",
+      "title": "The Consumer",
+      "status": "elevated",
+      "href": "/dashboards/consumer/"
+    },
+    {
+      "category": "banking",
+      "title": "Banking System Health",
+      "status": "ok",
+      "href": "/dashboards/banking/"
+    },
+    {
+      "category": "business",
+      "title": "Corporate & Business Health",
+      "status": "ok",
+      "href": "/dashboards/business/"
+    },
+    {
+      "category": "markets",
+      "title": "Markets & Financial Conditions",
+      "status": "ok",
+      "href": "/dashboards/markets/"
+    },
+    {
+      "category": "energy",
+      "title": "Energy & Commodities",
+      "status": "elevated",
+      "href": "/dashboards/energy/"
+    },
+    {
+      "category": "housing",
+      "title": "Housing & Real Estate",
+      "status": "watch",
+      "href": "/dashboards/housing/"
+    },
+    {
+      "category": "global",
+      "title": "Global Economy",
+      "status": "watch",
+      "href": "/dashboards/global/"
+    }
+  ]
+}

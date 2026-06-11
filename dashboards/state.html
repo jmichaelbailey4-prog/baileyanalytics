@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The State of Things — Bailey Analytics</title>
+  <meta name="description" content="Where things stand across the U.S. economy right now — one overall verdict, the pressure points behind it, what's holding steady, and what changed today.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Bailey Analytics">
+  <meta property="og:title" content="The State of Things — Bailey Analytics">
+  <meta property="og:description" content="Where things stand across the U.S. economy right now — one overall verdict, the pressure points behind it, what's holding steady, and what changed today.">
+  <meta property="og:url" content="https://baileyanalytics.com/dashboards/state.html">
+  <meta name="twitter:card" content="summary">
+  <link rel="alternate" type="application/rss+xml" title="Bailey Analytics — Today&#39;s Brief" href="/feed.xml">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="/dashboards/lens.css">
+  <style>
+    .sec-head { font-size: 1.4rem; font-weight: 600; letter-spacing: -0.01em; margin: 2.25rem 0 0.3rem; scroll-margin-top: 1rem; }
+    .sec-sub { color: var(--muted); font-size: .92rem; max-width: 42rem; margin-bottom: 1.15rem; }
+    #verdict .state-sentence { font-size: 1.15rem; }
+  </style>
+  <noscript><style>.js-only{display:none}</style></noscript>
+</head>
+<body>
+  <nav class="wordmark"><a href="/">Bailey Analytics</a></nav>
+  <nav class="top-nav"><a href="/dashboards/">Dashboards</a><a href="/about.html">About</a></nav>
+
+  <main>
+    <a class="back" href="/dashboards/">&larr; Dashboards</a>
+    <h1>The State of Things</h1>
+    <p class="lede">Where things stand overall, right now — one verdict blended from every dashboard category, the pressure points behind it, and what&rsquo;s holding steady. For what <em>changed</em> today, see <a href="/dashboards/brief.html" style="color:var(--blue);text-decoration:none">Today&rsquo;s Brief</a>.</p>
+    <div class="hub-fresh" id="asof"></div>
+
+    <section class="state-panel" id="verdict"><div class="status-msg"><span class="js-only">Loading&hellip;</span><noscript>The interactive dashboards require JavaScript.</noscript></div></section>
+
+    <section id="pressure-sec" hidden>
+      <h2 class="sec-head">Pressure points</h2>
+      <p class="sec-sub">The categories carrying the most stress right now, with the lenses driving each one.</p>
+      <div id="pressure"></div>
+    </section>
+
+    <section id="steady-sec" hidden>
+      <h2 class="sec-head">Holding steady</h2>
+      <p class="sec-sub">Everything else — categories on watch are listed first.</p>
+      <div id="steady"></div>
+    </section>
+
+    <section id="changed-sec" hidden>
+      <h2 class="sec-head">What changed today</h2>
+      <div class="sec-sub" id="changed"></div>
+    </section>
+
+    <div class="foot">
+      Data: <a href="https://fred.stlouisfed.org/" target="_blank" rel="noopener">FRED</a> (St. Louis Fed), the <a href="https://banks.data.fdic.gov/" target="_blank" rel="noopener">FDIC</a>, the <a href="https://www.eia.gov/opendata/" target="_blank" rel="noopener">U.S. EIA</a>, the <a href="https://www.imf.org/en/Publications/WEO" target="_blank" rel="noopener">IMF</a>, the <a href="https://www.newyorkfed.org/research/policy/gscpi" target="_blank" rel="noopener">NY Fed</a>, <a href="https://www.policyuncertainty.com/" target="_blank" rel="noopener">policyuncertainty.com</a>, and <a href="https://www.coingecko.com/" target="_blank" rel="noopener">CoinGecko</a>. Public data, refreshed regularly.
+    </div>
+  </main>
+
+  <script defer src="/dashboards/state.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", () => {
+    loadState(null, { mode: "page" });
+  });</script>
+</body>
+</html>
