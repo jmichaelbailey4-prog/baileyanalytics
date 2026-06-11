@@ -68,7 +68,7 @@
   <script>document.addEventListener("DOMContentLoaded", async () => {
     // One data dir per dashboard category (economic lives in "lenses").
     // To add a category, append a line here — same drill as the home page.
-    const DIRS = ["lenses", "consumer", "banking", "markets", "energy", "housing"];
+    const DIRS = ["lenses", "consumer", "banking", "markets", "energy", "housing", "business", "global"];
     let brief;
     try {
       const res = await fetch("/data/brief/today.json", { cache: "no-cache" });
