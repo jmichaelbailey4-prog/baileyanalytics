@@ -21,11 +21,12 @@ class TestMarketConfig(unittest.TestCase):
         series = {i.series_id for i in risk.indicators}
         self.assertEqual(series, {"VIXCLS", "BAMLH0A0HYM2", "BAMLC0A0CM", "NFCI"})
 
-    def test_scoreboard_has_six_assets_incl_crypto(self):
+    def test_scoreboard_has_five_assets_incl_crypto(self):
+        # The dollar (DTWEXBGS) moved to Global Economy · The Dollar & Currencies.
         board = next(l for l in config.MARKET_FRED_LENSES if l.id == "market-scoreboard")
         series = {i.series_id for i in board.indicators}
         self.assertEqual(series,
-            {"SP500", "DCOILWTICO", "XAUUSD", "DTWEXBGS", "CBBTCUSD", "CBETHUSD"})
+            {"SP500", "DCOILWTICO", "XAUUSD", "CBBTCUSD", "CBETHUSD"})
 
     def test_scoreboard_has_no_treasury_series(self):
         # Rates are owned by Cost of Money; the scoreboard must not duplicate them.
@@ -51,9 +52,6 @@ class TestMarketConfig(unittest.TestCase):
         # S&P 500: +/-5% band
         self.assertEqual(rules["sp500"](_yr(100.0, 103.0))[1], "flat")  # +3%
         self.assertEqual(rules["sp500"](_yr(100.0, 106.0))[1], "up")    # +6%
-        # Dollar index: +/-3% band
-        self.assertEqual(rules["dollar"](_yr(100.0, 102.0))[1], "flat") # +2%
-        self.assertEqual(rules["dollar"](_yr(100.0, 96.0))[1], "down")  # -4%
         # WTI oil: +/-15% band
         self.assertEqual(rules["oil"](_yr(100.0, 110.0))[1], "flat")    # +10%
         self.assertEqual(rules["oil"](_yr(100.0, 120.0))[1], "up")      # +20%
