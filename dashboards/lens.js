@@ -105,6 +105,7 @@
   function indicatorCard(indicator, recessions, defaultRange) {
     const el = document.createElement("div");
     el.className = "ind";
+    el.dataset.indicator = indicator.id;  // hook for predict.js blocks
     const latest = indicator.latest ? fmtVal(indicator.latest.value, indicator.unit, indicator.value_format) : "—";
     const fmtAsOf = isMonthly(indicator.observations) ? fmtMonth : fmtDate;
     const asOf = indicator.latest ? `<div class="ind-asof">as of ${fmtAsOf(indicator.latest.date)}</div>` : "";
@@ -210,6 +211,7 @@
     const holder = root.querySelector(".indicators");
     const defaultRange = opts.defaultRange || "1Y";
     lens.indicators.forEach(i => holder.appendChild(indicatorCard(i, lens.recessions || [], defaultRange)));
+    document.dispatchEvent(new CustomEvent("lens:rendered", { detail: { id: lens.id } }));
   }
 
   window.renderLens = async function (jsonUrl, opts) {
