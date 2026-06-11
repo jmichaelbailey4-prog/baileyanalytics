@@ -128,15 +128,20 @@ varies across days, stable within a day (no intraday commit churn).
 2. "A calm read across the board — {a}; the only thing worth watching is {w}." / no-watch: "A calm read across the board — {a}; nothing is flashing."
 3. "Most everything reads steady right now: {a}; {w} is the lone watch item." / no-watch: "Most everything reads steady right now: {a}, with no watch items on the board."
 
+(Implementation note, found while building: `mixed-watch` and
+`contained-pressure` can also occur with **zero ok categories** — e.g.
+elevated+watch+watch+watch → RMS ≈ 1.32 → watch — so they carry no-ok
+fallbacks too, same mechanism as spreading-stress.)
+
 **mixed-watch**
-1. "Nothing is flashing red, but several corners bear watching — {w} — while {a}."
-2. "A wait-and-see picture: {a}, but {w} all bear watching."
-3. "Steady on the surface with caution underneath — {a}, while {w} warrant attention."
+1. "Nothing is flashing red, but several corners bear watching — {w} — while {a}." / no-ok fallback: "Nothing is flashing red, but several corners bear watching: {w}."
+2. "A wait-and-see picture: {a}, but {w} all bear watching." / no-ok: "A wait-and-see picture: {w} all bear watching."
+3. "Steady on the surface with caution underneath — {a}, while {w} warrant attention." / no-ok: "Caution across the board — {w} all warrant attention."
 
 **contained-pressure**
-1. "The economy is holding up, but not without strain: {p}, while {a}."
-2. "Pressure is real but contained: {p}; meanwhile {a}."
-3. "Most of the economy is on solid footing — {a} — but {p}."
+1. "The economy is holding up, but not without strain: {p}, while {a}." / no-ok fallback: "The economy is holding up, but not without strain — {p}, and the rest bears watching."
+2. "Pressure is real but contained: {p}; meanwhile {a}." / no-ok: "Pressure is real but contained: {p}; the rest of the board bears watching."
+3. "Most of the economy is on solid footing — {a} — but {p}." / no-ok: "Little of the board is fully in the clear — {p}, and the rest bears watching."
 
 **spreading-stress**
 1. "Stress is spreading: {p}; {a}." / no-ok fallback: "Stress is spreading: {p}, and little of the board reads steady."
