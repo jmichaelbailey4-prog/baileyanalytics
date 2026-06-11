@@ -348,8 +348,10 @@
         ];
         const SEVERITY = { ok: 0, watch: 1, elevated: 2, alert: 3 };
 
-        // The lens that drives the category badge: worst severity wins;
-        // neutral/unknown lenses (e.g. the markets scoreboard) never drive it.
+        // Picks the tile's CONTENT lens (headline/spark/stat + callout): worst
+        // severity wins; neutral/unknown lenses (e.g. the markets scoreboard)
+        // never drive it. The badge itself is index.json's blended category
+        // status — this function no longer controls the badge.
         function worstLens(lenses) {
             let worst = null;
             for (const l of lenses) {
