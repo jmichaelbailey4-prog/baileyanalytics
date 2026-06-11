@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-06-11T18:38:08Z",
+  "generated_at": "2026-06-11T18:42:18Z",
   "verdict": {
     "status": "watch",
     "shape": "contained-pressure",
-    "sentence": "Pressure is real but contained: energy and commodity costs are squeezing budgets and household finances are stretched thin; meanwhile banks are solid and markets are calm."
+    "sentence": "Pressure is real but contained: energy and commodity costs are squeezing budgets and household finances are stretched thin; meanwhile banks are solid and business health is holding up."
   },
   "pressure_points": [
     {
@@ -59,6 +59,12 @@
       "href": "/dashboards/economic/"
     },
     {
+      "category": "markets",
+      "title": "Markets & Financial Conditions",
+      "status": "watch",
+      "href": "/dashboards/markets/"
+    },
+    {
       "category": "housing",
       "title": "Housing & Real Estate",
       "status": "watch",
@@ -81,16 +87,10 @@
       "title": "Corporate & Business Health",
       "status": "ok",
       "href": "/dashboards/business/"
-    },
-    {
-      "category": "markets",
-      "title": "Markets & Financial Conditions",
-      "status": "ok",
-      "href": "/dashboards/markets/"
     }
   ],
   "changed": {
-    "transitions": 0,
+    "transitions": 1,
     "href": "/dashboards/brief.html"
   },
   "categories": [
@@ -121,7 +121,7 @@
     {
       "category": "markets",
       "title": "Markets & Financial Conditions",
-      "status": "ok",
+      "status": "watch",
       "href": "/dashboards/markets/"
     },
     {
