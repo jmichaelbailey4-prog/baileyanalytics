@@ -137,6 +137,13 @@
             border-radius: 6px;
         }
 
+        .asof {
+            font-size: 0.75rem;
+            color: var(--faint);
+            margin-top: 0.9rem;
+            letter-spacing: 0.04em;
+        }
+
         /* ---- Live lenses section ---- */
         .lenses-wrap { margin-top: 3rem; }
 
@@ -306,6 +313,7 @@
             <h1>Bailey Analytics</h1>
             <p class="tagline">Daily, plain-English dashboards on the U.S. and global economy — recession risk, the consumer, banking and business health, markets, energy, housing, and the world — built from public data.</p>
             <a class="email" href="mailto:michael@baileyanalytics.com">michael@baileyanalytics.com</a>
+            <div class="asof" id="hero-asof" hidden></div>
         </div>
 
         <section class="lenses-wrap" id="lenses" hidden>
@@ -397,11 +405,20 @@
                 // Badge = the category's balanced status baked by the pipeline;
                 // fall back to the worst lens's status for a stale/cached index.
                 const status = data.status || lens.status || "unknown";
-                return tile(cat, lens, status);
+                return { html: tile(cat, lens, status), updated: data.last_updated };
             }));
-            const tiles = results.filter(r => r.status === "fulfilled").map(r => r.value);
+            const ok = results.filter(r => r.status === "fulfilled").map(r => r.value);
+            const tiles = ok.map(v => v.html);
             results.forEach(r => { if (r.status === "rejected") console.error(r.reason); });
             if (!tiles.length) return; // leave the section hidden — the hero stands on its own
+            // The hero's "alive" signal: the freshest data change across categories.
+            const newest = ok.map(v => v.updated).filter(Boolean).sort().pop();
+            if (newest) {
+                const el = document.getElementById("hero-asof");
+                el.textContent = "Live data — updated " + new Date(newest).toLocaleDateString(undefined,
+                    { year: "numeric", month: "long", day: "numeric" });
+                el.hidden = false;
+            }
             document.getElementById("lens-grid").innerHTML = tiles.join("");
             document.getElementById("lenses").hidden = false;
             // brief.js loads deferred; this inline script can win the race on a
