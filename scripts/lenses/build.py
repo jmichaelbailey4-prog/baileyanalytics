@@ -19,19 +19,22 @@ def _latest_raw(raw):
 
 
 def _fmt(value, unit, value_format="decimal"):
-    """Format a value + unit the way lens.js fmtVal does: '$' is a prefix,
-    word units ('months', 'Bcf') get a space, symbol units ('%', 'M') stay tight."""
+    """Format a value + unit the way lens.js fmtVal does: '$' is a prefix with
+    the sign before it ('-$55.90B'), word units ('months', 'Bcf') get a space,
+    symbol units ('%', 'M', 'σ') stay tight."""
     f = util.to_float(value)
     if f is None:
         return "—"
-    num = f"{round(f):,}" if value_format == "thousands" else f"{f:.2f}"
+    sign = "-" if f < 0 else ""
+    a = abs(f)
+    num = f"{round(a):,}" if value_format == "thousands" else f"{a:.2f}"
     if not unit:
-        return num
-    if unit.startswith("$"):  # "$" -> "$4.15"; "$T" -> "$2.40T"; "$B" -> "$1,012B"
-        return f"${num}{unit[1:]}"
+        return sign + num
+    if unit.startswith("$"):  # "$" -> "$4.15"; "$T" -> "$2.40T"; "$B" -> "-$55.90B"
+        return f"{sign}${num}{unit[1:]}"
     if len(unit) > 1 and unit[0].isalpha():
-        return f"{num} {unit}"
-    return f"{num}{unit}"
+        return f"{sign}{num} {unit}"
+    return f"{sign}{num}{unit}"
 
 
 def build_lens(lens, fetched):
@@ -217,7 +220,10 @@ def build_index(lens_jsons):
             "key_stats": key_stats,
             "sparkline": spark,
         })
-    return {"last_updated": _now(), "lenses": lenses}
+    # Category-level status: balanced blend, not worst-of — the home tiles wear it.
+    return {"last_updated": _now(),
+            "status": util.status_blend([lj["status"] for lj in lens_jsons]),
+            "lenses": lenses}
 
 
 def _strip_volatile(d):

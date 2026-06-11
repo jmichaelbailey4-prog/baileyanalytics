@@ -63,6 +63,18 @@ class TestLensHref(unittest.TestCase):
         self.assertEqual(brief.lens_href("business", "business-credit"),
                          "/dashboards/business/credit.html")
         self.assertIn("business", brief.CATEGORIES)
+    def test_global_uses_slug_map(self):
+        self.assertEqual(brief.lens_href("global", "global-growth"),
+                         "/dashboards/global/growth.html")
+        self.assertEqual(brief.lens_href("global", "global-dollar-currencies"),
+                         "/dashboards/global/dollar-currencies.html")
+        self.assertEqual(brief.lens_href("global", "global-trade-supply"),
+                         "/dashboards/global/trade-supply.html")
+        self.assertEqual(brief.lens_href("global", "global-uncertainty"),
+                         "/dashboards/global/uncertainty.html")
+
+    def test_global_in_brief_categories(self):
+        self.assertIn("global", brief.CATEGORIES)
 
 
 def _indices():

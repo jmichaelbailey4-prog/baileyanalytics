@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bailey Analytics — Daily dashboards on the U.S. economy</title>
-    <meta name="description" content="Daily plain-English dashboards on the U.S. economy — recession risk, the consumer, banking system health, markets, energy, and housing. Built from public data, refreshed every day.">
+    <meta name="description" content="Daily plain-English dashboards on the U.S. and global economy — recession risk, the consumer, banking and business health, markets, energy, housing, and the world. Built from public data, refreshed every day.">
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Bailey Analytics">
     <meta property="og:title" content="Bailey Analytics — Daily dashboards on the U.S. economy">
-    <meta property="og:description" content="Daily plain-English dashboards on the U.S. economy — recession risk, the consumer, banking system health, markets, energy, and housing. Built from public data, refreshed every day.">
+    <meta property="og:description" content="Daily plain-English dashboards on the U.S. and global economy — recession risk, the consumer, banking and business health, markets, energy, housing, and the world. Built from public data, refreshed every day.">
     <meta property="og:url" content="https://baileyanalytics.com/">
     <meta name="twitter:card" content="summary">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -207,6 +207,15 @@
         .pill.unknown { color: var(--faint); }
         .pill.neutral { color: var(--blue); }
 
+        .lens .lead {
+            font-size: 0.68rem;
+            color: var(--muted);
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+            margin-bottom: 0.3rem;
+        }
+
         .lens .read {
             color: var(--text);
             font-weight: 600;
@@ -259,7 +268,7 @@
             .lens-grid { grid-template-columns: 1fr 1fr; gap: 0.6rem; }
 
             /* hide the full-card pieces, show the compact chip */
-            .lens .read, .lens .spark, .lens .stat { display: none; }
+            .lens .lead, .lens .read, .lens .spark, .lens .stat { display: none; }
             .lens .chip-val { display: block; color: var(--text); font-size: 1.4rem; font-weight: 600; line-height: 1; margin-top: 0.15rem; }
             .lens .chip-k { display: block; color: var(--faint); font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 0.3rem; }
             .lens { padding: 0.85rem 0.85rem; }
@@ -295,7 +304,7 @@
     <main>
         <div class="hero">
             <h1>Bailey Analytics</h1>
-            <p class="tagline">Daily, plain-English dashboards on the U.S. economy — recession risk, the consumer, banking health, markets, energy, and housing — built from public data.</p>
+            <p class="tagline">Daily, plain-English dashboards on the U.S. and global economy — recession risk, the consumer, banking and business health, markets, energy, housing, and the world — built from public data.</p>
             <a class="email" href="mailto:michael@baileyanalytics.com">michael@baileyanalytics.com</a>
         </div>
 
@@ -308,6 +317,9 @@
                 Built from public data — <a href="https://fred.stlouisfed.org/" target="_blank" rel="noopener">FRED</a>,
                 the <a href="https://banks.data.fdic.gov/" target="_blank" rel="noopener">FDIC</a>,
                 the <a href="https://www.eia.gov/opendata/" target="_blank" rel="noopener">U.S. EIA</a>,
+                the <a href="https://www.imf.org/" target="_blank" rel="noopener">IMF</a>,
+                the <a href="https://www.newyorkfed.org/research/policy/gscpi" target="_blank" rel="noopener">New York Fed</a>,
+                <a href="https://www.policyuncertainty.com/" target="_blank" rel="noopener">policyuncertainty.com</a> (Baker, Bloom &amp; Davis),
                 and <a href="https://www.coingecko.com/" target="_blank" rel="noopener">CoinGecko</a> — refreshed daily.
             </div>
         </section>
@@ -337,11 +349,14 @@
             { title: "Markets", url: "/data/markets/index.json", href: "/dashboards/markets/" },
             { title: "Energy",  url: "/data/energy/index.json",  href: "/dashboards/energy/" },
             { title: "Housing", url: "/data/housing/index.json", href: "/dashboards/housing/" },
+            { title: "Global", url: "/data/global/index.json", href: "/dashboards/global/" },
         ];
         const SEVERITY = { ok: 0, watch: 1, elevated: 2, alert: 3 };
 
-        // The lens that drives the category badge: worst severity wins;
-        // neutral/unknown lenses (e.g. the markets scoreboard) never drive it.
+        // Picks the tile's CONTENT lens (headline/spark/stat + callout): worst
+        // severity wins; neutral/unknown lenses (e.g. the markets scoreboard)
+        // never drive it. The badge itself is index.json's blended category
+        // status — this function no longer controls the badge.
         function worstLens(lenses) {
             let worst = null;
             for (const l of lenses) {
@@ -354,10 +369,15 @@
         function tile(cat, lens, status) {
             const stat = (lens.key_stats || [])[0] || { k: "", v: "—" };
             const delta = stat.d ? ` <i class="delta ${esc(stat.dir || "")}">${esc(stat.d)}</i>` : "";
+            // The headline below comes from one lens — name it, and when that
+            // lens runs hotter than the category's balanced badge, flag it.
+            const flag = (SEVERITY[lens.status] || 0) > (SEVERITY[status] || 0)
+                ? ` <span class="pill ${esc(lens.status)}">${esc(lens.status)}</span>` : "";
             return `
                 <a class="lens" href="${cat.href}">
                     <div class="eb" style="color:${lens.accent}">${esc(cat.title)}
                         <span class="pill ${esc(status)}">${esc(status)}</span></div>
+                    <div class="lead">${esc(lens.title)}${flag}</div>
                     <div class="read">${esc(lens.headline_read)}</div>
                     ${sparkline(lens.sparkline, lens.accent)}
                     <div class="stat">${esc(stat.k)} <b>${esc(stat.v)}</b>${delta}</div>
@@ -373,7 +393,9 @@
                 const data = await res.json();
                 const lens = worstLens(data.lenses || []);
                 if (!lens) throw new Error("no lenses");
-                const status = lens.status || "unknown";
+                // Badge = the category's balanced status baked by the pipeline;
+                // fall back to the worst lens's status for a stale/cached index.
+                const status = data.status || lens.status || "unknown";
                 return tile(cat, lens, status);
             }));
             const tiles = results.filter(r => r.status === "fulfilled").map(r => r.value);
