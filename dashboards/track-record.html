@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Track Record — Bailey Analytics</title>
+  <meta name="description" content="Every prediction this site publishes is timestamped before the number exists, then graded in public against the first print. This page is the whole record — hits, misses, and all.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Bailey Analytics">
+  <meta property="og:title" content="Track Record — Bailey Analytics">
+  <meta property="og:description" content="Every prediction this site publishes is timestamped before the number exists, then graded in public against the first print. This page is the whole record — hits, misses, and all.">
+  <meta property="og:url" content="https://baileyanalytics.com/dashboards/track-record.html">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="stylesheet" href="/dashboards/lens.css">
+  <style>
+    .sec-head { font-size: 1.4rem; font-weight: 600; letter-spacing: -0.01em; margin: 2.25rem 0 0.3rem; }
+  </style>
+  <noscript><style>.js-only{display:none}</style></noscript>
+</head>
+<body>
+  <nav class="wordmark"><a href="/">Bailey Analytics</a></nav>
+  <nav class="top-nav"><a href="/dashboards/">Dashboards</a><a href="/about.html">About</a></nav>
+
+  <main class="track">
+    <a class="back" href="/dashboards/state.html">&larr; The State of Things</a>
+    <h1>Track Record</h1>
+    <p class="track-sub" id="since">Every prediction on this site is published before the number
+      exists, then graded in public against the first print. This page is the whole record —
+      hits, misses, and all.</p>
+
+    <section id="headline-sec">
+      <div class="track-stats">
+        <div class="track-stat"><div class="track-num" id="calibration">—</div>
+          <div class="track-lab">of actuals landed inside our stated range</div>
+          <p class="track-note">We aim for ~80%, not 100% — a forecaster who&rsquo;s never wrong is
+            using bands too wide to mean anything.</p></div>
+        <div class="track-stat"><div class="track-num" id="skill">—</div>
+          <div class="track-lab">closer than guessing the last value</div>
+          <p class="track-note">The &ldquo;skill&rdquo; score: how much our predictions beat the
+            naive guess. Recomputable by anyone from the public ledger.</p></div>
+      </div>
+    </section>
+
+    <section id="cats-sec" hidden><h2 class="sec-head">By category</h2><div id="cats"></div></section>
+    <section id="feed-sec" hidden><h2 class="sec-head">Recent grades</h2><div id="feed"></div></section>
+
+    <section id="how-sec">
+      <h2 class="sec-head">How this works</h2>
+      <p>Each week, every indicator&rsquo;s full history is backtested: we stand at hundreds of past
+        dates, predict the next print using only data available then, and measure the miss.
+        Whichever simple statistical model wins — and only if it beats the naive
+        &ldquo;same as last time&rdquo; guess by a real margin — becomes that indicator&rsquo;s
+        forecaster. The ranges we publish are the ranges those backtests earned. Every model is
+        explainable in one sentence; there is no black box.</p>
+      <p>Predictions are graded against the number as first published, then frozen — later
+        data revisions are footnoted, never regraded, and a graded entry never changes.
+        Because the ledger lives in this site&rsquo;s public git history, the timestamps are
+        independently verifiable: every prediction is committed before its print exists.</p>
+      <p>Asset prices (the markets scoreboard, crypto) are deliberately not predicted —
+        next week&rsquo;s market move is the one thing honest models can&rsquo;t call, and
+        we&rsquo;d rather show you nothing than theater.</p>
+    </section>
+
+    <div class="foot">
+      Predictions are derived mechanically from public data and are not investment advice.
+      The full ledger lives in this site&rsquo;s repository under <code>data/predictions/</code>.
+    </div>
+  </main>
+
+  <script defer src="/dashboards/track-record.js"></script>
+</body>
+</html>

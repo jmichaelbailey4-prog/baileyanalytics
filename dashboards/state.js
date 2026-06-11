@@ -46,6 +46,19 @@
       document.getElementById("steady-sec").hidden = false;
       document.getElementById("steady").innerHTML = st.map(steadyChip).join("");
     }
+    const w = data.watching || [];
+    if (w.length) {
+      document.getElementById("watching-sec").hidden = false;
+      document.getElementById("watching").innerHTML = w.map(x => {
+        const claim = x.change
+          ? `we expect <strong>${esc(x.point_fmt)}</strong> — which would tip ${esc(x.lens_title)} to <span class="badge ${esc(x.implied_status)}">${esc(x.implied_status)}</span>`
+          : `we expect <strong>${esc(x.point_fmt)}</strong>, no status change`;
+        return `<a class="state-lens" href="${esc(x.href)}">
+          <span class="state-lens-title">${esc(x.title)}</span>
+          <span class="state-lens-read">${claim}</span></a>`;
+      }).join("") +
+      `<a class="state-link" href="/dashboards/track-record.html">Our track record &rarr;</a>`;
+    }
     if (data.changed) {
       const n = Number(data.changed.transitions);
       document.getElementById("changed-sec").hidden = false;
@@ -68,6 +81,11 @@
       el.innerHTML = opts.mode === "line"
         ? verdict(data.verdict, "pill", false)
         : `<div class="state-verdict">${verdict(data.verdict, "badge", true)}</div>`;
+      // Panel mode: surface a predicted badge change, when one is open.
+      const chg = opts.mode !== "line" && (data.watching || []).find(x => x.change);
+      if (chg) {
+        el.innerHTML += `<div class="state-watch-line">We expect ${esc(chg.title)} (${esc(chg.point_fmt)}) to tip ${esc(chg.lens_title)} to ${esc(chg.implied_status)} — <a class="state-link" href="/dashboards/state.html">details &rarr;</a></div>`;
+      }
       el.hidden = false;
     } catch (err) {
       // The state is additive — never block the page it sits on.
