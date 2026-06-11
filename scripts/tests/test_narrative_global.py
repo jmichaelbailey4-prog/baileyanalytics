@@ -148,24 +148,26 @@ class TestRuleGscpi(unittest.TestCase):
         self.assertIn("looser", text)
 
 
-class TestRuleTradeBalance(unittest.TestCase):
+class TestRuleTradeDeficit(unittest.TestCase):
+    # The series is derived to positive deficit magnitudes (scaled(-1000, 1))
+    # so the hub delta arrow reads intuitively: up = deficit widening.
     def test_deficit_wider_info(self):
-        obs = level_obs(-48.0, -55.9)
-        text, status = narrative.rule_trade_balance(obs)
+        obs = level_obs(48.0, 55.9)
+        text, status = narrative.rule_trade_deficit(obs)
         self.assertEqual(status, "info")
         self.assertIn("$55.9B", text)
         self.assertIn("wider", text)
 
     def test_deficit_narrower(self):
-        text, _ = narrative.rule_trade_balance(level_obs(-70.0, -55.9))
+        text, _ = narrative.rule_trade_deficit(level_obs(70.0, 55.9))
         self.assertIn("narrower", text)
 
     def test_deficit_flat(self):
-        text, _ = narrative.rule_trade_balance(level_obs(-56.0, -55.9))
+        text, _ = narrative.rule_trade_deficit(level_obs(56.0, 55.9))
         self.assertIn("about the same", text)
 
     def test_surplus_branch(self):
-        text, _ = narrative.rule_trade_balance(level_obs(2.0, 3.5))
+        text, _ = narrative.rule_trade_deficit(level_obs(-2.0, -3.5))
         self.assertIn("surplus", text)
 
 
@@ -181,6 +183,19 @@ class TestEpuBand(unittest.TestCase):
         text, _ = rule(yoy_obs(371.0))
         self.assertIn("371", text)
         self.assertIn("100", text)
+
+    def test_cap_limits_status_but_keeps_text(self):
+        # GEPU publishes ~6 months late: it may sanity-check the lens to
+        # watch, but a stale print must never drive an elevated/alert badge.
+        rule = narrative.epu_band("Global policy uncertainty", cap="watch")
+        text, status = rule(yoy_obs(371.0))
+        self.assertEqual(status, "watch")
+        self.assertIn("extreme", text)
+
+    def test_cap_does_not_lift_ok(self):
+        rule = narrative.epu_band("Global policy uncertainty", cap="watch")
+        _, status = rule(yoy_obs(95.0))
+        self.assertEqual(status, "ok")
 
 
 class TestHeadlines(unittest.TestCase):

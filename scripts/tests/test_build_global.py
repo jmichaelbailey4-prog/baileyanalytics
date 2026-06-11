@@ -60,12 +60,15 @@ class TestGlobalBuildIntegration(unittest.TestCase):
         # (3.4% -> ok); the 2026 estimate reaches the read in prose only.
         self.assertEqual(self.built["global-growth"]["status"], "ok")
         self.assertEqual(self.built["global-trade-supply"]["status"], "elevated")
-        self.assertEqual(self.built["global-uncertainty"]["status"], "alert")
+        # US EPU 296 -> elevated drives the badge; the stale GEPU 371 is
+        # capped at watch so it can't pin a months-old alert.
+        self.assertEqual(self.built["global-uncertainty"]["status"], "elevated")
 
     def test_trade_balance_derived_to_billions(self):
         trade = self.built["global-trade-supply"]
         bal = next(i for i in trade["indicators"] if i["id"] == "trade-balance")
-        self.assertEqual(bal["latest"]["value"], "-55.9")
+        # Presented as positive deficit size so the hub's ▲ = deficit widening.
+        self.assertEqual(bal["latest"]["value"], "55.9")
         self.assertEqual(bal["unit"], "$B")
 
     def test_world_growth_read_mentions_forecast(self):
@@ -85,7 +88,7 @@ class TestGlobalBuildIntegration(unittest.TestCase):
         by_id = {l["id"]: l for l in index["lenses"]}
         trade_stats = {s["k"]: s["v"]
                        for s in by_id["global-trade-supply"]["key_stats"]}
-        self.assertEqual(trade_stats["Trade balance"], "-$55.90B")
+        self.assertEqual(trade_stats["Trade deficit"], "$55.90B")
         self.assertEqual(trade_stats["Supply chain"], "1.77σ")
 
 

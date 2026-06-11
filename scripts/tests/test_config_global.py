@@ -99,7 +99,8 @@ class TestGlobalConfig(unittest.TestCase):
         self.assertEqual(bal.unit, "$B")
         self.assertIsNotNone(bal.derive)
         derived = bal.derive([{"date": "2026-04", "value": "-55900"}])
-        self.assertEqual(derived[0]["value"], "-55.9")
+        # scaled(-1000, 1): negative balance -> positive deficit size
+        self.assertEqual(derived[0]["value"], "55.9")
 
     def test_uncertainty_value_format_thousands(self):
         unc = self.lens("global-uncertainty")

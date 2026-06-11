@@ -1323,13 +1323,14 @@ GLOBAL_TRADE_SUPPLY = Lens(
                      "peaked near 4.5σ; negative means looser than normal."),
         ),
         Indicator(
-            id="trade-balance", title="U.S. Trade Balance · goods & services",
-            short="Trade balance", unit="$B", color="#38BDF8",
-            series_id="BOPGSTB", limit=300, derive=derive.scaled(1000, 1),
-            rule=narrative.rule_trade_balance,
-            context=("U.S. exports minus imports, in billions per month. The U.S. has "
-                     "run a deficit every year since 1976 — what matters is whether "
-                     "it is widening or narrowing, and why."),
+            id="trade-balance", title="U.S. Trade Deficit · goods & services",
+            short="Trade deficit", unit="$B", color="#38BDF8",
+            series_id="BOPGSTB", limit=300,
+            derive=derive.scaled(-1000, 1),  # balance is negative; show deficit size
+            rule=narrative.rule_trade_deficit,
+            context=("How much more the U.S. imports than it exports, in billions per "
+                     "month. The U.S. has run a deficit every year since 1976 — what "
+                     "matters is whether it is widening or narrowing, and why."),
         ),
         Indicator(
             id="import-prices", title="Import Prices · year-over-year",
@@ -1369,7 +1370,7 @@ GLOBAL_UNCERTAINTY = Lens(
             id="gepu", title="Global Economic Policy Uncertainty",
             short="Global uncertainty", unit="", color="#38BDF8",
             series_id="GEPU", limit=400, source="epu", value_format="thousands",
-            rule=narrative.epu_band("Global policy uncertainty"),
+            rule=narrative.epu_band("Global policy uncertainty", cap="watch"),
             context=("The same newspaper-based uncertainty measure aggregated across "
                      "21 countries (GDP-weighted). Note: it publishes with a lag of "
                      "about six months, so it reads as a sanity check on the timelier "

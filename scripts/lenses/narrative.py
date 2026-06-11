@@ -1026,46 +1026,55 @@ def rule_gscpi(obs):
             "ok")
 
 
-def rule_trade_balance(obs):
-    """U.S. goods & services trade balance in $B/month (negative = deficit).
-    Descriptive `info`: deficit wider/narrower/about the same vs a year ago."""
+def rule_trade_deficit(obs):
+    """U.S. goods & services trade gap in $B/month, presented as the size of
+    the deficit (positive = deficit — the U.S. has run one every year since
+    1976), so the hub's ▲/▼ delta reads intuitively: ▲ = deficit widening.
+    Descriptive `info`: wider/narrower/about the same vs a year ago."""
     if not obs:
         return _NO_DATA
     v = obs[-1][1]
-    if v >= 0:
-        return (f"The U.S. is running a ${v:.1f}B monthly trade surplus — rare in "
+    if v <= 0:
+        return (f"The U.S. is running a ${abs(v):.1f}B monthly trade surplus — rare in "
                 "modern history.", "info")
     prior = _value_year_ago(obs)
-    text = f"The U.S. trade deficit is ${abs(v):.1f}B a month"
-    if prior is not None and prior < 0:
-        if abs(v) > abs(prior) * 1.05:
+    text = f"The U.S. trade deficit is ${v:.1f}B a month"
+    if prior is not None and prior > 0:
+        if v > prior * 1.05:
             text += ", wider than a year ago"
-        elif abs(v) < abs(prior) * 0.95:
+        elif v < prior * 0.95:
             text += ", narrower than a year ago"
         else:
             text += ", about the same as a year ago"
     return text + ".", "info"
 
 
-def epu_band(label):
+def epu_band(label, cap=None):
     """Factory: Baker/Bloom/Davis Economic Policy Uncertainty level bands.
     Long-run norm ≈ 100: <120 ok / 120-200 watch / 200-300 elevated /
-    >=300 alert. Label must read as a singular subject."""
+    >=300 alert. Label must read as a singular subject. `cap` (a status
+    string) limits how far this indicator can push the lens badge — for
+    laggy series (GEPU publishes ~6 months late) that should sanity-check
+    the timelier lead indicator, not drive a months-stale alarm."""
     def _rule(obs):
         if not obs:
             return _NO_DATA
         v = obs[-1][1]
         if v >= 300:
-            return (f"{label} is at {v:.0f} — extreme by historical standards "
-                    "(the long-run norm is about 100).", "alert")
-        if v >= 200:
-            return (f"{label} is at {v:.0f} — far above its long-run norm of "
-                    "about 100.", "elevated")
-        if v >= 120:
-            return (f"{label} is at {v:.0f} — above its long-run norm of about 100.",
-                    "watch")
-        return (f"{label} is at {v:.0f} — a normal level (the long-run norm is "
-                "about 100).", "ok")
+            text, status = (f"{label} is at {v:.0f} — extreme by historical "
+                            "standards (the long-run norm is about 100).", "alert")
+        elif v >= 200:
+            text, status = (f"{label} is at {v:.0f} — far above its long-run "
+                            "norm of about 100.", "elevated")
+        elif v >= 120:
+            text, status = (f"{label} is at {v:.0f} — above its long-run norm "
+                            "of about 100.", "watch")
+        else:
+            text, status = (f"{label} is at {v:.0f} — a normal level (the "
+                            "long-run norm is about 100).", "ok")
+        if cap and util.STATUS_ORDER.get(status, 0) > util.STATUS_ORDER[cap]:
+            status = cap
+        return text, status
     return _rule
 
 

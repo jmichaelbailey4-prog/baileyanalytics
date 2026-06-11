@@ -2,9 +2,9 @@
   "id": "global-uncertainty",
   "title": "Uncertainty & Risk",
   "accent": "#A78BFA",
-  "last_updated": "2026-06-11T01:29:35Z",
-  "status": "alert",
-  "headline_read": "Policy uncertainty is extreme \u2014 governments themselves are the biggest risk in the outlook.",
+  "last_updated": "2026-06-11T02:01:08Z",
+  "status": "elevated",
+  "headline_read": "Policy uncertainty is high \u2014 what governments do next is a major source of risk.",
   "recessions": [
     {
       "start": "2008-01-01",
@@ -7505,7 +7505,7 @@
       },
       "context": "The same newspaper-based uncertainty measure aggregated across 21 countries (GDP-weighted). Note: it publishes with a lag of about six months, so it reads as a sanity check on the timelier U.S. index above, not a live signal.",
       "read": "Global policy uncertainty is at 371 \u2014 extreme by historical standards (the long-run norm is about 100).",
-      "signal_status": "alert",
+      "signal_status": "watch",
       "value_format": "thousands"
     }
   ]

@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-06-11T01:45:10Z",
-  "status": "elevated",
+  "last_updated": "2026-06-11T02:01:08Z",
+  "status": "watch",
   "lenses": [
     {
       "id": "global-dollar-currencies",
@@ -142,10 +142,10 @@
           "dir": "down"
         },
         {
-          "k": "Trade balance",
-          "v": "-$55.90B",
+          "k": "Trade deficit",
+          "v": "$55.90B",
           "d": "$0.70B",
-          "dir": "up"
+          "dir": "down"
         }
       ],
       "sparkline": [
@@ -195,8 +195,8 @@
       "id": "global-uncertainty",
       "title": "Uncertainty & Risk",
       "accent": "#A78BFA",
-      "status": "alert",
-      "headline_read": "Policy uncertainty is extreme \u2014 governments themselves are the biggest risk in the outlook.",
+      "status": "elevated",
+      "headline_read": "Policy uncertainty is high \u2014 what governments do next is a major source of risk.",
       "key_stats": [
         {
           "k": "US uncertainty",

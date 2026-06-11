@@ -84,7 +84,9 @@ def lens_href(category, lens_id):
     return "/dashboards/"
 
 
-# Category order for the brief (drives tie-break ordering only).
+# The categories the brief covers, in tie-break order. _flatten_lenses reads
+# ONLY this list — a category id missing here is silently excluded from the
+# brief entirely, so every shipped category must appear.
 CATEGORIES = ["economic", "consumer", "banking", "markets", "energy", "housing", "global"]
 
 
