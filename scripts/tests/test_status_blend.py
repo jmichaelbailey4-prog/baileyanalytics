@@ -71,5 +71,28 @@ class TestBuildIndexStatus(unittest.TestCase):
         self.assertEqual(idx["status"], "neutral")
 
 
+class TestStatusScore(unittest.TestCase):
+    def test_empty_and_non_severity_is_none(self):
+        self.assertIsNone(util.status_score([]))
+        self.assertIsNone(util.status_score(["neutral", "info", "unknown"]))
+
+    def test_known_values(self):
+        self.assertEqual(util.status_score(["ok"]), 0.0)
+        self.assertEqual(util.status_score(["alert"]), 3.0)
+        self.assertAlmostEqual(util.status_score(["ok", "watch"]), 0.5 ** 0.5)
+        # today's energy lenses: alert, ok, elevated, alert -> sqrt(22/4)
+        self.assertAlmostEqual(util.status_score(["alert", "ok", "elevated", "alert"]),
+                               (22 / 4) ** 0.5)
+
+    def test_blend_is_banded_score(self):
+        # status_blend must be exactly the banded status_score (one implementation).
+        for statuses in (["ok"], ["ok", "watch"], ["alert", "ok", "ok", "ok"],
+                         ["alert", "alert", "elevated", "elevated"]):
+            score = util.status_score(statuses)
+            expected = ("ok" if score < 0.6 else "watch" if score < 1.5
+                        else "elevated" if score < 2.5 else "alert")
+            self.assertEqual(util.status_blend(statuses), expected)
+
+
 if __name__ == "__main__":
     unittest.main()

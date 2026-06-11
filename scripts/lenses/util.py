@@ -68,6 +68,16 @@ def status_max(statuses):
     return max(known, key=lambda s: STATUS_ORDER[s])
 
 
+def status_score(statuses):
+    """The un-banded severity behind status_blend: the quadratic mean (RMS) of
+    the severity values, ignoring neutral/info/unknown. None when nothing
+    severity-graded is present."""
+    sev = [STATUS_ORDER[s] for s in statuses if STATUS_ORDER.get(s, -1) >= 0]
+    if not sev:
+        return None
+    return (sum(v * v for v in sev) / len(sev)) ** 0.5
+
+
 def status_blend(statuses):
     """Category-level status: the quadratic mean (RMS) of lens severities, banded
     back to a token. Squaring makes bad readings count more than good ones offset,
@@ -76,10 +86,9 @@ def status_blend(statuses):
     stays ok (0.5 < 0.6); a category reads alert only when stress is broad
     (e.g. alert+alert+elevated+elevated ≈ 2.55). neutral/info/unknown are
     excluded; with no severity lenses at all the category is 'neutral'."""
-    sev = [STATUS_ORDER[s] for s in statuses if STATUS_ORDER.get(s, -1) >= 0]
-    if not sev:
+    score = status_score(statuses)
+    if score is None:
         return "neutral"
-    score = (sum(v * v for v in sev) / len(sev)) ** 0.5
     if score < 0.6:
         return "ok"
     if score < 1.5:
