@@ -30,6 +30,8 @@
     <h1>Dashboards</h1>
     <p class="lede">Focused, interpretation-rich views built from public data — each bundles indicators that move together into one plain-English story. <strong>Open any lens</strong> for interactive charts, the context behind each number, and what the latest data is signaling.</p>
 
+    <section class="state-panel" id="state-panel" hidden></section>
+
     <section class="brief-panel" id="brief-panel" hidden></section>
 
     <h2 class="cat-head"><span class="dot"></span>Economic Lenses <span class="badge" id="econ-badge" hidden></span></h2>
@@ -70,8 +72,10 @@
   </main>
 
   <script defer src="/dashboards/hub.js"></script>
+  <script defer src="/dashboards/state.js"></script>
   <script defer src="/dashboards/brief.js"></script>
   <script>document.addEventListener("DOMContentLoaded", () => {
+    loadState("state-panel", { mode: "panel" });
     loadBrief("brief-panel", { compact: false });
     loadHubGrid("econ-grid", "/data/lenses/index.json", id => lensHref("economic", id), "econ-badge");
     loadHubGrid("consumer-grid", "/data/consumer/index.json", id => lensHref("consumer", id), "consumer-badge");
