@@ -56,7 +56,11 @@ def _theta(v, s):
 def _sarima(v, s):
     from statsmodels.tsa.statespace.sarimax import SARIMAX
     arr = np.asarray(v, dtype=float)
-    seasonal_order = (0, 1, 1, s) if s > 1 and len(arr) >= 3 * s else (0, 0, 0, 0)
+    # Seasonal state space scales with s — s=52 (weekly) makes each fit take
+    # tens of seconds, which the tournament cannot afford across ~100 origins.
+    # Weekly FRED series are seasonally adjusted anyway; ets-seasonal covers
+    # the rest. Cap SARIMA's seasonal component at monthly/quarterly.
+    seasonal_order = (0, 1, 1, s) if 1 < s <= 12 and len(arr) >= 3 * s else (0, 0, 0, 0)
     fit = SARIMAX(arr, order=(1, 1, 1), seasonal_order=seasonal_order,
                   enforce_stationarity=False, enforce_invertibility=False
                   ).fit(disp=False, maxiter=50)

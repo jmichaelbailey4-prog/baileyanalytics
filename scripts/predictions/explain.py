@@ -38,6 +38,9 @@ def why(model_name, cad, values, short_label):
     body = SKELETONS.get(model_name, SKELETONS["naive"]).format(period=period)
     s = streak(values)
     if s:
+        # Colon phrasing dodges singular/plural agreement ("Jobless claims"),
+        # per the house copy rule for indicator labels.
         verb, n = s
-        return f"{short_label} has {verb} {n} straight {period}s; {body}."
+        word = "up" if verb == "risen" else "down"
+        return f"{short_label}: {word} {n} straight {period}s. {body[0].upper()}{body[1:]}."
     return body[0].upper() + body[1:] + "."

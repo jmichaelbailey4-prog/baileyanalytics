@@ -26,7 +26,11 @@ class TestWhy(unittest.TestCase):
 
     def test_streak_lead_in(self):
         why = explain.why("ets-seasonal", "monthly", [1.0, 2.0, 3.0, 4.0], "CPI")
-        self.assertIn("CPI has risen 3 straight months", why)
+        self.assertIn("CPI: up 3 straight months", why)
+
+    def test_streak_lead_in_falling(self):
+        why = explain.why("theta", "weekly", [3.0, 2.0, 1.0], "Jobless claims")
+        self.assertIn("Jobless claims: down 2 straight weeks", why)
 
     def test_no_streak_no_lead_in(self):
         why = explain.why("naive", "weekly", [1.0, 2.0, 1.5], "Claims")
