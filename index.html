@@ -302,6 +302,14 @@
         .brief-strip-counts:hover { text-decoration: underline; }
         .brief-strip-lead { color: var(--blue); text-decoration: none; }
         .brief-strip-lead:hover { text-decoration: underline; }
+
+        .state-line {
+            display: block; margin: 1.1rem auto 0; max-width: 44rem;
+            color: var(--text); text-decoration: none;
+            font-size: 0.95rem; font-weight: 500; line-height: 1.5;
+        }
+        .state-line:hover .state-sentence { text-decoration: underline; }
+        .state-line .pill { margin-right: 0.5rem; vertical-align: middle; }
     </style>
 </head>
 <body>
@@ -314,6 +322,7 @@
             <h1>Bailey Analytics</h1>
             <p class="tagline">Daily, plain-English dashboards on the U.S. and global economy — recession risk, the consumer, banking and business health, markets, energy, housing, and the world — built from public data.</p>
             <a class="email" href="mailto:michael@baileyanalytics.com">michael@baileyanalytics.com</a>
+            <a class="state-line" id="state-line" href="/dashboards/state.html" hidden></a>
             <div class="asof" id="hero-asof" hidden></div>
         </div>
 
@@ -335,6 +344,7 @@
     </main>
 
     <script defer src="/dashboards/brief.js"></script>
+    <script defer src="/dashboards/state.js"></script>
     <script>
         function esc(s) { const d = document.createElement("div"); d.textContent = s; return d.innerHTML; }
 
@@ -397,6 +407,12 @@
         }
 
         (async function () {
+            // The hero verdict line is independent of the tiles — show it first
+            // (state.js loads deferred; this inline script can win the race).
+            const showState = () => { if (typeof loadState === "function") loadState("state-line", { mode: "line" }); };
+            if (typeof loadState === "function") showState();
+            else window.addEventListener("DOMContentLoaded", showState);
+
             const results = await Promise.allSettled(CATEGORIES.map(async cat => {
                 const res = await fetch(cat.url, { cache: "no-cache" });
                 if (!res.ok) throw new Error("HTTP " + res.status);
