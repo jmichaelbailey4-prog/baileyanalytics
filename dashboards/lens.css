@@ -11,6 +11,7 @@ nav.top-nav{position:fixed;top:1.5rem;right:1.5rem;z-index:10;display:flex;gap:1
 nav a{color:var(--muted);text-decoration:none;font-size:.875rem;letter-spacing:.05em;text-transform:uppercase;
   font-weight:500;padding:.5rem .25rem;border-bottom:1px solid transparent;transition:color .2s,border-color .2s}
 nav a:hover,nav a:focus-visible{color:var(--text);border-bottom-color:var(--blue)}
+nav a[aria-current="page"]{color:var(--text);border-bottom-color:var(--blue)}
 main{max-width:48rem;margin:0 auto}
 .back{display:inline-block;color:var(--dim);font-size:.78rem;text-decoration:none;margin-bottom:1.25rem;letter-spacing:.03em}
 .back:hover{color:var(--blue)}
