@@ -2,7 +2,7 @@
   "id": "market-risk-sentiment",
   "title": "Risk Sentiment",
   "accent": "#FB7185",
-  "last_updated": "2026-06-12T14:19:28Z",
+  "last_updated": "2026-06-12T20:57:27Z",
   "status": "ok",
   "headline_read": "Markets are calm \u2014 volatility and credit stress are low.",
   "recessions": [
@@ -3011,8 +3011,8 @@
       "series_id": "BAMLH0A0HYM2",
       "observations": [
         {
-          "date": "2023-06-12",
-          "value": "4.34"
+          "date": "2023-06-13",
+          "value": "4.18"
         },
         {
           "date": "2023-06-19",
@@ -5345,14 +5345,18 @@
         {
           "date": "2026-06-10",
           "value": "2.80"
+        },
+        {
+          "date": "2026-06-11",
+          "value": "2.78"
         }
       ],
       "latest": {
-        "date": "2026-06-10",
-        "value": "2.80"
+        "date": "2026-06-11",
+        "value": "2.78"
       },
       "context": "The extra yield investors demand to hold risky 'junk' corporate bonds over Treasuries. It widens when markets fear defaults \u2014 an early stress signal. Note: FRED serves only a rolling ~3-year window of this ICE BofA series, so its chart history is shorter than the other indicators here.",
-      "read": "The high-yield spread is 2.80% \u2014 tight, signaling calm credit conditions.",
+      "read": "The high-yield spread is 2.78% \u2014 tight, signaling calm credit conditions.",
       "signal_status": "ok",
       "value_format": "decimal"
     },
@@ -5365,8 +5369,8 @@
       "series_id": "BAMLC0A0CM",
       "observations": [
         {
-          "date": "2023-06-12",
-          "value": "1.41"
+          "date": "2023-06-13",
+          "value": "1.39"
         },
         {
           "date": "2023-06-19",
@@ -7699,10 +7703,14 @@
         {
           "date": "2026-06-10",
           "value": "0.75"
+        },
+        {
+          "date": "2026-06-11",
+          "value": "0.75"
         }
       ],
       "latest": {
-        "date": "2026-06-10",
+        "date": "2026-06-11",
         "value": "0.75"
       },
       "context": "The same risk premium for higher-quality corporate bonds. Because these borrowers are safer, widening here signals stress reaching the core of credit. Note: FRED serves only a rolling ~3-year window of this ICE BofA series, so its chart history is shorter than the other indicators here.",

@@ -1,6 +1,18 @@
 {
-  "generated_at": "2026-06-12T14:20:55Z",
-  "since": null,
-  "graded": 0,
-  "categories": {}
+  "generated_at": "2026-06-12T20:58:43Z",
+  "since": "2026-06-12T14:20:55Z",
+  "graded": 1,
+  "calibration": 1.0,
+  "direction": 1.0,
+  "status": 1.0,
+  "skill": -0.19225000000000292,
+  "categories": {
+    "business": {
+      "graded": 1,
+      "calibration": 1.0,
+      "direction": 1.0,
+      "status": 1.0,
+      "skill": -0.19225000000000292
+    }
+  }
 }

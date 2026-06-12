@@ -1,0 +1,38 @@
+[
+  {
+    "id": "business/business-credit/ci-loan-growth@2026-05-01",
+    "key": "business/business-credit/ci-loan-growth",
+    "category": "business",
+    "lens": "business-credit",
+    "indicator": "ci-loan-growth",
+    "series_id": "BUSLOANS",
+    "horizon": "next-print",
+    "target_period": "2026-05-01",
+    "due": "2026-06-15",
+    "made_at": "2026-06-12T14:20:55Z",
+    "model": "sarima@1",
+    "point": 8.5769,
+    "lo": 7.1895,
+    "hi": 10.2781,
+    "unit": "%",
+    "value_format": "decimal",
+    "prev_value": 7.7,
+    "why": "C&I loans: up 6 straight months. This projects recent momentum, adjusted for the series' typical reversion.",
+    "implied_status": "ok",
+    "current_status": "ok",
+    "title": "C&I Loan Growth \u00b7 year-over-year",
+    "short": "C&I loans",
+    "lens_title": "Business Credit",
+    "href": "/dashboards/business/credit.html",
+    "grade": {
+      "actual": 8.1,
+      "graded_at": "2026-06-12T20:58:42Z",
+      "hit": true,
+      "abs_error": 0.47690000000000055,
+      "direction_hit": true,
+      "status_hit": true,
+      "naive_error": 0.39999999999999947,
+      "revised_to": null
+    }
+  }
+]
