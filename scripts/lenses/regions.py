@@ -8,7 +8,13 @@ import re
 
 
 def replace_region(text, name, content):
-    """Replace the region `name` with `content`. Returns (new_text, changed)."""
+    """Replace the region `name` with `content`. Returns (new_text, changed).
+    Raises ValueError if `content` contains the region's own end marker —
+    substituting it would silently corrupt every later patch cycle."""
+    end_marker = f"<!-- {name}:end -->"
+    if end_marker in content:
+        raise ValueError(
+            f"replace_region: content contains the end marker for region {name!r}")
     pattern = re.compile(
         r"(<!-- " + re.escape(name) + r":start -->).*?(<!-- " + re.escape(name) + r":end -->)",
         re.DOTALL)

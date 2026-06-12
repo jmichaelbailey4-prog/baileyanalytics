@@ -31,6 +31,10 @@ class TestReplaceRegion(unittest.TestCase):
         self.assertTrue(changed)
         self.assertIn("<!-- x:start -->new<!-- x:end -->", out)
 
+    def test_content_containing_end_marker_raises(self):
+        with self.assertRaises(ValueError):
+            regions.replace_region(DOC, "og-image", "x<!-- og-image:end -->y")
+
 
 if __name__ == "__main__":
     unittest.main()
