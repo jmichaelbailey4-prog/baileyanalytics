@@ -13,16 +13,6 @@
     return dataPromise;
   }
 
-  // Category-id -> display name. Lenses shown outside their home category
-  // (transitions, brief cards) carry this so "Bank Profitability" vs
-  // "Corporate Profits" never needs guessing. Keep in step with brief.py.
-  const CAT_LABELS = {
-    economic: "Economy", consumer: "Consumer", banking: "Banking",
-    business: "Business", markets: "Markets", energy: "Energy",
-    housing: "Housing", global: "Global",
-  };
-  window.briefCategoryLabel = id => CAT_LABELS[id] || "";
-
   function countsText(c) {
     const parts = [];
     if (c.alert) parts.push(`${c.alert} alert`);
@@ -35,23 +25,6 @@
     return `<span class="${badgeClass} ${esc(v.status)}">${esc(v.status)}</span>
       <span class="state-sentence">${esc(v.sentence)}</span>`;
   }
-
-  function transitionRow(t) {
-    const cat = CAT_LABELS[t.category];
-    return `<a class="brief-trans" href="${t.href}">
-      ${cat ? `<span class="brief-cat">${esc(cat)}</span>` : ""}
-      <span class="brief-trans-title">${esc(t.lens_title)}</span>
-      <span class="brief-arrow">
-        <span class="badge ${esc(t.from_status)}">${esc(t.from_status)}</span>
-        &rarr;
-        <span class="badge ${esc(t.to_status)}">${esc(t.to_status)}</span>
-      </span>
-      <span class="brief-trans-read">${esc(t.headline)}</span>
-    </a>`;
-  }
-
-  // Used by /dashboards/brief.html so transition markup lives in one place.
-  window.renderBriefTransitions = transitions => (transitions || []).map(transitionRow).join("");
 
   function compactStrip(data) {
     const t0 = (data.transitions || [])[0];
