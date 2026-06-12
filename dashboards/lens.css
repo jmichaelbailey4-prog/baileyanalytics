@@ -11,9 +11,15 @@ nav.top-nav{position:fixed;top:1.5rem;right:1.5rem;z-index:10;display:flex;gap:1
 nav a{color:var(--muted);text-decoration:none;font-size:.875rem;letter-spacing:.05em;text-transform:uppercase;
   font-weight:500;padding:.5rem .25rem;border-bottom:1px solid transparent;transition:color .2s,border-color .2s}
 nav a:hover,nav a:focus-visible{color:var(--text);border-bottom-color:var(--blue)}
+nav a[aria-current="page"]{color:var(--text);border-bottom-color:var(--blue)}
 main{max-width:48rem;margin:0 auto}
 .back{display:inline-block;color:var(--dim);font-size:.78rem;text-decoration:none;margin-bottom:1.25rem;letter-spacing:.03em}
 .back:hover{color:var(--blue)}
+.crumbs{font-size:.78rem;color:var(--dim);letter-spacing:.03em;margin-bottom:.35rem}
+.crumbs a{color:var(--dim);text-decoration:none}
+.crumbs a:hover{color:var(--blue)}
+.crumbs .sep{margin:0 .4rem;color:var(--faint)}
+.crumbs .here{color:var(--muted)}
 .eyebrow{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.14em}
 .read-hero{font-size:clamp(1.5rem,3.5vw,2rem);font-weight:600;letter-spacing:-.02em;line-height:1.2;margin:.5rem 0 .75rem;max-width:36rem}
 .badgerow{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap}
@@ -51,7 +57,13 @@ main{max-width:48rem;margin:0 auto}
 .foot a{color:var(--muted)}
 .status-msg{text-align:center;color:var(--dim);font-size:.9rem;padding:4rem 0}
 .status-msg.error{color:var(--red)}
-@media(max-width:640px){body{padding:5rem 1rem 3rem}nav.top-nav{gap:1rem}}
+/* Small screens: the fixed corner header can't hold the wordmark plus four
+   nav items — let both flow, centered, above the content (mirrors home). */
+@media(max-width:640px){
+  body{padding:1.25rem 1rem 3rem}
+  nav.wordmark{position:static;text-align:center;margin-bottom:.25rem}
+  nav.top-nav{position:static;justify-content:center;gap:1rem;flex-wrap:wrap;margin-bottom:1.5rem}
+}
 
 /* Hub pages (dashboards index + category hubs) — shared with hub.js */
 h1{font-size:clamp(2rem,4.5vw,2.75rem);font-weight:600;letter-spacing:-.02em;line-height:1.15;margin-bottom:.75rem}
