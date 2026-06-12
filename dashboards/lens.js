@@ -94,6 +94,16 @@
                  callback(v) { const s = this.getLabelForValue(v); if (!s) return s;
                    // annual labels ("2026") have no month part — always show the year
                    return (years && years <= 1 && s.length >= 7) ? MONTHS[+s.slice(5, 7) - 1] : s.slice(0, 4); } },
+               // Labels are month/year-granular while ticks are sampled from daily/weekly
+               // points, so consecutive SHOWN ticks can repeat ("Jun Jun", "2024 2024").
+               // The tick callback runs before Chart.js auto-skips down to ~7 ticks, so
+               // dedupe must happen here, after auto-skip, on the displayed set only.
+               afterUpdate(axis) {
+                 const t = axis.ticks;
+                 for (let i = t.length - 1; i > 0; i--) {
+                   if (t[i].label && t[i].label === t[i - 1].label) t[i].label = "";
+                 }
+               },
                grid: { display: false }, border: { color: "#1E293B" } },
           y: { ticks: { color: "#64748B", font: { size: 11 }, callback: v => fmtVal(v, indicator.unit, indicator.value_format) },
                grid: { color: "#1E293B" }, border: { display: false } },
