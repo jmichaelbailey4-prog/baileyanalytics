@@ -37,6 +37,10 @@ class TestRenderCard(unittest.TestCase):
         png = ogcard.render_site_card()
         self.assertEqual(Image.open(io.BytesIO(png)).size, (1200, 630))
 
+    def test_unsplittable_word_still_renders_canvas(self):
+        png = ogcard.render_card("ok", "https://example.com/" + "x" * 120, "June 12, 2026")
+        self.assertEqual(Image.open(io.BytesIO(png)).size, (1200, 630))
+
 
 if __name__ == "__main__":
     unittest.main()

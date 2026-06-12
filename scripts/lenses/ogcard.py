@@ -26,7 +26,8 @@ def _font(size, weight="regular"):
 
 
 def _wrap(draw, text, font, max_width):
-    """Greedy word wrap by rendered width."""
+    """Greedy word wrap by rendered width. Words wider than max_width are placed
+    as-is (callers pass prose verdict sentences, never URLs)."""
     lines, line = [], ""
     for word in text.split():
         trial = f"{line} {word}".strip()
@@ -70,7 +71,7 @@ def render_card(status, sentence, date_label):
         lines = _wrap(d, sentence, body_font, max_w)
         if len(lines) <= 4:
             break
-    y = 290
+    y = 260
     for line in lines[:4]:
         d.text((margin, y), line, font=body_font, fill=TEXT)
         y += int(size * 1.35)
@@ -91,8 +92,9 @@ def render_site_card():
     margin = 80
     d.text((margin, 200), "Bailey Analytics", font=_font(72, "semibold"), fill=TEXT)
     tagline = "Daily, plain-English dashboards on the U.S. and global economy"
-    for i, line in enumerate(_wrap(d, tagline, _font(34), W - 2 * margin)):
-        d.text((margin, 320 + i * 48), line, font=_font(34), fill=MUTED)
+    tagline_font = _font(34)
+    for i, line in enumerate(_wrap(d, tagline, tagline_font, W - 2 * margin)):
+        d.text((margin, 320 + i * 48), line, font=tagline_font, fill=MUTED)
     d.text((margin, H - 80), "baileyanalytics.com", font=_font(26), fill=FAINT)
     buf = io.BytesIO()
     img.save(buf, format="PNG", optimize=True)
