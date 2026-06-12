@@ -78,6 +78,7 @@ def _flatten_lenses(category_indices):
                 "href": lens_href(category, lens_id),
                 "status": lens.get("status", "unknown"),
                 "headline": lens.get("headline_read", ""),
+                "accent": lens.get("accent", ""),
                 "key_stats": lens.get("key_stats", []),
                 "sparkline": lens.get("sparkline", []),
             })
@@ -137,6 +138,9 @@ def rank_moves(flat_lenses, transition_ids, limit=5):
             "lens_title": r["lens_title"],
             "category": r["category"],
             "href": r["href"],
+            "headline": r["headline"],
+            "accent": r["accent"],
+            "sparkline": r["sparkline"],
             "stat_label": stat.get("k", ""),
             "stat_value": stat.get("v", "—"),
             "delta": stat.get("d", ""),
@@ -176,7 +180,8 @@ def build_brief(category_indices, prior_state):
         # Every lens (id/title/category/href/status), so the brief page can group
         # and deep-link without re-deriving the slug maps client-side.
         "lenses": [{"lens_id": r["lens_id"], "lens_title": r["lens_title"],
-                    "category": r["category"], "href": r["href"], "status": r["status"]}
+                    "category": r["category"], "href": r["href"], "status": r["status"],
+                    "headline": r["headline"]}
                    for r in flat],
         "status_counts": _status_counts(flat),
     }

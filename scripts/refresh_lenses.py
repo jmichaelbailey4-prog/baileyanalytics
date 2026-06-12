@@ -15,7 +15,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))  # make `lenses` importable
 from datetime import date
 
-from lenses import brief, build, coingecko, config, eia, epu, fdic, feed, fred, imf, nyfed, state, util, yahoo
+from lenses import brief, build, coingecko, config, eia, epu, fdic, feed, fred, imf, nyfed, today, util, yahoo
 
 OUT_DIR = Path(__file__).resolve().parent.parent / "data" / "lenses"
 BANK_OUT_DIR = Path(__file__).resolve().parent.parent / "data" / "banking"
@@ -36,7 +36,6 @@ BUSINESS_FIXTURE = Path(__file__).resolve().parent / "tests" / "fixtures" / "bus
 CRYPTO_HISTORY = MARKETS_OUT_DIR / "_crypto_history.json"
 CRYPTO_FIXTURE = Path(__file__).resolve().parent / "tests" / "fixtures" / "coingecko_sample.json"
 BRIEF_OUT_DIR = Path(__file__).resolve().parent.parent / "data" / "brief"
-STATE_OUT_DIR = Path(__file__).resolve().parent.parent / "data" / "state"
 BRIEF_FIXTURE = Path(__file__).resolve().parent / "tests" / "fixtures" / "brief_indices_sample.json"
 # Repo root, so GitHub Pages serves it at /feed.xml (the workflow commit step
 # must include this path alongside data/).
@@ -639,15 +638,18 @@ def _load_prior_state():
 
 
 def refresh_brief(dry_run):
-    """Build + write data/brief/today.json and _prior_state.json from the current
-    per-category index.json files. Additive — never raises; a missing category is
-    simply absent from the brief."""
+    """Build + write the merged data/brief/today.json (the brief plus the
+    absorbed State of Things: verdict, watching, pressure, category sentences)
+    and _prior_state.json from the current per-category index.json files.
+    Additive — never raises; a missing category is simply absent."""
     try:
         indices = _load_brief_indices(dry_run)
-        today, new_state = brief.build_brief(indices, _load_prior_state())
+        today_json, new_state = today.build_today(
+            indices, _load_prior_state(),
+            open_predictions=_load_open_predictions())
         # Content-aware writes (skip when only the timestamp changed) keep the
         # workflow's "no data change -> no commit" path intact on quiet days.
-        wrote = build.write_lens_file(BRIEF_OUT_DIR / "today.json", today)
+        wrote = build.write_lens_file(BRIEF_OUT_DIR / "today.json", today_json)
         build.write_lens_file(BRIEF_OUT_DIR / "_prior_state.json", new_state)
         print(f"Wrote {BRIEF_OUT_DIR / 'today.json'}" if wrote
               else "No brief changes — Today's Brief is up to date.")
@@ -661,7 +663,7 @@ def refresh_brief(dry_run):
                     existing = json.loads(items_path.read_text(encoding="utf-8"))
                 except (ValueError, OSError):
                     existing = []
-                items = feed.merge_items(existing, feed.build_item(today))
+                items = feed.merge_items(existing, feed.build_item(today_json))
                 items_path.write_text(json.dumps(items, indent=2) + "\n", encoding="utf-8")
                 FEED_PATH.write_text(feed.render_feed(items) + "\n", encoding="utf-8")
                 print(f"Wrote {FEED_PATH}")
@@ -672,18 +674,8 @@ def refresh_brief(dry_run):
         print(f"WARN: brief build failed ({exc}); keeping previous brief", file=sys.stderr)
 
 
-def _load_brief_today():
-    path = BRIEF_OUT_DIR / "today.json"
-    if path.exists():
-        try:
-            return json.loads(path.read_text(encoding="utf-8"))
-        except (ValueError, OSError):
-            pass
-    return None
-
-
 def _load_open_predictions():
-    """Open predictions for the state page's watching block (None when the
+    """Open predictions for the brief's watching block (None when the
     prediction pipeline hasn't run — the block is simply omitted)."""
     path = Path(__file__).resolve().parent.parent / "data" / "predictions" / "open.json"
     if path.exists():
@@ -692,21 +684,6 @@ def _load_open_predictions():
         except (ValueError, OSError):
             pass
     return None
-
-
-def refresh_state(dry_run):
-    """Build + write data/state/today.json (The State of Things) from the
-    per-category index.json files plus today's brief. Additive — never raises;
-    runs after refresh_brief so the 'what changed' count is fresh."""
-    try:
-        indices = _load_brief_indices(dry_run)
-        today = state.build_state(indices, _load_brief_today(),
-                                  open_predictions=_load_open_predictions())
-        wrote = build.write_lens_file(STATE_OUT_DIR / "today.json", today)
-        print(f"Wrote {STATE_OUT_DIR / 'today.json'}" if wrote
-              else "No state changes — The State of Things is up to date.")
-    except Exception as exc:  # noqa: BLE001 - never break the run on a state failure
-        print(f"WARN: state build failed ({exc}); keeping previous state", file=sys.stderr)
 
 
 def main(argv=None):
@@ -722,9 +699,10 @@ def main(argv=None):
     parser.add_argument("--global", dest="global_econ", action="store_true",
                         help="refresh only the Global Economy lenses")
     parser.add_argument("--business", action="store_true", help="refresh only the business (FRED) lenses")
-    parser.add_argument("--brief", action="store_true", help="rebuild only Today's Brief from existing indices")
-    parser.add_argument("--state", action="store_true",
-                        help="rebuild only The State of Things from existing indices")
+    parser.add_argument("--brief", action="store_true",
+                        help="rebuild only Today's Brief (incl. the merged verdict) from existing indices")
+    # Deprecated alias (the State of Things merged into the brief, 2026-06-12).
+    parser.add_argument("--state", action="store_true", help=argparse.SUPPRESS)
     args = parser.parse_args(argv)
 
     # No source flag = refresh everything (handy for manual/local runs); each
@@ -740,8 +718,10 @@ def main(argv=None):
     do_consumer = args.consumer or not any_flag
     do_business = args.business or not any_flag
     do_global = args.global_econ or not any_flag
-    do_brief = args.brief or not any_flag
-    do_state = args.state or not any_flag
+    if args.state:
+        print("WARN: --state is deprecated; the brief pass now includes the verdict.",
+              file=sys.stderr)
+    do_brief = args.brief or args.state or not any_flag
 
     code = 0
     if do_economic:
@@ -776,8 +756,6 @@ def main(argv=None):
         refresh_banking(args.dry_run)
     if do_brief:
         refresh_brief(args.dry_run)
-    if do_state:
-        refresh_state(args.dry_run)
     return code
 
 

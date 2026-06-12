@@ -322,7 +322,7 @@
             <h1>Bailey Analytics</h1>
             <p class="tagline">Daily, plain-English dashboards on the U.S. and global economy — recession risk, the consumer, banking and business health, markets, energy, housing, and the world — built from public data.</p>
             <a class="email" href="mailto:michael@baileyanalytics.com">michael@baileyanalytics.com</a>
-            <a class="state-line" id="state-line" href="/dashboards/state.html" hidden></a>
+            <a class="state-line" id="state-line" href="/dashboards/brief.html" hidden></a>
             <div class="asof" id="hero-asof" hidden></div>
         </div>
 
@@ -344,7 +344,6 @@
     </main>
 
     <script defer src="/dashboards/brief.js"></script>
-    <script defer src="/dashboards/state.js"></script>
     <script>
         function esc(s) { const d = document.createElement("div"); d.textContent = s; return d.innerHTML; }
 
@@ -408,10 +407,10 @@
 
         (async function () {
             // The hero verdict line is independent of the tiles — show it first
-            // (state.js loads deferred; this inline script can win the race).
-            const showState = () => { if (typeof loadState === "function") loadState("state-line", { mode: "line" }); };
-            if (typeof loadState === "function") showState();
-            else window.addEventListener("DOMContentLoaded", showState);
+            // (brief.js loads deferred; this inline script can win the race).
+            const showLine = () => { if (typeof loadBrief === "function") loadBrief("state-line", { mode: "line" }); };
+            if (typeof loadBrief === "function") showLine();
+            else window.addEventListener("DOMContentLoaded", showLine);
 
             const results = await Promise.allSettled(CATEGORIES.map(async cat => {
                 const res = await fetch(cat.url, { cache: "no-cache" });

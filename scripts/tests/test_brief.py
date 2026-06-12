@@ -177,7 +177,7 @@ class TestRankMoves(unittest.TestCase):
     # pstdev([1,-1,1]) ≈ 0.9428); the 5th point sets the final step, hence the score.
     def _lens(self, lens_id, spark, d="1.00%", dir_="up", k="Stat", v="1.00%"):
         return {"lens_id": lens_id, "lens_title": lens_id.title(), "category": "economic",
-                "href": "/x", "status": "ok", "headline": "h",
+                "href": "/x", "status": "ok", "headline": "h", "accent": "#a",
                 "key_stats": [{"k": k, "v": v, "d": d, "dir": dir_}], "sparkline": spark}
 
     def test_ranks_by_significance_desc(self):
@@ -309,9 +309,35 @@ class TestBriefLensesList(unittest.TestCase):
         fiscal = next(l for l in today["lenses"] if l["lens_id"] == "fiscal-health")
         self.assertEqual(fiscal, {"lens_id": "fiscal-health", "lens_title": "Fiscal Health",
                                   "category": "economic", "href": "/dashboards/fiscal-health.html",
-                                  "status": "elevated"})
+                                  "status": "elevated", "headline": "h"})
         homes = next(l for l in today["lenses"] if l["lens_id"] == "housing-home-prices")
         self.assertEqual(homes["href"], "/dashboards/housing/home-prices.html")
+
+
+class HeadlineCarryThrough(unittest.TestCase):
+    INDICES = {"economic": {"lenses": [{
+        "id": "cost-of-living", "title": "The Cost of Living", "status": "elevated",
+        "headline_read": "Inflation is still hot.",
+        "key_stats": [{"k": "CPI", "v": "4.17%", "d": "0.39%", "dir": "up"}],
+        "sparkline": [1.0, 1.0, 1.0, 1.0, 9.0],
+    }]}}
+
+    def test_lenses_list_carries_headline(self):
+        today, _ = brief.build_brief(self.INDICES, {"statuses": {}})
+        self.assertEqual(today["lenses"][0]["headline"], "Inflation is still hot.")
+
+    def test_top_moves_carry_headline(self):
+        today, _ = brief.build_brief(self.INDICES, {"statuses": {"cost-of-living": "elevated"}})
+        self.assertTrue(today["top_moves"])
+        self.assertEqual(today["top_moves"][0]["headline"], "Inflation is still hot.")
+
+    def test_top_moves_carry_accent_and_sparkline(self):
+        # mover cards render their own sparkline from the merged JSON — no
+        # per-category index re-fetch on the brief page.
+        today, _ = brief.build_brief(self.INDICES, {"statuses": {"cost-of-living": "elevated"}})
+        move = today["top_moves"][0]
+        self.assertEqual(move["sparkline"], [1.0, 1.0, 1.0, 1.0, 9.0])
+        self.assertIn("accent", move)
 
 
 if __name__ == "__main__":

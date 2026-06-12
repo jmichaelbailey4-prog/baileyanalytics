@@ -1,0 +1,330 @@
+[
+  {
+    "url": "/dashboards/recession-watch.html",
+    "issues": [
+      "dup ticks (5Y) \"Yield Curve · 10-Year minus 2-Year\": [2021,2023,2024,2024,2025,2025,2026]",
+      "dup ticks (5Y) \"Sahm Rule Recession Indicator\": [2021,2022,2022,2023,2024,2025,2025]",
+      "dup ticks (5Y) \"Initial Jobless Claims · weekly\": [2021,2022,2022,2023,2024,2025,2025]",
+      "dup ticks (5Y) \"Unemployment Rate\": [2021,2022,2022,2023,2024,2025,2025]",
+      "dup ticks (Max) \"Yield Curve · 10-Year minus 2-Year\": [2016,2022,2024,2024,2025,2025,2026]",
+      "dup ticks (Max) \"Initial Jobless Claims · weekly\": [2016,2020,2022,2022,2023,2024,2025]"
+    ]
+  },
+  {
+    "url": "/dashboards/cost-of-money.html",
+    "issues": [
+      "dup ticks (5Y) \"Federal Funds Rate\": [2021,2022,2022,2023,2024,2025,2025]",
+      "dup ticks (5Y) \"10-Year Treasury Yield\": [2021,2023,2024,2024,2025,2025,2026]",
+      "dup ticks (5Y) \"2-Year Treasury Yield\": [2021,2023,2024,2024,2025,2025,2026]",
+      "dup ticks (5Y) \"Rate Expectations · 2-Year minus Fed Funds\": [2021,2023,2024,2024,2025,2025,2026]",
+      "dup ticks (Max) \"10-Year Treasury Yield\": [2016,2022,2024,2024,2025,2025,2026]",
+      "dup ticks (Max) \"2-Year Treasury Yield\": [2016,2022,2024,2024,2025,2025,2026]",
+      "dup ticks (Max) \"Rate Expectations · 2-Year minus Fed Funds\": [2016,2022,2024,2024,2025,2025,2026]"
+    ]
+  },
+  {
+    "url": "/dashboards/job-market.html",
+    "issues": [
+      "dup ticks (5Y) \"Unemployment Rate\": [2021,2022,2022,2023,2024,2025,2025]",
+      "dup ticks (5Y) \"Nonfarm Payrolls · monthly change\": [2021,2022,2022,2023,2024,2025,2025]",
+      "dup ticks (5Y) \"Job Openings (JOLTS)\": [2021,2022,2022,2023,2024,2025,2025]",
+      "dup ticks (5Y) \"Wage Growth · year-over-year\": [2021,2022,2022,2023,2024,2025,2025]",
+      "dup ticks (5Y) \"Labor-Force Participation Rate\": [2021,2022,2022,2023,2024,2025,2025]"
+    ]
+  },
+  {
+    "url": "/dashboards/cost-of-living.html",
+    "issues": [
+      "dup ticks (5Y) \"Inflation · CPI (year-over-year)\": [2021,2022,2022,2023,2024,2025,2025]",
+      "dup ticks (5Y) \"Core CPI (year-over-year)\": [2021,2022,2022,2023,2024,2025,2025]",
+      "dup ticks (5Y) \"PCE Inflation (year-over-year)\": [2021,2022,2022,2023,2024,2025,2025]",
+      "dup ticks (5Y) \"Real Wage Growth (year-over-year)\": [2021,2021,2022,2023,2024,2024,2025]"
+    ]
+  },
+  {
+    "url": "/dashboards/fiscal-health.html",
+    "issues": [
+      "dup ticks (5Y) \"Federal Debt · % of GDP\": [2020,2021,2022,2023,2023,2024,2025]",
+      "dup ticks (5Y) \"Federal Deficit · trailing 12 months\": [2021,2022,2022,2023,2024,2025,2025]",
+      "dup ticks (5Y) \"Federal Interest Cost · annual rate\": [2021,2021,2022,2023,2024,2024,2025]",
+      "dup ticks (5Y) \"Federal Receipts · year-over-year\": [2021,2021,2022,2023,2024,2024,2025]"
+    ]
+  },
+  {
+    "url": "/dashboards/consumer/spending.html",
+    "issues": [
+      "dup ticks (5Y) \"Retail Sales · year-over-year\": [2021,2022,2022,2023,2024,2025,2025]",
+      "dup ticks (5Y) \"Real Consumer Spending · year-over-year\": [2021,2022,2022,2023,2024,2025,2025]",
+      "dup ticks (5Y) \"Vehicle Sales · annual rate\": [2021,2022,2022,2023,2024,2025,2025]"
+    ]
+  },
+  {
+    "url": "/dashboards/consumer/credit-stress.html",
+    "issues": [
+      "dup ticks (default) \"Credit-Card Delinquency Rate\": [2021,2021,2022,2023,2024,2024,2025]",
+      "dup ticks (default) \"Consumer-Loan Delinquency Rate\": [2021,2021,2022,2023,2024,2024,2025]",
+      "dup ticks (default) \"Card Balances · year-over-year\": [2021,2022,2022,2023,2024,2025,2025]",
+      "dup ticks (default) \"Household Debt Service · % of income\": [2020,2021,2022,2023,2023,2024,2025]",
+      "dup ticks (5Y) \"Credit-Card Delinquency Rate\": [2021,2021,2022,2023,2024,2024,2025]",
+      "dup ticks (5Y) \"Consumer-Loan Delinquency Rate\": [2021,2021,2022,2023,2024,2024,2025]",
+      "dup ticks (5Y) \"Card Balances · year-over-year\": [2021,2022,2022,2023,2024,2025,2025]",
+      "dup ticks (5Y) \"Household Debt Service · % of income\": [2020,2021,2022,2023,2023,2024,2025]"
+    ]
+  },
+  {
+    "url": "/dashboards/consumer/income-savings.html",
+    "issues": [
+      "dup ticks (5Y) \"Personal Saving Rate\": [2021,2022,2022,2023,2024,2025,2025]",
+      "dup ticks (5Y) \"Real Disposable Income · year-over-year\": [2021,2022,2022,2023,2024,2025,2025]",
+      "dup ticks (5Y) \"Household Net Worth · year-over-year\": [2020,2021,2022,2023,2023,2024,2025]"
+    ]
+  },
+  {
+    "url": "/dashboards/consumer/sentiment.html",
+    "issues": [
+      "dup ticks (5Y) \"Consumer Sentiment (U. Michigan)\": [2021,2022,2022,2023,2024,2025,2025]",
+      "dup ticks (5Y) \"Inflation Expectations · 1-year ahead\": [2021,2022,2022,2023,2024,2025,2025]"
+    ]
+  },
+  {
+    "url": "/dashboards/banking/asset-quality.html",
+    "issues": [
+      "dup ticks (default) \"Noncurrent Loan Rate · loans 90+ days past due\": [2021,2021,2022,2023,2024,2024,2025]",
+      "dup ticks (default) \"Net Charge-Off Rate · annualized\": [2021,2021,2022,2023,2024,2024,2025]",
+      "dup ticks (5Y) \"Noncurrent Loan Rate · loans 90+ days past due\": [2021,2021,2022,2023,2024,2024,2025]",
+      "dup ticks (5Y) \"Net Charge-Off Rate · annualized\": [2021,2021,2022,2023,2024,2024,2025]"
+    ]
+  },
+  {
+    "url": "/dashboards/banking/profitability.html",
+    "issues": [
+      "dup ticks (default) \"Net Interest Margin · annualized\": [2021,2021,2022,2023,2024,2024,2025]",
+      "dup ticks (default) \"Return on Assets · annualized\": [2021,2021,2022,2023,2024,2024,2025]",
+      "dup ticks (5Y) \"Net Interest Margin · annualized\": [2021,2021,2022,2023,2024,2024,2025]",
+      "dup ticks (5Y) \"Return on Assets · annualized\": [2021,2021,2022,2023,2024,2024,2025]"
+    ]
+  },
+  {
+    "url": "/dashboards/banking/capital-solvency.html",
+    "issues": [
+      "dup ticks (default) \"Total Risk-Based Capital Ratio\": [2021,2021,2022,2023,2024,2024,2025]",
+      "dup ticks (default) \"Equity-to-Assets\": [2021,2021,2022,2023,2024,2024,2025]",
+      "dup ticks (5Y) \"Total Risk-Based Capital Ratio\": [2021,2021,2022,2023,2024,2024,2025]",
+      "dup ticks (5Y) \"Equity-to-Assets\": [2021,2021,2022,2023,2024,2024,2025]"
+    ]
+  },
+  {
+    "url": "/dashboards/banking/concentrations-funding.html",
+    "issues": [
+      "dup ticks (default) \"Uninsured-Deposit Share\": [2021,2021,2022,2023,2024,2024,2025]",
+      "dup ticks (default) \"Loans-to-Deposits\": [2021,2021,2022,2023,2024,2024,2025]",
+      "dup ticks (default) \"CRE Concentration · % of capital\": [2021,2021,2022,2023,2024,2024,2025]",
+      "dup ticks (5Y) \"Uninsured-Deposit Share\": [2021,2021,2022,2023,2024,2024,2025]",
+      "dup ticks (5Y) \"Loans-to-Deposits\": [2021,2021,2022,2023,2024,2024,2025]",
+      "dup ticks (5Y) \"CRE Concentration · % of capital\": [2021,2021,2022,2023,2024,2024,2025]"
+    ]
+  },
+  {
+    "url": "/dashboards/business/credit.html",
+    "issues": [
+      "dup ticks (5Y) \"Baa Corporate Spread · over 10-Year Treasury\": [2021,2022,2022,2023,2024,2025,2025]",
+      "dup ticks (5Y) \"Lending Standards · net % of banks tightening\": [2021,2022,2022,2023,2024,2025,2025]",
+      "dup ticks (5Y) \"Business-Loan Delinquency Rate\": [2021,2021,2022,2023,2024,2024,2025]",
+      "dup ticks (5Y) \"C&I Loan Growth · year-over-year\": [2021,2022,2022,2023,2024,2025,2025]"
+    ]
+  },
+  {
+    "url": "/dashboards/business/profitability.html",
+    "issues": [
+      "dup ticks (default) \"Corporate Profits · year-over-year\": [2021,2021,2022,2023,2024,2024,2025]",
+      "dup ticks (default) \"Nonfinancial Corporate Profits · year-over-year\": [2021,2021,2022,2023,2024,2024,2025]",
+      "dup ticks (default) \"Corporate Profits · share of GDP\": [2021,2021,2022,2023,2024,2024,2025]",
+      "dup ticks (default) \"Proprietors' Income · year-over-year\": [2021,2021,2022,2023,2024,2024,2025]",
+      "dup ticks (5Y) \"Corporate Profits · year-over-year\": [2021,2021,2022,2023,2024,2024,2025]",
+      "dup ticks (5Y) \"Nonfinancial Corporate Profits · year-over-year\": [2021,2021,2022,2023,2024,2024,2025]",
+      "dup ticks (5Y) \"Corporate Profits · share of GDP\": [2021,2021,2022,2023,2024,2024,2025]",
+      "dup ticks (5Y) \"Proprietors' Income · year-over-year\": [2021,2021,2022,2023,2024,2024,2025]"
+    ]
+  },
+  {
+    "url": "/dashboards/business/investment.html",
+    "issues": [
+      "dup ticks (5Y) \"Core Capital-Goods Orders · year-over-year\": [2021,2022,2022,2023,2024,2025,2025]",
+      "dup ticks (5Y) \"Real Business Sales · year-over-year\": [2021,2021,2022,2023,2024,2024,2025]",
+      "dup ticks (5Y) \"Inventories-to-Sales Ratio\": [2021,2021,2022,2023,2024,2024,2025]"
+    ]
+  },
+  {
+    "url": "/dashboards/business/formation.html",
+    "issues": [
+      "dup ticks (5Y) \"Business Applications · year-over-year\": [2021,2022,2022,2023,2024,2025,2025]",
+      "dup ticks (5Y) \"High-Propensity Applications · year-over-year\": [2021,2022,2022,2023,2024,2025,2025]",
+      "dup ticks (5Y) \"High-Propensity Share of Applications\": [2021,2022,2022,2023,2024,2025,2025]"
+    ]
+  },
+  {
+    "url": "/dashboards/markets/risk-sentiment.html",
+    "issues": [
+      "dup ticks (5Y) \"Volatility · VIX\": [2021,2023,2024,2024,2025,2025,2026]",
+      "dup ticks (5Y) \"High-Yield Credit Spread\": [2023,2024,2024,2025,2025,2025,2026]",
+      "dup ticks (5Y) \"Investment-Grade Credit Spread\": [2023,2024,2024,2025,2025,2025,2026]",
+      "dup ticks (5Y) \"Financial Conditions · NFCI\": [2021,2022,2022,2023,2024,2025,2025]",
+      "dup ticks (Max) \"Volatility · VIX\": [2016,2022,2024,2024,2025,2025,2026]",
+      "dup ticks (Max) \"High-Yield Credit Spread\": [2023,2024,2024,2025,2025,2025,2026]",
+      "dup ticks (Max) \"Investment-Grade Credit Spread\": [2023,2024,2024,2025,2025,2025,2026]",
+      "dup ticks (Max) \"Financial Conditions · NFCI\": [2016,2020,2022,2022,2023,2024,2025]"
+    ]
+  },
+  {
+    "url": "/dashboards/markets/scoreboard.html",
+    "issues": [
+      "dup ticks (5Y) \"S&P 500\": [2021,2023,2024,2024,2025,2025,2026]",
+      "dup ticks (5Y) \"Crude Oil · WTI\": [2021,2023,2024,2024,2025,2025,2026]",
+      "dup ticks (5Y) \"Gold\": [2021,2023,2024,2024,2025,2025,2026]",
+      "dup ticks (5Y) \"Bitcoin\": [2021,2023,2024,2025,2025,2025,2026]",
+      "dup ticks (5Y) \"Ethereum\": [2021,2023,2024,2025,2025,2025,2026]",
+      "dup ticks (Max) \"S&P 500\": [2016,2022,2024,2024,2025,2025,2026]",
+      "dup ticks (Max) \"Crude Oil · WTI\": [2016,2022,2024,2024,2025,2025,2026]",
+      "dup ticks (Max) \"Gold\": [2016,2022,2024,2024,2025,2025,2026]",
+      "dup ticks (Max) \"Bitcoin\": [2019,2023,2024,2025,2025,2025,2026]",
+      "dup ticks (Max) \"Ethereum\": [2019,2023,2024,2025,2025,2025,2026]"
+    ]
+  },
+  {
+    "url": "/dashboards/markets/liquidity.html",
+    "issues": [
+      "dup ticks (5Y) \"M2 Money Supply · year-over-year\": [2021,2022,2022,2023,2024,2025,2025]",
+      "dup ticks (5Y) \"Fed Balance Sheet · total assets\": [2021,2022,2022,2023,2024,2025,2025]",
+      "dup ticks (5Y) \"Bank Reserves at the Fed\": [2021,2022,2022,2023,2024,2025,2025]",
+      "dup ticks (5Y) \"Overnight Reverse Repo\": [2021,2023,2024,2025,2025,2025,2026]",
+      "dup ticks (Max) \"Fed Balance Sheet · total assets\": [2016,2020,2022,2022,2023,2024,2025]",
+      "dup ticks (Max) \"Bank Reserves at the Fed\": [2016,2020,2022,2022,2023,2024,2025]",
+      "dup ticks (Max) \"Overnight Reverse Repo\": [2021,2023,2024,2025,2025,2025,2026]"
+    ]
+  },
+  {
+    "url": "/dashboards/markets/crypto-structure.html",
+    "issues": [
+      "dup ticks (default) \"Bitcoin Dominance\": [Jun,Jun,Jun,Jun,Jun]",
+      "dup ticks (5Y) \"Bitcoin Dominance\": [2026,2026,2026,2026,2026]",
+      "dup ticks (5Y) \"Large-vs-Small Rotation\": [2025,2025,2025,2025,2026,2026,2026]",
+      "dup ticks (5Y) \"Bitcoin / Ether Ratio\": [2021,2023,2024,2025,2025,2025,2026]",
+      "dup ticks (Max) \"Bitcoin Dominance\": [2026,2026,2026,2026,2026]",
+      "dup ticks (Max) \"Large-vs-Small Rotation\": [2025,2025,2025,2025,2026,2026,2026]",
+      "dup ticks (Max) \"Bitcoin / Ether Ratio\": [2019,2023,2024,2025,2025,2025,2026]"
+    ]
+  },
+  {
+    "url": "/dashboards/energy/oil-fuels.html",
+    "issues": [
+      "dup ticks (5Y) \"Retail Gasoline · Regular\": [2021,2022,2022,2023,2024,2025,2025]",
+      "dup ticks (5Y) \"Retail Diesel · On-Highway\": [2021,2022,2022,2023,2024,2025,2025]",
+      "dup ticks (5Y) \"U.S. Crude Oil Production\": [2021,2022,2022,2023,2024,2025,2025]",
+      "dup ticks (5Y) \"Crude Inventories · excl. SPR\": [2021,2022,2022,2023,2024,2025,2025]",
+      "dup ticks (Max) \"Retail Gasoline · Regular\": [2016,2020,2022,2022,2023,2024,2025]",
+      "dup ticks (Max) \"Retail Diesel · On-Highway\": [2016,2020,2022,2022,2023,2024,2025]",
+      "dup ticks (Max) \"U.S. Crude Oil Production\": [2016,2020,2022,2022,2023,2024,2025]",
+      "dup ticks (Max) \"Crude Inventories · excl. SPR\": [2016,2020,2022,2022,2023,2024,2025]"
+    ]
+  },
+  {
+    "url": "/dashboards/energy/natural-gas.html",
+    "issues": [
+      "dup ticks (5Y) \"Henry Hub Spot Price\": [2022,2024,2024,2025,2025,2025,2026]",
+      "dup ticks (5Y) \"Working Gas in Storage · Lower 48\": [2021,2022,2022,2023,2024,2025,2025]",
+      "dup ticks (5Y) \"U.S. Dry Gas Production\": [2021,2021,2022,2023,2024,2024,2025]",
+      "dup ticks (5Y) \"U.S. LNG Exports\": [2021,2021,2022,2023,2024,2024,2025]",
+      "dup ticks (Max) \"Henry Hub Spot Price\": [2022,2024,2024,2025,2025,2025,2026]",
+      "dup ticks (Max) \"Working Gas in Storage · Lower 48\": [2016,2020,2022,2022,2023,2024,2025]"
+    ]
+  },
+  {
+    "url": "/dashboards/energy/electricity.html",
+    "issues": [
+      "dup ticks (5Y) \"Retail Electricity · Residential\": [2021,2021,2022,2023,2024,2024,2025]",
+      "dup ticks (5Y) \"Renewables · Share of Generation\": [2021,2021,2022,2023,2024,2024,2025]",
+      "dup ticks (5Y) \"Natural Gas · Share of Generation\": [2021,2021,2022,2023,2024,2024,2025]",
+      "dup ticks (5Y) \"Total Net Generation\": [2021,2021,2022,2023,2024,2024,2025]"
+    ]
+  },
+  {
+    "url": "/dashboards/energy/commodities.html",
+    "issues": [
+      "dup ticks (5Y) \"Global Food Prices · year-over-year\": [2021,2022,2022,2023,2024,2025,2025]",
+      "dup ticks (5Y) \"Copper · “Dr. Copper”\": [2021,2022,2022,2023,2024,2025,2025]",
+      "dup ticks (5Y) \"Broad Commodities · year-over-year\": [2021,2022,2022,2023,2024,2025,2025]"
+    ]
+  },
+  {
+    "url": "/dashboards/housing/home-prices.html",
+    "issues": [
+      "dup ticks (5Y) \"Case-Shiller Home Prices · year-over-year\": [2021,2021,2022,2023,2024,2024,2025]",
+      "dup ticks (5Y) \"Existing-Home Sales · annual rate\": [2025,2025,2025,2025,2026,2026,2026]",
+      "dup ticks (5Y) \"Median Sales Price of Houses Sold\": [2021,2021,2022,2023,2024,2024,2025]",
+      "dup ticks (Max) \"Existing-Home Sales · annual rate\": [2025,2025,2025,2025,2026,2026,2026]"
+    ]
+  },
+  {
+    "url": "/dashboards/housing/affordability.html",
+    "issues": [
+      "dup ticks (5Y) \"Housing Affordability Index (NAR)\": [2025,2025,2025,2025,2026,2026]",
+      "dup ticks (5Y) \"Mortgage Debt Service · % of income\": [2020,2021,2022,2023,2023,2024,2025]",
+      "dup ticks (5Y) \"Mortgage Delinquency Rate · banks\": [2021,2021,2022,2023,2024,2024,2025]",
+      "dup ticks (5Y) \"30-Year Fixed Mortgage Rate\": [2021,2022,2022,2023,2024,2025,2025]",
+      "dup ticks (Max) \"Housing Affordability Index (NAR)\": [2025,2025,2025,2025,2026,2026]"
+    ]
+  },
+  {
+    "url": "/dashboards/housing/supply-construction.html",
+    "issues": [
+      "dup ticks (5Y) \"Months of New-Home Supply\": [2021,2022,2022,2023,2024,2025,2025]",
+      "dup ticks (5Y) \"Active Listings (Realtor.com) · millions\": [2021,2022,2022,2023,2024,2025,2025]",
+      "dup ticks (5Y) \"Housing Starts · thousands, annual rate\": [2021,2022,2022,2023,2024,2025,2025]",
+      "dup ticks (5Y) \"Building Permits · thousands, annual rate\": [2021,2022,2022,2023,2024,2025,2025]"
+    ]
+  },
+  {
+    "url": "/dashboards/housing/rent-shelter.html",
+    "issues": [
+      "dup ticks (5Y) \"Rent Inflation · CPI rent, year-over-year\": [2021,2022,2022,2023,2024,2025,2025]",
+      "dup ticks (5Y) \"Owners' Equivalent Rent · year-over-year\": [2021,2022,2022,2023,2024,2025,2025]",
+      "dup ticks (5Y) \"Rental Vacancy Rate\": [2021,2021,2022,2023,2024,2024,2025]",
+      "dup ticks (5Y) \"Homeownership Rate\": [2021,2021,2022,2023,2024,2024,2025]"
+    ]
+  },
+  {
+    "url": "/dashboards/global/dollar-currencies.html",
+    "issues": [
+      "dup ticks (5Y) \"Broad Dollar Index · year-over-year\": [2021,2023,2024,2024,2025,2025,2026]",
+      "dup ticks (5Y) \"Euro · dollars per euro\": [2021,2023,2024,2024,2025,2025,2026]",
+      "dup ticks (5Y) \"Japanese Yen · yen per dollar\": [2021,2023,2024,2024,2025,2025,2026]",
+      "dup ticks (5Y) \"Chinese Yuan · yuan per dollar\": [2021,2023,2024,2024,2025,2025,2026]",
+      "dup ticks (Max) \"Broad Dollar Index · year-over-year\": [2016,2022,2024,2024,2025,2025,2026]",
+      "dup ticks (Max) \"Euro · dollars per euro\": [2016,2022,2024,2024,2025,2025,2026]",
+      "dup ticks (Max) \"Japanese Yen · yen per dollar\": [2016,2022,2024,2024,2025,2025,2026]",
+      "dup ticks (Max) \"Chinese Yuan · yuan per dollar\": [2016,2022,2024,2024,2025,2025,2026]"
+    ]
+  },
+  {
+    "url": "/dashboards/global/growth.html",
+    "issues": [
+      "dup ticks (5Y) \"Euro Area Real GDP · year-over-year\": [2021,2021,2022,2023,2024,2024,2025]"
+    ]
+  },
+  {
+    "url": "/dashboards/global/trade-supply.html",
+    "issues": [
+      "dup ticks (5Y) \"Global Supply Chain Pressure Index\": [2021,2022,2022,2023,2024,2025,2025]",
+      "dup ticks (5Y) \"U.S. Trade Deficit · goods & services\": [2021,2022,2022,2023,2024,2025,2025]",
+      "dup ticks (5Y) \"Import Prices · year-over-year\": [2021,2022,2022,2023,2024,2025,2025]",
+      "dup ticks (5Y) \"China Exports · year-over-year\": [2021,2021,2022,2023,2024,2024,2025]"
+    ]
+  },
+  {
+    "url": "/dashboards/global/uncertainty.html",
+    "issues": [
+      "dup ticks (5Y) \"U.S. Economic Policy Uncertainty\": [2021,2022,2022,2023,2024,2025,2025]",
+      "dup ticks (5Y) \"Global Economic Policy Uncertainty\": [2020,2021,2022,2023,2023,2024,2025]"
+    ]
+  }
+]

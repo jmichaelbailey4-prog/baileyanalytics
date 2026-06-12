@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MOCKUP A2 — Today (change-led merge)</title>
+  <link rel="stylesheet" href="/dashboards/lens.css">
+  <style>
+    .sec-head { font-size: 1.4rem; font-weight: 600; letter-spacing: -0.01em; margin: 2.25rem 0 0.3rem; scroll-margin-top: 1rem; }
+    .sec-sub { color: var(--muted); font-size: .92rem; max-width: 42rem; margin-bottom: 1.15rem; }
+    .verdict-line { display: flex; align-items: baseline; gap: .7rem; flex-wrap: wrap; margin: 1rem 0 .25rem; }
+    .verdict-line .state-sentence { font-size: .98rem; color: var(--muted); font-weight: 500; }
+    .att-row { display: flex; align-items: baseline; gap: .6rem; flex-wrap: wrap; padding: .42rem .5rem; border-radius: 9px; color: var(--text); text-decoration: none; }
+    .att-row:hover { background: rgba(255,255,255,.03); }
+    .att-row .brief-cat { flex: none; width: 4.6rem; }
+    .att-row .att-title { font-weight: 600; font-size: .88rem; flex: none; }
+    .att-row .att-read { color: var(--muted); font-size: .82rem; flex: 1 1 16rem; min-width: 0; }
+    .att-group { margin-bottom: .9rem; }
+    .mock-note { position: fixed; bottom: 0; left: 0; right: 0; background: #1d4ed8; color: #fff; font-size: .75rem; text-align: center; padding: .3rem; z-index: 99; }
+  </style>
+</head>
+<body>
+  <nav class="wordmark"><a href="/">Bailey Analytics</a></nav>
+  <nav class="top-nav"><a href="#" style="color:var(--text);border-bottom-color:var(--blue)">Today</a><a href="/dashboards/">Dashboards</a><a href="/dashboards/track-record.html">Track Record</a><a href="/about.html">About</a></nav>
+
+  <main>
+    <h1>Today</h1>
+    <!-- Verdict demoted to a one-line standfirst under the title -->
+    <div class="verdict-line">
+      <span class="badge watch">watch</span>
+      <span class="state-sentence">Pressure is real but contained: energy costs are squeezing budgets and household finances are stretched thin; banks are solid.</span>
+    </div>
+    <div class="hub-fresh">As of June 11, 2026</div>
+
+    <!-- 1. WHAT CHANGED leads -->
+    <section>
+      <h2 class="sec-head">What changed today</h2>
+      <p class="sec-sub">Status changes first — the headline events — then the biggest moves in the data.</p>
+      <a class="brief-trans" href="#">
+        <span class="brief-cat">Markets</span>
+        <span class="brief-trans-title">Risk Sentiment</span>
+        <span class="brief-arrow"><span class="badge ok">ok</span> &rarr; <span class="badge watch">watch</span></span>
+        <span class="brief-trans-read">A few cracks are showing — sentiment is no longer all calm.</span>
+      </a>
+      <div class="hub-grid" style="margin-top:.9rem">
+        <a class="hub-card" href="#">
+          <div class="hub-eyebrow" style="color:#A3E635"><span class="hub-cat">Energy ·</span> Commodities &amp; Materials <span class="badge alert">alert</span></div>
+          <div class="hub-read">Commodity costs are surging.</div>
+          <div class="hub-stats">Food <b>30.20%</b> <i class="delta up">18.60%</i> &nbsp; Copper <b>$13,484</b> <i class="delta up">$593</i></div>
+        </a>
+        <a class="hub-card" href="#">
+          <div class="hub-eyebrow" style="color:#FBBF24"><span class="hub-cat">Energy ·</span> Electricity &amp; the Grid <span class="badge elevated">elevated</span></div>
+          <div class="hub-read">Electricity prices are well above last year.</div>
+          <div class="hub-stats">Power price <b>18.83&cent;/kWh</b> <i class="delta up">1.18&cent;/kWh</i></div>
+        </a>
+      </div>
+    </section>
+
+    <!-- 2. WATCHING NEXT -->
+    <section>
+      <h2 class="sec-head">What we&rsquo;re watching next</h2>
+      <p class="sec-sub">Our published predictions for the most consequential upcoming prints.</p>
+      <a class="state-lens" href="#">
+        <span class="state-lens-title">CPI inflation (May print, due Jun 12)</span>
+        <span class="state-lens-read">we expect <strong>4.05%</strong> — which would keep Cost of Living at <span class="badge elevated">elevated</span></span>
+      </a>
+      <a class="state-link" href="/dashboards/track-record.html">Our track record &rarr;</a>
+    </section>
+
+    <!-- 3. STANDING PICTURE collapsed to one section at the end -->
+    <section>
+      <h2 class="sec-head">The standing picture</h2>
+      <p class="sec-sub">Everything currently warranting attention, worst first — then what&rsquo;s holding steady.</p>
+      <div class="att-group">
+        <div class="brief-sec-label">On alert</div>
+        <a class="att-row" href="#"><span class="brief-cat">Energy</span><span class="att-title">Oil &amp; Fuels</span><span class="badge alert">alert</span><span class="att-read">Fuel costs are spiking — acute pressure at the pump.</span></a>
+        <a class="att-row" href="#"><span class="brief-cat">Energy</span><span class="att-title">Commodities &amp; Materials</span><span class="badge alert">alert</span><span class="att-read">Commodity costs are surging.</span></a>
+        <a class="att-row" href="#"><span class="brief-cat">Consumer</span><span class="att-title">Consumer Sentiment</span><span class="badge alert">alert</span><span class="att-read">Consumers are deeply pessimistic — sentiment is near record lows.</span></a>
+      </div>
+      <div class="att-group">
+        <div class="brief-sec-label">Elevated</div>
+        <a class="att-row" href="#"><span class="brief-cat">Economy</span><span class="att-title">The Cost of Living</span><span class="badge elevated">elevated</span><span class="att-read">Inflation is still hot — well above the Fed&rsquo;s target.</span></a>
+        <a class="att-row" href="#"><span class="brief-cat">Economy</span><span class="att-title">Fiscal Health</span><span class="badge elevated">elevated</span><span class="att-read">The U.S. is borrowing heavily — debt and interest costs are climbing.</span></a>
+        <a class="att-row" href="#"><span class="brief-cat">Consumer</span><span class="att-title">Household Income &amp; Savings</span><span class="badge elevated">elevated</span><span class="att-read">Household cushions are thin.</span></a>
+        <a class="att-row" href="#"><span class="brief-cat">Housing</span><span class="att-title">Affordability &amp; Financing</span><span class="badge elevated">elevated</span><span class="att-read">Housing affordability is badly stretched.</span></a>
+      </div>
+      <div class="att-group">
+        <div class="brief-sec-label">On watch</div>
+        <a class="att-row" href="#"><span class="brief-cat">Banking</span><span class="att-title">Concentrations &amp; Funding</span><span class="badge watch">watch</span><span class="att-read">Some concentration and funding risks are building.</span></a>
+        <a class="att-row" href="#"><span class="brief-cat">Markets</span><span class="att-title">Risk Sentiment</span><span class="badge watch">watch</span><span class="att-read">A few cracks are showing.</span></a>
+      </div>
+      <div style="margin-top:1rem">
+        <a class="state-steady" href="#"><span class="badge watch">watch</span>Economic Lenses</a>
+        <a class="state-steady" href="#"><span class="badge elevated">elevated</span>The Consumer</a>
+        <a class="state-steady" href="#"><span class="badge ok">ok</span>Banking System Health</a>
+        <a class="state-steady" href="#"><span class="badge ok">ok</span>Corporate &amp; Business Health</a>
+        <a class="state-steady" href="#"><span class="badge watch">watch</span>Markets &amp; Financial Conditions</a>
+        <a class="state-steady" href="#"><span class="badge elevated">elevated</span>Energy &amp; Commodities</a>
+        <a class="state-steady" href="#"><span class="badge watch">watch</span>Housing &amp; Real Estate</a>
+        <a class="state-steady" href="#"><span class="badge watch">watch</span>Global Economy</a>
+      </div>
+    </section>
+
+    <div class="foot">Data: FRED, FDIC, EIA, IMF, NY Fed, policyuncertainty.com, CoinGecko. <a href="/feed.xml">RSS feed</a>.</div>
+  </main>
+  <div class="mock-note">MOCKUP A2 · Merged daily surface — change-led. Not a live page.</div>
+</body>
+</html>

@@ -1,8 +1,18 @@
-/* Shared renderer for Today's Brief.
-   loadBrief("brief-panel", { compact:false }) -> full hub panel
-   loadBrief("brief-strip", { compact:true })  -> one-line home summary */
+/* Shared renderer for Today's Brief (the merged daily surface).
+   loadBrief("brief-panel", { compact:false }) -> full hub panel (opens with the verdict)
+   loadBrief("brief-strip", { compact:true })  -> one-line home summary
+   loadBrief("state-line",  { mode:"line" })   -> home hero verdict (element IS the link) */
 (function () {
-  function esc(s) { const d = document.createElement("div"); d.textContent = s; return d.innerHTML; }
+  function esc(s) { const d = document.createElement("div"); d.textContent = s == null ? "" : s; return d.innerHTML; }
+
+  // One fetch per page view even when two surfaces render (home: hero line +
+  // counts strip) — both awaits share the same promise.
+  let dataPromise = null;
+  function getData() {
+    dataPromise = dataPromise || fetch("/data/brief/today.json", { cache: "no-cache" })
+      .then(res => { if (!res.ok) throw new Error("HTTP " + res.status); return res.json(); });
+    return dataPromise;
+  }
 
   // Category-id -> display name. Lenses shown outside their home category
   // (transitions, brief cards) carry this so "Bank Profitability" vs
@@ -33,6 +43,11 @@
     return parts.length ? parts.join(" · ") : "All clear across the dashboards";
   }
 
+  function verdictHtml(v, badgeClass) {
+    return `<span class="${badgeClass} ${esc(v.status)}">${esc(v.status)}</span>
+      <span class="state-sentence">${esc(v.sentence)}</span>`;
+  }
+
   function transitionRow(t) {
     const cat = CAT_LABELS[t.category];
     return `<a class="brief-trans" href="${t.href}">
@@ -54,7 +69,18 @@
     const trans = (data.transitions || []).map(transitionRow).join("");
     const movers = (data.top_moves || []).length
       ? `<a class="brief-link" href="/dashboards/brief.html#moves">Biggest movers &rarr;</a>` : "";
+    // The merged brief opens with the verdict; a stale cached JSON without one
+    // just renders the classic panel.
+    const verdictRow = data.verdict && data.verdict.sentence
+      ? `<div class="state-verdict">${verdictHtml(data.verdict, "badge")}
+          <a class="state-link" href="/dashboards/brief.html">The full picture &rarr;</a></div>` : "";
+    // Surface a predicted badge change when one is open (kept from the old
+    // state panel — the hub still flags upcoming tips at a glance).
+    const chg = (data.watching || []).find(x => x.change);
+    const watchLine = chg
+      ? `<div class="state-watch-line">We expect ${esc(chg.title)} (${esc(chg.point_fmt)}) to tip ${esc(chg.lens_title)} to ${esc(chg.implied_status)} — <a class="state-link" href="/dashboards/brief.html#watching-sec">details &rarr;</a></div>` : "";
     return `
+      ${verdictRow}${watchLine}
       <div class="brief-head">Today&rsquo;s Brief
         <span class="brief-counts">${countsLinks(data.status_counts || {})}</span></div>
       ${trans ? `<div class="brief-sec-label">Status changes</div>${trans}` : ""}
@@ -74,10 +100,15 @@
     const el = document.getElementById(elId);
     if (!el) return;
     try {
-      const res = await fetch("/data/brief/today.json", { cache: "no-cache" });
-      if (!res.ok) throw new Error("HTTP " + res.status);
-      const data = await res.json();
-      el.innerHTML = opts.compact ? compactStrip(data) : fullPanel(data);
+      const data = await getData();
+      if (opts.mode === "line") {
+        // Home hero one-liner: the element IS the link; .pill classes match
+        // the home page's badge styles.
+        if (!data.verdict || !data.verdict.sentence) throw new Error("no verdict");
+        el.innerHTML = verdictHtml(data.verdict, "pill");
+      } else {
+        el.innerHTML = opts.compact ? compactStrip(data) : fullPanel(data);
+      }
       el.hidden = false;
     } catch (err) {
       el.hidden = true;  // brief is additive — never block the page

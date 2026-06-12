@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MOCKUP C — Lens-page navigation: breadcrumb + journey-aware back</title>
+  <link rel="stylesheet" href="/dashboards/lens.css">
+  <style>
+    .variant-label { font-size: .8rem; font-weight: 700; color: var(--blue); text-transform: uppercase; letter-spacing: .1em; margin: 2.5rem 0 .75rem; }
+    .demo { background: rgba(255,255,255,.015); border: 1px dashed var(--border); border-radius: 14px; padding: 1.25rem 1.25rem 1.5rem; }
+    .crumbs { font-size: .78rem; color: var(--dim); letter-spacing: .03em; margin-bottom: .35rem; }
+    .crumbs a { color: var(--dim); text-decoration: none; }
+    .crumbs a:hover { color: var(--blue); }
+    .crumbs .sep { margin: 0 .4rem; color: var(--faint); }
+    .crumbs .here { color: var(--muted); }
+    .backchip { display: inline-block; color: var(--blue); font-size: .78rem; text-decoration: none; margin-bottom: 1rem; letter-spacing: .03em; }
+    .backchip:hover { text-decoration: underline; }
+    .mock-note { position: fixed; bottom: 0; left: 0; right: 0; background: #1d4ed8; color: #fff; font-size: .75rem; text-align: center; padding: .3rem; z-index: 99; }
+    .note { color: var(--muted); font-size: .85rem; margin-bottom: 1rem; max-width: 44rem; }
+  </style>
+</head>
+<body>
+  <nav class="wordmark"><a href="/">Bailey Analytics</a></nav>
+  <nav class="top-nav"><a href="#">Today</a><a href="/dashboards/" style="color:var(--text);border-bottom-color:var(--blue)">Dashboards</a><a href="#">Track Record</a><a href="#">About</a></nav>
+
+  <main>
+    <h1 style="font-size:1.6rem">Lens-page header — two arrival paths</h1>
+    <p class="note">The breadcrumb always shows where the page <em>lives</em> (and every crumb is clickable — the category crumb finally points at the real category hub). The back chip shows where the reader <em>came from</em>, computed from <code>document.referrer</code>; when they arrived directly (bookmark, search), it falls back to the category and the chip just mirrors the crumb.</p>
+
+    <div class="variant-label">Arrived from Today (the daily journey: Today → lens → back to Today)</div>
+    <div class="demo">
+      <div class="crumbs"><a href="#">Dashboards</a><span class="sep">›</span><a href="#">Economic Lenses</a><span class="sep">›</span><span class="here">The Cost of Living</span></div>
+      <a class="backchip" href="#">&larr; Back to Today</a>
+      <div class="eyebrow" style="color:#FBBF24">The Cost of Living</div>
+      <h1 class="read-hero">Inflation is still hot — well above the Fed&rsquo;s target.</h1>
+      <div class="badgerow">
+        <span class="badge elevated">elevated</span>
+        <span class="updated">Updated June 11, 2026 · 4 signals</span>
+      </div>
+    </div>
+
+    <div class="variant-label">Arrived directly (bookmark / search / category hub)</div>
+    <div class="demo">
+      <div class="crumbs"><a href="#">Dashboards</a><span class="sep">›</span><a href="#">Economic Lenses</a><span class="sep">›</span><span class="here">The Cost of Living</span></div>
+      <a class="backchip" href="#">&larr; Economic Lenses</a>
+      <div class="eyebrow" style="color:#FBBF24">The Cost of Living</div>
+      <h1 class="read-hero">Inflation is still hot — well above the Fed&rsquo;s target.</h1>
+      <div class="badgerow">
+        <span class="badge elevated">elevated</span>
+        <span class="updated">Updated June 11, 2026 · 4 signals</span>
+      </div>
+    </div>
+  </main>
+  <div class="mock-note">MOCKUP C · Lens navigation. Not a live page.</div>
+</body>
+</html>
