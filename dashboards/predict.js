@@ -17,8 +17,7 @@
   function fmtVal(v, unit, vf) {
     if (v == null || isNaN(v)) return "—";
     const sign = v < 0 ? "-" : "", a = Math.abs(v);
-    const num = vf === "thousands" ? Math.round(a).toLocaleString("en-US")
-      : a.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    const num = vf === "thousands" ? Math.round(a).toLocaleString("en-US") : a.toFixed(2);
     if (!unit) return sign + num;
     if (unit[0] === "$") return `${sign}$${num}${unit.slice(1)}`;
     if (unit.length > 1 && /[a-z]/i.test(unit[0])) return `${sign}${num} ${unit}`;
@@ -43,10 +42,10 @@
       · <a href="/dashboards/track-record.html">our record &rarr;</a></div>`;
   }
   function block(p, g) {
-    const range = `${fmtVal(p.lo, p.unit, p.value_format)}–${fmtVal(p.hi, p.unit, p.value_format)}`;
+    const range = `${esc(fmtVal(p.lo, p.unit, p.value_format))}–${esc(fmtVal(p.hi, p.unit, p.value_format))}`;
     return `<div class="predict">
       <div class="pred-head">Next print <span class="pred-due">${esc(fmtDue(p.due))}</span></div>
-      <div class="pred-line">We expect <strong>~${fmtVal(p.point, p.unit, p.value_format)}</strong>
+      <div class="pred-line">We expect <strong>~${esc(fmtVal(p.point, p.unit, p.value_format))}</strong>
         <span class="pred-range">(likely ${range})</span>${statusPhrase(p)}</div>
       <div class="pred-why">${esc(p.why || "")}</div>${lastCall(g)}</div>`;
   }
