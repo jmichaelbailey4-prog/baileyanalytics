@@ -57,7 +57,13 @@ main{max-width:48rem;margin:0 auto}
 .foot a{color:var(--muted)}
 .status-msg{text-align:center;color:var(--dim);font-size:.9rem;padding:4rem 0}
 .status-msg.error{color:var(--red)}
-@media(max-width:640px){body{padding:5rem 1rem 3rem}nav.top-nav{gap:1rem}}
+/* Small screens: the fixed corner header can't hold the wordmark plus four
+   nav items — let both flow, centered, above the content (mirrors home). */
+@media(max-width:640px){
+  body{padding:1.25rem 1rem 3rem}
+  nav.wordmark{position:static;text-align:center;margin-bottom:.25rem}
+  nav.top-nav{position:static;justify-content:center;gap:1rem;flex-wrap:wrap;margin-bottom:1.5rem}
+}
 
 /* Hub pages (dashboards index + category hubs) — shared with hub.js */
 h1{font-size:clamp(2rem,4.5vw,2.75rem);font-weight:600;letter-spacing:-.02em;line-height:1.15;margin-bottom:.75rem}
