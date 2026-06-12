@@ -57,14 +57,14 @@ def _changed_rows(today):
     rows = []
     for t in today.get("transitions") or []:
         rows.append(_row(
-            f'<a href="{SITE}{t["href"]}" style="color:{INK};">{escape(t["lens_title"])}</a> '
+            f'<a href="{escape(SITE + t["href"], quote=True)}" style="color:{INK};">{escape(t["lens_title"])}</a> '
             f'{_badge(t["from_status"])} &rarr; {_badge(t["to_status"])}',
             escape(t.get("headline", ""))))
     for m in (today.get("top_moves") or [])[:MOVES_CAP]:
         arrow = "&#9660;" if m.get("dir") == "down" else "&#9650;"
         delta = f" {arrow}{escape(m['delta'])}" if m.get("delta") else ""
         rows.append(_row(
-            f'<a href="{SITE}{m["href"]}" style="color:{INK};">{escape(m["lens_title"])}</a> '
+            f'<a href="{escape(SITE + m["href"], quote=True)}" style="color:{INK};">{escape(m["lens_title"])}</a> '
             f'&middot; {escape(m.get("stat_label", ""))} '
             f'<strong>{escape(m.get("stat_value", ""))}</strong>{delta}',
             escape(m.get("headline", ""))))
@@ -91,7 +91,7 @@ def _section(label):
 
 
 def build_digest(today):
-    day = (today.get("generated_at") or "")[:10]
+    day = (today.get("generated_at") or "1970-01-01")[:10]
     token = date_token(day)
     verdict = today.get("verdict") or {}
     counts = today.get("status_counts", {})
