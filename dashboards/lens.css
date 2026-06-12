@@ -116,11 +116,6 @@ p.lede strong{color:var(--text);font-weight:600}
 .tpill.unknown{color:var(--dim)}
 
 /* ---- Today's Brief ---- */
-.brief-panel{background:var(--panel);border:1px solid var(--border);border-radius:14px;
-  padding:1.1rem 1.2rem;margin-bottom:2rem}
-.brief-head{font-size:1.05rem;font-weight:600;letter-spacing:-.01em;display:flex;
-  align-items:baseline;gap:.7rem;flex-wrap:wrap;margin-bottom:.9rem}
-.brief-counts{font-size:.78rem;font-weight:500;color:var(--muted)}
 .brief-sec-label{font-size:.66rem;text-transform:uppercase;letter-spacing:.12em;
   color:var(--dim);margin:.8rem 0 .45rem}
 .brief-trans{display:flex;align-items:center;gap:.7rem;flex-wrap:wrap;text-decoration:none;
@@ -130,11 +125,6 @@ p.lede strong{color:var(--text);font-weight:600}
 .brief-cat{font-size:.62rem;color:var(--dim);text-transform:uppercase;letter-spacing:.08em;font-weight:600;flex:none}
 .brief-arrow{display:inline-flex;align-items:center;gap:.4rem;color:var(--dim);font-size:.8rem}
 .brief-trans-read{color:var(--muted);font-size:.8rem;flex:1 1 14rem;min-width:0}
-.brief-counts a{color:var(--muted);text-decoration:none;border-bottom:1px solid var(--border)}
-.brief-counts a:hover{color:var(--text);border-bottom-color:var(--muted)}
-.brief-links{display:flex;gap:1.4rem;margin-top:.85rem;flex-wrap:wrap}
-.brief-link{font-size:.74rem;color:var(--blue);text-decoration:none;letter-spacing:.03em}
-.brief-link:hover{text-decoration:underline}
 @media(max-width:640px){
   .brief-trans{gap:.4rem}
   .brief-trans-read{flex-basis:100%}
@@ -188,7 +178,6 @@ p.lede strong{color:var(--text);font-weight:600}
 .track-row:hover .track-ind{color:var(--blue)}
 .track-ind{font-weight:600}
 .track-said{color:var(--muted);font-size:.85rem}
-.state-watch-line{margin-top:.5rem;font-size:.9rem;color:var(--muted)}
 @media (max-width:640px){.track-stats{grid-template-columns:1fr}}
 
 /* --- Slim hub: category cards (Phase C) --- */

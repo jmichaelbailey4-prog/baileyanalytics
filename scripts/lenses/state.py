@@ -276,8 +276,10 @@ def build_watching(open_predictions):
 
 
 def build_state(category_indices, brief_today, open_predictions=None):
-    """Assemble the State of Things JSON from per-category index data and
-    today's brief (or None). Pure — no network, no disk I/O."""
+    """Assemble the State of Things JSON from per-category index data.
+    brief_today is unused since the `changed` pointer was dropped (revamp
+    Phase C) but stays in the signature so call sites (today.py) don't churn.
+    Pure — no network, no disk I/O."""
     generated = _now()
     cats = _categories(category_indices)
     overall = util.status_blend([c["status"] for c in cats])

@@ -366,10 +366,11 @@
         ];
         const SEVERITY = { ok: 0, watch: 1, elevated: 2, alert: 3 };
 
-        // Picks the tile's CONTENT lens (headline/spark/stat + callout): worst
+        // Picks the lens whose sparkline + key stat the tile shows: worst
         // severity wins; neutral/unknown lenses (e.g. the markets scoreboard)
-        // never drive it. The badge itself is index.json's blended category
-        // status — this function no longer controls the badge.
+        // never drive it. The badge is index.json's blended category status
+        // and the read is the brief's category sentence — neither comes from
+        // this function.
         function worstLens(lenses) {
             let worst = null;
             for (const l of lenses) {
@@ -403,12 +404,16 @@
 
             // Sentences come from the merged brief JSON (authored per
             // category x status — Appendix A of the revamp spec); sparkline
-            // and key stat still come from each category's index.json.
-            let sentences = {};
-            try {
-                const t = await fetch("/data/brief/today.json", { cache: "no-cache" });
-                if (t.ok) (await t.json()).categories.forEach(c => { sentences[c.category] = c.sentence; });
-            } catch (e) { /* tiles degrade to stat-only */ }
+            // and key stat still come from each category's index.json. Kicked
+            // off alongside the index fetches, not awaited ahead of them.
+            const sentencesP = (async () => {
+                const map = {};
+                try {
+                    const t = await fetch("/data/brief/today.json", { cache: "no-cache" });
+                    if (t.ok) (await t.json()).categories.forEach(c => { map[c.category] = c.sentence; });
+                } catch (e) { /* tiles degrade to stat-only */ }
+                return map;
+            })();
 
             const results = await Promise.allSettled(CATEGORIES.map(async cat => {
                 const res = await fetch(cat.url, { cache: "no-cache" });
@@ -419,6 +424,7 @@
                 // Badge = the category's balanced status baked by the pipeline;
                 // fall back to the worst lens's status for a stale/cached index.
                 const status = data.status || lens.status || "unknown";
+                const sentences = await sentencesP;
                 return { html: tile(cat, lens, status, sentences[cat.cat]), updated: data.last_updated };
             }));
             const ok = results.filter(r => r.status === "fulfilled").map(r => r.value);

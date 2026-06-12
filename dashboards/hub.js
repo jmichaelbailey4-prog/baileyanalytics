@@ -82,7 +82,8 @@
     }));
     const cards = results.filter(r => r.status === "fulfilled").map(r => r.value);
     results.forEach(r => { if (r.status === "rejected") console.error(r.reason); });
-    if (cards.length) el.innerHTML = cards.join("");
+    el.innerHTML = cards.length ? cards.join("")
+      : `<div class="status-msg error">Dashboards are still being refreshed. Check back shortly.</div>`;
   };
 
   // opts: a badge-element id string, or { badgeId, staleDays }. badgeId receives
