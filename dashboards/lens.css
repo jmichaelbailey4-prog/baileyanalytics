@@ -15,6 +15,11 @@ nav a[aria-current="page"]{color:var(--text);border-bottom-color:var(--blue)}
 main{max-width:48rem;margin:0 auto}
 .back{display:inline-block;color:var(--dim);font-size:.78rem;text-decoration:none;margin-bottom:1.25rem;letter-spacing:.03em}
 .back:hover{color:var(--blue)}
+.crumbs{font-size:.78rem;color:var(--dim);letter-spacing:.03em;margin-bottom:.35rem}
+.crumbs a{color:var(--dim);text-decoration:none}
+.crumbs a:hover{color:var(--blue)}
+.crumbs .sep{margin:0 .4rem;color:var(--faint)}
+.crumbs .here{color:var(--muted)}
 .eyebrow{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.14em}
 .read-hero{font-size:clamp(1.5rem,3.5vw,2rem);font-weight:600;letter-spacing:-.02em;line-height:1.2;margin:.5rem 0 .75rem;max-width:36rem}
 .badgerow{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap}

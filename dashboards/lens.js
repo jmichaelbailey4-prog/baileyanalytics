@@ -148,7 +148,7 @@
   // renderLens(url) with no options — render exactly as before.
   const DEFAULT_OPTS = {
     back: "Economic Lenses",
-    href: "/dashboards/",
+    href: "/dashboards/economic/",
     foot: 'Data: <a href="https://fred.stlouisfed.org/" target="_blank" rel="noopener">Federal Reserve Economic Data (FRED)</a>, ' +
       'St. Louis Fed. Refreshed daily. The "read" is generated from the latest values by a fixed rule set.',
   };
@@ -187,6 +187,21 @@
     }).join("");
   }
 
+  // Journey-aware back: where the reader CAME FROM (same-origin referrer),
+  // falling back to the category hub. Validated against the browser-default
+  // strict-origin-when-cross-origin policy — never add a stricter
+  // <meta name="referrer"> or this silently degrades to the fallback.
+  function journeyBack(opts) {
+    try {
+      const r = document.referrer ? new URL(document.referrer) : null;
+      if (r && r.origin === location.origin) {
+        if (r.pathname === "/dashboards/brief.html") return { label: "Back to Today’s Brief", href: "/dashboards/brief.html" };
+        if (r.pathname === "/" || r.pathname === "/index.html") return { label: "Back to home", href: "/" };
+      }
+    } catch (e) { /* malformed referrer: use the fallback */ }
+    return { label: opts.back, href: opts.href };
+  }
+
   function render(root, lens, opts) {
     opts = Object.assign({}, DEFAULT_OPTS, opts || {});
     const scoreboard = lens.indicators.map(i => `
@@ -195,8 +210,10 @@
         <div class="v">${i.latest ? fmtVal(i.latest.value, i.unit, i.value_format) : "—"}</div>
         <div class="s ${i.signal_status}">${esc(i.signal_status)}</div>
       </div>`).join("");
+    const back = journeyBack(opts);
     root.innerHTML = `
-      <a class="back" href="${esc(opts.href)}">← ${esc(opts.back)}</a>
+      <div class="crumbs"><a href="/dashboards/">Dashboards</a><span class="sep">›</span><a href="${esc(opts.href)}">${esc(opts.back)}</a><span class="sep">›</span><span class="here">${esc(lens.title)}</span></div>
+      <a class="back" href="${esc(back.href)}">← ${esc(back.label)}</a>
       <div class="eyebrow" style="color:${lens.accent}">${esc(lens.title)}</div>
       <h1 class="read-hero">${esc(lens.headline_read)}</h1>
       <div class="badgerow">
