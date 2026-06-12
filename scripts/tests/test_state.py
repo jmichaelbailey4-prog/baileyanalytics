@@ -174,8 +174,9 @@ class TestBuildState(unittest.TestCase):
         # Steady: watch categories first (canonical order), then the rest.
         self.assertEqual([c_["category"] for c_ in out["steady"]],
                          ["economic", "housing", "global", "banking", "business", "markets"])
-        self.assertEqual(out["changed"], {"transitions": 2,
-                                          "href": "/dashboards/brief.html"})
+        # The hub-panel "changed" pointer was removed in revamp Phase C — a
+        # passed brief no longer adds anything to the output.
+        self.assertNotIn("changed", out)
         self.assertEqual(len(out["categories"]), 8)
         self.assertEqual(out["categories"][0]["href"], "/dashboards/economic/")
 
@@ -237,11 +238,6 @@ class TestBuildState(unittest.TestCase):
         self.assertEqual(out["verdict"]["shape"], "insufficient")
         self.assertEqual(out["pressure_points"], [])
         self.assertEqual(len(out["categories"]), 2)
-        self.assertEqual(out["changed"]["transitions"], 0)
-
-    def test_missing_brief_omits_changed(self):
-        out = self.build(todays_indices(), None)
-        self.assertNotIn("changed", out)
 
     def test_missing_copy_degrades_not_crashes(self):
         saved = state.PRESSURE_CLAUSES.pop("energy")
