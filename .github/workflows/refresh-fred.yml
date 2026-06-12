@@ -81,13 +81,9 @@ jobs:
           EIA_API_KEY: ${{ secrets.EIA_API_KEY }}
         run: python scripts/predict.py daily
 
-      - name: Rebuild Today's Brief (no network)
+      - name: Rebuild Today's Brief (no network; includes the merged verdict)
         if: ${{ success() || failure() }}
         run: python scripts/refresh_lenses.py --brief
-
-      - name: Rebuild The State of Things (no network)
-        if: ${{ success() || failure() }}
-        run: python scripts/refresh_lenses.py --state
 
       - name: Commit and push if data changed
         if: ${{ success() || failure() }}
