@@ -78,6 +78,19 @@
             border-radius: 2px;
         }
 
+        nav a[aria-current="page"] {
+            color: #F8FAFC;
+            border-bottom-color: #38BDF8;
+        }
+
+        /* Small screens: the fixed corner header can't hold the wordmark plus
+           four nav items — let both flow, centered (mirrors lens.css). */
+        @media (max-width: 640px) {
+            body { padding: 1.25rem 1rem 3rem; }
+            nav.wordmark { position: static; text-align: center; margin-bottom: 0.25rem; }
+            nav.top-nav { position: static; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+        }
+
         main {
             max-width: 40rem;
             margin: 0 auto;
