@@ -67,6 +67,16 @@ class TestQuietDay(unittest.TestCase):
         html = briefpage.render_brief(quiet, og_image="/og/x.png")
         self.assertIn("No status changes today", html)
 
+    def test_empty_today_does_not_raise(self):
+        html = briefpage.render_brief({}, og_image="/og/x.png")
+        self.assertTrue(html.startswith("<!DOCTYPE html>"))
+
+    def test_verdict_missing_status_does_not_raise(self):
+        t = dict(TODAY, verdict={"sentence": "Sentence only."})
+        html = briefpage.render_brief(t, og_image="/og/x.png")
+        self.assertIn("Sentence only.", html)
+        self.assertIn('class="badge unknown"', html)
+
 
 class TestArchiveIndex(unittest.TestCase):
     def test_lists_entries_newest_first_grouped_by_month(self):

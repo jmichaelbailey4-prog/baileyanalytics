@@ -14,7 +14,7 @@ BUTTONDOWN_USERNAME = "baileyanalytics"
 
 CATEGORY_LABELS = {"economic": "Economy", "consumer": "Consumer", "banking": "Banking",
                    "business": "Business", "markets": "Markets", "energy": "Energy",
-                   "housing": "Housing", "global": "Global"}
+                   "housing": "Housing", "global": "Global"}  # short labels for the brief rows; add here when config.CATEGORIES gains a category
 
 PRESSURE_GROUPS = [
     ("alert", "On alert — levels that have historically meant real stress"),
@@ -24,15 +24,18 @@ PRESSURE_GROUPS = [
 
 
 def _date_label(iso_date):
+    """'YYYY-MM-DD' -> 'June 12, 2026' (locale-independent, Windows-safe)."""
     dt = datetime.strptime(iso_date, "%Y-%m-%d")
     return f"{dt.strftime('%B')} {dt.day}, {dt.year}"
 
 
 def _spark(values, accent):
     """Inline sparkline SVG; mirrors the JS math exactly (toFixed(1))."""
-    if not values or len(values) < 2:
+    if not values:
         return ""
-    vals = [float(v) for v in values]
+    vals = [float(v) for v in values if v is not None]
+    if len(vals) < 2:
+        return ""
     lo, hi = min(vals), max(vals)
     rng = (hi - lo) or 1
     pts = " ".join(f"{(i / (len(vals) - 1) * 100):.1f},{(28 - ((v - lo) / rng) * 26):.1f}"
@@ -85,9 +88,10 @@ def _watching(watching):
     rows = []
     for x in watching:
         if x.get("change"):
+            _imp = escape(x.get("implied_status") or "unknown")
             claim = (f'we expect <strong>{escape(x["point_fmt"])}</strong> — which would tip '
                      f'{escape(x["lens_title"])} to <span class="badge '
-                     f'{escape(x["implied_status"])}">{escape(x["implied_status"])}</span>')
+                     f'{_imp}">{_imp}</span>')
         else:
             claim = f'we expect <strong>{escape(x["point_fmt"])}</strong>, no status change'
         rows.append(f'<a class="state-lens" href="{escape(x["href"], quote=True)}">'
@@ -160,7 +164,7 @@ def _jsonld(today, canonical, og_url):
 
 def render_brief(today, og_image, archive_date=None, prev_date=None, next_date=None):
     """The full brief HTML document. archive_date switches on archive chrome."""
-    day = archive_date or (today.get("generated_at") or "")[:10]
+    day = archive_date or (today.get("generated_at") or "1970-01-01")[:10]
     label = _date_label(day)
     canonical = (f"{SITE}/dashboards/brief/{archive_date}.html" if archive_date
                  else f"{SITE}/dashboards/brief.html")
@@ -173,10 +177,11 @@ def render_brief(today, og_image, archive_date=None, prev_date=None, next_date=N
     verdict = today.get("verdict") or {}
     verdict_html = ""
     if verdict.get("sentence"):
+        vstatus = escape(verdict.get("status", "unknown"))
         verdict_html = (
             '<section class="state-panel" id="verdict" style="margin-top:1.25rem">'
-            f'<div class="state-verdict"><span class="badge {escape(verdict["status"])}">'
-            f'{escape(verdict["status"])}</span> <span class="state-sentence">'
+            f'<div class="state-verdict"><span class="badge {vstatus}">'
+            f'{vstatus}</span> <span class="state-sentence">'
             f'{escape(verdict["sentence"])}</span></div></section>')
 
     banner = ""
@@ -195,6 +200,7 @@ def render_brief(today, og_image, archive_date=None, prev_date=None, next_date=N
 
     h1 = "Today&rsquo;s Brief" if not archive_date else escape(f"Brief for {label}")
 
+    brief_aria = ' aria-current="page"' if not archive_date else ""
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -202,13 +208,13 @@ def render_brief(today, og_image, archive_date=None, prev_date=None, next_date=N
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{escape(title)}</title>
   <meta name="description" content="{escape(desc, quote=True)}">
-  <link rel="canonical" href="{canonical}">
+  <link rel="canonical" href="{escape(canonical, quote=True)}">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Bailey Analytics">
   <meta property="og:title" content="{escape(title, quote=True)}">
   <meta property="og:description" content="{escape(desc, quote=True)}">
-  <meta property="og:url" content="{canonical}">
-  <meta property="og:image" content="{og_url}">
+  <meta property="og:url" content="{escape(canonical, quote=True)}">
+  <meta property="og:image" content="{escape(og_url, quote=True)}">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="alternate" type="application/rss+xml" title="Bailey Analytics — Today&#39;s Brief" href="/feed.xml">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -222,7 +228,7 @@ def render_brief(today, og_image, archive_date=None, prev_date=None, next_date=N
 </head>
 <body>
   <nav class="wordmark"><a href="/">Bailey Analytics</a></nav>
-  <nav class="top-nav"><a href="/dashboards/brief.html" aria-current="page">Today&#39;s Brief</a><a href="/dashboards/">Dashboards</a><a href="/dashboards/track-record.html">Track Record</a><a href="/about.html">About</a></nav>
+  <nav class="top-nav"><a href="/dashboards/brief.html"{brief_aria}>Today&#39;s Brief</a><a href="/dashboards/">Dashboards</a><a href="/dashboards/track-record.html">Track Record</a><a href="/about.html">About</a></nav>
   <main>
     {banner}
     <h1>{h1}</h1>
@@ -289,7 +295,7 @@ def render_archive_index(manifest):
 </head>
 <body>
   <nav class="wordmark"><a href="/">Bailey Analytics</a></nav>
-  <nav class="top-nav"><a href="/dashboards/brief.html" aria-current="page">Today&#39;s Brief</a><a href="/dashboards/">Dashboards</a><a href="/dashboards/track-record.html">Track Record</a><a href="/about.html">About</a></nav>
+  <nav class="top-nav"><a href="/dashboards/brief.html">Today&#39;s Brief</a><a href="/dashboards/">Dashboards</a><a href="/dashboards/track-record.html">Track Record</a><a href="/about.html">About</a></nav>
   <main>
     <div class="hub-back"><a href="/dashboards/brief.html">&larr; Today&rsquo;s Brief</a></div>
     <h1>Brief Archive</h1>
