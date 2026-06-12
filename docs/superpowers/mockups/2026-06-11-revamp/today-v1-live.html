@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MOCKUP A1-LIVE — Today rendered from real composed data</title>
+  <link rel="stylesheet" href="/dashboards/lens.css">
+  <style>
+    .sec-head { font-size: 1.4rem; font-weight: 600; letter-spacing: -0.01em; margin: 2.25rem 0 0.3rem; scroll-margin-top: 1rem; }
+    .sec-sub { color: var(--muted); font-size: .92rem; max-width: 42rem; margin-bottom: 1.15rem; }
+    #verdict .state-sentence { font-size: 1.15rem; }
+    .att-row { display: flex; align-items: baseline; gap: .6rem; flex-wrap: wrap; padding: .42rem .5rem; border-radius: 9px; color: var(--text); text-decoration: none; }
+    .att-row:hover { background: rgba(255,255,255,.03); }
+    .att-row .brief-cat { flex: none; width: 4.6rem; }
+    .att-row .att-title { font-weight: 600; font-size: .88rem; flex: none; }
+    .att-row .att-read { color: var(--muted); font-size: .82rem; flex: 1 1 16rem; min-width: 0; }
+    .att-group { margin-bottom: .9rem; }
+    .quiet { color: var(--muted); font-size: .92rem; padding: .4rem 0 .2rem; }
+    .mock-note { position: fixed; bottom: 0; left: 0; right: 0; background: #166534; color: #fff; font-size: .75rem; text-align: center; padding: .3rem; z-index: 99; }
+  </style>
+</head>
+<body>
+  <nav class="wordmark"><a href="/">Bailey Analytics</a></nav>
+  <nav class="top-nav"><a href="#" style="color:var(--text);border-bottom-color:var(--blue)">Today</a><a href="/dashboards/">Dashboards</a><a href="/dashboards/track-record.html">Track Record</a><a href="/about.html">About</a></nav>
+
+  <main>
+    <h1>Today</h1>
+    <p class="lede">The daily read on the U.S. and global economy — where things stand, what changed, and what we&rsquo;re watching next.</p>
+    <div class="hub-fresh" id="asof"></div>
+
+    <section class="state-panel" id="verdict" style="margin-top:1.25rem"></section>
+
+    <section>
+      <h2 class="sec-head">What changed today</h2>
+      <p class="sec-sub">Status changes first — the headline events — then the biggest moves in the data, judged against each indicator&rsquo;s own typical day-to-day swing.</p>
+      <div id="transitions"></div>
+      <div class="hub-grid" id="movers" style="margin-top:.9rem"></div>
+    </section>
+
+    <section id="watching-sec" hidden>
+      <h2 class="sec-head">What we&rsquo;re watching next</h2>
+      <p class="sec-sub">Our published predictions for the most consequential upcoming prints — each graded in public when the number lands.</p>
+      <div id="watching"></div>
+    </section>
+
+    <section>
+      <h2 class="sec-head">Where the pressure is</h2>
+      <p class="sec-sub">Everything currently warranting attention, worst first.</p>
+      <div id="pressure"></div>
+    </section>
+
+    <section>
+      <h2 class="sec-head">Across the dashboards</h2>
+      <p class="sec-sub">Every category&rsquo;s overall read — jump into any of them.</p>
+      <div id="cats"></div>
+    </section>
+
+    <div class="foot">
+      Data: FRED (St. Louis Fed), the FDIC, the U.S. EIA, the IMF, the NY Fed, policyuncertainty.com, and CoinGecko. Public data, refreshed daily.
+      Get this page in your reader: <a href="/feed.xml">RSS feed</a>.
+    </div>
+  </main>
+  <div class="mock-note">MOCKUP A1-LIVE · rendered by JS from today-composed.json (real pipeline output, composed by the Phase A prototype). Not a live page.</div>
+
+  <script>
+    const esc = s => { const d = document.createElement("div"); d.textContent = s ?? ""; return d.innerHTML; };
+    const CAT = { economic: "Economy", consumer: "Consumer", banking: "Banking", business: "Business",
+                  markets: "Markets", energy: "Energy", housing: "Housing", global: "Global" };
+    const GROUPS = [
+      ["alert", "On alert — levels that have historically meant real stress"],
+      ["elevated", "Elevated — clearly outside comfortable ranges"],
+      ["watch", "On watch — first warnings"],
+    ];
+
+    (async () => {
+      const data = await (await fetch("today-composed.json")).json();
+
+      const stamp = new Date(data.generated_at);
+      document.getElementById("asof").textContent = "As of " +
+        stamp.toLocaleDateString(undefined, { year: "numeric", month: "long", day: "numeric" });
+
+      document.getElementById("verdict").innerHTML = `<div class="state-verdict">
+        <span class="badge ${esc(data.verdict.status)}">${esc(data.verdict.status)}</span>
+        <span class="state-sentence">${esc(data.verdict.sentence)}</span></div>`;
+
+      const trans = data.changed.transitions || [];
+      document.getElementById("transitions").innerHTML = trans.length
+        ? trans.map(t => `<a class="brief-trans" href="${esc(t.href)}">
+            <span class="brief-cat">${esc(CAT[t.category])}</span>
+            <span class="brief-trans-title">${esc(t.lens_title)}</span>
+            <span class="brief-arrow"><span class="badge ${esc(t.from_status)}">${esc(t.from_status)}</span> &rarr;
+              <span class="badge ${esc(t.to_status)}">${esc(t.to_status)}</span></span>
+            <span class="brief-trans-read">${esc(t.headline)}</span></a>`).join("")
+        : `<div class="quiet">No status changes today — a quiet day on the board.</div>`;
+
+      const headlineById = {};
+      (data.pressure || []).forEach(p => { headlineById[p.lens_id] = p.headline; });
+      document.getElementById("movers").innerHTML = (data.changed.top_moves || []).map(m => `
+        <a class="hub-card" href="${esc(m.href)}">
+          <div class="hub-eyebrow"><span class="hub-cat">${esc(CAT[m.category])} ·</span> ${esc(m.lens_title)}</div>
+          <div class="hub-read">${esc(headlineById[m.lens_id] || "")}</div>
+          <div class="hub-stats">${esc(m.stat_label)} <b>${esc(m.stat_value)}</b>
+            ${m.delta ? `<i class="delta ${esc(m.dir)}">${esc(m.delta)}</i>` : ""}</div>
+        </a>`).join("");
+
+      if ((data.watching || []).length) {
+        document.getElementById("watching-sec").hidden = false;
+        document.getElementById("watching").innerHTML = data.watching.map(x => `
+          <a class="state-lens" href="${esc(x.href)}">
+            <span class="state-lens-title">${esc(x.title)}</span>
+            <span class="state-lens-read">we expect <strong>${esc(x.point_fmt)}</strong></span></a>`).join("") +
+          `<a class="state-link" href="/dashboards/track-record.html">Our track record &rarr;</a>`;
+      }
+
+      document.getElementById("pressure").innerHTML = GROUPS.map(([s, label]) => {
+        const rows = (data.pressure || []).filter(p => p.status === s);
+        if (!rows.length) return "";
+        return `<div class="att-group" id="${s}">
+          <div class="brief-sec-label">${esc(label)}</div>` +
+          rows.map(p => `<a class="att-row" href="${esc(p.href)}">
+            <span class="brief-cat">${esc(CAT[p.category])}</span>
+            <span class="att-title">${esc(p.lens_title)}</span>
+            <span class="badge ${esc(p.status)}">${esc(p.status)}</span>
+            <span class="att-read">${esc(p.headline)}</span></a>`).join("") + `</div>`;
+      }).join("");
+
+      document.getElementById("cats").innerHTML = (data.categories || []).map(c => `
+        <a class="state-steady" href="${esc(c.href)}">
+          <span class="badge ${esc(c.status)}">${esc(c.status)}</span>${esc(c.title)}</a>`).join("");
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MOCKUP B — Home tiles: current vs V1 (attributed callout) vs V2 (category sentence)</title>
+  <link rel="stylesheet" href="/dashboards/lens.css">
+  <style>
+    main { max-width: 60rem; }
+    .variant-label { font-size: .8rem; font-weight: 700; color: var(--blue); text-transform: uppercase; letter-spacing: .1em; margin: 2.5rem 0 .35rem; }
+    .variant-note { color: var(--muted); font-size: .85rem; margin-bottom: 1rem; max-width: 44rem; }
+    .lens-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: .85rem; }
+    @media (max-width: 640px) { .lens-grid { grid-template-columns: 1fr 1fr; gap: .6rem; } }
+    .tile { position: relative; display: block; text-decoration: none; color: inherit; background: var(--panel); border: 1px solid var(--border); border-radius: 12px; padding: 1.1rem 1rem; }
+    .tile:hover { border-color: var(--blue); }
+    .eb { font-size: .72rem; font-weight: 600; text-transform: uppercase; letter-spacing: .08em; display: flex; align-items: center; gap: .5rem; margin-bottom: .7rem; }
+    .pill { font-size: .6rem; padding: .12rem .5rem; border-radius: 999px; border: 1px solid currentColor; text-transform: uppercase; letter-spacing: .06em; flex: none; }
+    .pill.ok { color: var(--green); } .pill.watch { color: var(--amber); } .pill.elevated { color: #FB923C; } .pill.alert { color: var(--red); }
+    .lead { font-size: .68rem; color: var(--muted); display: flex; align-items: center; gap: .45rem; margin-bottom: .3rem; }
+    .read { color: var(--text); font-weight: 600; font-size: .95rem; line-height: 1.35; }
+    .spark { width: 100%; height: 30px; display: block; margin: .7rem 0 .5rem; }
+    .stat { font-size: .72rem; color: var(--muted); }
+    .stat b { color: var(--text); font-weight: 600; }
+    /* V1: attributed lens line (its own link, sits above the tile link) */
+    .lensline { position: relative; z-index: 2; display: block; text-decoration: none; margin-bottom: .3rem; }
+    .lensline .ll-name { color: var(--muted); font-size: .72rem; font-weight: 600; }
+    .lensline .ll-dot { display: inline-block; width: .55rem; height: .55rem; border-radius: 50%; margin: 0 .3rem 0 .1rem; vertical-align: baseline; }
+    .ll-dot.elevated { background: #FB923C; } .ll-dot.watch { background: var(--amber); } .ll-dot.alert { background: var(--red); } .ll-dot.ok { background: var(--green); }
+    .lensline:hover .read { text-decoration: underline; }
+    .mock-note { position: fixed; bottom: 0; left: 0; right: 0; background: #1d4ed8; color: #fff; font-size: .75rem; text-align: center; padding: .3rem; z-index: 99; }
+    .sep { height: 1px; background: var(--border); margin: 2.25rem 0; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1 style="font-size:1.6rem">Home tiles — three treatments, same data</h1>
+
+    <div class="variant-label">Current (for reference)</div>
+    <p class="variant-note">Two stacked badges with different severities; the "WORST:" chip needs the blend logic explained; the OK badge fights the warning headline.</p>
+    <div class="lens-grid">
+      <a class="tile" href="#">
+        <div class="eb" style="color:#38BDF8">Economy <span class="pill watch">watch</span></div>
+        <div class="lead">The Cost of Living <span class="pill elevated">worst: elevated</span></div>
+        <div class="read">Inflation is still hot — well above the Fed&rsquo;s target.</div>
+        <svg class="spark" viewBox="0 0 100 30" preserveAspectRatio="none"><polyline points="0,6 12,9 25,12 37,14 50,15 62,17 75,18 87,16 100,9" fill="none" stroke="#FBBF24" stroke-width="2"/></svg>
+        <div class="stat">CPI <b>4.17%</b> <i class="delta up">0.39%</i></div>
+      </a>
+      <a class="tile" href="#">
+        <div class="eb" style="color:#A78BFA">Banking <span class="pill ok">ok</span></div>
+        <div class="lead">Concentrations &amp; Funding <span class="pill watch">worst: watch</span></div>
+        <div class="read">Some concentration and funding risks are building.</div>
+        <svg class="spark" viewBox="0 0 100 30" preserveAspectRatio="none"><polyline points="0,18 12,16 25,14 37,12 50,8 62,7 75,12 87,15 100,13" fill="none" stroke="#A78BFA" stroke-width="2"/></svg>
+        <div class="stat">Uninsured dep. <b>40.48%</b> <i class="delta up">0.26%</i></div>
+      </a>
+      <a class="tile" href="#">
+        <div class="eb" style="color:#FB923C">Energy <span class="pill elevated">elevated</span></div>
+        <div class="lead">Oil &amp; Fuels <span class="pill alert">worst: alert</span></div>
+        <div class="read">Fuel costs are spiking — acute pressure at the pump.</div>
+        <svg class="spark" viewBox="0 0 100 30" preserveAspectRatio="none"><polyline points="0,20 12,21 25,22 37,22 50,23 62,21 75,8 87,5 100,6" fill="none" stroke="#FB923C" stroke-width="2"/></svg>
+        <div class="stat">Gasoline <b>$4.15</b> <i class="delta down">$0.16</i></div>
+      </a>
+    </div>
+
+    <div class="sep"></div>
+
+    <div class="variant-label">V1 — One category badge; the callout becomes an attributed lens line</div>
+    <p class="variant-note">The category badge is the only pill. The headline names its lens with a colored status dot — "this sentence belongs to Oil &amp; Fuels, which is alert" — and clicking the sentence goes to that lens; clicking anywhere else goes to the category.</p>
+    <div class="lens-grid">
+      <div class="tile">
+        <a href="#" style="position:absolute;inset:0;z-index:1" aria-label="Economy dashboards"></a>
+        <div class="eb" style="color:#38BDF8">Economy <span class="pill watch">watch</span></div>
+        <a class="lensline" href="#">
+          <span class="ll-name"><span class="ll-dot elevated"></span>The Cost of Living — elevated</span>
+          <div class="read">Inflation is still hot — well above the Fed&rsquo;s target.</div>
+        </a>
+        <svg class="spark" viewBox="0 0 100 30" preserveAspectRatio="none"><polyline points="0,6 12,9 25,12 37,14 50,15 62,17 75,18 87,16 100,9" fill="none" stroke="#FBBF24" stroke-width="2"/></svg>
+        <div class="stat">CPI <b>4.17%</b> <i class="delta up">0.39%</i></div>
+      </div>
+      <div class="tile">
+        <a href="#" style="position:absolute;inset:0;z-index:1" aria-label="Banking dashboards"></a>
+        <div class="eb" style="color:#A78BFA">Banking <span class="pill ok">ok</span></div>
+        <a class="lensline" href="#">
+          <span class="ll-name"><span class="ll-dot watch"></span>Concentrations &amp; Funding — watch</span>
+          <div class="read">Some concentration and funding risks are building.</div>
+        </a>
+        <svg class="spark" viewBox="0 0 100 30" preserveAspectRatio="none"><polyline points="0,18 12,16 25,14 37,12 50,8 62,7 75,12 87,15 100,13" fill="none" stroke="#A78BFA" stroke-width="2"/></svg>
+        <div class="stat">Uninsured dep. <b>40.48%</b> <i class="delta up">0.26%</i></div>
+      </div>
+      <div class="tile">
+        <a href="#" style="position:absolute;inset:0;z-index:1" aria-label="Energy dashboards"></a>
+        <div class="eb" style="color:#FB923C">Energy <span class="pill elevated">elevated</span></div>
+        <a class="lensline" href="#">
+          <span class="ll-name"><span class="ll-dot alert"></span>Oil &amp; Fuels — alert</span>
+          <div class="read">Fuel costs are spiking — acute pressure at the pump.</div>
+        </a>
+        <svg class="spark" viewBox="0 0 100 30" preserveAspectRatio="none"><polyline points="0,20 12,21 25,22 37,22 50,23 62,21 75,8 87,5 100,6" fill="none" stroke="#FB923C" stroke-width="2"/></svg>
+        <div class="stat">Gasoline <b>$4.15</b> <i class="delta down">$0.16</i></div>
+      </div>
+    </div>
+
+    <div class="sep"></div>
+
+    <div class="variant-label">V2 — One badge, one category-level sentence (recommended)</div>
+    <p class="variant-note">The tile speaks at category altitude with authored copy keyed to the badge — they can never contradict. The worst-lens detail moves to the Today page and the category hub; the stat line keeps the most newsworthy number with its label.</p>
+    <div class="lens-grid">
+      <a class="tile" href="#">
+        <div class="eb" style="color:#38BDF8">Economy <span class="pill watch">watch</span></div>
+        <div class="read">Steady on the surface — but inflation and the deficit both run hot.</div>
+        <svg class="spark" viewBox="0 0 100 30" preserveAspectRatio="none"><polyline points="0,6 12,9 25,12 37,14 50,15 62,17 75,18 87,16 100,9" fill="none" stroke="#FBBF24" stroke-width="2"/></svg>
+        <div class="stat">CPI <b>4.17%</b> <i class="delta up">0.39%</i></div>
+      </a>
+      <a class="tile" href="#">
+        <div class="eb" style="color:#A78BFA">Banking <span class="pill ok">ok</span></div>
+        <div class="read">Banks are solid — one funding corner bears watching.</div>
+        <svg class="spark" viewBox="0 0 100 30" preserveAspectRatio="none"><polyline points="0,18 12,16 25,14 37,12 50,8 62,7 75,12 87,15 100,13" fill="none" stroke="#A78BFA" stroke-width="2"/></svg>
+        <div class="stat">Uninsured dep. <b>40.48%</b> <i class="delta up">0.26%</i></div>
+      </a>
+      <a class="tile" href="#">
+        <div class="eb" style="color:#FB923C">Energy <span class="pill elevated">elevated</span></div>
+        <div class="read">Energy and commodity costs are squeezing budgets.</div>
+        <svg class="spark" viewBox="0 0 100 30" preserveAspectRatio="none"><polyline points="0,20 12,21 25,22 37,22 50,23 62,21 75,8 87,5 100,6" fill="none" stroke="#FB923C" stroke-width="2"/></svg>
+        <div class="stat">Gasoline <b>$4.15</b> <i class="delta down">$0.16</i></div>
+      </a>
+    </div>
+  </main>
+  <div class="mock-note">MOCKUP B · Home tile treatments side by side. Not a live page.</div>
+</body>
+</html>
