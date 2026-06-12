@@ -795,8 +795,9 @@ def _publish_brief(today_json, root=REPO_ROOT):
     # 7. home-page patches: baked verdict line + dated og image
     verdict = today_json.get("verdict") or {}
     if verdict.get("sentence"):
+        vstatus = verdict.get("status", "unknown")
         line = (f'<a class="state-line" id="state-line" href="/dashboards/brief.html">'
-                f'<span class="pill {escape(verdict["status"])}">{escape(verdict["status"])}</span>'
+                f'<span class="pill {escape(vstatus)}">{escape(vstatus)}</span>'
                 f'<span class="state-sentence">{escape(verdict["sentence"])}</span></a>')
         _patch_region_file(root / "index.html", "verdict-line", line)
     _patch_region_file(root / "index.html", "og-image",
