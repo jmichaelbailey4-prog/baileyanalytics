@@ -218,15 +218,6 @@
         .pill.unknown { color: var(--faint); }
         .pill.neutral { color: var(--blue); }
 
-        .lens .lead {
-            font-size: 0.68rem;
-            color: var(--muted);
-            display: flex;
-            align-items: center;
-            gap: 0.45rem;
-            margin-bottom: 0.3rem;
-        }
-
         .lens .read {
             color: var(--text);
             font-weight: 600;
@@ -278,8 +269,11 @@
             .lenses-wrap { margin-top: 2.25rem; }
             .lens-grid { grid-template-columns: 1fr 1fr; gap: 0.6rem; }
 
-            /* hide the full-card pieces, show the compact chip */
-            .lens .lead, .lens .read, .lens .spark, .lens .stat { display: none; }
+            /* hide the full-card pieces, show the compact chip; the category
+               sentence stays (clamped) so mobile tiles keep the story */
+            .lens .spark, .lens .stat { display: none; }
+            .lens .read { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+                overflow: hidden; font-size: 0.78rem; margin-top: 0.3rem; }
             .lens .chip-val { display: block; color: var(--text); font-size: 1.4rem; font-weight: 600; line-height: 1; margin-top: 0.15rem; }
             .lens .chip-k { display: block; color: var(--faint); font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 0.3rem; }
             .lens { padding: 0.85rem 0.85rem; }
@@ -359,15 +353,16 @@
         }
 
         // One tile per dashboard category. To add a category, append a line here.
+        // `cat` matches the category id in data/brief/today.json's categories[].
         const CATEGORIES = [
-            { title: "Economy", url: "/data/lenses/index.json",  href: "/dashboards/economic/" },
-            { title: "Consumer", url: "/data/consumer/index.json", href: "/dashboards/consumer/" },
-            { title: "Banking", url: "/data/banking/index.json", href: "/dashboards/banking/" },
-            { title: "Business", url: "/data/business/index.json", href: "/dashboards/business/" },
-            { title: "Markets", url: "/data/markets/index.json", href: "/dashboards/markets/" },
-            { title: "Energy",  url: "/data/energy/index.json",  href: "/dashboards/energy/" },
-            { title: "Housing", url: "/data/housing/index.json", href: "/dashboards/housing/" },
-            { title: "Global", url: "/data/global/index.json", href: "/dashboards/global/" },
+            { title: "Economy", cat: "economic", url: "/data/lenses/index.json",  href: "/dashboards/economic/" },
+            { title: "Consumer", cat: "consumer", url: "/data/consumer/index.json", href: "/dashboards/consumer/" },
+            { title: "Banking", cat: "banking", url: "/data/banking/index.json", href: "/dashboards/banking/" },
+            { title: "Business", cat: "business", url: "/data/business/index.json", href: "/dashboards/business/" },
+            { title: "Markets", cat: "markets", url: "/data/markets/index.json", href: "/dashboards/markets/" },
+            { title: "Energy",  cat: "energy", url: "/data/energy/index.json",  href: "/dashboards/energy/" },
+            { title: "Housing", cat: "housing", url: "/data/housing/index.json", href: "/dashboards/housing/" },
+            { title: "Global", cat: "global", url: "/data/global/index.json", href: "/dashboards/global/" },
         ];
         const SEVERITY = { ok: 0, watch: 1, elevated: 2, alert: 3 };
 
@@ -384,20 +379,14 @@
             return worst || lenses[0];
         }
 
-        function tile(cat, lens, status) {
+        function tile(cat, lens, status, sentence) {
             const stat = (lens.key_stats || [])[0] || { k: "", v: "—" };
             const delta = stat.d ? ` <i class="delta ${esc(stat.dir || "")}">${esc(stat.d)}</i>` : "";
-            // The headline below comes from one lens — name it, and when that
-            // lens runs hotter than the category's balanced badge, say so
-            // explicitly ("worst: alert") instead of a second bare status pill.
-            const flag = (SEVERITY[lens.status] || 0) > (SEVERITY[status] || 0)
-                ? ` <span class="pill ${esc(lens.status)}" title="This lens runs hotter than the category overall">worst: ${esc(lens.status)}</span>` : "";
             return `
                 <a class="lens" href="${cat.href}">
                     <div class="eb" style="color:${lens.accent}">${esc(cat.title)}
                         <span class="pill ${esc(status)}" title="Overall category status — balanced across all lenses">${esc(status)}</span></div>
-                    <div class="lead">${esc(lens.title)}${flag}</div>
-                    <div class="read">${esc(lens.headline_read)}</div>
+                    <div class="read">${esc(sentence || "")}</div>
                     ${sparkline(lens.sparkline, lens.accent)}
                     <div class="stat">${esc(stat.k)} <b>${esc(stat.v)}</b>${delta}</div>
                     <div class="chip-val" style="color:${lens.accent}">${esc(stat.v)}</div>
@@ -412,6 +401,15 @@
             if (typeof loadBrief === "function") showLine();
             else window.addEventListener("DOMContentLoaded", showLine);
 
+            // Sentences come from the merged brief JSON (authored per
+            // category x status — Appendix A of the revamp spec); sparkline
+            // and key stat still come from each category's index.json.
+            let sentences = {};
+            try {
+                const t = await fetch("/data/brief/today.json", { cache: "no-cache" });
+                if (t.ok) (await t.json()).categories.forEach(c => { sentences[c.category] = c.sentence; });
+            } catch (e) { /* tiles degrade to stat-only */ }
+
             const results = await Promise.allSettled(CATEGORIES.map(async cat => {
                 const res = await fetch(cat.url, { cache: "no-cache" });
                 if (!res.ok) throw new Error("HTTP " + res.status);
@@ -421,7 +419,7 @@
                 // Badge = the category's balanced status baked by the pipeline;
                 // fall back to the worst lens's status for a stale/cached index.
                 const status = data.status || lens.status || "unknown";
-                return { html: tile(cat, lens, status), updated: data.last_updated };
+                return { html: tile(cat, lens, status, sentences[cat.cat]), updated: data.last_updated };
             }));
             const ok = results.filter(r => r.status === "fulfilled").map(r => r.value);
             const tiles = ok.map(v => v.html);
