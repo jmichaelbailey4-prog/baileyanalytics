@@ -119,11 +119,13 @@ def _make_open_entry(entry, cleaned, cad, champ_rec):
     }
 
 
-def _check_revisions(pred_dir, entry, cleaned):
+def _check_revisions(pred_dir, entry, cleaned, graded_rows):
     """Footnote pass: recently graded entries whose source value moved get
-    grade.revised_to set. Never alters hit (spec §3)."""
+    grade.revised_to set. Never alters hit (spec §3). graded_rows is the
+    ledger loaded once per run — safe because this pass never reads the one
+    field set_revision mutates (grade.revised_to)."""
     recent_dates = {d for d, _ in cleaned[-(REVISION_LOOKBACK + 2):]}
-    for row in ledger.load_all_graded(pred_dir):
+    for row in graded_rows:
         if row["key"] != entry.key or not row.get("grade"):
             continue
         m = grade.match_actual(cleaned, row["target_period"])
@@ -145,11 +147,14 @@ def run_daily(pred_dir, dry_run, entries):
         except (ValueError, OSError):
             pass
     open_by_key = {e["key"]: e for e in ledger.load_open(pred_dir)}
+    graded_rows = ledger.load_all_graded(pred_dir)
     next_open = []
     for entry in entries:
         try:
             cleaned, cad = _prepared_series(entry, _fetch_history(entry, dry_run, fixture_cache))
             if not cleaned or cad in ("annual", "unknown"):
+                if entry.key in open_by_key:
+                    next_open.append(open_by_key[entry.key])  # data gap: keep prior open entry
                 continue
             prior = open_by_key.get(entry.key)
             if prior:
@@ -161,7 +166,7 @@ def run_daily(pred_dir, dry_run, entries):
                     graded = dict(prior, grade=grade.grade_entry(prior, actual, actual_status))
                     ledger.append_graded(pred_dir, graded)
                     prior = None  # consumed; a fresh prediction follows
-            _check_revisions(pred_dir, entry, cleaned)
+            _check_revisions(pred_dir, entry, cleaned, graded_rows)
             if prior is not None:
                 next_open.append(prior)          # target not printed yet: stays open
             elif entry.key in registry:

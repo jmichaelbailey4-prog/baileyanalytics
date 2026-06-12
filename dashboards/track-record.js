@@ -16,8 +16,7 @@
   function fmtVal(v, unit, vf) {
     if (v == null || isNaN(v)) return "—";
     const sign = v < 0 ? "-" : "", a = Math.abs(v);
-    const num = vf === "thousands" ? Math.round(a).toLocaleString("en-US")
-      : a.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    const num = vf === "thousands" ? Math.round(a).toLocaleString("en-US") : a.toFixed(2);
     if (!unit) return sign + num;
     if (unit[0] === "$") return `${sign}$${num}${unit.slice(1)}`;
     if (unit.length > 1 && /[a-z]/i.test(unit[0])) return `${sign}${num} ${unit}`;

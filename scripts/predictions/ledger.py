@@ -1,7 +1,8 @@
 """Ledger I/O + aggregates. The ledger/YYYY.json files are the permanent
 append-only record (append is idempotent per entry id; a graded entry is
-frozen forever — spec §3). open/recent/track-record are derived views.
-All writes reuse lenses.build.write_lens_file (write-if-changed)."""
+frozen forever — spec §3) and are written directly, only when a row is
+appended or footnoted. open/recent/track-record are derived views written
+via lenses.build.write_lens_file (write-if-changed)."""
 
 import json
 from datetime import datetime, timezone

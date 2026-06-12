@@ -107,6 +107,21 @@ class TestDailyRun(unittest.TestCase):
             runner.run_daily(pred_dir, dry_run=True, entries=_fixture_entries())
             self.assertEqual(ledger.load_open(pred_dir), [])
 
+    def test_empty_fetch_keeps_prior_open_entry(self):
+        # A source hiccup that returns an empty series (no exception) must not
+        # drop the open prediction — same contract as the exception path.
+        with tempfile.TemporaryDirectory() as tmp:
+            pred_dir = pathlib.Path(tmp)
+            self._bootstrap(pred_dir)
+            runner.run_daily(pred_dir, dry_run=True, entries=_fixture_entries())
+            hist = json.loads(FIXTURE.read_text(encoding="utf-8"))
+            hist["economic/cost-of-living/cpi"] = []
+            with mock.patch.object(runner, "_load_fixture_histories", return_value=hist):
+                runner.run_daily(pred_dir, dry_run=True, entries=_fixture_entries())
+            opens = ledger.load_open(pred_dir)
+            self.assertEqual(len(opens), 2)
+            self.assertIn("economic/cost-of-living/cpi", [o["key"] for o in opens])
+
     def test_one_indicator_failure_never_blanks_the_rest(self):
         with tempfile.TemporaryDirectory() as tmp:
             pred_dir = pathlib.Path(tmp)
