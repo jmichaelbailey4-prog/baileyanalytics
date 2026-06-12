@@ -15,7 +15,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))  # make `lenses` importable
 from datetime import date
 
-from lenses import brief, build, coingecko, config, eia, epu, fdic, feed, fred, imf, nyfed, today, util, yahoo
+from lenses import brief, briefpage, build, coingecko, config, eia, epu, fdic, feed, fred, imf, nyfed, ogcard, regions, sitemap, today, util, yahoo
 
 OUT_DIR = Path(__file__).resolve().parent.parent / "data" / "lenses"
 BANK_OUT_DIR = Path(__file__).resolve().parent.parent / "data" / "banking"
@@ -40,6 +40,8 @@ BRIEF_FIXTURE = Path(__file__).resolve().parent / "tests" / "fixtures" / "brief_
 # Repo root, so GitHub Pages serves it at /feed.xml (the workflow commit step
 # must include this path alongside data/).
 FEED_PATH = Path(__file__).resolve().parent.parent / "feed.xml"
+REPO_ROOT = Path(__file__).resolve().parent.parent
+MANIFEST_PATH = BRIEF_OUT_DIR / "_archive_index.json"
 
 # category -> the module-global out-dir whose index.json feeds the brief.
 # 'economic' lives in data/lenses/ (not data/economic/).
@@ -670,8 +672,135 @@ def refresh_brief(dry_run):
             except Exception as exc:  # noqa: BLE001 - feed is additive
                 print(f"WARN: feed build failed ({exc}); keeping previous feed.xml",
                       file=sys.stderr)
+            # Publication surfaces: baked pages, og cards, sitemap, home patch.
+            # Guarded separately — a bake hiccup must not read as a brief failure.
+            try:
+                _publish_brief(today_json)
+            except Exception as exc:  # noqa: BLE001 - publication is additive
+                print(f"WARN: brief publication failed ({exc}); keeping previous pages",
+                      file=sys.stderr)
     except Exception as exc:  # noqa: BLE001 - never break the run on a brief failure
         print(f"WARN: brief build failed ({exc}); keeping previous brief", file=sys.stderr)
+
+
+def _write_text_if_changed(path, text):
+    """Content-aware text write (HTML/XML twin of build.write_lens_file)."""
+    if path.exists():
+        try:
+            if path.read_text(encoding="utf-8") == text:
+                return False
+        except OSError:
+            pass
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(text, encoding="utf-8")
+    return True
+
+
+def _update_manifest(manifest, today_json):
+    """Append/replace today's entry; sorted by date ascending."""
+    day = (today_json.get("generated_at") or "")[:10]
+    verdict = today_json.get("verdict") or {}
+    entry = {"date": day, "status": verdict.get("status", "unknown"),
+             "sentence": verdict.get("sentence", "")}
+    out = [e for e in manifest if e.get("date") != day] + [entry]
+    out.sort(key=lambda e: e["date"])
+    return out
+
+
+def _patch_region_file(path, name, content):
+    """replace_region applied to a file; safe no-op when markers are missing."""
+    try:
+        text = path.read_text(encoding="utf-8")
+    except OSError:
+        return
+    new, changed = regions.replace_region(text, name, content)
+    if changed:
+        path.write_text(new, encoding="utf-8")
+
+
+def _publish_brief(today_json, root=REPO_ROOT):
+    """Bake every publication surface for today's brief: dated JSON + archive
+    page + og card, the live brief.html, the archive index, the home-page
+    verdict/og patches, and the sitemap. Idempotent (content-aware writes), so
+    the backup cron and local reruns are free. og-card failure degrades to the
+    static site card; nothing here may raise (the caller guards anyway)."""
+    from html import escape
+
+    day = (today_json.get("generated_at") or "")[:10]
+    brief_dir = root / "data" / "brief"
+    pages_dir = root / "dashboards" / "brief"
+    og_dir = root / "og"
+
+    # 1. dated JSON (the day's API record; lets us re-render yesterday's page)
+    days_dir = brief_dir / "days"
+    days_dir.mkdir(parents=True, exist_ok=True)
+    build.write_lens_file(days_dir / f"{day}.json", today_json)
+
+    # 2. manifest
+    try:
+        manifest = json.loads((brief_dir / "_archive_index.json").read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        manifest = []
+    manifest = _update_manifest(manifest, today_json)
+    (brief_dir / "_archive_index.json").write_text(
+        json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
+    dates = [e["date"] for e in manifest]
+
+    # 3. og cards (site card once; daily card per publication day)
+    og_dir.mkdir(exist_ok=True)
+    if not (og_dir / "site.png").exists():
+        (og_dir / "site.png").write_bytes(ogcard.render_site_card())
+    og_image = "/og/site.png"
+    try:
+        verdict = today_json.get("verdict") or {}
+        card = ogcard.render_card(verdict.get("status", "unknown"),
+                                  verdict.get("sentence", ""),
+                                  briefpage._date_label(day))
+        (og_dir / f"brief-{day}.png").write_bytes(card)
+        og_image = f"/og/brief-{day}.png"
+    except Exception as exc:  # noqa: BLE001 - card is additive
+        print(f"WARN: og card failed ({exc}); using site card", file=sys.stderr)
+
+    # 4. today's pages: live brief.html + dated archive page
+    idx = dates.index(day)
+    prev_date = dates[idx - 1] if idx > 0 else None
+    _write_text_if_changed(root / "dashboards" / "brief.html",
+                           briefpage.render_brief(today_json, og_image=og_image))
+    pages_dir.mkdir(exist_ok=True)
+    _write_text_if_changed(pages_dir / f"{day}.html",
+                           briefpage.render_brief(today_json, og_image=og_image,
+                                                  archive_date=day, prev_date=prev_date))
+
+    # 5. re-render yesterday's archive page with its new next-link
+    if prev_date:
+        prior_json_path = days_dir / f"{prev_date}.json"
+        if prior_json_path.exists():
+            try:
+                prior = json.loads(prior_json_path.read_text(encoding="utf-8"))
+                prev_prev = dates[idx - 2] if idx > 1 else None
+                prior_og = (f"/og/brief-{prev_date}.png"
+                            if (og_dir / f"brief-{prev_date}.png").exists() else "/og/site.png")
+                _write_text_if_changed(
+                    pages_dir / f"{prev_date}.html",
+                    briefpage.render_brief(prior, og_image=prior_og, archive_date=prev_date,
+                                           prev_date=prev_prev, next_date=day))
+            except (OSError, ValueError) as exc:
+                print(f"WARN: prior archive re-render failed ({exc})", file=sys.stderr)
+
+    # 6. archive index + sitemap
+    _write_text_if_changed(pages_dir / "index.html", briefpage.render_archive_index(manifest))
+    _write_text_if_changed(root / "sitemap.xml",
+                           sitemap.render_sitemap(sitemap.build_urls(dates)) + "\n")
+
+    # 7. home-page patches: baked verdict line + dated og image
+    verdict = today_json.get("verdict") or {}
+    if verdict.get("sentence"):
+        line = (f'<a class="state-line" id="state-line" href="/dashboards/brief.html">'
+                f'<span class="pill {escape(verdict["status"])}">{escape(verdict["status"])}</span>'
+                f'<span class="state-sentence">{escape(verdict["sentence"])}</span></a>')
+        _patch_region_file(root / "index.html", "verdict-line", line)
+    _patch_region_file(root / "index.html", "og-image",
+                       f'<meta property="og:image" content="https://baileyanalytics.com{og_image}">')
 
 
 def _load_open_predictions():
