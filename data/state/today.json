@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-06-11T18:42:18Z",
+  "generated_at": "2026-06-12T14:20:55Z",
   "verdict": {
     "status": "watch",
     "shape": "contained-pressure",
-    "sentence": "Pressure is real but contained: energy and commodity costs are squeezing budgets and household finances are stretched thin; meanwhile banks are solid and business health is holding up."
+    "sentence": "Most of the economy is on solid footing \u2014 banks are solid and markets are calm \u2014 but energy and commodity costs are squeezing budgets and household finances are stretched thin."
   },
   "pressure_points": [
     {
@@ -59,12 +59,6 @@
       "href": "/dashboards/economic/"
     },
     {
-      "category": "markets",
-      "title": "Markets & Financial Conditions",
-      "status": "watch",
-      "href": "/dashboards/markets/"
-    },
-    {
       "category": "housing",
       "title": "Housing & Real Estate",
       "status": "watch",
@@ -87,12 +81,62 @@
       "title": "Corporate & Business Health",
       "status": "ok",
       "href": "/dashboards/business/"
+    },
+    {
+      "category": "markets",
+      "title": "Markets & Financial Conditions",
+      "status": "ok",
+      "href": "/dashboards/markets/"
     }
   ],
   "changed": {
     "transitions": 1,
     "href": "/dashboards/brief.html"
   },
+  "watching": [
+    {
+      "key": "energy/energy-electricity/electricity-price",
+      "indicator": "electricity-price",
+      "lens": "energy-electricity",
+      "category": "energy",
+      "title": "Retail Electricity \u00b7 Residential",
+      "lens_title": "Electricity & the Grid",
+      "due": "2026-05-15",
+      "point_fmt": "18.97\u00a2/kWh",
+      "implied_status": "watch",
+      "current_status": "elevated",
+      "change": true,
+      "href": "/dashboards/energy/electricity.html"
+    },
+    {
+      "key": "economic/fiscal-health/debt-gdp",
+      "indicator": "debt-gdp",
+      "lens": "fiscal-health",
+      "category": "economic",
+      "title": "Federal Debt \u00b7 % of GDP",
+      "lens_title": "Fiscal Health",
+      "due": "2026-04-28",
+      "point_fmt": "122.56%",
+      "implied_status": "elevated",
+      "current_status": "elevated",
+      "change": false,
+      "href": "/dashboards/fiscal-health.html"
+    },
+    {
+      "key": "consumer/consumer-credit/debt-service",
+      "indicator": "debt-service",
+      "lens": "consumer-credit",
+      "category": "consumer",
+      "title": "Household Debt Service \u00b7 % of income",
+      "lens_title": "Consumer Credit Stress",
+      "due": "2026-04-28",
+      "point_fmt": "11.32%",
+      "implied_status": "watch",
+      "current_status": "watch",
+      "change": false,
+      "href": "/dashboards/consumer/credit-stress.html"
+    }
+  ],
   "categories": [
     {
       "category": "economic",
@@ -121,7 +165,7 @@
     {
       "category": "markets",
       "title": "Markets & Financial Conditions",
-      "status": "watch",
+      "status": "ok",
       "href": "/dashboards/markets/"
     },
     {

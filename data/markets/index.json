@@ -1,19 +1,19 @@
 {
-  "last_updated": "2026-06-11T17:58:55Z",
-  "status": "watch",
+  "last_updated": "2026-06-12T14:19:55Z",
+  "status": "ok",
   "lenses": [
     {
       "id": "market-risk-sentiment",
       "title": "Risk Sentiment",
       "accent": "#FB7185",
-      "status": "watch",
-      "headline_read": "A few cracks are showing \u2014 sentiment is no longer all calm.",
+      "status": "ok",
+      "headline_read": "Markets are calm \u2014 volatility and credit stress are low.",
       "key_stats": [
         {
           "k": "VIX",
-          "v": "22.22",
-          "d": "2.35",
-          "dir": "up"
+          "v": "19.44",
+          "d": "2.78",
+          "dir": "down"
         },
         {
           "k": "HY spread",
@@ -23,7 +23,6 @@
         }
       ],
       "sparkline": [
-        17.94,
         17.48,
         18.87,
         19.5,
@@ -62,7 +61,8 @@
         21.51,
         18.92,
         19.87,
-        22.22
+        22.22,
+        19.44
       ]
     },
     {
@@ -74,9 +74,9 @@
       "key_stats": [
         {
           "k": "S&P 500",
-          "v": "7,267",
-          "d": "120",
-          "dir": "down"
+          "v": "7,394",
+          "d": "127",
+          "dir": "up"
         },
         {
           "k": "WTI oil",
@@ -86,7 +86,6 @@
         }
       ],
       "sparkline": [
-        7022.95,
         7041.28,
         7126.06,
         7109.14,
@@ -125,7 +124,8 @@
         7383.74,
         7405.73,
         7386.65,
-        7266.99
+        7266.99,
+        7394.3
       ]
     },
     {
@@ -143,8 +143,8 @@
         },
         {
           "k": "Fed assets",
-          "v": "$6.71T",
-          "d": "$0.01T",
+          "v": "$6.73T",
+          "d": "$0.02T",
           "dir": "up"
         }
       ],
@@ -200,15 +200,15 @@
       "key_stats": [
         {
           "k": "BTC dominance",
-          "v": "56.30%",
-          "d": "0.09%",
+          "v": "56.31%",
+          "d": "0.00%",
           "dir": "up"
         },
         {
           "k": "Alt rotation",
-          "v": "113.68",
-          "d": "2.00",
-          "dir": "down"
+          "v": "114.60",
+          "d": "0.25",
+          "dir": "up"
         }
       ],
       "sparkline": [
@@ -216,7 +216,8 @@
         56.077545941316444,
         55.90525950230704,
         56.21040128343532,
-        56.302704587543914
+        56.302704587543914,
+        56.30650955053246
       ]
     }
   ]

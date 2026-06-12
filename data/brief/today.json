@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-06-11T17:59:16Z",
+  "generated_at": "2026-06-12T14:20:55Z",
   "transitions": [
     {
       "lens_id": "market-risk-sentiment",
       "lens_title": "Risk Sentiment",
       "category": "markets",
       "href": "/dashboards/markets/risk-sentiment.html",
-      "from_status": "ok",
-      "to_status": "watch",
-      "direction": "worsening",
-      "headline": "A few cracks are showing \u2014 sentiment is no longer all calm."
+      "from_status": "watch",
+      "to_status": "ok",
+      "direction": "improving",
+      "headline": "Markets are calm \u2014 volatility and credit stress are low."
     }
   ],
   "top_moves": [
@@ -39,9 +39,9 @@
       "category": "markets",
       "href": "/dashboards/markets/scoreboard.html",
       "stat_label": "S&P 500",
-      "stat_value": "7,267",
-      "delta": "120",
-      "dir": "down"
+      "stat_value": "7,394",
+      "delta": "127",
+      "dir": "up"
     },
     {
       "lens_id": "consumer-income-savings",
@@ -179,7 +179,7 @@
       "lens_title": "Risk Sentiment",
       "category": "markets",
       "href": "/dashboards/markets/risk-sentiment.html",
-      "status": "watch"
+      "status": "ok"
     },
     {
       "lens_id": "market-scoreboard",
@@ -288,8 +288,8 @@
     }
   ],
   "status_counts": {
-    "ok": 16,
-    "watch": 4,
+    "ok": 17,
+    "watch": 3,
     "elevated": 8,
     "alert": 3,
     "neutral": 2
