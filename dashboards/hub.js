@@ -62,6 +62,29 @@
     return `/dashboards/${encodeURIComponent(category)}/${encodeURIComponent(slug)}.html`;
   };
 
+  // Slim hub (Phase C): one card per category — title, blended badge,
+  // description, and a status-dot chip per lens. Reads the same index.json
+  // the full grids use; the card is one link to the category hub.
+  window.loadCategoryCards = async function (elId, cats) {
+    const el = document.getElementById(elId);
+    if (!el) return;
+    const results = await Promise.allSettled(cats.map(async c => {
+      const res = await fetch(c.url, { cache: "no-cache" });
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      const data = await res.json();
+      const chips = (data.lenses || []).map(l =>
+        `<span class="lens-chip"><span class="chip-dot ${esc(l.status || "unknown")}"></span>${esc(l.title)}</span>`).join("");
+      const status = data.status || "unknown";
+      return `<a class="cat-card" href="${esc(c.href)}">
+        <div class="cat-title">${esc(c.title)} <span class="badge ${esc(status)}">${esc(status)}</span></div>
+        <div class="cat-desc">${esc(c.desc)}</div>
+        <div class="lens-chips">${chips}</div></a>`;
+    }));
+    const cards = results.filter(r => r.status === "fulfilled").map(r => r.value);
+    results.forEach(r => { if (r.status === "rejected") console.error(r.reason); });
+    if (cards.length) el.innerHTML = cards.join("");
+  };
+
   // opts: a badge-element id string, or { badgeId, staleDays }. badgeId receives
   // the category's blended status (index.json `status`); staleDays (default 10)
   // is how long without a data change before the freshness stamp turns amber —
