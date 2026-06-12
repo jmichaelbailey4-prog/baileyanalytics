@@ -13,6 +13,16 @@
   <meta name="twitter:card" content="summary_large_image">
   <!-- og-image:start --><meta property="og:image" content="https://baileyanalytics.com/og/brief-2026-06-12.png"><!-- og-image:end -->
   <link rel="canonical" href="https://baileyanalytics.com/">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Bailey Analytics",
+    "url": "https://baileyanalytics.com/",
+    "description": "Daily, plain-English dashboards on the U.S. and global economy, built from public data.",
+    "publisher": {"@type": "Organization", "name": "Bailey Analytics", "url": "https://baileyanalytics.com/", "email": "michael@baileyanalytics.com"}
+  }
+  </script>
   <link rel="alternate" type="application/rss+xml" title="Bailey Analytics — Today&#39;s Brief" href="/feed.xml">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <style>
@@ -291,6 +301,14 @@
             .lens:hover, .lens:focus-visible { transform: none; }
         }
 
+        .sub-band { margin-top: 2rem; text-align: center; }
+        .sub-copy { color: var(--muted); font-size: 0.9rem; margin-bottom: 0.7rem; }
+        .sub-form { display: flex; gap: 0.5rem; max-width: 26rem; margin: 0 auto; }
+        .sub-form input { flex: 1; background: var(--panel); border: 1px solid var(--border);
+            border-radius: 8px; color: var(--text); padding: 0.6rem 0.8rem; font-size: 0.9rem; }
+        .sub-form button { background: var(--blue); color: var(--bg); border: 0; border-radius: 8px;
+            padding: 0.6rem 1.1rem; font-size: 0.9rem; font-weight: 600; cursor: pointer; }
+
         .brief-strip {
             display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.5rem 1rem;
             font-size: 0.82rem; color: var(--muted);
@@ -318,7 +336,7 @@
             <h1>Bailey Analytics</h1>
             <p class="tagline">Daily, plain-English dashboards on the U.S. and global economy — recession risk, the consumer, banking and business health, markets, energy, housing, and the world — built from public data.</p>
             <a class="email" href="mailto:michael@baileyanalytics.com">michael@baileyanalytics.com</a>
-            <!-- verdict-line:start --><a class="state-line" id="state-line" href="/dashboards/brief.html"><span class="pill watch">watch</span><span class="state-sentence">Most of the economy is on solid footing — banks are solid and markets are calm — but energy and commodity costs are squeezing budgets and household finances are stretched thin.</span></a><!-- verdict-line:end -->
+            <!-- verdict-line:start --><a class="state-line" id="state-line" href="/dashboards/brief.html"><span class="pill watch">watch</span><span class="state-sentence">Most of the economy is on solid footing — banks are solid and housing is balanced — but energy and commodity costs are squeezing budgets.</span></a><!-- verdict-line:end -->
             <div class="asof" id="hero-asof" hidden></div>
         </div>
 
@@ -327,6 +345,13 @@
             <div class="brief-strip" id="brief-strip" hidden></div>
             <div class="lens-grid" id="lens-grid"></div>
             <div class="cta-wrap"><a class="cta" href="/dashboards/">View all dashboards &rarr;</a></div>
+            <div class="sub-band">
+                <div class="sub-copy">Get Today&rsquo;s Brief in your inbox — free, every morning the board changes.</div>
+                <form class="sub-form" action="https://buttondown.com/api/emails/embed-subscribe/baileyanalytics" method="post">
+                    <input type="email" name="email" required placeholder="you@example.com" aria-label="Email address">
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
             <div class="foot">
                 Built from public data — <a href="https://fred.stlouisfed.org/" target="_blank" rel="noopener">FRED</a>,
                 the <a href="https://banks.data.fdic.gov/" target="_blank" rel="noopener">FDIC</a>,
