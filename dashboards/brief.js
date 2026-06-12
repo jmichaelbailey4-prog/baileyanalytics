@@ -1,7 +1,6 @@
 /* Shared renderer for Today's Brief (the merged daily surface).
-   loadBrief("brief-panel", { compact:false }) -> full hub panel (opens with the verdict)
-   loadBrief("brief-strip", { compact:true })  -> one-line home summary
-   loadBrief("state-line",  { mode:"line" })   -> home hero verdict (element IS the link) */
+   loadBrief("brief-strip", { compact:true }) -> one-line home summary
+   loadBrief("state-line",  { mode:"line" })  -> home hero verdict (element IS the link) */
 (function () {
   function esc(s) { const d = document.createElement("div"); d.textContent = s == null ? "" : s; return d.innerHTML; }
 
@@ -32,17 +31,6 @@
     return parts.length ? parts.join(" · ") : "All clear across the dashboards";
   }
 
-  // Same counts, but each one deep-links into the brief page's status section.
-  // Counts are coerced to numbers before interpolation — this string becomes HTML.
-  function countsLinks(c) {
-    const parts = [];
-    for (const s of ["alert", "elevated", "watch"]) {
-      const n = Number(c[s]);
-      if (n) parts.push(`<a href="/dashboards/brief.html#${s}">${n} ${s === "watch" ? "on watch" : s}</a>`);
-    }
-    return parts.length ? parts.join(" · ") : "All clear across the dashboards";
-  }
-
   function verdictHtml(v, badgeClass) {
     return `<span class="${badgeClass} ${esc(v.status)}">${esc(v.status)}</span>
       <span class="state-sentence">${esc(v.sentence)}</span>`;
@@ -65,28 +53,6 @@
   // Used by /dashboards/brief.html so transition markup lives in one place.
   window.renderBriefTransitions = transitions => (transitions || []).map(transitionRow).join("");
 
-  function fullPanel(data) {
-    const trans = (data.transitions || []).map(transitionRow).join("");
-    const movers = (data.top_moves || []).length
-      ? `<a class="brief-link" href="/dashboards/brief.html#moves">Biggest movers &rarr;</a>` : "";
-    // The merged brief opens with the verdict; a stale cached JSON without one
-    // just renders the classic panel.
-    const verdictRow = data.verdict && data.verdict.sentence
-      ? `<div class="state-verdict">${verdictHtml(data.verdict, "badge")}
-          <a class="state-link" href="/dashboards/brief.html">The full picture &rarr;</a></div>` : "";
-    // Surface a predicted badge change when one is open (kept from the old
-    // state panel — the hub still flags upcoming tips at a glance).
-    const chg = (data.watching || []).find(x => x.change);
-    const watchLine = chg
-      ? `<div class="state-watch-line">We expect ${esc(chg.title)} (${esc(chg.point_fmt)}) to tip ${esc(chg.lens_title)} to ${esc(chg.implied_status)} — <a class="state-link" href="/dashboards/brief.html#watching-sec">details &rarr;</a></div>` : "";
-    return `
-      ${verdictRow}${watchLine}
-      <div class="brief-head">Today&rsquo;s Brief
-        <span class="brief-counts">${countsLinks(data.status_counts || {})}</span></div>
-      ${trans ? `<div class="brief-sec-label">Status changes</div>${trans}` : ""}
-      <div class="brief-links">${movers}<a class="brief-link" href="/dashboards/brief.html">Full brief &rarr;</a></div>`;
-  }
-
   function compactStrip(data) {
     const t0 = (data.transitions || [])[0];
     const lead = t0
@@ -107,7 +73,7 @@
         if (!data.verdict || !data.verdict.sentence) throw new Error("no verdict");
         el.innerHTML = verdictHtml(data.verdict, "pill");
       } else {
-        el.innerHTML = opts.compact ? compactStrip(data) : fullPanel(data);
+        el.innerHTML = compactStrip(data);
       }
       el.hidden = false;
     } catch (err) {

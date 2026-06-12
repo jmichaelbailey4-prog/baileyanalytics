@@ -1,6 +1,6 @@
 """The State of Things: one consolidated read over the per-category indexes —
 an overall verdict (status token + one assembled plain-English sentence),
-pressure points, a holding-steady roll-up, and a pointer into Today's Brief.
+pressure points, and a holding-steady roll-up.
 Pure synthesis like brief.py — callers pass data in and get data out (no
 network, no disk I/O). Editorial rules and the copy bank are specified in
 docs/superpowers/specs/2026-06-11-state-of-things-design.md."""
@@ -175,7 +175,6 @@ LENSES_PER_PRESSURE = 2   # worst lenses quoted per pressure category
 CLAUSE_CAP = {"contained-pressure": 2}
 ANCHOR_CAP = 2            # steady clauses named in the sentence
 WATCH_NOUN_CAP = 4        # watch categories named in mixed-watch sentences
-BRIEF_HREF = "/dashboards/brief.html"
 
 
 def _now():
@@ -277,8 +276,10 @@ def build_watching(open_predictions):
 
 
 def build_state(category_indices, brief_today, open_predictions=None):
-    """Assemble the State of Things JSON from per-category index data and
-    today's brief (or None). Pure — no network, no disk I/O."""
+    """Assemble the State of Things JSON from per-category index data.
+    brief_today is unused since the `changed` pointer was dropped (revamp
+    Phase C) but stays in the signature so call sites (today.py) don't churn.
+    Pure — no network, no disk I/O."""
     generated = _now()
     cats = _categories(category_indices)
     overall = util.status_blend([c["status"] for c in cats])
@@ -307,9 +308,6 @@ def build_state(category_indices, brief_today, open_predictions=None):
                "pressure_points": [dict(_public(c), lenses=_worst_lenses(c))
                                    for c in pressure],
                "steady": _steady(cats, {c["category"] for c in pressure})}
-    if brief_today and isinstance(brief_today.get("transitions"), list):
-        out["changed"] = {"transitions": len(brief_today["transitions"]),
-                          "href": BRIEF_HREF}
     if open_predictions:
         out["watching"] = build_watching(open_predictions)
     out["categories"] = [_public(c) for c in cats]

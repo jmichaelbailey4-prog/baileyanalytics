@@ -14,12 +14,6 @@
   <link rel="alternate" type="application/rss+xml" title="Bailey Analytics — Today&#39;s Brief" href="/feed.xml">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="stylesheet" href="/dashboards/lens.css">
-  <style>
-    .cat-head { font-size: 1.4rem; font-weight: 600; letter-spacing: -0.01em; margin: 2.25rem 0 0.3rem; display: flex; align-items: center; gap: .6rem; }
-    .cat-head:first-of-type { margin-top: 0; }
-    .cat-head .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--blue); flex: none; }
-    .cat-sub { color: var(--muted); font-size: .92rem; max-width: 42rem; margin-bottom: 1.15rem; }
-  </style>
   <noscript><style>.js-only{display:none}</style></noscript>
 </head>
 <body>
@@ -28,41 +22,9 @@
 
   <main>
     <h1>Dashboards</h1>
-    <p class="lede">Focused, interpretation-rich views built from public data — each bundles indicators that move together into one plain-English story. <strong>Open any lens</strong> for interactive charts, the context behind each number, and what the latest data is signaling.</p>
+    <p class="lede">Focused, interpretation-rich views built from public data — each bundles indicators that move together into one plain-English story. <strong>Open any category</strong> for its lenses: interactive charts, the context behind each number, and what the latest data is signaling. For the daily read, see <a href="/dashboards/brief.html" style="color:var(--blue);text-decoration:none">Today&rsquo;s Brief</a>.</p>
 
-    <section class="brief-panel" id="brief-panel" hidden></section>
-
-    <h2 class="cat-head"><span class="dot"></span>Economic Lenses <span class="badge" id="econ-badge" hidden></span></h2>
-    <p class="cat-sub">The U.S. economy — recession risk, the cost of money, the job market, the cost of living, and the government's finances. Refreshed daily from FRED. <a href="/dashboards/economic/" style="color:var(--blue);text-decoration:none">Overview &rarr;</a></p>
-    <div class="hub-grid" id="econ-grid"><div class="status-msg"><span class="js-only">Loading&hellip;</span><noscript>The interactive dashboards require JavaScript.</noscript></div></div>
-
-    <h2 class="cat-head"><span class="dot" style="background:#E879F9"></span>The Consumer <span class="badge" id="consumer-badge" hidden></span></h2>
-    <p class="cat-sub">Two-thirds of the economy — household spending, the credit behind it, income and savings, and how consumers feel. Refreshed daily from FRED. <a href="/dashboards/consumer/" style="color:var(--blue);text-decoration:none">Overview &rarr;</a></p>
-    <div class="hub-grid" id="consumer-grid"><div class="status-msg"><span class="js-only">Loading&hellip;</span><noscript>The interactive dashboards require JavaScript.</noscript></div></div>
-
-    <h2 class="cat-head"><span class="dot" style="background:#FBBF24"></span>Banking System Health <span class="badge" id="bank-badge" hidden></span></h2>
-    <p class="cat-sub">The health of the U.S. banking system, from FDIC Call Reports — asset quality, profitability, capital, and funding. <a href="/dashboards/banking/" style="color:var(--blue);text-decoration:none">Overview &rarr;</a></p>
-    <div class="hub-grid" id="bank-grid"><div class="status-msg"><span class="js-only">Loading&hellip;</span><noscript>The interactive dashboards require JavaScript.</noscript></div></div>
-
-    <h2 class="cat-head"><span class="dot" style="background:#34D399"></span>Corporate &amp; Business Health <span class="badge" id="business-badge" hidden></span></h2>
-    <p class="cat-sub">The business side of the economy — profits, new-business formation, investment, and business credit. Refreshed daily from FRED. <a href="/dashboards/business/" style="color:var(--blue);text-decoration:none">Overview &rarr;</a></p>
-    <div class="hub-grid" id="business-grid"><div class="status-msg"><span class="js-only">Loading&hellip;</span><noscript>The interactive dashboards require JavaScript.</noscript></div></div>
-
-    <h2 class="cat-head"><span class="dot" style="background:#22D3EE"></span>Markets &amp; Financial Conditions <span class="badge" id="markets-badge" hidden></span></h2>
-    <p class="cat-sub">What markets are pricing — risk sentiment, the major asset classes, Fed liquidity, and crypto market structure. Refreshed daily from FRED and CoinGecko. <a href="/dashboards/markets/" style="color:var(--blue);text-decoration:none">Overview &rarr;</a></p>
-    <div class="hub-grid" id="markets-grid"><div class="status-msg"><span class="js-only">Loading&hellip;</span><noscript>The interactive dashboards require JavaScript.</noscript></div></div>
-
-    <h2 class="cat-head"><span class="dot" style="background:#FB923C"></span>Energy &amp; Commodities <span class="badge" id="energy-badge" hidden></span></h2>
-    <p class="cat-sub">The physical economy — what fuel and power cost, how energy is produced, and the commodity prices that feed inflation. Refreshed from the U.S. EIA and FRED. <a href="/dashboards/energy/" style="color:var(--blue);text-decoration:none">Overview &rarr;</a></p>
-    <div class="hub-grid" id="energy-grid"><div class="status-msg"><span class="js-only">Loading&hellip;</span><noscript>The interactive dashboards require JavaScript.</noscript></div></div>
-
-    <h2 class="cat-head"><span class="dot" style="background:#F472B6"></span>Housing &amp; Real Estate <span class="badge" id="housing-badge" hidden></span></h2>
-    <p class="cat-sub">The housing market — home prices and sales, affordability, construction and inventory, and rents. Refreshed daily from FRED. <a href="/dashboards/housing/" style="color:var(--blue);text-decoration:none">Overview &rarr;</a></p>
-    <div class="hub-grid" id="housing-grid"><div class="status-msg"><span class="js-only">Loading&hellip;</span><noscript>The interactive dashboards require JavaScript.</noscript></div></div>
-
-    <h2 class="cat-head"><span class="dot" style="background:#38BDF8"></span>Global Economy <span class="badge" id="global-badge" hidden></span></h2>
-    <p class="cat-sub">The world beyond U.S. borders — the dollar and major currencies, global growth, trade and supply chains, and policy uncertainty. Refreshed daily from FRED, the IMF, the NY Fed, and policyuncertainty.com. <a href="/dashboards/global/" style="color:var(--blue);text-decoration:none">Overview &rarr;</a></p>
-    <div class="hub-grid" id="global-grid"><div class="status-msg"><span class="js-only">Loading&hellip;</span><noscript>The interactive dashboards require JavaScript.</noscript></div></div>
+    <div class="hub-grid" id="cat-cards" style="margin-top:1.5rem"><div class="status-msg"><span class="js-only">Loading&hellip;</span><noscript>The interactive dashboards require JavaScript.</noscript></div></div>
 
     <div class="foot">
       Data: <a href="https://fred.stlouisfed.org/" target="_blank" rel="noopener">FRED</a> (St. Louis Fed), the <a href="https://banks.data.fdic.gov/" target="_blank" rel="noopener">FDIC</a>, the <a href="https://www.eia.gov/opendata/" target="_blank" rel="noopener">U.S. EIA</a>, the <a href="https://www.imf.org/en/Publications/WEO" target="_blank" rel="noopener">IMF</a>, the <a href="https://www.newyorkfed.org/research/policy/gscpi" target="_blank" rel="noopener">NY Fed</a>, <a href="https://www.policyuncertainty.com/" target="_blank" rel="noopener">policyuncertainty.com</a>, and <a href="https://www.coingecko.com/" target="_blank" rel="noopener">CoinGecko</a>. Public data, refreshed regularly.
@@ -70,18 +32,25 @@
   </main>
 
   <script defer src="/dashboards/hub.js"></script>
-  <script defer src="/dashboards/brief.js"></script>
   <script>document.addEventListener("DOMContentLoaded", () => {
-    loadBrief("brief-panel", { compact: false });
-    loadHubGrid("econ-grid", "/data/lenses/index.json", id => lensHref("economic", id), "econ-badge");
-    loadHubGrid("consumer-grid", "/data/consumer/index.json", id => lensHref("consumer", id), "consumer-badge");
-    loadHubGrid("bank-grid", "/data/banking/index.json", id => lensHref("banking", id),
-                { badgeId: "bank-badge", staleDays: 120 });
-    loadHubGrid("business-grid", "/data/business/index.json", id => lensHref("business", id), "business-badge");
-    loadHubGrid("markets-grid", "/data/markets/index.json", id => lensHref("markets", id), "markets-badge");
-    loadHubGrid("energy-grid", "/data/energy/index.json", id => lensHref("energy", id), "energy-badge");
-    loadHubGrid("housing-grid", "/data/housing/index.json", id => lensHref("housing", id), "housing-badge");
-    loadHubGrid("global-grid", "/data/global/index.json", id => lensHref("global", id), "global-badge");
+    loadCategoryCards("cat-cards", [
+      { title: "Economic Lenses", url: "/data/lenses/index.json", href: "/dashboards/economic/",
+        desc: "The U.S. economy — recession risk, the cost of money, the job market, the cost of living, and the government's finances." },
+      { title: "The Consumer", url: "/data/consumer/index.json", href: "/dashboards/consumer/",
+        desc: "Two-thirds of the economy — household spending, the credit behind it, income and savings, and how consumers feel." },
+      { title: "Banking System Health", url: "/data/banking/index.json", href: "/dashboards/banking/",
+        desc: "The health of the U.S. banking system, from FDIC Call Reports — asset quality, profitability, capital, and funding." },
+      { title: "Corporate & Business Health", url: "/data/business/index.json", href: "/dashboards/business/",
+        desc: "The business side of the economy — profits, new-business formation, investment, and business credit." },
+      { title: "Markets & Financial Conditions", url: "/data/markets/index.json", href: "/dashboards/markets/",
+        desc: "What markets are pricing — risk sentiment, the major asset classes, Fed liquidity, and crypto market structure." },
+      { title: "Energy & Commodities", url: "/data/energy/index.json", href: "/dashboards/energy/",
+        desc: "The physical economy — what fuel and power cost, how energy is produced, and the commodity prices that feed inflation." },
+      { title: "Housing & Real Estate", url: "/data/housing/index.json", href: "/dashboards/housing/",
+        desc: "The housing market — home prices and sales, affordability, construction and inventory, and rents." },
+      { title: "Global Economy", url: "/data/global/index.json", href: "/dashboards/global/",
+        desc: "The world beyond U.S. borders — the dollar and major currencies, global growth, trade and supply chains, and policy uncertainty." },
+    ]);
   });</script>
 </body>
 </html>
