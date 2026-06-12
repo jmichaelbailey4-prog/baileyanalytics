@@ -28,6 +28,8 @@
     if (!tr || !tr.graded) {
       document.getElementById("since").textContent =
         "The first predictions are open now — grades land as the prints arrive. Check back this week.";
+      document.getElementById("calibration").textContent = "pending";
+      document.getElementById("skill").textContent = "pending";
       return;
     }
     if (tr.since) {
