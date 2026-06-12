@@ -70,6 +70,19 @@ class BuildToday(unittest.TestCase):
         self.assertIn("statuses", self.new_state)
         self.assertEqual(self.new_state["statuses"]["cost-of-living"], "elevated")
 
+    def test_state_failure_degrades_to_brief_only(self):
+        # a verdict-builder crash must never lose the day's brief (review fix)
+        orig = today.state.build_state
+        today.state.build_state = lambda *a, **k: (_ for _ in ()).throw(RuntimeError("boom"))
+        try:
+            out, new_state = today.build_today(INDICES, {"statuses": {}})
+        finally:
+            today.state.build_state = orig
+        for key in ("transitions", "top_moves", "status_counts", "lenses"):
+            self.assertIn(key, out)
+        self.assertNotIn("verdict", out)
+        self.assertIn("statuses", new_state)
+
     def test_watching_included_when_predictions_open(self):
         preds = [{"key": "k", "indicator": "CPI", "lens": "cost-of-living",
                   "category": "economic", "title": "CPI inflation",

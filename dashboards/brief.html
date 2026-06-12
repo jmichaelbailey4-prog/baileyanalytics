@@ -103,16 +103,25 @@
         : `<div class="status-msg" style="text-align:left;padding:.4rem 0">No status changes today — a quiet day on the board.</div>`;
 
     // Movers and pressure rows render straight from the baked JSON — the
-    // composer carries each lens's headline, so no per-category re-fetch.
+    // composer carries each lens's headline, accent, and sparkline, so no
+    // per-category re-fetch.
     const CAT = window.briefCategoryLabel;
+    const spark = (vals, accent) => {
+      if (!vals || vals.length < 2) return "";
+      const min = Math.min(...vals), max = Math.max(...vals), range = (max - min) || 1;
+      const pts = vals.map((v, i) =>
+        `${(i / (vals.length - 1) * 100).toFixed(1)},${(28 - ((v - min) / range) * 26).toFixed(1)}`).join(" ");
+      return `<svg class="spark" aria-hidden="true" viewBox="0 0 100 30" preserveAspectRatio="none"><polyline points="${pts}" fill="none" stroke="${esc(accent || "#38BDF8")}" stroke-width="2"/></svg>`;
+    };
     const moves = data.top_moves || [];
     if (moves.length) {
       document.getElementById("moves-sec").hidden = false;
       document.getElementById("moves-grid").innerHTML = moves.map(m => {
         const delta = m.delta ? ` <i class="delta ${esc(m.dir || "")}">${esc(m.delta)}</i>` : "";
         return `<a class="hub-card" href="${esc(m.href)}">
-          <div class="hub-eyebrow"><span class="hub-cat">${esc(CAT(m.category))} ·</span> ${esc(m.lens_title)}</div>
+          <div class="hub-eyebrow" style="color:${esc(m.accent || "#94A3B8")}"><span class="hub-cat">${esc(CAT(m.category))} ·</span> ${esc(m.lens_title)}</div>
           <div class="hub-read">${esc(m.headline || "")}</div>
+          ${spark(m.sparkline, m.accent)}
           <div class="hub-stats">${esc(m.stat_label)} <b>${esc(m.stat_value)}</b>${delta}</div></a>`;
       }).join("");
     }

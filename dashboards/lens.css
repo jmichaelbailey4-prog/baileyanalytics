@@ -134,9 +134,6 @@ p.lede strong{color:var(--text);font-weight:600}
 .state-sentence{font-size:1.02rem;font-weight:600;line-height:1.45}
 .state-link{color:var(--blue);text-decoration:none;font-size:.85rem;white-space:nowrap}
 .state-link:hover{text-decoration:underline}
-.state-card{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:1rem 1.15rem;margin-bottom:.85rem}
-.state-cat{display:flex;align-items:center;gap:.6rem;font-weight:600;font-size:1.05rem;color:var(--text);text-decoration:none;margin-bottom:.55rem}
-.state-cat:hover{color:var(--blue)}
 .state-lens{display:flex;align-items:baseline;gap:.6rem;flex-wrap:wrap;padding:.35rem 0;color:var(--text);text-decoration:none}
 .state-lens:hover .state-lens-read{text-decoration:underline}
 .state-lens-title{color:var(--muted);font-size:.85rem;flex:none}

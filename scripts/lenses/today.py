@@ -79,8 +79,13 @@ def build_today(category_indices, prior_state, open_predictions=None):
     keep their shape so feed.build_item and the strip/panel renderers read
     the file unchanged. new_state is the brief's transition memory."""
     brief_today, new_state = brief.build_brief(category_indices, prior_state)
-    state_today = state.build_state(category_indices, brief_today,
-                                    open_predictions=open_predictions)
+    try:
+        state_today = state.build_state(category_indices, brief_today,
+                                        open_predictions=open_predictions)
+    except Exception:  # noqa: BLE001 - the verdict is additive; never lose the brief
+        # The renderers all guard on the merged keys, so a brief without them
+        # still publishes today's transitions/movers instead of going stale.
+        return dict(brief_today), new_state
 
     pressure = [dict(r) for r in brief_today["lenses"]
                 if SEVERITY.get(r["status"], 0) >= 1]

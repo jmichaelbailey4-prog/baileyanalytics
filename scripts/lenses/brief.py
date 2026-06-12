@@ -78,6 +78,7 @@ def _flatten_lenses(category_indices):
                 "href": lens_href(category, lens_id),
                 "status": lens.get("status", "unknown"),
                 "headline": lens.get("headline_read", ""),
+                "accent": lens.get("accent", ""),
                 "key_stats": lens.get("key_stats", []),
                 "sparkline": lens.get("sparkline", []),
             })
@@ -138,6 +139,8 @@ def rank_moves(flat_lenses, transition_ids, limit=5):
             "category": r["category"],
             "href": r["href"],
             "headline": r["headline"],
+            "accent": r["accent"],
+            "sparkline": r["sparkline"],
             "stat_label": stat.get("k", ""),
             "stat_value": stat.get("v", "—"),
             "delta": stat.get("d", ""),
