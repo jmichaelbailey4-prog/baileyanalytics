@@ -60,6 +60,9 @@
             display: flex;
             gap: 1.75rem;
         }
+        @media (max-width: 640px) {
+            nav.top-nav { position: static; justify-content: center; gap: 1rem; flex-wrap: wrap; padding-top: .25rem; }
+        }
 
         nav.top-nav a {
             color: var(--muted);
@@ -313,10 +316,7 @@
     </style>
 </head>
 <body>
-    <nav class="top-nav">
-        <a href="/dashboards/">Dashboards</a>
-        <a href="/about.html">About</a>
-    </nav>
+    <nav class="top-nav"><a href="/dashboards/brief.html">Today&#39;s Brief</a><a href="/dashboards/">Dashboards</a><a href="/dashboards/track-record.html">Track Record</a><a href="/about.html">About</a></nav>
     <main>
         <div class="hero">
             <h1>Bailey Analytics</h1>
