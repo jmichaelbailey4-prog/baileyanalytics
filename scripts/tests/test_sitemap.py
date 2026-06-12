@@ -42,6 +42,11 @@ class TestRenderSitemap(unittest.TestCase):
         self.assertEqual(len(dom.getElementsByTagName("lastmod")), 1)
         self.assertIn("<loc>https://x.com/a</loc>", xml_text)
 
+    def test_locs_are_xml_escaped(self):
+        xml_text = sitemap.render_sitemap([("https://x.com/path?a=1&b=2", None)])
+        self.assertIn("&amp;", xml_text)
+        self.assertNotIn("?a=1&b=2</loc>", xml_text)
+
 
 if __name__ == "__main__":
     unittest.main()

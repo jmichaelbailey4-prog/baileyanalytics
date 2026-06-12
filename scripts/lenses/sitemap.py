@@ -39,6 +39,7 @@ def build_urls(archive_dates):
 
 
 def render_sitemap(urls):
+    """Render Sitemap Protocol 0.9 XML from (loc, lastmod-or-None) pairs."""
     out = ['<?xml version="1.0" encoding="UTF-8"?>',
            '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     for loc, lastmod in urls:
