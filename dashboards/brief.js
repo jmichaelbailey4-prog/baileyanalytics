@@ -50,7 +50,9 @@
       }
       el.hidden = false;
     } catch (err) {
-      el.hidden = true;  // brief is additive — never block the page
+      // Brief is additive — never block the page. Keep any server-baked content
+      // (the home hero verdict line ships baked-visible); only hide if empty.
+      if (!el.innerHTML.trim()) el.hidden = true;
       console.error(err);
     }
   };

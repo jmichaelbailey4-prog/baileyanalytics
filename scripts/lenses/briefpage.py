@@ -4,8 +4,9 @@ page's former client-side render (one renderer instead of a JS/Python sync
 pair). Pure: today.json data in, full HTML documents out."""
 
 import json
-from datetime import datetime
 from html import escape
+
+from . import util
 
 SITE = "https://baileyanalytics.com"
 
@@ -24,9 +25,8 @@ PRESSURE_GROUPS = [
 
 
 def _date_label(iso_date):
-    """'YYYY-MM-DD' -> 'June 12, 2026' (locale-independent, Windows-safe)."""
-    dt = datetime.strptime(iso_date, "%Y-%m-%d")
-    return f"{dt.strftime('%B')} {dt.day}, {dt.year}"
+    """'YYYY-MM-DD' -> 'June 12, 2026' (delegates to the shared util helper)."""
+    return util.human_date(iso_date)
 
 
 def _spark(values, accent):
@@ -49,16 +49,22 @@ def _transitions(transitions):
     if not transitions:
         return ('<div class="status-msg" style="text-align:left;padding:.4rem 0">'
                 "No status changes today — a quiet day on the board.</div>")
+    # Mirrors the old brief.js transitionRow markup so lens.css's dedicated
+    # .brief-trans / .brief-arrow styling applies (status changes are the
+    # flagship event — they must not collapse into pressure-row styling).
     rows = []
     for t in transitions:
+        cat = CATEGORY_LABELS.get(t["category"])
+        cat_html = f'<span class="brief-cat">{escape(cat)}</span>' if cat else ""
         rows.append(
-            f'<a class="att-row" href="{escape(t["href"], quote=True)}">'
-            f'<span class="brief-cat">{escape(CATEGORY_LABELS.get(t["category"], t["category"]))}</span>'
-            f'<span class="att-title">{escape(t["lens_title"])}</span>'
+            f'<a class="brief-trans" href="{escape(t["href"], quote=True)}">'
+            f'{cat_html}'
+            f'<span class="brief-trans-title">{escape(t["lens_title"])}</span>'
+            f'<span class="brief-arrow">'
             f'<span class="badge {escape(t["from_status"])}">{escape(t["from_status"])}</span>'
-            f'<span aria-hidden="true">→</span>'
-            f'<span class="badge {escape(t["to_status"])}">{escape(t["to_status"])}</span>'
-            f'<span class="att-read">{escape(t["headline"])}</span></a>')
+            f' &rarr; '
+            f'<span class="badge {escape(t["to_status"])}">{escape(t["to_status"])}</span></span>'
+            f'<span class="brief-trans-read">{escape(t["headline"])}</span></a>')
     return "".join(rows)
 
 

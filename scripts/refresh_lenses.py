@@ -41,7 +41,6 @@ BRIEF_FIXTURE = Path(__file__).resolve().parent / "tests" / "fixtures" / "brief_
 # must include this path alongside data/).
 FEED_PATH = Path(__file__).resolve().parent.parent / "feed.xml"
 REPO_ROOT = Path(__file__).resolve().parent.parent
-MANIFEST_PATH = BRIEF_OUT_DIR / "_archive_index.json"
 
 # category -> the module-global out-dir whose index.json feeds the brief.
 # 'economic' lives in data/lenses/ (not data/economic/).
@@ -737,6 +736,7 @@ def _publish_brief(today_json, root=None):
 
     root = root or REPO_ROOT
     day = (today_json.get("generated_at") or "")[:10]
+    verdict = today_json.get("verdict") or {}
     brief_dir = root / "data" / "brief"
     pages_dir = root / "dashboards" / "brief"
     og_dir = root / "og"
@@ -762,7 +762,6 @@ def _publish_brief(today_json, root=None):
         (og_dir / "site.png").write_bytes(ogcard.render_site_card())
     og_image = "/og/site.png"
     try:
-        verdict = today_json.get("verdict") or {}
         card = ogcard.render_card(verdict.get("status", "unknown"),
                                   verdict.get("sentence", ""),
                                   briefpage._date_label(day))
@@ -781,21 +780,30 @@ def _publish_brief(today_json, root=None):
                            briefpage.render_brief(today_json, og_image=og_image,
                                                   archive_date=day, prev_date=prev_date))
 
-    # 5. re-render yesterday's archive page with its new next-link
-    if prev_date:
-        prior_json_path = days_dir / f"{prev_date}.json"
-        if prior_json_path.exists():
-            try:
-                prior = json.loads(prior_json_path.read_text(encoding="utf-8"))
-                prev_prev = dates[idx - 2] if idx > 1 else None
-                prior_og = (f"/og/brief-{prev_date}.png"
-                            if (og_dir / f"brief-{prev_date}.png").exists() else "/og/site.png")
-                _write_text_if_changed(
-                    pages_dir / f"{prev_date}.html",
-                    briefpage.render_brief(prior, og_image=prior_og, archive_date=prev_date,
-                                           prev_date=prev_prev, next_date=day))
-            except (OSError, ValueError) as exc:
-                print(f"WARN: prior archive re-render failed ({exc})", file=sys.stderr)
+    # 5. (re-)render other archive pages: yesterday needs its new next-link, and
+    #    any day whose page is missing (an earlier bake that failed mid-run) is
+    #    healed from its stored JSON — so a gap never becomes a permanent 404 in
+    #    the sitemap/archive index. Healthy days are skipped (content-aware).
+    for i, d in enumerate(dates):
+        if d == day:
+            continue  # today's page was just written in step 4
+        page = pages_dir / f"{d}.html"
+        if d != prev_date and page.exists():
+            continue  # unchanged archive page with a current next-link
+        day_json_path = days_dir / f"{d}.json"
+        if not day_json_path.exists():
+            continue  # no stored data to re-render from
+        try:
+            data = json.loads(day_json_path.read_text(encoding="utf-8"))
+            p = dates[i - 1] if i > 0 else None
+            n = dates[i + 1] if i + 1 < len(dates) else None
+            og = (f"/og/brief-{d}.png" if (og_dir / f"brief-{d}.png").exists()
+                  else "/og/site.png")
+            _write_text_if_changed(
+                page, briefpage.render_brief(data, og_image=og, archive_date=d,
+                                             prev_date=p, next_date=n))
+        except (OSError, ValueError) as exc:
+            print(f"WARN: archive re-render failed for {d} ({exc})", file=sys.stderr)
 
     # 6. archive index + sitemap
     _write_text_if_changed(pages_dir / "index.html", briefpage.render_archive_index(manifest))
@@ -803,7 +811,6 @@ def _publish_brief(today_json, root=None):
                            sitemap.render_sitemap(sitemap.build_urls(dates)) + "\n")
 
     # 7. home-page patches: baked verdict line + dated og image
-    verdict = today_json.get("verdict") or {}
     if verdict.get("sentence"):
         vstatus = verdict.get("status", "unknown")
         line = (f'<a class="state-line" id="state-line" href="/dashboards/brief.html">'
@@ -823,13 +830,24 @@ def _patch_lens_pages(root=None):
         for lens_file in sorted(out_dir.glob("*.json")):
             if lens_file.name.startswith("_") or lens_file.name == "index.json":
                 continue
+            # write_outputs names each file "<lens id>.json", so the stem is the
+            # id — resolve the page (and the mtime gate) without parsing first.
+            page = root / brief.lens_href(category, lens_file.stem).lstrip("/")
+            if not page.exists():
+                continue
+            # Skip the parse + render when the page is at least as new as its
+            # data: only a lens JSON rewritten THIS run (newer mtime than the
+            # committed page) can change the baked fragment. The fragment depends
+            # solely on the JSON, so a newer page can never be stale.
+            try:
+                if page.stat().st_mtime >= lens_file.stat().st_mtime:
+                    continue
+            except OSError:
+                pass
             try:
                 lens_json = json.loads(lens_file.read_text(encoding="utf-8"))
-                href = brief.lens_href(category, lens_json.get("id", ""))
-                page = root / href.lstrip("/")
-                if page.exists():
-                    _patch_region_file(page, "baked-read",
-                                       staticread.render_fragment(lens_json))
+                _patch_region_file(page, "baked-read",
+                                   staticread.render_fragment(lens_json))
             except (ValueError, OSError) as exc:
                 print(f"WARN: static read failed for {lens_file.name}: {exc}",
                       file=sys.stderr)

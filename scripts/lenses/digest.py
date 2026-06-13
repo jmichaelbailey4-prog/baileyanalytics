@@ -4,10 +4,9 @@ unreliable across email clients). Text-first: no images, so it loads fast and
 keeps spam scores clean. The {{ unsubscribe_url }} placeholder is substituted
 by Buttondown at send time."""
 
-from datetime import datetime
 from html import escape
 
-from . import feed
+from . import feed, util
 
 SITE = "https://baileyanalytics.com"
 
@@ -23,9 +22,9 @@ MOVES_CAP = 5
 
 
 def date_token(iso_date):
-    """'Jun 12, 2026' — used in the subject and as the idempotency key."""
-    dt = datetime.strptime(iso_date, "%Y-%m-%d")
-    return f"{dt.strftime('%b')} {dt.day}, {dt.year}"
+    """'Jun 12, 2026' — used in the subject and as the idempotency key.
+    Shares util.human_date with the brief page so the two never drift."""
+    return util.human_date(iso_date, short=True)
 
 
 def _badge(status):

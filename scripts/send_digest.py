@@ -23,6 +23,11 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from lenses import digest
 
 API = "https://api.buttondown.com/v1/emails"
+# Explicit newest-first ordering so the already-sent dedup check reliably sees
+# today's email (sent minutes/hours earlier) on the first page, regardless of
+# Buttondown's default sort. The archive-manifest publication gate is the
+# primary guard; this is the backstop against a same-day duplicate send.
+LIST_URL = API + "?ordering=-creation_date"
 BRIEF_DIR = Path(__file__).resolve().parent.parent / "data" / "brief"
 
 
@@ -59,8 +64,14 @@ def _request(url, api_key, payload=None):
 def main(argv=None):
     dry_run = "--dry-run" in (argv or sys.argv[1:])
 
-    today = json.loads((BRIEF_DIR / "today.json").read_text(encoding="utf-8"))
-    day = (today.get("generated_at") or "")[:10]
+    # A missing or corrupt today.json is a quiet skip, not a red step — the
+    # send is always downstream of a brief build that may not have produced one.
+    try:
+        today = json.loads((BRIEF_DIR / "today.json").read_text(encoding="utf-8"))
+    except (OSError, ValueError) as exc:
+        print(f"No readable today.json ({exc}) — skipping digest.", file=sys.stderr)
+        return 0
+    day = (today.get("generated_at") or "1970-01-01")[:10]
     built = digest.build_digest(today)
 
     if dry_run:
@@ -83,7 +94,7 @@ def main(argv=None):
 
     token = digest.date_token(day)
     try:
-        if already_sent(_request(API, api_key), token):
+        if already_sent(_request(LIST_URL, api_key), token):
             print(f"Digest for {token} already exists on Buttondown — skipping.")
             return 0
         from datetime import datetime, timezone

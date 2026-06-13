@@ -35,6 +35,14 @@ class TestRenderToday(unittest.TestCase):
         self.assertIn('id="alert"', self.html)                       # deep-link anchors
         self.assertIn("As of June 12, 2026", self.html)
 
+    def test_transitions_use_dedicated_brief_trans_markup(self):
+        # Status changes are the flagship event — they must carry the
+        # .brief-trans / .brief-arrow classes lens.css styles, not collapse
+        # into the generic .att-row pressure styling.
+        self.assertIn('class="brief-trans"', self.html)
+        self.assertIn('class="brief-arrow"', self.html)
+        self.assertIn('class="brief-trans-read"', self.html)
+
     def test_sparkline_svg_baked(self):
         self.assertIn("<svg class=\"spark\"", self.html)
         self.assertIn("polyline", self.html)

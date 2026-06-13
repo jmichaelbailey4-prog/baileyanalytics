@@ -65,6 +65,38 @@ class TestPublishBrief(unittest.TestCase):
             self.assertEqual(len(manifest), 1)
             self.assertEqual((root / "dashboards" / "brief.html").read_bytes(), first)
 
+    def test_missing_archive_page_is_healed(self):
+        # A prior bake that failed mid-run can leave a manifest entry whose
+        # archive page never got written. The next publication day must recreate
+        # it from its stored JSON (otherwise the sitemap lists a permanent 404).
+        with tempfile.TemporaryDirectory() as td:
+            root = pathlib.Path(td)
+            (root / "data" / "brief").mkdir(parents=True)
+            (root / "dashboards").mkdir()
+            (root / "index.html").write_text(
+                "<!-- og-image:start --><m><!-- og-image:end -->"
+                "<!-- verdict-line:start --><a><!-- verdict-line:end -->", encoding="utf-8")
+            refresh_lenses._publish_brief(TODAY, root=root)
+            day2 = dict(TODAY, generated_at="2026-06-13T00:00:00Z")
+            # Simulate the interrupted earlier bake: day-1 page is gone but its
+            # data record and manifest entry survive.
+            (root / "dashboards" / "brief" / "2026-06-12.html").unlink()
+            refresh_lenses._publish_brief(day2, root=root)
+            healed = root / "dashboards" / "brief" / "2026-06-12.html"
+            self.assertTrue(healed.exists())
+            # ...and it carries a forward link to the day that healed it.
+            self.assertIn("2026-06-13.html", healed.read_text(encoding="utf-8"))
+
+
+class TestCategoryListSync(unittest.TestCase):
+    def test_brief_index_dirs_match_brief_categories(self):
+        # _patch_lens_pages iterates _brief_index_dirs(); brief.lens_href only
+        # resolves real page paths for categories in brief.CATEGORIES. If the two
+        # drift, a category's lens pages silently never get static reads.
+        from lenses import brief
+        self.assertEqual(set(refresh_lenses._brief_index_dirs()),
+                         set(brief.CATEGORIES))
+
 
 if __name__ == "__main__":
     unittest.main()
