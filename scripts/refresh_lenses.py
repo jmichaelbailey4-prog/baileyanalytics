@@ -15,7 +15,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))  # make `lenses` importable
 from datetime import date
 
-from lenses import brief, briefpage, build, coingecko, config, eia, epu, fdic, feed, fred, imf, nyfed, ogcard, regions, sitemap, today, util, yahoo
+from lenses import brief, briefpage, build, coingecko, config, eia, epu, fdic, feed, fred, imf, nyfed, ogcard, regions, sitemap, staticread, today, util, yahoo
 
 OUT_DIR = Path(__file__).resolve().parent.parent / "data" / "lenses"
 BANK_OUT_DIR = Path(__file__).resolve().parent.parent / "data" / "banking"
@@ -679,6 +679,13 @@ def refresh_brief(dry_run):
             except Exception as exc:  # noqa: BLE001 - publication is additive
                 print(f"WARN: brief publication failed ({exc}); keeping previous pages",
                       file=sys.stderr)
+        # Static lens reads: patch every lens page's baked-read region.
+        # Outside if wrote: — lens data can change on days the brief digest
+        # doesn't, and content-aware patching makes it free.
+        try:
+            _patch_lens_pages()
+        except Exception as exc:  # noqa: BLE001 - static reads are additive
+            print(f"WARN: lens static reads failed ({exc})", file=sys.stderr)
     except Exception as exc:  # noqa: BLE001 - never break the run on a brief failure
         print(f"WARN: brief build failed ({exc}); keeping previous brief", file=sys.stderr)
 
@@ -805,6 +812,27 @@ def _publish_brief(today_json, root=None):
         _patch_region_file(root / "index.html", "verdict-line", line)
     _patch_region_file(root / "index.html", "og-image",
                        f'<meta property="og:image" content="https://baileyanalytics.com{og_image}">')
+
+
+def _patch_lens_pages(root=None):
+    """Patch every lens page's baked-read region from its committed lens JSON.
+    Runs in the --brief pass (after all category passes), so one hook covers
+    all categories; content-aware, so quiet lenses produce no diff."""
+    root = root or REPO_ROOT
+    for category, out_dir in _brief_index_dirs().items():
+        for lens_file in sorted(out_dir.glob("*.json")):
+            if lens_file.name.startswith("_") or lens_file.name == "index.json":
+                continue
+            try:
+                lens_json = json.loads(lens_file.read_text(encoding="utf-8"))
+                href = brief.lens_href(category, lens_json.get("id", ""))
+                page = root / href.lstrip("/")
+                if page.exists():
+                    _patch_region_file(page, "baked-read",
+                                       staticread.render_fragment(lens_json))
+            except (ValueError, OSError) as exc:
+                print(f"WARN: static read failed for {lens_file.name}: {exc}",
+                      file=sys.stderr)
 
 
 def _load_open_predictions():
