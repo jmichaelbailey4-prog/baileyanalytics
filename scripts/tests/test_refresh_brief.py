@@ -10,17 +10,22 @@ import refresh_lenses
 
 class TestBriefDryRun(unittest.TestCase):
     def setUp(self):
-        # Redirect both output paths so tests never touch real repo files.
+        # Redirect every output path so tests never touch real repo files —
+        # REPO_ROOT included, since refresh_brief's publication pass
+        # (_publish_brief) bakes pages/og/sitemap/home under it.
         self._td = tempfile.TemporaryDirectory()
         tmp = pathlib.Path(self._td.name)
         self._orig_dir = refresh_lenses.BRIEF_OUT_DIR
         self._orig_feed = refresh_lenses.FEED_PATH
+        self._orig_root = refresh_lenses.REPO_ROOT
         refresh_lenses.BRIEF_OUT_DIR = tmp / "brief"
         refresh_lenses.FEED_PATH = tmp / "feed.xml"
+        refresh_lenses.REPO_ROOT = tmp
 
     def tearDown(self):
         refresh_lenses.BRIEF_OUT_DIR = self._orig_dir
         refresh_lenses.FEED_PATH = self._orig_feed
+        refresh_lenses.REPO_ROOT = self._orig_root
         self._td.cleanup()
 
     def test_brief_flag_writes_today_and_state(self):

@@ -718,14 +718,17 @@ def _patch_region_file(path, name, content):
         path.write_text(new, encoding="utf-8")
 
 
-def _publish_brief(today_json, root=REPO_ROOT):
+def _publish_brief(today_json, root=None):
     """Bake every publication surface for today's brief: dated JSON + archive
     page + og card, the live brief.html, the archive index, the home-page
     verdict/og patches, and the sitemap. Idempotent (content-aware writes), so
     the backup cron and local reruns are free. og-card failure degrades to the
-    static site card; nothing here may raise (the caller guards anyway)."""
+    static site card; nothing here may raise (the caller guards anyway).
+    `root` is late-bound to REPO_ROOT so tests can redirect the module
+    attribute and never touch real repo files."""
     from html import escape
 
+    root = root or REPO_ROOT
     day = (today_json.get("generated_at") or "")[:10]
     brief_dir = root / "data" / "brief"
     pages_dir = root / "dashboards" / "brief"
