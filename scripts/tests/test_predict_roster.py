@@ -73,12 +73,49 @@ class TestRoster(unittest.TestCase):
         by_key = {e.key: e for e in self.entries}
         self.assertFalse(by_key["economic/cost-of-living/cpi"].market_price)
 
-    def test_banking_and_non_fetchable_sources_excluded(self):
-        self.assertFalse(any(e.category == "banking" for e in self.entries))
-        # predict.py can fetch fred/eia/yahoo; coingecko/computed/imf/nyfed/epu
-        # need plumbing and stay out for now.
+    def test_banking_and_computed_now_rostered_via_baked_history(self):
+        # Coverage extension 2026-06-15 (spec §3/§5 Q2-Q4): banking (FDIC) plus
+        # computed/nyfed/epu series can't be fetched directly, but the pipeline
+        # already bakes their history into the lens JSON. We read that, so they
+        # join the roster flagged `baked`. Banking is badge-driving SIGNAL.
+        by_key = {e.key: e for e in self.entries}
+        self.assertTrue(any(e.category == "banking" for e in self.entries))
+        nq = by_key["banking/bank-asset-quality/noncurrent"]
+        self.assertTrue(nq.baked)
+        self.assertFalse(nq.descriptive)    # severity badge-driver -> counts toward edge
+        self.assertFalse(nq.market_price)
+        for key in ("economic/cost-of-money/rate-expectations",
+                    "business/business-profitability/profit-share",
+                    "business/business-formation/hp-share",
+                    "global/global-trade-supply/gscpi",
+                    "global/global-uncertainty/us-epu",
+                    "global/global-uncertainty/gepu"):
+            self.assertIn(key, self.keys)
+            self.assertTrue(by_key[key].baked, key)
+
+    def test_direct_fetch_sources_not_flagged_baked(self):
+        by_key = {e.key: e for e in self.entries}
+        self.assertFalse(by_key["economic/cost-of-living/cpi"].baked)   # fred
+        self.assertFalse(by_key["markets/market-scoreboard/gold"].baked)  # yahoo
+
+    def test_imf_and_coingecko_still_excluded(self):
+        # IMF is annual (can't earn an empirical 80% band from ~5 backtest
+        # origins); crypto-structure (CoinGecko) lives outside config.CATEGORIES
+        # and has too little baked history. Both correctly deferred.
         for e in self.entries:
-            self.assertIn(e.indicator.source, ("fred", "eia", "yahoo"))
+            self.assertNotIn(e.indicator.source, ("imf", "coingecko"))
+        self.assertFalse(any(e.lens_id == "crypto-structure" for e in self.entries))
+
+    def test_all_baked_indicators_have_a_lens_file_to_read(self):
+        # the read path resolves category -> out dir -> lens-id file; assert the
+        # mapping holds for every baked entry so a live run never KeyErrors.
+        import os
+        from lenses import config
+        out = {c["id"]: c["out"] for c in config.CATEGORIES}
+        for e in self.entries:
+            if e.baked:
+                path = os.path.join("data", out[e.category], f"{e.lens_id}.json")
+                self.assertTrue(os.path.exists(path), path)
 
     def test_computed_eia_routes_excluded(self):
         # renewables-share etc. have no eia_route; they're injected/computed
@@ -93,11 +130,11 @@ class TestRoster(unittest.TestCase):
         self.assertIn("economic/job-market/unemployment", self.keys)
 
     def test_roster_is_reasonably_sized(self):
-        # ~92 after full coverage (59 badge-drivers + ~23 info macro + scoreboard
-        # + FX + commodities); guard both that the extension landed and that we
-        # didn't accidentally sweep in banking / non-fetchable sources.
-        self.assertGreater(len(self.entries), 85)
-        self.assertLess(len(self.entries), 105)
+        # 107 after the baked-history extension: 92 directly-fetchable + 9 banking
+        # + 3 computed (rate-expectations, profit-share, hp-share) + GSCPI + 2 EPU.
+        # A change here means recount coverage (and update the spec/memory).
+        self.assertEqual(len([e for e in self.entries if e.category == "banking"]), 9)
+        self.assertEqual(len(self.entries), 107)
 
     def test_keys_unique(self):
         self.assertEqual(len(self.keys), len(self.entries))

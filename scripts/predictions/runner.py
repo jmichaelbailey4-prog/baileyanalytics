@@ -15,6 +15,7 @@ from . import backtest, cadence, explain, grade, ledger, models
 
 FIXTURE = (Path(__file__).resolve().parent.parent / "tests" / "fixtures"
            / "predict_histories_sample.json")
+DATA_DIR = Path(__file__).resolve().parents[2] / "data"  # baked lens JSON lives here
 FRED_FULL_LIMIT = 100000
 MAX_ORIGINS = {"weekly": 104, "monthly": 96, "quarterly": 32, "daily": 104}
 REVISION_LOOKBACK = 3  # re-check grades for this many trailing periods
@@ -28,11 +29,42 @@ def _load_fixture_histories():
     return json.loads(FIXTURE.read_text(encoding="utf-8"))
 
 
+def _find_cat(category):
+    for cat in config.CATEGORIES:
+        if cat["id"] == category:
+            return cat
+    return None
+
+
+def _baked_history(entry, data_dir=None):
+    """Read an already-baked indicator history from its lens JSON, for sources
+    predict.py can't fetch directly (fdic/computed/nyfed/epu). These observations
+    are POST-derive and post-thin — _prepared_series must NOT re-derive them.
+    Mirrors lenses.refresh_lenses._prior_obs (degrade to [] on a missing/locked
+    file → the runner keeps the prior open entry); kept local so the lightweight
+    predictions package needn't import the heavy refresh_lenses module (Pillow)."""
+    cat = _find_cat(entry.category)
+    out = cat["out"] if cat else entry.category
+    path = (Path(data_dir) if data_dir else DATA_DIR) / out / f"{entry.lens_id}.json"
+    if not path.exists():
+        return []
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except (ValueError, OSError):
+        return []
+    for ind in data.get("indicators", []):
+        if ind.get("id") == entry.indicator.id:
+            return ind.get("observations", [])
+    return []
+
+
 def _fetch_history(entry, dry_run, fixture_cache):
     """Raw full history for one roster entry ([{'date','value'}])."""
     ind = entry.indicator
     if dry_run:
         return fixture_cache.get(entry.key, [])
+    if entry.baked:
+        return _baked_history(entry)  # banking/computed/nyfed/epu: read the baked JSON
     if ind.source == "eia":
         return eia.fetch_series(ind.eia_route, ind.eia_facets, ind.eia_freq,
                                 os.environ["EIA_API_KEY"], max(ind.limit, 2000),
@@ -46,10 +78,12 @@ def _fetch_history(entry, dry_run, fixture_cache):
 
 
 def _prepared_series(entry, raw):
-    """(cleaned [(date,float)], cadence) — derive applied, dailies resampled weekly."""
-    ind = entry.indicator
-    if ind.derive:
-        raw = ind.derive(raw)
+    """(cleaned [(date,float)], cadence) — derive applied, dailies resampled weekly.
+    Baked entries are already post-derive, so we skip ind.derive for them (and
+    BankingIndicator carries no `derive` attribute at all)."""
+    derive = getattr(entry.indicator, "derive", None)
+    if derive and not entry.baked:
+        raw = derive(raw)
     cleaned = util.clean(raw)
     cad = cadence.infer(cleaned)
     if cad == "daily":
@@ -87,11 +121,11 @@ def run_tournament(pred_dir, dry_run, entries):
 
 
 def _lens_title(entry):
-    for cat in config.CATEGORIES:
-        if cat["id"] == entry.category:
-            for lens in cat["lenses"]:
-                if lens.id == entry.lens_id:
-                    return lens.title
+    cat = _find_cat(entry.category)
+    if cat:
+        for lens in cat["lenses"]:
+            if lens.id == entry.lens_id:
+                return lens.title
     return entry.lens_id
 
 
@@ -106,7 +140,8 @@ def _make_open_entry(entry, cleaned, cad, champ_rec):
     return {
         "id": f"{entry.key}@{target}", "key": entry.key,
         "category": entry.category, "lens": entry.lens_id, "indicator": ind.id,
-        "series_id": ind.series_id, "horizon": "next-print",
+        "series_id": getattr(ind, "series_id", ""),  # BankingIndicator has none
+        "horizon": "next-print",
         "target_period": target, "due": cadence.due_estimate(target, cad),
         "made_at": _now(), "model": champ_rec["champion"],
         "point": round(point, 4),
