@@ -30,6 +30,12 @@ class Indicator:
     eia_freq: str = ""              # "daily" | "weekly" | "monthly"
     eia_col: str = "value"          # data column to request/read
     imf_key: str = ""               # IMF WEO "COUNTRY.INDICATOR" (source == "imf" only)
+    # A tradeable price (FX, a commodity index): the prediction system forecasts
+    # it but flags it so the surface carries a market-price disclaimer and the
+    # headline edge stat holds it out — next week's price move is the one thing
+    # honest models can't call. Scoreboard prices are flagged via their neutral
+    # lens, so they don't set this individually.
+    market_price: bool = False
 
     @property
     def fetch_key(self):
@@ -1039,14 +1045,14 @@ ENERGY_COMMODITIES = Lens(
         Indicator(
             id="copper", title="Copper · “Dr. Copper”", short="Copper", unit="$",
             color="#FB923C", series_id="PCOPPUSDM", limit=300,
-            rule=narrative.energy_level("Copper"), value_format="thousands",
+            rule=narrative.energy_level("Copper"), value_format="thousands", market_price=True,
             context=("The global price of copper ($/metric ton) — nicknamed “Dr. Copper” "
                      "for its knack of signalling the direction of the global economy."),
         ),
         Indicator(
             id="broad-commodities", title="Broad Commodities · year-over-year", short="Commodities", unit="%",
             color="#38BDF8", series_id="PALLFNFINDEXM", limit=300, derive=derive.yoy_pct,
-            rule=narrative.yoy_info("The broad commodity index"), value_format="decimal",
+            rule=narrative.yoy_info("The broad commodity index"), value_format="decimal", market_price=True,
             context=("How fast the IMF's all-commodity price index is rising versus a year ago "
                      "— a single gauge of raw-input cost pressure across the economy."),
         ),
@@ -1245,7 +1251,7 @@ GLOBAL_DOLLAR_CURRENCIES = Lens(
         ),
         Indicator(
             id="euro", title="Euro · dollars per euro", short="Euro", unit="$",
-            color="#34D399", series_id="DEXUSEU", limit=2600,
+            color="#34D399", series_id="DEXUSEU", limit=2600, market_price=True,
             rule=narrative.fx_yoy("The euro"),
             context=("How many dollars one euro buys. The world's second currency — "
                      "a rising number means a stronger euro (and a weaker dollar) — "
@@ -1253,7 +1259,7 @@ GLOBAL_DOLLAR_CURRENCIES = Lens(
         ),
         Indicator(
             id="yen", title="Japanese Yen · yen per dollar", short="Yen", unit="",
-            color="#FB7185", series_id="DEXJPUS", limit=2600,
+            color="#FB7185", series_id="DEXJPUS", limit=2600, market_price=True,
             rule=narrative.fx_yoy("The yen", weaker_when_up=True),
             context=("How many yen one dollar buys — a rising number means a WEAKER "
                      "yen. Japan's currency anchors Asia's funding markets; a violent "
@@ -1261,7 +1267,7 @@ GLOBAL_DOLLAR_CURRENCIES = Lens(
         ),
         Indicator(
             id="yuan", title="Chinese Yuan · yuan per dollar", short="Yuan", unit="",
-            color="#FBBF24", series_id="DEXCHUS", limit=2600,
+            color="#FBBF24", series_id="DEXCHUS", limit=2600, market_price=True,
             rule=narrative.fx_yoy("The yuan", weaker_when_up=True),
             context=("How many yuan one dollar buys — a rising number means a WEAKER "
                      "yuan. Beijing manages this rate; a deliberate slide makes Chinese "

@@ -38,7 +38,9 @@ def _fetch_history(entry, dry_run, fixture_cache):
                                 os.environ["EIA_API_KEY"], max(ind.limit, 2000),
                                 ind.eia_col)
     if ind.source == "yahoo":
-        return yahoo.gold_history()  # the only Yahoo series (gold, GC=F)
+        if ind.series_id != "XAUUSD":  # gold (GC=F) is the only Yahoo series we fetch
+            raise ValueError(f"no Yahoo prediction fetch wired for {ind.series_id}")
+        return yahoo.gold_history()
     return fred.fetch_observations(ind.series_id, os.environ["FRED_API_KEY"],
                                    FRED_FULL_LIMIT, ind.units_transform)
 

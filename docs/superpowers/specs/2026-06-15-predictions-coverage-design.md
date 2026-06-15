@@ -182,11 +182,12 @@ what genuinely has a safe/stressed reading.**
 > full-coverage form: market prices are predicted too, flagged so they carry a disclaimer and stay
 > out of the headline edge number. Final state:
 >
-> - **Roster 59 → 92.** Lifted the neutral-lens skip and the `ASSET_PRICE_LIKE` *exclusion*, and
->   allowed `source="yahoo"`. Now predicted: all info macro (23), the **scoreboard** (S&P, oil,
->   gold, BTC, ETH), **FX** (€/¥/¥uan), **commodities** (copper, broad). Each entry carries two
->   flags: `descriptive` (no badge: info rule OR neutral lens) and `market_price` (tradeable price:
->   scoreboard / FX / commodity index).
+> - **Roster 59 → 92.** Lifted the neutral-lens skip and the asset-price exclusion, and allowed
+>   `source="yahoo"`. Now predicted: all info macro (23), the **scoreboard** (S&P, oil, gold, BTC,
+>   ETH), **FX** (€/¥/¥uan), **commodities** (copper, broad). Each entry carries two flags:
+>   `descriptive` (no badge: info rule OR neutral lens) and `market_price` (a tradeable price —
+>   scoreboard via its neutral lens, FX/commodity via a `market_price` field on the config
+>   Indicator so the flag travels with the series, per the post-review fix).
 > - **`predict.py`/`runner.py`** fetch Yahoo gold and stamp `descriptive`+`market_price` onto each
 >   open/graded entry.
 > - **Edge-stat split (#1b)** in `ledger.py`: skill / direction / status computed over **signal**

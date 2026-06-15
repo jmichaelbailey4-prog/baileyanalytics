@@ -24,19 +24,6 @@ EXTRA_EXCLUDE = {
     # e.g. "economic/cost-of-money/fed-funds",
 }
 
-# Tradeable *prices* outside the neutral scoreboard: FX rates and commodity-price
-# indices. We forecast these (like the scoreboard), but flag them market_price so
-# the surface carries a market-price disclaimer and the headline edge stat holds
-# them out — next week's price move is the one thing honest models can't call, so
-# the band speaks and we never claim skill on it.
-ASSET_PRICE_LIKE = {
-    "global/global-dollar-currencies/euro",
-    "global/global-dollar-currencies/yen",
-    "global/global-dollar-currencies/yuan",
-    "energy/energy-commodities/copper",
-    "energy/energy-commodities/broad-commodities",
-}
-
 
 # Synthetic probe series: 40 years of monthly dates, gently trending + wavy so
 # level/YoY/trend rules all see plausible numbers. Only the *status token* is
@@ -85,5 +72,5 @@ def build_roster():
                 entries.append(RosterEntry(
                     key, cat["id"], lens.id, ind,
                     descriptive=neutral or _is_info_rule(ind.rule),
-                    market_price=neutral or key in ASSET_PRICE_LIKE))
+                    market_price=neutral or ind.market_price))
     return entries

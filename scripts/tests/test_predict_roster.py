@@ -53,14 +53,25 @@ class TestRoster(unittest.TestCase):
         self.assertTrue(by_key["markets/market-liquidity/fed-balance-sheet"].descriptive)
         self.assertFalse(by_key["economic/cost-of-living/cpi"].descriptive)
 
-    def test_asset_price_like_now_predicted_and_flagged_market(self):
+    def test_market_price_series_predicted_and_flagged(self):
         # FX rates + commodity-price indices are forecast too, flagged
-        # market_price (they read as price targets, so they get the disclaimer
-        # and are held out of the edge stat).
+        # market_price (via the config Indicator field) so they get the
+        # disclaimer and are held out of the edge stat.
         by_key = {e.key: e for e in self.entries}
-        for key in roster.ASSET_PRICE_LIKE:
+        for key in ("global/global-dollar-currencies/euro",
+                    "global/global-dollar-currencies/yen",
+                    "global/global-dollar-currencies/yuan",
+                    "energy/energy-commodities/copper",
+                    "energy/energy-commodities/broad-commodities"):
             self.assertIn(key, self.keys)
             self.assertTrue(by_key[key].market_price, key)
+
+    def test_market_price_flag_comes_from_config(self):
+        # The flag travels with the series definition (config.py is the single
+        # source of truth) — not a hardcoded key-set in the roster module.
+        self.assertFalse(hasattr(roster, "ASSET_PRICE_LIKE"))
+        by_key = {e.key: e for e in self.entries}
+        self.assertFalse(by_key["economic/cost-of-living/cpi"].market_price)
 
     def test_banking_and_non_fetchable_sources_excluded(self):
         self.assertFalse(any(e.category == "banking" for e in self.entries))
