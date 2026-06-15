@@ -1,13 +1,19 @@
 """Which indicators get predictions: derived from lenses.config by rule.
 
-Rule (spec 2026-06-15-predictions-coverage §2): we forecast nearly every
-published series, badge-driving or not — coverage and badge-scoring are
-orthogonal. Rostered iff the indicator's source is fred/eia with a real
-fetchable route, its lens is not neutral (asset scoreboard / crypto), its
-category is not banking (quarterly FDIC — needs FDIC fetch plumbing, deferred),
-and it isn't an asset/market *price* (FX, commodity indices — the contested
-Tier C, gated below). Info-only ("descriptive") series ARE rostered now and
-flagged `descriptive=True`; we forecast them without claiming a badge."""
+Rule (spec 2026-06-15-predictions-coverage): we forecast nearly every published
+series, badge-driving or not — coverage and badge-scoring are orthogonal. As of
+2026-06-15 (Michael: predict everything, even neutral / info-only) the only
+hold-outs are the ones we can't yet *fetch* or honestly grade:
+  - banking (quarterly FDIC) — needs FDIC fetch plumbing (next increment);
+  - computed / injected series (rate-expectations spread, profit-share, …) and
+    crypto-structure (CoinGecko, accumulated history) — not a plain fetch;
+  - non-FRED/EIA/Yahoo sources (IMF annual — infeasible; GSCPI, EPU) — need
+    fetch plumbing;
+  - EIA series with no route (generation shares — computed).
+Each rostered entry is flagged `descriptive` (carries no badge: info-only OR a
+neutral lens) and `market_price` (a tradeable price: the scoreboard, FX, or a
+commodity index — gets a not-investment-advice note on the surface and is held
+out of the headline *edge* stat)."""
 
 from dataclasses import dataclass
 
@@ -18,11 +24,11 @@ EXTRA_EXCLUDE = {
     # e.g. "economic/cost-of-money/fed-funds",
 }
 
-# Market/asset *prices* that happen to carry an info rule: FX rates and
-# commodity-price indices. Forecastable, but near-random-walk and a dated public
-# number reads as a price target — same integrity question as the scoreboard
-# (see spec §4, DECISIONS-PENDING #1). Excluded pending Michael's asset-price
-# call; enabling Tier C = empty this set (and lift the NEUTRAL_LENSES skip).
+# Tradeable *prices* outside the neutral scoreboard: FX rates and commodity-price
+# indices. We forecast these (like the scoreboard), but flag them market_price so
+# the surface carries a market-price disclaimer and the headline edge stat holds
+# them out — next week's price move is the one thing honest models can't call, so
+# the band speaks and we never claim skill on it.
 ASSET_PRICE_LIKE = {
     "global/global-dollar-currencies/euro",
     "global/global-dollar-currencies/yen",
@@ -57,7 +63,8 @@ class RosterEntry:
     category: str
     lens_id: str
     indicator: object  # the lenses.config Indicator
-    descriptive: bool = False  # info-only series: forecast it, but it carries no badge
+    descriptive: bool = False    # carries no badge (info-only or a neutral lens)
+    market_price: bool = False   # a tradeable price (scoreboard / FX / commodity index)
 
 
 def build_roster():
@@ -66,18 +73,17 @@ def build_roster():
         if cat["id"] == "banking":
             continue
         for lens in cat["lenses"]:
-            if lens.id in narrative.NEUTRAL_LENSES:
-                continue
+            neutral = lens.id in narrative.NEUTRAL_LENSES
             for ind in lens.indicators:
-                if ind.source not in ("fred", "eia"):
-                    continue
+                if ind.source not in ("fred", "eia", "yahoo"):
+                    continue  # coingecko/computed/imf/nyfed/epu: not a plain fetch
                 if ind.source == "eia" and not ind.eia_route:
                     continue  # computed/injected (generation shares)
                 key = f"{cat['id']}/{lens.id}/{ind.id}"
-                if key in EXTRA_EXCLUDE or key in ASSET_PRICE_LIKE:
+                if key in EXTRA_EXCLUDE:
                     continue
-                # Info-only series are now rostered (coverage != scoring); we tag
-                # them descriptive so the surfaces don't imply a badge for them.
-                entries.append(RosterEntry(key, cat["id"], lens.id, ind,
-                                           descriptive=_is_info_rule(ind.rule)))
+                entries.append(RosterEntry(
+                    key, cat["id"], lens.id, ind,
+                    descriptive=neutral or _is_info_rule(ind.rule),
+                    market_price=neutral or key in ASSET_PRICE_LIKE))
     return entries

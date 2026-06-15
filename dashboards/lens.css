@@ -164,6 +164,7 @@ p.lede strong{color:var(--text);font-weight:600}
 .predict .pred-line{font-size:.95rem}
 .predict .pred-range{color:var(--muted);font-size:.85rem}
 .predict .pred-why{color:var(--muted);font-size:.85rem;margin-top:.3rem}
+.predict .pred-note{color:var(--dim);font-size:.8rem;font-style:italic;margin-top:.35rem}
 .predict .pred-last{margin-top:.55rem;font-size:.85rem;color:var(--muted);border-top:1px dashed var(--border);padding-top:.55rem}
 .predict .pred-last a{color:var(--blue);text-decoration:none}
 .predict .pred-last a:hover{text-decoration:underline}

@@ -12,6 +12,8 @@
     housing: "Housing & Real Estate", global: "Global Economy",
     business: "Corporate & Business Health", banking: "Banking System Health" };
   const pct = x => `${Math.round(x * 100)}%`;
+  // Edge stats (skill/direction) can be null before any signal series is graded.
+  const pctn = x => (x == null ? "&mdash;" : pct(Math.max(x, 0)));
   // MONTHS + fmtDue mirror predict.js — keep in sync (house rule). Note the
   // shape differs on purpose: predict.js returns "due ~Jun 5" (standalone);
   // here it returns "~Jun 5" and the call site adds the "· due " prefix.
@@ -35,8 +37,9 @@
   function renderOpen(open) {
     const preds = (open && open.predictions) || [];
     if (!preds.length) return;
-    const moves = preds.filter(p => p.implied_status && p.current_status
-      && p.implied_status !== p.current_status).length;
+    const isMove = p => !p.descriptive && p.implied_status && p.current_status
+      && p.implied_status !== p.current_status;
+    const moves = preds.filter(isMove).length;
     document.getElementById("open-sec").hidden = false;
     const moveCopy = moves
       ? ` ${moves === 1 ? "One of them implies" : moves + " of them imply"} a status change if it lands — ${moves === 1 ? "it is" : "those are"} flagged below.` : "";
@@ -46,7 +49,7 @@
     const rows = preds.slice().sort((a, b) => (a.due || "").localeCompare(b.due || ""));
     document.getElementById("open").innerHTML = rows.map(p => {
       const range = `${esc(fmtVal(p.lo, p.unit, p.value_format))}–${esc(fmtVal(p.hi, p.unit, p.value_format))}`;
-      const move = p.implied_status && p.current_status && p.implied_status !== p.current_status
+      const move = isMove(p)
         ? ` <span class="badge ${esc(p.implied_status)}">&rarr; ${esc(p.implied_status)}</span>` : "";
       const due = p.due ? ` · due ${esc(fmtDue(p.due))}` : "";
       return `<a class="track-row" href="${esc(p.href)}">
@@ -76,7 +79,9 @@
         `Every one was published before the number existed.`;
     }
     document.getElementById("calibration").textContent = pct(tr.calibration);
-    document.getElementById("skill").textContent = pct(Math.max(tr.skill, 0));
+    // Skill is the edge over signal series; "pending" until one is graded.
+    document.getElementById("skill").textContent =
+      tr.skill == null ? "pending" : pct(Math.max(tr.skill, 0));
     const cats = Object.entries(tr.categories || {});
     if (cats.length) {
       document.getElementById("cats-sec").hidden = false;
@@ -85,8 +90,8 @@
         <th class="num">Direction</th><th class="num">Skill vs naive</th></tr></thead><tbody>` +
         cats.map(([c, b]) => `<tr><td>${esc(TITLES[c] || c)}</td><td class="num">${b.graded}</td>
           <td class="num">${b.graded ? pct(b.calibration) : "—"}</td>
-          <td class="num">${b.graded ? pct(b.direction) : "—"}</td>
-          <td class="num">${b.graded ? pct(Math.max(b.skill, 0)) : "—"}</td></tr>`).join("") +
+          <td class="num">${b.graded ? pctn(b.direction) : "—"}</td>
+          <td class="num">${b.graded ? pctn(b.skill) : "—"}</td></tr>`).join("") +
         `</tbody></table>`;
     }
     const feed = (recent && recent.feed) || [];

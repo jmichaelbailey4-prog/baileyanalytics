@@ -23,10 +23,18 @@
     if (unit.length > 1 && /[a-z]/i.test(unit[0])) return `${sign}${num} ${unit}`;
     return `${sign}${num}${unit}`;
   }
+  function marketNote(p) {
+    // Tradeable prices (scoreboard, FX, commodity indices): the band is what
+    // history suggests around the current level — never a directional call.
+    if (!p.market_price) return "";
+    return `<div class="pred-note">A market price — the band is the range history suggests around
+      today&rsquo;s level, not a directional call or investment advice.</div>`;
+  }
   function statusPhrase(p) {
-    // Descriptive (info-only) series carry no badge — forecast them without
-    // implying one. "info" means the lens treats this number as descriptive.
-    if (!p.implied_status || p.implied_status === "unknown" || p.implied_status === "info") return "";
+    // Descriptive series carry no badge (info levels, or a neutral lens like the
+    // scoreboard) — forecast them without implying one.
+    if (p.descriptive || !p.implied_status || p.implied_status === "unknown"
+        || p.implied_status === "info") return "";
     const badge = `<span class="badge ${esc(p.implied_status)}">${esc(p.implied_status)}</span>`;
     return p.implied_status !== p.current_status
       ? ` — would tip this signal to ${badge}`
@@ -49,7 +57,7 @@
       <div class="pred-head">Next print <span class="pred-due">${esc(fmtDue(p.due))}</span></div>
       <div class="pred-line">We expect <strong>~${esc(fmtVal(p.point, p.unit, p.value_format))}</strong>
         <span class="pred-range">(likely ${range})</span>${statusPhrase(p)}</div>
-      <div class="pred-why">${esc(p.why || "")}</div>${lastCall(g)}</div>`;
+      <div class="pred-why">${esc(p.why || "")}</div>${marketNote(p)}${lastCall(g)}</div>`;
   }
   document.addEventListener("lens:rendered", async function (ev) {
     const lensId = ev.detail && ev.detail.id;

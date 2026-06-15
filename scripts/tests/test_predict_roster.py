@@ -17,9 +17,25 @@ class TestRoster(unittest.TestCase):
         self.assertIn("markets/market-risk-sentiment/hy-spread", self.keys)
         self.assertIn("housing/housing-affordability/mortgage-rate", self.keys)
 
-    def test_neutral_lenses_excluded(self):
-        self.assertFalse(any(e.lens_id in ("market-scoreboard", "crypto-structure")
-                             for e in self.entries))
+    def test_scoreboard_now_predicted_and_flagged(self):
+        # Michael 2026-06-15: predict everything, even neutral. The scoreboard
+        # (S&P/oil/gold/BTC/ETH) is now rostered, flagged descriptive (no badge)
+        # and market_price (gets the not-advice note + held out of the edge stat).
+        by_key = {e.key: e for e in self.entries}
+        for ind_id in ("sp500", "oil", "gold", "btc", "eth"):
+            e = by_key.get(f"markets/market-scoreboard/{ind_id}")
+            self.assertIsNotNone(e, ind_id)
+            self.assertTrue(e.descriptive and e.market_price, ind_id)
+
+    def test_yahoo_gold_included(self):
+        gold = next(e for e in self.entries if e.key == "markets/market-scoreboard/gold")
+        self.assertEqual(gold.indicator.source, "yahoo")
+
+    def test_crypto_structure_not_in_config_roster(self):
+        # crypto-structure is built outside config.CATEGORIES, so it isn't
+        # reachable here (predicting it needs CoinGecko/accumulated-history
+        # plumbing — a next increment).
+        self.assertFalse(any(e.lens_id == "crypto-structure" for e in self.entries))
 
     def test_info_macro_indicators_now_included(self):
         # Coverage != scoring (spec 2026-06-15-predictions-coverage §2): info-only
@@ -37,16 +53,21 @@ class TestRoster(unittest.TestCase):
         self.assertTrue(by_key["markets/market-liquidity/fed-balance-sheet"].descriptive)
         self.assertFalse(by_key["economic/cost-of-living/cpi"].descriptive)
 
-    def test_asset_price_like_info_series_still_excluded(self):
-        # FX rates + commodity-price indices read as price targets — held out
-        # pending the asset-price decision (spec §4, DECISIONS-PENDING #1).
+    def test_asset_price_like_now_predicted_and_flagged_market(self):
+        # FX rates + commodity-price indices are forecast too, flagged
+        # market_price (they read as price targets, so they get the disclaimer
+        # and are held out of the edge stat).
+        by_key = {e.key: e for e in self.entries}
         for key in roster.ASSET_PRICE_LIKE:
-            self.assertNotIn(key, self.keys)
+            self.assertIn(key, self.keys)
+            self.assertTrue(by_key[key].market_price, key)
 
-    def test_banking_and_non_fred_eia_excluded(self):
+    def test_banking_and_non_fetchable_sources_excluded(self):
         self.assertFalse(any(e.category == "banking" for e in self.entries))
+        # predict.py can fetch fred/eia/yahoo; coingecko/computed/imf/nyfed/epu
+        # need plumbing and stay out for now.
         for e in self.entries:
-            self.assertIn(e.indicator.source, ("fred", "eia"))
+            self.assertIn(e.indicator.source, ("fred", "eia", "yahoo"))
 
     def test_computed_eia_routes_excluded(self):
         # renewables-share etc. have no eia_route; they're injected/computed
@@ -61,11 +82,11 @@ class TestRoster(unittest.TestCase):
         self.assertIn("economic/job-market/unemployment", self.keys)
 
     def test_roster_is_reasonably_sized(self):
-        # ~82 after the Tier A coverage extension (59 badge-drivers + ~23 info
-        # macro series); guard both that the extension landed and that we didn't
-        # accidentally sweep in banking / asset prices / non-fetcher sources.
-        self.assertGreater(len(self.entries), 70)
-        self.assertLess(len(self.entries), 100)
+        # ~92 after full coverage (59 badge-drivers + ~23 info macro + scoreboard
+        # + FX + commodities); guard both that the extension landed and that we
+        # didn't accidentally sweep in banking / non-fetchable sources.
+        self.assertGreater(len(self.entries), 85)
+        self.assertLess(len(self.entries), 105)
 
     def test_keys_unique(self):
         self.assertEqual(len(self.keys), len(self.entries))

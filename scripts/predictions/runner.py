@@ -9,7 +9,7 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
-from lenses import brief, build, config, eia, fred, util
+from lenses import brief, build, config, eia, fred, util, yahoo
 
 from . import backtest, cadence, explain, grade, ledger, models
 
@@ -37,6 +37,8 @@ def _fetch_history(entry, dry_run, fixture_cache):
         return eia.fetch_series(ind.eia_route, ind.eia_facets, ind.eia_freq,
                                 os.environ["EIA_API_KEY"], max(ind.limit, 2000),
                                 ind.eia_col)
+    if ind.source == "yahoo":
+        return yahoo.gold_history()  # the only Yahoo series (gold, GC=F)
     return fred.fetch_observations(ind.series_id, os.environ["FRED_API_KEY"],
                                    FRED_FULL_LIMIT, ind.units_transform)
 
@@ -112,7 +114,8 @@ def _make_open_entry(entry, cleaned, cad, champ_rec):
         "prev_value": values[-1],
         "why": explain.why(name, cad, values, ind.short),
         "implied_status": implied_status, "current_status": current_status,
-        "descriptive": entry.descriptive,  # info-only: forecast it, but it carries no badge
+        "descriptive": entry.descriptive,    # carries no badge (info / neutral lens)
+        "market_price": entry.market_price,  # tradeable price -> market-price note + held out of edge stat
         "title": ind.title, "short": ind.short,
         "lens_title": _lens_title(entry),
         "href": brief.lens_href(entry.category, entry.lens_id),

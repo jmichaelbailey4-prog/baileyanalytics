@@ -90,23 +90,26 @@ def track_record(graded):
         n = len(rows)
         if not n:
             return {"graded": 0}
-        s_err = sum(e["grade"]["abs_error"] for e in rows)
-        s_naive = sum(e["grade"]["naive_error"] for e in rows)
-        # Status accuracy is only meaningful for badge-driving series: a
-        # descriptive (info) series predicts info -> info, so status_hit is
-        # trivially True and would inflate the figure. Exclude them from the
-        # status bucket (None when there are no scored rows). Calibration and
-        # skill stay over all rows — band coverage and error-vs-naive are
-        # meaningful for any series. (See DECISIONS-PENDING #1b re: whether
-        # descriptive rows should also be split out of the headline skill.)
-        scored = [e for e in rows if not e.get("descriptive")]
+        # Calibration (did the actual land in our band?) and the graded count are
+        # honest for every series, so they span all rows. The *edge* stats —
+        # skill vs naive, direction, status — only mean something for badge-driving
+        # signal series; descriptive / market-price forecasts (info levels, asset
+        # prices) are coverage, not edge, and are held out of them so they don't
+        # drag the headline toward a coin-flip (DECISIONS-PENDING #1b). `coverage`
+        # records how many of the graded rows were that kind.
+        signal = [e for e in rows if not e.get("descriptive")]
+        sn = len(signal)
+        s_err = sum(e["grade"]["abs_error"] for e in signal)
+        s_naive = sum(e["grade"]["naive_error"] for e in signal)
         return {
             "graded": n,
+            "coverage": n - sn,
             "calibration": sum(1 for e in rows if e["grade"]["hit"]) / n,
-            "direction": sum(1 for e in rows if e["grade"]["direction_hit"]) / n,
-            "status": (sum(1 for e in scored if e["grade"]["status_hit"]) / len(scored)
-                       if scored else None),
-            "skill": (1.0 - s_err / s_naive) if s_naive > 0 else 0.0,
+            "direction": (sum(1 for e in signal if e["grade"]["direction_hit"]) / sn
+                          if sn else None),
+            "status": (sum(1 for e in signal if e["grade"]["status_hit"]) / sn
+                       if sn else None),
+            "skill": (1.0 - s_err / s_naive) if s_naive > 0 else (0.0 if sn else None),
         }
     cats = {}
     for e in graded:

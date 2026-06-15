@@ -175,7 +175,36 @@ arbitrary" feel the site avoids, and it's a large narrative change for negative 
 The §2 orthogonality split gets the coverage win without it: **predict descriptively, badge only
 what genuinely has a safe/stressed reading.**
 
-## 7. What's implemented on this branch (uncontested slice — Tier A)
+## 7. What's implemented on this branch
+
+> **Decision (Michael, 2026-06-15): predict everything reachable, even neutral / info-only, and
+> split the edge stat (#1b).** So the branch now goes past the Tier A slice below to the honest
+> full-coverage form: market prices are predicted too, flagged so they carry a disclaimer and stay
+> out of the headline edge number. Final state:
+>
+> - **Roster 59 → 92.** Lifted the neutral-lens skip and the `ASSET_PRICE_LIKE` *exclusion*, and
+>   allowed `source="yahoo"`. Now predicted: all info macro (23), the **scoreboard** (S&P, oil,
+>   gold, BTC, ETH), **FX** (€/¥/¥uan), **commodities** (copper, broad). Each entry carries two
+>   flags: `descriptive` (no badge: info rule OR neutral lens) and `market_price` (tradeable price:
+>   scoreboard / FX / commodity index).
+> - **`predict.py`/`runner.py`** fetch Yahoo gold and stamp `descriptive`+`market_price` onto each
+>   open/graded entry.
+> - **Edge-stat split (#1b)** in `ledger.py`: skill / direction / status computed over **signal**
+>   (non-descriptive) rows; calibration + graded span all; new `coverage` count. `track-record.js`
+>   shows skill "pending" until a signal series grades and renders null edge cells as "—".
+> - **Surfaces:** `predict.js` suppresses the badge clause for descriptive forecasts and adds a
+>   *market-price* disclaimer note; `track-record.js` open-list never shows a move badge for a
+>   descriptive forecast; the Track Record "deliberately not predicted" paragraph + skill note are
+>   rewritten to describe the new treatment honestly.
+> - **Still out (fetch plumbing / infeasible, not integrity):** banking (FDIC), computed spreads,
+>   crypto-structure (CoinGecko + accumulated history — not in `config.CATEGORIES`), IMF (annual),
+>   GSCPI/EPU. These are the next increment.
+>
+> The original Tier-A-only writeup below is kept for the reasoning; the integrity argument in §2
+> (coverage ≠ scoring; empirical bands; honest 0-skill on prices) is exactly what makes predicting
+> the scoreboard non-theater.
+
+### (original) uncontested slice — Tier A
 
 1. **`scripts/predictions/roster.py`** — the blanket info-only exclusion is removed; info-only
    FRED/EIA series in non-banking, non-neutral lenses are now rostered. A new documented

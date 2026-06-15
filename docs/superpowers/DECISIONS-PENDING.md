@@ -7,7 +7,13 @@ the recommended option; contested work is stubbed/flag-gated so a different call
 
 ---
 
-## #1 — Predict asset/market prices? (the crux of the predictions phase)
+> **Update 2026-06-15 (Michael's review):** approved all "done & ready" items. Decided
+> **#1 = predict everything, even neutral / info-only** (overriding my "keep excluded" lean) and
+> **#1b = yes, split the edge stat**. Both are now **implemented on the branch** (see "RESOLVED"
+> notes inline). #2 (banking) stays a next increment; #3 (hero copy) deferred unless trivial; #4
+> Cloudflare receive-routing **done by Michael**. Branch is being fully prepared before any merge.
+
+## #1 — Predict asset/market prices? (the crux of the predictions phase) — RESOLVED: predict them
 
 **Fork.** Should the prediction system cover tradeable prices — the markets scoreboard (S&P, oil,
 gold, BTC, ETH), crypto structure, FX (EUR/JPY/CNY), and commodity-price indices (copper, broad
@@ -30,12 +36,17 @@ commodities)? Full design + tradeoffs in `specs/2026-06-15-predictions-coverage-
 Henry Hub) under severity rules — so "we don't predict prices" isn't currently true; it's really
 "not the scoreboard/crypto." Whatever you choose, we should reconcile the public copy to match.
 
-**Done meanwhile:** Tier A shipped (info macro series now predicted, 59→82). Asset-price-like
-series are flag-gated (`roster.ASSET_PRICE_LIKE` + `narrative.NEUTRAL_LENSES`); enabling C2 later
-= empty those gates + build the segregated-stats/UI/disclaimer. Track Record copy left unchanged
-(still accurate under C1).
+**RESOLVED — implemented (the honest "C2-lite" form Michael chose):** every reachable series is
+now forecast, including the **scoreboard (S&P/oil/gold/BTC/ETH), FX, and commodities** (roster
+59→**92**). They are flagged `market_price`, which (a) attaches a *"a market price — the band is the
+range history suggests around today's level, not a directional call or investment advice"* note on
+the prediction block, and (b) holds them **out of the headline skill/direction edge stat** (#1b) so
+coin-flips never dilute the macro record — while their **bands are still graded** for calibration,
+which is honest and on-brand. Track Record copy rewritten to describe this. Still **not** predicted
+(need fetch plumbing / infeasible, not integrity): banking (FDIC), computed spreads,
+crypto-structure (CoinGecko/accumulated history), IMF (annual), GSCPI/EPU.
 
-## #1b — Should descriptive (info) forecasts count toward the headline skill stat?
+## #1b — Should descriptive (info) forecasts count toward the headline skill stat? — RESOLVED: split out
 
 **Fork.** Tier A adds 23 *descriptive* forecasts (Fed balance sheet, inventories, etc.). These are
 smooth — the naive guess is hard to beat — so each scores ~0 *skill* (though ~80% *calibration*,
@@ -48,12 +59,13 @@ macro edge). (b) **Compute the headline skill/calibration over *signal* (non-des
 only, and show descriptive forecasts in their own labeled group + count** (most representative of
 what "skill" means here). (c) Drop the skill stat entirely (overcorrection).
 
-**My recommendation:** **(b).** The headline should measure forecasting *edge*, which lives in the
-signal series; descriptive forecasts are coverage, not edge, and deserve their own framing. **Not
-implemented** — it needs `descriptive` plumbed through `open.json` → the graded ledger →
-`track-record.json` aggregation (small, but a real change with a presentation choice I shouldn't
-make for you). On this branch the headline currently follows option (a). I'll switch to (b) on your
-word. If you'd rather ship Tier A with (a) for now, it's honest as-is.
+**RESOLVED — implemented (b).** `descriptive` + `market_price` are plumbed `open.json` → graded
+ledger → `track-record.json`. **skill / direction / status** are now computed over **signal**
+(badge-driving) series only; **calibration and the graded count span all** (band coverage is honest
+for everything); a new **`coverage`** count records how many graded rows were descriptive/market.
+`track-record.js` shows skill as "pending" until a signal series grades, and the skill stat's note
+says it excludes market prices. Result: adding 33 descriptive/market forecasts no longer drags the
+headline edge number toward a coin flip.
 
 ## #2 — Banking & computed series (Tier B) — next increment?
 
