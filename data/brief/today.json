@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-15T15:53:35Z",
+  "generated_at": "2026-06-15T20:02:12Z",
   "transitions": [],
   "top_moves": [
     {
@@ -111,60 +111,6 @@
       "dir": "up"
     },
     {
-      "lens_id": "market-risk-sentiment",
-      "lens_title": "Risk Sentiment",
-      "category": "markets",
-      "href": "/dashboards/markets/risk-sentiment.html",
-      "headline": "Markets are calm \u2014 volatility and credit stress are low.",
-      "accent": "#FB7185",
-      "sparkline": [
-        17.48,
-        18.87,
-        19.5,
-        18.92,
-        19.31,
-        18.71,
-        18.02,
-        17.83,
-        18.81,
-        16.89,
-        16.99,
-        18.29,
-        17.38,
-        17.39,
-        17.08,
-        17.19,
-        18.38,
-        17.99,
-        17.87,
-        17.26,
-        18.43,
-        17.82,
-        18.06,
-        17.44,
-        16.76,
-        16.7,
-        16.59,
-        17.01,
-        16.29,
-        15.74,
-        15.32,
-        16.05,
-        15.77,
-        16.06,
-        15.4,
-        21.51,
-        18.92,
-        19.87,
-        22.22,
-        19.44
-      ],
-      "stat_label": "VIX",
-      "stat_value": "19.44",
-      "delta": "2.78",
-      "dir": "down"
-    },
-    {
       "lens_id": "consumer-income-savings",
       "lens_title": "Household Income & Savings",
       "category": "consumer",
@@ -271,6 +217,60 @@
       "stat_value": "$4.15",
       "delta": "$0.16",
       "dir": "down"
+    },
+    {
+      "lens_id": "market-risk-sentiment",
+      "lens_title": "Risk Sentiment",
+      "category": "markets",
+      "href": "/dashboards/markets/risk-sentiment.html",
+      "headline": "Markets are calm \u2014 volatility and credit stress are low.",
+      "accent": "#FB7185",
+      "sparkline": [
+        18.87,
+        19.5,
+        18.92,
+        19.31,
+        18.71,
+        18.02,
+        17.83,
+        18.81,
+        16.89,
+        16.99,
+        18.29,
+        17.38,
+        17.39,
+        17.08,
+        17.19,
+        18.38,
+        17.99,
+        17.87,
+        17.26,
+        18.43,
+        17.82,
+        18.06,
+        17.44,
+        16.76,
+        16.7,
+        16.59,
+        17.01,
+        16.29,
+        15.74,
+        15.32,
+        16.05,
+        15.77,
+        16.06,
+        15.4,
+        21.51,
+        18.92,
+        19.87,
+        22.22,
+        19.44,
+        17.68
+      ],
+      "stat_label": "VIX",
+      "stat_value": "17.68",
+      "delta": "1.76",
+      "dir": "down"
     }
   ],
   "lenses": [
@@ -337,14 +337,6 @@
       "href": "/dashboards/consumer/income-savings.html",
       "status": "elevated",
       "headline": "Household cushions are thin \u2014 savings or real incomes are stretched."
-    },
-    {
-      "lens_id": "consumer-sentiment",
-      "lens_title": "Consumer Sentiment",
-      "category": "consumer",
-      "href": "/dashboards/consumer/sentiment.html",
-      "status": "alert",
-      "headline": "Consumers are deeply pessimistic \u2014 sentiment is near record lows."
     },
     {
       "lens_id": "bank-asset-quality",
@@ -543,13 +535,13 @@
     "ok": 17,
     "watch": 3,
     "elevated": 8,
-    "alert": 3,
+    "alert": 2,
     "neutral": 2
   },
   "verdict": {
     "status": "watch",
     "shape": "contained-pressure",
-    "sentence": "The economy is holding up, but not without strain: energy and commodity costs are squeezing budgets and household finances are stretched thin, while banks are solid and markets are calm."
+    "sentence": "The economy is holding up, but not without strain: energy and commodity costs are squeezing budgets, while banks are solid and markets are calm."
   },
   "watching": [
     {
@@ -596,14 +588,6 @@
     }
   ],
   "pressure": [
-    {
-      "lens_id": "consumer-sentiment",
-      "lens_title": "Consumer Sentiment",
-      "category": "consumer",
-      "href": "/dashboards/consumer/sentiment.html",
-      "status": "alert",
-      "headline": "Consumers are deeply pessimistic \u2014 sentiment is near record lows."
-    },
     {
       "lens_id": "energy-oil-fuels",
       "lens_title": "Oil & Fuels",
@@ -720,9 +704,9 @@
     {
       "category": "consumer",
       "title": "The Consumer",
-      "status": "elevated",
+      "status": "watch",
       "href": "/dashboards/consumer/",
-      "sentence": "Household finances are stretched thin."
+      "sentence": "Households are keeping up, but cracks are starting to show."
     },
     {
       "category": "banking",
