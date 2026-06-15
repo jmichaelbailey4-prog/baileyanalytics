@@ -1,18 +1,36 @@
 {
-  "generated_at": "2026-06-12T20:58:43Z",
-  "since": "2026-06-12T14:20:55Z",
-  "graded": 1,
+  "generated_at": "2026-06-15T22:07:34Z",
+  "since": "2026-06-12T14:20:31Z",
+  "graded": 3,
+  "coverage": 0,
   "calibration": 1.0,
-  "direction": 1.0,
+  "direction": 0.6666666666666666,
   "status": 1.0,
-  "skill": -0.19225000000000292,
+  "skill": 0.07869217664788197,
   "categories": {
     "business": {
       "graded": 1,
+      "coverage": 0,
       "calibration": 1.0,
       "direction": 1.0,
       "status": 1.0,
       "skill": -0.19225000000000292
+    },
+    "economic": {
+      "graded": 1,
+      "coverage": 0,
+      "calibration": 1.0,
+      "direction": 0.0,
+      "status": 1.0,
+      "skill": 0.0
+    },
+    "global": {
+      "graded": 1,
+      "coverage": 0,
+      "calibration": 1.0,
+      "direction": 1.0,
+      "status": 1.0,
+      "skill": 0.6097491448118586
     }
   }
 }
