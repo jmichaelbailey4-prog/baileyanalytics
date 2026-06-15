@@ -96,3 +96,31 @@ branded address, and the distribution-phase spec already chose it as the receive
 change is needed (the mailto already works once the route exists), so I built **no** contact form
 — that would be unused, contested surface. Exact setup steps are in the batch (section C). Optional
 later: Gmail "Send mail as" to *reply* from the branded address (needs an SMTP relay; note only).
+
+---
+
+## #5 — What's the highest-value next bet? (general-improvement assessment)
+
+Not a blocking decision — a recommendation for where the *next* session's effort goes, toward the
+north star (a standalone resource with a regular audience). I weighed the candidates rather than
+defaulting to the backlog:
+
+- **Synthesis / the "why" layer (audit item #4) — my pick.** The audit's single biggest *content*
+  gap: the site states 33 isolated facts; the connections (energy costs → inflation →
+  sentiment is one story, not three reads) and a one-line *why* per mover are left to the reader.
+  Every daily product people actually read (Axios Macro, Chartr, the Daily Shot) leads with one
+  human sentence of context. Now that distribution shipped, this is what makes the daily habit
+  *worth* having. **High value, high effort, and genuinely creative** — it needs a brainstorm with
+  you (editorial voice, how much causal claim is honest), so the right next step is a *spec*, not
+  code. I can draft it on your word.
+- **Perspective slicer (3-role)** — defer (audit agrees): deepens engagement for an audience that
+  doesn't exist yet. After synthesis + distribution traction.
+- **Deeper data coverage (Treasury/Census/BLS)** — defer (audit agrees): breadth is complete at 8
+  categories; no evidence more coverage is the gap, strong evidence distribution/synthesis is.
+- **Finish the distribution loop** — highest *latent* value but **blocked on you**: the email digest
+  can't send until Buttondown approves the account (section C). Nothing for me to build there.
+
+**Recommendation:** once you've cleared the Buttondown + Cloudflare actions, point the next session
+at a **synthesis-layer spec** (cross-category narrative + per-mover "why"). It's the highest-value
+buildable bet and the natural successor the roadmap and audit both name. I deliberately built none
+of it now — it's creative work that needs your input first.
