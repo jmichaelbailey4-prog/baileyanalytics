@@ -68,6 +68,11 @@ main{max-width:48rem;margin:0 auto}
 /* Hub pages (dashboards index + category hubs) — shared with hub.js */
 h1{font-size:clamp(2rem,4.5vw,2.75rem);font-weight:600;letter-spacing:-.02em;line-height:1.15;margin-bottom:.75rem}
 h1 .badge,.cat-head .badge{vertical-align:middle;flex:none}
+/* category-hub heading: badge sits beside the <h1> (not inside it) so the
+   heading's accessible name + SEO snippet stay clean ("Economic Lenses",
+   not "Economic Lenses watch"). */
+.cat-head{display:flex;align-items:center;gap:.75rem;flex-wrap:wrap;margin-bottom:.75rem}
+.cat-head h1{margin-bottom:0}
 /* category prefix on cross-category cards (Today's Brief) */
 .hub-cat{color:var(--dim);font-weight:600}
 p.lede{color:var(--muted);font-size:1.0625rem;max-width:40rem;margin-bottom:2.25rem}

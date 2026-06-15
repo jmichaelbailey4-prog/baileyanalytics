@@ -31,7 +31,7 @@
     const lead = t0
       ? `<a class="brief-strip-lead" href="${t0.href}">${esc(t0.lens_title)}: ${esc(t0.from_status)} &rarr; ${esc(t0.to_status)}</a>`
       : "";
-    return `<a class="brief-strip-counts" href="/dashboards/brief.html">${esc(countsText(data.status_counts || {}))}</a>${lead}`;
+    return `<a class="brief-strip-counts" href="/dashboards/brief.html#pressure">${esc(countsText(data.status_counts || {}))}</a>${lead}`;
   }
 
   window.loadBrief = async function (elId, opts) {

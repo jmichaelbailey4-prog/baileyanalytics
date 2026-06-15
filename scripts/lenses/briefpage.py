@@ -125,7 +125,7 @@ def _pressure(rows):
             f'<span class="att-read">{escape(p["headline"])}</span></a>' for p in group)
         groups.append(f'<div class="att-group" id="{status}">'
                       f'<div class="brief-sec-label">{escape(label)}</div>{items}</div>')
-    return ('<section><h2 class="sec-head">Where the pressure is</h2>'
+    return ('<section id="pressure"><h2 class="sec-head">Where the pressure is</h2>'
             '<p class="sec-sub">Everything currently warranting attention, worst first.</p>'
             + "".join(groups) + "</section>")
 
@@ -202,7 +202,7 @@ def render_brief(today, og_image, archive_date=None, prev_date=None, next_date=N
     if next_date:
         nav_parts.append(
             f'<a href="/dashboards/brief/{next_date}.html">{escape(_date_label(next_date))} &rarr;</a>')
-    archive_nav = '<nav class="archive-nav">' + " · ".join(nav_parts) + "</nav>"
+    archive_nav = '<nav class="archive-nav" aria-label="Brief archive">' + " · ".join(nav_parts) + "</nav>"
 
     h1 = "Today&rsquo;s Brief" if not archive_date else escape(f"Brief for {label}")
 
@@ -233,8 +233,8 @@ def render_brief(today, og_image, archive_date=None, prev_date=None, next_date=N
   {_jsonld(today, canonical, og_url)}
 </head>
 <body>
-  <nav class="wordmark"><a href="/">Bailey Analytics</a></nav>
-  <nav class="top-nav"><a href="/dashboards/brief.html"{brief_aria}>Today&#39;s Brief</a><a href="/dashboards/">Dashboards</a><a href="/dashboards/track-record.html">Track Record</a><a href="/about.html">About</a></nav>
+  <nav class="wordmark" aria-label="Bailey Analytics home"><a href="/">Bailey Analytics</a></nav>
+  <nav class="top-nav" aria-label="Primary"><a href="/dashboards/brief.html"{brief_aria}>Today&#39;s Brief</a><a href="/dashboards/">Dashboards</a><a href="/dashboards/track-record.html">Track Record</a><a href="/about.html">About</a></nav>
   <main>
     {banner}
     <h1>{h1}</h1>
@@ -300,8 +300,8 @@ def render_archive_index(manifest):
   <link rel="stylesheet" href="/dashboards/lens.css">
 </head>
 <body>
-  <nav class="wordmark"><a href="/">Bailey Analytics</a></nav>
-  <nav class="top-nav"><a href="/dashboards/brief.html">Today&#39;s Brief</a><a href="/dashboards/">Dashboards</a><a href="/dashboards/track-record.html">Track Record</a><a href="/about.html">About</a></nav>
+  <nav class="wordmark" aria-label="Bailey Analytics home"><a href="/">Bailey Analytics</a></nav>
+  <nav class="top-nav" aria-label="Primary"><a href="/dashboards/brief.html">Today&#39;s Brief</a><a href="/dashboards/">Dashboards</a><a href="/dashboards/track-record.html">Track Record</a><a href="/about.html">About</a></nav>
   <main>
     <div class="hub-back"><a href="/dashboards/brief.html">&larr; Today&rsquo;s Brief</a></div>
     <h1>Brief Archive</h1>

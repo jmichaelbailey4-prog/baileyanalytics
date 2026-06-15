@@ -74,6 +74,9 @@
         }
         @media (max-width: 640px) {
             nav.top-nav { position: static; justify-content: center; gap: 1rem; flex-wrap: wrap; padding-top: .25rem; }
+            /* nav is in normal flow at this width, so the hero needs no extra
+               clearance above it (the desktop fixed-nav offset would double-space). */
+            main { padding-top: 0; }
         }
 
         nav.top-nav a {
@@ -105,6 +108,10 @@
             width: 100%;
             max-width: 60rem;
             animation: fadeIn 600ms ease-out both;
+            /* Clear the fixed top-right nav: the hero <h1> is centered and would
+               otherwise sit in the same vertical band as the nav links, which
+               crowds them at ~1440px and overlaps them outright at ~768px. */
+            padding-top: 3.25rem;
         }
 
         /* ---- Hero ---- */
@@ -268,8 +275,11 @@
             font-size: 0.72rem;
             color: var(--faint);
         }
-        .foot a { color: var(--muted); text-decoration: none; border-bottom: 1px solid transparent; }
-        .foot a:hover { border-bottom-color: var(--muted); }
+        /* Underlined at rest, not color-only: these source links sit inside a
+           paragraph of text, so color alone fails axe's link-in-text-block. */
+        .foot a { color: var(--muted); text-decoration: underline; text-decoration-thickness: 1px;
+            text-underline-offset: 2px; text-decoration-color: var(--border); }
+        .foot a:hover { color: var(--text); text-decoration-color: var(--muted); }
 
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(8px); }
@@ -330,7 +340,7 @@
     </style>
 </head>
 <body>
-    <nav class="top-nav"><a href="/dashboards/brief.html">Today&#39;s Brief</a><a href="/dashboards/">Dashboards</a><a href="/dashboards/track-record.html">Track Record</a><a href="/about.html">About</a></nav>
+    <nav class="top-nav" aria-label="Primary"><a href="/dashboards/brief.html">Today&#39;s Brief</a><a href="/dashboards/">Dashboards</a><a href="/dashboards/track-record.html">Track Record</a><a href="/about.html">About</a></nav>
     <main>
         <div class="hero">
             <h1>Bailey Analytics</h1>
@@ -417,7 +427,7 @@
                     <div class="read">${esc(sentence || "")}</div>
                     ${sparkline(lens.sparkline, lens.accent)}
                     <div class="stat">${esc(stat.k)} <b>${esc(stat.v)}</b>${delta}</div>
-                    <div class="chip-val" style="color:${lens.accent}">${esc(stat.v)}</div>
+                    <div class="chip-val">${esc(stat.v)}</div>
                     <div class="chip-k">${esc(stat.k)}</div>
                 </a>`;
         }

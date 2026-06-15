@@ -12,6 +12,11 @@
     housing: "Housing & Real Estate", global: "Global Economy",
     business: "Corporate & Business Health", banking: "Banking System Health" };
   const pct = x => `${Math.round(x * 100)}%`;
+  const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  function fmtDue(iso) {
+    if (!iso || iso.length < 10) return "";
+    return `~${MONTHS[+iso.slice(5, 7) - 1]} ${+iso.slice(8, 10)}`;
+  }
   // Mirrors lens.js fmtVal / build.py _fmt — keep in sync (house rule).
   function fmtVal(v, unit, vf) {
     if (v == null || isNaN(v)) return "—";
@@ -22,9 +27,36 @@
     if (unit.length > 1 && /[a-z]/i.test(unit[0])) return `${sign}${num} ${unit}`;
     return `${sign}${num}${unit}`;
   }
+  // The open predictions — shown whether or not anything has been graded yet, so
+  // the page is never an empty flagship: it's the public list of calls on record.
+  function renderOpen(open) {
+    const preds = (open && open.predictions) || [];
+    if (!preds.length) return;
+    const moves = preds.filter(p => p.implied_status && p.current_status
+      && p.implied_status !== p.current_status).length;
+    document.getElementById("open-sec").hidden = false;
+    const moveCopy = moves
+      ? ` ${moves === 1 ? "One of them implies" : moves + " of them imply"} a status change if it lands — ${moves === 1 ? "it is" : "those are"} flagged below.` : "";
+    document.getElementById("open-intro").textContent =
+      `${preds.length} predictions are open right now — each published before its number existed, ` +
+      `each awaiting its print and a public grade.${moveCopy}`;
+    const rows = preds.slice().sort((a, b) => (a.due || "").localeCompare(b.due || ""));
+    document.getElementById("open").innerHTML = rows.map(p => {
+      const range = `${esc(fmtVal(p.lo, p.unit, p.value_format))}–${esc(fmtVal(p.hi, p.unit, p.value_format))}`;
+      const move = p.implied_status && p.current_status && p.implied_status !== p.current_status
+        ? ` <span class="badge ${esc(p.implied_status)}">&rarr; ${esc(p.implied_status)}</span>` : "";
+      const due = p.due ? ` · due ${esc(fmtDue(p.due))}` : "";
+      return `<a class="track-row" href="${esc(p.href)}">
+        <span class="track-ind">${esc(p.title)}</span>
+        <span class="track-said">we expect ~${esc(fmtVal(p.point, p.unit, p.value_format))}
+          (likely ${range})${due}</span>${move}</a>`;
+    }).join("");
+  }
   document.addEventListener("DOMContentLoaded", async function () {
-    const [tr, recent] = await Promise.all([
-      get("/data/predictions/track-record.json"), get("/data/predictions/recent.json")]);
+    const [tr, recent, open] = await Promise.all([
+      get("/data/predictions/track-record.json"), get("/data/predictions/recent.json"),
+      get("/data/predictions/open.json")]);
+    renderOpen(open);
     if (!tr || !tr.graded) {
       document.getElementById("since").textContent =
         "The first predictions are open now — grades land as the prints arrive. Check back this week.";

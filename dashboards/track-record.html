@@ -21,8 +21,8 @@
   <noscript><style>.js-only{display:none}</style></noscript>
 </head>
 <body>
-  <nav class="wordmark"><a href="/">Bailey Analytics</a></nav>
-  <nav class="top-nav"><a href="/dashboards/brief.html">Today&#39;s Brief</a><a href="/dashboards/">Dashboards</a><a href="/dashboards/track-record.html" aria-current="page">Track Record</a><a href="/about.html">About</a></nav>
+  <nav class="wordmark" aria-label="Bailey Analytics home"><a href="/">Bailey Analytics</a></nav>
+  <nav class="top-nav" aria-label="Primary"><a href="/dashboards/brief.html">Today&#39;s Brief</a><a href="/dashboards/">Dashboards</a><a href="/dashboards/track-record.html" aria-current="page">Track Record</a><a href="/about.html">About</a></nav>
 
   <main class="track">
     <h1>Track Record</h1>
@@ -41,6 +41,12 @@
           <p class="track-note">The &ldquo;skill&rdquo; score: how much our predictions beat the
             naive guess. Recomputable by anyone from the public ledger.</p></div>
       </div>
+    </section>
+
+    <section id="open-sec" hidden>
+      <h2 class="sec-head">On the record now</h2>
+      <p class="track-sub" id="open-intro"></p>
+      <div id="open"></div>
     </section>
 
     <section id="cats-sec" hidden><h2 class="sec-head">By category</h2><div id="cats"></div></section>
