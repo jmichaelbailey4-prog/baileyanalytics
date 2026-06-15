@@ -112,6 +112,7 @@ def _make_open_entry(entry, cleaned, cad, champ_rec):
         "prev_value": values[-1],
         "why": explain.why(name, cad, values, ind.short),
         "implied_status": implied_status, "current_status": current_status,
+        "descriptive": entry.descriptive,  # info-only: forecast it, but it carries no badge
         "title": ind.title, "short": ind.short,
         "lens_title": _lens_title(entry),
         "href": brief.lens_href(entry.category, entry.lens_id),

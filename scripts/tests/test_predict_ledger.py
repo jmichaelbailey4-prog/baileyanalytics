@@ -93,6 +93,28 @@ class TestAggregates(unittest.TestCase):
         self.assertAlmostEqual(tr["status"], 0.5)
         self.assertEqual(tr["categories"]["economic"]["graded"], 2)
 
+    def test_descriptive_rows_excluded_from_status_only(self):
+        # A descriptive (info) series predicts info->info: status_hit is
+        # trivially True and must NOT inflate the status figure, but its band
+        # calibration / skill stay in the aggregate.
+        graded = [
+            dict(_entry(grade=_grade()),
+                 grade=dict(_grade(), hit=True, status_hit=False,
+                            abs_error=0.1, naive_error=0.2)),
+            dict(_entry(target="2026-07-01"), descriptive=True,
+                 grade=dict(_grade(), hit=True, status_hit=True,
+                            abs_error=0.1, naive_error=0.2)),
+        ]
+        tr = ledger.track_record(graded)
+        self.assertEqual(tr["graded"], 2)             # both counted overall
+        self.assertAlmostEqual(tr["calibration"], 1.0)  # both hit their band
+        self.assertAlmostEqual(tr["status"], 0.0)     # only the scored row counts (it missed)
+
+    def test_status_none_when_all_descriptive(self):
+        graded = [dict(_entry(grade=_grade()), descriptive=True,
+                       grade=dict(_grade(), status_hit=True))]
+        self.assertIsNone(ledger.track_record(graded)["status"])
+
     def test_recent_shape(self):
         graded = [dict(_entry(grade=_grade()), grade=dict(_grade()))]
         recent = ledger.recent(graded, feed_size=50)

@@ -92,11 +92,20 @@ def track_record(graded):
             return {"graded": 0}
         s_err = sum(e["grade"]["abs_error"] for e in rows)
         s_naive = sum(e["grade"]["naive_error"] for e in rows)
+        # Status accuracy is only meaningful for badge-driving series: a
+        # descriptive (info) series predicts info -> info, so status_hit is
+        # trivially True and would inflate the figure. Exclude them from the
+        # status bucket (None when there are no scored rows). Calibration and
+        # skill stay over all rows — band coverage and error-vs-naive are
+        # meaningful for any series. (See DECISIONS-PENDING #1b re: whether
+        # descriptive rows should also be split out of the headline skill.)
+        scored = [e for e in rows if not e.get("descriptive")]
         return {
             "graded": n,
             "calibration": sum(1 for e in rows if e["grade"]["hit"]) / n,
             "direction": sum(1 for e in rows if e["grade"]["direction_hit"]) / n,
-            "status": sum(1 for e in rows if e["grade"]["status_hit"]) / n,
+            "status": (sum(1 for e in scored if e["grade"]["status_hit"]) / len(scored)
+                       if scored else None),
             "skill": (1.0 - s_err / s_naive) if s_naive > 0 else 0.0,
         }
     cats = {}

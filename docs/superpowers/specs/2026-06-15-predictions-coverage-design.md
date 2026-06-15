@@ -55,7 +55,8 @@ surfaces don't — but they need two small honesty tweaks for descriptive series
 
 ## 3. Current exclusion breakdown (measured, 2026-06-15)
 
-`scripts/_roster_analysis.py` (committed, throwaway) classifies all 114:
+A one-off classification of `config.py` against the roster rules (run during this session)
+breaks the 114 down as:
 
 | Reason excluded | Count | Disposition |
 |---|---:|---|

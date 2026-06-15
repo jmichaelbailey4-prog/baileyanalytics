@@ -12,6 +12,9 @@
     housing: "Housing & Real Estate", global: "Global Economy",
     business: "Corporate & Business Health", banking: "Banking System Health" };
   const pct = x => `${Math.round(x * 100)}%`;
+  // MONTHS + fmtDue mirror predict.js — keep in sync (house rule). Note the
+  // shape differs on purpose: predict.js returns "due ~Jun 5" (standalone);
+  // here it returns "~Jun 5" and the call site adds the "· due " prefix.
   const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
   function fmtDue(iso) {
     if (!iso || iso.length < 10) return "";
