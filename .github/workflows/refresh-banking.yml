@@ -23,6 +23,11 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Install pipeline dependencies
+        # refresh_lenses.py imports Pillow (og cards) at module level since the
+        # distribution phase, so even --banking needs the requirements installed.
+        run: pip install -r requirements.txt
+
       - name: Fetch latest FDIC data (banking lenses)
         # No API key needed — FDIC BankFind is public. Full re-fetch each run so
         # restated Call Reports self-heal (~3 min; quarterly aggregation, no cache).
@@ -32,17 +37,13 @@ jobs:
         if: ${{ success() || failure() }}
         run: python scripts/refresh_lenses.py --brief
 
-      - name: Rebuild The State of Things (no network)
-        if: ${{ success() || failure() }}
-        run: python scripts/refresh_lenses.py --state
-
       - name: Commit and push if data changed
         if: ${{ success() || failure() }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          if [[ -n "$(git status --porcelain data/)" ]]; then
-            git add data/
+          if [[ -n "$(git status --porcelain data/ feed.xml sitemap.xml og/ dashboards/ index.html)" ]]; then
+            git add data/ feed.xml sitemap.xml og/ dashboards/ index.html
             git commit -m "chore: refresh banking data ($(date -u +%Y-%m-%d))"
             git push
           else

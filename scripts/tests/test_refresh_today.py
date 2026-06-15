@@ -17,12 +17,17 @@ class TestMergedBriefRefresh(unittest.TestCase):
         tmp = pathlib.Path(self._td.name)
         self._orig_dir = refresh_lenses.BRIEF_OUT_DIR
         self._orig_feed = refresh_lenses.FEED_PATH
+        self._orig_root = refresh_lenses.REPO_ROOT
         refresh_lenses.BRIEF_OUT_DIR = tmp / "brief"
         refresh_lenses.FEED_PATH = tmp / "feed.xml"
+        # The publication pass (_publish_brief) bakes under REPO_ROOT —
+        # redirect it too so tests never touch real repo files.
+        refresh_lenses.REPO_ROOT = tmp
 
     def tearDown(self):
         refresh_lenses.BRIEF_OUT_DIR = self._orig_dir
         refresh_lenses.FEED_PATH = self._orig_feed
+        refresh_lenses.REPO_ROOT = self._orig_root
         self._td.cleanup()
 
     def read_today(self):

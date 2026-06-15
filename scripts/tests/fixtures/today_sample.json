@@ -1,0 +1,46 @@
+{
+  "generated_at": "2026-06-12T15:17:15Z",
+  "verdict": {"status": "watch", "shape": "contained-pressure",
+              "sentence": "Most of the economy is on solid footing — banks are solid — but energy costs are squeezing budgets."},
+  "transitions": [
+    {"lens_id": "energy-electricity", "lens_title": "Electricity & the Grid", "category": "energy",
+     "href": "/dashboards/energy/electricity.html", "from_status": "watch", "to_status": "elevated",
+     "direction": "worsening", "headline": "Electricity prices are well above last year."}
+  ],
+  "top_moves": [
+    {"lens_id": "energy-commodities", "lens_title": "Commodities & Materials", "category": "energy",
+     "href": "/dashboards/energy/commodities.html", "headline": "Commodity costs are surging.",
+     "accent": "#FB923C", "sparkline": [10.0, 11.0, 12.5, 30.2],
+     "stat_label": "Food", "stat_value": "30.20%", "delta": "18.60%", "dir": "up"}
+  ],
+  "watching": [
+    {"key": "energy/energy-electricity/retail-electricity", "indicator": "retail-electricity",
+     "lens": "energy-electricity", "category": "energy",
+     "title": "Retail Electricity · Residential", "lens_title": "Electricity & the Grid",
+     "due": "2026-06-25", "point_fmt": "18.97¢/kWh", "implied_status": "watch",
+     "current_status": "elevated", "change": true, "href": "/dashboards/energy/electricity.html"},
+    {"key": "economic/fiscal-health/debt-gdp", "indicator": "debt-gdp", "lens": "fiscal-health",
+     "category": "economic", "title": "Federal Debt · % of GDP", "lens_title": "Fiscal Health",
+     "due": "2026-09-01", "point_fmt": "122.56%", "implied_status": "elevated",
+     "current_status": "elevated", "change": false, "href": "/dashboards/fiscal-health.html"}
+  ],
+  "pressure": [
+    {"lens_id": "consumer-sentiment", "lens_title": "Consumer Sentiment", "category": "consumer",
+     "href": "/dashboards/consumer/sentiment.html", "status": "alert",
+     "headline": "Consumers are deeply pessimistic — sentiment is near record lows."},
+    {"lens_id": "cost-of-living", "lens_title": "The Cost of Living", "category": "economic",
+     "href": "/dashboards/cost-of-living.html", "status": "elevated",
+     "headline": "Inflation is still hot — well above the Fed's target."},
+    {"lens_id": "business-credit", "lens_title": "Business Credit", "category": "business",
+     "href": "/dashboards/business/credit.html", "status": "watch",
+     "headline": "Business credit bears watching — conditions are tightening at the margin."}
+  ],
+  "categories": [
+    {"category": "economic", "title": "Economic Lenses", "status": "watch",
+     "href": "/dashboards/economic/", "sentence": "Mostly steady — a corner or two of the economy runs hot."},
+    {"category": "banking", "title": "Banking System Health", "status": "ok",
+     "href": "/dashboards/banking/", "sentence": "Banks are solid — capital, profits, and loan books look healthy."}
+  ],
+  "status_counts": {"ok": 17, "watch": 3, "elevated": 8, "alert": 3, "neutral": 2},
+  "lenses": []
+}

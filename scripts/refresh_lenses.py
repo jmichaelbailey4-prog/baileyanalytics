@@ -15,7 +15,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))  # make `lenses` importable
 from datetime import date
 
-from lenses import brief, build, coingecko, config, eia, epu, fdic, feed, fred, imf, nyfed, today, util, yahoo
+from lenses import brief, briefpage, build, coingecko, config, eia, epu, fdic, feed, fred, imf, nyfed, ogcard, regions, sitemap, staticread, today, util, yahoo
 
 OUT_DIR = Path(__file__).resolve().parent.parent / "data" / "lenses"
 BANK_OUT_DIR = Path(__file__).resolve().parent.parent / "data" / "banking"
@@ -40,6 +40,7 @@ BRIEF_FIXTURE = Path(__file__).resolve().parent / "tests" / "fixtures" / "brief_
 # Repo root, so GitHub Pages serves it at /feed.xml (the workflow commit step
 # must include this path alongside data/).
 FEED_PATH = Path(__file__).resolve().parent.parent / "feed.xml"
+REPO_ROOT = Path(__file__).resolve().parent.parent
 
 # category -> the module-global out-dir whose index.json feeds the brief.
 # 'economic' lives in data/lenses/ (not data/economic/).
@@ -670,8 +671,186 @@ def refresh_brief(dry_run):
             except Exception as exc:  # noqa: BLE001 - feed is additive
                 print(f"WARN: feed build failed ({exc}); keeping previous feed.xml",
                       file=sys.stderr)
+            # Publication surfaces: baked pages, og cards, sitemap, home patch.
+            # Guarded separately — a bake hiccup must not read as a brief failure.
+            try:
+                _publish_brief(today_json)
+            except Exception as exc:  # noqa: BLE001 - publication is additive
+                print(f"WARN: brief publication failed ({exc}); keeping previous pages",
+                      file=sys.stderr)
+        # Static lens reads: patch every lens page's baked-read region.
+        # Outside if wrote: — lens data can change on days the brief digest
+        # doesn't, and content-aware patching makes it free.
+        try:
+            _patch_lens_pages()
+        except Exception as exc:  # noqa: BLE001 - static reads are additive
+            print(f"WARN: lens static reads failed ({exc})", file=sys.stderr)
     except Exception as exc:  # noqa: BLE001 - never break the run on a brief failure
         print(f"WARN: brief build failed ({exc}); keeping previous brief", file=sys.stderr)
+
+
+def _write_text_if_changed(path, text):
+    """Content-aware text write (HTML/XML twin of build.write_lens_file)."""
+    if path.exists():
+        try:
+            if path.read_text(encoding="utf-8") == text:
+                return False
+        except OSError:
+            pass
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(text, encoding="utf-8")
+    return True
+
+
+def _update_manifest(manifest, today_json):
+    """Append/replace today's entry; sorted by date ascending."""
+    day = (today_json.get("generated_at") or "")[:10]
+    verdict = today_json.get("verdict") or {}
+    entry = {"date": day, "status": verdict.get("status", "unknown"),
+             "sentence": verdict.get("sentence", "")}
+    out = [e for e in manifest if e.get("date") != day] + [entry]
+    out.sort(key=lambda e: e["date"])
+    return out
+
+
+def _patch_region_file(path, name, content):
+    """replace_region applied to a file; safe no-op when markers are missing."""
+    try:
+        text = path.read_text(encoding="utf-8")
+    except OSError:
+        return
+    new, changed = regions.replace_region(text, name, content)
+    if changed:
+        path.write_text(new, encoding="utf-8")
+
+
+def _publish_brief(today_json, root=None):
+    """Bake every publication surface for today's brief: dated JSON + archive
+    page + og card, the live brief.html, the archive index, the home-page
+    verdict/og patches, and the sitemap. Idempotent (content-aware writes), so
+    the backup cron and local reruns are free. og-card failure degrades to the
+    static site card; nothing here may raise (the caller guards anyway).
+    `root` is late-bound to REPO_ROOT so tests can redirect the module
+    attribute and never touch real repo files."""
+    from html import escape
+
+    root = root or REPO_ROOT
+    day = (today_json.get("generated_at") or "")[:10]
+    verdict = today_json.get("verdict") or {}
+    brief_dir = root / "data" / "brief"
+    pages_dir = root / "dashboards" / "brief"
+    og_dir = root / "og"
+
+    # 1. dated JSON (the day's API record; lets us re-render yesterday's page)
+    days_dir = brief_dir / "days"
+    days_dir.mkdir(parents=True, exist_ok=True)
+    build.write_lens_file(days_dir / f"{day}.json", today_json)
+
+    # 2. manifest
+    try:
+        manifest = json.loads((brief_dir / "_archive_index.json").read_text(encoding="utf-8"))
+    except (OSError, ValueError):
+        manifest = []
+    manifest = _update_manifest(manifest, today_json)
+    (brief_dir / "_archive_index.json").write_text(
+        json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
+    dates = [e["date"] for e in manifest]
+
+    # 3. og cards (site card once; daily card per publication day)
+    og_dir.mkdir(exist_ok=True)
+    if not (og_dir / "site.png").exists():
+        (og_dir / "site.png").write_bytes(ogcard.render_site_card())
+    og_image = "/og/site.png"
+    try:
+        card = ogcard.render_card(verdict.get("status", "unknown"),
+                                  verdict.get("sentence", ""),
+                                  briefpage._date_label(day))
+        (og_dir / f"brief-{day}.png").write_bytes(card)
+        og_image = f"/og/brief-{day}.png"
+    except Exception as exc:  # noqa: BLE001 - card is additive
+        print(f"WARN: og card failed ({exc}); using site card", file=sys.stderr)
+
+    # 4. today's pages: live brief.html + dated archive page
+    idx = dates.index(day)
+    prev_date = dates[idx - 1] if idx > 0 else None
+    _write_text_if_changed(root / "dashboards" / "brief.html",
+                           briefpage.render_brief(today_json, og_image=og_image))
+    pages_dir.mkdir(exist_ok=True)
+    _write_text_if_changed(pages_dir / f"{day}.html",
+                           briefpage.render_brief(today_json, og_image=og_image,
+                                                  archive_date=day, prev_date=prev_date))
+
+    # 5. (re-)render other archive pages: yesterday needs its new next-link, and
+    #    any day whose page is missing (an earlier bake that failed mid-run) is
+    #    healed from its stored JSON — so a gap never becomes a permanent 404 in
+    #    the sitemap/archive index. Healthy days are skipped (content-aware).
+    for i, d in enumerate(dates):
+        if d == day:
+            continue  # today's page was just written in step 4
+        page = pages_dir / f"{d}.html"
+        if d != prev_date and page.exists():
+            continue  # unchanged archive page with a current next-link
+        day_json_path = days_dir / f"{d}.json"
+        if not day_json_path.exists():
+            continue  # no stored data to re-render from
+        try:
+            data = json.loads(day_json_path.read_text(encoding="utf-8"))
+            p = dates[i - 1] if i > 0 else None
+            n = dates[i + 1] if i + 1 < len(dates) else None
+            og = (f"/og/brief-{d}.png" if (og_dir / f"brief-{d}.png").exists()
+                  else "/og/site.png")
+            _write_text_if_changed(
+                page, briefpage.render_brief(data, og_image=og, archive_date=d,
+                                             prev_date=p, next_date=n))
+        except (OSError, ValueError) as exc:
+            print(f"WARN: archive re-render failed for {d} ({exc})", file=sys.stderr)
+
+    # 6. archive index + sitemap
+    _write_text_if_changed(pages_dir / "index.html", briefpage.render_archive_index(manifest))
+    _write_text_if_changed(root / "sitemap.xml",
+                           sitemap.render_sitemap(sitemap.build_urls(dates)) + "\n")
+
+    # 7. home-page patches: baked verdict line + dated og image
+    if verdict.get("sentence"):
+        vstatus = verdict.get("status", "unknown")
+        line = (f'<a class="state-line" id="state-line" href="/dashboards/brief.html">'
+                f'<span class="pill {escape(vstatus)}">{escape(vstatus)}</span>'
+                f'<span class="state-sentence">{escape(verdict["sentence"])}</span></a>')
+        _patch_region_file(root / "index.html", "verdict-line", line)
+    _patch_region_file(root / "index.html", "og-image",
+                       f'<meta property="og:image" content="https://baileyanalytics.com{og_image}">')
+
+
+def _patch_lens_pages(root=None):
+    """Patch every lens page's baked-read region from its committed lens JSON.
+    Runs in the --brief pass (after all category passes), so one hook covers
+    all categories; content-aware, so quiet lenses produce no diff."""
+    root = root or REPO_ROOT
+    for category, out_dir in _brief_index_dirs().items():
+        for lens_file in sorted(out_dir.glob("*.json")):
+            if lens_file.name.startswith("_") or lens_file.name == "index.json":
+                continue
+            # write_outputs names each file "<lens id>.json", so the stem is the
+            # id — resolve the page (and the mtime gate) without parsing first.
+            page = root / brief.lens_href(category, lens_file.stem).lstrip("/")
+            if not page.exists():
+                continue
+            # Skip the parse + render when the page is at least as new as its
+            # data: only a lens JSON rewritten THIS run (newer mtime than the
+            # committed page) can change the baked fragment. The fragment depends
+            # solely on the JSON, so a newer page can never be stale.
+            try:
+                if page.stat().st_mtime >= lens_file.stat().st_mtime:
+                    continue
+            except OSError:
+                pass
+            try:
+                lens_json = json.loads(lens_file.read_text(encoding="utf-8"))
+                _patch_region_file(page, "baked-read",
+                                   staticread.render_fragment(lens_json))
+            except (ValueError, OSError) as exc:
+                print(f"WARN: static read failed for {lens_file.name}: {exc}",
+                      file=sys.stderr)
 
 
 def _load_open_predictions():

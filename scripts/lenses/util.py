@@ -1,8 +1,17 @@
 """Small pure helpers shared across the pipeline."""
 
-from datetime import date
+from datetime import date, datetime
 
 STATUS_ORDER = {"unknown": -1, "ok": 0, "watch": 1, "elevated": 2, "alert": 3}
+
+
+def human_date(iso_date, short=False):
+    """'YYYY-MM-DD' -> 'June 12, 2026' (short=False) or 'Jun 12, 2026' (short=True).
+    Locale-independent and Windows-safe (no %-d / %e). The single source of date
+    formatting for the brief page and the email digest."""
+    dt = datetime.strptime(iso_date, "%Y-%m-%d")
+    month = dt.strftime("%b") if short else dt.strftime("%B")
+    return f"{month} {dt.day}, {dt.year}"
 
 
 def thin_observations(raw_observations, keep_years=2, monthly_after_years=5):

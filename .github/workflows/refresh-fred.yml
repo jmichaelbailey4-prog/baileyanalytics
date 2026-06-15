@@ -85,13 +85,19 @@ jobs:
         if: ${{ success() || failure() }}
         run: python scripts/refresh_lenses.py --brief
 
+      - name: Send the daily email digest (Buttondown)
+        if: ${{ success() || failure() }}
+        env:
+          BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
+        run: python scripts/send_digest.py
+
       - name: Commit and push if data changed
         if: ${{ success() || failure() }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          if [[ -n "$(git status --porcelain data/ feed.xml)" ]]; then
-            git add data/ feed.xml
+          if [[ -n "$(git status --porcelain data/ feed.xml sitemap.xml og/ dashboards/ index.html)" ]]; then
+            git add data/ feed.xml sitemap.xml og/ dashboards/ index.html
             git commit -m "chore: refresh FRED data ($(date -u +%Y-%m-%d))"
             git push
           else
