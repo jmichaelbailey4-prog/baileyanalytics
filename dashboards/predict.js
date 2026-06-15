@@ -24,7 +24,9 @@
     return `${sign}${num}${unit}`;
   }
   function statusPhrase(p) {
-    if (!p.implied_status || p.implied_status === "unknown") return "";
+    // Descriptive (info-only) series carry no badge — forecast them without
+    // implying one. "info" means the lens treats this number as descriptive.
+    if (!p.implied_status || p.implied_status === "unknown" || p.implied_status === "info") return "";
     const badge = `<span class="badge ${esc(p.implied_status)}">${esc(p.implied_status)}</span>`;
     return p.implied_status !== p.current_status
       ? ` — would tip this signal to ${badge}`

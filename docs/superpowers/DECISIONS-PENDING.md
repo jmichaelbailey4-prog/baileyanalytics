@@ -1,0 +1,98 @@
+# Decisions pending Michael's review
+
+Running log from the autonomous session of **2026-06-15** (branch
+`autonomous-polish-predictions`). Each item: the fork, the options, **my pick + why**, and what
+I did in the meantime. Nothing here is deployed. Reversible work proceeded on the assumption of
+the recommended option; contested work is stubbed/flag-gated so a different call is cheap.
+
+---
+
+## #1 — Predict asset/market prices? (the crux of the predictions phase)
+
+**Fork.** Should the prediction system cover tradeable prices — the markets scoreboard (S&P, oil,
+gold, BTC, ETH), crypto structure, FX (EUR/JPY/CNY), and commodity-price indices (copper, broad
+commodities)? Full design + tradeoffs in `specs/2026-06-15-predictions-coverage-design.md` §4.
+
+**Options.**
+- **C1 — keep excluded (my pick, for now).** Predict every macro/physical *quantity*; don't
+  predict tradeable *prices*. Tier A (done) + Tier B (banking) already reaches ~82% coverage —
+  honestly "nearly all" — without the third rail. Keeps the credibility narrative and the headline
+  accuracy stat clean.
+- **C2 — predict them as segregated "typical-range" volatility envelopes.** Full coverage, walled
+  off from the macro accuracy stat, asset-specific disclaimer, framed as "we don't call direction."
+  On-brand ("0 skill on prices, by design — here's the proof") but a real mini-project + screenshot
+  risk + reverses public copy.
+- **C3 — predict them like everything else.** Rejected (dilutes the macro record; highest
+  perception risk).
+
+**My recommendation:** **C1 now; C2 as a fast-follow only if you want literal 100% coverage.**
+**Note the existing inconsistency:** we *already* predict energy fuel prices (WTI, gasoline, diesel,
+Henry Hub) under severity rules — so "we don't predict prices" isn't currently true; it's really
+"not the scoreboard/crypto." Whatever you choose, we should reconcile the public copy to match.
+
+**Done meanwhile:** Tier A shipped (info macro series now predicted, 59→82). Asset-price-like
+series are flag-gated (`roster.ASSET_PRICE_LIKE` + `narrative.NEUTRAL_LENSES`); enabling C2 later
+= empty those gates + build the segregated-stats/UI/disclaimer. Track Record copy left unchanged
+(still accurate under C1).
+
+## #1b — Should descriptive (info) forecasts count toward the headline skill stat?
+
+**Fork.** Tier A adds 23 *descriptive* forecasts (Fed balance sheet, inventories, etc.). These are
+smooth — the naive guess is hard to beat — so each scores ~0 *skill* (though ~80% *calibration*,
+honestly). When the next CI run grades them, they'll blend into the **Track Record headline skill
+number**, dragging it toward 0 and **understating our genuine edge on the badge-driving signal
+series**. (Calibration — % inside band — is unaffected; it stays ~80% by construction.)
+
+**Options.** (a) Include them in the headline (simplest; honest but conservative — undersells the
+macro edge). (b) **Compute the headline skill/calibration over *signal* (non-descriptive) series
+only, and show descriptive forecasts in their own labeled group + count** (most representative of
+what "skill" means here). (c) Drop the skill stat entirely (overcorrection).
+
+**My recommendation:** **(b).** The headline should measure forecasting *edge*, which lives in the
+signal series; descriptive forecasts are coverage, not edge, and deserve their own framing. **Not
+implemented** — it needs `descriptive` plumbed through `open.json` → the graded ledger →
+`track-record.json` aggregation (small, but a real change with a presentation choice I shouldn't
+make for you). On this branch the headline currently follows option (a). I'll switch to (b) on your
+word. If you'd rather ship Tier A with (a) for now, it's honest as-is.
+
+## #2 — Banking & computed series (Tier B) — next increment?
+
+**Fork.** Predict the 9 banking (quarterly FDIC) and 3 computed (rate-expectations spread,
+profit-share, hp-share) series? Integrity is fine; both need `predict.py` to fetch beyond FRED/EIA
+(FDIC fetch path; reconstruct injected series), and banking needs a per-series history-length
+viability gate (quarterly → ~9yrs min).
+
+**My recommendation:** **yes, as the next increment after you sign off the §2 direction** — it's
+the difference between 82% and ~94% coverage. Not in this branch because it touches the fetch layer
+(more than "reversible polish"). I can implement on a follow-up branch on your word.
+
+## #3 — Home hero verdict vs. brief verdict (audit quick win — editorial)
+
+**Fork.** The home hero sentence and the brief's verdict are currently **identical** (a reader who
+clicks through reads the same sentence twice). The audit suggested "home = short form, brief = full
+form." Producing a good short form is editorial, not mechanical.
+
+**Options.** (a) Author a distinct short-form verdict in the copy bank (`state.py`/`today.py`) —
+best result, but it's writing, and I shouldn't invent your editorial voice unreviewed. (b) Mechanically
+shorten (first clause / before the colon) — cheap but can read clipped. (c) Leave identical — the
+duplication is minor; arguably fine.
+
+**My recommendation:** **(a), but it needs your voice.** I've left it identical (option c) rather
+than ship a mechanical truncation that might read worse. If you want, I'll draft 2–3 short-form
+options in `state.py`'s copy bank for you to pick. Low urgency.
+
+## #4 — Contact email inbox (action is yours; see batch section C)
+
+**Fork.** `michael@baileyanalytics.com` is a live mailto on home + About, the Buttondown reply-to,
+and in the home JSON-LD — but no inbox exists, so mail to it **bounces**.
+
+**Options.** (a) **Cloudflare Email Routing** — free, receive-only, forward
+`michael@baileyanalytics.com` → `jmichaelbailey4@gmail.com`. (b) Contact form (Formspree / a CF
+Worker) — adds a surface + spam handling for no real gain on a personal-brand site. (c) Drop the
+address — loses a credibility/contactability touch and contradicts the distribution-phase design.
+
+**My recommendation:** **(a) Cloudflare Email Routing.** It's free, zero-code, preserves the
+branded address, and the distribution-phase spec already chose it as the receive path. No code
+change is needed (the mailto already works once the route exists), so I built **no** contact form
+— that would be unused, contested surface. Exact setup steps are in the batch (section C). Optional
+later: Gmail "Send mail as" to *reply* from the branded address (needs an SMTP relay; note only).
