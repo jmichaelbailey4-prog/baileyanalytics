@@ -45,7 +45,17 @@ jobs:
           if [[ -n "$(git status --porcelain data/ feed.xml sitemap.xml og/ dashboards/ index.html)" ]]; then
             git add data/ feed.xml sitemap.xml og/ dashboards/ index.html
             git commit -m "chore: refresh banking data ($(date -u +%Y-%m-%d))"
-            git push
+            # The daily refresh-fred job (and the backup cron) may push to main
+            # during our run, rejecting a bare push as non-fast-forward. Rebase
+            # onto the latest main and retry a few times to win the race.
+            for attempt in 1 2 3 4 5; do
+              if git push; then
+                echo "Pushed on attempt $attempt."
+                break
+              fi
+              echo "Push rejected (attempt $attempt) — rebasing onto latest main."
+              git pull --rebase origin main
+            done
           else
             echo "No data changes — skipping commit."
           fi
