@@ -42,7 +42,17 @@ jobs:
           if [[ -n "$(git status --porcelain data/predictions/)" ]]; then
             git add data/predictions/
             git commit -m "chore: weekly prediction tournament ($(date -u +%Y-%m-%d))"
-            git push
+            # Another workflow (the daily refresh-fred grade-and-predict) may push to
+            # main during our run, rejecting a bare push as non-fast-forward. Rebase
+            # onto the latest main and retry a few times to win the race.
+            for attempt in 1 2 3 4 5; do
+              if git push; then
+                echo "Pushed on attempt $attempt."
+                break
+              fi
+              echo "Push rejected (attempt $attempt) — rebasing onto latest main."
+              git pull --rebase origin main
+            done
           else
             echo "No model changes — skipping commit."
           fi
