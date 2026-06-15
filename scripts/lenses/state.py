@@ -262,7 +262,13 @@ def build_watching(open_predictions):
             return (0, 0 if dist > 0 else 1, -abs(dist), p.get("due") or "9999")
         return (1, 0, 0, p.get("due") or "9999")
 
-    ranked = sorted((p for p in open_predictions or []), key=_rank)[:WATCHING_CAP]
+    # Only badge-driving (signal) predictions belong in "what we're watching" —
+    # descriptive forecasts (info levels, and market prices like gold/the S&P)
+    # can't move the board, and must never surface as dated price targets in the
+    # flagship brief or the email digest (review of f14112a).
+    signal = [p for p in (open_predictions or [])
+              if not (p.get("descriptive") or p.get("market_price"))]
+    ranked = sorted(signal, key=_rank)[:WATCHING_CAP]
     return [{
         "key": p["key"], "indicator": p["indicator"], "lens": p["lens"],
         "category": p["category"], "title": p.get("title", ""),

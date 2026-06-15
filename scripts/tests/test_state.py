@@ -289,6 +289,18 @@ class TestWatching(unittest.TestCase):
         self.assertEqual([b["due"] for b in block],
                          ["2026-07-10", "2026-07-11", "2026-07-12"])
 
+    def test_descriptive_and_market_predictions_excluded_from_watching(self):
+        # Market prices / info levels can't move the board and must not surface
+        # as dated price targets in the brief or email digest.
+        signal = self._open("economic/recession-watch/jobless-claims", "watch", "ok", "2026-06-18")
+        gold = dict(self._open("markets/market-scoreboard/gold", "up", "flat", "2026-06-17"),
+                    descriptive=True, market_price=True)
+        fed = dict(self._open("markets/market-liquidity/fed-balance-sheet", "info", "info",
+                              "2026-06-16"), descriptive=True)
+        block = state.build_watching([gold, fed, signal])
+        keys = [b["key"] for b in block]
+        self.assertEqual(keys, ["economic/recession-watch/jobless-claims"])
+
     def test_build_state_carries_watching_when_given(self):
         indices = {"economic": {"status": "ok", "lenses": [
             {"id": "recession-watch", "title": "RW", "status": "ok", "headline_read": "x"}]}}

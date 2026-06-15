@@ -97,7 +97,7 @@ def track_record(graded):
         # prices) are coverage, not edge, and are held out of them so they don't
         # drag the headline toward a coin-flip (DECISIONS-PENDING #1b). `coverage`
         # records how many of the graded rows were that kind.
-        signal = [e for e in rows if not e.get("descriptive")]
+        signal = [e for e in rows if not (e.get("descriptive") or e.get("market_price"))]
         sn = len(signal)
         s_err = sum(e["grade"]["abs_error"] for e in signal)
         s_naive = sum(e["grade"]["naive_error"] for e in signal)
