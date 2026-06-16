@@ -222,7 +222,13 @@ def _build_crypto(dry_run, fetched):
             fresh = coingecko.crypto_market_structure()
         hist = _load_crypto_history()
         rotation = util.merge_series(hist.get("rotation"), fresh["rotation"])
-        dominance = util.merge_series(hist.get("dominance"), [fresh["dominance_point"]])
+        # A successful /global call can still omit BTC dominance (a degraded or
+        # rate-limited response) — value is then None. Don't merge that: the date
+        # key never recurs, so a null would persist forever in the accumulated
+        # history. Skip it and keep prior dominance (rotation still accumulates).
+        dom_point = fresh.get("dominance_point")
+        dom_new = [dom_point] if dom_point and dom_point.get("value") is not None else []
+        dominance = util.merge_series(hist.get("dominance"), dom_new)
         CRYPTO_HISTORY.parent.mkdir(parents=True, exist_ok=True)
         CRYPTO_HISTORY.write_text(
             json.dumps({"rotation": rotation, "dominance": dominance}, indent=2) + "\n",
@@ -904,9 +910,12 @@ def main(argv=None):
 
     code = 0
     if do_economic:
-        code = refresh_economic(args.dry_run)
-        if code:
-            return code
+        # Record a non-zero code but keep going, like every other category — a
+        # missing FRED key (economic runs first) must not abort the no-key
+        # categories (banking) or the brief in a full local run.
+        eco = refresh_economic(args.dry_run)
+        if eco:
+            code = eco
     if do_markets:
         mc = refresh_markets(args.dry_run)
         if mc:
