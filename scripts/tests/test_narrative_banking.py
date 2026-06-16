@@ -33,16 +33,6 @@ class TestChargeOffs(unittest.TestCase):
         self.assertEqual(s, "elevated")
 
 
-class TestCoverage(unittest.TestCase):
-    def test_comfortable_is_ok(self):
-        _, s = narrative.rule_coverage([("2024-12-31", 187)])
-        self.assertEqual(s, "ok")
-
-    def test_thin_is_elevated(self):
-        _, s = narrative.rule_coverage([("2024-12-31", 80)])
-        self.assertEqual(s, "elevated")
-
-
 class TestCreConcentration(unittest.TestCase):
     def test_above_flag_is_elevated(self):
         _, s = narrative.rule_cre_concentration([("2024-12-31", 320)])
@@ -112,19 +102,6 @@ class TestLoansDeposits(unittest.TestCase):
     def test_comfortable_is_ok(self):
         _, s = narrative.rule_loans_deposits([("2024-12-31", 66)])
         self.assertEqual(s, "ok")
-
-
-class TestLevelTrend(unittest.TestCase):
-    def test_short_history_reports_latest(self):
-        t, s = narrative.rule_level_trend([("2024-12-31", 5000.0)])
-        self.assertEqual(s, "ok")
-        self.assertIn("5,000", t)
-
-    def test_year_over_year_up(self):
-        obs = [("2023-12-31", 4000.0), ("2024-12-31", 5000.0)]
-        t, s = narrative.rule_level_trend(obs)
-        self.assertEqual(s, "ok")
-        self.assertIn("Up", t)
 
 
 class TestBankingHeadline(unittest.TestCase):

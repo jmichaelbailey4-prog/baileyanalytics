@@ -270,18 +270,6 @@ def rule_charge_offs(obs):
     return (f"Loan losses have reached {v:.2f}% — a meaningful drag on earnings.", "elevated")
 
 
-def rule_coverage(obs):
-    """Allowance coverage (allowance as % of noncurrent loans). Higher = safer."""
-    if not obs:
-        return _NO_DATA
-    v = obs[-1][1]
-    if v >= 150:
-        return (f"Reserves cover {v:.0f}% of problem loans — a comfortable cushion.", "ok")
-    if v >= 100:
-        return (f"Reserves cover {v:.0f}% of problem loans — adequate but not generous.", "watch")
-    return (f"Reserves cover only {v:.0f}% of problem loans — a thin cushion.", "elevated")
-
-
 def rule_cre_concentration(obs):
     """CRE loans as % of equity capital. >300 is the interagency 'concentration' flag."""
     if not obs:
@@ -358,22 +346,6 @@ def rule_loans_deposits(obs):
     if v >= 90:
         return (f"Banks have lent out {v:.0f}% of deposits — funding is stretched.", "watch")
     return (f"Banks have lent out {v:.0f}% of deposits — comfortable funding headroom.", "ok")
-
-
-def rule_level_trend(obs):
-    """Generic level metric ($000s) read as a year-over-year direction. Always 'ok' status."""
-    if not obs:
-        return _NO_DATA
-    v = obs[-1][1]
-    prior = _value_year_ago(obs)
-    if prior is None or prior == 0:
-        return (f"Latest reading: {v:,.0f}.", "ok")
-    pct = (v - prior) / abs(prior) * 100
-    if pct >= 5:
-        return (f"Up {pct:.0f}% from a year ago.", "ok")
-    if pct <= -5:
-        return (f"Down {abs(pct):.0f}% from a year ago.", "ok")
-    return ("Little changed from a year ago.", "ok")
 
 
 # --- Markets & Financial Conditions rules ---
