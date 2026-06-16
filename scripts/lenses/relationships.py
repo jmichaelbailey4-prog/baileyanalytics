@@ -1,6 +1,7 @@
 """The curated cross-category relationship map — the authored content behind the
 relationship narrative (synthesis.compose_relationships renders it; the grammar
-is gated by each edge's strength tier so a dishonest edge fails CI).
+is gated by each edge's strength tier so the common dishonest forms fail CI; the
+map is also human-reviewed — the diff is the review).
 
 WHY CURATED, NOT DATA-MINED: empirical macro relationships are not reliably
 derivable from this site's handful of series, and an auto-mined correlation

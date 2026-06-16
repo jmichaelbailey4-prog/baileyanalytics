@@ -21,19 +21,32 @@ tests — a template that violates an invariant fails CI.
 
 import statistics
 
+from . import util
+
 # --- honesty primitives ---------------------------------------------------
 
-# Verbs/phrases that assert a specific causal mechanism. NOTE: we ban the verb
-# participles "fueled"/"fueling" but NOT bare "fuel"/"fuels" — "fuel" is also a
-# domain noun (the co-occurrence sentence literally names it), so banning the
-# noun would make the linter trip on honest copy.
+# Verbs/phrases that assert a specific causal mechanism. This is a HEURISTIC
+# BACKSTOP, not a proof: a substring linter can't catch every causal phrasing in
+# English, so the curated relationship map is ALSO human-reviewed (the diff is the
+# review). The list covers the explicit connectives ("because"/"due to") and the
+# transitive macro verbs an author is most likely to reach for.
+# Two deliberate non-entries:
+#  * bare "fuel"/"fuels" — a domain noun the co-occurrence sentence names; we ban
+#    only the verb participles "fueled"/"fueling".
+#  * bare "as" — it is the *good* co-occurrence connector ("at the same time as").
 CAUSAL_TOKENS = (
+    # explicit causal connectives
     "driv", "because", "due to", "caused", "causing", "causes", "cause of",
+    "leads to", "led to", "thanks to", "owing to", "as a result", "result of",
+    "blamed", "blame", "behind the", "on the back of",
+    # transitive cause/effect verbs (stems chosen to avoid colliding with the
+    # layer's own vocabulary — e.g. "lower" is not a substring of "lowest")
     "fueled", "fueling", "fuelled", "fuelling", "spurred", "spurring",
-    "pushes", "pushing", "pushed", "leads to", "led to", "thanks to",
-    "owing to", "as a result", "result of", "blamed", "blame", "behind the",
-    "triggered", "triggering", "sparked", "sparking", "weighed on", "dragged",
-    "dragging", "lifted by", "boosted by", "propelled", "on the back of",
+    "pushes", "pushing", "pushed", "triggered", "triggering", "sparked",
+    "sparking", "weighed on", "dragged", "dragging", "drag ", "lifted by",
+    "boosted by", "boost", "propelled", "lower", "rais", "cool", "slow",
+    "erod", "weaken", "squeez", "curb", "stok", "dampen", "depress",
+    "feed into", "stem from", "stems from",
 )
 
 # Probability hedges that turn a bare empirical claim into an honest one.
@@ -97,7 +110,10 @@ def _fresh_extreme(values):
 
 def _outsized(values):
     """True when the latest step is large versus the variation of the prior
-    steps (the same z-logic that makes a series a 'mover', surfaced as prose)."""
+    steps (the same z-logic that makes a series a 'mover', surfaced as prose).
+    Keep the volatility definition (pstdev of the PRIOR steps) aligned with
+    brief.move_score, so the per-mover 'why' and the mover ranking agree on what
+    counts as outsized."""
     vals = _nums(values)
     if len(vals) < 4:
         return False
@@ -190,16 +206,6 @@ _SEV = {"watch": 1, "elevated": 2, "alert": 3}
 _NUM = {2: "Two", 3: "Three", 4: "Four", 5: "Five", 6: "Six", 7: "Seven", 8: "Eight"}
 
 
-def _join(items):
-    """Oxford-comma list join (mirrors state._join)."""
-    items = list(items)
-    if len(items) <= 1:
-        return "".join(items)
-    if len(items) == 2:
-        return f"{items[0]} and {items[1]}"
-    return ", ".join(items[:-1]) + f", and {items[-1]}"
-
-
 def cooccurrence(pressure_rows):
     """One honest co-occurrence sentence: the largest theme-cluster among today's
     pressure points, named with a count. '' when no theme reaches MIN_THEME.
@@ -225,20 +231,23 @@ def cooccurrence(pressure_rows):
     _, theme, nouns = best
     count = _NUM.get(len(nouns), str(len(nouns)))
     label = THEME_LABELS.get(theme, theme)
-    return f"{count} of today's pressure points are about {label} — {_join(nouns)}."
+    return f"{count} of today's pressure points are about {label} — {util.oxford_join(nouns)}."
 
 
 # --- signal 3: the relationship engine (INV-3) ----------------------------
-# Renders ONLY from the curated map in relationships.py. The grammar is gated by
-# each edge's strength tier, so a dishonest sentence cannot be produced.
+# Renders ONLY from the curated map in relationships.py — there is no path to a
+# relational claim without a human-authored, tier-tagged edge. The grammar is
+# gated by each edge's strength tier, which catches the common dishonest forms;
+# the substring linter is a backstop, not a proof, so the map is also reviewed.
 
 _TIERS = ("definitional", "empirical", "co-occurrence")
 
 
 def relationship_sentence(edge):
     """Render one relationship edge to its sentence, enforcing the tier<->grammar
-    invariant (INV-3). Raises ValueError if the authored link violates its tier —
-    so a dishonest edge fails loudly rather than shipping."""
+    invariant (INV-3). Raises ValueError when the authored link violates its tier
+    (empirical without a hedge, or co-occurrence with a causal verb) — so the
+    common dishonest forms fail loudly rather than shipping."""
     tier = edge.get("strength")
     link = edge.get("link", "")
     if tier not in _TIERS:

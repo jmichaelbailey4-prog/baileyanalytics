@@ -112,16 +112,6 @@ SKELETONS = {
 }
 
 
-def _join(items):
-    """Oxford-comma list join: a / a and b / a, b, and c."""
-    items = list(items)
-    if len(items) <= 1:
-        return "".join(items)
-    if len(items) == 2:
-        return f"{items[0]} and {items[1]}"
-    return ", ".join(items[:-1]) + f", and {items[-1]}"
-
-
 def classify_shape(overall, has_pressure):
     """Map the overall token (+ whether any category is elevated/alert) to the
     sentence shape. Complete partition: overall ok mathematically excludes any
@@ -146,8 +136,8 @@ def _sentence(shape, variant_idx, p_clauses, anchor, watch_nouns):
     lowercase fragments; anchor is a pre-joined clause ('' when no category is
     ok, which selects the variant's fallback template)."""
     tpl = SKELETONS[shape][variant_idx]
-    p = _join(p_clauses)
-    w = _join(watch_nouns)
+    p = util.oxford_join(p_clauses)
+    w = util.oxford_join(watch_nouns)
     if shape == "broad-stress":
         return tpl["p"].format(p=p)
     if shape in ("contained-pressure", "spreading-stress"):
@@ -323,7 +313,7 @@ def build_state(category_indices, brief_today, open_predictions=None):
         by_id = {c["category"]: c for c in cats}
         anchors = [cid for cid in ANCHOR_PRIORITY
                    if cid in by_id and by_id[cid]["status"] == "ok"][:ANCHOR_CAP]
-        anchor = _join([_steady_clause(by_id[cid]) for cid in anchors])
+        anchor = util.oxford_join([_steady_clause(by_id[cid]) for cid in anchors])
         p_clauses = [_pressure_clause(c) for c in pressure[:CLAUSE_CAP.get(shape, PRESSURE_CAP)]]
         watch_nouns = [NOUN.get(c["category"], c["title"].lower())
                        for c in cats if c["status"] == "watch"][:WATCH_NOUN_CAP]

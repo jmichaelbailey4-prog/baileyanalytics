@@ -5,6 +5,17 @@ from datetime import date, datetime
 STATUS_ORDER = {"unknown": -1, "ok": 0, "watch": 1, "elevated": 2, "alert": 3}
 
 
+def oxford_join(items):
+    """Oxford-comma list join: a / a and b / a, b, and c. The single home for the
+    grammar shared by state.py (verdict sentence) and synthesis.py (co-occurrence)."""
+    items = list(items)
+    if len(items) <= 1:
+        return "".join(items)
+    if len(items) == 2:
+        return f"{items[0]} and {items[1]}"
+    return ", ".join(items[:-1]) + f", and {items[-1]}"
+
+
 def human_date(iso_date, short=False):
     """'YYYY-MM-DD' -> 'June 12, 2026' (short=False) or 'Jun 12, 2026' (short=True).
     Locale-independent and Windows-safe (no %-d / %e). The single source of date

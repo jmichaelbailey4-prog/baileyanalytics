@@ -52,9 +52,10 @@ vigilance.
 
 ### The four invariants (each enforced by a test)
 
-- **INV-1 — Per-mover whys are self-grounded.** A per-mover "why" contains **no causal
-  token** and **names no other category or lens**. It is built only from its own series'
-  sparkline + stat label.
+- **INV-1 — Per-mover whys are self-grounded.** A per-mover "why" is built only from its
+  own mover's sparkline + stat label, so it **cannot reference another series** — a
+  structural guarantee (`mover_why` never reads one), not a runtime check — and the tests
+  assert it carries **no causal token**.
 - **INV-2 — Co-occurrence is a count, not a cause.** The co-occurrence sentence contains
   **no causal token**. It states *how many* pressure points share a subject and names
   them; it never says one causes another.
@@ -72,7 +73,10 @@ vigilance.
 
 The banned **causal tokens** and required **hedge tokens** live as explicit lists in
 `synthesis.py` and are the backbone of the test suite (`find_causal_tokens`,
-`find_hedge_tokens`). Adding a new template that violates an invariant fails CI.
+`find_hedge_tokens`). Adding a new template that violates an invariant fails CI. The linter
+is a **heuristic backstop**, not a completeness proof — a substring matcher can't catch every
+causal phrasing in English — so the (small, curated) relationship map is **also**
+human-reviewed; the two together, not the linter alone, keep the map honest.
 
 ---
 
@@ -189,11 +193,13 @@ fixed phrasing rotates on a date seed (INV-4-safe). Lens-page placement of the w
 
 **(4) How is it unit-tested for honesty?**
 The four invariants of §2, each a test: the causal-token linter over every generated
-string; the "names no other lens/category" structural check for per-mover whys; the
-tier↔grammar match for relationship sentences (synthetic edges of each tier prove the
-grammar); plus determinism (same input → same output) and grounding (a known up-streak
-fixture yields "in a row"; a flat fixture yields `""`; a 4-member theme cluster yields the
-count). Honesty is therefore a property the build *enforces*, not a hope.
+string; per-mover whys are self-grounded *by construction* (one mover in, closed vocabulary
+out — they cannot name another series); the tier↔grammar match for relationship sentences
+(synthetic edges of each tier prove the grammar — including that a transitive causal verb
+without a hedge is rejected); plus determinism (same input → same output) and grounding (a
+known up-streak fixture yields "in a row"; a flat fixture yields `""`; a 4-member theme
+cluster yields the count). Honesty is therefore a property the build *enforces* (with the
+linter as a backstop and the curated map human-reviewed), not a hope.
 
 **(5) Quiet-day behavior.**
 Most days are quiet; the layer **never manufactures drama**:
@@ -211,8 +217,10 @@ An all-clear day therefore produces **no synthesis line at all** — the verdict
 `note`. Version-controlled; the **diff is the review surface** (same model as the copy
 banks). A test (`test_synthesis.py::TestRelationshipMapIntegrity`) validates every edge:
 known endpoints, valid tier, non-empty `link`/`note`, and **tier↔phrasing consistency** (an
-`empirical` edge whose `link` lacks a hedge token fails CI). Authoring later = appending
-reviewed lines; a dishonest edge cannot pass.
+`empirical` edge whose `link` lacks a hedge token, or a `co-occurrence` edge with a causal
+verb, fails CI). The linter is a heuristic backstop — it can't substring-match every causal
+phrasing — so the map is **also** human-reviewed (the diff is the review). Authoring later =
+appending reviewed lines.
 
 ---
 
@@ -223,14 +231,14 @@ reviewed lines; a dishonest edge cannot pass.
 - `mover_why(mover) -> str` (INV-1);
 - `THEMES`, `THEME_LABELS`, `cooccurrence(pressure_rows) -> str` (INV-2);
 - honesty primitives: `CAUSAL_TOKENS`, `HEDGE_TOKENS`, `find_causal_tokens(text)`,
-  `find_hedge_tokens(text)`, `names_other_subject(text, exclude)`;
-- relationship engine: `active_relationships(edges, active_keys)`,
-  `relationship_sentence(edge)`, `compose_relationships(edges, active_keys, cap) -> list`.
+  `find_hedge_tokens(text)` (a heuristic backstop — see §2);
+- relationship engine: `active_keys(today_json)` (which lens ids are "in play" today),
+  `active_relationships(edges, active)`, `relationship_sentence(edge)`,
+  `compose_relationships(edges, active, cap) -> list`.
 
-**New — `scripts/lenses/relationships.py`** (data only): `RELATIONSHIPS` (near-empty +
-placeholders) and `active_keys(today_json)` (which lens ids / indicator keys are "in play"
-today). Kept separate from the engine so the *content* Michael reviews is isolated from the
-*logic* that's already proven.
+**New — `scripts/lenses/relationships.py`** (data only): `RELATIONSHIPS` (near-empty + two
+marked placeholders). Kept separate from the engine so the *content* Michael reviews is
+isolated from the *logic* (in `synthesis.py`) that's already proven.
 
 **Changed — `scripts/lenses/today.py`** (`build_today`): after assembling `top_moves`,
 attach `m["why"] = synthesis.mover_why(m)` to each; add

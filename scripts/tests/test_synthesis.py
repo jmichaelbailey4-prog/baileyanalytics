@@ -172,6 +172,21 @@ class TestHonestyPrimitives(unittest.TestCase):
     def test_clean_text_has_no_causal_tokens(self):
         self.assertEqual(synthesis.find_causal_tokens("Food: up 4 readings in a row."), [])
 
+    def test_catches_transitive_causal_verbs(self):
+        # the dishonest forms most likely to be authored into a relationship edge
+        for s in ("higher fuel costs lower real income",
+                  "rates cooled the housing market",
+                  "inflation erodes purchasing power",
+                  "a stronger dollar weakens exports",
+                  "the squeeze on budgets",
+                  "higher rates raised mortgage costs"):
+            self.assertTrue(synthesis.find_causal_tokens(s), f"missed causal verb in: {s!r}")
+
+    def test_cooccurrence_connector_is_not_flagged_causal(self):
+        # "at the same time as" is the *good* co-occurrence phrasing — must stay clean
+        self.assertEqual(
+            synthesis.find_causal_tokens("Food costs rose at the same time as savings fell"), [])
+
     def test_finds_hedge_tokens(self):
         self.assertTrue(synthesis.find_hedge_tokens("rates near 7% have historically cooled demand"))
         self.assertTrue(synthesis.find_hedge_tokens("higher rates tend to slow sales"))
@@ -210,6 +225,17 @@ class TestRelationshipSentence(unittest.TestCase):
 
     def test_cooccurrence_with_causal_verb_is_rejected(self):
         bad = dict(COOCCURRENCE, link="Food costs are driving the saving rate down.")
+        with self.assertRaises(ValueError):
+            synthesis.relationship_sentence(bad)
+
+    def test_cooccurrence_with_transitive_causal_verb_is_rejected(self):
+        # the subtle case: a transitive verb that isn't "drive/because" but still asserts cause
+        bad = dict(COOCCURRENCE, link="Higher fuel costs lower real income.")
+        with self.assertRaises(ValueError):
+            synthesis.relationship_sentence(bad)
+
+    def test_empirical_with_bare_transitive_cause_is_rejected(self):
+        bad = dict(EMPIRICAL, link="Higher rates cool home prices.")  # causal, no hedge
         with self.assertRaises(ValueError):
             synthesis.relationship_sentence(bad)
 

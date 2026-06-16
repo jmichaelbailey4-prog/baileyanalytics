@@ -6,14 +6,6 @@ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1]))
 from lenses import state  # noqa: E402
 
 
-class TestJoin(unittest.TestCase):
-    def test_join(self):
-        self.assertEqual(state._join([]), "")
-        self.assertEqual(state._join(["a"]), "a")
-        self.assertEqual(state._join(["a", "b"]), "a and b")
-        self.assertEqual(state._join(["a", "b", "c"]), "a, b, and c")
-
-
 class TestShortVerdict(unittest.TestCase):
     def test_short_keeps_top_pressure_per_shape(self):
         p = ["energy and commodity costs are squeezing budgets", "housing is out of balance"]

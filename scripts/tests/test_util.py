@@ -7,6 +7,12 @@ from lenses import util
 
 
 class TestUtil(unittest.TestCase):
+    def test_oxford_join(self):
+        self.assertEqual(util.oxford_join([]), "")
+        self.assertEqual(util.oxford_join(["a"]), "a")
+        self.assertEqual(util.oxford_join(["a", "b"]), "a and b")
+        self.assertEqual(util.oxford_join(["a", "b", "c"]), "a, b, and c")
+
     def test_to_float_parses_numbers(self):
         self.assertEqual(util.to_float("4.2"), 4.2)
 
