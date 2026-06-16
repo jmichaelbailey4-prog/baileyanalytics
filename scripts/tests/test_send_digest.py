@@ -41,9 +41,17 @@ class TestPublishAt(unittest.TestCase):
         self.assertEqual(send_digest.publish_at("2026-06-12", "2026-06-12T06:05:00Z"),
                          "2026-06-12T11:00:00Z")
 
-    def test_after_11_utc_sends_now(self):
-        self.assertEqual(send_digest.publish_at("2026-06-12", "2026-06-12T13:02:00Z"),
-                         "2026-06-12T13:02:00Z")
+    def test_after_11_utc_schedules_a_few_minutes_out_not_now(self):
+        # Past the 11:00 target -> now + buffer, never exactly "now" (Buttondown
+        # 400s a scheduled publish_date that isn't safely in the future).
+        out = send_digest.publish_at("2026-06-12", "2026-06-12T13:02:00Z")
+        self.assertEqual(out, "2026-06-12T13:07:00Z")
+        self.assertGreater(out, "2026-06-12T13:02:00Z")
+
+    def test_publish_date_is_always_in_the_future(self):
+        for now in ("2026-06-12T00:00:00Z", "2026-06-12T11:00:00Z",
+                    "2026-06-12T13:02:00Z", "2026-06-12T23:59:00Z"):
+            self.assertGreater(send_digest.publish_at("2026-06-12", now), now)
 
 
 if __name__ == "__main__":

@@ -7,7 +7,9 @@ shows red):
   1. no BUTTONDOWN_API_KEY            -> skip (forks, local runs)
   2. today isn't a publication day    -> skip (quiet day; manifest has no entry)
   3. Buttondown already has today's   -> skip (backup cron / rerun)
-  4. POST the digest, scheduled for max(now, 11:00 UTC)  (~7am ET)
+  4. POST the digest, scheduled for 11:00 UTC (~7am ET), or now+5min if a
+     catch-up run is already past 11:00 (never exactly "now" — Buttondown
+     rejects a scheduled publish_date that isn't safely in the future)
 
 Usage: python scripts/send_digest.py [--dry-run]
 """
@@ -17,6 +19,7 @@ import os
 import sys
 import urllib.error
 import urllib.request
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -44,11 +47,23 @@ def already_sent(emails_json, token):
                for e in (emails_json or {}).get("results", []))
 
 
+# A catch-up run (13:00 backup cron / manual dispatch past 11:00 UTC) must not
+# schedule at exactly "now": Buttondown 400s ("publish date is in the past") a
+# scheduled email whose publish_date isn't comfortably in the future by the time
+# the request lands. Push it a few minutes out instead.
+SEND_BUFFER = timedelta(minutes=5)
+_FMT = "%Y-%m-%dT%H:%M:%SZ"
+
+
 def publish_at(day, now_iso):
-    """Schedule for 11:00 UTC (~7am ET); if we're already past it (the 13:00
-    backup cron catching up), send immediately."""
+    """Schedule for 11:00 UTC (~7am ET); if we're already past it (backup cron or
+    a manual catch-up run), schedule a few minutes out rather than at 'now' so the
+    publish_date is always safely in the future. `now_iso` is a UTC 'Z' string."""
     target = f"{day}T11:00:00Z"
-    return now_iso if now_iso > target else target
+    if now_iso < target:
+        return target
+    soon = datetime.strptime(now_iso, _FMT).replace(tzinfo=timezone.utc) + SEND_BUFFER
+    return soon.strftime(_FMT)
 
 
 def _request(url, api_key, payload=None):
@@ -97,8 +112,7 @@ def main(argv=None):
         if already_sent(_request(LIST_URL, api_key), token):
             print(f"Digest for {token} already exists on Buttondown — skipping.")
             return 0
-        from datetime import datetime, timezone
-        now_iso = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+        now_iso = datetime.now(timezone.utc).strftime(_FMT)
         payload = {"subject": built["subject"], "body": built["html"],
                    "status": "scheduled", "publish_date": publish_at(day, now_iso)}
         created = _request(API, api_key, payload)
