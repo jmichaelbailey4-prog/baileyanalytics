@@ -57,6 +57,32 @@ class TestRenderToday(unittest.TestCase):
         self.assertIn("Four of today", self.html)
         self.assertIn("about the cost of living", self.html)
 
+    def test_relationship_lead_renders_in_what_changed(self):
+        # D6: the curated relationship sentence leads the "What changed today"
+        # section (above the status changes), in its own .brief-rel element.
+        sentence = "Real incomes and consumer spending move together over time."
+        t = dict(TODAY, synthesis={"cooccurrence": "", "relationships": [sentence]})
+        html = briefpage.render_brief(t, og_image="/og/x.png")
+        self.assertIn('class="brief-rel"', html)
+        self.assertIn(sentence, html)
+        # it leads the section: appears after the "What changed today" heading but
+        # before the first status-change row
+        self.assertLess(html.index("What changed today"), html.index(sentence))
+        self.assertLess(html.index(sentence), html.index('class="brief-trans"'))
+
+    def test_no_relationship_line_when_map_silent(self):
+        # quiet-day: no active edge -> no .brief-rel element at all
+        t = dict(TODAY, synthesis={"cooccurrence": "", "relationships": []})
+        html = briefpage.render_brief(t, og_image="/og/x.png")
+        self.assertNotIn('class="brief-rel"', html)
+
+    def test_relationship_line_is_escaped(self):
+        # reader-facing copy is HTML-escaped like every other rendered string
+        t = dict(TODAY, synthesis={"relationships": ["A <b>risk</b> & reward note."]})
+        html = briefpage.render_brief(t, og_image="/og/x.png")
+        self.assertIn("A &lt;b&gt;risk&lt;/b&gt; &amp; reward note.", html)
+        self.assertNotIn("<b>risk</b>", html)
+
     def test_no_archive_banner_on_today(self):
         self.assertNotIn("archive-banner", self.html)
 

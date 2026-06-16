@@ -65,6 +65,28 @@ class TestBody(unittest.TestCase):
         # the self-grounded mover "why" rides along in the email mover row
         self.assertIn("up 3 readings in a row", self.html)
 
+    def test_relationship_lead_renders_in_body(self):
+        # D6: the curated relationship lead (from the fixture) appears in the email
+        self.assertIn("real incomes fall by definition", self.html)
+
+    def test_relationship_lead_leads_changed_section(self):
+        sentence = "Real incomes and spending have moved together over time."
+        t = dict(TODAY, synthesis={"cooccurrence": "", "relationships": [sentence]})
+        html = digest.build_digest(t)["html"]
+        self.assertIn(sentence, html)
+        self.assertLess(html.index("What changed today"), html.index(sentence))
+
+    def test_no_relationship_lead_when_silent(self):
+        t = dict(TODAY, synthesis={"cooccurrence": "", "relationships": []})
+        html = digest.build_digest(t)["html"]
+        self.assertNotIn("real incomes fall by definition", html)  # silent path emits nothing
+        self.assertIn("What changed today", html)                  # section still renders
+
+    def test_relationship_lead_is_escaped(self):
+        t = dict(TODAY, synthesis={"relationships": ["risk & reward <note>"]})
+        html = digest.build_digest(t)["html"]
+        self.assertIn("risk &amp; reward &lt;note&gt;", html)
+
 
 if __name__ == "__main__":
     unittest.main()

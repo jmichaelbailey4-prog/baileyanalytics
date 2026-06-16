@@ -6,9 +6,14 @@ list; state.build_state supplies the verdict, watching block, and category
 records. Pure like both of them — no network, no disk I/O. Spec:
 docs/superpowers/specs/2026-06-11-website-revamp-design.md (§2, §12, App. A)."""
 
-from . import brief, state, synthesis
+from . import brief, relationships, state, synthesis
 
 SEVERITY = brief.SEVERITY  # ok/watch/elevated/alert ladder
+
+# How many curated relationship sentences the brief leads with (spec §3: "a lead
+# sentence"). 1 keeps it a single honest connection and avoids stacking two edges
+# into an implied A->B->C chain the map never asserts; bump only on request.
+RELATIONSHIP_CAP = 1
 
 # --- Tile copy bank (spec Appendix A, signed off 2026-06-12) ---
 # One sentence per (category, blended status): the home tile's read, authored
@@ -105,17 +110,20 @@ def build_today(category_indices, prior_state, open_predictions=None):
 
 
 def _attach_synthesis(today_json, pressure):
-    """Add the synthesis layer (spec 2026-06-16): a self-grounded 'why' per mover
-    and a structural co-occurrence read. Guarded — a synthesis hiccup must never
-    lose the day's brief, so it degrades to no-why / no-synthesis. The relationship
-    NARRATIVE is deferred (spec §6): the engine is wired but the authored map is
-    not yet shipped, so `relationships` stays []."""
+    """Add the synthesis layer (spec 2026-06-16): a self-grounded 'why' per mover,
+    a structural co-occurrence read, and (D6) the curated relationship narrative —
+    up to RELATIONSHIP_CAP honest sentences for edges whose BOTH endpoints are in
+    play today (compose_relationships filters to the active set and renders only
+    from the tier-gated curated map). Guarded — a synthesis hiccup must never lose
+    the day's brief, so it degrades to no-why / no-synthesis."""
     try:
         today_json["top_moves"] = [dict(m, why=synthesis.mover_why(m))
                                    for m in today_json.get("top_moves", [])]
         today_json["synthesis"] = {
             "cooccurrence": synthesis.cooccurrence(pressure),
-            "relationships": [],  # deferred: authored map pending (spec §6)
+            "relationships": synthesis.compose_relationships(
+                relationships.RELATIONSHIPS, synthesis.active_keys(today_json),
+                cap=RELATIONSHIP_CAP),
         }
     except Exception:  # noqa: BLE001 - synthesis is additive; never lose the brief
         today_json.setdefault("synthesis", {"cooccurrence": "", "relationships": []})

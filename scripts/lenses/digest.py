@@ -76,6 +76,20 @@ def _changed_rows(today):
     return "".join(rows)
 
 
+def _relationship_lead(today):
+    """The curated relationship lead (spec §3) at the top of 'What changed today'
+    — the day's single most defensible cross-category connection. '' when the map
+    is silent today. Honesty-gated upstream (compose_relationships); this only
+    escapes. Email-safe: a left-accented table row, no images."""
+    rels = [s for s in ((today.get("synthesis") or {}).get("relationships") or []) if s]
+    if not rels:
+        return ""
+    body = "<br>".join(escape(s) for s in rels)
+    return (f'<tr><td style="{FONT}font-size:14px;line-height:1.5;color:{INK};'
+            f'padding:10px 0 10px 12px;border-left:3px solid {BADGE["neutral"]};">'
+            f"{body}</td></tr>")
+
+
 def _watching_rows(today):
     rows = []
     for x in (today.get("watching") or [])[:3]:
@@ -113,6 +127,7 @@ def build_digest(today):
 <tr><td style="padding:18px 0 6px;">{_badge(verdict.get("status", "unknown"))}</td></tr>
 <tr><td style="{FONT}font-size:17px;line-height:1.5;color:{INK};font-weight:600;">{escape(verdict.get("sentence", ""))}</td></tr>
 {_section("What changed today")}
+{_relationship_lead(today)}
 {_changed_rows(today)}
 {watching_block}
 <tr><td style="padding:22px 0 0;{FONT}font-size:13px;color:{MUTED};">

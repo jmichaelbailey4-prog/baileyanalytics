@@ -16,7 +16,7 @@
   ],
   "synthesis": {
     "cooccurrence": "Four of today's pressure points are about the cost of living — fuel, food and commodities, electricity, and overall inflation.",
-    "relationships": []
+    "relationships": ["Real income is pay measured after inflation — so when the cost of living climbs faster than wages, real incomes fall by definition."]
   },
   "watching": [
     {"key": "energy/energy-electricity/retail-electricity", "indicator": "retail-electricity",

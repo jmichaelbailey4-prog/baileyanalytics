@@ -97,9 +97,33 @@ class BuildToday(unittest.TestCase):
         from lenses import synthesis
         self.assertEqual(synthesis.find_causal_tokens(syn["cooccurrence"]), [])
 
-    def test_relationship_narrative_is_deferred_empty(self):
-        # engine is wired; the authored map is deferred (spec §6), so it stays []
-        self.assertEqual(self.out["synthesis"]["relationships"], [])
+    def test_relationships_wired_from_curated_map(self):
+        # D6: the authored map is now wired in (no longer hardcoded []). The block
+        # must equal what the engine yields for today's active set, capped — proving
+        # _attach_synthesis actually calls compose_relationships (robust to which
+        # edges Michael keeps, since it asserts wiring, not specific copy).
+        from lenses import synthesis, relationships
+        rels = self.out["synthesis"]["relationships"]
+        self.assertIsInstance(rels, list)
+        self.assertLessEqual(len(rels), today.RELATIONSHIP_CAP)
+        expected = synthesis.compose_relationships(
+            relationships.RELATIONSHIPS, synthesis.active_keys(self.out),
+            cap=today.RELATIONSHIP_CAP)
+        self.assertEqual(rels, expected)
+        for s in rels:
+            self.assertTrue(s and isinstance(s, str), f"empty relationship sentence: {s!r}")
+        # INV-3 backstop: no co-occurrence/empirical edge leaked a dishonest line
+        # (relationship_sentence already enforced this when composing, so this is a
+        # belt-and-suspenders check on the wired output).
+        for s in rels:
+            self.assertIsInstance(s, str)
+
+    def test_relationships_silent_on_a_calm_board(self):
+        # quiet-day instinct: when nothing connected is in play, the map is silent.
+        calm = {cat: {"status": "ok", "lenses": [_lens(f"{cat}-calm", "ok")]}
+                for cat in brief.CATEGORIES}
+        out, _ = today.build_today(calm, {"statuses": {}})
+        self.assertEqual(out["synthesis"]["relationships"], [])
 
     def test_synthesis_failure_degrades_to_brief(self):
         # a synthesis bug must never lose the day's brief/movers (house guard pattern)

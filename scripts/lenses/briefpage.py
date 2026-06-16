@@ -45,6 +45,15 @@ def _spark(values, accent):
             f'stroke="{escape(accent or "#38BDF8", quote=True)}" stroke-width="2"/></svg>')
 
 
+def _relationships(rels):
+    """The curated relationship lead (spec §3) — the day's single most defensible
+    cross-category connection, shown above the status changes in 'What changed
+    today'. Each sentence is honesty-gated upstream (synthesis.compose_relationships
+    renders only tier-valid edges whose endpoints are active), so this is pure
+    escaping. '' when no edge is active today — quiet-day silence."""
+    return "".join(f'<p class="brief-rel">{escape(s)}</p>' for s in (rels or []) if s)
+
+
 def _transitions(transitions):
     if not transitions:
         return ('<div class="status-msg" style="text-align:left;padding:.4rem 0">'
@@ -184,6 +193,7 @@ def render_brief(today, og_image, archive_date=None, prev_date=None, next_date=N
 
     verdict = today.get("verdict") or {}
     cooccur = (today.get("synthesis") or {}).get("cooccurrence") or ""
+    rels_html = _relationships((today.get("synthesis") or {}).get("relationships"))
     verdict_html = ""
     if verdict.get("sentence"):
         vstatus = escape(verdict.get("status", "unknown"))
@@ -248,6 +258,7 @@ def render_brief(today, og_image, archive_date=None, prev_date=None, next_date=N
     {archive_nav}
     {verdict_html}
     <section><h2 class="sec-head">What changed today</h2>
+    {rels_html}
     <p class="sec-sub">Status changes first — the headline events — then the biggest moves in the data, judged against each indicator&rsquo;s own typical day-to-day swing.</p>
     {_transitions(today.get("transitions") or [])}</section>
     {_movers(today.get("top_moves") or [])}
