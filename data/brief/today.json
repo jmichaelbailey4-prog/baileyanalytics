@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-16T19:52:49Z",
+  "generated_at": "2026-06-16T21:14:15Z",
   "transitions": [],
   "top_moves": [
     {
@@ -775,6 +775,8 @@
   ],
   "synthesis": {
     "cooccurrence": "Four of today's pressure points are about the cost of living \u2014 fuel, food and commodities, overall inflation, and electricity.",
-    "relationships": []
+    "relationships": [
+      "Real income is pay measured after inflation \u2014 so when the cost of living climbs faster than wages, real incomes fall by definition."
+    ]
   }
 }
