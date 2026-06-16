@@ -160,7 +160,13 @@ The synthesis / "why" layer (#5 above, now built). Spec:
 (per-mover why + structural co-occurrence + the relationship-map *scaffolding*), logged the
 contested forks below, built on the recommended option for each (reversible — it's a branch),
 and **deferred** the authored relationship-map content + the map-driven causal narrative to the
-next session (your editorial/economist call). Nothing here is deployed. The five forks:
+next session (your editorial/economist call). The five forks:
+
+> **Update 2026-06-16 (Michael's review):** approved **D1–D5** (house voice, silent quiet-day,
+> the chosen surface placement, **no LLM**, and the theme groupings). The built subset was
+> **FF-merged + deployed to `main` (`6be2801`)** — the per-mover why + co-occurrence go live on
+> the next `refresh-fred` cron bake. **D6 (author the relationship map + wire/render it) is the
+> next session's task** and must NOT be deployed without per-edge sign-off (it's the causal content).
 
 ## D1 — Editorial voice of the why/synthesis copy
 **Fork.** What voice do the new lines speak in? **Options.** (a) **Match the existing house voice**
