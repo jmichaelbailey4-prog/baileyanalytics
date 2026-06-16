@@ -25,6 +25,16 @@ class TestRenderToday(unittest.TestCase):
         self.assertIn('"@type": "NewsArticle"', self.html)
         self.assertIn('name="twitter:card" content="summary_large_image"', self.html)
 
+    def test_jsonld_cannot_break_out_of_script(self):
+        # a verdict sentence containing </script> or < must be \uXXXX-escaped in
+        # the JSON-LD payload so it can't terminate the <script> block early.
+        t = dict(TODAY, verdict={"status": "watch", "sentence": "Risk </script><b> & fell."})
+        html = briefpage.render_brief(t, og_image="/og/x.png")
+        ld = html.split('application/ld+json">', 1)[1].split("</script>", 1)[0]
+        self.assertNotIn("<", ld)
+        self.assertNotIn(">", ld)
+        self.assertIn("\\u003c", ld)
+
     def test_verdict_and_sections(self):
         self.assertIn("Most of the economy is on solid footing", self.html)
         self.assertIn('class="badge watch"', self.html)
@@ -133,6 +143,14 @@ class TestArchiveIndex(unittest.TestCase):
         self.assertIn('href="/dashboards/brief/2026-06-12.html"', html)
         self.assertLess(html.index("2026-06-12"), html.index("2026-06-11"))
         self.assertIn('class="badge elevated"', html)
+
+    def test_back_link_uses_defined_back_class(self):
+        # the archive listing's back link must use the styled .back class, not the
+        # undefined .hub-back (which renders unstyled).
+        html = briefpage.render_archive_index(
+            [{"date": "2026-06-12", "status": "ok", "sentence": "x."}])
+        self.assertIn('class="back"', html)
+        self.assertNotIn("hub-back", html)
 
 
 if __name__ == "__main__":

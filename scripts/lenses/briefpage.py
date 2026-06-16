@@ -175,8 +175,12 @@ def _jsonld(today, canonical, og_url):
         "author": {"@type": "Organization", "name": "Bailey Analytics", "url": SITE},
         "publisher": {"@type": "Organization", "name": "Bailey Analytics", "url": SITE},
     }
-    return ('<script type="application/ld+json">'
-            + json.dumps(data, ensure_ascii=False, indent=2) + "</script>")
+    # Harden against breaking out of <script>: escape <, >, & as \uXXXX (still
+    # valid inside JSON strings) so a future verdict sentence containing
+    # "</script>" or "<" can never terminate the block early.
+    payload = (json.dumps(data, ensure_ascii=False, indent=2)
+               .replace("<", "\\u003c").replace(">", "\\u003e").replace("&", "\\u0026"))
+    return '<script type="application/ld+json">' + payload + "</script>"
 
 
 def render_brief(today, og_image, archive_date=None, prev_date=None, next_date=None):
@@ -319,7 +323,7 @@ def render_archive_index(manifest):
   <nav class="wordmark" aria-label="Bailey Analytics home"><a href="/">Bailey Analytics</a></nav>
   <nav class="top-nav" aria-label="Primary"><a href="/dashboards/brief.html">Today&#39;s Brief</a><a href="/dashboards/">Dashboards</a><a href="/dashboards/track-record.html">Track Record</a><a href="/about.html">About</a></nav>
   <main>
-    <div class="hub-back"><a href="/dashboards/brief.html">&larr; Today&rsquo;s Brief</a></div>
+    <a class="back" href="/dashboards/brief.html">&larr; Today&rsquo;s Brief</a>
     <h1>Brief Archive</h1>
     <p class="lede">Every published brief, newest first.</p>
     {body}
