@@ -199,11 +199,36 @@ what genuinely has a safe/stressed reading.**
 >   rewritten to describe the new treatment honestly.
 > - **Still out (fetch plumbing / infeasible, not integrity):** banking (FDIC), computed spreads,
 >   crypto-structure (CoinGecko + accumulated history — not in `config.CATEGORIES`), IMF (annual),
->   GSCPI/EPU. These are the next increment.
+>   GSCPI/EPU. Mostly shipped 2026-06-16 — see the increment note below (only IMF +
+>   crypto-structure remain out).
 >
 > The original Tier-A-only writeup below is kept for the reasoning; the integrity argument in §2
 > (coverage ≠ scoring; empirical bands; honest 0-skill on prices) is exactly what makes predicting
 > the scoreboard non-theater.
+
+### Baked-history increment — DEPLOYED 2026-06-16 (roster 92 → 107)
+
+The deferred Tier-B (banking 9 + computed 3) and Tier-D-fetchable (GSCPI + 2 EPU) items
+shipped — **not** via the assumed new FDIC/EIA fetch path (§5 Q2/Q3), but by reading each
+indicator's **already-baked** lens-JSON observation history. The pipeline already bakes full
+depth into `data/<out>/<lens>.json` `indicators[].observations` (banking = 81 quarters back to
+2006), so no fetcher was re-implemented:
+
+- `roster.py`: `BAKED_SOURCES = (fdic, computed, nyfed, epu)` joins `DIRECT_SOURCES`; the
+  banking-category skip is removed; each baked entry carries a `baked` flag. Banking is
+  badge-driving **signal** (`descriptive=False`).
+- `runner._baked_history` reads the lens JSON (degrades to `[]` on a missing/locked file, like
+  `refresh_lenses._prior_obs` — kept local so the lightweight predictions package needn't import
+  the heavy `refresh_lenses` module). `_prepared_series` **skips `ind.derive` for baked entries**
+  (the baked obs are already post-derive/post-thin — the double-derive trap), and banking's
+  `BankingIndicator` (which has no `series_id`/`derive`/`market_price`) is read via `getattr`.
+- Quarterly grading verified end-to-end: `next_period` floors a Q1 (2026-03-31) print to a
+  `2026-06-01` target, and `grade.match_actual` (first obs ≥ target) matches the real Q2 print
+  (2026-06-30) and never the prior one.
+- **Still out (correctly, not integrity):** IMF (annual — too few backtest origins to earn an
+  empirical 80% band) and crypto-structure (short baked history + outside `config.CATEGORIES`).
+- FF-merged `534eb9b` to main, Pages-deployed, 640 tests green; extensive /code-review found no
+  bugs. No data re-baked — coverage activates on the next CI tournament/daily run.
 
 ### (original) uncontested slice — Tier A
 

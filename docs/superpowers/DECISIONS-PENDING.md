@@ -78,6 +78,20 @@ viability gate (quarterly → ~9yrs min).
 the difference between 82% and ~94% coverage. Not in this branch because it touches the fetch layer
 (more than "reversible polish"). I can implement on a follow-up branch on your word.
 
+**RESOLVED — shipped + deployed 2026-06-16.** Implemented on branch
+`predictions-coverage-banking`, **not** via a new FDIC/EIA fetch path but by reading each
+indicator's **already-baked** lens-JSON observation history (`data/<out>/<lens>.json`
+`indicators[].observations`, full depth — banking = 81 quarters back to 2006). Roster
+**92 → 107** (+9 banking, +3 computed, +GSCPI, +2 EPU): `roster.BAKED_SOURCES` + a `baked`
+flag; `runner._baked_history` (degrades to `[]` like `refresh_lenses._prior_obs`, kept
+local to avoid the heavy import); `_prepared_series` **skips `ind.derive`** for baked (the
+obs are already post-derive/post-thin — the double-derive trap); banking's `BankingIndicator`
+(no `series_id`/`derive`/`market_price`) read via `getattr`. Banking is badge-driving
+**signal**. FF-merged `534eb9b` to main, Pages-deployed, 640 tests green; extensive
+/code-review found no bugs. **Still out (correctly, not integrity):** IMF (annual — too few
+backtest origins for an empirical 80% band) and crypto-structure (short history + outside
+`config.CATEGORIES`). No data re-baked — coverage activates on the next CI tournament/daily.
+
 ## #3 — Home hero verdict vs. brief verdict (audit quick win — editorial)
 
 **Fork.** The home hero sentence and the brief's verdict are currently **identical** (a reader who
