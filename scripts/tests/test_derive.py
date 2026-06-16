@@ -97,5 +97,16 @@ class TestToMillions(unittest.TestCase):
         self.assertEqual(derive.to_millions([{"date": "2026-05-01", "value": "."}]), [])
 
 
+class TestUnitsToMillions(unittest.TestCase):
+    # CLAUDE.md flags these as easy to mix up: units_to_millions is raw units ->
+    # millions at 2 dp (4170000 -> "4.17"), distinct from to_millions (thousands).
+    def test_units_to_millions(self):
+        raw = [{"date": "2026-05-01", "value": "4170000"}]
+        self.assertEqual(derive.units_to_millions(raw), [{"date": "2026-05-01", "value": "4.17"}])
+
+    def test_skips_nulls(self):
+        self.assertEqual(derive.units_to_millions([{"date": "2026-05-01", "value": "."}]), [])
+
+
 if __name__ == "__main__":
     unittest.main()

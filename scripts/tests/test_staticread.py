@@ -71,5 +71,29 @@ class TestRenderFragment(unittest.TestCase):
             self.assertEqual(synthesis.find_causal_tokens(w), [], f"causal token in why: {w!r}")
 
 
+class TestEscaping(unittest.TestCase):
+    def test_special_chars_in_all_fields_are_escaped(self):
+        # the #baked-read fragment is HTML; every data-derived field must be
+        # escaped (headline, indicator title/short/read). A literal '&' already
+        # occurs in machine copy, and a future label could carry '<'/'>'.
+        lens = {
+            "id": "x", "title": "X", "status": "ok",
+            "headline_read": "Risk <b> & reward.",
+            "last_updated": "2026-06-12T06:01:00Z",
+            "indicators": [
+                {"id": "i", "title": "P&L < risk", "short": "P&L",
+                 "unit": "%", "value_format": "decimal",
+                 "latest": {"date": "2026-06-11", "value": "0.40"},
+                 "observations": [], "read": "Tight <spread> & wide."},
+            ],
+        }
+        html = staticread.render_fragment(lens)
+        self.assertIn("Risk &lt;b&gt; &amp; reward.", html)
+        self.assertIn("P&amp;L &lt; risk", html)
+        self.assertIn("Tight &lt;spread&gt; &amp; wide.", html)
+        self.assertNotIn("<b>", html)
+        self.assertNotIn("<spread>", html)
+
+
 if __name__ == "__main__":
     unittest.main()
