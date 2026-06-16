@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-16T13:45:31Z",
+  "generated_at": "2026-06-16T16:24:42Z",
   "transitions": [],
   "top_moves": [
     {
@@ -582,18 +582,18 @@
       "href": "/dashboards/energy/oil-fuels.html"
     },
     {
-      "key": "economic/fiscal-health/debt-gdp",
-      "indicator": "debt-gdp",
-      "lens": "fiscal-health",
-      "category": "economic",
-      "title": "Federal Debt \u00b7 % of GDP",
-      "lens_title": "Fiscal Health",
-      "due": "2026-04-28",
-      "point_fmt": "122.56%",
-      "implied_status": "elevated",
-      "current_status": "elevated",
+      "key": "global/global-uncertainty/gepu",
+      "indicator": "gepu",
+      "lens": "global-uncertainty",
+      "category": "global",
+      "title": "Global Economic Policy Uncertainty",
+      "lens_title": "Uncertainty & Risk",
+      "due": "2026-01-15",
+      "point_fmt": "353",
+      "implied_status": "watch",
+      "current_status": "watch",
       "change": false,
-      "href": "/dashboards/fiscal-health.html"
+      "href": "/dashboards/global/uncertainty.html"
     }
   ],
   "pressure": [
