@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-16T13:10:56Z",
+  "generated_at": "2026-06-16T13:45:31Z",
   "transitions": [],
   "top_moves": [
     {
@@ -549,7 +549,8 @@
   "verdict": {
     "status": "watch",
     "shape": "contained-pressure",
-    "sentence": "The economy is holding up, but not without strain: energy and commodity costs are squeezing budgets and household finances are stretched thin, while banks are solid and markets are calm."
+    "sentence": "The economy is holding up, but not without strain: energy and commodity costs are squeezing budgets and household finances are stretched thin, while banks are solid and markets are calm.",
+    "short": "Holding up, but energy and commodity costs are squeezing budgets."
   },
   "watching": [
     {
@@ -567,6 +568,20 @@
       "href": "/dashboards/energy/electricity.html"
     },
     {
+      "key": "energy/energy-oil-fuels/diesel",
+      "indicator": "diesel",
+      "lens": "energy-oil-fuels",
+      "category": "energy",
+      "title": "Retail Diesel \u00b7 On-Highway",
+      "lens_title": "Oil & Fuels",
+      "due": "2026-06-27",
+      "point_fmt": "$4.97",
+      "implied_status": "elevated",
+      "current_status": "alert",
+      "change": true,
+      "href": "/dashboards/energy/oil-fuels.html"
+    },
+    {
       "key": "economic/fiscal-health/debt-gdp",
       "indicator": "debt-gdp",
       "lens": "fiscal-health",
@@ -579,20 +594,6 @@
       "current_status": "elevated",
       "change": false,
       "href": "/dashboards/fiscal-health.html"
-    },
-    {
-      "key": "consumer/consumer-credit/debt-service",
-      "indicator": "debt-service",
-      "lens": "consumer-credit",
-      "category": "consumer",
-      "title": "Household Debt Service \u00b7 % of income",
-      "lens_title": "Consumer Credit Stress",
-      "due": "2026-04-28",
-      "point_fmt": "11.32%",
-      "implied_status": "watch",
-      "current_status": "watch",
-      "change": false,
-      "href": "/dashboards/consumer/credit-stress.html"
     }
   ],
   "pressure": [
