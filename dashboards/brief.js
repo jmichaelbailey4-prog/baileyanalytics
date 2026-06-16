@@ -22,8 +22,10 @@
   }
 
   function verdictHtml(v, badgeClass) {
+    // Home hero prefers the short form (differentiated from the brief's full
+    // sentence); falls back to the full sentence until today.json carries it.
     return `<span class="${badgeClass} ${esc(v.status)}">${esc(v.status)}</span>
-      <span class="state-sentence">${esc(v.sentence)}</span>`;
+      <span class="state-sentence">${esc(v.short || v.sentence)}</span>`;
   }
 
   function compactStrip(data) {

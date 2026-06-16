@@ -815,7 +815,7 @@ def _publish_brief(today_json, root=None):
         vstatus = verdict.get("status", "unknown")
         line = (f'<a class="state-line" id="state-line" href="/dashboards/brief.html">'
                 f'<span class="pill {escape(vstatus)}">{escape(vstatus)}</span>'
-                f'<span class="state-sentence">{escape(verdict["sentence"])}</span></a>')
+                f'<span class="state-sentence">{escape(verdict.get("short") or verdict["sentence"])}</span></a>')
         _patch_region_file(root / "index.html", "verdict-line", line)
     _patch_region_file(root / "index.html", "og-image",
                        f'<meta property="og:image" content="https://baileyanalytics.com{og_image}">')

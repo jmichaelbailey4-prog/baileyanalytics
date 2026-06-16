@@ -166,6 +166,26 @@ def _sentence(shape, variant_idx, p_clauses, anchor, watch_nouns):
     return tpl["watch"].format(**fields)
 
 
+def _short_verdict(shape, p_clauses, watch_nouns, anchor):
+    """A terse home-hero verdict: the shape's lead framing + the single biggest
+    pressure (or watch item). Keeps the hero specific without duplicating the
+    brief's full sentence. p_clauses/watch_nouns are the same ordered, lowercase
+    fragments the full sentence draws from, so the wording stays consistent."""
+    p0 = p_clauses[0] if p_clauses else ""
+    w0 = watch_nouns[0] if watch_nouns else ""
+    if shape == "broad-stress":
+        return f"Serious stress across the economy — {p0}."
+    if shape == "spreading-stress":
+        return f"Stress is spreading — {p0}."
+    if shape == "contained-pressure":
+        return f"Holding up, but {p0}."
+    if shape == "mixed-watch":
+        return (f"Nothing is flashing red, but {w0} bears watching." if w0
+                else "Nothing is flashing red, but a few corners bear watching.")
+    # all-clear
+    return "A calm read across the board — nothing is flashing."
+
+
 MIN_CATEGORIES = 4
 INSUFFICIENT_SENTENCE = "Not enough data to read the overall picture right now."
 PRESSURE_CAP = 3          # categories in the Pressure Points block
@@ -310,7 +330,8 @@ def build_state(category_indices, brief_today, open_predictions=None):
         sentence = _sentence(shape, _variant(generated[:10], shape),
                              p_clauses, anchor, watch_nouns)
         out = {"generated_at": generated,
-               "verdict": {"status": overall, "shape": shape, "sentence": sentence},
+               "verdict": {"status": overall, "shape": shape, "sentence": sentence,
+                           "short": _short_verdict(shape, p_clauses, watch_nouns, anchor)},
                "pressure_points": [dict(_public(c), lenses=_worst_lenses(c))
                                    for c in pressure],
                "steady": _steady(cats, {c["category"] for c in pressure})}

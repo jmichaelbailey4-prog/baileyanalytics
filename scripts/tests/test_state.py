@@ -14,6 +14,34 @@ class TestJoin(unittest.TestCase):
         self.assertEqual(state._join(["a", "b", "c"]), "a, b, and c")
 
 
+class TestShortVerdict(unittest.TestCase):
+    def test_short_keeps_top_pressure_per_shape(self):
+        p = ["energy and commodity costs are squeezing budgets", "housing is out of balance"]
+        self.assertEqual(state._short_verdict("contained-pressure", p, [], "banks are solid"),
+                         "Holding up, but energy and commodity costs are squeezing budgets.")
+        self.assertEqual(state._short_verdict("spreading-stress", p, [], ""),
+                         "Stress is spreading — energy and commodity costs are squeezing budgets.")
+        self.assertTrue(state._short_verdict("broad-stress", p, [], "").startswith(
+            "Serious stress across the economy — energy"))
+
+    def test_short_mixed_watch_names_top_watch_noun(self):
+        self.assertEqual(state._short_verdict("mixed-watch", [], ["business health", "housing"], "x"),
+                         "Nothing is flashing red, but business health bears watching.")
+        self.assertEqual(state._short_verdict("mixed-watch", [], [], ""),
+                         "Nothing is flashing red, but a few corners bear watching.")
+
+    def test_short_all_clear_is_fixed_calm_line(self):
+        self.assertEqual(state._short_verdict("all-clear", [], [], "banks are solid"),
+                         "A calm read across the board — nothing is flashing.")
+
+    def test_short_is_shorter_than_full_and_no_html_entities(self):
+        # The home hero must differ from the brief's full sentence, and carry no
+        # raw HTML entities (it's html-escaped at bake/render time).
+        s = state._short_verdict("contained-pressure",
+                                 ["energy and commodity costs are squeezing budgets"], [], "banks are solid")
+        self.assertNotIn("&", s)
+
+
 class TestClassifyShape(unittest.TestCase):
     def test_partition(self):
         self.assertEqual(state.classify_shape("alert", True), "broad-stress")
@@ -313,6 +341,16 @@ class TestWatching(unittest.TestCase):
         indices = {"economic": {"status": "ok", "lenses": []}}
         out = state.build_state(indices, None)
         self.assertNotIn("watching", out)
+
+    def test_build_state_verdict_carries_short(self):
+        # Enough categories to clear MIN_CATEGORIES and read all-clear.
+        indices = {c: {"status": "ok", "lenses": [
+            {"id": f"{c}-l", "title": "L", "status": "ok", "headline_read": "x"}]}
+            for c in ("economic", "consumer", "banking", "business", "markets")}
+        out = state.build_state(indices, None)
+        self.assertEqual(out["verdict"]["short"],
+                         "A calm read across the board — nothing is flashing.")
+        self.assertNotEqual(out["verdict"]["short"], out["verdict"]["sentence"])
 
 
 if __name__ == "__main__":
