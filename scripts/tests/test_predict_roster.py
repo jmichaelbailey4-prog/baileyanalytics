@@ -109,13 +109,15 @@ class TestRoster(unittest.TestCase):
     def test_all_baked_indicators_have_a_lens_file_to_read(self):
         # the read path resolves category -> out dir -> lens-id file; assert the
         # mapping holds for every baked entry so a live run never KeyErrors.
-        import os
+        # Anchor to the repo root (not the CWD) so the suite passes from any
+        # working directory, like the sibling data checks do.
         from lenses import config
+        data_root = pathlib.Path(__file__).resolve().parents[2] / "data"
         out = {c["id"]: c["out"] for c in config.CATEGORIES}
         for e in self.entries:
             if e.baked:
-                path = os.path.join("data", out[e.category], f"{e.lens_id}.json")
-                self.assertTrue(os.path.exists(path), path)
+                path = data_root / out[e.category] / f"{e.lens_id}.json"
+                self.assertTrue(path.exists(), str(path))
 
     def test_computed_eia_routes_excluded(self):
         # renewables-share etc. have no eia_route; they're injected/computed
