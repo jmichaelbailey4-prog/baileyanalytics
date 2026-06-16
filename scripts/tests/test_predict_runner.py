@@ -139,6 +139,38 @@ class TestDailyRun(unittest.TestCase):
                 runner.run_daily(pred_dir, dry_run=True, entries=_fixture_entries())
             self.assertEqual(len(ledger.load_open(pred_dir)), 1)
 
+    def test_grade_then_predict_failure_does_not_resurface_graded_open(self):
+        # If a prior prediction is graded and the follow-on _make_open_entry then
+        # fails the same run, the stale (now-graded) open entry must NOT be
+        # resurrected — else open.json would carry an id already in the ledger.
+        with tempfile.TemporaryDirectory() as tmp:
+            pred_dir = pathlib.Path(tmp)
+            self._bootstrap(pred_dir)
+            runner.run_daily(pred_dir, dry_run=True, entries=_fixture_entries())
+            hist = json.loads(FIXTURE.read_text(encoding="utf-8"))
+            cpi = hist["economic/cost-of-living/cpi"]
+            last = cpi[-1]
+            y, m = int(last["date"][:4]), int(last["date"][5:7]) + 1
+            if m > 12:
+                y, m = y + 1, 1
+            cpi.append({"date": f"{y:04d}-{m:02d}-01",
+                        "value": f"{float(last['value']) + 0.05:.5f}"})
+            real_make = runner._make_open_entry
+
+            def boom_for_cpi(entry, *a, **k):
+                if entry.key == "economic/cost-of-living/cpi":
+                    raise RuntimeError("model fit failed post-grade")
+                return real_make(entry, *a, **k)
+
+            with mock.patch.object(runner, "_load_fixture_histories", return_value=hist), \
+                 mock.patch.object(runner, "_make_open_entry", side_effect=boom_for_cpi):
+                runner.run_daily(pred_dir, dry_run=True, entries=_fixture_entries())
+            graded_ids = {g["id"] for g in ledger.load_all_graded(pred_dir)}
+            opens = ledger.load_open(pred_dir)
+            self.assertTrue(graded_ids)                        # CPI did grade
+            self.assertEqual(graded_ids & {o["id"] for o in opens}, set())
+            self.assertNotIn("economic/cost-of-living/cpi", [o["key"] for o in opens])
+
 
 if __name__ == "__main__":
     unittest.main()

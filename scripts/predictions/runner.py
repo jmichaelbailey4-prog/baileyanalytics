@@ -191,6 +191,7 @@ def run_daily(pred_dir, dry_run, entries):
     graded_rows = ledger.load_all_graded(pred_dir)
     next_open = []
     for entry in entries:
+        graded_this_run = False
         try:
             cleaned, cad = _prepared_series(entry, _fetch_history(entry, dry_run, fixture_cache))
             if not cleaned or cad in ("annual", "unknown"):
@@ -207,6 +208,7 @@ def run_daily(pred_dir, dry_run, entries):
                     graded = dict(prior, grade=grade.grade_entry(prior, actual, actual_status))
                     ledger.append_graded(pred_dir, graded)
                     prior = None  # consumed; a fresh prediction follows
+                    graded_this_run = True
             _check_revisions(pred_dir, entry, cleaned, graded_rows)
             if prior is not None:
                 next_open.append(prior)          # target not printed yet: stays open
@@ -215,8 +217,11 @@ def run_daily(pred_dir, dry_run, entries):
             # no champion (pre-bootstrap): grade/footnote ran, nothing emitted
         except Exception as exc:  # noqa: BLE001 - one series never sinks the job
             print(f"WARN: daily prediction failed for {entry.key}: {exc}", file=sys.stderr)
-            if entry.key in open_by_key:
-                next_open.append(open_by_key[entry.key])  # keep prior open entry
+            # Keep the prior open entry — unless its target was already graded this
+            # run (a post-grade failure must not resurrect a now-graded prediction
+            # as a duplicate "open" id).
+            if entry.key in open_by_key and not graded_this_run:
+                next_open.append(open_by_key[entry.key])
     wrote = ledger.write_views(pred_dir, next_open, ledger.load_all_graded(pred_dir))
     print(f"predictions: {len(next_open)} open; wrote {', '.join(wrote) or 'nothing (unchanged)'}")
     return len(next_open)
