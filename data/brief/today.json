@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-16T16:24:42Z",
+  "generated_at": "2026-06-16T19:52:49Z",
   "transitions": [],
   "top_moves": [
     {
@@ -54,7 +54,8 @@
       "stat_label": "Food",
       "stat_value": "30.20%",
       "delta": "18.60%",
-      "dir": "up"
+      "dir": "up",
+      "why": "Food: up 7 readings in a row, to a fresh high."
     },
     {
       "lens_id": "energy-electricity",
@@ -108,7 +109,8 @@
       "stat_label": "Power price",
       "stat_value": "18.83\u00a2/kWh",
       "delta": "1.18\u00a2/kWh",
-      "dir": "up"
+      "dir": "up",
+      "why": "Power price: up 3 readings in a row, to a fresh high."
     },
     {
       "lens_id": "market-scoreboard",
@@ -162,7 +164,8 @@
       "stat_label": "S&P 500",
       "stat_value": "7,554",
       "delta": "123",
-      "dir": "up"
+      "dir": "up",
+      "why": "S&P 500: up 3 readings in a row \u2014 its sharpest move in this view."
     },
     {
       "lens_id": "global-dollar-currencies",
@@ -216,7 +219,8 @@
       "stat_label": "Dollar YoY",
       "stat_value": "-0.68%",
       "delta": "0.63%",
-      "dir": "down"
+      "dir": "down",
+      "why": ""
     },
     {
       "lens_id": "consumer-income-savings",
@@ -270,7 +274,8 @@
       "stat_label": "Saving rate",
       "stat_value": "2.60%",
       "delta": "0.60%",
-      "dir": "down"
+      "dir": "down",
+      "why": "Saving rate: down 3 readings in a row, to its lowest in this view."
     }
   ],
   "lenses": [
@@ -767,5 +772,9 @@
       "href": "/dashboards/global/",
       "sentence": "The global backdrop is mostly quiet, but risks are ticking up."
     }
-  ]
+  ],
+  "synthesis": {
+    "cooccurrence": "Four of today's pressure points are about the cost of living \u2014 fuel, food and commodities, overall inflation, and electricity.",
+    "relationships": []
+  }
 }

@@ -2,7 +2,7 @@
   "id": "market-liquidity",
   "title": "Liquidity & the Fed",
   "accent": "#2DD4BF",
-  "last_updated": "2026-06-15T19:59:19Z",
+  "last_updated": "2026-06-16T19:51:19Z",
   "status": "ok",
   "headline_read": "Liquidity is ample \u2014 no monetary squeeze in sight.",
   "recessions": [
@@ -3855,8 +3855,8 @@
       "series_id": "RRPONTSYD",
       "observations": [
         {
-          "date": "2021-06-22",
-          "value": "791.605"
+          "date": "2021-06-23",
+          "value": "813.65"
         },
         {
           "date": "2021-06-28",
@@ -6561,14 +6561,18 @@
         {
           "date": "2026-06-15",
           "value": "0.581"
+        },
+        {
+          "date": "2026-06-16",
+          "value": "10.721"
         }
       ],
       "latest": {
-        "date": "2026-06-15",
-        "value": "0.581"
+        "date": "2026-06-16",
+        "value": "10.721"
       },
       "context": "Spare cash money-market funds park at the Fed overnight. It acts as the system's overflow tank: a high balance means excess liquidity; near zero means the buffer is spent and QT bites reserves directly.",
-      "read": "The overnight reverse-repo facility is down 100% from a year ago, now $0.6 billion.",
+      "read": "The overnight reverse-repo facility is down 92% from a year ago, now $10.7 billion.",
       "signal_status": "info",
       "value_format": "decimal"
     }
