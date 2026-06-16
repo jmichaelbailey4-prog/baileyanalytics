@@ -26,34 +26,46 @@ from . import util
 # --- honesty primitives ---------------------------------------------------
 
 # Verbs/phrases that assert a specific causal mechanism. This is a HEURISTIC
-# BACKSTOP, not a proof: a substring linter can't catch every causal phrasing in
-# English, so the curated relationship map is ALSO human-reviewed (the diff is the
-# review). The list covers the explicit connectives ("because"/"due to") and the
-# transitive macro verbs an author is most likely to reach for.
-# Two deliberate non-entries:
+# BACKSTOP, not a proof — and deliberately HIGH-PRECISION / LOW-RECALL: it catches
+# the *unambiguous* causal phrasings with near-zero false positives, and leaves the
+# subtle/semantic cases (e.g. "does the hedge actually govern the causal verb?") to
+# the human review of the curated map AND an LLM honesty-reviewer at authoring time
+# (a substring matcher structurally can't judge scope or grammar). We do NOT add
+# ambiguous bare stems like "lower"/"cool"/"slow"/"raise"/"squeeze"/"erode" — those
+# read as honest *descriptive* co-occurrence far more often than as a cause ("prices
+# cooled while supply rose"), so flagging them would wrongly reject honest copy and
+# push an author to mis-tier an edge. Two other deliberate non-entries:
 #  * bare "fuel"/"fuels" — a domain noun the co-occurrence sentence names; we ban
 #    only the verb participles "fueled"/"fueling".
 #  * bare "as" — it is the *good* co-occurrence connector ("at the same time as").
 CAUSAL_TOKENS = (
-    # explicit causal connectives
-    "driv", "because", "due to", "caused", "causing", "causes", "cause of",
-    "leads to", "led to", "thanks to", "owing to", "as a result", "result of",
-    "blamed", "blame", "behind the", "on the back of",
-    # transitive cause/effect verbs (stems chosen to avoid colliding with the
-    # layer's own vocabulary — e.g. "lower" is not a substring of "lowest")
-    "fueled", "fueling", "fuelled", "fuelling", "spurred", "spurring",
-    "pushes", "pushing", "pushed", "triggered", "triggering", "sparked",
-    "sparking", "weighed on", "dragged", "dragging", "drag ", "lifted by",
-    "boosted by", "boost", "propelled", "lower", "rais", "cool", "slow",
-    "erod", "weaken", "squeez", "curb", "stok", "dampen", "depress",
-    "feed into", "stem from", "stems from",
+    # explicit causal connectives (unambiguous)
+    "driv", "drove", "because", "due to", "caused", "causing", "causes", "cause of",
+    "leads to", "led to", "leading to", "results in", "result of", "as a result",
+    "thanks to", "owing to", "behind the", "on the back of", "blamed", "blame",
+    "reason for", "responsible for", "a function of", "knock-on",
+    # unambiguous transitive / passive causal phrases (multiword where a bare stem
+    # would collide with honest descriptive copy)
+    "fueled", "fueling", "fuelled", "fuelling", "spurred", "spurring", "pushes",
+    "pushing", "pushed", "triggered", "triggering", "sparked", "sparking",
+    "propelled", "lifted by", "boosted by", "weighed on", "weighs on", "weigh on",
+    "weighs down", "weigh down", "dragged", "dragging", "drag on", "drag down",
+    "eat into", "eats into", "eating into", "saps", "sapping", "props up", "prop up",
+    "propped up", "pass through", "passes through", "passed through", "pass-through",
+    "spill over", "spills over", "spilled over", "spills into", "ripple through",
+    "ripples through", "rippled through", "translate into", "translates into",
+    "translated into", "feed into", "feeds into", "feeds inflation", "stem from",
+    "stems from", "chokes", "choking", "choke off", "juices", "juiced", "hammers",
+    "hammered",
 )
 
-# Probability hedges that turn a bare empirical claim into an honest one.
+# Probability hedges that turn an empirical claim into an honest one. Kept narrow
+# and unambiguous: everyday phrases with non-probabilistic readings ("can ",
+# "over time", "in the past", "associated with") were removed — they let real
+# causation pass AND wrongly tripped honest co-occurrence copy.
 HEDGE_TOKENS = (
-    "tend", "tends", "historically", "historical", "often", "typically",
-    "usually", "has preceded", "have preceded", "on average", "over time",
-    "in the past", "tends to", "can ", "associated with",
+    "tend", "tends", "historically", "often", "typically", "usually",
+    "has preceded", "have preceded", "on average",
 )
 
 

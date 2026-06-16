@@ -24,6 +24,22 @@ EDGE SCHEMA
                     co-occurrence-> MUST state neither cause nor probability
   link            : the sentence shown to readers (tier grammar enforced)
   note            : why this edge exists — the human-readable justification
+
+REVIEW CHECKLIST — what the substring linter CANNOT enforce (so a human, and an
+LLM honesty-reviewer at authoring time, MUST check every edge for these):
+  1. SCOPE OF THE HEDGE (the linter's blind spot): an empirical edge must hedge the
+     CAUSAL CLAIM ITSELF, not merely contain a hedge word somewhere. BANNED even
+     though the linter passes it: a general hedge followed by a present-tense
+     assertion of the specific mechanism — e.g. "rates have historically cooled
+     demand, and are cooling it now". Make ONE hedged general claim; never assert the
+     mechanism as a current fact.
+  2. SUBTLE CAUSATION the high-precision linter intentionally lets through (it favors
+     near-zero false positives): bare verbs like "cools"/"lowers"/"slows"/"erodes" in
+     a co-occurrence edge still assert a cause — downgrade the wording to pure
+     conjunction ("alongside", "at the same time as") or re-tier honestly.
+  3. TIER HONESTY: definitional must be a true identity (real = nominal − inflation),
+     not a strong empirical claim dressed up as definitional. When unsure between
+     empirical and co-occurrence, choose co-occurrence.
 """
 
 RELATIONSHIPS = [

@@ -173,19 +173,37 @@ class TestHonestyPrimitives(unittest.TestCase):
         self.assertEqual(synthesis.find_causal_tokens("Food: up 4 readings in a row."), [])
 
     def test_catches_transitive_causal_verbs(self):
-        # the dishonest forms most likely to be authored into a relationship edge
-        for s in ("higher fuel costs lower real income",
-                  "rates cooled the housing market",
-                  "inflation erodes purchasing power",
-                  "a stronger dollar weakens exports",
-                  "the squeeze on budgets",
-                  "higher rates raised mortgage costs"):
+        # the dishonest forms most likely to be authored into a relationship edge —
+        # unambiguous causal phrasings the high-precision gate must still catch
+        for s in ("rising fuel costs eat into household budgets",
+                  "cheap credit props up valuations",
+                  "the shock ripples through supply chains",
+                  "tariffs pass through to consumer prices",
+                  "the selloff weighs on corporate profits",
+                  "knock-on effects across the market"):
             self.assertTrue(synthesis.find_causal_tokens(s), f"missed causal verb in: {s!r}")
+
+    def test_does_not_flag_honest_descriptive_words(self):
+        # PRECISION: intransitive/descriptive words appear in honest co-occurrence copy
+        # and must NOT read as causal (the gate is high-precision, low-recall by design;
+        # subtle causation is caught by human + LLM review of the curated map, not here)
+        for s in ("prices cooled while supply rose",
+                  "lower rates alongside wider spreads",
+                  "the saving rate is eroding as prices climb",
+                  "a squeeze on budgets and a thinner cushion"):
+            self.assertEqual(synthesis.find_causal_tokens(s), [], f"false positive on: {s!r}")
 
     def test_cooccurrence_connector_is_not_flagged_causal(self):
         # "at the same time as" is the *good* co-occurrence phrasing — must stay clean
         self.assertEqual(
             synthesis.find_causal_tokens("Food costs rose at the same time as savings fell"), [])
+
+    def test_hedge_tokens_exclude_ambiguous_everyday_phrases(self):
+        # these are NOT probabilistic hedges; keeping them wrongly let empirical claims
+        # pass and wrongly rejected honest co-occurrence copy
+        for s in ("can be seen alongside", "in the past week",
+                  "over time horizons shown", "associated with the same week"):
+            self.assertEqual(synthesis.find_hedge_tokens(s), [], f"false hedge on: {s!r}")
 
     def test_finds_hedge_tokens(self):
         self.assertTrue(synthesis.find_hedge_tokens("rates near 7% have historically cooled demand"))
@@ -230,14 +248,19 @@ class TestRelationshipSentence(unittest.TestCase):
 
     def test_cooccurrence_with_transitive_causal_verb_is_rejected(self):
         # the subtle case: a transitive verb that isn't "drive/because" but still asserts cause
-        bad = dict(COOCCURRENCE, link="Higher fuel costs lower real income.")
+        bad = dict(COOCCURRENCE, link="Higher fuel costs eat into real income.")
         with self.assertRaises(ValueError):
             synthesis.relationship_sentence(bad)
 
     def test_empirical_with_bare_transitive_cause_is_rejected(self):
-        bad = dict(EMPIRICAL, link="Higher rates cool home prices.")  # causal, no hedge
+        bad = dict(EMPIRICAL, link="Higher rates eat into home demand.")  # causal, no hedge
         with self.assertRaises(ValueError):
             synthesis.relationship_sentence(bad)
+
+    def test_honest_cooccurrence_with_can_is_not_wrongly_rejected(self):
+        # "can be seen alongside" is honest co-occurrence — must render, not raise
+        ok = dict(COOCCURRENCE, link="Falling savings can be seen alongside rising prices.")
+        self.assertIn("alongside", synthesis.relationship_sentence(ok))
 
     def test_cooccurrence_clean_renders(self):
         self.assertIn("same time", synthesis.relationship_sentence(COOCCURRENCE))
