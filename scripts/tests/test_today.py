@@ -83,6 +83,35 @@ class BuildToday(unittest.TestCase):
         self.assertNotIn("verdict", out)
         self.assertIn("statuses", new_state)
 
+    def test_movers_carry_a_why(self):
+        # every mover gets a self-grounded why string (possibly "" — honest silence)
+        for m in self.out["top_moves"]:
+            self.assertIn("why", m)
+            self.assertIsInstance(m["why"], str)
+
+    def test_synthesis_block_present_and_honest(self):
+        syn = self.out["synthesis"]
+        self.assertIn("cooccurrence", syn)
+        self.assertIn("relationships", syn)
+        # INV-2: the co-occurrence sentence is a count, never a cause
+        from lenses import synthesis
+        self.assertEqual(synthesis.find_causal_tokens(syn["cooccurrence"]), [])
+
+    def test_relationship_narrative_is_deferred_empty(self):
+        # engine is wired; the authored map is deferred (spec §6), so it stays []
+        self.assertEqual(self.out["synthesis"]["relationships"], [])
+
+    def test_synthesis_failure_degrades_to_brief(self):
+        # a synthesis bug must never lose the day's brief/movers (house guard pattern)
+        orig = today.synthesis.cooccurrence
+        today.synthesis.cooccurrence = lambda *a, **k: (_ for _ in ()).throw(RuntimeError("boom"))
+        try:
+            out, _ = today.build_today(INDICES, {"statuses": {}})
+        finally:
+            today.synthesis.cooccurrence = orig
+        self.assertIn("top_moves", out)        # brief survived
+        self.assertIn("verdict", out)          # state survived
+
     def test_watching_included_when_predictions_open(self):
         preds = [{"key": "k", "indicator": "CPI", "lens": "cost-of-living",
                   "category": "economic", "title": "CPI inflation",

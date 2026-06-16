@@ -6,7 +6,7 @@ list; state.build_state supplies the verdict, watching block, and category
 records. Pure like both of them — no network, no disk I/O. Spec:
 docs/superpowers/specs/2026-06-11-website-revamp-design.md (§2, §12, App. A)."""
 
-from . import brief, state
+from . import brief, state, synthesis
 
 SEVERITY = brief.SEVERITY  # ok/watch/elevated/alert ladder
 
@@ -100,4 +100,22 @@ def build_today(category_indices, prior_state, open_predictions=None):
         "categories": [dict(c, sentence=_sentence(c))
                        for c in state_today["categories"]],
     })
+    _attach_synthesis(today_json, pressure)
     return today_json, new_state
+
+
+def _attach_synthesis(today_json, pressure):
+    """Add the synthesis layer (spec 2026-06-16): a self-grounded 'why' per mover
+    and a structural co-occurrence read. Guarded — a synthesis hiccup must never
+    lose the day's brief, so it degrades to no-why / no-synthesis. The relationship
+    NARRATIVE is deferred (spec §6): the engine is wired but the authored map is
+    not yet shipped, so `relationships` stays []."""
+    try:
+        today_json["top_moves"] = [dict(m, why=synthesis.mover_why(m))
+                                   for m in today_json.get("top_moves", [])]
+        today_json["synthesis"] = {
+            "cooccurrence": synthesis.cooccurrence(pressure),
+            "relationships": [],  # deferred: authored map pending (spec §6)
+        }
+    except Exception:  # noqa: BLE001 - synthesis is additive; never lose the brief
+        today_json.setdefault("synthesis", {"cooccurrence": "", "relationships": []})

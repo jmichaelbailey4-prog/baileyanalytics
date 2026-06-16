@@ -62,11 +62,15 @@ def _changed_rows(today):
     for m in (today.get("top_moves") or [])[:MOVES_CAP]:
         arrow = "&#9660;" if m.get("dir") == "down" else "&#9650;"
         delta = f" {arrow}{escape(m['delta'])}" if m.get("delta") else ""
+        body = escape(m.get("headline", ""))
+        if m.get("why"):  # the self-grounded "why" rides along on its own muted line
+            body += (f'<br><span style="font-style:italic;color:{MUTED};">'
+                     f'{escape(m["why"])}</span>')
         rows.append(_row(
             f'<a href="{escape(SITE + m["href"], quote=True)}" style="color:{INK};">{escape(m["lens_title"])}</a> '
             f'&middot; {escape(m.get("stat_label", ""))} '
             f'<strong>{escape(m.get("stat_value", ""))}</strong>{delta}',
-            escape(m.get("headline", ""))))
+            body))
     if not rows:
         rows.append(_row("A quiet day on the board", "No status changes or outsized moves."))
     return "".join(rows)

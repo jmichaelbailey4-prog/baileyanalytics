@@ -150,3 +150,65 @@ defaulting to the backlog:
 at a **synthesis-layer spec** (cross-category narrative + per-mover "why"). It's the highest-value
 buildable bet and the natural successor the roadmap and audit both name. I deliberately built none
 of it now — it's creative work that needs your input first.
+
+---
+
+# Decisions pending — autonomous session of 2026-06-16 (branch `synthesis-why-layer`)
+
+The synthesis / "why" layer (#5 above, now built). Spec:
+`specs/2026-06-16-synthesis-why-layer-design.md`. I built the **uncontested, honest** subset
+(per-mover why + structural co-occurrence + the relationship-map *scaffolding*), logged the
+contested forks below, built on the recommended option for each (reversible — it's a branch),
+and **deferred** the authored relationship-map content + the map-driven causal narrative to the
+next session (your editorial/economist call). Nothing here is deployed. The five forks:
+
+## D1 — Editorial voice of the why/synthesis copy
+**Fork.** What voice do the new lines speak in? **Options.** (a) **Match the existing house voice**
+(plain, specific, colon-phrasing for plural-agnostic subjects à la `explain.py`, em-dash used
+sparingly) — *my pick*. (b) A terser, headline-style clip ("Food — 7th straight gain, record"). (c)
+A chattier newsletter voice. **Pick + why:** (a). The site already has a consistent, trusted voice;
+a second voice on the same page would read bolted-on. **Built on (a).** Easy to retune — the copy is
+a handful of templates in `synthesis.py`.
+
+## D2 — How much the layer says on a quiet day
+**Fork.** Most days are quiet; manufacturing drama would be the worst failure here. **Options.** (a)
+**Silent unless there's a real, countable pattern** (per-mover why omitted when nothing clears the
+bar; co-occurrence omitted unless ≥2 pressure points share a theme) — *my pick*. (b) Always emit at
+least one calm framing line. **Pick + why:** (a) — honesty + "never manufacture drama" (memory:
+the audit praised the honest quiet-day instinct). Verified on real data: today the Dollar mover
+correctly gets **no** why line. **Built on (a).**
+
+## D3 — Surface placement
+**Fork.** Where do the new reads appear? **Options.** (a) **Per-mover why inside each mover card on
+the brief + as a muted line in the email; co-occurrence as one line under the verdict panel** —
+*my pick*; defer lens-page placement and the relationship lead-sentence. (b) A single synthesis
+lead paragraph at the top of "What changed today" only. (c) Push the why onto the 33 lens pages too
+(the `#baked-read` block). **Pick + why:** (a) — the movers are exactly where the site shows "what"
+without "why"; the verdict panel is where a one-line synthesis belongs; lens-page placement is a
+separate baked surface best done once the voice is signed off. **Built on (a).**
+
+## D4 — LLM or rules/curated? (you flagged this one explicitly)
+**Fork.** Generate any of this copy with an LLM? **Options.** (a) **No LLM — rules + curated map
+only** — *my strong pick*. (b) LLM constrained to *rephrasing already-grounded facts*, human-flagged
+for review, never inventing causation. (c) LLM free-form (rejected outright). **Pick + why:** (a).
+"No black box" is load-bearing for this exact feature — it's the credibility centerpiece. Every line
+is deterministic and traceable to a rule or a reviewed edge. If you ever want (b), it must stay a
+rephrasing layer over grounded facts with a human gate — never a source of new claims. **Built on (a).**
+
+## D5 — Theme tags are mild editorial — author them now or defer?
+**Fork.** The structural co-occurrence count needs a `lens_id → theme` map (e.g. fuel/food/electricity/
+CPI = "the cost of living"). A theme tag is a *categorization*, not a causal edge — but it's still a
+light editorial judgment. **Options.** (a) **Author a minimal, conservative theme map now** (prices,
+housing-market, credit clusters only) and flag it for your review — *my pick*; the co-occurrence count
+is explicitly in-scope and needs it. (b) Defer co-occurrence entirely until you review themes. **Pick
++ why:** (a) — it's reversible, the groupings are uncontroversial (a fuel-price and a food-price lens
+*are* both cost-of-living), and it's what makes today's strongest worked example ("four of today's
+pressure points are about the cost of living") possible. **Built on (a)** — the map is
+`synthesis.THEMES`; please sanity-check the groupings.
+
+## D6 (deferred, not a fork to decide now) — authoring the relationship map
+The relationship *engine* + honesty tests are built and green; the **map content** (the authored
+edges in `relationships.py`) is deliberately near-empty (2 marked placeholders). Authoring ~15–30
+economist-curated edges is the next session's main task — it's content entry, not engineering, and
+it needs your domain judgment + voice on how much causal language each edge earns. Mockups of the
+intended voice are in spec §8.

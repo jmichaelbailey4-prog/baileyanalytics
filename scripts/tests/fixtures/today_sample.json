@@ -11,8 +11,13 @@
     {"lens_id": "energy-commodities", "lens_title": "Commodities & Materials", "category": "energy",
      "href": "/dashboards/energy/commodities.html", "headline": "Commodity costs are surging.",
      "accent": "#FB923C", "sparkline": [10.0, 11.0, 12.5, 30.2],
-     "stat_label": "Food", "stat_value": "30.20%", "delta": "18.60%", "dir": "up"}
+     "stat_label": "Food", "stat_value": "30.20%", "delta": "18.60%", "dir": "up",
+     "why": "Food: up 3 readings in a row, to a fresh high."}
   ],
+  "synthesis": {
+    "cooccurrence": "Four of today's pressure points are about the cost of living — fuel, food and commodities, electricity, and overall inflation.",
+    "relationships": []
+  },
   "watching": [
     {"key": "energy/energy-electricity/retail-electricity", "indicator": "retail-electricity",
      "lens": "energy-electricity", "category": "energy",

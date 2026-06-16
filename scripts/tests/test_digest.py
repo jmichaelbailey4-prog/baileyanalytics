@@ -61,6 +61,10 @@ class TestBody(unittest.TestCase):
     def test_pressure_count_line(self):
         self.assertIn("14 readings warrant attention", self.html)  # 3+8+3 from status_counts
 
+    def test_mover_why_in_body(self):
+        # the self-grounded mover "why" rides along in the email mover row
+        self.assertIn("up 3 readings in a row", self.html)
+
 
 if __name__ == "__main__":
     unittest.main()

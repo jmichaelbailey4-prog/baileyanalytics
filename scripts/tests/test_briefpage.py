@@ -47,6 +47,16 @@ class TestRenderToday(unittest.TestCase):
         self.assertIn("<svg class=\"spark\"", self.html)
         self.assertIn("polyline", self.html)
 
+    def test_mover_why_renders(self):
+        # the per-mover 'why' appears as its own line inside the mover card
+        self.assertIn('class="hub-why"', self.html)
+        self.assertIn("up 3 readings in a row", self.html)
+
+    def test_cooccurrence_renders_under_verdict(self):
+        # the structural synthesis line sits with the verdict
+        self.assertIn("Four of today", self.html)
+        self.assertIn("about the cost of living", self.html)
+
     def test_no_archive_banner_on_today(self):
         self.assertNotIn("archive-banner", self.html)
 

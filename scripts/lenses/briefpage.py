@@ -75,12 +75,14 @@ def _movers(moves):
     for m in moves:
         delta = (f' <i class="delta {escape(m.get("dir", ""))}">{escape(m.get("delta", ""))}</i>'
                  if m.get("delta") else "")
+        why = (f'<div class="hub-why">{escape(m["why"])}</div>' if m.get("why") else "")
         cards.append(
             f'<a class="hub-card" href="{escape(m["href"], quote=True)}">'
             f'<div class="hub-eyebrow" style="color:{escape(m.get("accent") or "#94A3B8", quote=True)}">'
             f'<span class="hub-cat">{escape(CATEGORY_LABELS.get(m["category"], m["category"]))} ·</span> '
             f'{escape(m["lens_title"])}</div>'
             f'<div class="hub-read">{escape(m.get("headline", ""))}</div>'
+            f'{why}'
             f'{_spark(m.get("sparkline"), m.get("accent"))}'
             f'<div class="hub-stats">{escape(m.get("stat_label", ""))} '
             f'<b>{escape(m.get("stat_value", ""))}</b>{delta}</div></a>')
@@ -181,14 +183,17 @@ def render_brief(today, og_image, archive_date=None, prev_date=None, next_date=N
             or "The daily read on the U.S. and global economy.")
 
     verdict = today.get("verdict") or {}
+    cooccur = (today.get("synthesis") or {}).get("cooccurrence") or ""
     verdict_html = ""
     if verdict.get("sentence"):
         vstatus = escape(verdict.get("status", "unknown"))
+        cooccur_html = (f'<div class="state-cooccur">{escape(cooccur)}</div>'
+                        if cooccur else "")
         verdict_html = (
             '<section class="state-panel" id="verdict" style="margin-top:1.25rem">'
             f'<div class="state-verdict"><span class="badge {vstatus}">'
             f'{vstatus}</span> <span class="state-sentence">'
-            f'{escape(verdict["sentence"])}</span></div></section>')
+            f'{escape(verdict["sentence"])}</span></div>{cooccur_html}</section>')
 
     banner = ""
     if archive_date:
