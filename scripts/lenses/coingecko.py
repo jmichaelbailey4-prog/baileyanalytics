@@ -39,7 +39,9 @@ def _get(path, params, timeout):
             with urllib.request.urlopen(req, timeout=timeout) as resp:
                 return json.loads(resp.read())
         except urllib.error.HTTPError as exc:
-            if exc.code == 429 and attempt < 3:
+            # Retry rate limits (429) and transient server errors (5xx) with a
+            # bounded backoff; client errors (4xx) raise immediately.
+            if exc.code in (429, 500, 502, 503, 504) and attempt < 3:
                 time.sleep(10 * (attempt + 1))
                 continue
             raise

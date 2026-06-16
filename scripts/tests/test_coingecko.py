@@ -3,6 +3,7 @@ import pathlib
 import io
 import json
 import unittest
+import urllib.error
 from unittest import mock
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1]))
@@ -64,6 +65,24 @@ class TestCompute(unittest.TestCase):
 
     def test_compute_rotation_handles_no_overlap(self):
         self.assertEqual(coingecko.compute_rotation([], []), [])
+
+
+class TestRetry(unittest.TestCase):
+    def test_retries_transient_5xx_then_succeeds(self):
+        payload = {"data": {"market_cap_percentage": {"btc": 50.0}}}
+        ok = FakeResponse(json.dumps(payload).encode())
+        err = urllib.error.HTTPError("http://x", 503, "Service Unavailable", None, None)
+        with mock.patch("lenses.coingecko.time.sleep"), \
+             mock.patch("lenses.coingecko.urllib.request.urlopen", side_effect=[err, ok]):
+            self.assertEqual(coingecko.global_metrics()["btc_dominance"], 50.0)
+
+    def test_client_error_4xx_raises_immediately_without_backoff(self):
+        err = urllib.error.HTTPError("http://x", 404, "Not Found", None, None)
+        with mock.patch("lenses.coingecko.time.sleep") as slept, \
+             mock.patch("lenses.coingecko.urllib.request.urlopen", side_effect=err):
+            with self.assertRaises(urllib.error.HTTPError):
+                coingecko.global_metrics()
+        slept.assert_not_called()
 
 
 if __name__ == "__main__":
