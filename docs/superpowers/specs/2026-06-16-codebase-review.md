@@ -6,6 +6,33 @@ aggressive fix pass on a branch (`codebase-review-fixes`). This file is the
 single record; each finding is tagged **✅ FIXED**, **DEFERRED**, or
 **NOT A FINDING** in place.
 
+## Verification (post-fix)
+
+- **Full suite: 728 tests, green** (719 baseline − 4 removed dead-rule tests + 13
+  new regression tests), run on the exact committed HEAD.
+- **`/code-review` (high, 3 finder angles — correctness, test-quality+frontend,
+  cleanup/altitude/conventions): zero findings.** Confirmed every new test is a
+  genuine regression guard (fails if its fix is reverted), no caller breakage, no
+  orphaned helpers, no CLAUDE.md violations.
+
+### Finding → commit → proving test
+
+| Finding | Commit | Proving test |
+|---------|--------|--------------|
+| M2 | `1f97bc6` | test_predict_roster (now CWD-independent) |
+| L1 | `784515f` | (dead code + its tests removed; suite stays green) |
+| H1 | `905ba89` | test_refresh_markets::TestCryptoDominanceNullGuard |
+| L2 | `905ba89` | test_refresh_main::test_economic_failure_does_not_abort_later_categories |
+| L3 | `9af28c8` | test_briefpage::test_jsonld_cannot_break_out_of_script |
+| L5 | `9af28c8` | test_briefpage::test_back_link_uses_defined_back_class |
+| L6 | `7c1f603` | test_staticread::test_special_chars_in_all_fields_are_escaped |
+| L7 | `7c1f603` | test_derive::TestUnitsToMillions |
+| M1 | `f855967` | test_predict_runner::test_grade_then_predict_failure_does_not_resurface_graded_open |
+| H2/H3 | `ec91576` | (CSS — verified by inspection vs index.html/about.html inline blocks; no CSS harness) |
+| L4 | `15f9813` | (JS — verified by inspection; matches track-record.js esc() convention) |
+| L8 | `ba11c4c` | test_coingecko::TestRetry |
+| L9 | `8578c2c` | test_predict_cli |
+
 ## Method
 
 - Established a green baseline (full `unittest` suite).
