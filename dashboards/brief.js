@@ -31,7 +31,7 @@
   function compactStrip(data) {
     const t0 = (data.transitions || [])[0];
     const lead = t0
-      ? `<a class="brief-strip-lead" href="${t0.href}">${esc(t0.lens_title)}: ${esc(t0.from_status)} &rarr; ${esc(t0.to_status)}</a>`
+      ? `<a class="brief-strip-lead" href="${esc(t0.href)}">${esc(t0.lens_title)}: ${esc(t0.from_status)} &rarr; ${esc(t0.to_status)}</a>`
       : "";
     return `<a class="brief-strip-counts" href="/dashboards/brief.html#pressure">${esc(countsText(data.status_counts || {}))}</a>${lead}`;
   }
