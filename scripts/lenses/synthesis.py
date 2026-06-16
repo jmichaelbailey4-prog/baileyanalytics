@@ -140,48 +140,67 @@ def _outsized(values):
     return abs(latest) / vol >= OUTSIZE_SIGMA
 
 
-# --- signal 1: the per-mover 'why' (INV-1) --------------------------------
+# --- signal 1: the per-mover / per-indicator 'why' (INV-1) -----------------
+# mover_why (brief) and indicator_why (lens pages) share one body: streak /
+# fresh-extreme / outsized over a SINGLE series, closed vocabulary out — so they
+# structurally cannot name another series or assert a cause. They differ only in
+# the window phrase: 'this view' where a chart is shown (the brief), 'recent
+# readings' on the static #baked-read, which renders no chart for no-JS readers.
 
-def mover_why(mover):
-    """A one-line, self-grounded 'why' for a mover, from its OWN primary-indicator
-    sparkline + stat label. Returns '' when nothing clears the bar (honest
-    silence). Closed vocabulary: no causal token, no other series — INV-1."""
-    label = (mover.get("stat_label") or "").strip()
-    vals = _nums(mover.get("sparkline"))
+def _why_body(values, scope):
+    """The shared self-grounded 'why' body for a numeric series. `scope` is the
+    window phrase used wherever a claim is window-relative. '' when nothing clears
+    the bar. A fresh extreme reached BY a streak needs no scope word (the streak
+    already reads as recent); a fresh extreme without a streak is scoped."""
+    vals = _nums(values)
     if len(vals) < MIN_STREAK + 1:
         return ""
     st = _streak(vals)
     ext = _fresh_extreme(vals)
     out = _outsized(vals)
     rising = vals[-1] > vals[-2]
-
     if st:
         direction, n = st
-        lead = f"{'up' if direction == 'up' else 'down'} {n} readings in a row"
+        lead = f"{direction} {n} readings in a row"
         if ext == "high" and direction == "up":
-            body = lead + ", to a fresh high"
-        elif ext == "low" and direction == "down":
-            body = lead + ", to its lowest in this view"
-        elif out:
-            body = lead + " — its sharpest move in this view"
-        else:
-            body = lead
-    elif ext == "high" and rising:
-        body = "a fresh high for the period shown"
+            return lead + ", to a fresh high"
+        if ext == "low" and direction == "down":
+            return lead + f", to its lowest in {scope}"
         if out:
-            body += " — its sharpest jump in this view"
-    elif ext == "low" and not rising:
-        body = "its lowest in the period shown"
-        if out:
-            body += " — its sharpest drop in this view"
-    elif out:
-        body = f"its sharpest {'jump' if rising else 'drop'} in this view"
-    else:
-        return ""
+            return lead + f" — its sharpest move in {scope}"
+        return lead
+    if ext == "high" and rising:
+        return f"a fresh high in {scope}" + (f" — its sharpest jump in {scope}" if out else "")
+    if ext == "low" and not rising:
+        return f"its lowest in {scope}" + (f" — its sharpest drop in {scope}" if out else "")
+    if out:
+        return f"its sharpest {'jump' if rising else 'drop'} in {scope}"
+    return ""
 
+
+def _why_with_label(label, body):
+    """Prefix the body with its stat/indicator label (the plural-agnostic colon
+    convention from explain.py); capitalize when there is no label. '' stays ''."""
+    if not body:
+        return ""
+    label = (label or "").strip()
     if label:
         return f"{label}: {body}."
     return body[0].upper() + body[1:] + "."
+
+
+def mover_why(mover):
+    """A one-line, self-grounded 'why' for a brief mover, from its OWN
+    primary-indicator sparkline + stat label. '' = honest silence (INV-1)."""
+    return _why_with_label(mover.get("stat_label"),
+                           _why_body(mover.get("sparkline"), "this view"))
+
+
+def indicator_why(label, values):
+    """Lens-page sibling of mover_why: a self-grounded 'why' for ONE indicator's
+    own recent observation values, with period-neutral wording for the static
+    #baked-read (crawlers/no-JS see no chart 'view'). '' = honest silence (INV-1)."""
+    return _why_with_label(label, _why_body(values, "recent readings"))
 
 
 # --- signal 2: structural co-occurrence (INV-2) ---------------------------
@@ -206,11 +225,17 @@ THEMES = {
     "consumer-credit": ("credit", "consumer credit"),
     "business-credit": ("credit", "business credit"),
     "bank-asset-quality": ("credit", "bank loan quality"),
+    # the labor/earnings cluster: jobs and the income they produce (D5 follow-up,
+    # 2026-06-16). income-savings sits here, not under "prices" — its SUBJECT is
+    # earnings; the inflation->real-income link is a relationship edge, not a theme.
+    "job-market": ("labor", "the job market"),
+    "consumer-income-savings": ("labor", "household incomes"),
 }
 THEME_LABELS = {
     "prices": "the cost of living",
     "housing-market": "the housing market",
     "credit": "credit conditions",
+    "labor": "jobs and incomes",
 }
 MIN_THEME = 2  # members needed before a cluster is worth a sentence
 

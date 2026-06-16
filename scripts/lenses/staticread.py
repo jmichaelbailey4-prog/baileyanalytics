@@ -7,7 +7,24 @@ matches what the charts show."""
 
 from html import escape
 
-from . import build
+from . import build, synthesis
+
+# Recent observations the per-indicator 'why' reads. Bounds the 'recent readings'
+# scope so a "fresh high" claim stays honestly recent rather than all-time.
+WHY_WINDOW = 40
+
+
+def _recent_values(ind):
+    """The indicator's last WHY_WINDOW numeric observation values (the baked
+    observations are strings; bad/missing ones are skipped) — the series the
+    self-grounded 'why' reads."""
+    out = []
+    for o in ind.get("observations") or []:
+        try:
+            out.append(float(o.get("value")))
+        except (TypeError, ValueError):
+            continue
+    return out[-WHY_WINDOW:]
 
 
 def render_fragment(lens_json):
@@ -22,5 +39,10 @@ def render_fragment(lens_json):
             f"<h3>{escape(ind.get('title', ''))}</h3>"
             f"<p><strong>{escape(ind.get('short', ''))}: {escape(value)}</strong>"
             f" — {escape(ind.get('read', ''))}</p>")
+        # the self-grounded per-indicator 'why' (INV-1), reusing the .hub-why
+        # style; omitted when the series clears no signal (honest silence)
+        why = synthesis.indicator_why(ind.get("short", ""), _recent_values(ind))
+        if why:
+            parts.append(f'<p class="hub-why">{escape(why)}</p>')
     parts.append("</section>")
     return "".join(parts)

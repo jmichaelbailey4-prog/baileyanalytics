@@ -117,6 +117,54 @@ class TestMoverWhy(unittest.TestCase):
         self.assertEqual(synthesis.mover_why(m), synthesis.mover_why(m))
 
 
+# --- per-indicator why on lens pages (INV-1) ------------------------------
+
+class TestIndicatorWhy(unittest.TestCase):
+    def test_up_streak_prefixes_label(self):
+        why = synthesis.indicator_why("Yield curve", [1, 2, 3, 4])
+        self.assertTrue(why.startswith("Yield curve: "))
+        self.assertIn("up 3 readings in a row", why)
+
+    def test_period_neutral_wording_not_chart_view(self):
+        # the static #baked-read shows no chart, so it must NOT say "in this view"
+        why = synthesis.indicator_why("X", [5, 3, 2, 1])  # down streak to a low
+        self.assertIn("recent readings", why)
+        self.assertNotIn("this view", why)
+        self.assertNotIn("period shown", why)
+
+    def test_no_signal_is_silent(self):
+        self.assertEqual(synthesis.indicator_why("X", [1, 5, 3, 4]), "")
+
+    def test_too_short_is_silent(self):
+        self.assertEqual(synthesis.indicator_why("X", [1, 2]), "")
+
+    def test_non_numeric_values_are_silent(self):
+        self.assertEqual(synthesis.indicator_why("X", [None, "n/a"]), "")
+
+    def test_inv1_no_causal_token(self):
+        for s in ([1, 2, 3, 4, 5, 6, 7], [7, 6, 5, 4, 3, 2, 1], [10, 10, 10, 10, 40]):
+            self.assertEqual(
+                synthesis.find_causal_tokens(synthesis.indicator_why("S", s)), [],
+                f"causal token leaked into a lens why for {s}")
+
+    def test_inv4_deterministic(self):
+        self.assertEqual(synthesis.indicator_why("X", [1, 2, 3, 4]),
+                         synthesis.indicator_why("X", [1, 2, 3, 4]))
+
+
+class TestMoverWhyUnchangedAfterRefactor(unittest.TestCase):
+    """mover_why now shares _why_body with indicator_why; its brief output must be
+    preserved (the deployed-but-not-yet-baked first-half wording)."""
+
+    def test_streak_to_fresh_high_unchanged(self):
+        self.assertEqual(synthesis.mover_why(_mover("Food", [10, 11, 12.5, 30.2])),
+                         "Food: up 3 readings in a row, to a fresh high.")
+
+    def test_down_streak_to_low_unchanged(self):
+        self.assertEqual(synthesis.mover_why(_mover("Saving rate", [4.3, 3.6, 3.2, 2.6])),
+                         "Saving rate: down 3 readings in a row, to its lowest in this view.")
+
+
 # --- structural co-occurrence (INV-2) -------------------------------------
 
 def _p(lens_id, status):
@@ -159,6 +207,15 @@ class TestCooccurrence(unittest.TestCase):
         rows = [_p("energy-oil-fuels", "alert"), _p("energy-commodities", "alert"),
                 _p("cost-of-living", "elevated")]
         self.assertEqual(synthesis.cooccurrence(rows), synthesis.cooccurrence(rows))
+
+    def test_labor_cluster_named_with_a_count(self):
+        # D5 follow-up: a jobs/incomes theme so a stressed job market + household
+        # incomes read as one story, not two isolated facts.
+        rows = [_p("job-market", "elevated"), _p("consumer-income-savings", "watch")]
+        s = synthesis.cooccurrence(rows)
+        self.assertIn("Two", s)
+        self.assertIn("jobs and incomes", s)           # the theme label
+        self.assertEqual(synthesis.find_causal_tokens(s), [])  # INV-2: still a count
 
 
 # --- honesty primitives ---------------------------------------------------
