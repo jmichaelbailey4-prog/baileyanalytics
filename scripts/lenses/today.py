@@ -105,25 +105,38 @@ def build_today(category_indices, prior_state, open_predictions=None):
         "categories": [dict(c, sentence=_sentence(c))
                        for c in state_today["categories"]],
     })
-    _attach_synthesis(today_json, pressure)
+    _attach_synthesis(today_json)
     return today_json, new_state
 
 
-def _attach_synthesis(today_json, pressure):
+def _attach_synthesis(today_json):
     """Add the synthesis layer (spec 2026-06-16): a self-grounded 'why' per mover,
-    a structural co-occurrence read, and (D6) the curated relationship narrative —
-    up to RELATIONSHIP_CAP honest sentences for edges whose BOTH endpoints are in
-    play today (compose_relationships filters to the active set and renders only
-    from the tier-gated curated map). Guarded — a synthesis hiccup must never lose
-    the day's brief, so it degrades to no-why / no-synthesis."""
+    a structural co-occurrence read, and (D6) the curated relationship narrative.
+    Guarded — a synthesis hiccup must never lose the day's brief, so it degrades to
+    no-why / no-synthesis. The relationship narrative is guarded SEPARATELY (see
+    _safe_relationships) so a malformed future edge can't blank the co-occurrence
+    line computed beside it."""
     try:
         today_json["top_moves"] = [dict(m, why=synthesis.mover_why(m))
                                    for m in today_json.get("top_moves", [])]
         today_json["synthesis"] = {
-            "cooccurrence": synthesis.cooccurrence(pressure),
-            "relationships": synthesis.compose_relationships(
-                relationships.RELATIONSHIPS, synthesis.active_keys(today_json),
-                cap=RELATIONSHIP_CAP),
+            "cooccurrence": synthesis.cooccurrence(today_json.get("pressure", [])),
+            "relationships": _safe_relationships(today_json),
         }
     except Exception:  # noqa: BLE001 - synthesis is additive; never lose the brief
         today_json.setdefault("synthesis", {"cooccurrence": "", "relationships": []})
+
+
+def _safe_relationships(today_json):
+    """Up to RELATIONSHIP_CAP curated relationship sentences for edges whose BOTH
+    endpoints are in play today (compose filters to the active set, rendering only
+    from the tier-gated map). Guarded on its own: relationship_sentence raises by
+    design on a malformed edge — the loud honesty gate, enforced in CI by
+    test_synthesis — so here at build time we degrade to [] rather than let one bad
+    future edit blank the co-occurrence line computed beside it."""
+    try:
+        return synthesis.compose_relationships(
+            relationships.RELATIONSHIPS, synthesis.active_keys(today_json),
+            cap=RELATIONSHIP_CAP)
+    except Exception:  # noqa: BLE001 - never lose the brief over a bad edge
+        return []

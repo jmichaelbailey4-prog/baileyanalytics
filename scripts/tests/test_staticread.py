@@ -62,10 +62,13 @@ class TestRenderFragment(unittest.TestCase):
         self.assertEqual(self.html.count('class="hub-why"'), 1)
 
     def test_why_carries_no_causal_token(self):
-        # INV-1 holds on the rendered fragment too
+        # INV-1 holds on the rendered fragment too — extract every why robustly
+        import re
         from lenses import synthesis
-        self.assertEqual(synthesis.find_causal_tokens(self.html.split("hub-why")[1][:120]
-                                                       if "hub-why" in self.html else ""), [])
+        whys = re.findall(r'<p class="hub-why">(.*?)</p>', self.html)
+        self.assertTrue(whys)  # the fixture's yield-curve series yields one
+        for w in whys:
+            self.assertEqual(synthesis.find_causal_tokens(w), [], f"causal token in why: {w!r}")
 
 
 if __name__ == "__main__":

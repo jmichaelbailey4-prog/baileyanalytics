@@ -7,7 +7,7 @@ matches what the charts show."""
 
 from html import escape
 
-from . import build, synthesis
+from . import build, synthesis, util
 
 # Recent observations the per-indicator 'why' reads. Bounds the 'recent readings'
 # scope so a "fresh high" claim stays honestly recent rather than all-time.
@@ -15,16 +15,13 @@ WHY_WINDOW = 40
 
 
 def _recent_values(ind):
-    """The indicator's last WHY_WINDOW numeric observation values (the baked
-    observations are strings; bad/missing ones are skipped) — the series the
-    self-grounded 'why' reads."""
-    out = []
-    for o in ind.get("observations") or []:
-        try:
-            out.append(float(o.get("value")))
-        except (TypeError, ValueError):
-            continue
-    return out[-WHY_WINDOW:]
+    """The indicator's last WHY_WINDOW numeric observation values — the series the
+    self-grounded 'why' reads. Baked values are strings; missing/'.' ones are
+    dropped via the shared util.to_float (one parser for baked values across the
+    pipeline)."""
+    vals = [f for f in (util.to_float(o.get("value")) for o in ind.get("observations") or [])
+            if f is not None]
+    return vals[-WHY_WINDOW:]
 
 
 def render_fragment(lens_json):

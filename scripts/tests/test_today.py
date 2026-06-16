@@ -125,6 +125,20 @@ class BuildToday(unittest.TestCase):
         out, _ = today.build_today(calm, {"statuses": {}})
         self.assertEqual(out["synthesis"]["relationships"], [])
 
+    def test_relationships_failure_keeps_cooccurrence(self):
+        # review fix: a malformed-edge failure in compose (relationship_sentence
+        # raises by design) must degrade to [] WITHOUT blanking the co-occurrence
+        # line computed beside it — the narrative is guarded separately.
+        orig = today.synthesis.compose_relationships
+        today.synthesis.compose_relationships = lambda *a, **k: (
+            _ for _ in ()).throw(ValueError("bad edge"))
+        try:
+            out, _ = today.build_today(INDICES, {"statuses": {}})
+        finally:
+            today.synthesis.compose_relationships = orig
+        self.assertEqual(out["synthesis"]["relationships"], [])     # degraded safely
+        self.assertNotEqual(out["synthesis"]["cooccurrence"], "")   # NOT blanked
+
     def test_synthesis_failure_degrades_to_brief(self):
         # a synthesis bug must never lose the day's brief/movers (house guard pattern)
         orig = today.synthesis.cooccurrence
