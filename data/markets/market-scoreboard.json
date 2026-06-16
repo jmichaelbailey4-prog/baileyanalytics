@@ -2,7 +2,7 @@
   "id": "market-scoreboard",
   "title": "Asset-Class Scoreboard",
   "accent": "#22D3EE",
-  "last_updated": "2026-06-15T19:59:19Z",
+  "last_updated": "2026-06-16T13:09:18Z",
   "status": "neutral",
   "headline_read": "How the major asset classes are moving right now.",
   "recessions": [
@@ -25,8 +25,8 @@
       "series_id": "SP500",
       "observations": [
         {
-          "date": "2016-06-27",
-          "value": "2000.54"
+          "date": "2016-06-28",
+          "value": "2036.09"
         },
         {
           "date": "2016-07-01",
@@ -269,8 +269,8 @@
           "value": "4202.04"
         },
         {
-          "date": "2021-06-14",
-          "value": "4255.15"
+          "date": "2021-06-15",
+          "value": "4246.59"
         },
         {
           "date": "2021-06-21",
@@ -895,18 +895,6 @@
         {
           "date": "2024-06-10",
           "value": "5360.79"
-        },
-        {
-          "date": "2024-06-12",
-          "value": "5421.03"
-        },
-        {
-          "date": "2024-06-13",
-          "value": "5433.74"
-        },
-        {
-          "date": "2024-06-14",
-          "value": "5431.6"
         },
         {
           "date": "2024-06-17",
@@ -2987,14 +2975,18 @@
         {
           "date": "2026-06-12",
           "value": "7431.46"
+        },
+        {
+          "date": "2026-06-15",
+          "value": "7554.29"
         }
       ],
       "latest": {
-        "date": "2026-06-12",
-        "value": "7431.46"
+        "date": "2026-06-15",
+        "value": "7554.29"
       },
       "context": "The benchmark index of 500 large U.S. companies \u2014 the headline gauge of U.S. stocks.",
-      "read": "The S&P 500 is up 23% over the past year, now 7,431.46.",
+      "read": "The S&P 500 is up 26% over the past year, now 7,554.29.",
       "signal_status": "up",
       "value_format": "thousands"
     },
@@ -5981,8 +5973,8 @@
       "series_id": "XAUUSD",
       "observations": [
         {
-          "date": "2016-06-15",
-          "value": "1285.80"
+          "date": "2016-06-16",
+          "value": "1296.10"
         },
         {
           "date": "2016-07-01",
@@ -6225,8 +6217,8 @@
           "value": "1902.90"
         },
         {
-          "date": "2021-06-15",
-          "value": "1854.50"
+          "date": "2021-06-16",
+          "value": "1859.50"
         },
         {
           "date": "2021-06-21",
@@ -8858,15 +8850,19 @@
         },
         {
           "date": "2026-06-15",
-          "value": "4340.50"
+          "value": "4328.00"
+        },
+        {
+          "date": "2026-06-16",
+          "value": "4376.00"
         }
       ],
       "latest": {
-        "date": "2026-06-15",
-        "value": "4340.50"
+        "date": "2026-06-16",
+        "value": "4376.00"
       },
       "context": "Gold (dollars per troy ounce) \u2014 the classic safe-haven asset investors flee to in times of stress. Sourced from Yahoo Finance (COMEX futures).",
-      "read": "Gold is up 27% over the past year, now 4,340.50.",
+      "read": "Gold is up 29% over the past year, now 4,376.00.",
       "signal_status": "up",
       "value_format": "thousands"
     },
@@ -8879,8 +8875,8 @@
       "series_id": "CBBTCUSD",
       "observations": [
         {
-          "date": "2019-05-03",
-          "value": "5657.4"
+          "date": "2019-05-04",
+          "value": "5770.01"
         },
         {
           "date": "2019-06-01",
@@ -8983,8 +8979,8 @@
           "value": "36764.58"
         },
         {
-          "date": "2021-06-14",
-          "value": "40496.92"
+          "date": "2021-06-15",
+          "value": "40093.93"
         },
         {
           "date": "2021-06-21",
@@ -9609,10 +9605,6 @@
         {
           "date": "2024-06-10",
           "value": "69490.62"
-        },
-        {
-          "date": "2024-06-14",
-          "value": "66022.42"
         },
         {
           "date": "2024-06-15",
@@ -12533,14 +12525,18 @@
         {
           "date": "2026-06-14",
           "value": "65605.04"
+        },
+        {
+          "date": "2026-06-15",
+          "value": "66231.94"
         }
       ],
       "latest": {
-        "date": "2026-06-14",
-        "value": "65605.04"
+        "date": "2026-06-15",
+        "value": "66231.94"
       },
       "context": "The price of Bitcoin in U.S. dollars (Coinbase) \u2014 the largest cryptocurrency and a barometer of risk appetite in digital assets.",
-      "read": "Bitcoin is down 38% over the past year, now 65,605.04.",
+      "read": "Bitcoin is down 38% over the past year, now 66,231.94.",
       "signal_status": "down",
       "value_format": "thousands"
     },
@@ -12553,8 +12549,8 @@
       "series_id": "CBETHUSD",
       "observations": [
         {
-          "date": "2019-05-03",
-          "value": "164.74"
+          "date": "2019-05-04",
+          "value": "161.85"
         },
         {
           "date": "2019-06-01",
@@ -12657,8 +12653,8 @@
           "value": "2642.8"
         },
         {
-          "date": "2021-06-14",
-          "value": "2583.31"
+          "date": "2021-06-15",
+          "value": "2540.95"
         },
         {
           "date": "2021-06-21",
@@ -13283,10 +13279,6 @@
         {
           "date": "2024-06-10",
           "value": "3664.27"
-        },
-        {
-          "date": "2024-06-14",
-          "value": "3481.2"
         },
         {
           "date": "2024-06-15",
@@ -16207,14 +16199,18 @@
         {
           "date": "2026-06-14",
           "value": "1723.87"
+        },
+        {
+          "date": "2026-06-15",
+          "value": "1793.16"
         }
       ],
       "latest": {
-        "date": "2026-06-14",
-        "value": "1723.87"
+        "date": "2026-06-15",
+        "value": "1793.16"
       },
       "context": "The price of Ether in U.S. dollars (Coinbase) \u2014 the second-largest cryptocurrency and the backbone of most decentralized applications.",
-      "read": "Ethereum is down 32% over the past year, now 1,723.87.",
+      "read": "Ethereum is down 30% over the past year, now 1,793.16.",
       "signal_status": "down",
       "value_format": "thousands"
     }
