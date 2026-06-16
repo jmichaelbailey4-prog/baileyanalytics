@@ -2,7 +2,7 @@
   "id": "global-trade-supply",
   "title": "Trade & Supply Chain",
   "accent": "#FBBF24",
-  "last_updated": "2026-06-15T22:06:58Z",
+  "last_updated": "2026-06-16T13:10:15Z",
   "status": "elevated",
   "headline_read": "Global trade is under real strain \u2014 supply chains or import costs are stressed.",
   "recessions": [
@@ -2641,10 +2641,6 @@
       "series_id": "IR",
       "observations": [
         {
-          "date": "2001-05-01",
-          "value": "-0.80972"
-        },
-        {
           "date": "2001-06-01",
           "value": "-2.59481"
         },
@@ -3838,15 +3834,19 @@
         },
         {
           "date": "2026-04-01",
-          "value": "4.16373"
+          "value": "4.23430"
+        },
+        {
+          "date": "2026-05-01",
+          "value": "6.73759"
         }
       ],
       "latest": {
-        "date": "2026-04-01",
-        "value": "4.16373"
+        "date": "2026-05-01",
+        "value": "6.73759"
       },
       "context": "How fast the prices of everything the U.S. imports are rising versus a year ago. Tariffs, a weaker dollar, and supply shocks all show up here first \u2014 before they reach store shelves.",
-      "read": "Import costs are rising 4.2% a year \u2014 climbing.",
+      "read": "Import costs are rising 6.7% a year \u2014 climbing.",
       "signal_status": "watch",
       "value_format": "decimal"
     },
