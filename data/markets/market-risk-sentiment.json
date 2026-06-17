@@ -2,7 +2,7 @@
   "id": "market-risk-sentiment",
   "title": "Risk Sentiment",
   "accent": "#FB7185",
-  "last_updated": "2026-06-16T13:43:47Z",
+  "last_updated": "2026-06-17T17:33:23Z",
   "status": "ok",
   "headline_read": "Markets are calm \u2014 volatility and credit stress are low.",
   "recessions": [
@@ -25,8 +25,8 @@
       "series_id": "VIXCLS",
       "observations": [
         {
-          "date": "2016-06-28",
-          "value": "18.75"
+          "date": "2016-06-29",
+          "value": "16.64"
         },
         {
           "date": "2016-07-01",
@@ -269,8 +269,8 @@
           "value": "17.9"
         },
         {
-          "date": "2021-06-15",
-          "value": "17.02"
+          "date": "2021-06-16",
+          "value": "18.15"
         },
         {
           "date": "2021-06-21",
@@ -2979,14 +2979,18 @@
         {
           "date": "2026-06-15",
           "value": "16.2"
+        },
+        {
+          "date": "2026-06-16",
+          "value": "16.41"
         }
       ],
       "latest": {
-        "date": "2026-06-15",
-        "value": "16.2"
+        "date": "2026-06-16",
+        "value": "16.41"
       },
       "context": "The market's 'fear gauge' \u2014 the expected volatility of the S&P 500 over the coming month. It spikes when investors are scared and falls when calm.",
-      "read": "The VIX is at 16.2 \u2014 markets are calm.",
+      "read": "The VIX is at 16.4 \u2014 markets are calm.",
       "signal_status": "ok",
       "value_format": "decimal"
     },
@@ -5325,14 +5329,18 @@
         {
           "date": "2026-06-15",
           "value": "2.66"
+        },
+        {
+          "date": "2026-06-16",
+          "value": "2.71"
         }
       ],
       "latest": {
-        "date": "2026-06-15",
-        "value": "2.66"
+        "date": "2026-06-16",
+        "value": "2.71"
       },
       "context": "The extra yield investors demand to hold risky 'junk' corporate bonds over Treasuries. It widens when markets fear defaults \u2014 an early stress signal. Note: FRED serves only a rolling ~3-year window of this ICE BofA series, so its chart history is shorter than the other indicators here.",
-      "read": "The high-yield spread is 2.66% \u2014 tight, signaling calm credit conditions.",
+      "read": "The high-yield spread is 2.71% \u2014 tight, signaling calm credit conditions.",
       "signal_status": "ok",
       "value_format": "decimal"
     },
@@ -7671,14 +7679,18 @@
         {
           "date": "2026-06-15",
           "value": "0.73"
+        },
+        {
+          "date": "2026-06-16",
+          "value": "0.75"
         }
       ],
       "latest": {
-        "date": "2026-06-15",
-        "value": "0.73"
+        "date": "2026-06-16",
+        "value": "0.75"
       },
       "context": "The same risk premium for higher-quality corporate bonds. Because these borrowers are safer, widening here signals stress reaching the core of credit. Note: FRED serves only a rolling ~3-year window of this ICE BofA series, so its chart history is shorter than the other indicators here.",
-      "read": "The investment-grade spread is 0.73% \u2014 tight, signaling calm credit conditions.",
+      "read": "The investment-grade spread is 0.75% \u2014 tight, signaling calm credit conditions.",
       "signal_status": "ok",
       "value_format": "decimal"
     },
@@ -7690,10 +7702,6 @@
       "color": "#38BDF8",
       "series_id": "NFCI",
       "observations": [
-        {
-          "date": "2016-06-24",
-          "value": "-0.35000"
-        },
         {
           "date": "2016-07-01",
           "value": "-0.34800"
@@ -7724,7 +7732,7 @@
         },
         {
           "date": "2017-02-03",
-          "value": "-0.49600"
+          "value": "-0.49500"
         },
         {
           "date": "2017-03-03",
@@ -7736,7 +7744,7 @@
         },
         {
           "date": "2017-05-05",
-          "value": "-0.52400"
+          "value": "-0.52300"
         },
         {
           "date": "2017-06-02",
@@ -7752,7 +7760,7 @@
         },
         {
           "date": "2017-09-01",
-          "value": "-0.56200"
+          "value": "-0.56100"
         },
         {
           "date": "2017-10-06",
@@ -7776,7 +7784,7 @@
         },
         {
           "date": "2018-03-02",
-          "value": "-0.53300"
+          "value": "-0.53200"
         },
         {
           "date": "2018-04-06",
@@ -7935,12 +7943,8 @@
           "value": "-0.69300"
         },
         {
-          "date": "2021-06-11",
-          "value": "-0.69300"
-        },
-        {
           "date": "2021-06-18",
-          "value": "-0.69000"
+          "value": "-0.68900"
         },
         {
           "date": "2021-06-25",
@@ -7968,7 +7972,7 @@
         },
         {
           "date": "2021-08-06",
-          "value": "-0.65000"
+          "value": "-0.64900"
         },
         {
           "date": "2021-08-13",
@@ -8060,7 +8064,7 @@
         },
         {
           "date": "2022-01-14",
-          "value": "-0.56100"
+          "value": "-0.56000"
         },
         {
           "date": "2022-01-21",
@@ -8172,7 +8176,7 @@
         },
         {
           "date": "2022-07-29",
-          "value": "-0.21800"
+          "value": "-0.21700"
         },
         {
           "date": "2022-08-05",
@@ -8268,7 +8272,7 @@
         },
         {
           "date": "2023-01-13",
-          "value": "-0.26900"
+          "value": "-0.26800"
         },
         {
           "date": "2023-01-20",
@@ -8372,7 +8376,7 @@
         },
         {
           "date": "2023-07-14",
-          "value": "-0.24900"
+          "value": "-0.24800"
         },
         {
           "date": "2023-07-21",
@@ -8396,7 +8400,7 @@
         },
         {
           "date": "2023-08-25",
-          "value": "-0.33300"
+          "value": "-0.33200"
         },
         {
           "date": "2023-09-01",
@@ -8408,7 +8412,7 @@
         },
         {
           "date": "2023-09-15",
-          "value": "-0.33300"
+          "value": "-0.33200"
         },
         {
           "date": "2023-09-22",
@@ -8444,7 +8448,7 @@
         },
         {
           "date": "2023-11-17",
-          "value": "-0.30900"
+          "value": "-0.30800"
         },
         {
           "date": "2023-11-24",
@@ -8468,7 +8472,7 @@
         },
         {
           "date": "2023-12-29",
-          "value": "-0.36600"
+          "value": "-0.36500"
         },
         {
           "date": "2024-01-05",
@@ -8524,7 +8528,7 @@
         },
         {
           "date": "2024-04-05",
-          "value": "-0.42500"
+          "value": "-0.42400"
         },
         {
           "date": "2024-04-12",
@@ -8560,7 +8564,7 @@
         },
         {
           "date": "2024-06-07",
-          "value": "-0.40200"
+          "value": "-0.40100"
         },
         {
           "date": "2024-06-14",
@@ -8572,7 +8576,7 @@
         },
         {
           "date": "2024-06-28",
-          "value": "-0.38000"
+          "value": "-0.37900"
         },
         {
           "date": "2024-07-05",
@@ -8596,7 +8600,7 @@
         },
         {
           "date": "2024-08-09",
-          "value": "-0.36000"
+          "value": "-0.35900"
         },
         {
           "date": "2024-08-16",
@@ -8652,11 +8656,11 @@
         },
         {
           "date": "2024-11-15",
-          "value": "-0.46500"
+          "value": "-0.46400"
         },
         {
           "date": "2024-11-22",
-          "value": "-0.47000"
+          "value": "-0.46900"
         },
         {
           "date": "2024-11-29",
@@ -8724,7 +8728,7 @@
         },
         {
           "date": "2025-03-21",
-          "value": "-0.42500"
+          "value": "-0.42400"
         },
         {
           "date": "2025-03-28",
@@ -8768,7 +8772,7 @@
         },
         {
           "date": "2025-06-06",
-          "value": "-0.47400"
+          "value": "-0.47300"
         },
         {
           "date": "2025-06-13",
@@ -8792,7 +8796,7 @@
         },
         {
           "date": "2025-07-18",
-          "value": "-0.51200"
+          "value": "-0.51100"
         },
         {
           "date": "2025-07-25",
@@ -8800,7 +8804,7 @@
         },
         {
           "date": "2025-08-01",
-          "value": "-0.51900"
+          "value": "-0.51800"
         },
         {
           "date": "2025-08-08",
@@ -8816,7 +8820,7 @@
         },
         {
           "date": "2025-08-29",
-          "value": "-0.52500"
+          "value": "-0.52400"
         },
         {
           "date": "2025-09-05",
@@ -8848,7 +8852,7 @@
         },
         {
           "date": "2025-10-24",
-          "value": "-0.51400"
+          "value": "-0.51300"
         },
         {
           "date": "2025-10-31",
@@ -8932,11 +8936,11 @@
         },
         {
           "date": "2026-03-20",
-          "value": "-0.45800"
+          "value": "-0.45900"
         },
         {
           "date": "2026-03-27",
-          "value": "-0.45300"
+          "value": "-0.45400"
         },
         {
           "date": "2026-04-03",
@@ -8948,40 +8952,44 @@
         },
         {
           "date": "2026-04-17",
-          "value": "-0.47800"
+          "value": "-0.47700"
         },
         {
           "date": "2026-04-24",
-          "value": "-0.48800"
+          "value": "-0.48700"
         },
         {
           "date": "2026-05-01",
-          "value": "-0.49600"
+          "value": "-0.49500"
         },
         {
           "date": "2026-05-08",
-          "value": "-0.50200"
+          "value": "-0.50000"
         },
         {
           "date": "2026-05-15",
-          "value": "-0.50500"
+          "value": "-0.50300"
         },
         {
           "date": "2026-05-22",
-          "value": "-0.50600"
+          "value": "-0.50400"
         },
         {
           "date": "2026-05-29",
-          "value": "-0.50600"
+          "value": "-0.50400"
         },
         {
           "date": "2026-06-05",
-          "value": "-0.50600"
+          "value": "-0.50500"
+        },
+        {
+          "date": "2026-06-12",
+          "value": "-0.50500"
         }
       ],
       "latest": {
-        "date": "2026-06-05",
-        "value": "-0.50600"
+        "date": "2026-06-12",
+        "value": "-0.50500"
       },
       "context": "The Chicago Fed's broad gauge of financial conditions across money, debt, and equity markets. Zero is average; positive means tighter (more stressed) than normal.",
       "read": "The NFCI is -0.51 \u2014 financial conditions are looser than average.",

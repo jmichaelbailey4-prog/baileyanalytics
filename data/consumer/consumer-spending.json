@@ -2,7 +2,7 @@
   "id": "consumer-spending",
   "title": "Consumer Spending",
   "accent": "#34D399",
-  "last_updated": "2026-06-10T18:28:08Z",
+  "last_updated": "2026-06-17T17:34:12Z",
   "status": "ok",
   "headline_read": "Consumers are still spending at a healthy pace.",
   "recessions": [
@@ -24,10 +24,6 @@
       "color": "#34D399",
       "series_id": "RSAFS",
       "observations": [
-        {
-          "date": "2006-05-01",
-          "value": "6.61791"
-        },
         {
           "date": "2006-06-01",
           "value": "4.02587"
@@ -934,11 +930,11 @@
         },
         {
           "date": "2025-04-01",
-          "value": "4.98850"
+          "value": "5.06688"
         },
         {
           "date": "2025-05-01",
-          "value": "3.36719"
+          "value": "3.14590"
         },
         {
           "date": "2025-06-01",
@@ -978,19 +974,23 @@
         },
         {
           "date": "2026-03-01",
-          "value": "4.15172"
+          "value": "4.24061"
         },
         {
           "date": "2026-04-01",
-          "value": "4.87351"
+          "value": "4.78848"
+        },
+        {
+          "date": "2026-05-01",
+          "value": "6.87646"
         }
       ],
       "latest": {
-        "date": "2026-04-01",
-        "value": "4.87351"
+        "date": "2026-05-01",
+        "value": "6.87646"
       },
       "context": "How fast retail and food-service sales are growing versus a year ago (nominal \u2014 inflation is part of the number). A stall here is how consumer recessions announce themselves.",
-      "read": "Retail sales are up 4.9% from a year ago \u2014 a steady pace.",
+      "read": "Retail sales are up 6.9% from a year ago \u2014 a steady pace.",
       "signal_status": "ok",
       "value_format": "decimal"
     },
