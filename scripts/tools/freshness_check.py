@@ -171,7 +171,11 @@ def fetch_runs(repo, workflow, token, per_page=30):
 
 
 def fetch_open_issues(repo, token, per_page=100):
-    url = f"{API}/repos/{repo}/issues?state=open&per_page={per_page}"
+    # Sort by most-recently-updated: the monitor PATCHes its own alert issue each
+    # run, so it stays on the first page even if unrelated open issues pile up —
+    # keeping find_monitor_issue's dedup guarantee robust without paginating.
+    url = (f"{API}/repos/{repo}/issues"
+           f"?state=open&sort=updated&direction=desc&per_page={per_page}")
     result = _request("GET", url, token)
     return result if isinstance(result, list) else []
 
