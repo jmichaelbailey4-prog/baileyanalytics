@@ -14,6 +14,14 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  # Serialize every workflow that commits to main so two scheduled/dispatched
+  # runs can't race the push. The per-job retry loop handles the common
+  # non-fast-forward case; this prevents an unresolvable rebase conflict when a
+  # run overlaps itself (manual dispatch during a cron) or another writer.
+  group: write-main
+  cancel-in-progress: false
+
 jobs:
   refresh:
     runs-on: ubuntu-latest
@@ -82,11 +90,16 @@ jobs:
         run: python scripts/predict.py daily
 
       - name: Rebuild Today's Brief (no network; includes the merged verdict)
+        id: brief
         if: ${{ success() || failure() }}
         run: python scripts/refresh_lenses.py --brief
 
       - name: Send the daily email digest (Buttondown)
-        if: ${{ success() || failure() }}
+        # Gate on the brief actually rebuilding: an earlier source failure must
+        # not block the email (the day's brief still published), but a failed
+        # brief rebuild must (no fresh content to send). send_digest also guards
+        # itself via the archive manifest — this makes the dependency explicit.
+        if: ${{ steps.brief.outcome == 'success' }}
         env:
           BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
         run: python scripts/send_digest.py

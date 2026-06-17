@@ -11,6 +11,12 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  # Shared with the other workflows that commit to main so they can't race the
+  # push (the per-job retry loop handles the common non-fast-forward case).
+  group: write-main
+  cancel-in-progress: false
+
 jobs:
   refresh:
     runs-on: ubuntu-latest
