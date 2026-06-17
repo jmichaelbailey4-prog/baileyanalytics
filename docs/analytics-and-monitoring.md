@@ -84,17 +84,27 @@ step, no secret to add). `.github/workflows/freshness-check.yml` runs
 nothing, so the daily refresh legitimately commits nothing; "no new commit" is
 **not** a failure. The signal is whether **`refresh-fred.yml` last *completed
 successfully*** recently. The script queries the Actions API for that workflow's
-most recent `conclusion == "success"` run and compares its age to a threshold.
+most recent **clean run on `main`** (`?status=success&branch=main`, so a burst of
+failed or in-progress runs can't crowd the last success out of the window) and
+compares its age to a threshold. Keying on `success` is correct because
+`refresh_lenses.py` catches per-source failures internally and still exits 0 (so a
+flaky CoinGecko/EIA/FRED series concludes **success**); a `failure` conclusion
+means a genuine problem (missing key, code bug, persistent push race), which is
+worth surfacing if it persists past the threshold.
 
 **On staleness it does two things** (two independent notification channels):
 - opens — or refreshes, if already open — a single GitHub issue describing the
   gap (found via a hidden `<!-- freshness-monitor -->` marker in the body, so it
-  never opens duplicates), and
+  never opens duplicates) and **@-mentioning the repo owner** so the issue
+  notifies even under default "Participating" watch settings, and
 - exits non-zero, marking the scheduled run failed, which triggers GitHub's
   failed-workflow email to the repo owner.
 
 When a successful run reappears, the next check **closes the issue
-automatically** with a recovery comment — so a transient blip self-heals.
+automatically** (close first, then post a recovery comment, so a failed close
+can't leave a re-commenting loop) — so a transient blip self-heals. Read calls
+retry transient API errors (rate-limit / 5xx) so a momentary GitHub blip doesn't
+itself masquerade as a pipeline failure.
 
 **Threshold = 30h** (override via the `FRESHNESS_THRESHOLD_HOURS` env var in the
 workflow). Rationale: the daily job runs twice (06:00 + 13:00 UTC), so a healthy
@@ -117,8 +127,9 @@ run history), `contents: read` (checkout). Uses the auto-provided
 
 ### Code shape (TDD'd)
 A pure decision core — `parse_iso`, `latest_success`, `evaluate`,
-`find_monitor_issue`, `decide_action`, `build_alert_*` — unit-tested in
-`scripts/tests/test_freshness_check.py` (21 tests), plus a thin stdlib-`urllib`
+`find_monitor_issue`, `decide_action`, `threshold_from_env`, `build_alert_*` —
+plus `main()`'s exit-code/dispatch contract (monkeypatched I/O), unit-tested in
+`scripts/tests/test_freshness_check.py` (33 tests), plus a thin stdlib-`urllib`
 GitHub I/O shell (glue, not unit-tested). Stdlib only, so the workflow needs no
 `pip install`.
 
