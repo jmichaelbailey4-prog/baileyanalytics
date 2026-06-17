@@ -1,0 +1,46 @@
+name: Pipeline freshness check
+
+# Dead-man's-switch for the daily publish. Queries the Actions API for the most
+# recent *successful* run of refresh-fred.yml and alerts (GitHub issue + a failed
+# run, which emails the owner) if it is stale. It monitors pipeline EXECUTION,
+# not data change: a quiet weekend that legitimately commits nothing still counts
+# as a successful run, so this never false-alarms on "no new data".
+#
+# Runs twice a day (offset from the 06:00/13:00 UTC refresh slots) so the check
+# survives one of its own skipped cron slots. Read-only against the repo — it
+# only reads runs and manages a single issue, so it deliberately stays OUT of the
+# write-main concurrency group the data workflows share.
+
+on:
+  schedule:
+    - cron: "0 4 * * *"    # overnight, before the 06:00 refresh
+    - cron: "0 16 * * *"   # afternoon, after the 13:00 backup refresh
+  workflow_dispatch:
+
+permissions:
+  issues: write     # open / refresh / close the freshness alert issue
+  actions: read     # read refresh-fred.yml's run history
+  contents: read    # checkout
+
+concurrency:
+  group: freshness-monitor
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Check pipeline freshness
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Optional override if cron drift causes false alarms (default 30h).
+          # FRESHNESS_THRESHOLD_HOURS: "36"
+        run: python scripts/tools/freshness_check.py
