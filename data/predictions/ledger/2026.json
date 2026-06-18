@@ -68,7 +68,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 0.0,
-      "revised_to": 0.29
+      "revised_to": 0.27
     }
   },
   {
@@ -428,7 +428,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 0.08000000000000007,
-      "revised_to": 4.43
+      "revised_to": 4.49
     }
   },
   {
@@ -464,7 +464,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 0.05999999999999961,
-      "revised_to": 4.05
+      "revised_to": 4.2
     }
   },
   {
@@ -502,7 +502,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 0.020000000000000018,
-      "revised_to": 0.42
+      "revised_to": 0.57
     }
   },
   {
@@ -870,6 +870,118 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 0.010000000000000009,
+      "revised_to": null
+    }
+  },
+  {
+    "id": "economic/fiscal-health/debt-gdp@2026-01-01",
+    "key": "economic/fiscal-health/debt-gdp",
+    "category": "economic",
+    "lens": "fiscal-health",
+    "indicator": "debt-gdp",
+    "series_id": "GFDEGDQ188S",
+    "horizon": "next-print",
+    "target_period": "2026-01-01",
+    "due": "2026-04-28",
+    "made_at": "2026-06-12T14:20:36Z",
+    "model": "theta@1",
+    "point": 122.5559,
+    "lo": 120.6798,
+    "hi": 123.9703,
+    "unit": "%",
+    "value_format": "decimal",
+    "prev_value": 122.56815,
+    "why": "Debt/GDP: up 2 straight quarters. This blends the series' long-run trend line with its recent level.",
+    "implied_status": "elevated",
+    "current_status": "elevated",
+    "title": "Federal Debt \u00b7 % of GDP",
+    "short": "Debt/GDP",
+    "lens_title": "Fiscal Health",
+    "href": "/dashboards/fiscal-health.html",
+    "grade": {
+      "actual": 122.77209,
+      "graded_at": "2026-06-18T21:32:17Z",
+      "hit": true,
+      "abs_error": 0.21619000000001165,
+      "direction_hit": false,
+      "status_hit": true,
+      "naive_error": 0.2039400000000029,
+      "revised_to": null
+    }
+  },
+  {
+    "id": "markets/market-liquidity/fed-balance-sheet@2026-06-17",
+    "key": "markets/market-liquidity/fed-balance-sheet",
+    "category": "markets",
+    "lens": "market-liquidity",
+    "indicator": "fed-balance-sheet",
+    "series_id": "WALCL",
+    "horizon": "next-print",
+    "target_period": "2026-06-17",
+    "due": "2026-06-22",
+    "made_at": "2026-06-16T13:10:26Z",
+    "model": "naive@1",
+    "point": 6.73,
+    "lo": 6.71,
+    "hi": 6.74,
+    "unit": "$T",
+    "value_format": "decimal",
+    "prev_value": 6.73,
+    "why": "Fed assets: up 2 straight weeks. We expect roughly the last value \u2014 this series rarely rewards cleverness.",
+    "implied_status": "info",
+    "current_status": "info",
+    "descriptive": true,
+    "market_price": false,
+    "title": "Fed Balance Sheet \u00b7 total assets",
+    "short": "Fed assets",
+    "lens_title": "Liquidity & the Fed",
+    "href": "/dashboards/markets/liquidity.html",
+    "grade": {
+      "actual": 6.74,
+      "graded_at": "2026-06-18T21:32:24Z",
+      "hit": true,
+      "abs_error": 0.009999999999999787,
+      "direction_hit": false,
+      "status_hit": true,
+      "naive_error": 0.009999999999999787,
+      "revised_to": null
+    }
+  },
+  {
+    "id": "markets/market-liquidity/bank-reserves@2026-06-17",
+    "key": "markets/market-liquidity/bank-reserves",
+    "category": "markets",
+    "lens": "market-liquidity",
+    "indicator": "bank-reserves",
+    "series_id": "WRESBAL",
+    "horizon": "next-print",
+    "target_period": "2026-06-17",
+    "due": "2026-06-22",
+    "made_at": "2026-06-16T13:10:27Z",
+    "model": "sarima@1",
+    "point": 3.1049,
+    "lo": 3.0157,
+    "hi": 3.1836,
+    "unit": "$T",
+    "value_format": "decimal",
+    "prev_value": 3.08,
+    "why": "This projects recent momentum, adjusted for the series' typical reversion.",
+    "implied_status": "info",
+    "current_status": "info",
+    "descriptive": true,
+    "market_price": false,
+    "title": "Bank Reserves at the Fed",
+    "short": "Reserves",
+    "lens_title": "Liquidity & the Fed",
+    "href": "/dashboards/markets/liquidity.html",
+    "grade": {
+      "actual": 3.03,
+      "graded_at": "2026-06-18T21:32:25Z",
+      "hit": true,
+      "abs_error": 0.07490000000000041,
+      "direction_hit": false,
+      "status_hit": true,
+      "naive_error": 0.050000000000000266,
       "revised_to": null
     }
   }

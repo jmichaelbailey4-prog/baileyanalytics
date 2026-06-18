@@ -2,7 +2,7 @@
   "id": "market-liquidity",
   "title": "Liquidity & the Fed",
   "accent": "#2DD4BF",
-  "last_updated": "2026-06-17T20:37:31Z",
+  "last_updated": "2026-06-18T21:31:14Z",
   "status": "ok",
   "headline_read": "Liquidity is ample \u2014 no monetary squeeze in sight.",
   "recessions": [
@@ -1243,10 +1243,6 @@
       "series_id": "WALCL",
       "observations": [
         {
-          "date": "2016-06-29",
-          "value": "4.47"
-        },
-        {
           "date": "2016-07-06",
           "value": "4.47"
         },
@@ -1485,10 +1481,6 @@
         {
           "date": "2021-06-02",
           "value": "7.94"
-        },
-        {
-          "date": "2021-06-16",
-          "value": "8.06"
         },
         {
           "date": "2021-06-23",
@@ -2529,14 +2521,18 @@
         {
           "date": "2026-06-10",
           "value": "6.73"
+        },
+        {
+          "date": "2026-06-17",
+          "value": "6.74"
         }
       ],
       "latest": {
-        "date": "2026-06-10",
-        "value": "6.73"
+        "date": "2026-06-17",
+        "value": "6.74"
       },
       "context": "Everything the Federal Reserve holds, in trillions. Rising means the Fed is injecting liquidity (QE); falling means it's draining (QT) \u2014 the tide that lifts or lowers all markets.",
-      "read": "The Fed's balance sheet is little changed from a year ago, now $6.73 trillion.",
+      "read": "The Fed's balance sheet is little changed from a year ago, now $6.74 trillion.",
       "signal_status": "info",
       "value_format": "decimal"
     },
@@ -2548,10 +2544,6 @@
       "color": "#34D399",
       "series_id": "WRESBAL",
       "observations": [
-        {
-          "date": "2016-06-29",
-          "value": "2.26"
-        },
         {
           "date": "2016-07-06",
           "value": "2.25"
@@ -2791,10 +2783,6 @@
         {
           "date": "2021-06-02",
           "value": "3.81"
-        },
-        {
-          "date": "2021-06-16",
-          "value": "3.94"
         },
         {
           "date": "2021-06-23",
@@ -3835,14 +3823,18 @@
         {
           "date": "2026-06-10",
           "value": "3.08"
+        },
+        {
+          "date": "2026-06-17",
+          "value": "3.03"
         }
       ],
       "latest": {
-        "date": "2026-06-10",
-        "value": "3.08"
+        "date": "2026-06-17",
+        "value": "3.03"
       },
       "context": "Cash banks park at the Fed \u2014 the system's core liquidity buffer. When QT drains reserves too low, funding markets seize up (as in September 2019).",
-      "read": "The level of bank reserves is down 6% from a year ago, now $3.08 trillion.",
+      "read": "The level of bank reserves is down 11% from a year ago, now $3.03 trillion.",
       "signal_status": "info",
       "value_format": "decimal"
     },
@@ -3855,8 +3847,8 @@
       "series_id": "RRPONTSYD",
       "observations": [
         {
-          "date": "2021-06-24",
-          "value": "813.048"
+          "date": "2021-06-25",
+          "value": "770.83"
         },
         {
           "date": "2021-06-28",
@@ -6569,14 +6561,18 @@
         {
           "date": "2026-06-17",
           "value": "6.828"
+        },
+        {
+          "date": "2026-06-18",
+          "value": "0.251"
         }
       ],
       "latest": {
-        "date": "2026-06-17",
-        "value": "6.828"
+        "date": "2026-06-18",
+        "value": "0.251"
       },
       "context": "Spare cash money-market funds park at the Fed overnight. It acts as the system's overflow tank: a high balance means excess liquidity; near zero means the buffer is spent and QT bites reserves directly.",
-      "read": "The overnight reverse-repo facility is down 96% from a year ago, now $6.8 billion.",
+      "read": "The overnight reverse-repo facility is down 100% from a year ago, now $0.3 billion.",
       "signal_status": "info",
       "value_format": "decimal"
     }
