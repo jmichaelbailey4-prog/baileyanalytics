@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-10T21:39:53Z",
+  "last_updated": "2026-06-22T18:59:08Z",
   "status": "watch",
   "lenses": [
     {
@@ -80,9 +80,9 @@
         },
         {
           "k": "Debt service",
-          "v": "5.92%",
-          "d": "0.03%",
-          "dir": "up"
+          "v": "5.88%",
+          "d": "0.05%",
+          "dir": "down"
         }
       ],
       "sparkline": [

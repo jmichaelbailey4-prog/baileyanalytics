@@ -2,7 +2,7 @@
   "id": "market-liquidity",
   "title": "Liquidity & the Fed",
   "accent": "#2DD4BF",
-  "last_updated": "2026-06-18T21:31:14Z",
+  "last_updated": "2026-06-22T18:58:25Z",
   "status": "ok",
   "headline_read": "Liquidity is ample \u2014 no monetary squeeze in sight.",
   "recessions": [
@@ -3847,12 +3847,8 @@
       "series_id": "RRPONTSYD",
       "observations": [
         {
-          "date": "2021-06-25",
-          "value": "770.83"
-        },
-        {
-          "date": "2021-06-28",
-          "value": "803.019"
+          "date": "2021-06-29",
+          "value": "841.246"
         },
         {
           "date": "2021-07-05",
@@ -4473,22 +4469,6 @@
         {
           "date": "2024-06-17",
           "value": "333.429"
-        },
-        {
-          "date": "2024-06-18",
-          "value": "375.542"
-        },
-        {
-          "date": "2024-06-19",
-          "value": "."
-        },
-        {
-          "date": "2024-06-20",
-          "value": "388.841"
-        },
-        {
-          "date": "2024-06-21",
-          "value": "421.04"
         },
         {
           "date": "2024-06-24",
@@ -6565,14 +6545,22 @@
         {
           "date": "2026-06-18",
           "value": "0.251"
+        },
+        {
+          "date": "2026-06-19",
+          "value": "."
+        },
+        {
+          "date": "2026-06-22",
+          "value": "3.925"
         }
       ],
       "latest": {
-        "date": "2026-06-18",
-        "value": "0.251"
+        "date": "2026-06-22",
+        "value": "3.925"
       },
       "context": "Spare cash money-market funds park at the Fed overnight. It acts as the system's overflow tank: a high balance means excess liquidity; near zero means the buffer is spent and QT bites reserves directly.",
-      "read": "The overnight reverse-repo facility is down 100% from a year ago, now $0.3 billion.",
+      "read": "The overnight reverse-repo facility is down 97% from a year ago, now $3.9 billion.",
       "signal_status": "info",
       "value_format": "decimal"
     }
