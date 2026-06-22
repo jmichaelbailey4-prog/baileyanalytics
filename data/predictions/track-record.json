@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-06-22T19:00:44Z",
+  "generated_at": "2026-06-22T21:38:19Z",
   "since": "2026-06-12T14:20:31Z",
-  "graded": 31,
-  "coverage": 10,
-  "calibration": 0.8709677419354839,
-  "direction": 0.47619047619047616,
-  "status": 0.9523809523809523,
-  "skill": 0.007599132552032151,
+  "graded": 36,
+  "coverage": 13,
+  "calibration": 0.8611111111111112,
+  "direction": 0.5217391304347826,
+  "status": 0.9565217391304348,
+  "skill": 0.007624966095901242,
   "categories": {
     "business": {
       "graded": 2,
@@ -25,12 +25,12 @@
       "skill": -6.475761225921417e-06
     },
     "economic": {
-      "graded": 6,
+      "graded": 7,
       "coverage": 1,
-      "calibration": 1.0,
-      "direction": 0.0,
+      "calibration": 0.8571428571428571,
+      "direction": 0.16666666666666666,
       "status": 1.0,
-      "skill": -5.216068661662021e-06
+      "skill": -4.082688350282027e-06
     },
     "energy": {
       "graded": 6,
@@ -41,12 +41,12 @@
       "skill": 0.5684210526315784
     },
     "global": {
-      "graded": 2,
-      "coverage": 0,
-      "calibration": 0.5,
+      "graded": 6,
+      "coverage": 3,
+      "calibration": 0.8333333333333334,
       "direction": 1.0,
       "status": 1.0,
-      "skill": 0.425239015350137
+      "skill": 0.39477486940281115
     },
     "housing": {
       "graded": 4,
