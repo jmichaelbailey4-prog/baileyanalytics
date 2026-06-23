@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-23T16:13:32Z",
+  "generated_at": "2026-06-23T19:34:02Z",
   "last": {
     "business/business-credit/ci-loan-growth": {
       "id": "business/business-credit/ci-loan-growth@2026-05-01",
@@ -1036,7 +1036,7 @@
         "direction_hit": true,
         "status_hit": true,
         "naive_error": 162.60000000000036,
-        "revised_to": 4154.7
+        "revised_to": 4138.8
       }
     },
     "markets/market-liquidity/reverse-repo": {
@@ -1074,7 +1074,7 @@
         "direction_hit": false,
         "status_hit": true,
         "naive_error": 3.344,
-        "revised_to": null
+        "revised_to": 6.484
       }
     },
     "consumer/consumer-credit/debt-service": {
@@ -1378,9 +1378,81 @@
         "naive_error": 66.97000000000003,
         "revised_to": null
       }
+    },
+    "markets/market-liquidity/m2-growth": {
+      "id": "markets/market-liquidity/m2-growth@2026-05-01",
+      "key": "markets/market-liquidity/m2-growth",
+      "category": "markets",
+      "lens": "market-liquidity",
+      "indicator": "m2-growth",
+      "series_id": "M2SL",
+      "horizon": "next-print",
+      "target_period": "2026-05-01",
+      "due": "2026-06-15",
+      "made_at": "2026-06-12T14:20:39Z",
+      "model": "sarima@1",
+      "point": 4.8745,
+      "lo": 4.1554,
+      "hi": 5.4826,
+      "unit": "%",
+      "value_format": "decimal",
+      "prev_value": 4.72453,
+      "why": "This projects recent momentum, adjusted for the series' typical reversion.",
+      "implied_status": "ok",
+      "current_status": "ok",
+      "title": "M2 Money Supply \u00b7 year-over-year",
+      "short": "M2 growth",
+      "lens_title": "Liquidity & the Fed",
+      "href": "/dashboards/markets/liquidity.html",
+      "grade": {
+        "actual": 5.58031,
+        "graded_at": "2026-06-23T19:33:33Z",
+        "hit": false,
+        "abs_error": 0.7058099999999996,
+        "direction_hit": true,
+        "status_hit": true,
+        "naive_error": 0.8557800000000002,
+        "revised_to": null
+      }
     }
   },
   "feed": [
+    {
+      "id": "markets/market-liquidity/m2-growth@2026-05-01",
+      "key": "markets/market-liquidity/m2-growth",
+      "category": "markets",
+      "lens": "market-liquidity",
+      "indicator": "m2-growth",
+      "series_id": "M2SL",
+      "horizon": "next-print",
+      "target_period": "2026-05-01",
+      "due": "2026-06-15",
+      "made_at": "2026-06-12T14:20:39Z",
+      "model": "sarima@1",
+      "point": 4.8745,
+      "lo": 4.1554,
+      "hi": 5.4826,
+      "unit": "%",
+      "value_format": "decimal",
+      "prev_value": 4.72453,
+      "why": "This projects recent momentum, adjusted for the series' typical reversion.",
+      "implied_status": "ok",
+      "current_status": "ok",
+      "title": "M2 Money Supply \u00b7 year-over-year",
+      "short": "M2 growth",
+      "lens_title": "Liquidity & the Fed",
+      "href": "/dashboards/markets/liquidity.html",
+      "grade": {
+        "actual": 5.58031,
+        "graded_at": "2026-06-23T19:33:33Z",
+        "hit": false,
+        "abs_error": 0.7058099999999996,
+        "direction_hit": true,
+        "status_hit": true,
+        "naive_error": 0.8557800000000002,
+        "revised_to": null
+      }
+    },
     {
       "id": "energy/energy-oil-fuels/diesel@2026-06-22",
       "key": "energy/energy-oil-fuels/diesel",
@@ -1984,7 +2056,7 @@
         "direction_hit": false,
         "status_hit": true,
         "naive_error": 3.344,
-        "revised_to": null
+        "revised_to": 6.484
       }
     },
     {
@@ -2022,7 +2094,7 @@
         "direction_hit": true,
         "status_hit": true,
         "naive_error": 162.60000000000036,
-        "revised_to": 4154.7
+        "revised_to": 4138.8
       }
     },
     {
