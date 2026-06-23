@@ -1,29 +1,28 @@
 {
-  "last_updated": "2026-06-18T17:49:45Z",
+  "last_updated": "2026-06-23T16:12:30Z",
   "status": "elevated",
   "lenses": [
     {
       "id": "energy-oil-fuels",
       "title": "Oil & Fuels",
       "accent": "#FB923C",
-      "status": "alert",
-      "headline_read": "Fuel costs are spiking \u2014 acute pressure at the pump.",
+      "status": "elevated",
+      "headline_read": "Fuel costs are well above last year.",
       "key_stats": [
         {
           "k": "Gasoline",
-          "v": "$4.05",
-          "d": "$0.09",
+          "v": "$3.91",
+          "d": "$0.14",
           "dir": "down"
         },
         {
           "k": "Diesel",
-          "v": "$5.06",
-          "d": "$0.15",
+          "v": "$4.83",
+          "d": "$0.23",
           "dir": "down"
         }
       ],
       "sparkline": [
-        3.168,
         3.173,
         3.118,
         3.124,
@@ -62,7 +61,8 @@
         4.475,
         4.305,
         4.146,
-        4.052
+        4.052,
+        3.914
       ]
     },
     {
