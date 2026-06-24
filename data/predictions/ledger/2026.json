@@ -176,7 +176,7 @@
       "direction_hit": true,
       "status_hit": true,
       "naive_error": 10.0,
-      "revised_to": null
+      "revised_to": 1410.0
     }
   },
   {
@@ -686,7 +686,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 0.040000000000000036,
-      "revised_to": null
+      "revised_to": 3.08
     }
   },
   {
@@ -1020,7 +1020,7 @@
       "direction_hit": true,
       "status_hit": true,
       "naive_error": 162.60000000000036,
-      "revised_to": 4026.7
+      "revised_to": 3994.4
     }
   },
   {
@@ -1058,7 +1058,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 3.344,
-      "revised_to": 6.484
+      "revised_to": 4.534
     }
   },
   {
@@ -1398,7 +1398,7 @@
       "direction_hit": true,
       "status_hit": true,
       "naive_error": 0.010000000000000231,
-      "revised_to": null
+      "revised_to": 2.71
     }
   },
   {
@@ -1814,6 +1814,156 @@
       "direction_hit": true,
       "status_hit": true,
       "naive_error": 0.01100000000000001,
+      "revised_to": null
+    }
+  },
+  {
+    "id": "energy/energy-oil-fuels/crude-production@2026-06-19",
+    "key": "energy/energy-oil-fuels/crude-production",
+    "category": "energy",
+    "lens": "energy-oil-fuels",
+    "indicator": "crude-production",
+    "series_id": "WCRFPUS2",
+    "horizon": "next-print",
+    "target_period": "2026-06-19",
+    "due": "2026-06-24",
+    "made_at": "2026-06-17T17:34:40Z",
+    "model": "naive@1",
+    "point": 13806.0,
+    "lo": 13730.3,
+    "hi": 13906.0,
+    "unit": "",
+    "value_format": "thousands",
+    "prev_value": 13806.0,
+    "why": "Crude output: up 2 straight weeks. We expect roughly the last value \u2014 this series rarely rewards cleverness.",
+    "implied_status": "info",
+    "current_status": "info",
+    "descriptive": true,
+    "market_price": false,
+    "title": "U.S. Crude Oil Production",
+    "short": "Crude output",
+    "lens_title": "Oil & Fuels",
+    "href": "/dashboards/energy/oil-fuels.html",
+    "grade": {
+      "actual": 13819.0,
+      "graded_at": "2026-06-24T19:17:33Z",
+      "hit": true,
+      "abs_error": 13.0,
+      "direction_hit": false,
+      "status_hit": true,
+      "naive_error": 13.0,
+      "revised_to": null
+    }
+  },
+  {
+    "id": "energy/energy-oil-fuels/crude-stocks@2026-06-19",
+    "key": "energy/energy-oil-fuels/crude-stocks",
+    "category": "energy",
+    "lens": "energy-oil-fuels",
+    "indicator": "crude-stocks",
+    "series_id": "WCESTUS1",
+    "horizon": "next-print",
+    "target_period": "2026-06-19",
+    "due": "2026-06-24",
+    "made_at": "2026-06-17T17:34:42Z",
+    "model": "ets-seasonal@1",
+    "point": 414697.988,
+    "lo": 409065.5624,
+    "hi": 419929.9804,
+    "unit": "",
+    "value_format": "thousands",
+    "prev_value": 418222.0,
+    "why": "Crude stocks: down 8 straight weeks. This projects the recent trend with the usual seasonal pattern for the week.",
+    "implied_status": "info",
+    "current_status": "info",
+    "descriptive": true,
+    "market_price": false,
+    "title": "Crude Inventories \u00b7 excl. SPR",
+    "short": "Crude stocks",
+    "lens_title": "Oil & Fuels",
+    "href": "/dashboards/energy/oil-fuels.html",
+    "grade": {
+      "actual": 412134.0,
+      "graded_at": "2026-06-24T19:17:34Z",
+      "hit": true,
+      "abs_error": 2563.988000000012,
+      "direction_hit": true,
+      "status_hit": true,
+      "naive_error": 6088.0,
+      "revised_to": null
+    }
+  },
+  {
+    "id": "energy/energy-natural-gas/henry-hub@2026-06-26",
+    "key": "energy/energy-natural-gas/henry-hub",
+    "category": "energy",
+    "lens": "energy-natural-gas",
+    "indicator": "henry-hub",
+    "series_id": "RNGWHHD",
+    "horizon": "next-print",
+    "target_period": "2026-06-26",
+    "due": "2026-07-01",
+    "made_at": "2026-06-17T17:34:43Z",
+    "model": "naive@1",
+    "point": 3.06,
+    "lo": 2.553,
+    "hi": 3.547,
+    "unit": "$",
+    "value_format": "decimal",
+    "prev_value": 3.06,
+    "why": "We expect roughly the last value \u2014 this series rarely rewards cleverness.",
+    "implied_status": "ok",
+    "current_status": "ok",
+    "descriptive": false,
+    "market_price": false,
+    "title": "Henry Hub Spot Price",
+    "short": "Henry Hub",
+    "lens_title": "Natural Gas",
+    "href": "/dashboards/energy/natural-gas.html",
+    "grade": {
+      "actual": 3.16,
+      "graded_at": "2026-06-24T19:17:36Z",
+      "hit": true,
+      "abs_error": 0.10000000000000009,
+      "direction_hit": false,
+      "status_hit": true,
+      "naive_error": 0.10000000000000009,
+      "revised_to": null
+    }
+  },
+  {
+    "id": "housing/housing-supply-construction/months-supply@2026-05-01",
+    "key": "housing/housing-supply-construction/months-supply",
+    "category": "housing",
+    "lens": "housing-supply-construction",
+    "indicator": "months-supply",
+    "series_id": "MSACSR",
+    "horizon": "next-print",
+    "target_period": "2026-05-01",
+    "due": "2026-06-15",
+    "made_at": "2026-06-12T14:20:50Z",
+    "model": "ets@1",
+    "point": 9.2463,
+    "lo": 8.5093,
+    "hi": 10.1611,
+    "unit": "months",
+    "value_format": "decimal",
+    "prev_value": 9.4,
+    "why": "This projects the recent level and trend forward one month.",
+    "implied_status": "elevated",
+    "current_status": "elevated",
+    "title": "Months of New-Home Supply",
+    "short": "Months' supply",
+    "lens_title": "Supply & Construction",
+    "href": "/dashboards/housing/supply-construction.html",
+    "grade": {
+      "actual": 10.3,
+      "graded_at": "2026-06-24T19:17:42Z",
+      "hit": false,
+      "abs_error": 1.053700000000001,
+      "direction_hit": false,
+      "status_hit": false,
+      "naive_error": 0.9000000000000004,
       "revised_to": null
     }
   }

@@ -2,7 +2,7 @@
   "id": "energy-natural-gas",
   "title": "Natural Gas",
   "accent": "#60A5FA",
-  "last_updated": "2026-06-18T17:49:45Z",
+  "last_updated": "2026-06-24T19:16:55Z",
   "status": "ok",
   "headline_read": "Natural gas costs are stable or easing.",
   "recessions": [
@@ -25,12 +25,8 @@
       "series_id": "RNGWHHD",
       "observations": [
         {
-          "date": "2022-11-02",
-          "value": "4.58"
-        },
-        {
-          "date": "2022-11-07",
-          "value": "4.62"
+          "date": "2022-11-08",
+          "value": "4"
         },
         {
           "date": "2022-11-14",
@@ -367,18 +363,6 @@
         {
           "date": "2024-06-17",
           "value": "2.5"
-        },
-        {
-          "date": "2024-06-18",
-          "value": "2.43"
-        },
-        {
-          "date": "2024-06-20",
-          "value": "2.39"
-        },
-        {
-          "date": "2024-06-21",
-          "value": "2.44"
         },
         {
           "date": "2024-06-24",
@@ -2343,14 +2327,30 @@
         {
           "date": "2026-06-15",
           "value": "3.06"
+        },
+        {
+          "date": "2026-06-16",
+          "value": "3.1"
+        },
+        {
+          "date": "2026-06-17",
+          "value": "3.25"
+        },
+        {
+          "date": "2026-06-18",
+          "value": "3.08"
+        },
+        {
+          "date": "2026-06-22",
+          "value": "3.16"
         }
       ],
       "latest": {
-        "date": "2026-06-15",
-        "value": "3.06"
+        "date": "2026-06-22",
+        "value": "3.16"
       },
       "context": "The U.S. benchmark natural-gas price ($/MMBtu) \u2014 it drives home heating bills and a large share of electricity generation cost.",
-      "read": "Natural gas costs are up 15% over the past year.",
+      "read": "Natural gas costs are up 2% over the past year.",
       "signal_status": "ok",
       "value_format": "decimal"
     },

@@ -1,6 +1,17 @@
 {
-  "generated_at": "2026-06-24T13:56:56Z",
-  "transitions": [],
+  "generated_at": "2026-06-24T19:17:51Z",
+  "transitions": [
+    {
+      "lens_id": "housing-supply-construction",
+      "lens_title": "Supply & Construction",
+      "category": "housing",
+      "href": "/dashboards/housing/supply-construction.html",
+      "from_status": "elevated",
+      "to_status": "alert",
+      "direction": "worsening",
+      "headline": "Housing supply is at an extreme \u2014 construction or inventory is flashing red."
+    }
+  ],
   "top_moves": [
     {
       "lens_id": "energy-commodities",
@@ -221,61 +232,6 @@
       "delta": "0.86%",
       "dir": "up",
       "why": "M2 growth: a fresh high in this view."
-    },
-    {
-      "lens_id": "market-scoreboard",
-      "lens_title": "Asset-Class Scoreboard",
-      "category": "markets",
-      "href": "/dashboards/markets/scoreboard.html",
-      "headline": "How the major asset classes are moving right now.",
-      "accent": "#22D3EE",
-      "sparkline": [
-        7173.91,
-        7138.8,
-        7135.95,
-        7209.01,
-        7230.12,
-        7200.75,
-        7259.22,
-        7365.12,
-        7337.11,
-        7398.93,
-        7412.84,
-        7400.96,
-        7444.25,
-        7501.24,
-        7408.5,
-        7403.05,
-        7353.61,
-        7432.97,
-        7445.72,
-        7473.47,
-        7519.12,
-        7520.36,
-        7563.63,
-        7580.06,
-        7599.96,
-        7609.78,
-        7553.68,
-        7584.31,
-        7383.74,
-        7405.73,
-        7386.65,
-        7266.99,
-        7394.3,
-        7431.46,
-        7554.29,
-        7511.35,
-        7420.1,
-        7500.58,
-        7472.79,
-        7365.46
-      ],
-      "stat_label": "S&P 500",
-      "stat_value": "7,365",
-      "delta": "107",
-      "dir": "down",
-      "why": ""
     }
   ],
   "lenses": [
@@ -500,8 +456,8 @@
       "lens_title": "Supply & Construction",
       "category": "housing",
       "href": "/dashboards/housing/supply-construction.html",
-      "status": "elevated",
-      "headline": "Housing supply is out of balance \u2014 inventory or construction is strained."
+      "status": "alert",
+      "headline": "Housing supply is at an extreme \u2014 construction or inventory is flashing red."
     },
     {
       "lens_id": "housing-rent-shelter",
@@ -547,8 +503,8 @@
   "status_counts": {
     "ok": 17,
     "watch": 3,
-    "elevated": 9,
-    "alert": 2,
+    "elevated": 8,
+    "alert": 3,
     "neutral": 2
   },
   "verdict": {
@@ -587,18 +543,18 @@
       "href": "/dashboards/energy/oil-fuels.html"
     },
     {
-      "key": "global/global-uncertainty/gepu",
-      "indicator": "gepu",
-      "lens": "global-uncertainty",
-      "category": "global",
-      "title": "Global Economic Policy Uncertainty",
-      "lens_title": "Uncertainty & Risk",
-      "due": "2026-01-15",
-      "point_fmt": "353",
-      "implied_status": "watch",
-      "current_status": "watch",
-      "change": false,
-      "href": "/dashboards/global/uncertainty.html"
+      "key": "housing/housing-supply-construction/months-supply",
+      "indicator": "months-supply",
+      "lens": "housing-supply-construction",
+      "category": "housing",
+      "title": "Months of New-Home Supply",
+      "lens_title": "Supply & Construction",
+      "due": "2026-07-15",
+      "point_fmt": "10.00 months",
+      "implied_status": "elevated",
+      "current_status": "alert",
+      "change": true,
+      "href": "/dashboards/housing/supply-construction.html"
     }
   ],
   "pressure": [
@@ -617,6 +573,14 @@
       "href": "/dashboards/energy/commodities.html",
       "status": "alert",
       "headline": "Commodity costs are surging."
+    },
+    {
+      "lens_id": "housing-supply-construction",
+      "lens_title": "Supply & Construction",
+      "category": "housing",
+      "href": "/dashboards/housing/supply-construction.html",
+      "status": "alert",
+      "headline": "Housing supply is at an extreme \u2014 construction or inventory is flashing red."
     },
     {
       "lens_id": "cost-of-living",
@@ -665,14 +629,6 @@
       "href": "/dashboards/housing/affordability.html",
       "status": "elevated",
       "headline": "Housing affordability is badly stretched."
-    },
-    {
-      "lens_id": "housing-supply-construction",
-      "lens_title": "Supply & Construction",
-      "category": "housing",
-      "href": "/dashboards/housing/supply-construction.html",
-      "status": "elevated",
-      "headline": "Housing supply is out of balance \u2014 inventory or construction is strained."
     },
     {
       "lens_id": "global-trade-supply",
@@ -761,9 +717,9 @@
     {
       "category": "housing",
       "title": "Housing & Real Estate",
-      "status": "watch",
+      "status": "elevated",
       "href": "/dashboards/housing/",
-      "sentence": "Housing is mostly balanced, but parts of the market are drifting out of balance."
+      "sentence": "The housing market is out of balance."
     },
     {
       "category": "global",

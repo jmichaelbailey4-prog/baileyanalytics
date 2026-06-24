@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-06-22T18:59:08Z",
-  "status": "watch",
+  "last_updated": "2026-06-24T19:17:02Z",
+  "status": "elevated",
   "lenses": [
     {
       "id": "housing-home-prices",
@@ -104,13 +104,13 @@
       "id": "housing-supply-construction",
       "title": "Supply & Construction",
       "accent": "#34D399",
-      "status": "elevated",
-      "headline_read": "Housing supply is out of balance \u2014 inventory or construction is strained.",
+      "status": "alert",
+      "headline_read": "Housing supply is at an extreme \u2014 construction or inventory is flashing red.",
       "key_stats": [
         {
           "k": "Months' supply",
-          "v": "9.40 months",
-          "d": "0.70 months",
+          "v": "10.30 months",
+          "d": "1.00 months",
           "dir": "up"
         },
         {
@@ -121,7 +121,6 @@
         }
       ],
       "sparkline": [
-        8.1,
         8.3,
         8.1,
         7.8,
@@ -158,9 +157,10 @@
         7.7,
         7.9,
         9.9,
-        9.1,
+        9.3,
         8.7,
-        9.4
+        9.3,
+        10.3
       ]
     },
     {
