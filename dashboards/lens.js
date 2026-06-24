@@ -42,6 +42,18 @@
     return observations.filter(o => new Date(o.date) >= limit);
   }
 
+  // Theme-aware chart chrome: read from the --chart-* CSS vars so charts match
+  // the active theme at build time and can recolor live on a `ba:theme` event.
+  function cssVar(n) { return getComputedStyle(document.documentElement).getPropertyValue(n).trim(); }
+  function chartChrome() {
+    return {
+      grid: cssVar("--chart-grid") || "#1E293B", tick: cssVar("--chart-tick") || "#64748B",
+      axis: cssVar("--chart-axis") || "#1E293B", ttBg: cssVar("--chart-tooltip-bg") || "#0A0E14",
+      ttBorder: cssVar("--chart-tooltip-border") || "#1E293B",
+      ttTitle: cssVar("--chart-tooltip-title") || "#F8FAFC", ttBody: cssVar("--chart-tooltip-body") || "#CBD5E1",
+    };
+  }
+
   // Custom plugin: shade recession periods using the x category scale.
   const recessionPlugin = {
     id: "recessionBands",
@@ -51,7 +63,7 @@
       const { ctx, chartArea, scales: { x } } = chart;
       const labels = chart.data.labels;
       ctx.save();
-      ctx.fillStyle = "rgba(248,113,113,0.09)";
+      ctx.fillStyle = cssVar("--chart-recession") || "rgba(248,113,113,0.09)";
       periods.forEach(p => {
         let i0 = labels.findIndex(l => l >= p.start);
         let i1 = -1;
@@ -69,6 +81,7 @@
     const labels = obs.map(o => o.date);
     const values = obs.map(o => parseFloat(o.value));
     const monthly = isMonthly(indicator.observations);
+    const c = chartChrome();
     return new Chart(canvas.getContext("2d"), {
       type: "line",
       plugins: [recessionPlugin],
@@ -81,8 +94,8 @@
           legend: { display: false },
           recessionBands: { periods: recessions },
           tooltip: {
-            backgroundColor: "#0A0E14", borderColor: "#1E293B", borderWidth: 1,
-            titleColor: "#F8FAFC", bodyColor: "#CBD5E1", padding: 10,
+            backgroundColor: c.ttBg, borderColor: c.ttBorder, borderWidth: 1,
+            titleColor: c.ttTitle, bodyColor: c.ttBody, padding: 10,
             callbacks: {
               title: items => monthly ? fmtMonth(items[0].label) : fmtDate(items[0].label),
               label: ctx => " " + fmtVal(ctx.parsed.y, indicator.unit, indicator.value_format),
@@ -90,7 +103,7 @@
           },
         },
         scales: {
-          x: { type: "category", ticks: { maxTicksLimit: 7, color: "#64748B", font: { size: 11 },
+          x: { type: "category", ticks: { maxTicksLimit: 7, color: c.tick, font: { size: 11 },
                  callback(v) { const s = this.getLabelForValue(v); if (!s) return s;
                    // annual labels ("2026") have no month part — always show the year
                    return (years && years <= 1 && s.length >= 7) ? MONTHS[+s.slice(5, 7) - 1] : s.slice(0, 4); } },
@@ -104,9 +117,9 @@
                    if (t[i].label && t[i].label === t[i - 1].label) t[i].label = "";
                  }
                },
-               grid: { display: false }, border: { color: "#1E293B" } },
-          y: { ticks: { color: "#64748B", font: { size: 11 }, callback: v => fmtVal(v, indicator.unit, indicator.value_format) },
-               grid: { color: "#1E293B" }, border: { display: false } },
+               grid: { display: false }, border: { color: c.axis } },
+          y: { ticks: { color: c.tick, font: { size: 11 }, callback: v => fmtVal(v, indicator.unit, indicator.value_format) },
+               grid: { color: c.grid }, border: { display: false } },
         },
       },
     });
@@ -247,6 +260,23 @@
     lens.indicators.forEach(i => holder.appendChild(indicatorCard(i, lens.recessions || [], defaultRange)));
     document.dispatchEvent(new CustomEvent("lens:rendered", { detail: { id: lens.id } }));
   }
+
+  // Recolor existing charts when the theme flips (personalize.js dispatches
+  // ba:theme). Chart.getChart(canvas) avoids stale refs after range-rebuilds.
+  document.addEventListener("ba:theme", function () {
+    if (typeof Chart === "undefined" || !Chart.getChart) return;
+    var c = chartChrome();
+    document.querySelectorAll(".chart-box canvas").forEach(function (cv) {
+      var ch = Chart.getChart(cv);
+      if (!ch) return;
+      var o = ch.options;
+      o.plugins.tooltip.backgroundColor = c.ttBg; o.plugins.tooltip.borderColor = c.ttBorder;
+      o.plugins.tooltip.titleColor = c.ttTitle;   o.plugins.tooltip.bodyColor = c.ttBody;
+      o.scales.x.ticks.color = c.tick; o.scales.x.border.color = c.axis;
+      o.scales.y.ticks.color = c.tick; o.scales.y.grid.color = c.grid;
+      ch.update("none");
+    });
+  });
 
   window.renderLens = async function (jsonUrl, opts) {
     const root = document.getElementById("lens-root");
