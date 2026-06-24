@@ -57,7 +57,7 @@ The dark palette is **not** a single `:root` to flip. Verified in the current co
 | D4 | **Pre-paint script sets only `data-theme`** on `<html>` (inline, synchronous, try/caught). The `theme-color` meta is updated by `personalize.js` (load + toggle). | Have the pre-paint script also update the meta. | The meta tag is stamped *after* the theme fragment, so it may not exist when the pre-paint script runs. The meta only tints browser chrome (no content flash), so a deferred update is fine. Keeps the pre-paint script minimal/robust. |
 | D5 | **Charts recolor live on toggle** via `ba:theme` (`chart.update('none')`); chart chrome colors come from CSS vars; the recession plugin reads its color from a CSS var each draw. | Recolor only on next navigation. | A chart stuck in dark colors after switching to light is exactly the "frustrating/distracting" thing D1's guardrail forbids. |
 | D6 | **Convert `about.html` / `offline.html` / `404.html` to the CSS-variable model** as part of this work. | Add `[data-theme=light]` overrides with hardcoded hex alongside the existing hardcoded hex. | They're small; converting to tokens makes them theme-clean and consistent with the rest, and is the right way to leave code you're already changing. |
-| D7 | **A subtle, load-gated transition** (~180ms on bg/color/border), enabled only after first paint — a `theme-ready` class added to `<html>` on the first `requestAnimationFrame` after load gates the transition rules — and only under `prefers-reduced-motion: no-preference`; charts update with no animation. | Instant flip (no transition); always-on transition. | A gentle cross-fade reads "premium/Apple" without being distracting; gating it past first paint avoids a load-time sweep; trivially dialable to instant if it feels off in review. |
+| D7 | **Instant theme switch** — no global color transition. Only the toggle icon gets a subtle `prefers-reduced-motion`-safe color transition; charts `update("none")`. | A gated ~180ms global cross-fade. | Instant is the most reliable, never-janky choice (honors D1's guardrail). A safe global cross-fade is fragile to scope: a blanket `* {transition}` clobbers the `transform` hover-lifts on `.hub-card`/`.lens`/`.cat-card`, and a curated selector list is brittle — dropped as YAGNI/risk. The user initiated the click, so an instant flip is expected, not jarring. |
 | D8 | **Manifest stays dark; brand marks stay; per-series chart colors stay** (see §2 Out). | Theme them too. | YAGNI / not worth per-user generation; they read on both. |
 
 ## 5. The light palette (Apple-clean) — exact values + WCAG contrast
@@ -85,14 +85,14 @@ Home (S2) uses `--faint` for what lens.css calls `--dim`; its light `:root` over
 
 ### 5.2 Status badge pills (`[data-theme="light"]` selector overrides)
 Pale accent tint + deepened accent text. **Invariant (test-enforced): each text-on-tint ≥ 4.5:1.**
-| Badge | Light bg | Light text |
-|---|---|---|
-| `.badge.ok` | `#E8F6EE` | `var(--green)` `#1A7F37` |
-| `.badge.watch` | `#FBF1D9` | `var(--amber)` `#8A5D00` |
-| `.badge.elevated` | `#FCEADA` | `var(--orange)` `#C2410C` |
-| `.badge.alert` | `#FCE8EA` | `var(--red)` `#D70015` |
-| `.badge.unknown` | `#E9E9EE` | `var(--dim)` `#5E5E63` |
-| `.badge.neutral` | `#E3EFFB` | `var(--blue)` `#0068D1` |
+| Badge | Light bg | Light text | text-on-tint |
+|---|---|---|---|
+| `.badge.ok` | `#ECF8F2` | `var(--green)` `#1A7F37` | ~4.66:1 |
+| `.badge.watch` | `#FBF2DC` | `var(--amber)` `#8A5D00` | ~5.17:1 |
+| `.badge.elevated` | `#FDF0E6` | `var(--orange)` `#C2410C` | ~4.63:1 |
+| `.badge.alert` | `#FDECEE` | `var(--red)` `#D70015` | ~4.72:1 |
+| `.badge.unknown` | `#ECECF1` | `var(--dim)` `#5E5E63` | ~5.48:1 |
+| `.badge.neutral` | `#E6F0FC` | `var(--blue)` `#0068D1` | ~4.67:1 |
 
 All token-based status text elsewhere (`.s.*`, `.lens-table td.*`, `.tpill.*`, `.chip-dot.*`, home `.pill.*`) inherits the deepened accents automatically (or via the home selector overrides). `.lens-table td` light: text `var(--text)`, row border `var(--border)`. `.brief-rel` light: `background:rgba(0,104,209,.06)`, `border-left-color:var(--blue)`. `.pred-mark.hit/.miss` switch to `var(--green)`/`var(--red)` (removes hardcoded hex).
 
