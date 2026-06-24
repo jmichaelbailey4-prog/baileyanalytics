@@ -1,4 +1,5 @@
 import pathlib
+import shutil
 import sys
 import tempfile
 import unittest
@@ -17,6 +18,7 @@ except ImportError:
 class TestPwaIcons(unittest.TestCase):
     def setUp(self):
         self.tmp = pathlib.Path(tempfile.mkdtemp())
+        self.addCleanup(shutil.rmtree, self.tmp, ignore_errors=True)
         pwa_icons.generate(root=self.tmp)
 
     def test_sizes(self):

@@ -48,7 +48,7 @@ Each is reversible; flagged ones are one-liners to flip.
 | D3 | **Installed-app `start_url` = `/` (home).** (Changed from `/dashboards/favorites.html` on Michael's call, 2026-06-24.) | `/dashboards/favorites.html`, or `/dashboards/brief.html`. | Home survives a visitor clearing their site data (Favorites would open blank), and home already feels personalized (verdict line + category tiles). Resilience beat the "open straight into your stuff" framing. |
 | D4 | **★ on lens pages only** in v1 (the canonical place you decide a lens matters); the Favorites page collects them. | Also add quick-add ★ on hub/home tiles. | YAGNI; tile quick-add is a clean v1.1 add. |
 | D5 | **Default range = a remembered preference with a floor.** Explicitly clicking a range button sets the global pref; each lens opens at `max(userPref, pageMinimum)` on the 1Y<5Y<Max scale, so quarterly pages (which pass `defaultRange:"5Y"`) never drop to a too-sparse 1Y. Initial page default does **not** set the pref. | Per-page memory (remember range per lens id); or naive global override (no floor). | Global pref matches "default chart range"; the floor prevents a 1Y pref from breaking banking/credit-stress. Only explicit clicks set it, so a one-off look doesn't silently change global state. |
-| D6 | **Service worker is network-first for HTML and `/data/*.json`, stale-while-revalidate for static assets, cache busted per deploy.** | Cache-first everything (classic PWA). | A daily-data site must never serve a frozen page/data when online. See §8. |
+| D6 | **Service worker is network-first for ALL same-origin requests** (HTML, `/data/*.json`, and the CSS/JS/icons app shell); the cached copy is only the offline fallback. The version-pinned Chart.js CDN is passthrough (browser HTTP cache). Cache busted per deploy via `CACHE_VERSION`. | SWR/cache-first for the static shell (revised after code review); cache-first everything (classic PWA). | A daily-**deployed**, daily-data site must never serve a frozen page **or stale app-shell JS** to an online visitor; network-first everywhere same-origin removes the "new HTML + stale cached JS" breakage without content-hashed filenames, and the browser HTTP cache keeps it fast. See §8. |
 | D7 | **JS unit tests via Node's built-in `node:test`** (zero-dep), run locally + documented. Python suite stays the CI gate. | Add Jest/Node toolchain to CI. | Node 24 is available; `node:test` needs no install; keeps the site zero-build and avoids workflow churn. Pure logic (range floor, favorites set ops, SW route choice, storage (de)serialize) is extracted and tested. |
 | D8 | **Icons generated once via Pillow** (`pwa_icons.py`, mirrors `ogcard.py`) reproducing the favicon (rounded #0F172A panel + #38BDF8 chart line); committed as static assets. | Hand-make PNGs; or regenerate in the pipeline daily. | Brand-consistent + reproducible + unit-testable; icons are static so no daily rebuild needed. |
 | D9 | **No theme-init head script in v1** (only needed for the deferred light theme). v1 head additions are just: manifest link, icon/theme-color meta, `personalize.js` include, SW registration. | Add theme-init now to "future-proof." | YAGNI; add it with the theme in v1.1. |
@@ -123,7 +123,7 @@ Favorites page: favorites.js
    ──> map starred ids to lens objects ──> renderHubTiles(grid, lenses, id=>lensHref(cat,id))
 
 PWA: every page <head> ──> manifest + personalize.js ──> SW register
-   SW intercepts fetch ──> network-first(HTML, /data/*.json) | SWR(assets) | cache fallback(offline)
+   SW intercepts fetch ──> network-first(all same-origin) | passthrough(CDN) | cache fallback(offline)
 ```
 
 ## 7. Error handling / graceful degradation
@@ -141,8 +141,8 @@ A SW on a **daily-updated** site can serve a frozen site after a deploy if cache
 - **Versioned cache** name embedded in `sw.js` (e.g., `ba-cache-<version>`). On `activate`, delete every cache that isn't the current version (and `clients.claim()`).
 - **HTML navigations → network-first**, cache fallback (fresh pages online; last-seen offline; `offline.html` if neither).
 - **`/data/*.json` → network-first**, cache fallback (fresh data online; last-seen offline). *Never* cache-first data.
-- **Static assets (CSS/JS/icons/fonts) → stale-while-revalidate** (instant load + background refresh; one load may be a version behind, then self-heals). These share stable URLs (`lens.css`, `lens.js`), so SWR is the right call.
-- **Chart.js CDN → stale-while-revalidate** (URL is version-pinned).
+- **Static assets (CSS/JS/icons) → network-first** too (same rule as data), cache fallback. **Revised from stale-while-revalidate after code review:** with no content-hashed filenames, SWR could pair fresh network-first HTML with a one-load-stale `lens.js` after a deploy (and relied on hand-bumping `CACHE_VERSION`). Network-first keeps the shell always-fresh online; the browser's own HTTP cache keeps it fast, and the SW cache is purely the offline copy.
+- **Chart.js CDN (cross-origin, version-pinned) → passthrough** — not SW-cached (an opaque error response can't be told from success, so caching it would risk persisting a broken asset); the browser HTTP cache owns the immutable URL. Offline charts are best-effort via that cache.
 - **`updateViaCache:'none'`** on registration so the browser always revalidates `sw.js`; a new deploy's SW takes over on the next load and purges old caches.
 - **Install precache** is a *minimal shell* (core CSS/JS, manifest, icons, `offline.html`) so first offline works; everything else is runtime-cached as visited.
 

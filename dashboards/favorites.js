@@ -13,14 +13,19 @@
 
   function esc(s) { var d = document.createElement("div"); d.textContent = s == null ? "" : s; return d.innerHTML; }
 
+  var INDEX_CACHE = {};   // per-session: toggling a favorite shouldn't re-fetch every category index
+
   function loadCategory(cat) {
+    if (INDEX_CACHE[cat]) return Promise.resolve(INDEX_CACHE[cat]);
     return fetch(INDEX[cat], { cache: "no-cache" }).then(function (r) {
       if (!r.ok) throw 0;
       return r.json();
     }).then(function (d) {
       var m = {};
       (d.lenses || []).forEach(function (l) { m[l.id] = l; });
-      return { ok: true, map: m };
+      var res = { ok: true, map: m };
+      INDEX_CACHE[cat] = res;   // cache successes only; a transient failure retries next render
+      return res;
     }).catch(function () { return { ok: false, map: {} }; });  // failed fetch != "lens gone"
   }
 
@@ -61,12 +66,18 @@
     });
   }
 
-  // Inject a small remove (x) control into each rendered hub-card, correlated to
-  // `lenses` by render order (renderHubTiles preserves order).
-  function wireRemove(root, lenses) {
-    root.querySelectorAll(".hub-card").forEach(function (card, i) {
+  // A per-tile remove (x), correlated to `lenses` by render order (renderHubTiles
+  // preserves order). The button goes in a positioned WRAPPER beside the card —
+  // a <button> inside the <a class="hub-card"> would be nested-interactive
+  // (invalid HTML; fails the site's axe gate).
+  function wireRemove(grid, lenses) {
+    Array.prototype.slice.call(grid.querySelectorAll(".hub-card")).forEach(function (card, i) {
       var lens = lenses[i];
       if (!lens) return;
+      var wrap = document.createElement("div");
+      wrap.className = "fav-tile";
+      card.parentNode.insertBefore(wrap, card);
+      wrap.appendChild(card);
       var x = document.createElement("button");
       x.type = "button";
       x.className = "fav-remove";
@@ -78,8 +89,7 @@
         e.stopPropagation();
         store.setFavorites(core.removeFavorite(store.favorites(), lens.id));
       });
-      card.style.position = "relative";
-      card.appendChild(x);
+      wrap.appendChild(x);   // sibling of the anchor, inside the positioned wrapper
     });
   }
 
@@ -108,18 +118,21 @@
     if (!root) return;
     var favs = store ? store.favorites() : [];
     if (!favs.length) { root.innerHTML = emptyState(); wirePrefs(); return; }
-    var groups = core.groupByCategory(favs);
-    var cats = Object.keys(groups);
-    Promise.all(cats.map(loadCategory)).then(function (results) {
+    // Only known, non-empty categories have an index to fetch.
+    var needed = [];
+    favs.forEach(function (f) {
+      if (f.category && INDEX[f.category] && needed.indexOf(f.category) < 0) needed.push(f.category);
+    });
+    Promise.all(needed.map(loadCategory)).then(function (results) {
+      var byCat = {};
+      needed.forEach(function (c, i) { byCat[c] = results[i]; });
       var lenses = [], catById = {}, missing = [];
-      cats.forEach(function (cat, i) {
-        var res = results[i];
-        groups[cat].forEach(function (f) {
-          var l = res.map[f.id];
-          if (l) { catById[f.id] = cat; lenses.push(l); }
-          else if (res.ok) missing.push(f);   // index loaded but id gone -> offer removal
-          // res not ok: transient fetch failure — keep the favorite, render nothing this load
-        });
+      favs.forEach(function (f) {
+        var res = byCat[f.category];
+        if (res && res.map[f.id]) { catById[f.id] = f.category; lenses.push(res.map[f.id]); }
+        else if (!f.category || !INDEX[f.category]) missing.push(f);  // empty/unknown category -> removable
+        else if (res && res.ok) missing.push(f);                      // known + loaded, id gone -> removable
+        // known category but fetch failed: keep silently (transient), render nothing this load
       });
       if (!lenses.length && !missing.length) { root.innerHTML = emptyState(); wirePrefs(); return; }
       root.innerHTML = '<div class="hub-grid" id="fav-grid"></div>';

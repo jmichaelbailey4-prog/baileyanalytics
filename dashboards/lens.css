@@ -249,6 +249,7 @@ p.lede strong{color:var(--text);font-weight:600}
 .fav-clear{background:transparent;border:1px solid var(--border);color:var(--muted);
   border-radius:8px;padding:.45rem .9rem;font:inherit;font-size:.82rem;cursor:pointer}
 .fav-clear:hover{border-color:var(--red);color:var(--red)}
+.fav-tile{position:relative}
 .fav-remove{position:absolute;top:.6rem;right:.6rem;width:1.6rem;height:1.6rem;line-height:1;
   background:var(--bg);border:1px solid var(--border);border-radius:50%;color:var(--dim);
   font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center}

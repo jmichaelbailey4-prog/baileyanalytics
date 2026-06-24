@@ -1,4 +1,5 @@
 import pathlib
+import shutil
 import sys
 import tempfile
 import unittest
@@ -12,6 +13,7 @@ PAGE = "<!DOCTYPE html><html><head>\n  <title>x</title>\n</head><body></body></h
 class TestPwaHead(unittest.TestCase):
     def setUp(self):
         self.root = pathlib.Path(tempfile.mkdtemp())
+        self.addCleanup(shutil.rmtree, self.root, ignore_errors=True)
         (self.root / "dashboards").mkdir()
         (self.root / "docs").mkdir()
         (self.root / ".superpowers").mkdir()
