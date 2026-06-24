@@ -2,7 +2,7 @@
   "id": "cost-of-money",
   "title": "The Cost of Money",
   "accent": "#34D399",
-  "last_updated": "2026-06-22T21:36:56Z",
+  "last_updated": "2026-06-24T13:55:12Z",
   "status": "ok",
   "headline_read": "Borrowing costs have eased back toward normal.",
   "recessions": [
@@ -1003,8 +1003,8 @@
       "series_id": "DGS10",
       "observations": [
         {
-          "date": "2016-07-01",
-          "value": "1.46"
+          "date": "2016-07-05",
+          "value": "1.37"
         },
         {
           "date": "2016-08-01",
@@ -1243,12 +1243,8 @@
           "value": "1.62"
         },
         {
-          "date": "2021-06-18",
-          "value": "1.45"
-        },
-        {
-          "date": "2021-06-21",
-          "value": "1.50"
+          "date": "2021-06-22",
+          "value": "1.48"
         },
         {
           "date": "2021-06-28",
@@ -1873,22 +1869,6 @@
         {
           "date": "2024-06-17",
           "value": "4.28"
-        },
-        {
-          "date": "2024-06-18",
-          "value": "4.22"
-        },
-        {
-          "date": "2024-06-19",
-          "value": "."
-        },
-        {
-          "date": "2024-06-20",
-          "value": "4.25"
-        },
-        {
-          "date": "2024-06-21",
-          "value": "4.25"
         },
         {
           "date": "2024-06-24",
@@ -3965,14 +3945,22 @@
         {
           "date": "2026-06-18",
           "value": "4.46"
+        },
+        {
+          "date": "2026-06-19",
+          "value": "."
+        },
+        {
+          "date": "2026-06-22",
+          "value": "4.51"
         }
       ],
       "latest": {
-        "date": "2026-06-18",
-        "value": "4.46"
+        "date": "2026-06-22",
+        "value": "4.51"
       },
       "context": "The yield on 10-year U.S. government debt \u2014 the benchmark that drives mortgage rates and long-term borrowing costs across the economy.",
-      "read": "Now 4.46%, little changed over the past year.",
+      "read": "Now 4.51%, up 0.13 points over the past year.",
       "signal_status": "ok",
       "value_format": "decimal"
     },
@@ -3985,8 +3973,8 @@
       "series_id": "DGS2",
       "observations": [
         {
-          "date": "2016-07-01",
-          "value": "0.59"
+          "date": "2016-07-05",
+          "value": "0.56"
         },
         {
           "date": "2016-08-01",
@@ -4225,12 +4213,8 @@
           "value": "0.16"
         },
         {
-          "date": "2021-06-18",
-          "value": "0.26"
-        },
-        {
-          "date": "2021-06-21",
-          "value": "0.27"
+          "date": "2021-06-22",
+          "value": "0.25"
         },
         {
           "date": "2021-06-28",
@@ -4855,22 +4839,6 @@
         {
           "date": "2024-06-17",
           "value": "4.75"
-        },
-        {
-          "date": "2024-06-18",
-          "value": "4.69"
-        },
-        {
-          "date": "2024-06-19",
-          "value": "."
-        },
-        {
-          "date": "2024-06-20",
-          "value": "4.7"
-        },
-        {
-          "date": "2024-06-21",
-          "value": "4.7"
         },
         {
           "date": "2024-06-24",
@@ -6947,14 +6915,22 @@
         {
           "date": "2026-06-18",
           "value": "4.19"
+        },
+        {
+          "date": "2026-06-19",
+          "value": "."
+        },
+        {
+          "date": "2026-06-22",
+          "value": "4.24"
         }
       ],
       "latest": {
-        "date": "2026-06-18",
-        "value": "4.19"
+        "date": "2026-06-22",
+        "value": "4.24"
       },
       "context": "The yield on 2-year government debt \u2014 closely tied to where investors expect the Fed to set rates over the next couple of years.",
-      "read": "Now 4.19%, up 0.25 points over the past year.",
+      "read": "Now 4.24%, up 0.34 points over the past year.",
       "signal_status": "ok",
       "value_format": "decimal"
     },
@@ -6967,8 +6943,8 @@
       "series_id": "DGS2_FEDFUNDS_SPREAD",
       "observations": [
         {
-          "date": "2016-07-01",
-          "value": "0.20"
+          "date": "2016-07-05",
+          "value": "0.17"
         },
         {
           "date": "2016-08-01",
@@ -7207,12 +7183,8 @@
           "value": "0.08"
         },
         {
-          "date": "2021-06-18",
-          "value": "0.18"
-        },
-        {
-          "date": "2021-06-21",
-          "value": "0.19"
+          "date": "2021-06-22",
+          "value": "0.17"
         },
         {
           "date": "2021-06-28",
@@ -7837,18 +7809,6 @@
         {
           "date": "2024-06-17",
           "value": "-0.58"
-        },
-        {
-          "date": "2024-06-18",
-          "value": "-0.64"
-        },
-        {
-          "date": "2024-06-20",
-          "value": "-0.63"
-        },
-        {
-          "date": "2024-06-21",
-          "value": "-0.63"
         },
         {
           "date": "2024-06-24",
@@ -9837,14 +9797,18 @@
         {
           "date": "2026-06-18",
           "value": "0.56"
+        },
+        {
+          "date": "2026-06-22",
+          "value": "0.61"
         }
       ],
       "latest": {
-        "date": "2026-06-18",
-        "value": "0.56"
+        "date": "2026-06-22",
+        "value": "0.61"
       },
       "context": "The 2-year Treasury yield minus the Fed's current policy rate \u2014 the bond market's verdict on where the Fed goes next. Well below zero means markets are pricing rate cuts; above zero, hikes. Computed from the two series charted above.",
-      "read": "The 2-year yield is 0.56 points above the Fed's rate \u2014 markets are pricing rate hikes ahead.",
+      "read": "The 2-year yield is 0.61 points above the Fed's rate \u2014 markets are pricing rate hikes ahead.",
       "signal_status": "info",
       "value_format": "decimal"
     }

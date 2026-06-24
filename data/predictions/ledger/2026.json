@@ -538,7 +538,7 @@
       "direction_hit": true,
       "status_hit": true,
       "naive_error": 0.0010000000000000009,
-      "revised_to": null
+      "revised_to": -0.513
     }
   },
   {
@@ -1020,7 +1020,7 @@
       "direction_hit": true,
       "status_hit": true,
       "naive_error": 162.60000000000036,
-      "revised_to": 4138.8
+      "revised_to": 4026.7
     }
   },
   {
@@ -1170,7 +1170,7 @@
       "direction_hit": true,
       "status_hit": true,
       "naive_error": 0.13,
-      "revised_to": null
+      "revised_to": 0.34
     }
   },
   {
@@ -1360,7 +1360,7 @@
       "direction_hit": true,
       "status_hit": true,
       "naive_error": 1.0800000000000018,
-      "revised_to": null
+      "revised_to": 19.49
     }
   },
   {
@@ -1474,7 +1474,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 81.5,
-      "revised_to": null
+      "revised_to": 7365.46
     }
   },
   {
@@ -1512,7 +1512,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 2299.029999999999,
-      "revised_to": null
+      "revised_to": 62689.99
     }
   },
   {
@@ -1550,7 +1550,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 66.97000000000003,
-      "revised_to": null
+      "revised_to": 1666.21
     }
   },
   {
@@ -1662,6 +1662,158 @@
       "direction_hit": true,
       "status_hit": true,
       "naive_error": 0.8557800000000002,
+      "revised_to": null
+    }
+  },
+  {
+    "id": "economic/cost-of-money/treasury-10y@2026-06-26",
+    "key": "economic/cost-of-money/treasury-10y",
+    "category": "economic",
+    "lens": "cost-of-money",
+    "indicator": "treasury-10y",
+    "series_id": "DGS10",
+    "horizon": "next-print",
+    "target_period": "2026-06-26",
+    "due": "2026-07-01",
+    "made_at": "2026-06-16T21:13:47Z",
+    "model": "naive@1",
+    "point": 4.47,
+    "lo": 4.36,
+    "hi": 4.59,
+    "unit": "%",
+    "value_format": "decimal",
+    "prev_value": 4.47,
+    "why": "10-year: down 2 straight weeks. We expect roughly the last value \u2014 this series rarely rewards cleverness.",
+    "implied_status": "ok",
+    "current_status": "ok",
+    "descriptive": false,
+    "market_price": false,
+    "title": "10-Year Treasury Yield",
+    "short": "10-year",
+    "lens_title": "The Cost of Money",
+    "href": "/dashboards/cost-of-money.html",
+    "grade": {
+      "actual": 4.51,
+      "graded_at": "2026-06-24T13:56:20Z",
+      "hit": true,
+      "abs_error": 0.040000000000000036,
+      "direction_hit": false,
+      "status_hit": true,
+      "naive_error": 0.040000000000000036,
+      "revised_to": null
+    }
+  },
+  {
+    "id": "economic/cost-of-money/treasury-2y@2026-06-26",
+    "key": "economic/cost-of-money/treasury-2y",
+    "category": "economic",
+    "lens": "cost-of-money",
+    "indicator": "treasury-2y",
+    "series_id": "DGS2",
+    "horizon": "next-print",
+    "target_period": "2026-06-26",
+    "due": "2026-07-01",
+    "made_at": "2026-06-16T21:13:47Z",
+    "model": "naive@1",
+    "point": 4.07,
+    "lo": 3.926,
+    "hi": 4.22,
+    "unit": "%",
+    "value_format": "decimal",
+    "prev_value": 4.07,
+    "why": "2-year: down 2 straight weeks. We expect roughly the last value \u2014 this series rarely rewards cleverness.",
+    "implied_status": "ok",
+    "current_status": "ok",
+    "descriptive": false,
+    "market_price": false,
+    "title": "2-Year Treasury Yield",
+    "short": "2-year",
+    "lens_title": "The Cost of Money",
+    "href": "/dashboards/cost-of-money.html",
+    "grade": {
+      "actual": 4.24,
+      "graded_at": "2026-06-24T13:56:21Z",
+      "hit": false,
+      "abs_error": 0.16999999999999993,
+      "direction_hit": false,
+      "status_hit": true,
+      "naive_error": 0.16999999999999993,
+      "revised_to": null
+    }
+  },
+  {
+    "id": "economic/cost-of-money/rate-expectations@2026-06-26",
+    "key": "economic/cost-of-money/rate-expectations",
+    "category": "economic",
+    "lens": "cost-of-money",
+    "indicator": "rate-expectations",
+    "series_id": "DGS2_FEDFUNDS_SPREAD",
+    "horizon": "next-print",
+    "target_period": "2026-06-26",
+    "due": "2026-07-01",
+    "made_at": "2026-06-16T21:13:47Z",
+    "model": "naive@1",
+    "point": 0.44,
+    "lo": 0.31,
+    "hi": 0.597,
+    "unit": "%",
+    "value_format": "decimal",
+    "prev_value": 0.44,
+    "why": "2y vs Fed: down 2 straight weeks. We expect roughly the last value \u2014 this series rarely rewards cleverness.",
+    "implied_status": "info",
+    "current_status": "info",
+    "descriptive": true,
+    "market_price": false,
+    "title": "Rate Expectations \u00b7 2-Year minus Fed Funds",
+    "short": "2y vs Fed",
+    "lens_title": "The Cost of Money",
+    "href": "/dashboards/cost-of-money.html",
+    "grade": {
+      "actual": 0.61,
+      "graded_at": "2026-06-24T13:56:21Z",
+      "hit": false,
+      "abs_error": 0.16999999999999998,
+      "direction_hit": false,
+      "status_hit": true,
+      "naive_error": 0.16999999999999998,
+      "revised_to": null
+    }
+  },
+  {
+    "id": "markets/market-risk-sentiment/nfci@2026-06-19",
+    "key": "markets/market-risk-sentiment/nfci",
+    "category": "markets",
+    "lens": "market-risk-sentiment",
+    "indicator": "nfci",
+    "series_id": "NFCI",
+    "horizon": "next-print",
+    "target_period": "2026-06-19",
+    "due": "2026-06-24",
+    "made_at": "2026-06-17T17:34:29Z",
+    "model": "ets-seasonal@1",
+    "point": -0.5062,
+    "lo": -0.5097,
+    "hi": -0.5031,
+    "unit": "",
+    "value_format": "decimal",
+    "prev_value": -0.505,
+    "why": "This projects the recent trend with the usual seasonal pattern for the week.",
+    "implied_status": "ok",
+    "current_status": "ok",
+    "descriptive": false,
+    "market_price": false,
+    "title": "Financial Conditions \u00b7 NFCI",
+    "short": "NFCI",
+    "lens_title": "Risk Sentiment",
+    "href": "/dashboards/markets/risk-sentiment.html",
+    "grade": {
+      "actual": -0.516,
+      "graded_at": "2026-06-24T13:56:26Z",
+      "hit": false,
+      "abs_error": 0.009800000000000031,
+      "direction_hit": true,
+      "status_hit": true,
+      "naive_error": 0.01100000000000001,
       "revised_to": null
     }
   }
