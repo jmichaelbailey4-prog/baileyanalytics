@@ -145,6 +145,21 @@ def build_banking_from_fixture():
     return build_banking(data)
 
 
+def _inject_economic_computed(fetched, out_dir):
+    """Inject the economic category's computed series from already-fetched inputs,
+    each with a prior-data fallback (mirrors the business-shares pattern):
+      * cost-of-money rate-expectations = 2y yield minus the fed funds rate;
+      * fiscal interest-burden = federal interest payments as a share of receipts.
+    """
+    spread = util.spread_ffill(fetched.get("DGS2:lin"), fetched.get("FEDFUNDS:lin"))
+    fetched["DGS2_FEDFUNDS_SPREAD:lin"] = (
+        spread or _prior_obs(out_dir, "cost-of-money", "rate-expectations"))
+    burden = util.pct_share(fetched.get("A091RC1Q027SBEA:lin"),
+                            fetched.get("W006RC1Q027SBEA:lin"))
+    fetched["INTEREST_RECEIPTS_SHARE:lin"] = (
+        burden or _prior_obs(out_dir, "fiscal-health", "interest-burden"))
+
+
 def refresh_economic(dry_run):
     """Build + write the economic (FRED) lenses. Returns an exit code (0 ok, non-zero error)."""
     if dry_run:
@@ -157,11 +172,7 @@ def refresh_economic(dry_run):
             return 1
         fetched, failed = fetch_all(config.LENSES, api_key)
 
-    # Computed: 2y-vs-Fed spread for the rate-expectations indicator (mirrors
-    # the business-shares pattern; falls back to prior data if an input failed).
-    spread = util.spread_ffill(fetched.get("DGS2:lin"), fetched.get("FEDFUNDS:lin"))
-    fetched["DGS2_FEDFUNDS_SPREAD:lin"] = (
-        spread or _prior_obs(OUT_DIR, "cost-of-money", "rate-expectations"))
+    _inject_economic_computed(fetched, OUT_DIR)
 
     ready = [lens for lens in config.LENSES if lens_ready(lens, failed)]
     for lens in config.LENSES:

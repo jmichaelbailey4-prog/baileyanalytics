@@ -32,25 +32,6 @@ EXTRA_EXCLUDE = {
 }
 
 
-# Synthetic probe series: 40 years of monthly dates, gently trending + wavy so
-# level/YoY/trend rules all see plausible numbers. Only the *status token* is
-# inspected; info rules return "info" regardless of values.
-def _probe_obs():
-    out = []
-    for i in range(480):
-        year, month = 1986 + i // 12, 1 + i % 12
-        out.append((f"{year:04d}-{month:02d}-01", 100.0 + i * 0.1 + (i % 7) * 0.3))
-    return out
-
-
-def _is_info_rule(rule):
-    try:
-        _, status = rule(_probe_obs())
-    except Exception:  # noqa: BLE001 - a crashing probe never blocks the roster
-        return False
-    return status == "info"
-
-
 @dataclass(frozen=True)
 class RosterEntry:
     key: str          # "category/lens-id/indicator-id"
@@ -68,16 +49,14 @@ def build_roster():
         for lens in cat["lenses"]:
             neutral = lens.id in narrative.NEUTRAL_LENSES
             for ind in lens.indicators:
-                if ind.source not in DIRECT_SOURCES + BAKED_SOURCES:
-                    continue  # imf (annual) / coingecko (crypto): stay out
-                if ind.source == "eia" and not ind.eia_route:
-                    continue  # computed/injected (generation shares)
+                if not config.is_predictable(ind):
+                    continue  # imf (annual) / coingecko / computed-injected shares
                 key = f"{cat['id']}/{lens.id}/{ind.id}"
                 if key in EXTRA_EXCLUDE:
                     continue
                 entries.append(RosterEntry(
                     key, cat["id"], lens.id, ind,
-                    descriptive=neutral or _is_info_rule(ind.rule),
+                    descriptive=neutral or narrative.rule_kind(ind.rule) == "info",
                     # market_price travels on the config Indicator (1deeb0d); banking's
                     # BankingIndicator has no such field, so read it defensively.
                     market_price=neutral or getattr(ind, "market_price", False),

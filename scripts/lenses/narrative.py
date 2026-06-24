@@ -214,12 +214,104 @@ def rule_job_openings(obs):
 
 
 def rule_wage_growth(obs):
-    """Average hourly earnings, year-over-year percent."""
+    """Average hourly earnings, year-over-year percent. In the job-market frame,
+    strong pay is healthy and stalling pay signals a softening labor market — so
+    this warns on the low side (the inflation angle is Cost of Living's Real Wages).
+    >=3 ok, 2-3 watch, <2 elevated."""
     if not obs:
         return _NO_DATA
     v = obs[-1][1]
-    pace = "running ahead of recent inflation" if v >= 3.5 else "a modest pace"
+    if v < 2.0:
+        return (f"Pay is up just {v:.1f}% from a year ago — wage growth has stalled, "
+                "a sign of a softening job market.", "elevated")
+    if v < 3.0:
+        return (f"Pay is up {v:.1f}% from a year ago — cooling from its recent pace.", "watch")
+    pace = "running ahead of recent inflation" if v >= 3.5 else "a solid pace"
     return (f"Pay is up {v:.1f}% from a year ago, {pace}.", "ok")
+
+
+def restrictive_rate(label, watch, elevated):
+    """Factory: one-sided 'cost of borrowing' severity for a market interest rate.
+    Higher = costlier money — ok/watch/elevated, with no `alert` (an expensive rate
+    isn't a crisis the way a default spike is). For the Cost-of-Money lens, where the
+    whole curve being expensive is exactly the point. `label` reads as a noun
+    ("The 10-year Treasury")."""
+    def _rule(obs):
+        if not obs:
+            return _NO_DATA
+        v = obs[-1][1]
+        if v >= elevated:
+            return (f"{label} yield is {v:.2f}% — restrictive borrowing costs "
+                    "across the economy.", "elevated")
+        if v >= watch:
+            return (f"{label} yield is {v:.2f}% — above the comfortable range "
+                    "for borrowers.", "watch")
+        return (f"{label} yield is {v:.2f}% — moderate borrowing costs by recent "
+                "standards.", "ok")
+    return _rule
+
+
+# --- Additional scored signals (score-explain-order, 2026-06-24) ---
+
+def rule_auto_sales(obs):
+    """Light-vehicle sales, millions at an annual rate. The classic big-ticket
+    purchase — households delay it first when budgets tighten, so a low/falling
+    pace reads as consumer-demand stress. >=15 ok, 13.5-15 watch, 12-13.5 elevated,
+    <12 alert (2009 and 2020 troughs were ~9M)."""
+    if not obs:
+        return _NO_DATA
+    v = obs[-1][1]
+    if v < 12:
+        return (f"Vehicle sales have fallen to {v:.1f} million a year — big-ticket "
+                "demand is collapsing.", "alert")
+    if v < 13.5:
+        return (f"Vehicle sales are running at {v:.1f} million a year — households are "
+                "pulling back on big-ticket buys.", "elevated")
+    if v < 15:
+        return (f"Vehicle sales are at {v:.1f} million a year — softening from a "
+                "healthy pace.", "watch")
+    return (f"Vehicle sales are at {v:.1f} million a year — a healthy big-ticket pace.", "ok")
+
+
+def rule_mortgage_debt_service(obs):
+    """MDSP: mortgage payments as a share of disposable income (%). The mortgage-only
+    companion to Consumer's total debt-service. <4.5 ok, 4.5-5.5 watch, 5.5-6.5
+    elevated, >=6.5 alert (the 2007 peak was about 7.2%)."""
+    if not obs:
+        return _NO_DATA
+    v = obs[-1][1]
+    if v >= 6.5:
+        return (f"Mortgage payments eat {v:.1f}% of household income — near the 2007 "
+                "danger level.", "alert")
+    if v >= 5.5:
+        return (f"Mortgage payments take {v:.1f}% of household income — a heavy and "
+                "rising burden.", "elevated")
+    if v >= 4.5:
+        return (f"Mortgage payments take {v:.1f}% of household income — above the "
+                "comfortable range.", "watch")
+    return (f"Mortgage payments take {v:.1f}% of household income — a manageable "
+            "burden.", "ok")
+
+
+def rule_interest_burden(obs):
+    """Federal interest payments as a share of federal receipts (%) — how much of
+    every tax dollar goes to servicing the debt. <12 ok, 12-20 watch, 20-26
+    elevated, >=26 alert. (Bands sanity-checked against the live value; it has
+    climbed toward record highs as rates rose.)"""
+    if not obs:
+        return _NO_DATA
+    v = obs[-1][1]
+    if v >= 26:
+        return (f"Interest now eats {v:.0f} cents of every federal tax dollar — an "
+                "extreme, record-setting claim on revenue.", "alert")
+    if v >= 20:
+        return (f"Interest takes {v:.0f} cents of every federal tax dollar — crowding "
+                "out the rest of the budget.", "elevated")
+    if v >= 12:
+        return (f"Interest takes {v:.0f} cents of every federal tax dollar — a rising "
+                "claim on revenue.", "watch")
+    return (f"Interest takes {v:.0f} cents of every federal tax dollar — a manageable "
+            "share of revenue.", "ok")
 
 
 def rule_inflation(obs):
@@ -1381,6 +1473,37 @@ HEADLINES = {
 
 
 NEUTRAL_LENSES = {"market-scoreboard", "crypto-structure"}
+
+SEVERITY_TOKENS = {"ok", "watch", "elevated", "alert"}
+MOMENTUM_TOKENS = {"up", "down", "flat"}
+
+
+def _probe_observations():
+    """A synthetic 40-year monthly series (gently trending + wavy) so level/YoY/
+    trend rules all see plausible numbers. Only the returned *status token* is
+    inspected — the values themselves don't matter."""
+    return [(f"{1986 + i // 12:04d}-{1 + i % 12:02d}-01", 100.0 + i * 0.1 + (i % 7) * 0.3)
+            for i in range(480)]
+
+
+def rule_kind(rule):
+    """Classify a narrative rule by the status family it emits: 'severity'
+    (ok/watch/elevated/alert), 'info', 'momentum' (up/down/flat), or 'unknown'.
+
+    Pure probe (no network — the same series roster.py uses), so ordering and the
+    'why absent' notes can ask what a rule *can* do independent of today's value.
+    A rule that raises is 'unknown' (it never blocks the caller)."""
+    try:
+        _, status = rule(_probe_observations())
+    except Exception:  # noqa: BLE001 - a crashing probe never blocks classification
+        return "unknown"
+    if status in SEVERITY_TOKENS:
+        return "severity"
+    if status == "info":
+        return "info"
+    if status in MOMENTUM_TOKENS:
+        return "momentum"
+    return "unknown"
 
 
 def synthesize(lens_id, statuses):

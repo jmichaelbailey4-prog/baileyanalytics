@@ -132,14 +132,14 @@ class TestRoster(unittest.TestCase):
         self.assertIn("economic/job-market/unemployment", self.keys)
 
     def test_baked_coverage_extension_landed(self):
-        # The baked-history extension adds exactly 15 entries (9 banking + 3 computed
-        # + GSCPI + 2 EPU); pin THAT precisely — it's this feature's real tripwire.
-        # The total is an emergent sum across all 8 categories, so keep it a band:
-        # adding an unrelated FRED/EIA indicator to config.py (the sanctioned
-        # extension point) shouldn't fail this test.
+        # Baked-history entries: 9 banking + 4 computed (rate-expectations,
+        # profit-share, hp-share, and the new fiscal interest-burden) + GSCPI +
+        # 2 EPU = 16. The total is an emergent sum across all 8 categories, so keep
+        # it a band: adding an unrelated FRED/EIA indicator to config.py (the
+        # sanctioned extension point) shouldn't fail this test.
         self.assertEqual(len([e for e in self.entries if e.category == "banking"]), 9)
-        self.assertEqual(len([e for e in self.entries if e.baked]), 15)
-        self.assertGreaterEqual(len(self.entries), 105)  # 92 fetchable + 15 baked
+        self.assertEqual(len([e for e in self.entries if e.baked]), 16)
+        self.assertGreaterEqual(len(self.entries), 105)  # 92 fetchable + 16 baked
         self.assertLess(len(self.entries), 120)
 
     def test_keys_unique(self):
