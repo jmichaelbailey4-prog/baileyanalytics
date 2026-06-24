@@ -337,6 +337,28 @@
         }
         .state-line:hover .state-sentence { text-decoration: underline; }
         .state-line .pill { margin-right: 0.5rem; vertical-align: middle; }
+
+        /* ---- Light theme ---- */
+        [data-theme="light"] {
+            --bg:#F5F5F7; --panel:#FFFFFF; --border:#D2D2D7; --text:#1D1D1F;
+            --muted:#4B4B4F; --faint:#5E5E63; --blue:#0068D1;
+        }
+        [data-theme="light"] .pill.ok { color:#1A7F37; }
+        [data-theme="light"] .pill.watch { color:#8A5D00; }
+        [data-theme="light"] .pill.elevated { color:#C2410C; }
+        [data-theme="light"] .pill.alert { color:#D70015; }
+        [data-theme="light"] .pill.neutral { color:#0068D1; }
+        [data-theme="light"] .seclabel .dot { background:#1A7F37; box-shadow:0 0 0 3px rgba(26,127,55,.18); }
+        [data-theme="light"] a.email:hover, [data-theme="light"] a.email:focus-visible { color:#0068D1; border-bottom-color:#0068D1; }
+        [data-theme="light"] .lens { box-shadow:0 1px 3px rgba(0,0,0,.06); }
+
+        /* theme toggle (three-CSS-places trap: mirrors lens.css) */
+        .theme-toggle { display:inline-flex; align-items:center; justify-content:center; background:transparent;
+            border:0; color:var(--muted); cursor:pointer; padding:.5rem; border-radius:6px; line-height:0; transition:color .2s; }
+        .theme-toggle:hover, .theme-toggle:focus-visible { color:var(--text); }
+        .theme-toggle:focus-visible { outline:2px solid var(--blue); outline-offset:3px; }
+        .theme-toggle svg { width:1.15rem; height:1.15rem; display:block; }
+        @media (prefers-reduced-motion: reduce) { .theme-toggle { transition:none; } }
     </style>
   <!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "c8d0e387f9b84507b1557117c4396452"}'></script><!-- End Cloudflare Web Analytics -->
   <!-- pwa:head -->
