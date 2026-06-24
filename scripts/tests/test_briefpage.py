@@ -174,5 +174,23 @@ class TestBeacon(unittest.TestCase):
         self.assertIn("static.cloudflareinsights.com/beacon.min.js", html)
 
 
+class TestPwaHeadInBrief(unittest.TestCase):
+    """Both baked surfaces carry the PWA head tags (the stamper skips them, so
+    briefpage.py must emit them directly, byte-identically — same marker)."""
+
+    def test_brief_page_carries_pwa_head(self):
+        html = briefpage.render_brief(TODAY, og_image="/og/x.png")
+        self.assertIn("<!-- pwa:head -->", html)
+        self.assertIn('rel="manifest" href="/manifest.webmanifest"', html)
+        self.assertIn('src="/dashboards/personalize-core.js"', html)
+        self.assertIn('src="/dashboards/personalize.js"', html)
+
+    def test_archive_index_carries_pwa_head(self):
+        html = briefpage.render_archive_index(
+            [{"date": "2026-06-24", "status": "ok", "sentence": "All clear."}])
+        self.assertIn('rel="manifest" href="/manifest.webmanifest"', html)
+        self.assertIn('src="/dashboards/personalize.js"', html)
+
+
 if __name__ == "__main__":
     unittest.main()

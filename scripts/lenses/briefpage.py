@@ -6,9 +6,13 @@ pair). Pure: today.json data in, full HTML documents out."""
 import json
 from html import escape
 
-from . import analytics, util
+from . import analytics, pwa, util
 
 SITE = "https://baileyanalytics.com"
+
+# The PWA head block, emitted directly here because the stamper (tools/pwa_head.py)
+# skips baked surfaces. Same marker + content, so re-bakes stay byte-identical.
+_PWA_HEAD = "<!-- pwa:head -->\n" + pwa.head_tags()
 
 # Set after Michael creates the Buttondown account; "" hides the form.
 BUTTONDOWN_USERNAME = "baileyanalytics"
@@ -251,6 +255,7 @@ def render_brief(today, og_image, archive_date=None, prev_date=None, next_date=N
   </style>
   {_jsonld(today, canonical, og_url)}
   {analytics.beacon_tag()}
+  {_PWA_HEAD}
 </head>
 <body>
   <nav class="wordmark" aria-label="Bailey Analytics home"><a href="/">Bailey Analytics</a></nav>
@@ -320,6 +325,7 @@ def render_archive_index(manifest):
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="stylesheet" href="/dashboards/lens.css">
   {analytics.beacon_tag()}
+  {_PWA_HEAD}
 </head>
 <body>
   <nav class="wordmark" aria-label="Bailey Analytics home"><a href="/">Bailey Analytics</a></nav>

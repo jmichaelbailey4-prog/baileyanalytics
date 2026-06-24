@@ -15,6 +15,7 @@ STATIC_PAGES = [
     "/dashboards/brief.html",
     "/dashboards/brief/",
     "/dashboards/track-record.html",
+    "/dashboards/favorites.html",  # PWA start_url; noindex but a real, linkable page
     # the crypto lens is injected (not in config.CATEGORIES' markets entry)
     "/dashboards/markets/crypto-structure.html",
 ]
