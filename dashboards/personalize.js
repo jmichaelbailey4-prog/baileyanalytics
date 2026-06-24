@@ -25,7 +25,9 @@
       try { p = JSON.parse(this._get(PREF_KEY)) || {}; } catch (e) {}
       p[name] = val;
       this._set(PREF_KEY, JSON.stringify(p));
-      this._emit();
+      // No _emit: prefs have no live listener, and emitting would make the
+      // Favorites page re-render (re-fetch every category index) on a dropdown
+      // change. Only favorites-list mutations (setFavorites) warrant a re-render.
     },
     _emit: function () { try { document.dispatchEvent(new CustomEvent("ba:changed")); } catch (e) {} }
   };

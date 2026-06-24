@@ -15,7 +15,9 @@ class TestBuildUrls(unittest.TestCase):
         self.assertIn("https://baileyanalytics.com/dashboards/brief.html", urls)
         self.assertIn("https://baileyanalytics.com/dashboards/economic/", urls)
         self.assertIn("https://baileyanalytics.com/dashboards/banking/", urls)
-        self.assertIn("https://baileyanalytics.com/dashboards/favorites.html", urls)
+        # favorites.html is intentionally absent — it's noindex, and a noindex URL
+        # in the sitemap trips Search Console's "Submitted URL marked noindex".
+        self.assertNotIn("https://baileyanalytics.com/dashboards/favorites.html", urls)
         # slug irregulars resolved via brief.lens_href:
         self.assertIn("https://baileyanalytics.com/dashboards/recession-watch.html", urls)
         self.assertIn("https://baileyanalytics.com/dashboards/consumer/credit-stress.html", urls)

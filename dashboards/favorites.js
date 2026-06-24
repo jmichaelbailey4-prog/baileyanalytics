@@ -11,6 +11,8 @@
     housing: "/data/housing/index.json", global: "/data/global/index.json"
   };
 
+  function esc(s) { var d = document.createElement("div"); d.textContent = s == null ? "" : s; return d.innerHTML; }
+
   function loadCategory(cat) {
     return fetch(INDEX[cat], { cache: "no-cache" }).then(function (r) {
       if (!r.ok) throw 0;
@@ -18,8 +20,8 @@
     }).then(function (d) {
       var m = {};
       (d.lenses || []).forEach(function (l) { m[l.id] = l; });
-      return m;
-    }).catch(function () { return {}; });
+      return { ok: true, map: m };
+    }).catch(function () { return { ok: false, map: {} }; });  // failed fetch != "lens gone"
   }
 
   function disclosure() {
@@ -81,6 +83,26 @@
     });
   }
 
+  // Favorites whose category index loaded but no longer contains the id (lens
+  // renamed/retired): show a removable row so they aren't a permanent phantom.
+  function missingBlock(missing) {
+    if (!missing.length) return "";
+    var rows = missing.map(function (f) {
+      return '<div class="fav-gone"><span>' + esc(f.title || f.id) + " &mdash; no longer available</span>" +
+        '<button type="button" class="fav-gone-rm" data-gone-id="' + esc(f.id) + '">Remove</button></div>';
+    }).join("");
+    return '<section class="fav-prefs"><h2 class="fav-h2">Unavailable</h2>' +
+      '<p class="fav-gone-sub">These saved lenses no longer exist (renamed or retired). Remove them to tidy up.</p>' +
+      rows + "</section>";
+  }
+  function wireMissing() {
+    document.querySelectorAll(".fav-gone-rm[data-gone-id]").forEach(function (b) {
+      b.addEventListener("click", function () {
+        store.setFavorites(core.removeFavorite(store.favorites(), b.getAttribute("data-gone-id")));
+      });
+    });
+  }
+
   function render() {
     var root = document.getElementById("fav-root");
     if (!root) return;
@@ -88,23 +110,24 @@
     if (!favs.length) { root.innerHTML = emptyState(); wirePrefs(); return; }
     var groups = core.groupByCategory(favs);
     var cats = Object.keys(groups);
-    Promise.all(cats.map(loadCategory)).then(function (maps) {
-      var lenses = [];
+    Promise.all(cats.map(loadCategory)).then(function (results) {
+      var lenses = [], catById = {}, missing = [];
       cats.forEach(function (cat, i) {
+        var res = results[i];
         groups[cat].forEach(function (f) {
-          var l = maps[i][f.id];
-          if (l) { l = Object.assign({}, l); l._cat = cat; lenses.push(l); }
+          var l = res.map[f.id];
+          if (l) { catById[f.id] = cat; lenses.push(l); }
+          else if (res.ok) missing.push(f);   // index loaded but id gone -> offer removal
+          // res not ok: transient fetch failure — keep the favorite, render nothing this load
         });
       });
-      if (!lenses.length) { root.innerHTML = emptyState(); wirePrefs(); return; }
+      if (!lenses.length && !missing.length) { root.innerHTML = emptyState(); wirePrefs(); return; }
       root.innerHTML = '<div class="hub-grid" id="fav-grid"></div>';
       var grid = document.getElementById("fav-grid");
-      window.renderHubTiles(grid, lenses, function (id) {
-        var l = lenses.find(function (x) { return x.id === id; });
-        return window.lensHref(l._cat, id);
-      });
+      window.renderHubTiles(grid, lenses, function (id) { return window.lensHref(catById[id], id); });
       wireRemove(grid, lenses);
-      root.insertAdjacentHTML("beforeend", prefsBlock() + disclosure());
+      root.insertAdjacentHTML("beforeend", missingBlock(missing) + prefsBlock() + disclosure());
+      wireMissing();
       wirePrefs();
     });
   }

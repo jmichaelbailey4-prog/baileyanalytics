@@ -254,3 +254,10 @@ p.lede strong{color:var(--text);font-weight:600}
   font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center}
 .fav-remove:hover{border-color:var(--red);color:var(--red)}
 .fav-remove:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.fav-gone{display:flex;align-items:center;justify-content:space-between;gap:.75rem;
+  padding:.5rem .75rem;border:1px solid var(--border);border-radius:8px;margin-bottom:.5rem;
+  color:var(--muted);font-size:.85rem}
+.fav-gone-sub{color:var(--dim);font-size:.85rem;margin-bottom:.6rem}
+.fav-gone-rm{background:transparent;border:1px solid var(--border);color:var(--muted);
+  border-radius:6px;padding:.3rem .7rem;font:inherit;font-size:.78rem;cursor:pointer;flex:none}
+.fav-gone-rm:hover{border-color:var(--red);color:var(--red)}

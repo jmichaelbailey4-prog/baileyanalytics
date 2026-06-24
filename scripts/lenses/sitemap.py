@@ -15,7 +15,10 @@ STATIC_PAGES = [
     "/dashboards/brief.html",
     "/dashboards/brief/",
     "/dashboards/track-record.html",
-    "/dashboards/favorites.html",  # PWA start_url; noindex but a real, linkable page
+    # favorites.html is deliberately NOT here: it's noindex (a per-visitor PWA
+    # start_url with no shareable content), and a noindex URL in the sitemap
+    # trips Search Console's "Submitted URL marked noindex" warning. It stays
+    # discoverable via the Dashboards-hub link and the injected nav entry.
     # the crypto lens is injected (not in config.CATEGORIES' markets entry)
     "/dashboards/markets/crypto-structure.html",
 ]
