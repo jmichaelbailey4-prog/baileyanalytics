@@ -222,3 +222,43 @@ p.lede strong{color:var(--text);font-weight:600}
 .subscribe-form button { background: var(--blue); color: var(--bg); border: 0; border-radius: 8px;
   padding: .6rem 1.1rem; font-size: .9rem; font-weight: 600; cursor: pointer; }
 .subscribe-form button:hover { filter: brightness(1.1); }
+
+/* ---- Favorites star (lens-page badgerow; personalize.js binds behavior) ---- */
+.fav-star{margin-left:auto;background:transparent;border:0;cursor:pointer;color:var(--dim);
+  font-size:1.25rem;line-height:1;padding:.15rem .35rem;border-radius:6px;transition:color .15s,transform .15s}
+.fav-star:hover{color:var(--amber)}
+.fav-star[aria-pressed="true"]{color:var(--amber)}
+.fav-star:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+@media(prefers-reduced-motion:reduce){.fav-star{transition:none}}
+
+/* ---- Favorites page ---- */
+.fav-note{color:var(--dim);font-size:.8rem;line-height:1.6;margin-top:1.75rem;
+  padding-top:1rem;border-top:1px solid var(--border);max-width:40rem}
+.fav-empty{text-align:center;padding:2.5rem 1rem;background:var(--panel);
+  border:1px solid var(--border);border-radius:14px;margin-bottom:1.5rem}
+.fav-empty-lead{font-size:1.1rem;font-weight:600;color:var(--text);margin-bottom:.4rem}
+.fav-empty-sub{color:var(--muted);font-size:.9rem;max-width:28rem;margin:0 auto 1.25rem}
+.fav-empty .cta{display:inline-block;text-decoration:none;color:var(--blue);border:1px solid var(--blue);
+  border-radius:999px;font-size:.82rem;font-weight:500;padding:.6rem 1.3rem}
+.fav-empty .cta:hover{background:var(--blue);color:var(--bg)}
+.fav-prefs{margin-top:1.75rem}
+.fav-h2{font-size:1rem;font-weight:600;margin-bottom:.75rem}
+.fav-pref-row{display:flex;align-items:center;gap:.6rem;color:var(--muted);font-size:.88rem;margin-bottom:1rem}
+.fav-pref-row select{background:var(--panel);border:1px solid var(--border);color:var(--text);
+  border-radius:8px;padding:.4rem .6rem;font:inherit;font-size:.85rem}
+.fav-clear{background:transparent;border:1px solid var(--border);color:var(--muted);
+  border-radius:8px;padding:.45rem .9rem;font:inherit;font-size:.82rem;cursor:pointer}
+.fav-clear:hover{border-color:var(--red);color:var(--red)}
+.fav-tile{position:relative}
+.fav-remove{position:absolute;top:.6rem;right:.6rem;width:1.6rem;height:1.6rem;line-height:1;
+  background:var(--bg);border:1px solid var(--border);border-radius:50%;color:var(--dim);
+  font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.fav-remove:hover{border-color:var(--red);color:var(--red)}
+.fav-remove:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+.fav-gone{display:flex;align-items:center;justify-content:space-between;gap:.75rem;
+  padding:.5rem .75rem;border:1px solid var(--border);border-radius:8px;margin-bottom:.5rem;
+  color:var(--muted);font-size:.85rem}
+.fav-gone-sub{color:var(--dim);font-size:.85rem;margin-bottom:.6rem}
+.fav-gone-rm{background:transparent;border:1px solid var(--border);color:var(--muted);
+  border-radius:6px;padding:.3rem .7rem;font:inherit;font-size:.78rem;cursor:pointer;flex:none}
+.fav-gone-rm:hover{border-color:var(--red);color:var(--red)}
