@@ -192,5 +192,22 @@ class TestPwaHeadInBrief(unittest.TestCase):
         self.assertIn('src="/dashboards/personalize.js"', html)
 
 
+class TestThemeHeadInBrief(unittest.TestCase):
+    """Both baked surfaces carry the inline pre-paint theme:head fragment, and it
+    sits before the pwa:head fragment (position parity with the archive catch-up)."""
+
+    def test_brief_page_carries_theme_head_before_pwa_head(self):
+        html = briefpage.render_brief(TODAY, og_image="/og/x.png")
+        self.assertIn("<!-- theme:head -->", html)
+        self.assertIn('setAttribute("data-theme"', html)
+        self.assertLess(html.index("<!-- theme:head -->"), html.index("<!-- pwa:head -->"))
+
+    def test_archive_index_carries_theme_head_before_pwa_head(self):
+        html = briefpage.render_archive_index(
+            [{"date": "2026-06-24", "status": "ok", "sentence": "All clear."}])
+        self.assertIn("<!-- theme:head -->", html)
+        self.assertLess(html.index("<!-- theme:head -->"), html.index("<!-- pwa:head -->"))
+
+
 if __name__ == "__main__":
     unittest.main()
