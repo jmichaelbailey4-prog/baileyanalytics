@@ -132,7 +132,9 @@
       </div>`;
     const canvas = el.querySelector("canvas");
     const rangesBox = el.querySelector(".ranges");
-    const startKey = (defaultRange in RANGES) ? defaultRange : "1Y";
+    const pageDefault = (defaultRange in RANGES) ? defaultRange : "1Y";
+    const startKey = (window.BAPrefs && window.BAPrefs.effectiveRange)
+      ? window.BAPrefs.effectiveRange(pageDefault) : pageDefault;
     let chart = makeChart(canvas, indicator, recessions, RANGES[startKey]);
     Object.keys(RANGES).forEach(key => {
       const btn = document.createElement("button");
@@ -148,6 +150,7 @@
         btn.setAttribute("aria-pressed", "true");
         chart.destroy();
         chart = makeChart(canvas, indicator, recessions, RANGES[key]);
+        if (window.BAPrefs && window.BAPrefs.setRangeDefault) window.BAPrefs.setRangeDefault(key);
       });
       rangesBox.appendChild(btn);
     });
@@ -221,6 +224,7 @@
         <div class="s ${i.signal_status}">${esc(i.signal_status)}</div>
       </div>`).join("");
     const back = journeyBack(opts);
+    const favCategory = (opts.href || "/dashboards/economic/").split("/").filter(Boolean).pop();
     root.innerHTML = `
       <div class="crumbs"><a href="/dashboards/">Dashboards</a><span class="sep">›</span><a href="${esc(opts.href)}">${esc(opts.back)}</a><span class="sep">›</span><span class="here">${esc(lens.title)}</span></div>
       <a class="back" href="${esc(back.href)}">← ${esc(back.label)}</a>
@@ -229,6 +233,9 @@
       <div class="badgerow">
         <span class="badge ${lens.status}">${esc(lens.status)}</span>
         <span class="updated">Updated ${fmtUpdated(lens.last_updated)} · ${lens.indicators.length} signals</span>
+        <button class="fav-star js-only" type="button" aria-pressed="false"
+          data-fav-id="${esc(lens.id)}" data-fav-title="${esc(lens.title)}" data-fav-category="${esc(favCategory)}"
+          aria-label="Save to Favorites" title="Save to Favorites">&#9734;</button>
       </div>
       <div class="scoreboard">${scoreboard}</div>
       <div class="indicators"></div>

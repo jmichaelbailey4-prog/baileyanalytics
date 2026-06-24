@@ -222,3 +222,11 @@ p.lede strong{color:var(--text);font-weight:600}
 .subscribe-form button { background: var(--blue); color: var(--bg); border: 0; border-radius: 8px;
   padding: .6rem 1.1rem; font-size: .9rem; font-weight: 600; cursor: pointer; }
 .subscribe-form button:hover { filter: brightness(1.1); }
+
+/* ---- Favorites star (lens-page badgerow; personalize.js binds behavior) ---- */
+.fav-star{margin-left:auto;background:transparent;border:0;cursor:pointer;color:var(--dim);
+  font-size:1.25rem;line-height:1;padding:.15rem .35rem;border-radius:6px;transition:color .15s,transform .15s}
+.fav-star:hover{color:var(--amber)}
+.fav-star[aria-pressed="true"]{color:var(--amber)}
+.fav-star:focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+@media(prefers-reduced-motion:reduce){.fav-star{transition:none}}
