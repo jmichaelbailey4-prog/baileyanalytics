@@ -23,7 +23,7 @@ def manifest_dict():
         "name": "Bailey Analytics",
         "short_name": "Bailey",
         "description": "Daily, plain-English dashboards on the U.S. and global economy.",
-        "start_url": "/dashboards/favorites.html",
+        "start_url": "/",
         "scope": "/",
         "display": "standalone",
         "orientation": "any",

@@ -22,7 +22,7 @@ class TestPwa(unittest.TestCase):
 
     def test_manifest_dict(self):
         m = pwa.manifest_dict()
-        self.assertEqual(m["start_url"], "/dashboards/favorites.html")
+        self.assertEqual(m["start_url"], "/")
         self.assertEqual(m["display"], "standalone")
         self.assertEqual(m["scope"], "/")
         self.assertEqual({i["purpose"] for i in m["icons"]}, {"any", "maskable"})
