@@ -12,6 +12,13 @@
     return RANGE_RANK[userPref] >= RANGE_RANK[pd] ? userPref : pd;
   }
 
+  // Theme resolution: an explicit stored choice ("light"/"dark") wins; otherwise
+  // follow the OS (prefersDark). Mirrors the inline pre-paint head script.
+  function resolveTheme(pref, prefersDark) {
+    if (pref === "light" || pref === "dark") return pref;
+    return prefersDark ? "dark" : "light";
+  }
+
   function hasFavorite(list, id) {
     return Array.isArray(list) && list.some(function (f) { return f && f.id === id; });
   }
@@ -49,8 +56,8 @@
   }
 
   var api = {
-    effectiveRange: effectiveRange, hasFavorite: hasFavorite, addFavorite: addFavorite,
-    removeFavorite: removeFavorite, parseFavorites: parseFavorites,
+    effectiveRange: effectiveRange, resolveTheme: resolveTheme, hasFavorite: hasFavorite,
+    addFavorite: addFavorite, removeFavorite: removeFavorite, parseFavorites: parseFavorites,
     serializeFavorites: serializeFavorites, groupByCategory: groupByCategory, RANGE_RANK: RANGE_RANK
   };
 

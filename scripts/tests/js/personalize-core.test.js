@@ -48,3 +48,13 @@ test("groupByCategory buckets in first-seen order", () => {
   assert.deepEqual(Object.keys(g), ["economic", "markets"]);
   assert.equal(g.economic.length, 2);
 });
+test("resolveTheme: explicit pref overrides the OS", () => {
+  assert.equal(core.resolveTheme("light", true), "light");
+  assert.equal(core.resolveTheme("dark", false), "dark");
+});
+test("resolveTheme: no/unknown pref follows the OS", () => {
+  assert.equal(core.resolveTheme(null, true), "dark");
+  assert.equal(core.resolveTheme(null, false), "light");
+  assert.equal(core.resolveTheme(undefined, true), "dark");
+  assert.equal(core.resolveTheme("bogus", false), "light");
+});
