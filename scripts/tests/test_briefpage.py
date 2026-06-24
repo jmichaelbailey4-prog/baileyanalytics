@@ -166,6 +166,13 @@ class TestBeacon(unittest.TestCase):
             [{"date": "2026-06-24", "status": "ok", "sentence": "All clear."}])
         self.assertIn("static.cloudflareinsights.com/beacon.min.js", html)
 
+    def test_dated_archive_permalink_carries_the_beacon(self):
+        # The dated-permalink branch (archive_date set) shares the head template, but
+        # assert it directly so a future split of that branch can't drop the beacon.
+        html = briefpage.render_brief(TODAY, og_image="/og/x.png",
+                                      archive_date="2026-06-12", prev_date="2026-06-11")
+        self.assertIn("static.cloudflareinsights.com/beacon.min.js", html)
+
 
 if __name__ == "__main__":
     unittest.main()

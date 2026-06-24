@@ -14,24 +14,22 @@ ROOT = Path(__file__).resolve().parent.parent.parent
 sys.path.insert(0, str(ROOT / "scripts"))
 from lenses import analytics  # noqa: E402 - needs ROOT/scripts on the path first
 
-# brief.html is baked by briefpage.py; the dated archive lives in dashboards/brief/.
-BAKED_FILES = {ROOT / "dashboards" / "brief.html"}
-BEACON_SENTINEL = "static.cloudflareinsights.com/beacon.min.js"
-
 
 def inject(html):
     """Return html with the beacon inserted just before </head>, or unchanged if the
-    beacon is already present or there is no </head> to anchor to."""
-    if BEACON_SENTINEL in html:
+    beacon is already present or there is no </head> to anchor to. Idempotency keys off
+    the Cloudflare comment marker (stable even if the beacon's script URL ever changes),
+    not the script src."""
+    if analytics.BEACON_START in html:
         return html
     if "</head>" not in html:
         return html
     return html.replace("</head>", f"  {analytics.beacon_tag()}\n</head>", 1)
 
 
-def is_baked(path):
+def is_baked(path, root):
     """True for pages briefpage.py owns (brief.html + dashboards/brief/*.html)."""
-    return path in BAKED_FILES or path.parent.name == "brief"
+    return path == root / "dashboards" / "brief.html" or path.parent.name == "brief"
 
 
 def site_pages(root):
@@ -40,18 +38,26 @@ def site_pages(root):
     repo-wide rglob: that would also catch brainstorm mockups under .superpowers/,
     docs, and any other stray .html that isn't a shipped page."""
     pages = list(root.glob("*.html")) + list((root / "dashboards").rglob("*.html"))
-    return [p for p in pages if not is_baked(p)]
+    return [p for p in pages if not is_baked(p, root)]
 
 
-def main():
-    changed = 0
-    for path in sorted(site_pages(ROOT)):
+def main(root=ROOT):
+    changed = skipped = 0
+    for path in sorted(site_pages(root)):
         html = path.read_text(encoding="utf-8")
         new = inject(html)
         if new != html:
             path.write_text(new, encoding="utf-8")
             changed += 1
-    print(f"Injected the Cloudflare beacon into {changed} page(s).")
+        elif analytics.BEACON_START not in html:
+            # unchanged AND no beacon == we couldn't anchor it (no </head>): surface it
+            # loudly rather than silently shipping a page with no analytics.
+            skipped += 1
+            print(f"WARNING: no </head> in {path}; beacon not injected.", file=sys.stderr)
+    msg = f"Injected the Cloudflare beacon into {changed} page(s)."
+    if skipped:
+        msg += f" {skipped} page(s) skipped (no </head> — see warnings)."
+    print(msg)
     return 0
 
 
