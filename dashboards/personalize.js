@@ -160,7 +160,7 @@
     upd();
   }
 
-  function init() { injectNav(); injectThemeToggle(); offlineBanner(); }
+  function init() { syncMeta(currentTheme()); injectNav(); injectThemeToggle(); offlineBanner(); }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
   else init();
 })();
