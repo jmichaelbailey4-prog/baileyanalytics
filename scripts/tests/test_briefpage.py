@@ -153,5 +153,19 @@ class TestArchiveIndex(unittest.TestCase):
         self.assertNotIn("hub-back", html)
 
 
+class TestBeacon(unittest.TestCase):
+    """Both baked surfaces carry the Cloudflare beacon (the injector skips them, so
+    briefpage.py must include it directly)."""
+
+    def test_brief_page_carries_the_beacon(self):
+        html = briefpage.render_brief(TODAY, og_image="/og/x.png")
+        self.assertIn("static.cloudflareinsights.com/beacon.min.js", html)
+
+    def test_archive_index_carries_the_beacon(self):
+        html = briefpage.render_archive_index(
+            [{"date": "2026-06-24", "status": "ok", "sentence": "All clear."}])
+        self.assertIn("static.cloudflareinsights.com/beacon.min.js", html)
+
+
 if __name__ == "__main__":
     unittest.main()

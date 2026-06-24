@@ -6,7 +6,7 @@ pair). Pure: today.json data in, full HTML documents out."""
 import json
 from html import escape
 
-from . import util
+from . import analytics, util
 
 SITE = "https://baileyanalytics.com"
 
@@ -250,6 +250,7 @@ def render_brief(today, og_image, archive_date=None, prev_date=None, next_date=N
     #verdict .state-sentence {{ font-size: 1.15rem; }}
   </style>
   {_jsonld(today, canonical, og_url)}
+  {analytics.beacon_tag()}
 </head>
 <body>
   <nav class="wordmark" aria-label="Bailey Analytics home"><a href="/">Bailey Analytics</a></nav>
@@ -318,6 +319,7 @@ def render_archive_index(manifest):
   <meta name="twitter:card" content="summary_large_image">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="stylesheet" href="/dashboards/lens.css">
+  {analytics.beacon_tag()}
 </head>
 <body>
   <nav class="wordmark" aria-label="Bailey Analytics home"><a href="/">Bailey Analytics</a></nav>
