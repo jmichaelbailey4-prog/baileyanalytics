@@ -68,11 +68,11 @@ def signal_note(no_severity_reason, no_prediction_reason):
     Mirrored in dashboards/lens.js signalNote() — keep in sync."""
     sev, pred = no_severity_reason or "", no_prediction_reason or ""
     if sev and pred:
-        return ("Why it isn't scored or forecast", f"{sev} {pred}")
+        return ("Why it isn’t scored or forecast", f"{sev} {pred}")
     if sev:
-        return ("Why it isn't scored", sev)
+        return ("Why it isn’t scored", sev)
     if pred:
-        return ("Why it isn't forecast", pred)
+        return ("Why it isn’t forecast", pred)
     return None
 
 

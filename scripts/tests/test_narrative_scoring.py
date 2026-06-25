@@ -49,17 +49,17 @@ class AutoSalesTest(unittest.TestCase):
 
 
 class MortgageDebtServiceTest(unittest.TestCase):
-    def test_manageable(self):
-        self.assertEqual(narrative.rule_mortgage_debt_service(_o(4.0))[1], "ok")
+    def test_manageable(self):  # below its long-run median (~6.1) reads ok
+        self.assertEqual(narrative.rule_mortgage_debt_service(_o(5.9))[1], "ok")
 
-    def test_above_comfort(self):
-        self.assertEqual(narrative.rule_mortgage_debt_service(_o(5.0))[1], "watch")
+    def test_above_norm(self):
+        self.assertEqual(narrative.rule_mortgage_debt_service(_o(6.5))[1], "watch")
 
     def test_heavy(self):
-        self.assertEqual(narrative.rule_mortgage_debt_service(_o(6.0))[1], "elevated")
+        self.assertEqual(narrative.rule_mortgage_debt_service(_o(7.5))[1], "elevated")
 
-    def test_danger(self):
-        self.assertEqual(narrative.rule_mortgage_debt_service(_o(7.0))[1], "alert")
+    def test_extreme(self):
+        self.assertEqual(narrative.rule_mortgage_debt_service(_o(8.5))[1], "alert")
 
 
 class InterestBurdenTest(unittest.TestCase):
@@ -67,13 +67,13 @@ class InterestBurdenTest(unittest.TestCase):
         self.assertEqual(narrative.rule_interest_burden(_o(8.0))[1], "ok")
 
     def test_rising_claim(self):
-        self.assertEqual(narrative.rule_interest_burden(_o(15.0))[1], "watch")
+        self.assertEqual(narrative.rule_interest_burden(_o(12.0))[1], "watch")
 
-    def test_crowding_out(self):
-        self.assertEqual(narrative.rule_interest_burden(_o(23.0))[1], "elevated")
+    def test_near_record_is_elevated(self):  # ~20% (today) reads elevated, not alert
+        self.assertEqual(narrative.rule_interest_burden(_o(20.6))[1], "elevated")
 
     def test_extreme(self):
-        self.assertEqual(narrative.rule_interest_burden(_o(27.0))[1], "alert")
+        self.assertEqual(narrative.rule_interest_burden(_o(23.0))[1], "alert")
 
 
 class WageGrowthBandsTest(unittest.TestCase):

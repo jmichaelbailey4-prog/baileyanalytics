@@ -297,12 +297,17 @@ before any merge/deploy.)
   (`DEMOGRAPHIC_LEVEL`). As recommended.
 - **D3 — interest-cost:** "Best of option 2 or 3; fall back to 1 only if bad data." → **option 2,
   via interest ÷ federal receipts** (not ÷GDP). Reuses two series already fetched in the economic
-  pass (interest-cost + receipts), so it mirrors the existing rate-expectations injection with
-  **no new network call**. New computed indicator **`interest-burden`** ("Interest Cost · share
-  of federal revenue", scored & aggregating); keep `interest-cost` ($B) as an info companion with
-  a note pointing to the burden ratio. Bands: <10% ok / 10–15 watch / 15–20 elevated / ≥20 alert.
-  (Option 3's YoY-growth band rejected — it reads "ok" once rates plateau while the bill stays at
-  record highs: the honesty trap.)
+  pass (interest-cost). New computed indicator **`interest-burden`** ("Interest Cost · share of
+  federal revenue", scored & aggregating); keep `interest-cost` ($B) as an info companion with a
+  note pointing to the burden ratio. (Option 3's YoY-growth band rejected — it reads "ok" once
+  rates plateau while the bill stays at record highs: the honesty trap.)
+  **CORRECTED in /code-review max (2026-06-24):** the denominator is **TOTAL federal receipts
+  (`W018RC1Q027SBEA`, incl. payroll taxes), fetched on-demand** — *not* the lens's `receipts`
+  series (`W006`, which is tax-only and would compute ~33% vs the conventional ~20%, an
+  arithmetically-true-but-misleading "33 cents of every tax dollar"). Final bands on
+  interest÷total-receipts: **<10 ok / 10–15 watch / 15–22 elevated / ≥22 alert** — the current
+  record ~20.6% reads **elevated** (not alert); "alert" is reserved for a genuinely unprecedented
+  level. Wording: "X cents of every dollar of federal revenue."
 - **D4/D5 — echoes + borderlines:** "Leaning option 2 (score borderlines too); max scoring
   without blatantly bad data." → score the clean ones, hold the noisy ones:
   - **(b) non-aggregating scored:** median-price, owners-equivalent-rent, nonfinancial-profits,
@@ -318,3 +323,10 @@ before any merge/deploy.)
 interest-burden (computed), median-price, OER, nonfinancial-profits, high-propensity, net-worth,
 ea-gdp-quarterly. Everything else genuinely directionless stays info **with a reason note** — the
 gray chip now always explains itself.
+
+## /code-review (max, multi-agent) — findings fixed 2026-06-24
+1. **interest-burden denominator (critical, credibility):** was tax-only receipts (~33%, misleading) → **total receipts W018 (~20.6%)**; rewording + bands above; fixture gained a `W018` series so the offline build no longer masks it.
+2. **MDSP over-warned:** old bands read the current ~5.9% as "elevated" though it's *below* MDSP's long-run median (~6.1) and the broader TDSP reads only "watch" → recalibrated to MDSP's own history (**<6 ok / 6–7 watch / 7–8 elevated / ≥8 alert**); ~5.9% now reads "ok".
+3. **Apostrophe sync:** `build.signal_note` headings aligned to the curly `’` lens.js uses ("keep in sync").
+4. **Dead `WEALTH_BACKDROP`** reason constant removed (net-worth became a scored echo).
+Verified clean: the `statuses→agg_statuses` change is badge-neutral (all 6 echoes were already info); roster refactor is exactly equivalent; ordering pins every lead; 855 tests green.

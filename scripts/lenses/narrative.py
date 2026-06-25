@@ -274,44 +274,47 @@ def rule_auto_sales(obs):
 
 
 def rule_mortgage_debt_service(obs):
-    """MDSP: mortgage payments as a share of disposable income (%). The mortgage-only
-    companion to Consumer's total debt-service. <4.5 ok, 4.5-5.5 watch, 5.5-6.5
-    elevated, >=6.5 alert (the 2007 peak was about 7.2%)."""
+    """MDSP: mortgage payments as a share of disposable income (%), the mortgage-only
+    companion to Consumer's total debt-service. Calibrated to its own history (since
+    1980: ~4.8 low, ~6.1 median, ~7.2 in 2007, ~8.9 at the early-1980s peak): <6 ok,
+    6-7 watch, 7-8 elevated, >=8 alert."""
     if not obs:
         return _NO_DATA
     v = obs[-1][1]
-    if v >= 6.5:
-        return (f"Mortgage payments eat {v:.1f}% of household income — near the 2007 "
-                "danger level.", "alert")
-    if v >= 5.5:
-        return (f"Mortgage payments take {v:.1f}% of household income — a heavy and "
-                "rising burden.", "elevated")
-    if v >= 4.5:
-        return (f"Mortgage payments take {v:.1f}% of household income — above the "
-                "comfortable range.", "watch")
-    return (f"Mortgage payments take {v:.1f}% of household income — a manageable "
-            "burden.", "ok")
+    if v >= 8:
+        return (f"Mortgage payments eat {v:.1f}% of household income — near the "
+                "early-1980s extreme.", "alert")
+    if v >= 7:
+        return (f"Mortgage payments take {v:.1f}% of household income — a heavy "
+                "burden, around the 2007 peak.", "elevated")
+    if v >= 6:
+        return (f"Mortgage payments take {v:.1f}% of household income — a touch "
+                "above the long-run norm.", "watch")
+    return (f"Mortgage payments take {v:.1f}% of household income — a manageable, "
+            "below-average burden.", "ok")
 
 
 def rule_interest_burden(obs):
-    """Federal interest payments as a share of federal receipts (%) — how much of
-    every tax dollar goes to servicing the debt. <12 ok, 12-20 watch, 20-26
-    elevated, >=26 alert. (Bands sanity-checked against the live value; it has
-    climbed toward record highs as rates rose.)"""
+    """Federal interest payments as a share of TOTAL federal receipts (%) — how much
+    of every revenue dollar goes to servicing the debt. Uses total receipts (incl.
+    payroll taxes), the conventional ~20% figure — not tax-only receipts, which would
+    overstate it. <10 ok, 10-15 watch, 15-22 elevated, >=22 alert; it has climbed to a
+    modern record (~20%) as rates rose. (Record-high reads 'elevated'; 'alert' is
+    reserved for a genuinely unprecedented level.)"""
     if not obs:
         return _NO_DATA
     v = obs[-1][1]
-    if v >= 26:
-        return (f"Interest now eats {v:.0f} cents of every federal tax dollar — an "
-                "extreme, record-setting claim on revenue.", "alert")
-    if v >= 20:
-        return (f"Interest takes {v:.0f} cents of every federal tax dollar — crowding "
-                "out the rest of the budget.", "elevated")
-    if v >= 12:
-        return (f"Interest takes {v:.0f} cents of every federal tax dollar — a rising "
-                "claim on revenue.", "watch")
-    return (f"Interest takes {v:.0f} cents of every federal tax dollar — a manageable "
-            "share of revenue.", "ok")
+    if v >= 22:
+        return (f"Interest eats {v:.0f} cents of every dollar of federal revenue — "
+                "an extreme, unprecedented claim.", "alert")
+    if v >= 15:
+        return (f"Interest takes {v:.0f} cents of every dollar of federal revenue — "
+                "a heavy, near-record claim that crowds out the budget.", "elevated")
+    if v >= 10:
+        return (f"Interest takes {v:.0f} cents of every dollar of federal revenue — "
+                "a rising claim.", "watch")
+    return (f"Interest takes {v:.0f} cents of every dollar of federal revenue — "
+            "a manageable share.", "ok")
 
 
 def rule_inflation(obs):

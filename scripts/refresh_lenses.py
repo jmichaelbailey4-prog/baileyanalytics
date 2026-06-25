@@ -145,23 +145,35 @@ def build_banking_from_fixture():
     return build_banking(data)
 
 
-def _inject_economic_computed(fetched, out_dir):
-    """Inject the economic category's computed series from already-fetched inputs,
-    each with a prior-data fallback (mirrors the business-shares pattern):
+def _inject_economic_computed(fetched, out_dir, api_key=None):
+    """Inject the economic category's computed series, each with a prior-data
+    fallback (mirrors the business-shares pattern):
       * cost-of-money rate-expectations = 2y yield minus the fed funds rate;
-      * fiscal interest-burden = federal interest payments as a share of receipts.
-    """
+      * fiscal interest-burden = interest payments as a share of TOTAL receipts.
+
+    The burden denominator is total federal receipts (W018, incl. payroll taxes) —
+    the conventional "share of revenue" figure (~20%); the lens's `receipts`
+    indicator series (W006) is tax-only and would overstate it. W018 is fetched
+    here solely as the denominator (dry-run fixtures carry it)."""
     spread = util.spread_ffill(fetched.get("DGS2:lin"), fetched.get("FEDFUNDS:lin"))
     fetched["DGS2_FEDFUNDS_SPREAD:lin"] = (
         spread or _prior_obs(out_dir, "cost-of-money", "rate-expectations"))
-    burden = util.pct_share(fetched.get("A091RC1Q027SBEA:lin"),
-                            fetched.get("W006RC1Q027SBEA:lin"))
+    receipts = fetched.get("W018RC1Q027SBEA:lin")
+    if receipts is None and api_key:
+        try:
+            receipts = fred.fetch_observations("W018RC1Q027SBEA", api_key, 200)
+        except Exception as exc:  # noqa: BLE001 - keep prior data on a fetch failure
+            print(f"WARN: total-receipts fetch failed ({exc}); keeping previous interest burden",
+                  file=sys.stderr)
+            receipts = None
+    burden = util.pct_share(fetched.get("A091RC1Q027SBEA:lin"), receipts) if receipts else []
     fetched["INTEREST_RECEIPTS_SHARE:lin"] = (
         burden or _prior_obs(out_dir, "fiscal-health", "interest-burden"))
 
 
 def refresh_economic(dry_run):
     """Build + write the economic (FRED) lenses. Returns an exit code (0 ok, non-zero error)."""
+    api_key = None
     if dry_run:
         fetched = json.loads(FIXTURE.read_text(encoding="utf-8"))
         failed = set()
@@ -172,7 +184,7 @@ def refresh_economic(dry_run):
             return 1
         fetched, failed = fetch_all(config.LENSES, api_key)
 
-    _inject_economic_computed(fetched, OUT_DIR)
+    _inject_economic_computed(fetched, OUT_DIR, api_key)
 
     ready = [lens for lens in config.LENSES if lens_ready(lens, failed)]
     for lens in config.LENSES:

@@ -84,16 +84,16 @@ class ReasonEmissionTest(unittest.TestCase):
 class SignalNoteTest(unittest.TestCase):
     def test_both_reasons_combine(self):
         h, b = build.signal_note("no score here.", "no forecast here.")
-        self.assertEqual(h, "Why it isn't scored or forecast")
+        self.assertEqual(h, "Why it isn’t scored or forecast")
         self.assertEqual(b, "no score here. no forecast here.")
 
     def test_severity_only(self):
         self.assertEqual(build.signal_note("no score.", ""),
-                         ("Why it isn't scored", "no score."))
+                         ("Why it isn’t scored", "no score."))
 
     def test_prediction_only(self):
         self.assertEqual(build.signal_note("", "no forecast."),
-                         ("Why it isn't forecast", "no forecast."))
+                         ("Why it isn’t forecast", "no forecast."))
 
     def test_neither_is_none(self):
         self.assertIsNone(build.signal_note("", ""))

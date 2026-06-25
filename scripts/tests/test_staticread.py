@@ -83,7 +83,7 @@ class TestSignalNote(unittest.TestCase):
     def test_combined_note_when_both_reasons(self):
         html = self._html(no_severity_reason="No score.", no_prediction_reason="No forecast.")
         self.assertIn('class="signal-note"', html)
-        self.assertIn("Why it isn&#x27;t scored or forecast", html)
+        self.assertIn("Why it isn’t scored or forecast", html)  # curly ’, matches lens.js
         self.assertIn("No score. No forecast.", html)
 
     def test_no_note_when_scored_and_predicted(self):

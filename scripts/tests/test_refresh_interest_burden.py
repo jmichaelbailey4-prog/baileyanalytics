@@ -28,7 +28,8 @@ class InterestBurdenInjectionTest(unittest.TestCase):
         lj = build.build_lens(config.FISCAL_HEALTH, fetched)
         burden = next(i for i in lj["indicators"] if i["id"] == "interest-burden")
         self.assertIn(burden["signal_status"], {"ok", "watch", "elevated", "alert"})
-        self.assertTrue(10 < float(burden["latest"]["value"]) < 30)  # ~19% on the fixture
+        # interest / TOTAL receipts (W018) ~ 1041/5917 = 17.6% on the fixture
+        self.assertTrue(15 < float(burden["latest"]["value"]) < 22)
 
 
 if __name__ == "__main__":

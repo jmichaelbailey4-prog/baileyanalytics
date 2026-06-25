@@ -21,8 +21,6 @@ RATE_EXPECTATIONS = ("Whether markets expect cuts or hikes isn't itself good or 
                      "it's the bond market's forecast, shown for context.")
 TRADE_DEFICIT = ("The U.S. has run a trade deficit every year since 1976 — the level "
                  "isn't good or bad on its own; what matters is the trend shown here.")
-WEALTH_BACKDROP = ("Net worth mostly tracks stock and home prices — a wealth backdrop, "
-                   "not a good-or-bad read on household finances.")
 INTEREST_DOLLARS = ("The dollar interest bill climbs with the economy; the scored read is "
                     "interest as a share of revenue, alongside debt-to-GDP and the deficit.")
 DEMOGRAPHIC_LEVEL = ("This level drifts with demographics — the job-market verdict is "
