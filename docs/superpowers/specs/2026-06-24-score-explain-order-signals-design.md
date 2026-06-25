@@ -54,11 +54,14 @@ Ordering and note-presence depend on what an indicator *can* do, not today's rea
   `_is_info_rule`; promote it to a shared `narrative.rule_kind(rule) -> "severity"|"info"|
   "momentum"|"unknown"`). info, momentum (`up/down/flat`), and neutral-lens indicators are
   **not** severity-capable.
-- **predictable** — encodes the roster's inclusion rule in **config** so build/ordering can use
-  it without importing the predictions package: `config.is_predictable(ind)` = `source in
-  {fred,eia,yahoo,fdic,computed,nyfed,epu}` AND not (`eia` with empty `eia_route`) AND not in
-  `EXTRA_EXCLUDE`. `roster.build_roster` is refactored to call this same helper (single source
-  of truth; IMF and CoinGecko stay out exactly as today).
+- **predictable** — encodes the roster's *structural* inclusion rule in **config** so
+  build/ordering can use it without importing the predictions package: `config.is_predictable(ind)`
+  = `source in {fred,eia,yahoo,fdic,computed,nyfed,epu}` AND not (`eia` with empty `eia_route`).
+  `roster.build_roster` calls this same helper (single source of truth; IMF and CoinGecko stay
+  out exactly as today). `roster.EXTRA_EXCLUDE` remains a separate roster-only manual override
+  (currently empty); it takes a full `category/lens/indicator` key, which `is_predictable(ind)`
+  doesn't have — so if it's ever used, `RosterParityTest` fails loudly until the excluded
+  indicator is given a `no_prediction_reason` (no silent gap).
 
 > A handful of predictable-by-rule indicators may have no *champion* yet (pre-bootstrap, or an
 > annual cadence the runner skips). Those show neither a prediction block nor a note — existing

@@ -426,10 +426,10 @@ FISCAL_HEALTH = Lens(
             source="computed",
             rule=narrative.rule_interest_burden,
             context=(
-                "Federal interest payments as a share of federal receipts — how many "
-                "cents of every tax dollar go just to servicing the debt. Computed from "
-                "the interest bill and receipts above; it has climbed toward record "
-                "highs as rates rose."
+                "Federal interest payments as a share of total federal revenue "
+                "(including payroll taxes) — how many cents of every revenue dollar go "
+                "just to servicing the debt. It has climbed to a modern record (~20%) "
+                "as rates rose, the highest since the 1990s."
             ),
         ),
         Indicator(

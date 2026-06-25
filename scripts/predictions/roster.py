@@ -21,9 +21,10 @@ from dataclasses import dataclass
 
 from lenses import config, narrative
 
-# predict.py fetches these live; everything else is read from the baked lens
-# JSON. IMF (annual) and CoinGecko (crypto-structure) stay out entirely.
-DIRECT_SOURCES = ("fred", "eia", "yahoo")
+# Which predictable sources are READ FROM BAKED lens JSON rather than fetched live
+# (the `baked` flag below); the predict.py-fetched ones are fred/eia/yahoo. Whether a
+# source is predictable AT ALL now lives in config.is_predictable (single source of
+# truth) — IMF (annual) and CoinGecko (crypto-structure) stay out there.
 BAKED_SOURCES = ("fdic", "computed", "nyfed", "epu")
 
 # Hand exclusions for anything the rules can't express. Keep commented.

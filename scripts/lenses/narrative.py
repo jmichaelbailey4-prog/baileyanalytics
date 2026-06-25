@@ -4,6 +4,8 @@ Each rule takes a chronological list of (date, float) tuples and returns
 (text, status). Status is one of: ok, watch, elevated, alert, unknown.
 """
 
+import functools
+
 from . import util
 
 _NO_DATA = ("Data unavailable.", "unknown")
@@ -1481,31 +1483,40 @@ SEVERITY_TOKENS = {"ok", "watch", "elevated", "alert"}
 MOMENTUM_TOKENS = {"up", "down", "flat"}
 
 
-def _probe_observations():
-    """A synthetic 40-year monthly series (gently trending + wavy) so level/YoY/
-    trend rules all see plausible numbers. Only the returned *status token* is
-    inspected — the values themselves don't matter."""
-    return [(f"{1986 + i // 12:04d}-{1 + i % 12:02d}-01", 100.0 + i * 0.1 + (i % 7) * 0.3)
-            for i in range(480)]
+def _probe(direction):
+    """A synthetic 40-year monthly series trending up (direction=1) or down (-1),
+    with a wave, so a rule's bands are exercised across a wide value range."""
+    return [(f"{1986 + i // 12:04d}-{1 + i % 12:02d}-01",
+             100.0 + direction * i * 0.3 + (i % 7) * 0.3) for i in range(480)]
 
 
+_PROBES = (_probe(1), _probe(-1))  # built once: rising, falling
+
+
+@functools.lru_cache(maxsize=None)
 def rule_kind(rule):
-    """Classify a narrative rule by the status family it emits: 'severity'
-    (ok/watch/elevated/alert), 'info', 'momentum' (up/down/flat), or 'unknown'.
+    """Classify a narrative rule by the status family it CAN emit: 'severity'
+    (ok/watch/elevated/alert), 'momentum' (up/down/flat), 'info', or 'unknown'.
 
-    Pure probe (no network — the same series roster.py uses), so ordering and the
-    'why absent' notes can ask what a rule *can* do independent of today's value.
-    A rule that raises is 'unknown' (it never blocks the caller)."""
-    try:
-        _, status = rule(_probe_observations())
-    except Exception:  # noqa: BLE001 - a crashing probe never blocks classification
-        return "unknown"
-    if status in SEVERITY_TOKENS:
-        return "severity"
-    if status == "info":
-        return "info"
-    if status in MOMENTUM_TOKENS:
-        return "momentum"
+    Pure (no network — synthetic probes), so ordering and the 'why absent' notes can
+    ask what a rule can do independent of today's value. Probed in BOTH directions
+    and unioned, so a one-sided band that only warns on a fall (or a rise) still reads
+    as severity. Cached per rule object (rules are module-level callables)."""
+    kinds = set()
+    for probe in _PROBES:
+        try:
+            _, status = rule(probe)
+        except Exception:  # noqa: BLE001 - a crashing probe never blocks classification
+            continue
+        if status in SEVERITY_TOKENS:
+            kinds.add("severity")
+        elif status == "info":
+            kinds.add("info")
+        elif status in MOMENTUM_TOKENS:
+            kinds.add("momentum")
+    for kind in ("severity", "momentum", "info"):
+        if kind in kinds:
+            return kind
     return "unknown"
 
 
