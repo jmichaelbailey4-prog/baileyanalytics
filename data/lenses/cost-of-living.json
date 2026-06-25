@@ -2,7 +2,7 @@
   "id": "cost-of-living",
   "title": "The Cost of Living",
   "accent": "#FBBF24",
-  "last_updated": "2026-06-10T13:54:26Z",
+  "last_updated": "2026-06-25T13:38:19Z",
   "status": "elevated",
   "headline_read": "Inflation is still hot \u2014 well above the Fed's target.",
   "recessions": [
@@ -1981,10 +1981,6 @@
       "series_id": "PCEPI",
       "observations": [
         {
-          "date": "2006-05-01",
-          "value": "3.32153"
-        },
-        {
           "date": "2006-06-01",
           "value": "3.51163"
         },
@@ -2926,28 +2922,32 @@
         },
         {
           "date": "2026-01-01",
-          "value": "2.85846"
+          "value": "2.87521"
         },
         {
           "date": "2026-02-01",
-          "value": "2.85814"
+          "value": "2.87323"
         },
         {
           "date": "2026-03-01",
-          "value": "3.52546"
+          "value": "3.54293"
         },
         {
           "date": "2026-04-01",
-          "value": "3.76694"
+          "value": "3.79548"
+        },
+        {
+          "date": "2026-05-01",
+          "value": "4.07264"
         }
       ],
       "latest": {
-        "date": "2026-04-01",
-        "value": "3.76694"
+        "date": "2026-05-01",
+        "value": "4.07264"
       },
       "context": "The Personal Consumption Expenditures price index \u2014 the inflation gauge the Federal Reserve watches most closely when setting interest rates.",
-      "read": "Running at 3.8% a year \u2014 still above the Fed's 2% goal.",
-      "signal_status": "watch",
+      "read": "Running at 4.1% a year \u2014 well above the Fed's 2% goal.",
+      "signal_status": "elevated",
       "value_format": "decimal"
     },
     {

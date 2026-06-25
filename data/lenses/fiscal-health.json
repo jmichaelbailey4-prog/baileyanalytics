@@ -2,7 +2,7 @@
   "id": "fiscal-health",
   "title": "Fiscal Health",
   "accent": "#A78BFA",
-  "last_updated": "2026-06-18T21:31:08Z",
+  "last_updated": "2026-06-25T13:38:19Z",
   "status": "elevated",
   "headline_read": "The U.S. is borrowing heavily \u2014 debt and interest costs are climbing.",
   "recessions": [
@@ -342,12 +342,12 @@
         },
         {
           "date": "2026-01-01",
-          "value": "122.77209"
+          "value": "122.59387"
         }
       ],
       "latest": {
         "date": "2026-01-01",
-        "value": "122.77209"
+        "value": "122.59387"
       },
       "context": "Total federal debt measured against the size of the economy \u2014 the single most-cited gauge of fiscal sustainability. It crossed 100% around 2013 and has kept climbing.",
       "read": "Federal debt is 123% of GDP \u2014 larger than the entire economy.",
