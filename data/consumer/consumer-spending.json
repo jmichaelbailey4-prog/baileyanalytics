@@ -2,7 +2,7 @@
   "id": "consumer-spending",
   "title": "Consumer Spending",
   "accent": "#34D399",
-  "last_updated": "2026-06-25T13:39:09Z",
+  "last_updated": "2026-06-25T19:32:20Z",
   "status": "ok",
   "headline_read": "Consumers are still spending at a healthy pace.",
   "recessions": [
@@ -2930,7 +2930,7 @@
         },
         {
           "date": "2026-03-01",
-          "value": "16.537"
+          "value": "16.536"
         },
         {
           "date": "2026-04-01",
@@ -2938,12 +2938,12 @@
         },
         {
           "date": "2026-05-01",
-          "value": "16.485"
+          "value": "16.508"
         }
       ],
       "latest": {
         "date": "2026-05-01",
-        "value": "16.485"
+        "value": "16.508"
       },
       "context": "Light-vehicle sales in millions at an annual rate \u2014 the classic big-ticket purchase. Households delay new cars first when budgets tighten.",
       "read": "The pace of vehicle sales is little changed from a year ago, now 16.5 million.",

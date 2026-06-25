@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-06-25T13:39:54Z",
+  "generated_at": "2026-06-25T19:33:14Z",
   "transitions": [
     {
-      "lens_id": "consumer-income-savings",
-      "lens_title": "Household Income & Savings",
-      "category": "consumer",
-      "href": "/dashboards/consumer/income-savings.html",
+      "lens_id": "energy-electricity",
+      "lens_title": "Electricity & the Grid",
+      "category": "energy",
+      "href": "/dashboards/energy/electricity.html",
       "from_status": "elevated",
       "to_status": "watch",
       "direction": "improving",
-      "headline": "Household finances are tightening \u2014 cushions are shrinking."
+      "headline": "Electricity prices are climbing."
     }
   ],
   "top_moves": [
@@ -67,61 +67,6 @@
       "delta": "18.60%",
       "dir": "up",
       "why": "Food: up 7 readings in a row, to a fresh high."
-    },
-    {
-      "lens_id": "energy-electricity",
-      "lens_title": "Electricity & the Grid",
-      "category": "energy",
-      "href": "/dashboards/energy/electricity.html",
-      "headline": "Electricity prices are well above last year.",
-      "accent": "#FBBF24",
-      "sparkline": [
-        14.94,
-        15.47,
-        15.98,
-        16.04,
-        16.1,
-        16.14,
-        16.09,
-        15.86,
-        15.91,
-        16.27,
-        16.48,
-        16.19,
-        15.69,
-        15.41,
-        16.1,
-        16.67,
-        16.86,
-        16.4,
-        16.38,
-        16.62,
-        16.6,
-        16.82,
-        17.09,
-        16.85,
-        16.27,
-        15.94,
-        16.43,
-        17.09,
-        17.55,
-        17.37,
-        17.47,
-        17.45,
-        17.61,
-        18.08,
-        17.97,
-        17.78,
-        17.24,
-        17.45,
-        17.65,
-        18.83
-      ],
-      "stat_label": "Power price",
-      "stat_value": "18.83\u00a2/kWh",
-      "delta": "1.18\u00a2/kWh",
-      "dir": "up",
-      "why": "Power price: up 3 readings in a row, to a fresh high."
     },
     {
       "lens_id": "market-liquidity",
@@ -232,6 +177,61 @@
       "delta": "107",
       "dir": "down",
       "why": ""
+    },
+    {
+      "lens_id": "consumer-spending",
+      "lens_title": "Consumer Spending",
+      "category": "consumer",
+      "href": "/dashboards/consumer/spending.html",
+      "headline": "Consumers are still spending at a healthy pace.",
+      "accent": "#34D399",
+      "sparkline": [
+        5.3363,
+        2.15721,
+        1.56015,
+        2.13004,
+        1.65197,
+        2.86165,
+        3.1932,
+        4.1624,
+        2.61369,
+        3.92292,
+        5.29548,
+        0.02984,
+        1.95313,
+        3.39362,
+        2.55155,
+        2.80041,
+        2.26431,
+        3.00859,
+        1.79393,
+        1.98026,
+        3.227,
+        3.87041,
+        4.51538,
+        4.52696,
+        3.83712,
+        5.19137,
+        5.06688,
+        3.1459,
+        4.41679,
+        4.13431,
+        4.97261,
+        4.14434,
+        3.21351,
+        3.21204,
+        2.43313,
+        3.26786,
+        4.17426,
+        4.24061,
+        4.78848,
+        6.87646
+      ],
+      "stat_label": "Retail sales",
+      "stat_value": "6.88%",
+      "delta": "2.09%",
+      "dir": "up",
+      "why": "Retail sales: up 5 readings in a row, to a fresh high."
     }
   ],
   "lenses": [
@@ -424,8 +424,8 @@
       "lens_title": "Electricity & the Grid",
       "category": "energy",
       "href": "/dashboards/energy/electricity.html",
-      "status": "elevated",
-      "headline": "Electricity prices are well above last year."
+      "status": "watch",
+      "headline": "Electricity prices are climbing."
     },
     {
       "lens_id": "energy-commodities",
@@ -502,8 +502,8 @@
   ],
   "status_counts": {
     "ok": 17,
-    "watch": 4,
-    "elevated": 7,
+    "watch": 5,
+    "elevated": 6,
     "alert": 3,
     "neutral": 2
   },
@@ -514,20 +514,6 @@
     "short": "Holding up, but energy and commodity costs are squeezing budgets."
   },
   "watching": [
-    {
-      "key": "energy/energy-electricity/electricity-price",
-      "indicator": "electricity-price",
-      "lens": "energy-electricity",
-      "category": "energy",
-      "title": "Retail Electricity \u00b7 Residential",
-      "lens_title": "Electricity & the Grid",
-      "due": "2026-05-15",
-      "point_fmt": "18.97\u00a2/kWh",
-      "implied_status": "watch",
-      "current_status": "elevated",
-      "change": true,
-      "href": "/dashboards/energy/electricity.html"
-    },
     {
       "key": "energy/energy-oil-fuels/diesel",
       "indicator": "diesel",
@@ -555,6 +541,20 @@
       "current_status": "alert",
       "change": true,
       "href": "/dashboards/housing/supply-construction.html"
+    },
+    {
+      "key": "global/global-uncertainty/gepu",
+      "indicator": "gepu",
+      "lens": "global-uncertainty",
+      "category": "global",
+      "title": "Global Economic Policy Uncertainty",
+      "lens_title": "Uncertainty & Risk",
+      "due": "2026-01-15",
+      "point_fmt": "353",
+      "implied_status": "watch",
+      "current_status": "watch",
+      "change": false,
+      "href": "/dashboards/global/uncertainty.html"
     }
   ],
   "pressure": [
@@ -605,14 +605,6 @@
       "href": "/dashboards/energy/oil-fuels.html",
       "status": "elevated",
       "headline": "Fuel costs are well above last year."
-    },
-    {
-      "lens_id": "energy-electricity",
-      "lens_title": "Electricity & the Grid",
-      "category": "energy",
-      "href": "/dashboards/energy/electricity.html",
-      "status": "elevated",
-      "headline": "Electricity prices are well above last year."
     },
     {
       "lens_id": "housing-affordability",
@@ -669,6 +661,14 @@
       "href": "/dashboards/business/credit.html",
       "status": "watch",
       "headline": "Business credit bears watching \u2014 conditions are tightening at the margin."
+    },
+    {
+      "lens_id": "energy-electricity",
+      "lens_title": "Electricity & the Grid",
+      "category": "energy",
+      "href": "/dashboards/energy/electricity.html",
+      "status": "watch",
+      "headline": "Electricity prices are climbing."
     }
   ],
   "categories": [
