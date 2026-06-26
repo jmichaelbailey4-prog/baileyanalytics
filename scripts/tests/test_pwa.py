@@ -34,6 +34,15 @@ class TestPwa(unittest.TestCase):
     def test_offline_page_exists(self):
         self.assertTrue((ROOT / "offline.html").exists())
 
+    def test_theme_head_is_inline_prepaint(self):
+        h = pwa.theme_head()
+        self.assertIn("<script>", h)            # inline, not deferred/external
+        self.assertNotIn("defer", h)
+        self.assertIn("data-theme", h)          # sets the attribute
+        self.assertIn('"ba:prefs"', h)          # reads the saved pref
+        self.assertIn("prefers-color-scheme", h)  # else follows the OS
+        self.assertNotIn("<!--", h)             # marker is added by the caller
+
 
 if __name__ == "__main__":
     unittest.main()

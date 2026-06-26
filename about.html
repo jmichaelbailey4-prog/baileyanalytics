@@ -15,6 +15,16 @@
   <link rel="canonical" href="https://baileyanalytics.com/about.html">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <style>
+        :root {
+            --bg:#0A0E14; --panel:#0F172A; --border:#1E293B; --text:#F8FAFC;
+            --muted:#94A3B8; --body:#CBD5E1; --faint:#76879E; --label:#64748B;
+            --blue:#38BDF8; --blue-hover:#7DD3FC;
+        }
+        [data-theme="light"] {
+            --bg:#F5F5F7; --panel:#FFFFFF; --border:#D2D2D7; --text:#1D1D1F;
+            --muted:#4B4B4F; --body:#2C2C30; --faint:#5E5E63; --label:#6A6A6F;
+            --blue:#0068D1; --blue-hover:#0068D1;
+        }
         *,
         *::before,
         *::after {
@@ -32,8 +42,8 @@
         body {
             min-height: 100vh;
             min-height: 100dvh;
-            background-color: #0A0E14;
-            color: #F8FAFC;
+            background-color: var(--bg);
+            color: var(--text);
             font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             line-height: 1.65;
             font-feature-settings: "ss01", "cv11";
@@ -57,7 +67,7 @@
         }
 
         nav a {
-            color: #94A3B8;
+            color: var(--muted);
             text-decoration: none;
             font-size: 0.875rem;
             letter-spacing: 0.05em;
@@ -70,19 +80,19 @@
 
         nav a:hover,
         nav a:focus-visible {
-            color: #F8FAFC;
-            border-bottom-color: #38BDF8;
+            color: var(--text);
+            border-bottom-color: var(--blue);
         }
 
         nav a:focus-visible {
-            outline: 2px solid #38BDF8;
+            outline: 2px solid var(--blue);
             outline-offset: 4px;
             border-radius: 2px;
         }
 
         nav a[aria-current="page"] {
-            color: #F8FAFC;
-            border-bottom-color: #38BDF8;
+            color: var(--text);
+            border-bottom-color: var(--blue);
         }
 
         /* Small screens: the fixed corner header can't hold the wordmark plus
@@ -104,12 +114,12 @@
             font-weight: 600;
             letter-spacing: -0.02em;
             line-height: 1.15;
-            color: #F8FAFC;
+            color: var(--text);
             margin-bottom: 2.5rem;
         }
 
         p {
-            color: #CBD5E1;
+            color: var(--body);
             font-size: 1.0625rem;
             margin-bottom: 1.5rem;
         }
@@ -122,25 +132,25 @@
             font-size: 1.2rem;
             font-weight: 600;
             letter-spacing: -0.01em;
-            color: #F8FAFC;
+            color: var(--text);
             margin: 2.25rem 0 1rem;
         }
 
         .contact {
             padding-top: 2rem;
-            border-top: 1px solid #1E293B;
+            border-top: 1px solid var(--border);
         }
 
         .disclosure {
             margin: 2.5rem 0 0;
             font-size: 0.8rem;
             line-height: 1.6;
-            color: #76879E;
+            color: var(--faint);
         }
 
         .contact-label {
             display: block;
-            color: #64748B;
+            color: var(--label);
             font-size: 0.75rem;
             letter-spacing: 0.1em;
             text-transform: uppercase;
@@ -150,7 +160,7 @@
 
         a.email {
             display: inline-block;
-            color: #38BDF8;
+            color: var(--blue);
             text-decoration: none;
             font-size: 1rem;
             letter-spacing: 0.01em;
@@ -161,12 +171,12 @@
 
         a.email:hover,
         a.email:focus-visible {
-            color: #7DD3FC;
-            border-bottom-color: #7DD3FC;
+            color: var(--blue-hover);
+            border-bottom-color: var(--blue-hover);
         }
 
         a.email:focus-visible {
-            outline: 2px solid #38BDF8;
+            outline: 2px solid var(--blue);
             outline-offset: 4px;
             border-radius: 2px;
         }
@@ -193,13 +203,21 @@
         }
 
         .sub-band { margin-top: 1.25rem; margin-bottom: 1.25rem; }
-        .sub-copy { color: #94A3B8; font-size: 0.9rem; margin-bottom: 0.5rem; }
+        .sub-copy { color: var(--muted); font-size: 0.9rem; margin-bottom: 0.5rem; }
         .sub-form { display: flex; gap: 0.5rem; max-width: 26rem; }
-        .sub-form input { flex: 1; background: #0F172A; border: 1px solid #1E293B;
-            border-radius: 8px; color: #F8FAFC; padding: 0.6rem 0.8rem; font-size: 0.9rem; }
-        .sub-form button { background: #38BDF8; color: #0A0E14; border: 0; border-radius: 8px;
+        .sub-form input { flex: 1; background: var(--panel); border: 1px solid var(--border);
+            border-radius: 8px; color: var(--text); padding: 0.6rem 0.8rem; font-size: 0.9rem; }
+        .sub-form button { background: var(--blue); color: var(--bg); border: 0; border-radius: 8px;
             padding: 0.6rem 1.1rem; font-size: 0.9rem; font-weight: 600; cursor: pointer; }
         .sub-form button:hover { filter: brightness(1.1); }
+
+        /* theme toggle (three-CSS-places trap: mirrors lens.css) */
+        .theme-toggle { display:inline-flex; align-items:center; justify-content:center; background:transparent;
+            border:0; color:var(--muted); cursor:pointer; padding:.5rem; border-radius:6px; line-height:0; transition:color .2s; }
+        .theme-toggle:hover, .theme-toggle:focus-visible { color:var(--text); }
+        .theme-toggle:focus-visible { outline:2px solid var(--blue); outline-offset:3px; }
+        .theme-toggle svg { width:1.15rem; height:1.15rem; display:block; }
+        @media (prefers-reduced-motion: reduce) { .theme-toggle { transition:none; } }
     </style>
   <!-- Cloudflare Web Analytics --><script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "c8d0e387f9b84507b1557117c4396452"}'></script><!-- End Cloudflare Web Analytics -->
   <!-- pwa:head -->
@@ -208,6 +226,8 @@
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <script defer src="/dashboards/personalize-core.js"></script>
   <script defer src="/dashboards/personalize.js"></script>
+  <!-- theme:head -->
+  <script>(function(){try{var p=(JSON.parse(localStorage.getItem("ba:prefs"))||{}).theme;var d=p==="light"||p==="dark"?p:(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");document.documentElement.setAttribute("data-theme",d);}catch(e){}})();</script>
 </head>
 <body>
     <nav class="wordmark" aria-label="Bailey Analytics home">
