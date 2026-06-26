@@ -82,7 +82,7 @@
     try {
       matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function (e) {
         if (store.getPref("theme")) return;
-        var theme = e.matches ? "dark" : "light";
+        var theme = core.resolveTheme(null, e.matches);  // unpinned → follow OS
         applyTheme(theme, false);
         var btn = document.querySelector("[data-theme-toggle]");
         if (btn) syncToggle(btn, theme);
