@@ -112,6 +112,18 @@
     });
   }
 
+  // The muted "why a signal carries no score / forecast" note. Mirrors
+  // build.signal_note (Python) — keep the matrix + headings in sync.
+  function signalNote(ind) {
+    const sev = ind.no_severity_reason || "", pred = ind.no_prediction_reason || "";
+    let heading, body;
+    if (sev && pred) { heading = "Why it isn’t scored or forecast"; body = sev + " " + pred; }
+    else if (sev) { heading = "Why it isn’t scored"; body = sev; }
+    else if (pred) { heading = "Why it isn’t forecast"; body = pred; }
+    else return "";
+    return `<div class="signal-note"><strong>${esc(heading)}:</strong> ${esc(body)}</div>`;
+  }
+
   function indicatorCard(indicator, recessions, defaultRange) {
     const el = document.createElement("div");
     el.className = "ind";
@@ -129,7 +141,8 @@
       <div class="context">
         <div class="ctx-block"><div class="lbl">What it is</div><p>${esc(indicator.context)}</p></div>
         <div class="ctx-block read"><div class="lbl">The read right now</div><p>${esc(indicator.read)}</p></div>
-      </div>`;
+      </div>
+      ${signalNote(indicator)}`;
     const canvas = el.querySelector("canvas");
     const rangesBox = el.querySelector(".ranges");
     const pageDefault = (defaultRange in RANGES) ? defaultRange : "1Y";

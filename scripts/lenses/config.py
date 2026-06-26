@@ -1,9 +1,9 @@
 """Lens configuration — the single source of truth for what gets built."""
 
-from dataclasses import dataclass, field
+from dataclasses import dataclass, field, replace
 from typing import Callable, Optional
 
-from . import derive, imf, narrative
+from . import derive, imf, narrative, reasons
 
 # Helper series fetched but not displayed directly.
 USREC_KEY = "USREC:lin"
@@ -36,10 +36,37 @@ class Indicator:
     # honest models can't call. Scoreboard prices are flagged via their neutral
     # lens, so they don't set this individually.
     market_price: bool = False
+    # score-explain-order (2026-06-24): does this severity count toward the lens
+    # badge? (False = show its own chip but don't let it double-count a lead that
+    # already carries the theme's verdict.) Plus the reader-facing notes shown when
+    # a signal genuinely can't be scored / forecast (see lenses.reasons + the matrix).
+    aggregate: bool = True
+    no_severity_reason: str = ""
+    no_prediction_reason: str = ""
 
     @property
     def fetch_key(self):
         return f"{self.series_id}:{self.units_transform or 'lin'}"
+
+
+# Sources the prediction pipeline can fetch or read-from-baked. The single home
+# of the roster's structural inclusion rule, hoisted here so build/ordering can
+# ask "is this predictable?" without importing the predictions package.
+PREDICTABLE_SOURCES = ("fred", "eia", "yahoo", "fdic", "computed", "nyfed", "epu")
+
+
+def is_predictable(ind):
+    """Whether the prediction roster covers this indicator by rule. IMF (annual)
+    and CoinGecko (crypto-structure, outside CATEGORIES) stay out; EIA series with
+    no route are computed/injected shares with nothing to fetch. Mirrors
+    predictions.roster, which now defers to this (EXTRA_EXCLUDE is a roster-only
+    manual override, currently empty)."""
+    src = getattr(ind, "source", "fred")
+    if src not in PREDICTABLE_SOURCES:
+        return False
+    if src == "eia" and not getattr(ind, "eia_route", ""):
+        return False
+    return True
 
 
 @dataclass(frozen=True)
@@ -146,7 +173,7 @@ COST_OF_MONEY = Lens(
             color="#38BDF8",
             series_id="DGS10",
             limit=2600,
-            rule=narrative.rule_rate_trend,
+            rule=narrative.restrictive_rate("The 10-year Treasury", 4.5, 5.5),
             context=(
                 "The yield on 10-year U.S. government debt — the benchmark that drives "
                 "mortgage rates and long-term borrowing costs across the economy."
@@ -160,7 +187,7 @@ COST_OF_MONEY = Lens(
             color="#A78BFA",
             series_id="DGS2",
             limit=2600,
-            rule=narrative.rule_rate_trend,
+            rule=narrative.restrictive_rate("The 2-year Treasury", 4.0, 5.0),
             context=(
                 "The yield on 2-year government debt — closely tied to where investors "
                 "expect the Fed to set rates over the next couple of years."
@@ -259,7 +286,7 @@ JOB_MARKET = Lens(
             color="#22D3EE",
             series_id="CIVPART",
             limit=240,
-            rule=narrative.rule_rate_trend,
+            rule=narrative.level_points("Labor-force participation"),
             context=(
                 "The share of working-age adults either working or looking for work — how "
                 "many people are in the labor force at all."
@@ -389,6 +416,23 @@ FISCAL_HEALTH = Lens(
             ),
         ),
         Indicator(
+            id="interest-burden",
+            title="Interest Cost · share of federal revenue",
+            short="Interest/revenue",
+            unit="%",
+            color="#FB7185",
+            series_id="INTEREST_RECEIPTS_SHARE",
+            limit=100,
+            source="computed",
+            rule=narrative.rule_interest_burden,
+            context=(
+                "Federal interest payments as a share of total federal revenue "
+                "(including payroll taxes) — how many cents of every revenue dollar go "
+                "just to servicing the debt. It has climbed to a modern record (~20%) "
+                "as rates rose, the highest since the 1990s."
+            ),
+        ),
+        Indicator(
             id="receipts",
             title="Federal Receipts · year-over-year",
             short="Receipts",
@@ -397,7 +441,7 @@ FISCAL_HEALTH = Lens(
             series_id="W006RC1Q027SBEA",
             limit=100,
             derive=derive.yoy_pct,
-            rule=narrative.yoy_info("The federal tax take"),
+            rule=narrative.yoy_contraction_band("The federal tax take", 0, -3, -8, verb="is"),
             context=(
                 "How fast federal tax revenue is growing versus a year ago. Healthy "
                 "receipts growth shrinks the deficit without any policy change; "
@@ -445,6 +489,11 @@ class BankingIndicator:
     context: str
     value_format: str = "decimal"
     source: str = "fdic"
+    # Every banking metric is severity + aggregating + predicted (baked), so these
+    # mirror the Indicator fields purely so build.py can read them uniformly.
+    aggregate: bool = True
+    no_severity_reason: str = ""
+    no_prediction_reason: str = ""
 
 
 @dataclass(frozen=True)
@@ -807,7 +856,7 @@ CONSUMER_SPENDING = Lens(
         Indicator(
             id="auto-sales", title="Vehicle Sales · annual rate", short="Auto sales",
             unit="M", color="#FBBF24", series_id="TOTALSA", limit=240,
-            rule=narrative.energy_level("The pace of vehicle sales", fmt="{:,.1f} million"),
+            rule=narrative.rule_auto_sales,
             context=("Light-vehicle sales in millions at an annual rate — the classic big-ticket "
                      "purchase. Households delay new cars first when budgets tighten."),
         ),
@@ -869,7 +918,7 @@ CONSUMER_INCOME = Lens(
         Indicator(
             id="net-worth", title="Household Net Worth · year-over-year", short="Net worth",
             unit="%", color="#38BDF8", series_id="BOGZ1FL192090005Q", units_transform="pc1", limit=80,
-            rule=narrative.yoy_info("Household net worth"),
+            rule=narrative.yoy_contraction_band("Household net worth", 0, -3, -8, verb="is"),
             context=("Everything households own minus everything they owe (quarterly). Driven by "
                      "home prices and markets — the wealth effect behind spending confidence."),
         ),
@@ -1095,7 +1144,7 @@ HOUSING_HOME_PRICES = Lens(
             id="median-price", title="Median Sales Price of Houses Sold",
             short="Median price", unit="$", color="#34D399",
             series_id="MSPUS", limit=80, value_format="thousands",
-            rule=narrative.energy_level("The median sale price"),
+            rule=narrative.market_health("Median home price", hot=(6, 10, 15), cold=(-2, -5, -10)),
             context=("The median price of homes actually sold (quarterly) — a dollars-and-cents "
                      "companion to the Case-Shiller index."),
         ),
@@ -1118,7 +1167,7 @@ HOUSING_AFFORDABILITY = Lens(
             id="debt-service", title="Mortgage Debt Service · % of income",
             short="Debt service", unit="%", color="#38BDF8",
             series_id="MDSP", limit=80,
-            rule=narrative.level_points("The mortgage-payment share of disposable income"),
+            rule=narrative.rule_mortgage_debt_service,
             context=("Mortgage payments as a share of household disposable income (quarterly) — "
                      "how heavy the aggregate mortgage burden actually is."),
         ),
@@ -1197,7 +1246,7 @@ HOUSING_RENT_SHELTER = Lens(
             id="owners-equivalent-rent", title="Owners' Equivalent Rent · year-over-year",
             short="OER", unit="%", color="#38BDF8",
             series_id="CUSR0000SEHC", limit=300, derive=derive.yoy_pct,
-            rule=narrative.yoy_info("Owners' equivalent rent"),
+            rule=narrative.yoy_band("Owners' equivalent rent", 4, 6, 9),
             context=("How fast the implied rent on owner-occupied homes is rising — the largest "
                      "single component of the CPI, and the bridge between home prices and "
                      "inflation."),
@@ -1324,7 +1373,7 @@ GLOBAL_GROWTH = Lens(
             id="ea-gdp-quarterly", title="Euro Area Real GDP · year-over-year",
             short="EA quarterly", unit="%", color="#A78BFA",
             series_id="CLVMEURSCAB1GQEA19", units_transform="pc1", limit=120,
-            rule=narrative.yoy_info("Euro-area real GDP"),
+            rule=narrative.yoy_contraction_band("Euro-area real GDP", 0, -2, -6, verb="is"),
             context=("The euro area's quarterly GDP versus a year earlier — the only "
                      "quarterly pulse in this lens, so it updates between the IMF's "
                      "April and October forecast rounds."),
@@ -1436,7 +1485,7 @@ BUSINESS_PROFITABILITY = Lens(
             id="nonfinancial-profits", title="Nonfinancial Corporate Profits · year-over-year",
             short="Nonfin. profits", unit="%", color="#38BDF8",
             series_id="NFCPATAX", limit=104, derive=derive.yoy_pct,
-            rule=narrative.yoy_info("Nonfinancial corporate profit"),
+            rule=narrative.yoy_contraction_band("Nonfinancial corporate profits", 0, -5, -15),
             context=("The same after-tax profit growth for nonfinancial corporations only — "
                      "the 'Main Street corporates' read, with banks stripped out."),
         ),
@@ -1476,7 +1525,7 @@ BUSINESS_FORMATION = Lens(
             id="high-propensity", title="High-Propensity Applications · year-over-year",
             short="High-propensity", unit="%", color="#A78BFA",
             series_id="BAHBATOTALSAUS", limit=300, derive=derive.yoy_pct,
-            rule=narrative.yoy_info("High-propensity application volume"),
+            rule=narrative.yoy_contraction_band("High-propensity applications", 0, -5, -15),
             context=("Growth in applications with characteristics that make them likely to "
                      "become employer businesses — the quality signal inside the headline count."),
         ),
@@ -1576,3 +1625,92 @@ CATEGORIES.append(
      "out": "business", "back": "Corporate & Business Health",
      "source_label": "Federal Reserve Economic Data (FRED), St. Louis Fed", "disclaimer": ""}
 )
+
+
+# ---------------------------------------------------------------------------
+# Signal annotations (score-explain-order, 2026-06-24) — the single audit of which
+# signals don't carry a score / forecast and why, plus which scored signals are
+# non-aggregating (a chip that doesn't drive the lens badge). Rules and derives
+# live inline above; this is the notes-and-aggregation layer. The invariants
+# (every gray chip explains itself, etc.) are enforced by test_config_signals.py.
+# ---------------------------------------------------------------------------
+
+_AGG_FALSE = {"aggregate": False}  # scored, but held out of the lens badge
+
+_SIGNAL_NOTES = {
+    # Non-aggregating scored "echoes" — a chip, but a lead carries the verdict.
+    ("housing-home-prices", "median-price"): _AGG_FALSE,
+    ("housing-rent-shelter", "owners-equivalent-rent"): _AGG_FALSE,
+    ("business-profitability", "nonfinancial-profits"): _AGG_FALSE,
+    ("business-formation", "high-propensity"): _AGG_FALSE,
+    ("consumer-income-savings", "net-worth"): _AGG_FALSE,
+    ("global-growth", "ea-gdp-quarterly"): _AGG_FALSE,
+
+    # Why no score (info / momentum signals).
+    ("cost-of-money", "rate-expectations"): {"no_severity_reason": reasons.RATE_EXPECTATIONS},
+    ("job-market", "participation"): {"no_severity_reason": reasons.DEMOGRAPHIC_LEVEL},
+    ("fiscal-health", "interest-cost"): {"no_severity_reason": reasons.INTEREST_DOLLARS},
+    ("market-scoreboard", "sp500"): {"no_severity_reason": reasons.NEUTRAL_SCOREBOARD},
+    ("market-scoreboard", "oil"): {"no_severity_reason": reasons.NEUTRAL_SCOREBOARD},
+    ("market-scoreboard", "gold"): {"no_severity_reason": reasons.NEUTRAL_SCOREBOARD},
+    ("market-scoreboard", "btc"): {"no_severity_reason": reasons.NEUTRAL_SCOREBOARD},
+    ("market-scoreboard", "eth"): {"no_severity_reason": reasons.NEUTRAL_SCOREBOARD},
+    ("market-liquidity", "fed-balance-sheet"): {"no_severity_reason": reasons.FED_PLUMBING},
+    ("market-liquidity", "bank-reserves"): {"no_severity_reason": reasons.FED_PLUMBING},
+    ("market-liquidity", "reverse-repo"): {"no_severity_reason": reasons.FED_PLUMBING},
+    ("energy-oil-fuels", "crude-production"): {"no_severity_reason": reasons.PHYSICAL},
+    ("energy-oil-fuels", "crude-stocks"): {"no_severity_reason": reasons.PHYSICAL},
+    ("energy-natural-gas", "gas-storage"): {"no_severity_reason": reasons.PHYSICAL},
+    ("energy-natural-gas", "gas-production"): {"no_severity_reason": reasons.PHYSICAL},
+    ("energy-natural-gas", "lng-exports"): {"no_severity_reason": reasons.PHYSICAL},
+    ("energy-commodities", "copper"): {"no_severity_reason": reasons.MARKET_PRICE},
+    ("energy-commodities", "broad-commodities"): {"no_severity_reason": reasons.MARKET_PRICE},
+    ("housing-supply-construction", "active-listings"): {"no_severity_reason": reasons.RAW_INVENTORY},
+    ("housing-rent-shelter", "homeownership"): {"no_severity_reason": reasons.LEVEL_CONTEXT},
+    ("global-dollar-currencies", "euro"): {"no_severity_reason": reasons.MARKET_PRICE},
+    ("global-dollar-currencies", "yen"): {"no_severity_reason": reasons.MARKET_PRICE},
+    ("global-dollar-currencies", "yuan"): {"no_severity_reason": reasons.MARKET_PRICE},
+    ("global-trade-supply", "trade-balance"): {"no_severity_reason": reasons.TRADE_DEFICIT},
+    ("global-trade-supply", "china-exports"): {"no_severity_reason": reasons.CONTEXT_DEMAND},
+    ("business-profitability", "profit-share"): {"no_severity_reason": reasons.LEVEL_CONTEXT},
+    ("business-profitability", "proprietors-income"): {"no_severity_reason": reasons.SMALL_BUSINESS_NOISE},
+    ("business-formation", "hp-share"): {"no_severity_reason": reasons.LEVEL_CONTEXT},
+
+    # Why no forecast only (severity, but structurally unpredictable).
+    ("global-growth", "world-growth"): {"no_prediction_reason": reasons.ANNUAL},
+
+    # Why neither: info AND unpredictable (one combined note).
+    ("global-growth", "china-growth"): {"no_severity_reason": reasons.CONTEXT_GROWTH,
+                                        "no_prediction_reason": reasons.ANNUAL},
+    ("global-growth", "euro-growth"): {"no_severity_reason": reasons.CONTEXT_GROWTH,
+                                       "no_prediction_reason": reasons.ANNUAL},
+    ("global-growth", "world-inflation"): {"no_severity_reason": reasons.CONTEXT_GROWTH,
+                                           "no_prediction_reason": reasons.ANNUAL},
+    ("energy-electricity", "renewables-share"): {"no_severity_reason": reasons.PHYSICAL,
+                                                 "no_prediction_reason": reasons.COMPUTED_SHARE},
+    ("energy-electricity", "natgas-share"): {"no_severity_reason": reasons.PHYSICAL,
+                                             "no_prediction_reason": reasons.COMPUTED_SHARE},
+    ("energy-electricity", "net-generation"): {"no_severity_reason": reasons.PHYSICAL,
+                                               "no_prediction_reason": reasons.COMPUTED_SHARE},
+}
+
+
+def _apply_signal_notes():
+    """Apply _SIGNAL_NOTES onto the (frozen) Indicators in place. A frozen
+    dataclass can't be mutated, so rebuild each annotated one with
+    dataclasses.replace; Lens.indicators is a mutable list even though Lens is
+    frozen. Raises on a key that matches no indicator (typo guard)."""
+    seen = set()
+    for cat in CATEGORIES:
+        for lens in cat["lenses"]:
+            for i, ind in enumerate(lens.indicators):
+                overrides = _SIGNAL_NOTES.get((lens.id, ind.id))
+                if overrides:
+                    lens.indicators[i] = replace(ind, **overrides)
+                    seen.add((lens.id, ind.id))
+    missing = set(_SIGNAL_NOTES) - seen
+    if missing:
+        raise ValueError(f"_SIGNAL_NOTES references unknown indicators: {missing}")
+
+
+_apply_signal_notes()

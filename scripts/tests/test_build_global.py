@@ -88,8 +88,11 @@ class TestGlobalBuildIntegration(unittest.TestCase):
         by_id = {l["id"]: l for l in index["lenses"]}
         trade_stats = {s["k"]: s["v"]
                        for s in by_id["global-trade-supply"]["key_stats"]}
-        self.assertEqual(trade_stats["Trade deficit"], "$55.90B")
-        self.assertEqual(trade_stats["Supply chain"], "1.77σ")
+        self.assertEqual(trade_stats["Supply chain"], "1.77σ")  # gscpi lead, pinned
+        # Insight ordering: scored Import prices is now the 2nd key-stat; the info
+        # Trade deficit is demoted below the top-two.
+        self.assertIn("Import prices", trade_stats)
+        self.assertNotIn("Trade deficit", trade_stats)
 
 
 if __name__ == "__main__":

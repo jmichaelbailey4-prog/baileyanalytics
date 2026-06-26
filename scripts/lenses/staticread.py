@@ -36,6 +36,11 @@ def render_fragment(lens_json):
             f"<h3>{escape(ind.get('title', ''))}</h3>"
             f"<p><strong>{escape(ind.get('short', ''))}: {escape(value)}</strong>"
             f" — {escape(ind.get('read', ''))}</p>")
+        # why a signal carries no score / forecast (the matrix), for no-JS/crawlers
+        note = build.signal_note(ind.get("no_severity_reason"), ind.get("no_prediction_reason"))
+        if note:
+            parts.append(f'<p class="signal-note"><strong>{escape(note[0])}:</strong> '
+                         f'{escape(note[1])}</p>')
         # the self-grounded per-indicator 'why' (INV-1), reusing the .hub-why
         # style; omitted when the series clears no signal (honest silence)
         why = synthesis.indicator_why(ind.get("short", ""), _recent_values(ind))

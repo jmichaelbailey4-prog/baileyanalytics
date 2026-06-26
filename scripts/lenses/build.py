@@ -3,7 +3,7 @@
 import json
 from datetime import datetime, timezone
 
-from . import config, narrative, recessions, util
+from . import config, narrative, reasons, recessions, util
 
 
 def _now():
@@ -37,11 +37,59 @@ def _fmt(value, unit, value_format="decimal"):
     return f"{sign}{num}{unit}"
 
 
+def _indicator_tier(ind):
+    """Insight tier for ordering: 0 severity+predictable, 1 severity-only,
+    2 predictable-only, 3 neither (info + no forecast)."""
+    severity = narrative.rule_kind(ind.rule) == "severity"
+    predictable = config.is_predictable(ind)
+    if severity and predictable:
+        return 0
+    if severity:
+        return 1
+    if predictable:
+        return 2
+    return 3
+
+
+def order_indicators(indicators):
+    """Order a lens's indicators by insight. The authored lead stays first — it's
+    the editorial/badge lead and the hub key-stat — then the rest are stable-sorted
+    by tier so info / no-forecast signals never sit above a scored or predicted
+    sibling. (A pure sort could let a freshly-scored secondary steal a deliberate
+    lead, e.g. ea-gdp-quarterly displacing world-growth on Global Growth.)"""
+    if not indicators:
+        return list(indicators)
+    return [indicators[0]] + sorted(indicators[1:], key=_indicator_tier)
+
+
+def signal_note(no_severity_reason, no_prediction_reason):
+    """(heading, body) for the muted 'why absent' note, or None when both are empty.
+    The matrix: both reasons -> one combined note; one reason -> just that one.
+    Mirrored in dashboards/lens.js signalNote() — keep in sync."""
+    sev, pred = no_severity_reason or "", no_prediction_reason or ""
+    if sev and pred:
+        return ("Why it isn’t scored or forecast", f"{sev} {pred}")
+    if sev:
+        return ("Why it isn’t scored", sev)
+    if pred:
+        return ("Why it isn’t forecast", pred)
+    return None
+
+
+def _attach_reasons(entry, ind):
+    """Add the reader-facing 'why no score / forecast' notes to an indicator dict,
+    only when set — so quiet (scored + predicted) indicators' JSON is unchanged."""
+    for field in ("no_severity_reason", "no_prediction_reason"):
+        val = getattr(ind, field, "")
+        if val:
+            entry[field] = val
+
+
 def build_lens(lens, fetched):
     """Build the full JSON dict for one lens."""
     indicators = []
-    statuses = []
-    for ind in lens.indicators:
+    agg_statuses = []  # only aggregate=True severities drive the lens badge
+    for ind in order_indicators(lens.indicators):
         raw = fetched.get(ind.fetch_key, [])
         if ind.derive:
             raw = ind.derive(raw)
@@ -49,8 +97,9 @@ def build_lens(lens, fetched):
         raw = util.thin_observations(raw)
         cleaned = util.clean(raw)
         text, status = ind.rule(cleaned)
-        statuses.append(status)
-        indicators.append({
+        if getattr(ind, "aggregate", True):
+            agg_statuses.append(status)
+        entry = {
             "id": ind.id,
             "title": ind.title,
             "short": ind.short,
@@ -63,8 +112,10 @@ def build_lens(lens, fetched):
             "read": text,
             "signal_status": status,
             "value_format": ind.value_format,
-        })
-    headline, overall = narrative.synthesize(lens.id, statuses)
+        }
+        _attach_reasons(entry, ind)
+        indicators.append(entry)
+    headline, overall = narrative.synthesize(lens.id, agg_statuses)
     return {
         "id": lens.id,
         "title": lens.title,
@@ -91,19 +142,22 @@ def build_banking_lens(lens, series_by_key, tier_rows, ranking_rows):
     tier_rows:     [{tier, values:[{value}]}]  (from fdic.tier_aggregates, metric order)
     ranking_rows:  {ranking_title: [{name, location, asset, value}]}
     """
-    indicators, statuses = [], []
-    for ind in lens.indicators:
+    indicators, agg_statuses = [], []
+    for ind in order_indicators(lens.indicators):
         raw = series_by_key.get(ind.id, [])
         cleaned = util.clean(raw)
         text, status = ind.rule(cleaned)
-        statuses.append(status)
-        indicators.append({
+        if getattr(ind, "aggregate", True):
+            agg_statuses.append(status)
+        entry = {
             "id": ind.id, "title": ind.title, "short": ind.short, "unit": ind.unit,
             "color": ind.color, "observations": raw, "latest": _latest_raw(raw),
             "context": ind.context, "read": text, "signal_status": status,
             "value_format": ind.value_format,
-        })
-    headline, overall = narrative.synthesize(lens.id, statuses)
+        }
+        _attach_reasons(entry, ind)
+        indicators.append(entry)
+    headline, overall = narrative.synthesize(lens.id, agg_statuses)
 
     tiers = None
     if lens.tier_metrics and tier_rows:
@@ -173,6 +227,9 @@ def build_crypto_lens(rotation_obs, dominance_obs, btc_eth_obs):
             "id": id_, "title": title, "short": short, "unit": unit, "color": color,
             "observations": obs, "latest": _latest_raw(obs), "context": context,
             "read": text, "signal_status": status, "value_format": vfmt,
+            # Neutral-lens info + outside the prediction roster -> one combined note.
+            "no_severity_reason": reasons.NEUTRAL_CRYPTO,
+            "no_prediction_reason": reasons.CRYPTO_HISTORY,
         })
     headline, overall = narrative.synthesize("crypto-structure", statuses)
     return {
