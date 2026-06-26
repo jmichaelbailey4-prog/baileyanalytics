@@ -2,7 +2,7 @@
   "id": "market-liquidity",
   "title": "Liquidity & the Fed",
   "accent": "#2DD4BF",
-  "last_updated": "2026-06-25T19:31:32Z",
+  "last_updated": "2026-06-26T13:34:27Z",
   "status": "ok",
   "headline_read": "Liquidity is ample \u2014 no monetary squeeze in sight.",
   "recessions": [
@@ -1243,7 +1243,7 @@
       "series_id": "WALCL",
       "observations": [
         {
-          "date": "2016-07-06",
+          "date": "2016-07-13",
           "value": "4.47"
         },
         {
@@ -1481,10 +1481,6 @@
         {
           "date": "2021-06-02",
           "value": "7.94"
-        },
-        {
-          "date": "2021-06-23",
-          "value": "8.10"
         },
         {
           "date": "2021-06-30",
@@ -2525,10 +2521,14 @@
         {
           "date": "2026-06-17",
           "value": "6.74"
+        },
+        {
+          "date": "2026-06-24",
+          "value": "6.74"
         }
       ],
       "latest": {
-        "date": "2026-06-17",
+        "date": "2026-06-24",
         "value": "6.74"
       },
       "context": "Everything the Federal Reserve holds, in trillions. Rising means the Fed is injecting liquidity (QE); falling means it's draining (QT) \u2014 the tide that lifts or lowers all markets.",
@@ -2545,8 +2545,8 @@
       "series_id": "WRESBAL",
       "observations": [
         {
-          "date": "2016-07-06",
-          "value": "2.25"
+          "date": "2016-07-13",
+          "value": "2.31"
         },
         {
           "date": "2016-08-03",
@@ -2782,10 +2782,6 @@
         },
         {
           "date": "2021-06-02",
-          "value": "3.81"
-        },
-        {
-          "date": "2021-06-23",
           "value": "3.81"
         },
         {
@@ -3827,14 +3823,18 @@
         {
           "date": "2026-06-17",
           "value": "3.03"
+        },
+        {
+          "date": "2026-06-24",
+          "value": "2.95"
         }
       ],
       "latest": {
-        "date": "2026-06-17",
-        "value": "3.03"
+        "date": "2026-06-24",
+        "value": "2.95"
       },
       "context": "Cash banks park at the Fed \u2014 the system's core liquidity buffer. When QT drains reserves too low, funding markets seize up (as in September 2019).",
-      "read": "The level of bank reserves is down 11% from a year ago, now $3.03 trillion.",
+      "read": "The level of bank reserves is down 13% from a year ago, now $2.95 trillion.",
       "signal_status": "info",
       "value_format": "decimal"
     },
