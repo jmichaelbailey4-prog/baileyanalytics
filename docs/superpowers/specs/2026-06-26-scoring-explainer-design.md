@@ -144,3 +144,26 @@ baked `#baked-read` fragment gains, per scored indicator, a one-line static band
 - Python tests required (`scripts/tests/`); JS renderers manually verified.
 - `--dry-run` overwrites `data/` AND baked surfaces — `git checkout -- .` after offline
   test builds. Don't pipe the ~728-test run (masks exit code) — redirect to a file.
+
+---
+
+## Post-review notes (after `/code-review high`)
+
+Four findings fixed: (1) `spec.cap` is now honored in `bands.segment_ranges`/`status_at`,
+so a capped rule (GEPU's `epu_band(cap="watch")`) shows green→amber-only — no unreachable
+elevated/alert band on the page, strip, or static read; (2) the strip's ghost forecast
+marker is drawn only on `level`/`yoy` axes (where the prediction's `point` shares the
+axis), not on `yoy_computed`/`delta_from_low`; (3) the now/ghost markers were moved out of
+the `overflow:hidden` bar so the needle protrudes legibly; (4) `prev_period` is omitted for
+daily (weekly-resampled) series, whose Friday date is forward-datable and disagreed with
+the lens card's real "as of".
+
+**Known limitation (accepted, not fixed):** the scale's range *labels* use a uniform `>=`
+convention, while a few rules put the exact edge in the more-severe band (`<=` cold edges,
+strict `>`, an explicit `==0` branch). At an exact-edge reading on a low-precision series
+(e.g. SLOOS net-tightening = 0, MICH = 3.0, months' supply = 6.0) the label can be one
+badge off and the marker sits *on* the colour boundary. A correct fix needs per-edge
+boundary encoding in `BandSpec` — disproportionate for a measure-near-zero cosmetic case;
+the authoritative badge is always shown separately, and the drift-lock test deliberately
+straddles edges rather than testing exact values. Revisit if it ever reads wrong in
+practice.
