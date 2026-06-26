@@ -33,6 +33,18 @@ class TestBankingConfig(unittest.TestCase):
                 self.assertIn("rule", m)
                 self.assertTrue(("numerator" in m) or ("ratio_field" in m))
 
+    def test_cre_spotlight_requires_a_real_loan_book(self):
+        # The CRE-delinquency spotlight must drop custody/processing charters whose
+        # tiny loan book posts an unrepresentative delinquency ratio (e.g. State
+        # Street, loans ~13% of assets) — the same loans>=40%-of-assets gate that
+        # bank-profitability already uses to read as mainstream lenders.
+        aq = next(l for l in config.BANKING_LENSES if l.id == "bank-asset-quality")
+        rk = aq.rankings[0]
+        self.assertTrue(
+            any(f.get("num") == ["LNLSNET"] and f.get("den") == ["ASSET"] and f.get("min") == 0.40
+                for f in rk.get("ratio_filters", [])),
+            "asset-quality CRE ranking should require loans >= 40% of assets")
+
 
 if __name__ == "__main__":
     unittest.main()

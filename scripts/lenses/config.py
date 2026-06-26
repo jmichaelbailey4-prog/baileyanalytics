@@ -541,7 +541,12 @@ BANK_ASSET_QUALITY = BankingLens(
          "unit": "%", "rule": narrative.rule_noncurrent,
          # Materiality: require >= $250M of CRE loans so tiny books can't post an
          # exploded ratio; cap at 20% as a backstop against idiosyncratic distress.
-         "min_base_fields": ["LNRENRES", "LNREMULT"], "min_base": 250_000, "max_value": 20.0},
+         "min_base_fields": ["LNRENRES", "LNREMULT"], "min_base": 250_000, "max_value": 20.0,
+         # ...and a real loan book (loans >= 40% of assets) so a custody/processing
+         # charter with a tiny-but->$250M CRE book (e.g. State Street, loans ~13% of
+         # assets) doesn't headline a CRE-delinquency list — the same business-mix
+         # gate bank-profitability uses (see design-spotlight-mainstream-relevance).
+         "ratio_filters": [{"num": ["LNLSNET"], "den": ["ASSET"], "min": 0.40}]},
     ],
 )
 
