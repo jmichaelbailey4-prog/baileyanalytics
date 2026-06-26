@@ -189,6 +189,39 @@ p.lede strong{color:var(--text);font-weight:600}
 .pred-mark.hit{color:var(--green);font-weight:700}
 .pred-mark.miss{color:var(--red);font-weight:700}
 .pred-rev{font-size:.78rem}
+/* In-context severity scale strip (scoring.js) */
+.scale{margin-top:.9rem;padding:.75rem .9rem .85rem;border:1px solid var(--border);border-radius:10px;background:var(--panel)}
+.scale-head{display:flex;justify-content:space-between;align-items:baseline;gap:.5rem;margin-bottom:.6rem}
+.scale-lab{font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.scale-link{font-size:.78rem;color:var(--blue);text-decoration:none;white-space:nowrap}
+.scale-link:hover{text-decoration:underline}
+.scale-track{position:relative;margin:0 2px}
+.scale-bar{position:relative;height:8px;border-radius:999px;overflow:hidden;background:var(--border)}
+.scale-seg{position:absolute;top:0;height:100%}
+.scale-seg.ok{background:var(--green)}.scale-seg.watch{background:var(--amber)}
+.scale-seg.elevated{background:var(--orange)}.scale-seg.alert{background:var(--red)}
+.scale-mark{position:absolute;top:-3px;width:0;height:14px;border-left:2px solid var(--text)}
+.scale-ghost{position:absolute;top:-1px;width:0;height:10px;border-left:2px dashed var(--dim)}
+.scale-nowrap{position:relative;height:1.05rem;margin-top:.25rem}
+.scale-now{position:absolute;transform:translateX(-50%);font-size:.72rem;color:var(--muted);white-space:nowrap}
+.scale-now b{color:var(--text);font-weight:600}
+.scale-edges{font-size:.68rem;color:var(--dim);margin-top:.4rem}
+/* Methodology page */
+.method-taxonomy{list-style:none;margin:.4rem 0 1.75rem;display:grid;gap:.5rem}
+.method-taxonomy li{color:var(--muted);font-size:.9rem;line-height:1.55}
+.method-taxonomy strong{color:var(--text)}
+.method-cat{font-size:1.3rem;font-weight:600;letter-spacing:-.01em;margin:2.5rem 0 .25rem}
+.method-lens{font-size:.95rem;font-weight:600;color:var(--blue);margin:1.4rem 0 .25rem}
+.method-signal{border-top:1px solid var(--border);padding:.85rem 0}
+.method-signal h4{font-size:.95rem;font-weight:600;margin-bottom:.45rem;scroll-margin-top:1rem}
+.method-axis{color:var(--dim);font-size:.78rem;margin-bottom:.4rem}
+.method-bands{list-style:none;display:flex;flex-wrap:wrap;gap:.45rem .7rem;margin:.25rem 0 .55rem}
+.method-bands li{display:flex;align-items:center;gap:.4rem;font-size:.82rem;color:var(--muted)}
+.method-range{white-space:nowrap}
+.method-why{color:var(--muted);font-size:.88rem;line-height:1.6}
+/* No-JS static band summary baked into lens pages (staticread.py) */
+.hub-bands{color:var(--dim);font-size:.8rem;margin:.15rem 0 .35rem}
+.hub-bands a{color:var(--blue)}
 
 /* ---- Predictions: Track Record page ---- */
 .track{max-width:880px;margin:0 auto;padding:1.5rem 1rem 4rem}
