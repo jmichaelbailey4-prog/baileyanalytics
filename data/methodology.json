@@ -1,0 +1,3914 @@
+{
+  "generated_at": "2026-06-26T16:42:34Z",
+  "taxonomy": {
+    "intro": "Every signal on the site is read by a fixed, documented rule applied to the latest numbers \u2014 never a human judgement call. Here is exactly how each reading becomes the badge you see. There are four kinds of signal:",
+    "severity": "Severity \u2014 most signals. A reading maps to one of four badges: ok, watch, elevated, or alert. The thresholds below are the real numbers the code uses; the marker on each lens page shows where the latest reading falls.",
+    "info": "Descriptive \u2014 tracked for context, not scored. A higher or lower reading isn't itself better or worse, so there's no badge \u2014 just the number and its direction.",
+    "momentum": "Momentum \u2014 a few market signals show which way a price is moving (up / down / flat) rather than a good-or-bad verdict.",
+    "neutral": "Neutral scoreboards \u2014 two lenses (the asset-class scoreboard and crypto market structure) summarise how things are moving without aggregating to a good-or-bad verdict."
+  },
+  "signals": {
+    "recession-watch::yield-curve": {
+      "category": "economic",
+      "category_title": "Economic Lenses",
+      "lens_id": "recession-watch",
+      "lens_title": "Recession Watch",
+      "indicator_id": "yield-curve",
+      "title": "Yield Curve \u00b7 10-Year minus 2-Year",
+      "short": "Yield curve",
+      "taxonomy": "severity",
+      "why": "Not a static level \u2014 the curve scores by state. An inversion (below zero) is a classic recession warning that preceded every U.S. recession since the 1970s; a recent un-inversion warrants vigilance, because recessions historically begin after the curve climbs back above zero; a positive curve with no recent inversion is the all-clear.",
+      "axis": {
+        "kind": "custom",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": ""
+      }
+    },
+    "recession-watch::sahm-rule": {
+      "category": "economic",
+      "category_title": "Economic Lenses",
+      "lens_id": "recession-watch",
+      "lens_title": "Recession Watch",
+      "indicator_id": "sahm-rule",
+      "title": "Sahm Rule Recession Indicator",
+      "short": "Sahm rule",
+      "taxonomy": "severity",
+      "why": "The Sahm rule trips at 0.50 \u2014 historically consistent with a recession already underway. 0.35\u20130.50 is the warning band as it climbs toward the trigger.",
+      "axis": {
+        "kind": "level",
+        "unit": "",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "edges": [
+        0.35,
+        0.5
+      ],
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 0.35
+        },
+        {
+          "status": "watch",
+          "lo": 0.35,
+          "hi": 0.5
+        },
+        {
+          "status": "alert",
+          "lo": 0.5,
+          "hi": null
+        }
+      ]
+    },
+    "recession-watch::jobless-claims": {
+      "category": "economic",
+      "category_title": "Economic Lenses",
+      "lens_id": "recession-watch",
+      "lens_title": "Recession Watch",
+      "indicator_id": "jobless-claims",
+      "title": "Initial Jobless Claims \u00b7 weekly",
+      "short": "Jobless claims",
+      "taxonomy": "severity",
+      "why": "Weekly initial jobless claims. Below ~250k, employers aren't shedding workers; 250\u2013300k is a creeping rise; above 300k points to accelerating layoffs.",
+      "axis": {
+        "kind": "level",
+        "unit": "",
+        "value_format": "thousands",
+        "label": "the latest reading"
+      },
+      "edges": [
+        250000,
+        300000
+      ],
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 250000
+        },
+        {
+          "status": "watch",
+          "lo": 250000,
+          "hi": 300000
+        },
+        {
+          "status": "elevated",
+          "lo": 300000,
+          "hi": null
+        }
+      ]
+    },
+    "recession-watch::unemployment": {
+      "category": "economic",
+      "category_title": "Economic Lenses",
+      "lens_id": "recession-watch",
+      "lens_title": "Recession Watch",
+      "indicator_id": "unemployment",
+      "title": "Unemployment Rate",
+      "short": "Unemployment",
+      "taxonomy": "severity",
+      "why": "Scored on the rise above the trailing-12-month low, not the raw level (the Sahm-style signal): a climb of 0.5 points or more off the recent low has preceded past downturns.",
+      "axis": {
+        "kind": "delta_from_low",
+        "unit": "pts",
+        "value_format": "decimal",
+        "label": "the rise above the trailing-12-month low"
+      },
+      "edges": [
+        0.5
+      ],
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 0.5
+        },
+        {
+          "status": "watch",
+          "lo": 0.5,
+          "hi": null
+        }
+      ]
+    },
+    "cost-of-money::fed-funds": {
+      "category": "economic",
+      "category_title": "Economic Lenses",
+      "lens_id": "cost-of-money",
+      "lens_title": "The Cost of Money",
+      "indicator_id": "fed-funds",
+      "title": "Federal Funds Rate",
+      "short": "Fed funds",
+      "taxonomy": "severity",
+      "why": "The Fed's policy rate. At or above 4% is a restrictive stance worth flagging; the read also notes the ~12-month direction.",
+      "axis": {
+        "kind": "level",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "edges": [
+        4.0
+      ],
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 4.0
+        },
+        {
+          "status": "watch",
+          "lo": 4.0,
+          "hi": null
+        }
+      ]
+    },
+    "cost-of-money::treasury-10y": {
+      "category": "economic",
+      "category_title": "Economic Lenses",
+      "lens_id": "cost-of-money",
+      "lens_title": "The Cost of Money",
+      "indicator_id": "treasury-10y",
+      "title": "10-Year Treasury Yield",
+      "short": "10-year",
+      "taxonomy": "severity",
+      "why": "Scored by level: above the watch line a Treasury yield is pricier than the post-2010 norm for borrowers; above the elevated line it's broadly restrictive. There is no 'alert' here \u2014 an expensive rate is a drag, not a crisis the way a default spike is.",
+      "axis": {
+        "kind": "level",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "edges": [
+        4.5,
+        5.5
+      ],
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 4.5
+        },
+        {
+          "status": "watch",
+          "lo": 4.5,
+          "hi": 5.5
+        },
+        {
+          "status": "elevated",
+          "lo": 5.5,
+          "hi": null
+        }
+      ]
+    },
+    "cost-of-money::treasury-2y": {
+      "category": "economic",
+      "category_title": "Economic Lenses",
+      "lens_id": "cost-of-money",
+      "lens_title": "The Cost of Money",
+      "indicator_id": "treasury-2y",
+      "title": "2-Year Treasury Yield",
+      "short": "2-year",
+      "taxonomy": "severity",
+      "why": "Scored by level: above the watch line a Treasury yield is pricier than the post-2010 norm for borrowers; above the elevated line it's broadly restrictive. There is no 'alert' here \u2014 an expensive rate is a drag, not a crisis the way a default spike is.",
+      "axis": {
+        "kind": "level",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "edges": [
+        4.0,
+        5.0
+      ],
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 4.0
+        },
+        {
+          "status": "watch",
+          "lo": 4.0,
+          "hi": 5.0
+        },
+        {
+          "status": "elevated",
+          "lo": 5.0,
+          "hi": null
+        }
+      ]
+    },
+    "cost-of-money::rate-expectations": {
+      "category": "economic",
+      "category_title": "Economic Lenses",
+      "lens_id": "cost-of-money",
+      "lens_title": "The Cost of Money",
+      "indicator_id": "rate-expectations",
+      "title": "Rate Expectations \u00b7 2-Year minus Fed Funds",
+      "short": "2y vs Fed",
+      "taxonomy": "info",
+      "note": "Whether markets expect cuts or hikes isn't itself good or bad \u2014 it's the bond market's forecast, shown for context."
+    },
+    "job-market::unemployment": {
+      "category": "economic",
+      "category_title": "Economic Lenses",
+      "lens_id": "job-market",
+      "lens_title": "The Job Market",
+      "indicator_id": "unemployment",
+      "title": "Unemployment Rate",
+      "short": "Unemployment",
+      "taxonomy": "severity",
+      "why": "Scored on the rise above the trailing-12-month low, not the raw level (the Sahm-style signal): a climb of 0.5 points or more off the recent low has preceded past downturns.",
+      "axis": {
+        "kind": "delta_from_low",
+        "unit": "pts",
+        "value_format": "decimal",
+        "label": "the rise above the trailing-12-month low"
+      },
+      "edges": [
+        0.5
+      ],
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 0.5
+        },
+        {
+          "status": "watch",
+          "lo": 0.5,
+          "hi": null
+        }
+      ]
+    },
+    "job-market::payrolls": {
+      "category": "economic",
+      "category_title": "Economic Lenses",
+      "lens_id": "job-market",
+      "lens_title": "The Job Market",
+      "indicator_id": "payrolls",
+      "title": "Nonfarm Payrolls \u00b7 monthly change",
+      "short": "Payrolls",
+      "taxonomy": "severity",
+      "why": "Monthly jobs added. Outright job losses are an alert; under ~75k and ~150k are slowing-but-positive paces; above that is a healthy clip.",
+      "axis": {
+        "kind": "level",
+        "unit": "",
+        "value_format": "thousands",
+        "label": "the latest reading"
+      },
+      "edges": [
+        0,
+        75000,
+        150000
+      ],
+      "segments": [
+        {
+          "status": "alert",
+          "lo": null,
+          "hi": 0
+        },
+        {
+          "status": "watch",
+          "lo": 0,
+          "hi": 75000
+        },
+        {
+          "status": "watch",
+          "lo": 75000,
+          "hi": 150000
+        },
+        {
+          "status": "ok",
+          "lo": 150000,
+          "hi": null
+        }
+      ]
+    },
+    "job-market::job-openings": {
+      "category": "economic",
+      "category_title": "Economic Lenses",
+      "lens_id": "job-market",
+      "lens_title": "The Job Market",
+      "indicator_id": "job-openings",
+      "title": "Job Openings (JOLTS)",
+      "short": "Openings",
+      "taxonomy": "severity",
+      "why": "Job openings (JOLTS), in millions. Below ~7.5M flags cooling labor demand.",
+      "axis": {
+        "kind": "level",
+        "unit": "M",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "edges": [
+        7.5
+      ],
+      "segments": [
+        {
+          "status": "watch",
+          "lo": null,
+          "hi": 7.5
+        },
+        {
+          "status": "ok",
+          "lo": 7.5,
+          "hi": null
+        }
+      ]
+    },
+    "job-market::wage-growth": {
+      "category": "economic",
+      "category_title": "Economic Lenses",
+      "lens_id": "job-market",
+      "lens_title": "The Job Market",
+      "indicator_id": "wage-growth",
+      "title": "Wage Growth \u00b7 year-over-year",
+      "short": "Wages",
+      "taxonomy": "severity",
+      "why": "In the job-market frame, strong pay is healthy and stalling pay signals a softening labor market, so this warns on the LOW side: under 2% a year is stalled. (The inflation angle lives in Cost of Living's real wages.)",
+      "axis": {
+        "kind": "yoy",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the year-over-year change"
+      },
+      "edges": [
+        2.0,
+        3.0
+      ],
+      "segments": [
+        {
+          "status": "elevated",
+          "lo": null,
+          "hi": 2.0
+        },
+        {
+          "status": "watch",
+          "lo": 2.0,
+          "hi": 3.0
+        },
+        {
+          "status": "ok",
+          "lo": 3.0,
+          "hi": null
+        }
+      ]
+    },
+    "job-market::participation": {
+      "category": "economic",
+      "category_title": "Economic Lenses",
+      "lens_id": "job-market",
+      "lens_title": "The Job Market",
+      "indicator_id": "participation",
+      "title": "Labor-Force Participation Rate",
+      "short": "Participation",
+      "taxonomy": "info",
+      "note": "This level drifts with demographics \u2014 the job-market verdict is carried by unemployment, payrolls, and job openings."
+    },
+    "cost-of-living::cpi": {
+      "category": "economic",
+      "category_title": "Economic Lenses",
+      "lens_id": "cost-of-living",
+      "lens_title": "The Cost of Living",
+      "indicator_id": "cpi",
+      "title": "Inflation \u00b7 CPI (year-over-year)",
+      "short": "CPI",
+      "taxonomy": "severity",
+      "why": "A year-over-year inflation rate (CPI, core, or PCE) against the Fed's 2% goal: near 2% is ok, 2.5\u20134% is still above target, 4%+ is hot.",
+      "axis": {
+        "kind": "yoy",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the year-over-year change"
+      },
+      "edges": [
+        2.5,
+        4.0
+      ],
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 2.5
+        },
+        {
+          "status": "watch",
+          "lo": 2.5,
+          "hi": 4.0
+        },
+        {
+          "status": "elevated",
+          "lo": 4.0,
+          "hi": null
+        }
+      ]
+    },
+    "cost-of-living::core-cpi": {
+      "category": "economic",
+      "category_title": "Economic Lenses",
+      "lens_id": "cost-of-living",
+      "lens_title": "The Cost of Living",
+      "indicator_id": "core-cpi",
+      "title": "Core CPI (year-over-year)",
+      "short": "Core CPI",
+      "taxonomy": "severity",
+      "why": "A year-over-year inflation rate (CPI, core, or PCE) against the Fed's 2% goal: near 2% is ok, 2.5\u20134% is still above target, 4%+ is hot.",
+      "axis": {
+        "kind": "yoy",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the year-over-year change"
+      },
+      "edges": [
+        2.5,
+        4.0
+      ],
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 2.5
+        },
+        {
+          "status": "watch",
+          "lo": 2.5,
+          "hi": 4.0
+        },
+        {
+          "status": "elevated",
+          "lo": 4.0,
+          "hi": null
+        }
+      ]
+    },
+    "cost-of-living::pce": {
+      "category": "economic",
+      "category_title": "Economic Lenses",
+      "lens_id": "cost-of-living",
+      "lens_title": "The Cost of Living",
+      "indicator_id": "pce",
+      "title": "PCE Inflation (year-over-year)",
+      "short": "PCE",
+      "taxonomy": "severity",
+      "why": "A year-over-year inflation rate (CPI, core, or PCE) against the Fed's 2% goal: near 2% is ok, 2.5\u20134% is still above target, 4%+ is hot.",
+      "axis": {
+        "kind": "yoy",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the year-over-year change"
+      },
+      "edges": [
+        2.5,
+        4.0
+      ],
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 2.5
+        },
+        {
+          "status": "watch",
+          "lo": 2.5,
+          "hi": 4.0
+        },
+        {
+          "status": "elevated",
+          "lo": 4.0,
+          "hi": null
+        }
+      ]
+    },
+    "cost-of-living::real-wages": {
+      "category": "economic",
+      "category_title": "Economic Lenses",
+      "lens_id": "cost-of-living",
+      "lens_title": "The Cost of Living",
+      "indicator_id": "real-wages",
+      "title": "Real Wage Growth (year-over-year)",
+      "short": "Real wages",
+      "taxonomy": "severity",
+      "why": "Inflation-adjusted pay. Below zero means paychecks aren't keeping up with prices (watch); positive is ok.",
+      "axis": {
+        "kind": "yoy",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the year-over-year change"
+      },
+      "edges": [
+        0
+      ],
+      "segments": [
+        {
+          "status": "watch",
+          "lo": null,
+          "hi": 0
+        },
+        {
+          "status": "ok",
+          "lo": 0,
+          "hi": null
+        }
+      ]
+    },
+    "fiscal-health::debt-gdp": {
+      "category": "economic",
+      "category_title": "Economic Lenses",
+      "lens_id": "fiscal-health",
+      "lens_title": "Fiscal Health",
+      "indicator_id": "debt-gdp",
+      "title": "Federal Debt \u00b7 % of GDP",
+      "short": "Debt/GDP",
+      "taxonomy": "severity",
+      "why": "Federal debt versus the size of the economy. It crossed 100% around 2013; the bands mark high (90%), larger-than-the-economy (110%), and uncharted (130%).",
+      "axis": {
+        "kind": "level",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "edges": [
+        90,
+        110,
+        130
+      ],
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 90
+        },
+        {
+          "status": "watch",
+          "lo": 90,
+          "hi": 110
+        },
+        {
+          "status": "elevated",
+          "lo": 110,
+          "hi": 130
+        },
+        {
+          "status": "alert",
+          "lo": 130,
+          "hi": null
+        }
+      ]
+    },
+    "fiscal-health::deficit-12m": {
+      "category": "economic",
+      "category_title": "Economic Lenses",
+      "lens_id": "fiscal-health",
+      "lens_title": "Fiscal Health",
+      "indicator_id": "deficit-12m",
+      "title": "Federal Deficit \u00b7 trailing 12 months",
+      "short": "Deficit",
+      "taxonomy": "severity",
+      "why": "The trailing-12-month deficit in trillions. The bands rise from a sizable structural deficit through crisis-era scale \u2014 the COVID peak was about $3T.",
+      "axis": {
+        "kind": "level",
+        "unit": "$T",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "edges": [
+        0.8,
+        1.5,
+        2.5
+      ],
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 0.8
+        },
+        {
+          "status": "watch",
+          "lo": 0.8,
+          "hi": 1.5
+        },
+        {
+          "status": "elevated",
+          "lo": 1.5,
+          "hi": 2.5
+        },
+        {
+          "status": "alert",
+          "lo": 2.5,
+          "hi": null
+        }
+      ]
+    },
+    "fiscal-health::interest-cost": {
+      "category": "economic",
+      "category_title": "Economic Lenses",
+      "lens_id": "fiscal-health",
+      "lens_title": "Fiscal Health",
+      "indicator_id": "interest-cost",
+      "title": "Federal Interest Cost \u00b7 annual rate",
+      "short": "Interest cost",
+      "taxonomy": "info",
+      "note": "The dollar interest bill climbs with the economy; the scored read is interest as a share of revenue, alongside debt-to-GDP and the deficit."
+    },
+    "fiscal-health::interest-burden": {
+      "category": "economic",
+      "category_title": "Economic Lenses",
+      "lens_id": "fiscal-health",
+      "lens_title": "Fiscal Health",
+      "indicator_id": "interest-burden",
+      "title": "Interest Cost \u00b7 share of federal revenue",
+      "short": "Interest/revenue",
+      "taxonomy": "severity",
+      "why": "Federal interest as a share of TOTAL receipts \u2014 the conventional ~20% figure. A record-high read prints 'elevated'; 'alert' is reserved for a genuinely unprecedented level above ~22%.",
+      "axis": {
+        "kind": "level",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "edges": [
+        10,
+        15,
+        22
+      ],
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 10
+        },
+        {
+          "status": "watch",
+          "lo": 10,
+          "hi": 15
+        },
+        {
+          "status": "elevated",
+          "lo": 15,
+          "hi": 22
+        },
+        {
+          "status": "alert",
+          "lo": 22,
+          "hi": null
+        }
+      ]
+    },
+    "fiscal-health::receipts": {
+      "category": "economic",
+      "category_title": "Economic Lenses",
+      "lens_id": "fiscal-health",
+      "lens_title": "Fiscal Health",
+      "indicator_id": "receipts",
+      "title": "Federal Receipts \u00b7 year-over-year",
+      "short": "Receipts",
+      "taxonomy": "severity",
+      "why": "Scored on the year-over-year change where FALLING is the stress signal \u2014 profits, new-business applications, capital-goods orders, sales. Growth is ok; the bands mark progressively deeper contractions.",
+      "axis": {
+        "kind": "yoy",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the year-over-year change"
+      },
+      "edges": [
+        -8,
+        -3,
+        0
+      ],
+      "segments": [
+        {
+          "status": "alert",
+          "lo": null,
+          "hi": -8
+        },
+        {
+          "status": "elevated",
+          "lo": -8,
+          "hi": -3
+        },
+        {
+          "status": "watch",
+          "lo": -3,
+          "hi": 0
+        },
+        {
+          "status": "ok",
+          "lo": 0,
+          "hi": null
+        }
+      ]
+    },
+    "bank-asset-quality::noncurrent": {
+      "category": "banking",
+      "category_title": "Banking System Health",
+      "lens_id": "bank-asset-quality",
+      "lens_title": "Asset Quality",
+      "indicator_id": "noncurrent",
+      "title": "Noncurrent Loan Rate \u00b7 loans 90+ days past due",
+      "short": "Noncurrent",
+      "taxonomy": "severity",
+      "why": "Loans 90+ days past due as a share of all loans. Under 1% is low by historical standards; 1\u20132% is creeping; above 2% is elevated.",
+      "axis": {
+        "kind": "level",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "edges": [
+        1,
+        2
+      ],
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 1
+        },
+        {
+          "status": "watch",
+          "lo": 1,
+          "hi": 2
+        },
+        {
+          "status": "elevated",
+          "lo": 2,
+          "hi": null
+        }
+      ]
+    },
+    "bank-asset-quality::charge-offs": {
+      "category": "banking",
+      "category_title": "Banking System Health",
+      "lens_id": "bank-asset-quality",
+      "lens_title": "Asset Quality",
+      "indicator_id": "charge-offs",
+      "title": "Net Charge-Off Rate \u00b7 annualized",
+      "short": "Charge-offs",
+      "taxonomy": "severity",
+      "why": "Loans written off as losses. Under ~0.6% is benign; the bands mark where losses become a meaningful drag on earnings.",
+      "axis": {
+        "kind": "level",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "edges": [
+        0.6,
+        1.2
+      ],
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 0.6
+        },
+        {
+          "status": "watch",
+          "lo": 0.6,
+          "hi": 1.2
+        },
+        {
+          "status": "elevated",
+          "lo": 1.2,
+          "hi": null
+        }
+      ]
+    },
+    "bank-profitability::net-margin": {
+      "category": "banking",
+      "category_title": "Banking System Health",
+      "lens_id": "bank-profitability",
+      "lens_title": "Bank Profitability",
+      "indicator_id": "net-margin",
+      "title": "Net Interest Margin \u00b7 annualized",
+      "short": "Margin",
+      "taxonomy": "severity",
+      "why": "Net interest margin. Below ~2.5% is a compressed spread that squeezes bank earnings.",
+      "axis": {
+        "kind": "level",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "edges": [
+        2.5
+      ],
+      "segments": [
+        {
+          "status": "watch",
+          "lo": null,
+          "hi": 2.5
+        },
+        {
+          "status": "ok",
+          "lo": 2.5,
+          "hi": null
+        }
+      ]
+    },
+    "bank-profitability::roa": {
+      "category": "banking",
+      "category_title": "Banking System Health",
+      "lens_id": "bank-profitability",
+      "lens_title": "Bank Profitability",
+      "indicator_id": "roa",
+      "title": "Return on Assets \u00b7 annualized",
+      "short": "ROA",
+      "taxonomy": "severity",
+      "why": "Return on assets. 1%+ is solid bank profitability; 0.5\u20131% is subdued; below 0.5% is weak.",
+      "axis": {
+        "kind": "level",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "edges": [
+        0.5,
+        1.0
+      ],
+      "segments": [
+        {
+          "status": "elevated",
+          "lo": null,
+          "hi": 0.5
+        },
+        {
+          "status": "watch",
+          "lo": 0.5,
+          "hi": 1.0
+        },
+        {
+          "status": "ok",
+          "lo": 1.0,
+          "hi": null
+        }
+      ]
+    },
+    "bank-capital-solvency::risk-based-capital": {
+      "category": "banking",
+      "category_title": "Banking System Health",
+      "lens_id": "bank-capital-solvency",
+      "lens_title": "Capital & Solvency",
+      "indicator_id": "risk-based-capital",
+      "title": "Total Risk-Based Capital Ratio",
+      "short": "Risk-based capital",
+      "taxonomy": "severity",
+      "why": "The regulators' headline solvency gauge: 10%+ is 'well-capitalized', 8\u201310% adequate, below 8% under the minimum.",
+      "axis": {
+        "kind": "level",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "edges": [
+        8,
+        10
+      ],
+      "segments": [
+        {
+          "status": "elevated",
+          "lo": null,
+          "hi": 8
+        },
+        {
+          "status": "watch",
+          "lo": 8,
+          "hi": 10
+        },
+        {
+          "status": "ok",
+          "lo": 10,
+          "hi": null
+        }
+      ]
+    },
+    "bank-capital-solvency::equity-assets": {
+      "category": "banking",
+      "category_title": "Banking System Health",
+      "lens_id": "bank-capital-solvency",
+      "lens_title": "Capital & Solvency",
+      "indicator_id": "equity-assets",
+      "title": "Equity-to-Assets",
+      "short": "Equity/assets",
+      "taxonomy": "severity",
+      "why": "Equity-to-assets. Banks historically run ~9\u201311%; below 9% is on the lighter side, below 7.5% is a thin cushion.",
+      "axis": {
+        "kind": "level",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "edges": [
+        7.5,
+        9
+      ],
+      "segments": [
+        {
+          "status": "elevated",
+          "lo": null,
+          "hi": 7.5
+        },
+        {
+          "status": "watch",
+          "lo": 7.5,
+          "hi": 9
+        },
+        {
+          "status": "ok",
+          "lo": 9,
+          "hi": null
+        }
+      ]
+    },
+    "bank-concentrations-funding::uninsured": {
+      "category": "banking",
+      "category_title": "Banking System Health",
+      "lens_id": "bank-concentrations-funding",
+      "lens_title": "Concentrations & Funding",
+      "indicator_id": "uninsured",
+      "title": "Uninsured-Deposit Share",
+      "short": "Uninsured dep.",
+      "taxonomy": "severity",
+      "why": "Deposits above the $250k FDIC cap \u2014 the money most likely to flee in a panic, as at Silicon Valley Bank. Above ~40% is flight-prone.",
+      "axis": {
+        "kind": "level",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "edges": [
+        40
+      ],
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 40
+        },
+        {
+          "status": "watch",
+          "lo": 40,
+          "hi": null
+        }
+      ]
+    },
+    "bank-concentrations-funding::loans-deposits": {
+      "category": "banking",
+      "category_title": "Banking System Health",
+      "lens_id": "bank-concentrations-funding",
+      "lens_title": "Concentrations & Funding",
+      "indicator_id": "loans-deposits",
+      "title": "Loans-to-Deposits",
+      "short": "Loans/dep.",
+      "taxonomy": "severity",
+      "why": "Loans as a share of deposits. Above ~90% means the system's funding is stretched.",
+      "axis": {
+        "kind": "level",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "edges": [
+        90
+      ],
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 90
+        },
+        {
+          "status": "watch",
+          "lo": 90,
+          "hi": null
+        }
+      ]
+    },
+    "bank-concentrations-funding::cre-concentration": {
+      "category": "banking",
+      "category_title": "Banking System Health",
+      "lens_id": "bank-concentrations-funding",
+      "lens_title": "Concentrations & Funding",
+      "indicator_id": "cre-concentration",
+      "title": "CRE Concentration \u00b7 % of capital",
+      "short": "CRE/capital",
+      "taxonomy": "severity",
+      "why": "Commercial real estate as a share of bank capital. Above ~300% is the interagency supervisory concentration flag; ~200% is a notable build.",
+      "axis": {
+        "kind": "level",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "edges": [
+        200,
+        300
+      ],
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 200
+        },
+        {
+          "status": "watch",
+          "lo": 200,
+          "hi": 300
+        },
+        {
+          "status": "elevated",
+          "lo": 300,
+          "hi": null
+        }
+      ]
+    },
+    "market-risk-sentiment::vix": {
+      "category": "markets",
+      "category_title": "Markets & Financial Conditions",
+      "lens_id": "market-risk-sentiment",
+      "lens_title": "Risk Sentiment",
+      "indicator_id": "vix",
+      "title": "Volatility \u00b7 VIX",
+      "short": "VIX",
+      "taxonomy": "severity",
+      "why": "The equity 'fear gauge'. Below 20 is calm; 20\u201330 is nervous; 30+ is fearful.",
+      "axis": {
+        "kind": "level",
+        "unit": "",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "edges": [
+        20,
+        30
+      ],
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 20
+        },
+        {
+          "status": "watch",
+          "lo": 20,
+          "hi": 30
+        },
+        {
+          "status": "elevated",
+          "lo": 30,
+          "hi": null
+        }
+      ]
+    },
+    "market-risk-sentiment::hy-spread": {
+      "category": "markets",
+      "category_title": "Markets & Financial Conditions",
+      "lens_id": "market-risk-sentiment",
+      "lens_title": "Risk Sentiment",
+      "indicator_id": "hy-spread",
+      "title": "High-Yield Credit Spread",
+      "short": "HY spread",
+      "taxonomy": "severity",
+      "why": "The extra yield investors demand over Treasuries. Tight spreads signal calm credit; the bands mark where spreads have historically started to price real default risk (the high-yield band sits wider than investment-grade because junk spreads are structurally larger).",
+      "axis": {
+        "kind": "level",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "edges": [
+        4.0,
+        6.0
+      ],
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 4.0
+        },
+        {
+          "status": "watch",
+          "lo": 4.0,
+          "hi": 6.0
+        },
+        {
+          "status": "elevated",
+          "lo": 6.0,
+          "hi": null
+        }
+      ]
+    },
+    "market-risk-sentiment::ig-spread": {
+      "category": "markets",
+      "category_title": "Markets & Financial Conditions",
+      "lens_id": "market-risk-sentiment",
+      "lens_title": "Risk Sentiment",
+      "indicator_id": "ig-spread",
+      "title": "Investment-Grade Credit Spread",
+      "short": "IG spread",
+      "taxonomy": "severity",
+      "why": "The extra yield investors demand over Treasuries. Tight spreads signal calm credit; the bands mark where spreads have historically started to price real default risk (the high-yield band sits wider than investment-grade because junk spreads are structurally larger).",
+      "axis": {
+        "kind": "level",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "edges": [
+        1.5,
+        2.5
+      ],
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 1.5
+        },
+        {
+          "status": "watch",
+          "lo": 1.5,
+          "hi": 2.5
+        },
+        {
+          "status": "elevated",
+          "lo": 2.5,
+          "hi": null
+        }
+      ]
+    },
+    "market-risk-sentiment::nfci": {
+      "category": "markets",
+      "category_title": "Markets & Financial Conditions",
+      "lens_id": "market-risk-sentiment",
+      "lens_title": "Risk Sentiment",
+      "indicator_id": "nfci",
+      "title": "Financial Conditions \u00b7 NFCI",
+      "short": "NFCI",
+      "taxonomy": "severity",
+      "why": "The Chicago Fed NFCI, where zero is average. Positive means tighter (more stressed) than normal; 0.5+ is tight.",
+      "axis": {
+        "kind": "level",
+        "unit": "",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "edges": [
+        0,
+        0.5
+      ],
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 0
+        },
+        {
+          "status": "watch",
+          "lo": 0,
+          "hi": 0.5
+        },
+        {
+          "status": "elevated",
+          "lo": 0.5,
+          "hi": null
+        }
+      ]
+    },
+    "market-scoreboard::sp500": {
+      "category": "markets",
+      "category_title": "Markets & Financial Conditions",
+      "lens_id": "market-scoreboard",
+      "lens_title": "Asset-Class Scoreboard",
+      "indicator_id": "sp500",
+      "title": "S&P 500",
+      "short": "S&P 500",
+      "taxonomy": "neutral",
+      "note": "Part of a neutral scoreboard \u2014 it shows which way the price is moving, not whether that's good or bad."
+    },
+    "market-scoreboard::oil": {
+      "category": "markets",
+      "category_title": "Markets & Financial Conditions",
+      "lens_id": "market-scoreboard",
+      "lens_title": "Asset-Class Scoreboard",
+      "indicator_id": "oil",
+      "title": "Crude Oil \u00b7 WTI",
+      "short": "WTI oil",
+      "taxonomy": "neutral",
+      "note": "Part of a neutral scoreboard \u2014 it shows which way the price is moving, not whether that's good or bad."
+    },
+    "market-scoreboard::gold": {
+      "category": "markets",
+      "category_title": "Markets & Financial Conditions",
+      "lens_id": "market-scoreboard",
+      "lens_title": "Asset-Class Scoreboard",
+      "indicator_id": "gold",
+      "title": "Gold",
+      "short": "Gold",
+      "taxonomy": "neutral",
+      "note": "Part of a neutral scoreboard \u2014 it shows which way the price is moving, not whether that's good or bad."
+    },
+    "market-scoreboard::btc": {
+      "category": "markets",
+      "category_title": "Markets & Financial Conditions",
+      "lens_id": "market-scoreboard",
+      "lens_title": "Asset-Class Scoreboard",
+      "indicator_id": "btc",
+      "title": "Bitcoin",
+      "short": "Bitcoin",
+      "taxonomy": "neutral",
+      "note": "Part of a neutral scoreboard \u2014 it shows which way the price is moving, not whether that's good or bad."
+    },
+    "market-scoreboard::eth": {
+      "category": "markets",
+      "category_title": "Markets & Financial Conditions",
+      "lens_id": "market-scoreboard",
+      "lens_title": "Asset-Class Scoreboard",
+      "indicator_id": "eth",
+      "title": "Ethereum",
+      "short": "Ethereum",
+      "taxonomy": "neutral",
+      "note": "Part of a neutral scoreboard \u2014 it shows which way the price is moving, not whether that's good or bad."
+    },
+    "market-liquidity::m2-growth": {
+      "category": "markets",
+      "category_title": "Markets & Financial Conditions",
+      "lens_id": "market-liquidity",
+      "lens_title": "Liquidity & the Fed",
+      "indicator_id": "m2-growth",
+      "title": "M2 Money Supply \u00b7 year-over-year",
+      "short": "M2 growth",
+      "taxonomy": "severity",
+      "why": "Money-supply growth, two-sided: double-digit growth is historically inflationary (2020\u201321), while an outright contraction is rare and signals a monetary squeeze (2022\u201323). The calm band is roughly -1% to 7%.",
+      "axis": {
+        "kind": "yoy",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the year-over-year change"
+      },
+      "edges": [
+        -3,
+        -1,
+        7,
+        10
+      ],
+      "segments": [
+        {
+          "status": "elevated",
+          "lo": null,
+          "hi": -3
+        },
+        {
+          "status": "watch",
+          "lo": -3,
+          "hi": -1
+        },
+        {
+          "status": "ok",
+          "lo": -1,
+          "hi": 7
+        },
+        {
+          "status": "watch",
+          "lo": 7,
+          "hi": 10
+        },
+        {
+          "status": "elevated",
+          "lo": 10,
+          "hi": null
+        }
+      ]
+    },
+    "market-liquidity::fed-balance-sheet": {
+      "category": "markets",
+      "category_title": "Markets & Financial Conditions",
+      "lens_id": "market-liquidity",
+      "lens_title": "Liquidity & the Fed",
+      "indicator_id": "fed-balance-sheet",
+      "title": "Fed Balance Sheet \u00b7 total assets",
+      "short": "Fed assets",
+      "taxonomy": "info",
+      "note": "A descriptive level of the monetary plumbing \u2014 this lens's verdict is carried by M2 money-supply growth."
+    },
+    "market-liquidity::bank-reserves": {
+      "category": "markets",
+      "category_title": "Markets & Financial Conditions",
+      "lens_id": "market-liquidity",
+      "lens_title": "Liquidity & the Fed",
+      "indicator_id": "bank-reserves",
+      "title": "Bank Reserves at the Fed",
+      "short": "Reserves",
+      "taxonomy": "info",
+      "note": "A descriptive level of the monetary plumbing \u2014 this lens's verdict is carried by M2 money-supply growth."
+    },
+    "market-liquidity::reverse-repo": {
+      "category": "markets",
+      "category_title": "Markets & Financial Conditions",
+      "lens_id": "market-liquidity",
+      "lens_title": "Liquidity & the Fed",
+      "indicator_id": "reverse-repo",
+      "title": "Overnight Reverse Repo",
+      "short": "Reverse repo",
+      "taxonomy": "info",
+      "note": "A descriptive level of the monetary plumbing \u2014 this lens's verdict is carried by M2 money-supply growth."
+    },
+    "crypto-structure::btc-dominance": {
+      "category": "markets",
+      "category_title": "Markets & Financial Conditions",
+      "lens_id": "crypto-structure",
+      "lens_title": "Crypto Market Structure",
+      "indicator_id": "btc-dominance",
+      "title": "Bitcoin Dominance",
+      "short": "BTC dominance",
+      "taxonomy": "neutral",
+      "note": "A structural read on how money is rotating within crypto \u2014 not a good-or-bad verdict."
+    },
+    "crypto-structure::crypto-rotation": {
+      "category": "markets",
+      "category_title": "Markets & Financial Conditions",
+      "lens_id": "crypto-structure",
+      "lens_title": "Crypto Market Structure",
+      "indicator_id": "crypto-rotation",
+      "title": "Large-vs-Small Rotation",
+      "short": "Alt rotation",
+      "taxonomy": "neutral",
+      "note": "A structural read on how money is rotating within crypto \u2014 not a good-or-bad verdict."
+    },
+    "crypto-structure::btc-eth-ratio": {
+      "category": "markets",
+      "category_title": "Markets & Financial Conditions",
+      "lens_id": "crypto-structure",
+      "lens_title": "Crypto Market Structure",
+      "indicator_id": "btc-eth-ratio",
+      "title": "Bitcoin / Ether Ratio",
+      "short": "BTC/ETH",
+      "taxonomy": "neutral",
+      "note": "A structural read on how money is rotating within crypto \u2014 not a good-or-bad verdict."
+    },
+    "consumer-spending::retail-sales": {
+      "category": "consumer",
+      "category_title": "The Consumer",
+      "lens_id": "consumer-spending",
+      "lens_title": "Consumer Spending",
+      "indicator_id": "retail-sales",
+      "title": "Retail Sales \u00b7 year-over-year",
+      "short": "Retail sales",
+      "taxonomy": "severity",
+      "why": "Scored on the year-over-year change, two-sided: both an overheating boom and a sharp contraction raise severity, because each is its own kind of instability. The quiet middle band is ok.",
+      "axis": {
+        "kind": "yoy",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the year-over-year change"
+      },
+      "edges": [
+        -8,
+        -4,
+        -1,
+        8,
+        15,
+        25
+      ],
+      "segments": [
+        {
+          "status": "alert",
+          "lo": null,
+          "hi": -8
+        },
+        {
+          "status": "elevated",
+          "lo": -8,
+          "hi": -4
+        },
+        {
+          "status": "watch",
+          "lo": -4,
+          "hi": -1
+        },
+        {
+          "status": "ok",
+          "lo": -1,
+          "hi": 8
+        },
+        {
+          "status": "watch",
+          "lo": 8,
+          "hi": 15
+        },
+        {
+          "status": "elevated",
+          "lo": 15,
+          "hi": 25
+        },
+        {
+          "status": "alert",
+          "lo": 25,
+          "hi": null
+        }
+      ]
+    },
+    "consumer-spending::real-spending": {
+      "category": "consumer",
+      "category_title": "The Consumer",
+      "lens_id": "consumer-spending",
+      "lens_title": "Consumer Spending",
+      "indicator_id": "real-spending",
+      "title": "Real Consumer Spending \u00b7 year-over-year",
+      "short": "Real spending",
+      "taxonomy": "severity",
+      "why": "Scored on the year-over-year change, two-sided: both an overheating boom and a sharp contraction raise severity, because each is its own kind of instability. The quiet middle band is ok.",
+      "axis": {
+        "kind": "yoy",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the year-over-year change"
+      },
+      "edges": [
+        -4,
+        -2,
+        -0.5,
+        4,
+        6,
+        9
+      ],
+      "segments": [
+        {
+          "status": "alert",
+          "lo": null,
+          "hi": -4
+        },
+        {
+          "status": "elevated",
+          "lo": -4,
+          "hi": -2
+        },
+        {
+          "status": "watch",
+          "lo": -2,
+          "hi": -0.5
+        },
+        {
+          "status": "ok",
+          "lo": -0.5,
+          "hi": 4
+        },
+        {
+          "status": "watch",
+          "lo": 4,
+          "hi": 6
+        },
+        {
+          "status": "elevated",
+          "lo": 6,
+          "hi": 9
+        },
+        {
+          "status": "alert",
+          "lo": 9,
+          "hi": null
+        }
+      ]
+    },
+    "consumer-spending::auto-sales": {
+      "category": "consumer",
+      "category_title": "The Consumer",
+      "lens_id": "consumer-spending",
+      "lens_title": "Consumer Spending",
+      "indicator_id": "auto-sales",
+      "title": "Vehicle Sales \u00b7 annual rate",
+      "short": "Auto sales",
+      "taxonomy": "severity",
+      "why": "Light-vehicle sales (annual-rate millions) \u2014 the big-ticket purchase households cut first. ~15M+ is healthy; the 2009 and 2020 troughs near 9M anchor the alert band.",
+      "axis": {
+        "kind": "level",
+        "unit": "M",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "edges": [
+        12,
+        13.5,
+        15
+      ],
+      "segments": [
+        {
+          "status": "alert",
+          "lo": null,
+          "hi": 12
+        },
+        {
+          "status": "elevated",
+          "lo": 12,
+          "hi": 13.5
+        },
+        {
+          "status": "watch",
+          "lo": 13.5,
+          "hi": 15
+        },
+        {
+          "status": "ok",
+          "lo": 15,
+          "hi": null
+        }
+      ]
+    },
+    "consumer-credit::card-delinquency": {
+      "category": "consumer",
+      "category_title": "The Consumer",
+      "lens_id": "consumer-credit",
+      "lens_title": "Consumer Credit Stress",
+      "indicator_id": "card-delinquency",
+      "title": "Credit-Card Delinquency Rate",
+      "short": "Card delinq.",
+      "taxonomy": "severity",
+      "why": "Delinquency-rate levels, calibrated against history \u2014 bank credit-card delinquency peaked near 6.8% in 2009. Low and steady is ok; climbing toward past-crisis levels escalates.",
+      "axis": {
+        "kind": "level",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "edges": [
+        2.5,
+        4,
+        6
+      ],
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 2.5
+        },
+        {
+          "status": "watch",
+          "lo": 2.5,
+          "hi": 4
+        },
+        {
+          "status": "elevated",
+          "lo": 4,
+          "hi": 6
+        },
+        {
+          "status": "alert",
+          "lo": 6,
+          "hi": null
+        }
+      ]
+    },
+    "consumer-credit::consumer-delinquency": {
+      "category": "consumer",
+      "category_title": "The Consumer",
+      "lens_id": "consumer-credit",
+      "lens_title": "Consumer Credit Stress",
+      "indicator_id": "consumer-delinquency",
+      "title": "Consumer-Loan Delinquency Rate",
+      "short": "Loan delinq.",
+      "taxonomy": "severity",
+      "why": "Delinquency-rate levels, calibrated against history \u2014 bank credit-card delinquency peaked near 6.8% in 2009. Low and steady is ok; climbing toward past-crisis levels escalates.",
+      "axis": {
+        "kind": "level",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "edges": [
+        2.5,
+        3.5,
+        4.5
+      ],
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 2.5
+        },
+        {
+          "status": "watch",
+          "lo": 2.5,
+          "hi": 3.5
+        },
+        {
+          "status": "elevated",
+          "lo": 3.5,
+          "hi": 4.5
+        },
+        {
+          "status": "alert",
+          "lo": 4.5,
+          "hi": null
+        }
+      ]
+    },
+    "consumer-credit::revolving-credit": {
+      "category": "consumer",
+      "category_title": "The Consumer",
+      "lens_id": "consumer-credit",
+      "lens_title": "Consumer Credit Stress",
+      "indicator_id": "revolving-credit",
+      "title": "Card Balances \u00b7 year-over-year",
+      "short": "Card balances",
+      "taxonomy": "severity",
+      "why": "Credit-card balance growth. Growing faster than incomes (8%+) means households are leaning on cards; shrinking balances mean paying down.",
+      "axis": {
+        "kind": "yoy",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the year-over-year change"
+      },
+      "edges": [
+        8,
+        12
+      ],
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 8
+        },
+        {
+          "status": "watch",
+          "lo": 8,
+          "hi": 12
+        },
+        {
+          "status": "elevated",
+          "lo": 12,
+          "hi": null
+        }
+      ]
+    },
+    "consumer-credit::debt-service": {
+      "category": "consumer",
+      "category_title": "The Consumer",
+      "lens_id": "consumer-credit",
+      "lens_title": "Consumer Credit Stress",
+      "indicator_id": "debt-service",
+      "title": "Household Debt Service \u00b7 % of income",
+      "short": "Debt service",
+      "taxonomy": "severity",
+      "why": "Household debt payments as a share of income. Above ~10.5% is above the comfortable range; the 2007 danger level of ~13% anchors the alert band.",
+      "axis": {
+        "kind": "level",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "edges": [
+        10.5,
+        12,
+        13
+      ],
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 10.5
+        },
+        {
+          "status": "watch",
+          "lo": 10.5,
+          "hi": 12
+        },
+        {
+          "status": "elevated",
+          "lo": 12,
+          "hi": 13
+        },
+        {
+          "status": "alert",
+          "lo": 13,
+          "hi": null
+        }
+      ]
+    },
+    "consumer-income-savings::saving-rate": {
+      "category": "consumer",
+      "category_title": "The Consumer",
+      "lens_id": "consumer-income-savings",
+      "lens_title": "Household Income & Savings",
+      "indicator_id": "saving-rate",
+      "title": "Personal Saving Rate",
+      "short": "Saving rate",
+      "taxonomy": "severity",
+      "why": "The personal saving rate \u2014 the household shock absorber. The historical norm is 5\u20138%; below 5% is thin, below 3% is almost no cushion.",
+      "axis": {
+        "kind": "level",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "edges": [
+        3,
+        5
+      ],
+      "segments": [
+        {
+          "status": "elevated",
+          "lo": null,
+          "hi": 3
+        },
+        {
+          "status": "watch",
+          "lo": 3,
+          "hi": 5
+        },
+        {
+          "status": "ok",
+          "lo": 5,
+          "hi": null
+        }
+      ]
+    },
+    "consumer-income-savings::real-income": {
+      "category": "consumer",
+      "category_title": "The Consumer",
+      "lens_id": "consumer-income-savings",
+      "lens_title": "Household Income & Savings",
+      "indicator_id": "real-income",
+      "title": "Real Disposable Income \u00b7 year-over-year",
+      "short": "Real income",
+      "taxonomy": "severity",
+      "why": "Inflation-adjusted disposable income, the root of most consumer stress. Below zero is a warning; a 2%+ annual drop erodes purchasing power fast.",
+      "axis": {
+        "kind": "yoy",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the year-over-year change"
+      },
+      "edges": [
+        -2,
+        0
+      ],
+      "segments": [
+        {
+          "status": "elevated",
+          "lo": null,
+          "hi": -2
+        },
+        {
+          "status": "watch",
+          "lo": -2,
+          "hi": 0
+        },
+        {
+          "status": "ok",
+          "lo": 0,
+          "hi": null
+        }
+      ]
+    },
+    "consumer-income-savings::net-worth": {
+      "category": "consumer",
+      "category_title": "The Consumer",
+      "lens_id": "consumer-income-savings",
+      "lens_title": "Household Income & Savings",
+      "indicator_id": "net-worth",
+      "title": "Household Net Worth \u00b7 year-over-year",
+      "short": "Net worth",
+      "taxonomy": "severity",
+      "why": "Scored on the year-over-year change where FALLING is the stress signal \u2014 profits, new-business applications, capital-goods orders, sales. Growth is ok; the bands mark progressively deeper contractions.",
+      "axis": {
+        "kind": "yoy",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the year-over-year change"
+      },
+      "edges": [
+        -8,
+        -3,
+        0
+      ],
+      "segments": [
+        {
+          "status": "alert",
+          "lo": null,
+          "hi": -8
+        },
+        {
+          "status": "elevated",
+          "lo": -8,
+          "hi": -3
+        },
+        {
+          "status": "watch",
+          "lo": -3,
+          "hi": 0
+        },
+        {
+          "status": "ok",
+          "lo": 0,
+          "hi": null
+        }
+      ]
+    },
+    "consumer-sentiment::sentiment": {
+      "category": "consumer",
+      "category_title": "The Consumer",
+      "lens_id": "consumer-sentiment",
+      "lens_title": "Consumer Sentiment",
+      "indicator_id": "sentiment",
+      "title": "Consumer Sentiment (U. Michigan)",
+      "short": "Sentiment",
+      "taxonomy": "severity",
+      "why": "U. Michigan consumer sentiment, long-run range roughly 50\u2013110. 85+ is fine; the bands step down through recession-grade gloom; the 2022 record low was about 50.",
+      "axis": {
+        "kind": "level",
+        "unit": "",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "edges": [
+        55,
+        70,
+        85
+      ],
+      "segments": [
+        {
+          "status": "alert",
+          "lo": null,
+          "hi": 55
+        },
+        {
+          "status": "elevated",
+          "lo": 55,
+          "hi": 70
+        },
+        {
+          "status": "watch",
+          "lo": 70,
+          "hi": 85
+        },
+        {
+          "status": "ok",
+          "lo": 85,
+          "hi": null
+        }
+      ]
+    },
+    "consumer-sentiment::inflation-expectations": {
+      "category": "consumer",
+      "category_title": "The Consumer",
+      "lens_id": "consumer-sentiment",
+      "lens_title": "Consumer Sentiment",
+      "indicator_id": "inflation-expectations",
+      "title": "Inflation Expectations \u00b7 1-year ahead",
+      "short": "Inflation exp.",
+      "taxonomy": "severity",
+      "why": "One-year-ahead household inflation expectations, which the Fed watches for de-anchoring. Above ~3% is a touch high; 5.5%+ suggests expectations coming unmoored.",
+      "axis": {
+        "kind": "level",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "edges": [
+        3,
+        4,
+        5.5
+      ],
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 3
+        },
+        {
+          "status": "watch",
+          "lo": 3,
+          "hi": 4
+        },
+        {
+          "status": "elevated",
+          "lo": 4,
+          "hi": 5.5
+        },
+        {
+          "status": "alert",
+          "lo": 5.5,
+          "hi": null
+        }
+      ]
+    },
+    "energy-oil-fuels::gasoline": {
+      "category": "energy",
+      "category_title": "Energy & Commodities",
+      "lens_id": "energy-oil-fuels",
+      "lens_title": "Oil & Fuels",
+      "indicator_id": "gasoline",
+      "title": "Retail Gasoline \u00b7 Regular",
+      "short": "Gasoline",
+      "taxonomy": "severity",
+      "why": "Scored on the trailing-12-month change, because what strains a household is how fast a cost is rising, not its dollar level. The bands reflect how volatile each fuel or power price normally is; a falling cost reads as relief (ok).",
+      "axis": {
+        "kind": "yoy_computed",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the year-over-year change"
+      },
+      "edges": [
+        10,
+        25,
+        40
+      ],
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 10
+        },
+        {
+          "status": "watch",
+          "lo": 10,
+          "hi": 25
+        },
+        {
+          "status": "elevated",
+          "lo": 25,
+          "hi": 40
+        },
+        {
+          "status": "alert",
+          "lo": 40,
+          "hi": null
+        }
+      ]
+    },
+    "energy-oil-fuels::diesel": {
+      "category": "energy",
+      "category_title": "Energy & Commodities",
+      "lens_id": "energy-oil-fuels",
+      "lens_title": "Oil & Fuels",
+      "indicator_id": "diesel",
+      "title": "Retail Diesel \u00b7 On-Highway",
+      "short": "Diesel",
+      "taxonomy": "severity",
+      "why": "Scored on the trailing-12-month change, because what strains a household is how fast a cost is rising, not its dollar level. The bands reflect how volatile each fuel or power price normally is; a falling cost reads as relief (ok).",
+      "axis": {
+        "kind": "yoy_computed",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the year-over-year change"
+      },
+      "edges": [
+        10,
+        25,
+        40
+      ],
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 10
+        },
+        {
+          "status": "watch",
+          "lo": 10,
+          "hi": 25
+        },
+        {
+          "status": "elevated",
+          "lo": 25,
+          "hi": 40
+        },
+        {
+          "status": "alert",
+          "lo": 40,
+          "hi": null
+        }
+      ]
+    },
+    "energy-oil-fuels::crude-production": {
+      "category": "energy",
+      "category_title": "Energy & Commodities",
+      "lens_id": "energy-oil-fuels",
+      "lens_title": "Oil & Fuels",
+      "indicator_id": "crude-production",
+      "title": "U.S. Crude Oil Production",
+      "short": "Crude output",
+      "taxonomy": "info",
+      "note": "A physical supply-and-demand reading, not a household cost \u2014 this lens's verdict comes from the price indicators."
+    },
+    "energy-oil-fuels::crude-stocks": {
+      "category": "energy",
+      "category_title": "Energy & Commodities",
+      "lens_id": "energy-oil-fuels",
+      "lens_title": "Oil & Fuels",
+      "indicator_id": "crude-stocks",
+      "title": "Crude Inventories \u00b7 excl. SPR",
+      "short": "Crude stocks",
+      "taxonomy": "info",
+      "note": "A physical supply-and-demand reading, not a household cost \u2014 this lens's verdict comes from the price indicators."
+    },
+    "energy-natural-gas::henry-hub": {
+      "category": "energy",
+      "category_title": "Energy & Commodities",
+      "lens_id": "energy-natural-gas",
+      "lens_title": "Natural Gas",
+      "indicator_id": "henry-hub",
+      "title": "Henry Hub Spot Price",
+      "short": "Henry Hub",
+      "taxonomy": "severity",
+      "why": "Scored on the trailing-12-month change, because what strains a household is how fast a cost is rising, not its dollar level. The bands reflect how volatile each fuel or power price normally is; a falling cost reads as relief (ok).",
+      "axis": {
+        "kind": "yoy_computed",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the year-over-year change"
+      },
+      "edges": [
+        20,
+        50,
+        100
+      ],
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 20
+        },
+        {
+          "status": "watch",
+          "lo": 20,
+          "hi": 50
+        },
+        {
+          "status": "elevated",
+          "lo": 50,
+          "hi": 100
+        },
+        {
+          "status": "alert",
+          "lo": 100,
+          "hi": null
+        }
+      ]
+    },
+    "energy-natural-gas::gas-storage": {
+      "category": "energy",
+      "category_title": "Energy & Commodities",
+      "lens_id": "energy-natural-gas",
+      "lens_title": "Natural Gas",
+      "indicator_id": "gas-storage",
+      "title": "Working Gas in Storage \u00b7 Lower 48",
+      "short": "Gas storage",
+      "taxonomy": "info",
+      "note": "A physical supply-and-demand reading, not a household cost \u2014 this lens's verdict comes from the price indicators."
+    },
+    "energy-natural-gas::gas-production": {
+      "category": "energy",
+      "category_title": "Energy & Commodities",
+      "lens_id": "energy-natural-gas",
+      "lens_title": "Natural Gas",
+      "indicator_id": "gas-production",
+      "title": "U.S. Dry Gas Production",
+      "short": "Gas output",
+      "taxonomy": "info",
+      "note": "A physical supply-and-demand reading, not a household cost \u2014 this lens's verdict comes from the price indicators."
+    },
+    "energy-natural-gas::lng-exports": {
+      "category": "energy",
+      "category_title": "Energy & Commodities",
+      "lens_id": "energy-natural-gas",
+      "lens_title": "Natural Gas",
+      "indicator_id": "lng-exports",
+      "title": "U.S. LNG Exports",
+      "short": "LNG exports",
+      "taxonomy": "info",
+      "note": "A physical supply-and-demand reading, not a household cost \u2014 this lens's verdict comes from the price indicators."
+    },
+    "energy-electricity::electricity-price": {
+      "category": "energy",
+      "category_title": "Energy & Commodities",
+      "lens_id": "energy-electricity",
+      "lens_title": "Electricity & the Grid",
+      "indicator_id": "electricity-price",
+      "title": "Retail Electricity \u00b7 Residential",
+      "short": "Power price",
+      "taxonomy": "severity",
+      "why": "Scored on the trailing-12-month change, because what strains a household is how fast a cost is rising, not its dollar level. The bands reflect how volatile each fuel or power price normally is; a falling cost reads as relief (ok).",
+      "axis": {
+        "kind": "yoy_computed",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the year-over-year change"
+      },
+      "edges": [
+        5,
+        10,
+        20
+      ],
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 5
+        },
+        {
+          "status": "watch",
+          "lo": 5,
+          "hi": 10
+        },
+        {
+          "status": "elevated",
+          "lo": 10,
+          "hi": 20
+        },
+        {
+          "status": "alert",
+          "lo": 20,
+          "hi": null
+        }
+      ]
+    },
+    "energy-electricity::renewables-share": {
+      "category": "energy",
+      "category_title": "Energy & Commodities",
+      "lens_id": "energy-electricity",
+      "lens_title": "Electricity & the Grid",
+      "indicator_id": "renewables-share",
+      "title": "Renewables \u00b7 Share of Generation",
+      "short": "Renewables",
+      "taxonomy": "info",
+      "note": "A physical supply-and-demand reading, not a household cost \u2014 this lens's verdict comes from the price indicators."
+    },
+    "energy-electricity::natgas-share": {
+      "category": "energy",
+      "category_title": "Energy & Commodities",
+      "lens_id": "energy-electricity",
+      "lens_title": "Electricity & the Grid",
+      "indicator_id": "natgas-share",
+      "title": "Natural Gas \u00b7 Share of Generation",
+      "short": "Gas share",
+      "taxonomy": "info",
+      "note": "A physical supply-and-demand reading, not a household cost \u2014 this lens's verdict comes from the price indicators."
+    },
+    "energy-electricity::net-generation": {
+      "category": "energy",
+      "category_title": "Energy & Commodities",
+      "lens_id": "energy-electricity",
+      "lens_title": "Electricity & the Grid",
+      "indicator_id": "net-generation",
+      "title": "Total Net Generation",
+      "short": "Net generation",
+      "taxonomy": "info",
+      "note": "A physical supply-and-demand reading, not a household cost \u2014 this lens's verdict comes from the price indicators."
+    },
+    "energy-commodities::food-index": {
+      "category": "energy",
+      "category_title": "Energy & Commodities",
+      "lens_id": "energy-commodities",
+      "lens_title": "Commodities & Materials",
+      "indicator_id": "food-index",
+      "title": "Global Food Prices \u00b7 year-over-year",
+      "short": "Food",
+      "taxonomy": "severity",
+      "why": "A cost already expressed as a year-over-year rate. Same logic as the fuel costs: faster annual increases mean more household strain; flat or falling is ok.",
+      "axis": {
+        "kind": "yoy",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the year-over-year change"
+      },
+      "edges": [
+        5,
+        12,
+        25
+      ],
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 5
+        },
+        {
+          "status": "watch",
+          "lo": 5,
+          "hi": 12
+        },
+        {
+          "status": "elevated",
+          "lo": 12,
+          "hi": 25
+        },
+        {
+          "status": "alert",
+          "lo": 25,
+          "hi": null
+        }
+      ]
+    },
+    "energy-commodities::copper": {
+      "category": "energy",
+      "category_title": "Energy & Commodities",
+      "lens_id": "energy-commodities",
+      "lens_title": "Commodities & Materials",
+      "indicator_id": "copper",
+      "title": "Copper \u00b7 \u201cDr. Copper\u201d",
+      "short": "Copper",
+      "taxonomy": "info",
+      "note": "A market price has no inherent good-or-bad level \u2014 higher or lower isn't itself better or worse."
+    },
+    "energy-commodities::broad-commodities": {
+      "category": "energy",
+      "category_title": "Energy & Commodities",
+      "lens_id": "energy-commodities",
+      "lens_title": "Commodities & Materials",
+      "indicator_id": "broad-commodities",
+      "title": "Broad Commodities \u00b7 year-over-year",
+      "short": "Commodities",
+      "taxonomy": "info",
+      "note": "A market price has no inherent good-or-bad level \u2014 higher or lower isn't itself better or worse."
+    },
+    "housing-home-prices::case-shiller": {
+      "category": "housing",
+      "category_title": "Housing & Real Estate",
+      "lens_id": "housing-home-prices",
+      "lens_title": "Home-Price Stability",
+      "indicator_id": "case-shiller",
+      "title": "Case-Shiller Home Prices \u00b7 year-over-year",
+      "short": "Case-Shiller",
+      "taxonomy": "severity",
+      "why": "Scored on the year-over-year change, two-sided: both an overheating boom and a sharp contraction raise severity, because each is its own kind of instability. The quiet middle band is ok.",
+      "axis": {
+        "kind": "yoy",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the year-over-year change"
+      },
+      "edges": [
+        -10,
+        -5,
+        -2,
+        6,
+        10,
+        15
+      ],
+      "segments": [
+        {
+          "status": "alert",
+          "lo": null,
+          "hi": -10
+        },
+        {
+          "status": "elevated",
+          "lo": -10,
+          "hi": -5
+        },
+        {
+          "status": "watch",
+          "lo": -5,
+          "hi": -2
+        },
+        {
+          "status": "ok",
+          "lo": -2,
+          "hi": 6
+        },
+        {
+          "status": "watch",
+          "lo": 6,
+          "hi": 10
+        },
+        {
+          "status": "elevated",
+          "lo": 10,
+          "hi": 15
+        },
+        {
+          "status": "alert",
+          "lo": 15,
+          "hi": null
+        }
+      ]
+    },
+    "housing-home-prices::existing-home-sales": {
+      "category": "housing",
+      "category_title": "Housing & Real Estate",
+      "lens_id": "housing-home-prices",
+      "lens_title": "Home-Price Stability",
+      "indicator_id": "existing-home-sales",
+      "title": "Existing-Home Sales \u00b7 annual rate",
+      "short": "Home sales",
+      "taxonomy": "severity",
+      "why": "Two-sided on the trailing-12-month change: a market running too hot (a bubble) and one freezing (a bust) are both unhealthy, so both raise severity. The calm middle is a balanced market.",
+      "axis": {
+        "kind": "yoy_computed",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the year-over-year change"
+      },
+      "edges": [
+        -30,
+        -20,
+        -10,
+        10,
+        20,
+        30
+      ],
+      "segments": [
+        {
+          "status": "alert",
+          "lo": null,
+          "hi": -30
+        },
+        {
+          "status": "elevated",
+          "lo": -30,
+          "hi": -20
+        },
+        {
+          "status": "watch",
+          "lo": -20,
+          "hi": -10
+        },
+        {
+          "status": "ok",
+          "lo": -10,
+          "hi": 10
+        },
+        {
+          "status": "watch",
+          "lo": 10,
+          "hi": 20
+        },
+        {
+          "status": "elevated",
+          "lo": 20,
+          "hi": 30
+        },
+        {
+          "status": "alert",
+          "lo": 30,
+          "hi": null
+        }
+      ]
+    },
+    "housing-home-prices::median-price": {
+      "category": "housing",
+      "category_title": "Housing & Real Estate",
+      "lens_id": "housing-home-prices",
+      "lens_title": "Home-Price Stability",
+      "indicator_id": "median-price",
+      "title": "Median Sales Price of Houses Sold",
+      "short": "Median price",
+      "taxonomy": "severity",
+      "why": "Two-sided on the trailing-12-month change: a market running too hot (a bubble) and one freezing (a bust) are both unhealthy, so both raise severity. The calm middle is a balanced market.",
+      "axis": {
+        "kind": "yoy_computed",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the year-over-year change"
+      },
+      "edges": [
+        -10,
+        -5,
+        -2,
+        6,
+        10,
+        15
+      ],
+      "segments": [
+        {
+          "status": "alert",
+          "lo": null,
+          "hi": -10
+        },
+        {
+          "status": "elevated",
+          "lo": -10,
+          "hi": -5
+        },
+        {
+          "status": "watch",
+          "lo": -5,
+          "hi": -2
+        },
+        {
+          "status": "ok",
+          "lo": -2,
+          "hi": 6
+        },
+        {
+          "status": "watch",
+          "lo": 6,
+          "hi": 10
+        },
+        {
+          "status": "elevated",
+          "lo": 10,
+          "hi": 15
+        },
+        {
+          "status": "alert",
+          "lo": 15,
+          "hi": null
+        }
+      ]
+    },
+    "housing-affordability::affordability-index": {
+      "category": "housing",
+      "category_title": "Housing & Real Estate",
+      "lens_id": "housing-affordability",
+      "lens_title": "Affordability & Financing",
+      "indicator_id": "affordability-index",
+      "title": "Housing Affordability Index (NAR)",
+      "short": "Affordability",
+      "taxonomy": "severity",
+      "why": "The NAR affordability index, where 100 means the median family just barely affords the median home. Higher is better, so the bands are inverted: 130+ is comfortable, below 95 is out of reach.",
+      "axis": {
+        "kind": "level",
+        "unit": "",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "edges": [
+        95,
+        110,
+        130
+      ],
+      "segments": [
+        {
+          "status": "alert",
+          "lo": null,
+          "hi": 95
+        },
+        {
+          "status": "elevated",
+          "lo": 95,
+          "hi": 110
+        },
+        {
+          "status": "watch",
+          "lo": 110,
+          "hi": 130
+        },
+        {
+          "status": "ok",
+          "lo": 130,
+          "hi": null
+        }
+      ]
+    },
+    "housing-affordability::debt-service": {
+      "category": "housing",
+      "category_title": "Housing & Real Estate",
+      "lens_id": "housing-affordability",
+      "lens_title": "Affordability & Financing",
+      "indicator_id": "debt-service",
+      "title": "Mortgage Debt Service \u00b7 % of income",
+      "short": "Debt service",
+      "taxonomy": "severity",
+      "why": "Mortgage payments as a share of income, calibrated to its own history: median ~6.1%, the 2007 peak ~7.2%, the early-1980s extreme ~8.9%.",
+      "axis": {
+        "kind": "level",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "edges": [
+        6,
+        7,
+        8
+      ],
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 6
+        },
+        {
+          "status": "watch",
+          "lo": 6,
+          "hi": 7
+        },
+        {
+          "status": "elevated",
+          "lo": 7,
+          "hi": 8
+        },
+        {
+          "status": "alert",
+          "lo": 8,
+          "hi": null
+        }
+      ]
+    },
+    "housing-affordability::delinquency": {
+      "category": "housing",
+      "category_title": "Housing & Real Estate",
+      "lens_id": "housing-affordability",
+      "lens_title": "Affordability & Financing",
+      "indicator_id": "delinquency",
+      "title": "Mortgage Delinquency Rate \u00b7 banks",
+      "short": "Delinquency",
+      "taxonomy": "severity",
+      "why": "Single-family mortgages past due at banks. Under 2% is healthy; the bands climb toward the 2009 crisis peak of about 11%.",
+      "axis": {
+        "kind": "level",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "edges": [
+        2,
+        4,
+        7
+      ],
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 2
+        },
+        {
+          "status": "watch",
+          "lo": 2,
+          "hi": 4
+        },
+        {
+          "status": "elevated",
+          "lo": 4,
+          "hi": 7
+        },
+        {
+          "status": "alert",
+          "lo": 7,
+          "hi": null
+        }
+      ]
+    },
+    "housing-affordability::mortgage-rate": {
+      "category": "housing",
+      "category_title": "Housing & Real Estate",
+      "lens_id": "housing-affordability",
+      "lens_title": "Affordability & Financing",
+      "indicator_id": "mortgage-rate",
+      "title": "30-Year Fixed Mortgage Rate",
+      "short": "30-yr mortgage",
+      "taxonomy": "severity",
+      "why": "30-year mortgage-rate levels. Below ~5.5% is moderate by recent standards; the bands step up through where affordability gets stretched (6.5%) and where most buyers are frozen out (7.5%).",
+      "axis": {
+        "kind": "level",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "edges": [
+        5.5,
+        6.5,
+        7.5
+      ],
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 5.5
+        },
+        {
+          "status": "watch",
+          "lo": 5.5,
+          "hi": 6.5
+        },
+        {
+          "status": "elevated",
+          "lo": 6.5,
+          "hi": 7.5
+        },
+        {
+          "status": "alert",
+          "lo": 7.5,
+          "hi": null
+        }
+      ]
+    },
+    "housing-supply-construction::months-supply": {
+      "category": "housing",
+      "category_title": "Housing & Real Estate",
+      "lens_id": "housing-supply-construction",
+      "lens_title": "Supply & Construction",
+      "indicator_id": "months-supply",
+      "title": "Months of New-Home Supply",
+      "short": "Months' supply",
+      "taxonomy": "severity",
+      "why": "Months of new-home supply, two-sided: 4\u20136 months is balanced, under 3 is a tight market that props up prices, and 8+ is a glut that pressures builders.",
+      "axis": {
+        "kind": "level",
+        "unit": "months",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "edges": [
+        3,
+        4,
+        6,
+        8,
+        10
+      ],
+      "segments": [
+        {
+          "status": "elevated",
+          "lo": null,
+          "hi": 3
+        },
+        {
+          "status": "watch",
+          "lo": 3,
+          "hi": 4
+        },
+        {
+          "status": "ok",
+          "lo": 4,
+          "hi": 6
+        },
+        {
+          "status": "watch",
+          "lo": 6,
+          "hi": 8
+        },
+        {
+          "status": "elevated",
+          "lo": 8,
+          "hi": 10
+        },
+        {
+          "status": "alert",
+          "lo": 10,
+          "hi": null
+        }
+      ]
+    },
+    "housing-supply-construction::active-listings": {
+      "category": "housing",
+      "category_title": "Housing & Real Estate",
+      "lens_id": "housing-supply-construction",
+      "lens_title": "Supply & Construction",
+      "indicator_id": "active-listings",
+      "title": "Active Listings (Realtor.com) \u00b7 millions",
+      "short": "Listings",
+      "taxonomy": "info",
+      "note": "Months' supply, which adjusts for the sales pace, carries this lens's supply verdict; this is the raw count for context."
+    },
+    "housing-supply-construction::housing-starts": {
+      "category": "housing",
+      "category_title": "Housing & Real Estate",
+      "lens_id": "housing-supply-construction",
+      "lens_title": "Supply & Construction",
+      "indicator_id": "housing-starts",
+      "title": "Housing Starts \u00b7 thousands, annual rate",
+      "short": "Starts",
+      "taxonomy": "severity",
+      "why": "Two-sided on the trailing-12-month change: a market running too hot (a bubble) and one freezing (a bust) are both unhealthy, so both raise severity. The calm middle is a balanced market.",
+      "axis": {
+        "kind": "yoy_computed",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the year-over-year change"
+      },
+      "edges": [
+        -35,
+        -20,
+        -10,
+        20,
+        35,
+        50
+      ],
+      "segments": [
+        {
+          "status": "alert",
+          "lo": null,
+          "hi": -35
+        },
+        {
+          "status": "elevated",
+          "lo": -35,
+          "hi": -20
+        },
+        {
+          "status": "watch",
+          "lo": -20,
+          "hi": -10
+        },
+        {
+          "status": "ok",
+          "lo": -10,
+          "hi": 20
+        },
+        {
+          "status": "watch",
+          "lo": 20,
+          "hi": 35
+        },
+        {
+          "status": "elevated",
+          "lo": 35,
+          "hi": 50
+        },
+        {
+          "status": "alert",
+          "lo": 50,
+          "hi": null
+        }
+      ]
+    },
+    "housing-supply-construction::building-permits": {
+      "category": "housing",
+      "category_title": "Housing & Real Estate",
+      "lens_id": "housing-supply-construction",
+      "lens_title": "Supply & Construction",
+      "indicator_id": "building-permits",
+      "title": "Building Permits \u00b7 thousands, annual rate",
+      "short": "Permits",
+      "taxonomy": "severity",
+      "why": "Two-sided on the trailing-12-month change: a market running too hot (a bubble) and one freezing (a bust) are both unhealthy, so both raise severity. The calm middle is a balanced market.",
+      "axis": {
+        "kind": "yoy_computed",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the year-over-year change"
+      },
+      "edges": [
+        -35,
+        -20,
+        -10,
+        20,
+        35,
+        50
+      ],
+      "segments": [
+        {
+          "status": "alert",
+          "lo": null,
+          "hi": -35
+        },
+        {
+          "status": "elevated",
+          "lo": -35,
+          "hi": -20
+        },
+        {
+          "status": "watch",
+          "lo": -20,
+          "hi": -10
+        },
+        {
+          "status": "ok",
+          "lo": -10,
+          "hi": 20
+        },
+        {
+          "status": "watch",
+          "lo": 20,
+          "hi": 35
+        },
+        {
+          "status": "elevated",
+          "lo": 35,
+          "hi": 50
+        },
+        {
+          "status": "alert",
+          "lo": 50,
+          "hi": null
+        }
+      ]
+    },
+    "housing-rent-shelter::rent-cpi": {
+      "category": "housing",
+      "category_title": "Housing & Real Estate",
+      "lens_id": "housing-rent-shelter",
+      "lens_title": "Rent & Shelter",
+      "indicator_id": "rent-cpi",
+      "title": "Rent Inflation \u00b7 CPI rent, year-over-year",
+      "short": "Rent CPI",
+      "taxonomy": "severity",
+      "why": "A cost already expressed as a year-over-year rate. Same logic as the fuel costs: faster annual increases mean more household strain; flat or falling is ok.",
+      "axis": {
+        "kind": "yoy",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the year-over-year change"
+      },
+      "edges": [
+        4,
+        6,
+        9
+      ],
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 4
+        },
+        {
+          "status": "watch",
+          "lo": 4,
+          "hi": 6
+        },
+        {
+          "status": "elevated",
+          "lo": 6,
+          "hi": 9
+        },
+        {
+          "status": "alert",
+          "lo": 9,
+          "hi": null
+        }
+      ]
+    },
+    "housing-rent-shelter::owners-equivalent-rent": {
+      "category": "housing",
+      "category_title": "Housing & Real Estate",
+      "lens_id": "housing-rent-shelter",
+      "lens_title": "Rent & Shelter",
+      "indicator_id": "owners-equivalent-rent",
+      "title": "Owners' Equivalent Rent \u00b7 year-over-year",
+      "short": "OER",
+      "taxonomy": "severity",
+      "why": "A cost already expressed as a year-over-year rate. Same logic as the fuel costs: faster annual increases mean more household strain; flat or falling is ok.",
+      "axis": {
+        "kind": "yoy",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the year-over-year change"
+      },
+      "edges": [
+        4,
+        6,
+        9
+      ],
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 4
+        },
+        {
+          "status": "watch",
+          "lo": 4,
+          "hi": 6
+        },
+        {
+          "status": "elevated",
+          "lo": 6,
+          "hi": 9
+        },
+        {
+          "status": "alert",
+          "lo": 9,
+          "hi": null
+        }
+      ]
+    },
+    "housing-rent-shelter::rental-vacancy": {
+      "category": "housing",
+      "category_title": "Housing & Real Estate",
+      "lens_id": "housing-rent-shelter",
+      "lens_title": "Rent & Shelter",
+      "indicator_id": "rental-vacancy",
+      "title": "Rental Vacancy Rate",
+      "short": "Vacancy",
+      "taxonomy": "severity",
+      "why": "Rental vacancy, two-sided: 6\u20138% is a healthy balance, low vacancy gives landlords pricing power (rent pressure), and high vacancy hands it back to renters.",
+      "axis": {
+        "kind": "level",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "edges": [
+        5,
+        6,
+        8,
+        10
+      ],
+      "segments": [
+        {
+          "status": "elevated",
+          "lo": null,
+          "hi": 5
+        },
+        {
+          "status": "watch",
+          "lo": 5,
+          "hi": 6
+        },
+        {
+          "status": "ok",
+          "lo": 6,
+          "hi": 8
+        },
+        {
+          "status": "watch",
+          "lo": 8,
+          "hi": 10
+        },
+        {
+          "status": "elevated",
+          "lo": 10,
+          "hi": null
+        }
+      ]
+    },
+    "housing-rent-shelter::homeownership": {
+      "category": "housing",
+      "category_title": "Housing & Real Estate",
+      "lens_id": "housing-rent-shelter",
+      "lens_title": "Rent & Shelter",
+      "indicator_id": "homeownership",
+      "title": "Homeownership Rate",
+      "short": "Ownership",
+      "taxonomy": "info",
+      "note": "A descriptive level shown for context \u2014 neither a high nor a low reading is simply good or bad."
+    },
+    "global-dollar-currencies::dollar-yoy": {
+      "category": "global",
+      "category_title": "Global Economy",
+      "lens_id": "global-dollar-currencies",
+      "lens_title": "The Dollar & Currencies",
+      "indicator_id": "dollar-yoy",
+      "title": "Broad Dollar Index \u00b7 year-over-year",
+      "short": "Dollar YoY",
+      "taxonomy": "severity",
+      "why": "The broad dollar's year-over-year move, scored two-sided on magnitude: a surging dollar squeezes the world's dollar borrowers and a sliding one imports inflation, so both raise severity. Under ~5% is normal drift.",
+      "axis": {
+        "kind": "yoy",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the year-over-year change"
+      },
+      "edges": [
+        -12,
+        -9,
+        -5,
+        5,
+        9,
+        12
+      ],
+      "segments": [
+        {
+          "status": "alert",
+          "lo": null,
+          "hi": -12
+        },
+        {
+          "status": "elevated",
+          "lo": -12,
+          "hi": -9
+        },
+        {
+          "status": "watch",
+          "lo": -9,
+          "hi": -5
+        },
+        {
+          "status": "ok",
+          "lo": -5,
+          "hi": 5
+        },
+        {
+          "status": "watch",
+          "lo": 5,
+          "hi": 9
+        },
+        {
+          "status": "elevated",
+          "lo": 9,
+          "hi": 12
+        },
+        {
+          "status": "alert",
+          "lo": 12,
+          "hi": null
+        }
+      ]
+    },
+    "global-dollar-currencies::euro": {
+      "category": "global",
+      "category_title": "Global Economy",
+      "lens_id": "global-dollar-currencies",
+      "lens_title": "The Dollar & Currencies",
+      "indicator_id": "euro",
+      "title": "Euro \u00b7 dollars per euro",
+      "short": "Euro",
+      "taxonomy": "info",
+      "note": "A market price has no inherent good-or-bad level \u2014 higher or lower isn't itself better or worse."
+    },
+    "global-dollar-currencies::yen": {
+      "category": "global",
+      "category_title": "Global Economy",
+      "lens_id": "global-dollar-currencies",
+      "lens_title": "The Dollar & Currencies",
+      "indicator_id": "yen",
+      "title": "Japanese Yen \u00b7 yen per dollar",
+      "short": "Yen",
+      "taxonomy": "info",
+      "note": "A market price has no inherent good-or-bad level \u2014 higher or lower isn't itself better or worse."
+    },
+    "global-dollar-currencies::yuan": {
+      "category": "global",
+      "category_title": "Global Economy",
+      "lens_id": "global-dollar-currencies",
+      "lens_title": "The Dollar & Currencies",
+      "indicator_id": "yuan",
+      "title": "Chinese Yuan \u00b7 yuan per dollar",
+      "short": "Yuan",
+      "taxonomy": "info",
+      "note": "A market price has no inherent good-or-bad level \u2014 higher or lower isn't itself better or worse."
+    },
+    "global-growth::world-growth": {
+      "category": "global",
+      "category_title": "Global Economy",
+      "lens_id": "global-growth",
+      "lens_title": "Global Growth",
+      "indicator_id": "world-growth",
+      "title": "World Real GDP Growth \u00b7 annual",
+      "short": "World growth",
+      "taxonomy": "severity",
+      "why": "Annual world real-GDP growth, scored against its long-run trend of about 3.5%. Below roughly 2% is what economists call a global recession; the bands step down from trend toward that line.",
+      "axis": {
+        "kind": "level",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "edges": [
+        2.0,
+        2.5,
+        3.2
+      ],
+      "segments": [
+        {
+          "status": "alert",
+          "lo": null,
+          "hi": 2.0
+        },
+        {
+          "status": "elevated",
+          "lo": 2.0,
+          "hi": 2.5
+        },
+        {
+          "status": "watch",
+          "lo": 2.5,
+          "hi": 3.2
+        },
+        {
+          "status": "ok",
+          "lo": 3.2,
+          "hi": null
+        }
+      ]
+    },
+    "global-growth::china-growth": {
+      "category": "global",
+      "category_title": "Global Economy",
+      "lens_id": "global-growth",
+      "lens_title": "Global Growth",
+      "indicator_id": "china-growth",
+      "title": "China Real GDP Growth \u00b7 annual",
+      "short": "China",
+      "taxonomy": "info",
+      "note": "Shown for context alongside this lens's lead growth reading."
+    },
+    "global-growth::euro-growth": {
+      "category": "global",
+      "category_title": "Global Economy",
+      "lens_id": "global-growth",
+      "lens_title": "Global Growth",
+      "indicator_id": "euro-growth",
+      "title": "Euro Area Real GDP Growth \u00b7 annual",
+      "short": "Euro area",
+      "taxonomy": "info",
+      "note": "Shown for context alongside this lens's lead growth reading."
+    },
+    "global-growth::world-inflation": {
+      "category": "global",
+      "category_title": "Global Economy",
+      "lens_id": "global-growth",
+      "lens_title": "Global Growth",
+      "indicator_id": "world-inflation",
+      "title": "World Inflation \u00b7 annual",
+      "short": "World inflation",
+      "taxonomy": "info",
+      "note": "Shown for context alongside this lens's lead growth reading."
+    },
+    "global-growth::ea-gdp-quarterly": {
+      "category": "global",
+      "category_title": "Global Economy",
+      "lens_id": "global-growth",
+      "lens_title": "Global Growth",
+      "indicator_id": "ea-gdp-quarterly",
+      "title": "Euro Area Real GDP \u00b7 year-over-year",
+      "short": "EA quarterly",
+      "taxonomy": "severity",
+      "why": "Scored on the year-over-year change where FALLING is the stress signal \u2014 profits, new-business applications, capital-goods orders, sales. Growth is ok; the bands mark progressively deeper contractions.",
+      "axis": {
+        "kind": "yoy",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the year-over-year change"
+      },
+      "edges": [
+        -6,
+        -2,
+        0
+      ],
+      "segments": [
+        {
+          "status": "alert",
+          "lo": null,
+          "hi": -6
+        },
+        {
+          "status": "elevated",
+          "lo": -6,
+          "hi": -2
+        },
+        {
+          "status": "watch",
+          "lo": -2,
+          "hi": 0
+        },
+        {
+          "status": "ok",
+          "lo": 0,
+          "hi": null
+        }
+      ]
+    },
+    "global-trade-supply::gscpi": {
+      "category": "global",
+      "category_title": "Global Economy",
+      "lens_id": "global-trade-supply",
+      "lens_title": "Trade & Supply Chain",
+      "indicator_id": "gscpi",
+      "title": "Global Supply Chain Pressure Index",
+      "short": "Supply chain",
+      "taxonomy": "severity",
+      "why": "The NY Fed supply-chain pressure index, in standard deviations from normal. Negative is looser than normal (ok); the bands climb toward extreme disruption (the COVID peak was about 4.5\u03c3).",
+      "axis": {
+        "kind": "level",
+        "unit": "\u03c3",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "edges": [
+        0.5,
+        1.5,
+        2.5
+      ],
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 0.5
+        },
+        {
+          "status": "watch",
+          "lo": 0.5,
+          "hi": 1.5
+        },
+        {
+          "status": "elevated",
+          "lo": 1.5,
+          "hi": 2.5
+        },
+        {
+          "status": "alert",
+          "lo": 2.5,
+          "hi": null
+        }
+      ]
+    },
+    "global-trade-supply::trade-balance": {
+      "category": "global",
+      "category_title": "Global Economy",
+      "lens_id": "global-trade-supply",
+      "lens_title": "Trade & Supply Chain",
+      "indicator_id": "trade-balance",
+      "title": "U.S. Trade Deficit \u00b7 goods & services",
+      "short": "Trade deficit",
+      "taxonomy": "info",
+      "note": "The U.S. has run a trade deficit every year since 1976 \u2014 the level isn't good or bad on its own; what matters is the trend shown here."
+    },
+    "global-trade-supply::import-prices": {
+      "category": "global",
+      "category_title": "Global Economy",
+      "lens_id": "global-trade-supply",
+      "lens_title": "Trade & Supply Chain",
+      "indicator_id": "import-prices",
+      "title": "Import Prices \u00b7 year-over-year",
+      "short": "Import prices",
+      "taxonomy": "severity",
+      "why": "A cost already expressed as a year-over-year rate. Same logic as the fuel costs: faster annual increases mean more household strain; flat or falling is ok.",
+      "axis": {
+        "kind": "yoy",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the year-over-year change"
+      },
+      "edges": [
+        4,
+        8,
+        12
+      ],
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 4
+        },
+        {
+          "status": "watch",
+          "lo": 4,
+          "hi": 8
+        },
+        {
+          "status": "elevated",
+          "lo": 8,
+          "hi": 12
+        },
+        {
+          "status": "alert",
+          "lo": 12,
+          "hi": null
+        }
+      ]
+    },
+    "global-trade-supply::china-exports": {
+      "category": "global",
+      "category_title": "Global Economy",
+      "lens_id": "global-trade-supply",
+      "lens_title": "Trade & Supply Chain",
+      "indicator_id": "china-exports",
+      "title": "China Exports \u00b7 year-over-year",
+      "short": "China exports",
+      "taxonomy": "info",
+      "note": "Shown for context \u2014 a noisy global-demand pulse the lens's scored indicators read more cleanly."
+    },
+    "global-uncertainty::us-epu": {
+      "category": "global",
+      "category_title": "Global Economy",
+      "lens_id": "global-uncertainty",
+      "lens_title": "Uncertainty & Risk",
+      "indicator_id": "us-epu",
+      "title": "U.S. Economic Policy Uncertainty",
+      "short": "US uncertainty",
+      "taxonomy": "severity",
+      "why": "The Baker/Bloom/Davis policy-uncertainty index, whose long-run norm is about 100, so the bands mark multiples of that norm. The global index is capped at 'watch' because it publishes about six months late \u2014 a stale read shouldn't drive a live alarm.",
+      "axis": {
+        "kind": "level",
+        "unit": "",
+        "value_format": "thousands",
+        "label": "the latest reading"
+      },
+      "edges": [
+        120,
+        200,
+        300
+      ],
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 120
+        },
+        {
+          "status": "watch",
+          "lo": 120,
+          "hi": 200
+        },
+        {
+          "status": "elevated",
+          "lo": 200,
+          "hi": 300
+        },
+        {
+          "status": "alert",
+          "lo": 300,
+          "hi": null
+        }
+      ]
+    },
+    "global-uncertainty::gepu": {
+      "category": "global",
+      "category_title": "Global Economy",
+      "lens_id": "global-uncertainty",
+      "lens_title": "Uncertainty & Risk",
+      "indicator_id": "gepu",
+      "title": "Global Economic Policy Uncertainty",
+      "short": "Global uncertainty",
+      "taxonomy": "severity",
+      "why": "The Baker/Bloom/Davis policy-uncertainty index, whose long-run norm is about 100, so the bands mark multiples of that norm. The global index is capped at 'watch' because it publishes about six months late \u2014 a stale read shouldn't drive a live alarm.",
+      "axis": {
+        "kind": "level",
+        "unit": "",
+        "value_format": "thousands",
+        "label": "the latest reading"
+      },
+      "edges": [
+        120,
+        200,
+        300
+      ],
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 120
+        },
+        {
+          "status": "watch",
+          "lo": 120,
+          "hi": 200
+        },
+        {
+          "status": "elevated",
+          "lo": 200,
+          "hi": 300
+        },
+        {
+          "status": "alert",
+          "lo": 300,
+          "hi": null
+        }
+      ]
+    },
+    "business-profitability::profit-growth": {
+      "category": "business",
+      "category_title": "Corporate & Business Health",
+      "lens_id": "business-profitability",
+      "lens_title": "Corporate Profits",
+      "indicator_id": "profit-growth",
+      "title": "Corporate Profits \u00b7 year-over-year",
+      "short": "Profit growth",
+      "taxonomy": "severity",
+      "why": "Scored on the year-over-year change where FALLING is the stress signal \u2014 profits, new-business applications, capital-goods orders, sales. Growth is ok; the bands mark progressively deeper contractions.",
+      "axis": {
+        "kind": "yoy",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the year-over-year change"
+      },
+      "edges": [
+        -15,
+        -5,
+        0
+      ],
+      "segments": [
+        {
+          "status": "alert",
+          "lo": null,
+          "hi": -15
+        },
+        {
+          "status": "elevated",
+          "lo": -15,
+          "hi": -5
+        },
+        {
+          "status": "watch",
+          "lo": -5,
+          "hi": 0
+        },
+        {
+          "status": "ok",
+          "lo": 0,
+          "hi": null
+        }
+      ]
+    },
+    "business-profitability::nonfinancial-profits": {
+      "category": "business",
+      "category_title": "Corporate & Business Health",
+      "lens_id": "business-profitability",
+      "lens_title": "Corporate Profits",
+      "indicator_id": "nonfinancial-profits",
+      "title": "Nonfinancial Corporate Profits \u00b7 year-over-year",
+      "short": "Nonfin. profits",
+      "taxonomy": "severity",
+      "why": "Scored on the year-over-year change where FALLING is the stress signal \u2014 profits, new-business applications, capital-goods orders, sales. Growth is ok; the bands mark progressively deeper contractions.",
+      "axis": {
+        "kind": "yoy",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the year-over-year change"
+      },
+      "edges": [
+        -15,
+        -5,
+        0
+      ],
+      "segments": [
+        {
+          "status": "alert",
+          "lo": null,
+          "hi": -15
+        },
+        {
+          "status": "elevated",
+          "lo": -15,
+          "hi": -5
+        },
+        {
+          "status": "watch",
+          "lo": -5,
+          "hi": 0
+        },
+        {
+          "status": "ok",
+          "lo": 0,
+          "hi": null
+        }
+      ]
+    },
+    "business-profitability::profit-share": {
+      "category": "business",
+      "category_title": "Corporate & Business Health",
+      "lens_id": "business-profitability",
+      "lens_title": "Corporate Profits",
+      "indicator_id": "profit-share",
+      "title": "Corporate Profits \u00b7 share of GDP",
+      "short": "Profit share",
+      "taxonomy": "info",
+      "note": "A descriptive level shown for context \u2014 neither a high nor a low reading is simply good or bad."
+    },
+    "business-profitability::proprietors-income": {
+      "category": "business",
+      "category_title": "Corporate & Business Health",
+      "lens_id": "business-profitability",
+      "lens_title": "Corporate Profits",
+      "indicator_id": "proprietors-income",
+      "title": "Proprietors' Income \u00b7 year-over-year",
+      "short": "Proprietors",
+      "taxonomy": "info",
+      "note": "Shown for context \u2014 proprietors' income (which includes farm income) is too volatile to score cleanly."
+    },
+    "business-formation::applications": {
+      "category": "business",
+      "category_title": "Corporate & Business Health",
+      "lens_id": "business-formation",
+      "lens_title": "Business Formation",
+      "indicator_id": "applications",
+      "title": "Business Applications \u00b7 year-over-year",
+      "short": "Applications",
+      "taxonomy": "severity",
+      "why": "Scored on the year-over-year change where FALLING is the stress signal \u2014 profits, new-business applications, capital-goods orders, sales. Growth is ok; the bands mark progressively deeper contractions.",
+      "axis": {
+        "kind": "yoy",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the year-over-year change"
+      },
+      "edges": [
+        -15,
+        -5,
+        0
+      ],
+      "segments": [
+        {
+          "status": "alert",
+          "lo": null,
+          "hi": -15
+        },
+        {
+          "status": "elevated",
+          "lo": -15,
+          "hi": -5
+        },
+        {
+          "status": "watch",
+          "lo": -5,
+          "hi": 0
+        },
+        {
+          "status": "ok",
+          "lo": 0,
+          "hi": null
+        }
+      ]
+    },
+    "business-formation::high-propensity": {
+      "category": "business",
+      "category_title": "Corporate & Business Health",
+      "lens_id": "business-formation",
+      "lens_title": "Business Formation",
+      "indicator_id": "high-propensity",
+      "title": "High-Propensity Applications \u00b7 year-over-year",
+      "short": "High-propensity",
+      "taxonomy": "severity",
+      "why": "Scored on the year-over-year change where FALLING is the stress signal \u2014 profits, new-business applications, capital-goods orders, sales. Growth is ok; the bands mark progressively deeper contractions.",
+      "axis": {
+        "kind": "yoy",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the year-over-year change"
+      },
+      "edges": [
+        -15,
+        -5,
+        0
+      ],
+      "segments": [
+        {
+          "status": "alert",
+          "lo": null,
+          "hi": -15
+        },
+        {
+          "status": "elevated",
+          "lo": -15,
+          "hi": -5
+        },
+        {
+          "status": "watch",
+          "lo": -5,
+          "hi": 0
+        },
+        {
+          "status": "ok",
+          "lo": 0,
+          "hi": null
+        }
+      ]
+    },
+    "business-formation::hp-share": {
+      "category": "business",
+      "category_title": "Corporate & Business Health",
+      "lens_id": "business-formation",
+      "lens_title": "Business Formation",
+      "indicator_id": "hp-share",
+      "title": "High-Propensity Share of Applications",
+      "short": "HP share",
+      "taxonomy": "info",
+      "note": "A descriptive level shown for context \u2014 neither a high nor a low reading is simply good or bad."
+    },
+    "business-investment::core-capex": {
+      "category": "business",
+      "category_title": "Corporate & Business Health",
+      "lens_id": "business-investment",
+      "lens_title": "Business Investment",
+      "indicator_id": "core-capex",
+      "title": "Core Capital-Goods Orders \u00b7 year-over-year",
+      "short": "Core capex",
+      "taxonomy": "severity",
+      "why": "Scored on the year-over-year change where FALLING is the stress signal \u2014 profits, new-business applications, capital-goods orders, sales. Growth is ok; the bands mark progressively deeper contractions.",
+      "axis": {
+        "kind": "yoy",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the year-over-year change"
+      },
+      "edges": [
+        -10,
+        -3,
+        0
+      ],
+      "segments": [
+        {
+          "status": "alert",
+          "lo": null,
+          "hi": -10
+        },
+        {
+          "status": "elevated",
+          "lo": -10,
+          "hi": -3
+        },
+        {
+          "status": "watch",
+          "lo": -3,
+          "hi": 0
+        },
+        {
+          "status": "ok",
+          "lo": 0,
+          "hi": null
+        }
+      ]
+    },
+    "business-investment::real-sales": {
+      "category": "business",
+      "category_title": "Corporate & Business Health",
+      "lens_id": "business-investment",
+      "lens_title": "Business Investment",
+      "indicator_id": "real-sales",
+      "title": "Real Business Sales \u00b7 year-over-year",
+      "short": "Real sales",
+      "taxonomy": "severity",
+      "why": "Scored on the year-over-year change where FALLING is the stress signal \u2014 profits, new-business applications, capital-goods orders, sales. Growth is ok; the bands mark progressively deeper contractions.",
+      "axis": {
+        "kind": "yoy",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the year-over-year change"
+      },
+      "edges": [
+        -6,
+        -2,
+        0
+      ],
+      "segments": [
+        {
+          "status": "alert",
+          "lo": null,
+          "hi": -6
+        },
+        {
+          "status": "elevated",
+          "lo": -6,
+          "hi": -2
+        },
+        {
+          "status": "watch",
+          "lo": -2,
+          "hi": 0
+        },
+        {
+          "status": "ok",
+          "lo": 0,
+          "hi": null
+        }
+      ]
+    },
+    "business-investment::inventories-sales": {
+      "category": "business",
+      "category_title": "Corporate & Business Health",
+      "lens_id": "business-investment",
+      "lens_title": "Business Investment",
+      "indicator_id": "inventories-sales",
+      "title": "Inventories-to-Sales Ratio",
+      "short": "Inv./sales",
+      "taxonomy": "severity",
+      "why": "Inventories measured in months of sales. Above ~1.50 is an overhang that typically forces production cuts; 2008 peaked near 1.48, COVID near 1.74.",
+      "axis": {
+        "kind": "level",
+        "unit": "",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "edges": [
+        1.4,
+        1.5
+      ],
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 1.4
+        },
+        {
+          "status": "watch",
+          "lo": 1.4,
+          "hi": 1.5
+        },
+        {
+          "status": "elevated",
+          "lo": 1.5,
+          "hi": null
+        }
+      ]
+    },
+    "business-credit::baa-spread": {
+      "category": "business",
+      "category_title": "Corporate & Business Health",
+      "lens_id": "business-credit",
+      "lens_title": "Business Credit",
+      "indicator_id": "baa-spread",
+      "title": "Baa Corporate Spread \u00b7 over 10-Year Treasury",
+      "short": "Baa spread",
+      "taxonomy": "severity",
+      "why": "Moody's Baa corporate yield over the 10-year Treasury \u2014 the price of ordinary corporate credit risk. Calm is under 2 points; 2008 peaked near 6, which anchors the alert band.",
+      "axis": {
+        "kind": "level",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "edges": [
+        2.0,
+        2.5,
+        3.5
+      ],
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 2.0
+        },
+        {
+          "status": "watch",
+          "lo": 2.0,
+          "hi": 2.5
+        },
+        {
+          "status": "elevated",
+          "lo": 2.5,
+          "hi": 3.5
+        },
+        {
+          "status": "alert",
+          "lo": 3.5,
+          "hi": null
+        }
+      ]
+    },
+    "business-credit::lending-standards": {
+      "category": "business",
+      "category_title": "Corporate & Business Health",
+      "lens_id": "business-credit",
+      "lens_title": "Business Credit",
+      "indicator_id": "lending-standards",
+      "title": "Lending Standards \u00b7 net % of banks tightening",
+      "short": "Standards",
+      "taxonomy": "severity",
+      "why": "The net share of banks tightening business-loan standards (the Fed's loan-officer survey). Easing is ok; sustained tightening above ~20% is a classic late-cycle signal; 2008 hit about 84%.",
+      "axis": {
+        "kind": "level",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "edges": [
+        0,
+        20,
+        50
+      ],
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 0
+        },
+        {
+          "status": "watch",
+          "lo": 0,
+          "hi": 20
+        },
+        {
+          "status": "elevated",
+          "lo": 20,
+          "hi": 50
+        },
+        {
+          "status": "alert",
+          "lo": 50,
+          "hi": null
+        }
+      ]
+    },
+    "business-credit::delinquency": {
+      "category": "business",
+      "category_title": "Corporate & Business Health",
+      "lens_id": "business-credit",
+      "lens_title": "Business Credit",
+      "indicator_id": "delinquency",
+      "title": "Business-Loan Delinquency Rate",
+      "short": "Delinquency",
+      "taxonomy": "severity",
+      "why": "Business loans past due at banks. Under 1.5% is healthy; the bands climb toward the 2009 peak of about 4.4%.",
+      "axis": {
+        "kind": "level",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "edges": [
+        1.5,
+        2.5,
+        4.0
+      ],
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 1.5
+        },
+        {
+          "status": "watch",
+          "lo": 1.5,
+          "hi": 2.5
+        },
+        {
+          "status": "elevated",
+          "lo": 2.5,
+          "hi": 4.0
+        },
+        {
+          "status": "alert",
+          "lo": 4.0,
+          "hi": null
+        }
+      ]
+    },
+    "business-credit::ci-loan-growth": {
+      "category": "business",
+      "category_title": "Corporate & Business Health",
+      "lens_id": "business-credit",
+      "lens_title": "Business Credit",
+      "indicator_id": "ci-loan-growth",
+      "title": "C&I Loan Growth \u00b7 year-over-year",
+      "short": "C&I loans",
+      "taxonomy": "severity",
+      "why": "Scored on the year-over-year change, two-sided: both an overheating boom and a sharp contraction raise severity, because each is its own kind of instability. The quiet middle band is ok.",
+      "axis": {
+        "kind": "yoy",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the year-over-year change"
+      },
+      "edges": [
+        -12,
+        -5,
+        -0.5,
+        10,
+        20,
+        30
+      ],
+      "segments": [
+        {
+          "status": "alert",
+          "lo": null,
+          "hi": -12
+        },
+        {
+          "status": "elevated",
+          "lo": -12,
+          "hi": -5
+        },
+        {
+          "status": "watch",
+          "lo": -5,
+          "hi": -0.5
+        },
+        {
+          "status": "ok",
+          "lo": -0.5,
+          "hi": 10
+        },
+        {
+          "status": "watch",
+          "lo": 10,
+          "hi": 20
+        },
+        {
+          "status": "elevated",
+          "lo": 20,
+          "hi": 30
+        },
+        {
+          "status": "alert",
+          "lo": 30,
+          "hi": null
+        }
+      ]
+    }
+  }
+}
