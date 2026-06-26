@@ -8,31 +8,18 @@
     try { const r = await fetch(url, { cache: "no-cache" }); return r.ok ? await r.json() : null; }
     catch (e) { return null; }
   }
-  // Category from the page URL: /dashboards/<cat>/<lens>.html, or /dashboards/<lens>.html
-  // for economic lenses. Used to fetch per-category prediction slices.
-  function pageCategory() {
-    var p = location.pathname.split("/").filter(Boolean);
-    if (p[0] !== "dashboards") return null;
-    if (p.length >= 3) return p[1];
-    if (p.length === 2) return "economic";
-    return null;
+  // Per-category slice with a fallback to the full file, so a missing or unknown-
+  // category slice degrades to the prior behavior. `cat` is the canonical category
+  // id from the lens:rendered event. Mirrors scoring.js — keep in sync.
+  async function sliceOrFull(prefix, cat, full) {
+    if (cat) { var s = await get(prefix + cat + ".json"); if (s) return s; }
+    return get(full);
   }
   // Page-scoped memo (shared with scoring.js via self.__baOpenP): the open
-  // predictions are fetched once per lens page, as the per-category slice with a
-  // fallback to the full file (so a missing slice degrades to the prior behavior).
-  function getOpen() {
-    return (self.__baOpenP = self.__baOpenP || (async function () {
-      var cat = pageCategory();
-      if (cat) { var s = await get("/data/predictions/open/" + cat + ".json"); if (s) return s; }
-      return get("/data/predictions/open.json");
-    })());
-  }
-  // The graded "last call" per indicator, as the per-category recent slice with a
-  // fallback to the full file.
-  async function getRecent() {
-    var cat = pageCategory();
-    if (cat) { var s = await get("/data/predictions/recent/" + cat + ".json"); if (s) return s; }
-    return get("/data/predictions/recent.json");
+  // predictions are fetched once per lens page, not once per script.
+  function getOpen(cat) {
+    return (self.__baOpenP = self.__baOpenP
+      || sliceOrFull("/data/predictions/open/", cat, "/data/predictions/open.json"));
   }
   const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
   function fmtDue(iso) {
@@ -109,7 +96,9 @@
   document.addEventListener("lens:rendered", async function (ev) {
     const lensId = ev.detail && ev.detail.id;
     if (!lensId) return;
-    const [open, recent] = await Promise.all([getOpen(), getRecent()]);
+    const cat = ev.detail && ev.detail.category;
+    const [open, recent] = await Promise.all([
+      getOpen(cat), sliceOrFull("/data/predictions/recent/", cat, "/data/predictions/recent.json")]);
     if (!open || !open.predictions) return;
     const mine = {};
     open.predictions.forEach(p => { if (p.lens === lensId) mine[p.indicator] = p; });

@@ -36,7 +36,7 @@ def render_fragment(lens_json):
                             ind.get("value_format", "decimal"))
                  if latest else "—")
         parts.append(
-            f"<h3>{escape(ind.get('title', ''))}</h3>"
+            f"<h2>{escape(ind.get('title', ''))}</h2>"
             f"<p><strong>{escape(ind.get('short', ''))}: {escape(value)}</strong>"
             f" — {escape(ind.get('read', ''))}</p>")
         # static band summary + methodology deep link for scored signals (no-JS/crawlers

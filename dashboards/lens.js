@@ -278,7 +278,9 @@
     const holder = root.querySelector(".indicators");
     const defaultRange = opts.defaultRange || "1Y";
     lens.indicators.forEach(i => holder.appendChild(indicatorCard(i, lens.recessions || [], defaultRange)));
-    document.dispatchEvent(new CustomEvent("lens:rendered", { detail: { id: lens.id } }));
+    // `category` (the page-declared category id) lets predict.js/scoring.js fetch
+    // the right per-category prediction/methodology slice without re-deriving it.
+    document.dispatchEvent(new CustomEvent("lens:rendered", { detail: { id: lens.id, category: favCategory } }));
   }
 
   // Recolor existing charts when the theme flips (personalize.js dispatches

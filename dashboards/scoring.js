@@ -9,31 +9,18 @@
     try { const r = await fetch(url, { cache: "no-cache" }); return r.ok ? await r.json() : null; }
     catch (e) { return null; }
   }
-  // Page-scoped memo shared with predict.js: the open predictions are fetched once
-  // per lens page (not once per script), as the per-category slice with a fallback
-  // to the full file.
-  function getOpen() {
-    return (self.__baOpenP = self.__baOpenP || (async function () {
-      var cat = pageCategory();
-      if (cat) { var s = await get("/data/predictions/open/" + cat + ".json"); if (s) return s; }
-      return get("/data/predictions/open.json");
-    })());
+  // Per-category slice (a few KB) with a fallback to the full file, so a missing or
+  // unknown-category slice degrades to the prior behavior. `cat` is the canonical
+  // category id from the lens:rendered event. Mirrors predict.js — keep in sync.
+  async function sliceOrFull(prefix, cat, full) {
+    if (cat) { var s = await get(prefix + cat + ".json"); if (s) return s; }
+    return get(full);
   }
-  // Category from the page URL: /dashboards/<cat>/<lens>.html, or /dashboards/<lens>.html
-  // for economic lenses. Used to fetch the per-category methodology slice.
-  function pageCategory() {
-    var p = location.pathname.split("/").filter(Boolean);
-    if (p[0] !== "dashboards") return null;
-    if (p.length >= 3) return p[1];
-    if (p.length === 2) return "economic";
-    return null;
-  }
-  // Per-category methodology slice (a few KB) with a fallback to the full file, so a
-  // missing slice — e.g. before the next bake — degrades to the prior behavior.
-  async function getMethodology() {
-    var cat = pageCategory();
-    if (cat) { var s = await get("/data/methodology/" + cat + ".json"); if (s) return s; }
-    return get("/data/methodology.json");
+  // Page-scoped memo shared with predict.js (self.__baOpenP): the open predictions
+  // are fetched once per lens page, not once per script.
+  function getOpen(cat) {
+    return (self.__baOpenP = self.__baOpenP
+      || sliceOrFull("/data/predictions/open/", cat, "/data/predictions/open.json"));
   }
   // Mirrors lens.js fmtVal / predict.js fmtVal / build.py _fmt — keep in sync (house rule).
   function fmtVal(v, unit, vf) {
@@ -100,7 +87,9 @@
   document.addEventListener("lens:rendered", async function (ev) {
     const lensId = ev.detail && ev.detail.id;
     if (!lensId) return;
-    const [method, open] = await Promise.all([getMethodology(), getOpen()]);
+    const cat = ev.detail && ev.detail.category;
+    const [method, open] = await Promise.all([
+      sliceOrFull("/data/methodology/", cat, "/data/methodology.json"), getOpen(cat)]);
     if (!method || !method.signals) return;
     const preds = {};
     if (open && open.predictions) {
