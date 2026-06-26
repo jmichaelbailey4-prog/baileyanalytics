@@ -7,7 +7,7 @@ matches what the charts show."""
 
 from html import escape
 
-from . import build, synthesis, util
+from . import build, methodology, synthesis, util
 
 # Recent observations the per-indicator 'why' reads. Bounds the 'recent readings'
 # scope so a "fresh high" claim stays honestly recent rather than all-time.
@@ -36,6 +36,15 @@ def render_fragment(lens_json):
             f"<h3>{escape(ind.get('title', ''))}</h3>"
             f"<p><strong>{escape(ind.get('short', ''))}: {escape(value)}</strong>"
             f" — {escape(ind.get('read', ''))}</p>")
+        # static band summary + methodology deep link for scored signals (no-JS/crawlers
+        # mirror of the scoring.js strip); None for info/momentum/custom/unknown signals
+        sb = methodology.static_bands(lens_json.get("id", ""), ind.get("id", ""))
+        if sb:
+            ranges = " · ".join(f"{escape(st)} {escape(rng)}" for st, rng in sb["rows"])
+            parts.append(
+                f'<p class="hub-bands">How we score this: {ranges} '
+                f'<a href="/dashboards/methodology.html#{escape(sb["anchor"], quote=True)}">'
+                "full method</a></p>")
         # why a signal carries no score / forecast (the matrix), for no-JS/crawlers
         note = build.signal_note(ind.get("no_severity_reason"), ind.get("no_prediction_reason"))
         if note:

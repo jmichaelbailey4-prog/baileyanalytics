@@ -8,6 +8,7 @@ data/methodology.json, so the page and the strip can never disagree.
 Pure: data in, HTML/dict out; refresh_lenses owns disk I/O.
 """
 
+import functools
 from datetime import datetime, timezone
 from html import escape
 
@@ -103,6 +104,27 @@ def build_methodology():
 # ---------------------------------------------------------------------------
 # Rendering
 # ---------------------------------------------------------------------------
+
+@functools.lru_cache(maxsize=1)
+def _ind_map():
+    return {(lens.id, ind.id): ind
+            for cat in config.CATEGORIES for lens in cat["lenses"]
+            for ind in lens.indicators}
+
+
+def static_bands(lens_id, indicator_id):
+    """For staticread.py's no-JS fragment: {anchor, rows:[(status, range_text)]} for a
+    scored signal with a static axis, or None (custom/info/momentum/unknown)."""
+    ind = _ind_map().get((lens_id, indicator_id))
+    if not ind or narrative.rule_kind(ind.rule) != "severity":
+        return None
+    spec = getattr(ind.rule, "band_spec", None)
+    if not spec or spec.kind == "custom":
+        return None
+    rows = [(seg["status"], _range_text(seg, spec.unit, spec.value_format))
+            for seg in bands.segment_ranges(spec)]
+    return {"anchor": f"{lens_id}--{indicator_id}", "rows": rows}
+
 
 def _range_text(seg, unit, vf):
     """Human range for one band, e.g. 'below 5.50%', '5.50–6.50%', '7.50% and up'."""
