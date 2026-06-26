@@ -25,8 +25,11 @@ def _recent_values(ind):
 
 
 def render_fragment(lens_json):
+    # <h1>: the no-JS/crawler document's top-level heading. lens.js replaces
+    # #lens-root wholesale with its own <h1 class="read-hero"> on render, so a
+    # JS reader never sees two h1s.
     parts = [f'<section id="baked-read">',
-             f"<h2>{escape(lens_json.get('headline_read', ''))}</h2>"]
+             f"<h1>{escape(lens_json.get('headline_read', ''))}</h1>"]
     for ind in lens_json.get("indicators", []):
         latest = ind.get("latest")
         value = (build._fmt(latest["value"], ind.get("unit", ""),

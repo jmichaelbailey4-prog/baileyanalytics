@@ -42,6 +42,13 @@ class TestRenderFragment(unittest.TestCase):
         self.assertIn("Yield Curve · 10-Year minus 2-Year", self.html)
         self.assertIn("positive", self.html)
 
+    def test_headline_is_a_top_level_h1(self):
+        # No-JS readers/crawlers need an <h1>; the fragment used to lead with <h2>
+        # so the static document had no top-level heading. lens.js wipes #lens-root
+        # and renders its own <h1 class="read-hero">, so JS users never see two.
+        self.assertIn("<h1>The economy looks steady", self.html)
+        self.assertNotIn("<h2>", self.html)   # the headline was the only h2
+
     def test_values_formatted_like_fmtval(self):
         self.assertIn("0.40%", self.html)        # decimal + % stays tight
         self.assertIn("172,000", self.html)      # thousands format

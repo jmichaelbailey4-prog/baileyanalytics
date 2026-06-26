@@ -45,6 +45,11 @@
   // Theme-aware chart chrome: read from the --chart-* CSS vars so charts match
   // the active theme at build time and can recolor live on a `ba:theme` event.
   function cssVar(n) { return getComputedStyle(document.documentElement).getPropertyValue(n).trim(); }
+  // Honor the OS "reduce motion" setting: Chart.js animates by default; CSS
+  // transitions already respect this, so charts should too.
+  function reducedMotion() {
+    return !!(window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  }
   function chartChrome() {
     return {
       grid: cssVar("--chart-grid") || "#1E293B", tick: cssVar("--chart-tick") || "#64748B",
@@ -89,6 +94,7 @@
         pointRadius: 0, tension: 0.25, fill: true, backgroundColor: indicator.color + "1A" }] },
       options: {
         responsive: true, maintainAspectRatio: false,
+        animation: reducedMotion() ? false : undefined,
         interaction: { mode: "index", intersect: false },
         plugins: {
           legend: { display: false },
