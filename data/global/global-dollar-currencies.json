@@ -2,7 +2,7 @@
   "id": "global-dollar-currencies",
   "title": "The Dollar & Currencies",
   "accent": "#38BDF8",
-  "last_updated": "2026-06-22T21:37:48Z",
+  "last_updated": "2026-06-26T19:12:55Z",
   "status": "ok",
   "headline_read": "Currency markets are calm \u2014 the dollar is near where it was a year ago.",
   "recessions": [
@@ -2996,7 +2996,8 @@
       "context": "How fast the trade-weighted dollar is rising or falling versus a year ago. Big moves in either direction are destabilizing: a surging dollar squeezes the world's dollar borrowers and crushes emerging markets; a sliding one imports inflation.",
       "read": "The dollar is down 1.1% against major currencies over the past year \u2014 a normal drift.",
       "signal_status": "ok",
-      "value_format": "decimal"
+      "value_format": "decimal",
+      "scale_now": -1.1127
     },
     {
       "id": "euro",
@@ -5978,7 +5979,8 @@
       "context": "How many dollars one euro buys. The world's second currency \u2014 a rising number means a stronger euro (and a weaker dollar) \u2014 and the cleanest mirror on dollar strength.",
       "read": "The euro is little changed against the dollar over the past year.",
       "signal_status": "info",
-      "value_format": "decimal"
+      "value_format": "decimal",
+      "no_severity_reason": "A market price has no inherent good-or-bad level \u2014 higher or lower isn't itself better or worse."
     },
     {
       "id": "yen",
@@ -8960,7 +8962,8 @@
       "context": "How many yen one dollar buys \u2014 a rising number means a WEAKER yen. Japan's currency anchors Asia's funding markets; a violent yen move tends to ripple through global markets.",
       "read": "The yen has weakened 11.6% against the dollar over the past year.",
       "signal_status": "info",
-      "value_format": "decimal"
+      "value_format": "decimal",
+      "no_severity_reason": "A market price has no inherent good-or-bad level \u2014 higher or lower isn't itself better or worse."
     },
     {
       "id": "yuan",
@@ -11942,7 +11945,8 @@
       "context": "How many yuan one dollar buys \u2014 a rising number means a WEAKER yuan. Beijing manages this rate; a deliberate slide makes Chinese exports cheaper and tends to escalate trade tensions.",
       "read": "The yuan has strengthened 5.8% against the dollar over the past year.",
       "signal_status": "info",
-      "value_format": "decimal"
+      "value_format": "decimal",
+      "no_severity_reason": "A market price has no inherent good-or-bad level \u2014 higher or lower isn't itself better or worse."
     }
   ]
 }

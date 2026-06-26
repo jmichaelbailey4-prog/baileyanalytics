@@ -2,7 +2,7 @@
   "id": "housing-affordability",
   "title": "Affordability & Financing",
   "accent": "#FBBF24",
-  "last_updated": "2026-06-25T19:32:16Z",
+  "last_updated": "2026-06-26T19:12:44Z",
   "status": "elevated",
   "headline_read": "Housing affordability is badly stretched.",
   "recessions": [
@@ -88,7 +88,8 @@
       "context": "The National Association of Realtors index: 100 means the median-income family can just barely afford the median home. Higher is better \u2014 the historical norm is 130-180.",
       "read": "The affordability index is 106 \u2014 the median family barely qualifies for the median home.",
       "signal_status": "elevated",
-      "value_format": "decimal"
+      "value_format": "decimal",
+      "scale_now": 105.6
     },
     {
       "id": "debt-service",
@@ -424,9 +425,10 @@
         "value": "5.876343"
       },
       "context": "Mortgage payments as a share of household disposable income (quarterly) \u2014 how heavy the aggregate mortgage burden actually is.",
-      "read": "The mortgage-payment share of disposable income is 5.9%, little changed from a year ago.",
-      "signal_status": "info",
-      "value_format": "decimal"
+      "read": "Mortgage payments take 5.9% of household income \u2014 a manageable, below-average burden.",
+      "signal_status": "ok",
+      "value_format": "decimal",
+      "scale_now": 5.8763
     },
     {
       "id": "delinquency",
@@ -764,7 +766,8 @@
       "context": "The share of single-family mortgages at commercial banks that are past due (quarterly) \u2014 where affordability stress turns into credit stress.",
       "read": "Just 1.9% of mortgages are delinquent \u2014 homeowners are keeping up.",
       "signal_status": "ok",
-      "value_format": "decimal"
+      "value_format": "decimal",
+      "scale_now": 1.89
     },
     {
       "id": "mortgage-rate",
@@ -2546,7 +2549,8 @@
       "context": "The average rate on a 30-year fixed home loan \u2014 the input behind the affordability squeeze above: it sets what a buyer can afford each month.",
       "read": "30-year mortgages are at 6.49% \u2014 above the comfort zone for most budgets.",
       "signal_status": "watch",
-      "value_format": "decimal"
+      "value_format": "decimal",
+      "scale_now": 6.49
     }
   ]
 }

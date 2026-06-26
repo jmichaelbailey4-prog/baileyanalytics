@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-22T21:37:48Z",
+  "last_updated": "2026-06-26T19:12:55Z",
   "status": "watch",
   "lenses": [
     {
@@ -79,9 +79,9 @@
           "dir": "up"
         },
         {
-          "k": "China",
-          "v": "4.96%",
-          "d": "0.04%",
+          "k": "EA quarterly",
+          "v": "0.30%",
+          "d": "0.89%",
           "dir": "down"
         }
       ],
@@ -142,10 +142,10 @@
           "dir": "down"
         },
         {
-          "k": "Trade deficit",
-          "v": "$55.90B",
-          "d": "$0.70B",
-          "dir": "down"
+          "k": "Import prices",
+          "v": "6.74%",
+          "d": "2.50%",
+          "dir": "up"
         }
       ],
       "sparkline": [

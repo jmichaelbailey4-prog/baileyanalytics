@@ -2,7 +2,7 @@
   "id": "cost-of-living",
   "title": "The Cost of Living",
   "accent": "#FBBF24",
-  "last_updated": "2026-06-25T13:38:19Z",
+  "last_updated": "2026-06-26T19:11:59Z",
   "status": "elevated",
   "headline_read": "Inflation is still hot \u2014 well above the Fed's target.",
   "recessions": [
@@ -992,7 +992,8 @@
       "context": "The Consumer Price Index \u2014 the headline measure of how fast the prices households actually pay are rising versus a year ago.",
       "read": "Running at 4.2% a year \u2014 well above the Fed's 2% goal.",
       "signal_status": "elevated",
-      "value_format": "decimal"
+      "value_format": "decimal",
+      "scale_now": 4.1666
     },
     {
       "id": "core-cpi",
@@ -1970,7 +1971,8 @@
       "context": "CPI excluding volatile food and energy. Because it strips out the noisiest prices, it's a better read on the economy's underlying inflation trend.",
       "read": "Running at 2.8% a year \u2014 still above the Fed's 2% goal.",
       "signal_status": "watch",
-      "value_format": "decimal"
+      "value_format": "decimal",
+      "scale_now": 2.8229
     },
     {
       "id": "pce",
@@ -2948,7 +2950,8 @@
       "context": "The Personal Consumption Expenditures price index \u2014 the inflation gauge the Federal Reserve watches most closely when setting interest rates.",
       "read": "Running at 4.1% a year \u2014 well above the Fed's 2% goal.",
       "signal_status": "elevated",
-      "value_format": "decimal"
+      "value_format": "decimal",
+      "scale_now": 4.0726
     },
     {
       "id": "real-wages",
@@ -3722,7 +3725,8 @@
       "context": "The typical worker's weekly paycheck adjusted for inflation (real median earnings). When it rises, pay is outpacing prices; when it falls, the opposite.",
       "read": "Up 0.8% from a year ago \u2014 paychecks are outpacing inflation.",
       "signal_status": "ok",
-      "value_format": "decimal"
+      "value_format": "decimal",
+      "scale_now": 0.8043
     }
   ]
 }

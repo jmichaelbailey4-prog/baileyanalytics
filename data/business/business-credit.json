@@ -2,7 +2,7 @@
   "id": "business-credit",
   "title": "Business Credit",
   "accent": "#F87171",
-  "last_updated": "2026-06-12T20:58:18Z",
+  "last_updated": "2026-06-26T19:12:51Z",
   "status": "watch",
   "headline_read": "Business credit bears watching \u2014 conditions are tightening at the margin.",
   "recessions": [
@@ -992,7 +992,8 @@
       "context": "The extra yield investors demand to hold Moody's Baa-rated corporate bonds over 10-year Treasuries \u2014 the price of ordinary corporate credit risk, with history back to 1953. 2008 peaked near 6 points. (A different index family from the ICE BofA spreads on the Markets risk lens.)",
       "read": "The Baa spread is 1.62 points \u2014 corporate credit is priced calm.",
       "signal_status": "ok",
-      "value_format": "decimal"
+      "value_format": "decimal",
+      "scale_now": 1.62
     },
     {
       "id": "lending-standards",
@@ -1330,7 +1331,8 @@
       "context": "From the Fed's quarterly loan-officer survey: the share of banks tightening standards on commercial & industrial loans minus the share easing. Sustained tightening above ~20% has preceded every modern recession.",
       "read": "A net 8% of banks are tightening business-loan standards \u2014 mild tightening.",
       "signal_status": "watch",
-      "value_format": "decimal"
+      "value_format": "decimal",
+      "scale_now": 8.1
     },
     {
       "id": "delinquency",
@@ -1668,7 +1670,8 @@
       "context": "The share of commercial & industrial loans at banks that are past due (quarterly) \u2014 where business credit stress stops being a forecast and shows up as missed payments. The 2009 peak was about 4.4%.",
       "read": "Just 1.34% of business loans are delinquent \u2014 borrowers are keeping up.",
       "signal_status": "ok",
-      "value_format": "decimal"
+      "value_format": "decimal",
+      "scale_now": 1.34
     },
     {
       "id": "ci-loan-growth",
@@ -2838,7 +2841,8 @@
       "context": "How fast bank lending to businesses is growing. Outright contraction is a credit squeeze; double-digit booms (2020 hit +30%) have their own way of ending badly.",
       "read": "C&I lending is up 8.1% from a year ago \u2014 a steady pace.",
       "signal_status": "ok",
-      "value_format": "decimal"
+      "value_format": "decimal",
+      "scale_now": 8.1
     }
   ]
 }

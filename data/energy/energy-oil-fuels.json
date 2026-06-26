@@ -2,7 +2,7 @@
   "id": "energy-oil-fuels",
   "title": "Oil & Fuels",
   "accent": "#FB923C",
-  "last_updated": "2026-06-24T19:16:55Z",
+  "last_updated": "2026-06-26T19:12:40Z",
   "status": "elevated",
   "headline_read": "Fuel costs are well above last year.",
   "recessions": [
@@ -1316,7 +1316,8 @@
       "context": "The U.S. average retail price for a gallon of regular gasoline \u2014 the energy cost households feel most directly.",
       "read": "Gasoline costs are up 25% over the past year \u2014 climbing.",
       "signal_status": "watch",
-      "value_format": "decimal"
+      "value_format": "decimal",
+      "scale_now": 24.6894
     },
     {
       "id": "diesel",
@@ -2618,7 +2619,8 @@
       "context": "The U.S. average on-highway diesel price \u2014 the fuel that moves freight, so it feeds into the price of nearly everything.",
       "read": "Diesel costs are up 35% over the past year \u2014 a real squeeze.",
       "signal_status": "elevated",
-      "value_format": "decimal"
+      "value_format": "decimal",
+      "scale_now": 35.3122
     },
     {
       "id": "crude-production",
@@ -3920,7 +3922,8 @@
       "context": "U.S. field production of crude oil (thousand barrels per day) \u2014 the supply side that, with demand, sets the price of oil.",
       "read": "U.S. crude production is little changed from a year ago, now 13,819.",
       "signal_status": "info",
-      "value_format": "thousands"
+      "value_format": "thousands",
+      "no_severity_reason": "A physical supply-and-demand reading, not a household cost \u2014 this lens's verdict comes from the price indicators."
     },
     {
       "id": "crude-stocks",
@@ -5222,7 +5225,8 @@
       "context": "Commercial crude oil inventories (thousand barrels, excluding the Strategic Petroleum Reserve) \u2014 low stocks point to upward price pressure.",
       "read": "Crude inventories is little changed from a year ago, now 412,134.",
       "signal_status": "info",
-      "value_format": "thousands"
+      "value_format": "thousands",
+      "no_severity_reason": "A physical supply-and-demand reading, not a household cost \u2014 this lens's verdict comes from the price indicators."
     }
   ]
 }

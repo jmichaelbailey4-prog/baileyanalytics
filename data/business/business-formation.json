@@ -2,7 +2,7 @@
   "id": "business-formation",
   "title": "Business Formation",
   "accent": "#38BDF8",
-  "last_updated": "2026-06-11T01:13:33Z",
+  "last_updated": "2026-06-26T19:12:51Z",
   "status": "ok",
   "headline_read": "New businesses are forming at a healthy clip.",
   "recessions": [
@@ -1036,7 +1036,8 @@
       "context": "How fast new business applications are growing versus a year ago (Census Business Formation Statistics \u2014 roughly half a million applications a month). Falling applications mean fading dynamism.",
       "read": "Business applications are growing 17.0% a year.",
       "signal_status": "ok",
-      "value_format": "decimal"
+      "value_format": "decimal",
+      "scale_now": 17.0
     },
     {
       "id": "high-propensity",
@@ -2056,9 +2057,10 @@
         "value": "3.7"
       },
       "context": "Growth in applications with characteristics that make them likely to become employer businesses \u2014 the quality signal inside the headline count.",
-      "read": "High-propensity application volume is rising 3.7% a year.",
-      "signal_status": "info",
-      "value_format": "decimal"
+      "read": "High-propensity applications are growing 3.7% a year.",
+      "signal_status": "ok",
+      "value_format": "decimal",
+      "scale_now": 3.7
     },
     {
       "id": "hp-share",
@@ -3128,7 +3130,8 @@
       "context": "What fraction of all business applications look likely to become employers \u2014 formation quality over time. It ran near half before the pandemic-era boom in solo ventures pushed it below a third.",
       "read": "The high-propensity share of applications is 28.0%, down 3.6 points from a year ago.",
       "signal_status": "info",
-      "value_format": "decimal"
+      "value_format": "decimal",
+      "no_severity_reason": "A descriptive level shown for context \u2014 neither a high nor a low reading is simply good or bad."
     }
   ]
 }

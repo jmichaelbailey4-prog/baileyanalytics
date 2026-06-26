@@ -2,7 +2,7 @@
   "id": "market-risk-sentiment",
   "title": "Risk Sentiment",
   "accent": "#FB7185",
-  "last_updated": "2026-06-25T19:31:32Z",
+  "last_updated": "2026-06-26T19:12:04Z",
   "status": "ok",
   "headline_read": "Markets are calm \u2014 volatility and credit stress are low.",
   "recessions": [
@@ -25,8 +25,8 @@
       "series_id": "VIXCLS",
       "observations": [
         {
-          "date": "2016-07-07",
-          "value": "14.76"
+          "date": "2016-07-08",
+          "value": "13.20"
         },
         {
           "date": "2016-08-01",
@@ -265,8 +265,8 @@
           "value": "17.9"
         },
         {
-          "date": "2021-06-24",
-          "value": "15.97"
+          "date": "2021-06-25",
+          "value": "15.62"
         },
         {
           "date": "2021-06-28",
@@ -2983,16 +2983,21 @@
         {
           "date": "2026-06-24",
           "value": "18.63"
+        },
+        {
+          "date": "2026-06-25",
+          "value": "18.89"
         }
       ],
       "latest": {
-        "date": "2026-06-24",
-        "value": "18.63"
+        "date": "2026-06-25",
+        "value": "18.89"
       },
       "context": "The market's 'fear gauge' \u2014 the expected volatility of the S&P 500 over the coming month. It spikes when investors are scared and falls when calm.",
-      "read": "The VIX is at 18.6 \u2014 markets are calm.",
+      "read": "The VIX is at 18.9 \u2014 markets are calm.",
       "signal_status": "ok",
-      "value_format": "decimal"
+      "value_format": "decimal",
+      "scale_now": 18.89
     },
     {
       "id": "hy-spread",
@@ -3003,8 +3008,8 @@
       "series_id": "BAMLH0A0HYM2",
       "observations": [
         {
-          "date": "2023-06-26",
-          "value": "4.45"
+          "date": "2023-06-27",
+          "value": "4.30"
         },
         {
           "date": "2023-07-03",
@@ -5337,16 +5342,21 @@
         {
           "date": "2026-06-24",
           "value": "2.76"
+        },
+        {
+          "date": "2026-06-25",
+          "value": "2.78"
         }
       ],
       "latest": {
-        "date": "2026-06-24",
-        "value": "2.76"
+        "date": "2026-06-25",
+        "value": "2.78"
       },
       "context": "The extra yield investors demand to hold risky 'junk' corporate bonds over Treasuries. It widens when markets fear defaults \u2014 an early stress signal. Note: FRED serves only a rolling ~3-year window of this ICE BofA series, so its chart history is shorter than the other indicators here.",
-      "read": "The high-yield spread is 2.76% \u2014 tight, signaling calm credit conditions.",
+      "read": "The high-yield spread is 2.78% \u2014 tight, signaling calm credit conditions.",
       "signal_status": "ok",
-      "value_format": "decimal"
+      "value_format": "decimal",
+      "scale_now": 2.78
     },
     {
       "id": "ig-spread",
@@ -5357,8 +5367,8 @@
       "series_id": "BAMLC0A0CM",
       "observations": [
         {
-          "date": "2023-06-26",
-          "value": "1.36"
+          "date": "2023-06-27",
+          "value": "1.34"
         },
         {
           "date": "2023-07-03",
@@ -7691,16 +7701,21 @@
         {
           "date": "2026-06-24",
           "value": "0.75"
+        },
+        {
+          "date": "2026-06-25",
+          "value": "0.76"
         }
       ],
       "latest": {
-        "date": "2026-06-24",
-        "value": "0.75"
+        "date": "2026-06-25",
+        "value": "0.76"
       },
       "context": "The same risk premium for higher-quality corporate bonds. Because these borrowers are safer, widening here signals stress reaching the core of credit. Note: FRED serves only a rolling ~3-year window of this ICE BofA series, so its chart history is shorter than the other indicators here.",
-      "read": "The investment-grade spread is 0.75% \u2014 tight, signaling calm credit conditions.",
+      "read": "The investment-grade spread is 0.76% \u2014 tight, signaling calm credit conditions.",
       "signal_status": "ok",
-      "value_format": "decimal"
+      "value_format": "decimal",
+      "scale_now": 0.76
     },
     {
       "id": "nfci",
@@ -9002,7 +9017,8 @@
       "context": "The Chicago Fed's broad gauge of financial conditions across money, debt, and equity markets. Zero is average; positive means tighter (more stressed) than normal.",
       "read": "The NFCI is -0.52 \u2014 financial conditions are looser than average.",
       "signal_status": "ok",
-      "value_format": "decimal"
+      "value_format": "decimal",
+      "scale_now": -0.516
     }
   ]
 }

@@ -2,9 +2,9 @@
   "id": "cost-of-money",
   "title": "The Cost of Money",
   "accent": "#34D399",
-  "last_updated": "2026-06-26T13:34:23Z",
-  "status": "ok",
-  "headline_read": "Borrowing costs have eased back toward normal.",
+  "last_updated": "2026-06-26T19:11:59Z",
+  "status": "watch",
+  "headline_read": "Borrowing is still expensive \u2014 rates remain elevated.",
   "recessions": [
     {
       "start": "2008-01-01",
@@ -992,7 +992,8 @@
       "context": "The interest rate the Federal Reserve sets to steer the economy \u2014 the anchor for nearly every other rate, from savings accounts to business loans.",
       "read": "The Fed's policy rate is 3.63%, and easing as the Fed pivots toward cuts.",
       "signal_status": "ok",
-      "value_format": "decimal"
+      "value_format": "decimal",
+      "scale_now": 3.63
     },
     {
       "id": "treasury-10y",
@@ -3968,9 +3969,10 @@
         "value": "4.41"
       },
       "context": "The yield on 10-year U.S. government debt \u2014 the benchmark that drives mortgage rates and long-term borrowing costs across the economy.",
-      "read": "Now 4.41%, up 0.11 points over the past year.",
+      "read": "The 10-year Treasury yield is 4.41% \u2014 moderate borrowing costs by recent standards.",
       "signal_status": "ok",
-      "value_format": "decimal"
+      "value_format": "decimal",
+      "scale_now": 4.41
     },
     {
       "id": "treasury-2y",
@@ -6946,9 +6948,10 @@
         "value": "4.11"
       },
       "context": "The yield on 2-year government debt \u2014 closely tied to where investors expect the Fed to set rates over the next couple of years.",
-      "read": "Now 4.11%, up 0.36 points over the past year.",
-      "signal_status": "ok",
-      "value_format": "decimal"
+      "read": "The 2-year Treasury yield is 4.11% \u2014 above the comfortable range for borrowers.",
+      "signal_status": "watch",
+      "value_format": "decimal",
+      "scale_now": 4.11
     },
     {
       "id": "rate-expectations",
@@ -9834,7 +9837,8 @@
       "context": "The 2-year Treasury yield minus the Fed's current policy rate \u2014 the bond market's verdict on where the Fed goes next. Well below zero means markets are pricing rate cuts; above zero, hikes. Computed from the two series charted above.",
       "read": "The 2-year yield is 0.48 points above the Fed's rate \u2014 markets are pricing rate hikes ahead.",
       "signal_status": "info",
-      "value_format": "decimal"
+      "value_format": "decimal",
+      "no_severity_reason": "Whether markets expect cuts or hikes isn't itself good or bad \u2014 it's the bond market's forecast, shown for context."
     }
   ]
 }
