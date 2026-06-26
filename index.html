@@ -190,9 +190,10 @@
 
         .lens-grid {
             display: grid;
-            /* category tiles; 16rem min keeps the grid balanced at eight
-               categories and wraps gracefully as more are added */
-            grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+            /* category tiles; 13.5rem min yields 4 columns at the 60rem max-width
+               so eight categories balance 4+4 (not 3+3+2), and it still wraps
+               gracefully to 3/2/1 columns as the viewport narrows or more are added */
+            grid-template-columns: repeat(auto-fit, minmax(13.5rem, 1fr));
             gap: 0.85rem;
         }
 

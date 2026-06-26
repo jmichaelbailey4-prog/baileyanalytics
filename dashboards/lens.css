@@ -321,6 +321,10 @@ p.lede strong{color:var(--text);font-weight:600}
 [data-theme="light"] .badge.alert{background:#FDECEE}
 [data-theme="light"] .badge.unknown{background:#ECECF1}
 [data-theme="light"] .badge.neutral{background:#E6F0FC}
+/* Scale-strip segments are decorative fills (aria-hidden), not text — use brighter
+   light-mode hues than the AA-darkened status tokens so the bar doesn't read muddy. */
+[data-theme="light"] .scale-seg.watch{background:#E0A100}
+[data-theme="light"] .scale-seg.elevated{background:#EA580C}
 /* relationship callout wash (was a dark-only rgba); table cells now use the
    --td-fg/--td-border tokens so per-status td colors win in both themes */
 [data-theme="light"] .brief-rel{background:rgba(0,104,209,.06)}

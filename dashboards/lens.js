@@ -118,7 +118,7 @@
                  }
                },
                grid: { display: false }, border: { color: c.axis } },
-          y: { ticks: { color: c.tick, font: { size: 11 }, callback: v => fmtVal(v, indicator.unit, indicator.value_format) },
+          y: { ticks: { color: c.tick, font: { size: 11 }, maxTicksLimit: 7, callback: v => fmtVal(v, indicator.unit, indicator.value_format) },
                grid: { color: c.grid }, border: { display: false } },
         },
       },
