@@ -65,7 +65,7 @@ class TestBuildIndex(unittest.TestCase):
     def test_key_stats_carry_delta_vs_prior_observation(self):
         lj = build.build_lens(config.RECESSION_WATCH, _load_fixture())
         stat = build.build_index([lj])["lenses"][0]["key_stats"][0]
-        # fixture yield curve: 0.05 (2025-01-01) -> 0.30 (2026-06-02) => +0.25
+        # fixture yield curve: 0.05 (2026-04-01) -> 0.30 (2026-06-02) => +0.25
         self.assertEqual(stat["d"], "0.25%")
         self.assertEqual(stat["dir"], "up")
 

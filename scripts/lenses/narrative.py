@@ -4,6 +4,7 @@ Each rule takes a chronological list of (date, float) tuples and returns
 (text, status). Status is one of: ok, watch, elevated, alert, unknown.
 """
 
+import datetime as _dt
 import functools
 
 from . import bands, util
@@ -11,12 +12,27 @@ from . import bands, util
 _NO_DATA = ("Data unavailable.", "unknown")
 
 
+def _iso_days_before(iso, days):
+    """ISO date `days` calendar days before `iso`. Yield-curve dates are daily
+    (YYYY-MM-DD); a bare YYYY-MM is padded defensively."""
+    d = _dt.date.fromisoformat(iso if len(iso) == 10 else iso + "-01")
+    return (d - _dt.timedelta(days=days)).isoformat()
+
+
 def rule_yield_curve(obs):
-    """T10Y2Y: inverted (<0) warns; a recent un-inversion warrants vigilance."""
+    """T10Y2Y: inverted (<0) warns; a recent un-inversion warrants vigilance.
+
+    The 'recent' window is date-based (~6 months), not a fixed point count, so the
+    read is identical whether fed daily data (the lens) or a weekly-resampled series
+    (the predictions runner). A positional obs[-126:] silently became ~2.4 years on
+    weekly data, so an old inversion re-flagged a positive curve as 'watch' and the
+    predict block contradicted the lens badge.
+    """
     if not obs:
         return _NO_DATA
     v = obs[-1][1]
-    recent = [val for _, val in obs[-126:]]  # ~6 months of daily data
+    cutoff = _iso_days_before(obs[-1][0], 183)  # ~6 months, by date
+    recent = [val for d, val in obs if d >= cutoff]
     was_inverted = any(val < 0 for val in recent[:-1])
     if v < 0:
         return (

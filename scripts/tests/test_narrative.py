@@ -24,6 +24,34 @@ class TestYieldCurve(unittest.TestCase):
         text, status = narrative.rule_yield_curve(obs)
         self.assertEqual(status, "ok")
 
+    def test_status_is_sampling_invariant_for_an_old_inversion(self):
+        # The lens feeds DAILY data; the predictions runner feeds a WEEKLY-resampled
+        # version of the SAME path. An inversion that ended >6 months ago must not
+        # flip a currently-positive curve to 'watch' on the longer (weekly) series
+        # just because it reaches back to the old dip — the recent-inversion window
+        # is date-based (~6 months), not a fixed point count. (Regression: the lens
+        # read 'ok' while the prediction re-derived 'watch' and the predict block
+        # contradicted the badge.)
+        import datetime as dt
+        now = dt.date(2026, 6, 26)
+        def at(d):  # inverted until >9 months before `now`, positive since
+            return -0.20 if d < dt.date(2025, 9, 1) else 0.30
+        def series(step_days, start):
+            out, d = [], start
+            while d <= now:
+                out.append((d.isoformat(), at(d)))
+                d += dt.timedelta(days=step_days)
+            return out
+        weekly = series(7, dt.date(2024, 1, 5))                  # ~2.4y; old dip is in the tail
+        daily = series(1, now - dt.timedelta(days=180))          # last 6 months only
+        self.assertEqual(narrative.rule_yield_curve(daily)[1], "ok")
+        self.assertEqual(narrative.rule_yield_curve(weekly)[1], "ok")
+
+    def test_inversion_within_six_months_still_watch(self):
+        # The date-based window must still flag a genuinely recent un-inversion.
+        obs = [("2026-02-01", -0.10), ("2026-04-01", 0.05), ("2026-06-20", 0.25)]
+        self.assertEqual(narrative.rule_yield_curve(obs)[1], "watch")
+
     def test_empty_is_unknown(self):
         self.assertEqual(narrative.rule_yield_curve([]), ("Data unavailable.", "unknown"))
 
