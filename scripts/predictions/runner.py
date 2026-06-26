@@ -149,6 +149,8 @@ def _make_open_entry(entry, cleaned, cad, champ_rec):
         "hi": round(point + champ_rec["err_hi"], 4),
         "unit": ind.unit, "value_format": ind.value_format,
         "prev_value": values[-1],
+        "prev_period": cleaned[-1][0],  # date of prev_value -> the "as of" stamp
+
         "why": explain.why(name, cad, values, ind.short),
         "implied_status": implied_status, "current_status": current_status,
         "descriptive": entry.descriptive,    # carries no badge (info / neutral lens)
