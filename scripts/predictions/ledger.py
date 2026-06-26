@@ -121,13 +121,38 @@ def track_record(graded):
     return out
 
 
+def category_views(open_entries, last):
+    """Per-category {cat: {"open": [...], "last": {key: entry}}} so a lens page
+    fetches only its category's predictions (predict.js + scoring.js) instead of
+    the full open/recent files. `last` is the recent last-per-key map
+    (recent(graded)["last"]). Entries without a category are skipped (the clients
+    fall back to the full files); track-record and the brief keep reading the full
+    files."""
+    out = {}
+    for e in open_entries:
+        cat = e.get("category")
+        if cat:
+            out.setdefault(cat, {"open": [], "last": {}})["open"].append(e)
+    for key, e in last.items():
+        cat = e.get("category")
+        if cat:
+            out.setdefault(cat, {"open": [], "last": {}})["last"][key] = e
+    return out
+
+
 def write_views(pred_dir, open_entries, graded):
-    """Write open.json, recent.json, track-record.json (all write-if-changed)."""
+    """Write open.json, recent.json, track-record.json (all write-if-changed),
+    plus per-category open/recent slices for the lens pages."""
     wrote = []
     if write_open(pred_dir, open_entries):
         wrote.append("open.json")
-    if build.write_lens_file(pred_dir / "recent.json", recent(graded)):
+    rec = recent(graded)
+    if build.write_lens_file(pred_dir / "recent.json", rec):
         wrote.append("recent.json")
     if build.write_lens_file(pred_dir / "track-record.json", track_record(graded)):
         wrote.append("track-record.json")
+    # Per-category slices (additive; clients fall back to the full files above).
+    for cat, view in category_views(open_entries, rec["last"]).items():
+        build.write_lens_file(pred_dir / "open" / f"{cat}.json", {"predictions": view["open"]})
+        build.write_lens_file(pred_dir / "recent" / f"{cat}.json", {"last": view["last"]})
     return wrote

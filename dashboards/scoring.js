@@ -9,9 +9,32 @@
     try { const r = await fetch(url, { cache: "no-cache" }); return r.ok ? await r.json() : null; }
     catch (e) { return null; }
   }
-  // Page-scoped memo shared with predict.js: open.json is fetched once per lens
-  // page, not once per script.
-  function getOpen() { return (self.__baOpenP = self.__baOpenP || get("/data/predictions/open.json")); }
+  // Page-scoped memo shared with predict.js: the open predictions are fetched once
+  // per lens page (not once per script), as the per-category slice with a fallback
+  // to the full file.
+  function getOpen() {
+    return (self.__baOpenP = self.__baOpenP || (async function () {
+      var cat = pageCategory();
+      if (cat) { var s = await get("/data/predictions/open/" + cat + ".json"); if (s) return s; }
+      return get("/data/predictions/open.json");
+    })());
+  }
+  // Category from the page URL: /dashboards/<cat>/<lens>.html, or /dashboards/<lens>.html
+  // for economic lenses. Used to fetch the per-category methodology slice.
+  function pageCategory() {
+    var p = location.pathname.split("/").filter(Boolean);
+    if (p[0] !== "dashboards") return null;
+    if (p.length >= 3) return p[1];
+    if (p.length === 2) return "economic";
+    return null;
+  }
+  // Per-category methodology slice (a few KB) with a fallback to the full file, so a
+  // missing slice — e.g. before the next bake — degrades to the prior behavior.
+  async function getMethodology() {
+    var cat = pageCategory();
+    if (cat) { var s = await get("/data/methodology/" + cat + ".json"); if (s) return s; }
+    return get("/data/methodology.json");
+  }
   // Mirrors lens.js fmtVal / predict.js fmtVal / build.py _fmt — keep in sync (house rule).
   function fmtVal(v, unit, vf) {
     if (v == null || isNaN(v)) return "—";
@@ -77,8 +100,7 @@
   document.addEventListener("lens:rendered", async function (ev) {
     const lensId = ev.detail && ev.detail.id;
     if (!lensId) return;
-    const [method, open] = await Promise.all([
-      get("/data/methodology.json"), getOpen()]);
+    const [method, open] = await Promise.all([getMethodology(), getOpen()]);
     if (!method || !method.signals) return;
     const preds = {};
     if (open && open.predictions) {

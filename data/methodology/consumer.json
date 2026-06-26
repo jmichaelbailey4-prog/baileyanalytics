@@ -1,0 +1,550 @@
+{
+  "signals": {
+    "consumer-spending::retail-sales": {
+      "category": "consumer",
+      "category_title": "The Consumer",
+      "lens_id": "consumer-spending",
+      "lens_title": "Consumer Spending",
+      "indicator_id": "retail-sales",
+      "title": "Retail Sales \u00b7 year-over-year",
+      "short": "Retail sales",
+      "taxonomy": "severity",
+      "why": "Scored on the year-over-year change, two-sided: both an overheating boom and a sharp contraction raise severity, because each is its own kind of instability. The quiet middle band is ok.",
+      "axis": {
+        "kind": "yoy",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the year-over-year change"
+      },
+      "segments": [
+        {
+          "status": "alert",
+          "lo": null,
+          "hi": -8
+        },
+        {
+          "status": "elevated",
+          "lo": -8,
+          "hi": -4
+        },
+        {
+          "status": "watch",
+          "lo": -4,
+          "hi": -1
+        },
+        {
+          "status": "ok",
+          "lo": -1,
+          "hi": 8
+        },
+        {
+          "status": "watch",
+          "lo": 8,
+          "hi": 15
+        },
+        {
+          "status": "elevated",
+          "lo": 15,
+          "hi": 25
+        },
+        {
+          "status": "alert",
+          "lo": 25,
+          "hi": null
+        }
+      ],
+      "edges": [
+        -8,
+        -4,
+        -1,
+        8,
+        15,
+        25
+      ]
+    },
+    "consumer-spending::real-spending": {
+      "category": "consumer",
+      "category_title": "The Consumer",
+      "lens_id": "consumer-spending",
+      "lens_title": "Consumer Spending",
+      "indicator_id": "real-spending",
+      "title": "Real Consumer Spending \u00b7 year-over-year",
+      "short": "Real spending",
+      "taxonomy": "severity",
+      "why": "Scored on the year-over-year change, two-sided: both an overheating boom and a sharp contraction raise severity, because each is its own kind of instability. The quiet middle band is ok.",
+      "axis": {
+        "kind": "yoy",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the year-over-year change"
+      },
+      "segments": [
+        {
+          "status": "alert",
+          "lo": null,
+          "hi": -4
+        },
+        {
+          "status": "elevated",
+          "lo": -4,
+          "hi": -2
+        },
+        {
+          "status": "watch",
+          "lo": -2,
+          "hi": -0.5
+        },
+        {
+          "status": "ok",
+          "lo": -0.5,
+          "hi": 4
+        },
+        {
+          "status": "watch",
+          "lo": 4,
+          "hi": 6
+        },
+        {
+          "status": "elevated",
+          "lo": 6,
+          "hi": 9
+        },
+        {
+          "status": "alert",
+          "lo": 9,
+          "hi": null
+        }
+      ],
+      "edges": [
+        -4,
+        -2,
+        -0.5,
+        4,
+        6,
+        9
+      ]
+    },
+    "consumer-spending::auto-sales": {
+      "category": "consumer",
+      "category_title": "The Consumer",
+      "lens_id": "consumer-spending",
+      "lens_title": "Consumer Spending",
+      "indicator_id": "auto-sales",
+      "title": "Vehicle Sales \u00b7 annual rate",
+      "short": "Auto sales",
+      "taxonomy": "severity",
+      "why": "Light-vehicle sales (annual-rate millions) \u2014 the big-ticket purchase households cut first. ~15M+ is healthy; the 2009 and 2020 troughs near 9M anchor the alert band.",
+      "axis": {
+        "kind": "level",
+        "unit": "M",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "segments": [
+        {
+          "status": "alert",
+          "lo": null,
+          "hi": 12
+        },
+        {
+          "status": "elevated",
+          "lo": 12,
+          "hi": 13.5
+        },
+        {
+          "status": "watch",
+          "lo": 13.5,
+          "hi": 15
+        },
+        {
+          "status": "ok",
+          "lo": 15,
+          "hi": null
+        }
+      ],
+      "edges": [
+        12,
+        13.5,
+        15
+      ]
+    },
+    "consumer-credit::card-delinquency": {
+      "category": "consumer",
+      "category_title": "The Consumer",
+      "lens_id": "consumer-credit",
+      "lens_title": "Consumer Credit Stress",
+      "indicator_id": "card-delinquency",
+      "title": "Credit-Card Delinquency Rate",
+      "short": "Card delinq.",
+      "taxonomy": "severity",
+      "why": "Delinquency-rate levels, calibrated against history \u2014 bank credit-card delinquency peaked near 6.8% in 2009. Low and steady is ok; climbing toward past-crisis levels escalates.",
+      "axis": {
+        "kind": "level",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 2.5
+        },
+        {
+          "status": "watch",
+          "lo": 2.5,
+          "hi": 4
+        },
+        {
+          "status": "elevated",
+          "lo": 4,
+          "hi": 6
+        },
+        {
+          "status": "alert",
+          "lo": 6,
+          "hi": null
+        }
+      ],
+      "edges": [
+        2.5,
+        4,
+        6
+      ]
+    },
+    "consumer-credit::consumer-delinquency": {
+      "category": "consumer",
+      "category_title": "The Consumer",
+      "lens_id": "consumer-credit",
+      "lens_title": "Consumer Credit Stress",
+      "indicator_id": "consumer-delinquency",
+      "title": "Consumer-Loan Delinquency Rate",
+      "short": "Loan delinq.",
+      "taxonomy": "severity",
+      "why": "Delinquency-rate levels, calibrated against history \u2014 bank credit-card delinquency peaked near 6.8% in 2009. Low and steady is ok; climbing toward past-crisis levels escalates.",
+      "axis": {
+        "kind": "level",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 2.5
+        },
+        {
+          "status": "watch",
+          "lo": 2.5,
+          "hi": 3.5
+        },
+        {
+          "status": "elevated",
+          "lo": 3.5,
+          "hi": 4.5
+        },
+        {
+          "status": "alert",
+          "lo": 4.5,
+          "hi": null
+        }
+      ],
+      "edges": [
+        2.5,
+        3.5,
+        4.5
+      ]
+    },
+    "consumer-credit::revolving-credit": {
+      "category": "consumer",
+      "category_title": "The Consumer",
+      "lens_id": "consumer-credit",
+      "lens_title": "Consumer Credit Stress",
+      "indicator_id": "revolving-credit",
+      "title": "Card Balances \u00b7 year-over-year",
+      "short": "Card balances",
+      "taxonomy": "severity",
+      "why": "Credit-card balance growth. Growing faster than incomes (8%+) means households are leaning on cards; shrinking balances mean paying down.",
+      "axis": {
+        "kind": "yoy",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the year-over-year change"
+      },
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 8
+        },
+        {
+          "status": "watch",
+          "lo": 8,
+          "hi": 12
+        },
+        {
+          "status": "elevated",
+          "lo": 12,
+          "hi": null
+        }
+      ],
+      "edges": [
+        8,
+        12
+      ]
+    },
+    "consumer-credit::debt-service": {
+      "category": "consumer",
+      "category_title": "The Consumer",
+      "lens_id": "consumer-credit",
+      "lens_title": "Consumer Credit Stress",
+      "indicator_id": "debt-service",
+      "title": "Household Debt Service \u00b7 % of income",
+      "short": "Debt service",
+      "taxonomy": "severity",
+      "why": "Household debt payments as a share of income. Above ~10.5% is above the comfortable range; the 2007 danger level of ~13% anchors the alert band.",
+      "axis": {
+        "kind": "level",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 10.5
+        },
+        {
+          "status": "watch",
+          "lo": 10.5,
+          "hi": 12
+        },
+        {
+          "status": "elevated",
+          "lo": 12,
+          "hi": 13
+        },
+        {
+          "status": "alert",
+          "lo": 13,
+          "hi": null
+        }
+      ],
+      "edges": [
+        10.5,
+        12,
+        13
+      ]
+    },
+    "consumer-income-savings::saving-rate": {
+      "category": "consumer",
+      "category_title": "The Consumer",
+      "lens_id": "consumer-income-savings",
+      "lens_title": "Household Income & Savings",
+      "indicator_id": "saving-rate",
+      "title": "Personal Saving Rate",
+      "short": "Saving rate",
+      "taxonomy": "severity",
+      "why": "The personal saving rate \u2014 the household shock absorber. The historical norm is 5\u20138%; below 5% is thin, below 3% is almost no cushion.",
+      "axis": {
+        "kind": "level",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "segments": [
+        {
+          "status": "elevated",
+          "lo": null,
+          "hi": 3
+        },
+        {
+          "status": "watch",
+          "lo": 3,
+          "hi": 5
+        },
+        {
+          "status": "ok",
+          "lo": 5,
+          "hi": null
+        }
+      ],
+      "edges": [
+        3,
+        5
+      ]
+    },
+    "consumer-income-savings::real-income": {
+      "category": "consumer",
+      "category_title": "The Consumer",
+      "lens_id": "consumer-income-savings",
+      "lens_title": "Household Income & Savings",
+      "indicator_id": "real-income",
+      "title": "Real Disposable Income \u00b7 year-over-year",
+      "short": "Real income",
+      "taxonomy": "severity",
+      "why": "Inflation-adjusted disposable income, the root of most consumer stress. Below zero is a warning; a 2%+ annual drop erodes purchasing power fast.",
+      "axis": {
+        "kind": "yoy",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the year-over-year change"
+      },
+      "segments": [
+        {
+          "status": "elevated",
+          "lo": null,
+          "hi": -2
+        },
+        {
+          "status": "watch",
+          "lo": -2,
+          "hi": 0
+        },
+        {
+          "status": "ok",
+          "lo": 0,
+          "hi": null
+        }
+      ],
+      "edges": [
+        -2,
+        0
+      ]
+    },
+    "consumer-income-savings::net-worth": {
+      "category": "consumer",
+      "category_title": "The Consumer",
+      "lens_id": "consumer-income-savings",
+      "lens_title": "Household Income & Savings",
+      "indicator_id": "net-worth",
+      "title": "Household Net Worth \u00b7 year-over-year",
+      "short": "Net worth",
+      "taxonomy": "severity",
+      "why": "Scored on the year-over-year change where FALLING is the stress signal \u2014 profits, new-business applications, capital-goods orders, sales. Growth is ok; the bands mark progressively deeper contractions.",
+      "axis": {
+        "kind": "yoy",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the year-over-year change"
+      },
+      "segments": [
+        {
+          "status": "alert",
+          "lo": null,
+          "hi": -8
+        },
+        {
+          "status": "elevated",
+          "lo": -8,
+          "hi": -3
+        },
+        {
+          "status": "watch",
+          "lo": -3,
+          "hi": 0
+        },
+        {
+          "status": "ok",
+          "lo": 0,
+          "hi": null
+        }
+      ],
+      "edges": [
+        -8,
+        -3,
+        0
+      ]
+    },
+    "consumer-sentiment::sentiment": {
+      "category": "consumer",
+      "category_title": "The Consumer",
+      "lens_id": "consumer-sentiment",
+      "lens_title": "Consumer Sentiment",
+      "indicator_id": "sentiment",
+      "title": "Consumer Sentiment (U. Michigan)",
+      "short": "Sentiment",
+      "taxonomy": "severity",
+      "why": "U. Michigan consumer sentiment, long-run range roughly 50\u2013110. 85+ is fine; the bands step down through recession-grade gloom; the 2022 record low was about 50.",
+      "axis": {
+        "kind": "level",
+        "unit": "",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "segments": [
+        {
+          "status": "alert",
+          "lo": null,
+          "hi": 55
+        },
+        {
+          "status": "elevated",
+          "lo": 55,
+          "hi": 70
+        },
+        {
+          "status": "watch",
+          "lo": 70,
+          "hi": 85
+        },
+        {
+          "status": "ok",
+          "lo": 85,
+          "hi": null
+        }
+      ],
+      "edges": [
+        55,
+        70,
+        85
+      ]
+    },
+    "consumer-sentiment::inflation-expectations": {
+      "category": "consumer",
+      "category_title": "The Consumer",
+      "lens_id": "consumer-sentiment",
+      "lens_title": "Consumer Sentiment",
+      "indicator_id": "inflation-expectations",
+      "title": "Inflation Expectations \u00b7 1-year ahead",
+      "short": "Inflation exp.",
+      "taxonomy": "severity",
+      "why": "One-year-ahead household inflation expectations, which the Fed watches for de-anchoring. Above ~3% is a touch high; 5.5%+ suggests expectations coming unmoored.",
+      "axis": {
+        "kind": "level",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 3
+        },
+        {
+          "status": "watch",
+          "lo": 3,
+          "hi": 4
+        },
+        {
+          "status": "elevated",
+          "lo": 4,
+          "hi": 5.5
+        },
+        {
+          "status": "alert",
+          "lo": 5.5,
+          "hi": null
+        }
+      ],
+      "edges": [
+        3,
+        4,
+        5.5
+      ]
+    }
+  }
+}

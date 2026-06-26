@@ -74,5 +74,37 @@ class TestPwaStamperExcludesMethodology(unittest.TestCase):
         self.assertTrue(pwa_head.is_target(root / "dashboards" / "recession-watch.html", root))
 
 
+class TestCategorySlices(unittest.TestCase):
+    """Per-category methodology slices: a lens page fetches only its category's
+    signals (scoring.js) instead of the full ~120-signal file."""
+    def setUp(self):
+        self.full = methodology.build_methodology()
+        self.slices = methodology.category_slices(self.full)
+
+    def test_keyed_by_category_each_with_signals(self):
+        self.assertIn("banking", self.slices)
+        self.assertIn("economic", self.slices)
+        for cat, sl in self.slices.items():
+            self.assertEqual(list(sl.keys()), ["signals"])
+            self.assertTrue(sl["signals"])
+
+    def test_partitions_every_signal_exactly_once(self):
+        seen = {}
+        for cat, sl in self.slices.items():
+            for k in sl["signals"]:
+                self.assertNotIn(k, seen)          # never in two slices
+                seen[k] = cat
+        self.assertEqual(set(seen), set(self.full["signals"]))  # full coverage
+
+    def test_each_signal_lands_in_its_own_category(self):
+        for cat, sl in self.slices.items():
+            for k, s in sl["signals"].items():
+                self.assertEqual(s["category"], cat)
+        self.assertIn("recession-watch::yield-curve", self.slices["economic"]["signals"])
+        self.assertIn("bank-asset-quality::noncurrent", self.slices["banking"]["signals"])
+        self.assertTrue(any(k.startswith("crypto-structure::")
+                            for k in self.slices["markets"]["signals"]))
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -1,0 +1,327 @@
+{
+  "signals": {
+    "market-risk-sentiment::vix": {
+      "category": "markets",
+      "category_title": "Markets & Financial Conditions",
+      "lens_id": "market-risk-sentiment",
+      "lens_title": "Risk Sentiment",
+      "indicator_id": "vix",
+      "title": "Volatility \u00b7 VIX",
+      "short": "VIX",
+      "taxonomy": "severity",
+      "why": "The equity 'fear gauge'. Below 20 is calm; 20\u201330 is nervous; 30+ is fearful.",
+      "axis": {
+        "kind": "level",
+        "unit": "",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 20
+        },
+        {
+          "status": "watch",
+          "lo": 20,
+          "hi": 30
+        },
+        {
+          "status": "elevated",
+          "lo": 30,
+          "hi": null
+        }
+      ],
+      "edges": [
+        20,
+        30
+      ]
+    },
+    "market-risk-sentiment::hy-spread": {
+      "category": "markets",
+      "category_title": "Markets & Financial Conditions",
+      "lens_id": "market-risk-sentiment",
+      "lens_title": "Risk Sentiment",
+      "indicator_id": "hy-spread",
+      "title": "High-Yield Credit Spread",
+      "short": "HY spread",
+      "taxonomy": "severity",
+      "why": "The extra yield investors demand over Treasuries. Tight spreads signal calm credit; the bands mark where spreads have historically started to price real default risk (the high-yield band sits wider than investment-grade because junk spreads are structurally larger).",
+      "axis": {
+        "kind": "level",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 4.0
+        },
+        {
+          "status": "watch",
+          "lo": 4.0,
+          "hi": 6.0
+        },
+        {
+          "status": "elevated",
+          "lo": 6.0,
+          "hi": null
+        }
+      ],
+      "edges": [
+        4.0,
+        6.0
+      ]
+    },
+    "market-risk-sentiment::ig-spread": {
+      "category": "markets",
+      "category_title": "Markets & Financial Conditions",
+      "lens_id": "market-risk-sentiment",
+      "lens_title": "Risk Sentiment",
+      "indicator_id": "ig-spread",
+      "title": "Investment-Grade Credit Spread",
+      "short": "IG spread",
+      "taxonomy": "severity",
+      "why": "The extra yield investors demand over Treasuries. Tight spreads signal calm credit; the bands mark where spreads have historically started to price real default risk (the high-yield band sits wider than investment-grade because junk spreads are structurally larger).",
+      "axis": {
+        "kind": "level",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 1.5
+        },
+        {
+          "status": "watch",
+          "lo": 1.5,
+          "hi": 2.5
+        },
+        {
+          "status": "elevated",
+          "lo": 2.5,
+          "hi": null
+        }
+      ],
+      "edges": [
+        1.5,
+        2.5
+      ]
+    },
+    "market-risk-sentiment::nfci": {
+      "category": "markets",
+      "category_title": "Markets & Financial Conditions",
+      "lens_id": "market-risk-sentiment",
+      "lens_title": "Risk Sentiment",
+      "indicator_id": "nfci",
+      "title": "Financial Conditions \u00b7 NFCI",
+      "short": "NFCI",
+      "taxonomy": "severity",
+      "why": "The Chicago Fed NFCI, where zero is average. Positive means tighter (more stressed) than normal; 0.5+ is tight.",
+      "axis": {
+        "kind": "level",
+        "unit": "",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 0
+        },
+        {
+          "status": "watch",
+          "lo": 0,
+          "hi": 0.5
+        },
+        {
+          "status": "elevated",
+          "lo": 0.5,
+          "hi": null
+        }
+      ],
+      "edges": [
+        0,
+        0.5
+      ]
+    },
+    "market-scoreboard::sp500": {
+      "category": "markets",
+      "category_title": "Markets & Financial Conditions",
+      "lens_id": "market-scoreboard",
+      "lens_title": "Asset-Class Scoreboard",
+      "indicator_id": "sp500",
+      "title": "S&P 500",
+      "short": "S&P 500",
+      "taxonomy": "neutral",
+      "note": "Part of a neutral scoreboard \u2014 it shows which way the price is moving, not whether that's good or bad."
+    },
+    "market-scoreboard::oil": {
+      "category": "markets",
+      "category_title": "Markets & Financial Conditions",
+      "lens_id": "market-scoreboard",
+      "lens_title": "Asset-Class Scoreboard",
+      "indicator_id": "oil",
+      "title": "Crude Oil \u00b7 WTI",
+      "short": "WTI oil",
+      "taxonomy": "neutral",
+      "note": "Part of a neutral scoreboard \u2014 it shows which way the price is moving, not whether that's good or bad."
+    },
+    "market-scoreboard::gold": {
+      "category": "markets",
+      "category_title": "Markets & Financial Conditions",
+      "lens_id": "market-scoreboard",
+      "lens_title": "Asset-Class Scoreboard",
+      "indicator_id": "gold",
+      "title": "Gold",
+      "short": "Gold",
+      "taxonomy": "neutral",
+      "note": "Part of a neutral scoreboard \u2014 it shows which way the price is moving, not whether that's good or bad."
+    },
+    "market-scoreboard::btc": {
+      "category": "markets",
+      "category_title": "Markets & Financial Conditions",
+      "lens_id": "market-scoreboard",
+      "lens_title": "Asset-Class Scoreboard",
+      "indicator_id": "btc",
+      "title": "Bitcoin",
+      "short": "Bitcoin",
+      "taxonomy": "neutral",
+      "note": "Part of a neutral scoreboard \u2014 it shows which way the price is moving, not whether that's good or bad."
+    },
+    "market-scoreboard::eth": {
+      "category": "markets",
+      "category_title": "Markets & Financial Conditions",
+      "lens_id": "market-scoreboard",
+      "lens_title": "Asset-Class Scoreboard",
+      "indicator_id": "eth",
+      "title": "Ethereum",
+      "short": "Ethereum",
+      "taxonomy": "neutral",
+      "note": "Part of a neutral scoreboard \u2014 it shows which way the price is moving, not whether that's good or bad."
+    },
+    "market-liquidity::m2-growth": {
+      "category": "markets",
+      "category_title": "Markets & Financial Conditions",
+      "lens_id": "market-liquidity",
+      "lens_title": "Liquidity & the Fed",
+      "indicator_id": "m2-growth",
+      "title": "M2 Money Supply \u00b7 year-over-year",
+      "short": "M2 growth",
+      "taxonomy": "severity",
+      "why": "Money-supply growth, two-sided: double-digit growth is historically inflationary (2020\u201321), while an outright contraction is rare and signals a monetary squeeze (2022\u201323). The calm band is roughly -1% to 7%.",
+      "axis": {
+        "kind": "yoy",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the year-over-year change"
+      },
+      "segments": [
+        {
+          "status": "elevated",
+          "lo": null,
+          "hi": -3
+        },
+        {
+          "status": "watch",
+          "lo": -3,
+          "hi": -1
+        },
+        {
+          "status": "ok",
+          "lo": -1,
+          "hi": 7
+        },
+        {
+          "status": "watch",
+          "lo": 7,
+          "hi": 10
+        },
+        {
+          "status": "elevated",
+          "lo": 10,
+          "hi": null
+        }
+      ],
+      "edges": [
+        -3,
+        -1,
+        7,
+        10
+      ]
+    },
+    "market-liquidity::fed-balance-sheet": {
+      "category": "markets",
+      "category_title": "Markets & Financial Conditions",
+      "lens_id": "market-liquidity",
+      "lens_title": "Liquidity & the Fed",
+      "indicator_id": "fed-balance-sheet",
+      "title": "Fed Balance Sheet \u00b7 total assets",
+      "short": "Fed assets",
+      "taxonomy": "info",
+      "note": "A descriptive level of the monetary plumbing \u2014 this lens's verdict is carried by M2 money-supply growth."
+    },
+    "market-liquidity::bank-reserves": {
+      "category": "markets",
+      "category_title": "Markets & Financial Conditions",
+      "lens_id": "market-liquidity",
+      "lens_title": "Liquidity & the Fed",
+      "indicator_id": "bank-reserves",
+      "title": "Bank Reserves at the Fed",
+      "short": "Reserves",
+      "taxonomy": "info",
+      "note": "A descriptive level of the monetary plumbing \u2014 this lens's verdict is carried by M2 money-supply growth."
+    },
+    "market-liquidity::reverse-repo": {
+      "category": "markets",
+      "category_title": "Markets & Financial Conditions",
+      "lens_id": "market-liquidity",
+      "lens_title": "Liquidity & the Fed",
+      "indicator_id": "reverse-repo",
+      "title": "Overnight Reverse Repo",
+      "short": "Reverse repo",
+      "taxonomy": "info",
+      "note": "A descriptive level of the monetary plumbing \u2014 this lens's verdict is carried by M2 money-supply growth."
+    },
+    "crypto-structure::btc-dominance": {
+      "category": "markets",
+      "category_title": "Markets & Financial Conditions",
+      "lens_id": "crypto-structure",
+      "lens_title": "Crypto Market Structure",
+      "indicator_id": "btc-dominance",
+      "title": "Bitcoin Dominance",
+      "short": "BTC dominance",
+      "taxonomy": "neutral",
+      "note": "A structural read on how money is rotating within crypto \u2014 not a good-or-bad verdict."
+    },
+    "crypto-structure::crypto-rotation": {
+      "category": "markets",
+      "category_title": "Markets & Financial Conditions",
+      "lens_id": "crypto-structure",
+      "lens_title": "Crypto Market Structure",
+      "indicator_id": "crypto-rotation",
+      "title": "Large-vs-Small Rotation",
+      "short": "Alt rotation",
+      "taxonomy": "neutral",
+      "note": "A structural read on how money is rotating within crypto \u2014 not a good-or-bad verdict."
+    },
+    "crypto-structure::btc-eth-ratio": {
+      "category": "markets",
+      "category_title": "Markets & Financial Conditions",
+      "lens_id": "crypto-structure",
+      "lens_title": "Crypto Market Structure",
+      "indicator_id": "btc-eth-ratio",
+      "title": "Bitcoin / Ether Ratio",
+      "short": "BTC/ETH",
+      "taxonomy": "neutral",
+      "note": "A structural read on how money is rotating within crypto \u2014 not a good-or-bad verdict."
+    }
+  }
+}

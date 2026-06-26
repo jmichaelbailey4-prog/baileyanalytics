@@ -1,0 +1,406 @@
+{
+  "signals": {
+    "global-dollar-currencies::dollar-yoy": {
+      "category": "global",
+      "category_title": "Global Economy",
+      "lens_id": "global-dollar-currencies",
+      "lens_title": "The Dollar & Currencies",
+      "indicator_id": "dollar-yoy",
+      "title": "Broad Dollar Index \u00b7 year-over-year",
+      "short": "Dollar YoY",
+      "taxonomy": "severity",
+      "why": "The broad dollar's year-over-year move, scored two-sided on magnitude: a surging dollar squeezes the world's dollar borrowers and a sliding one imports inflation, so both raise severity. Under ~5% is normal drift.",
+      "axis": {
+        "kind": "yoy",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the year-over-year change"
+      },
+      "segments": [
+        {
+          "status": "alert",
+          "lo": null,
+          "hi": -12
+        },
+        {
+          "status": "elevated",
+          "lo": -12,
+          "hi": -9
+        },
+        {
+          "status": "watch",
+          "lo": -9,
+          "hi": -5
+        },
+        {
+          "status": "ok",
+          "lo": -5,
+          "hi": 5
+        },
+        {
+          "status": "watch",
+          "lo": 5,
+          "hi": 9
+        },
+        {
+          "status": "elevated",
+          "lo": 9,
+          "hi": 12
+        },
+        {
+          "status": "alert",
+          "lo": 12,
+          "hi": null
+        }
+      ],
+      "edges": [
+        -12,
+        -9,
+        -5,
+        5,
+        9,
+        12
+      ]
+    },
+    "global-dollar-currencies::euro": {
+      "category": "global",
+      "category_title": "Global Economy",
+      "lens_id": "global-dollar-currencies",
+      "lens_title": "The Dollar & Currencies",
+      "indicator_id": "euro",
+      "title": "Euro \u00b7 dollars per euro",
+      "short": "Euro",
+      "taxonomy": "info",
+      "note": "A market price has no inherent good-or-bad level \u2014 higher or lower isn't itself better or worse."
+    },
+    "global-dollar-currencies::yen": {
+      "category": "global",
+      "category_title": "Global Economy",
+      "lens_id": "global-dollar-currencies",
+      "lens_title": "The Dollar & Currencies",
+      "indicator_id": "yen",
+      "title": "Japanese Yen \u00b7 yen per dollar",
+      "short": "Yen",
+      "taxonomy": "info",
+      "note": "A market price has no inherent good-or-bad level \u2014 higher or lower isn't itself better or worse."
+    },
+    "global-dollar-currencies::yuan": {
+      "category": "global",
+      "category_title": "Global Economy",
+      "lens_id": "global-dollar-currencies",
+      "lens_title": "The Dollar & Currencies",
+      "indicator_id": "yuan",
+      "title": "Chinese Yuan \u00b7 yuan per dollar",
+      "short": "Yuan",
+      "taxonomy": "info",
+      "note": "A market price has no inherent good-or-bad level \u2014 higher or lower isn't itself better or worse."
+    },
+    "global-growth::world-growth": {
+      "category": "global",
+      "category_title": "Global Economy",
+      "lens_id": "global-growth",
+      "lens_title": "Global Growth",
+      "indicator_id": "world-growth",
+      "title": "World Real GDP Growth \u00b7 annual",
+      "short": "World growth",
+      "taxonomy": "severity",
+      "why": "Annual world real-GDP growth, scored against its long-run trend of about 3.5%. Below roughly 2% is what economists call a global recession; the bands step down from trend toward that line.",
+      "axis": {
+        "kind": "level",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "segments": [
+        {
+          "status": "alert",
+          "lo": null,
+          "hi": 2.0
+        },
+        {
+          "status": "elevated",
+          "lo": 2.0,
+          "hi": 2.5
+        },
+        {
+          "status": "watch",
+          "lo": 2.5,
+          "hi": 3.2
+        },
+        {
+          "status": "ok",
+          "lo": 3.2,
+          "hi": null
+        }
+      ],
+      "edges": [
+        2.0,
+        2.5,
+        3.2
+      ]
+    },
+    "global-growth::china-growth": {
+      "category": "global",
+      "category_title": "Global Economy",
+      "lens_id": "global-growth",
+      "lens_title": "Global Growth",
+      "indicator_id": "china-growth",
+      "title": "China Real GDP Growth \u00b7 annual",
+      "short": "China",
+      "taxonomy": "info",
+      "note": "Shown for context alongside this lens's lead growth reading."
+    },
+    "global-growth::euro-growth": {
+      "category": "global",
+      "category_title": "Global Economy",
+      "lens_id": "global-growth",
+      "lens_title": "Global Growth",
+      "indicator_id": "euro-growth",
+      "title": "Euro Area Real GDP Growth \u00b7 annual",
+      "short": "Euro area",
+      "taxonomy": "info",
+      "note": "Shown for context alongside this lens's lead growth reading."
+    },
+    "global-growth::world-inflation": {
+      "category": "global",
+      "category_title": "Global Economy",
+      "lens_id": "global-growth",
+      "lens_title": "Global Growth",
+      "indicator_id": "world-inflation",
+      "title": "World Inflation \u00b7 annual",
+      "short": "World inflation",
+      "taxonomy": "info",
+      "note": "Shown for context alongside this lens's lead growth reading."
+    },
+    "global-growth::ea-gdp-quarterly": {
+      "category": "global",
+      "category_title": "Global Economy",
+      "lens_id": "global-growth",
+      "lens_title": "Global Growth",
+      "indicator_id": "ea-gdp-quarterly",
+      "title": "Euro Area Real GDP \u00b7 year-over-year",
+      "short": "EA quarterly",
+      "taxonomy": "severity",
+      "why": "Scored on the year-over-year change where FALLING is the stress signal \u2014 profits, new-business applications, capital-goods orders, sales. Growth is ok; the bands mark progressively deeper contractions.",
+      "axis": {
+        "kind": "yoy",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the year-over-year change"
+      },
+      "segments": [
+        {
+          "status": "alert",
+          "lo": null,
+          "hi": -6
+        },
+        {
+          "status": "elevated",
+          "lo": -6,
+          "hi": -2
+        },
+        {
+          "status": "watch",
+          "lo": -2,
+          "hi": 0
+        },
+        {
+          "status": "ok",
+          "lo": 0,
+          "hi": null
+        }
+      ],
+      "edges": [
+        -6,
+        -2,
+        0
+      ]
+    },
+    "global-trade-supply::gscpi": {
+      "category": "global",
+      "category_title": "Global Economy",
+      "lens_id": "global-trade-supply",
+      "lens_title": "Trade & Supply Chain",
+      "indicator_id": "gscpi",
+      "title": "Global Supply Chain Pressure Index",
+      "short": "Supply chain",
+      "taxonomy": "severity",
+      "why": "The NY Fed supply-chain pressure index, in standard deviations from normal. Negative is looser than normal (ok); the bands climb toward extreme disruption (the COVID peak was about 4.5\u03c3).",
+      "axis": {
+        "kind": "level",
+        "unit": "\u03c3",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 0.5
+        },
+        {
+          "status": "watch",
+          "lo": 0.5,
+          "hi": 1.5
+        },
+        {
+          "status": "elevated",
+          "lo": 1.5,
+          "hi": 2.5
+        },
+        {
+          "status": "alert",
+          "lo": 2.5,
+          "hi": null
+        }
+      ],
+      "edges": [
+        0.5,
+        1.5,
+        2.5
+      ]
+    },
+    "global-trade-supply::trade-balance": {
+      "category": "global",
+      "category_title": "Global Economy",
+      "lens_id": "global-trade-supply",
+      "lens_title": "Trade & Supply Chain",
+      "indicator_id": "trade-balance",
+      "title": "U.S. Trade Deficit \u00b7 goods & services",
+      "short": "Trade deficit",
+      "taxonomy": "info",
+      "note": "The U.S. has run a trade deficit every year since 1976 \u2014 the level isn't good or bad on its own; what matters is the trend shown here."
+    },
+    "global-trade-supply::import-prices": {
+      "category": "global",
+      "category_title": "Global Economy",
+      "lens_id": "global-trade-supply",
+      "lens_title": "Trade & Supply Chain",
+      "indicator_id": "import-prices",
+      "title": "Import Prices \u00b7 year-over-year",
+      "short": "Import prices",
+      "taxonomy": "severity",
+      "why": "A cost already expressed as a year-over-year rate. Same logic as the fuel costs: faster annual increases mean more household strain; flat or falling is ok.",
+      "axis": {
+        "kind": "yoy",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the year-over-year change"
+      },
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 4
+        },
+        {
+          "status": "watch",
+          "lo": 4,
+          "hi": 8
+        },
+        {
+          "status": "elevated",
+          "lo": 8,
+          "hi": 12
+        },
+        {
+          "status": "alert",
+          "lo": 12,
+          "hi": null
+        }
+      ],
+      "edges": [
+        4,
+        8,
+        12
+      ]
+    },
+    "global-trade-supply::china-exports": {
+      "category": "global",
+      "category_title": "Global Economy",
+      "lens_id": "global-trade-supply",
+      "lens_title": "Trade & Supply Chain",
+      "indicator_id": "china-exports",
+      "title": "China Exports \u00b7 year-over-year",
+      "short": "China exports",
+      "taxonomy": "info",
+      "note": "Shown for context \u2014 a noisy global-demand pulse the lens's scored indicators read more cleanly."
+    },
+    "global-uncertainty::us-epu": {
+      "category": "global",
+      "category_title": "Global Economy",
+      "lens_id": "global-uncertainty",
+      "lens_title": "Uncertainty & Risk",
+      "indicator_id": "us-epu",
+      "title": "U.S. Economic Policy Uncertainty",
+      "short": "US uncertainty",
+      "taxonomy": "severity",
+      "why": "The Baker/Bloom/Davis policy-uncertainty index, whose long-run norm is about 100, so the bands mark multiples of that norm. The global index (GEPU) is held to a 'watch' ceiling here, because it publishes about six months late \u2014 too stale to drive a live alarm.",
+      "axis": {
+        "kind": "level",
+        "unit": "",
+        "value_format": "thousands",
+        "label": "the latest reading"
+      },
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 120
+        },
+        {
+          "status": "watch",
+          "lo": 120,
+          "hi": 200
+        },
+        {
+          "status": "elevated",
+          "lo": 200,
+          "hi": 300
+        },
+        {
+          "status": "alert",
+          "lo": 300,
+          "hi": null
+        }
+      ],
+      "edges": [
+        120,
+        200,
+        300
+      ]
+    },
+    "global-uncertainty::gepu": {
+      "category": "global",
+      "category_title": "Global Economy",
+      "lens_id": "global-uncertainty",
+      "lens_title": "Uncertainty & Risk",
+      "indicator_id": "gepu",
+      "title": "Global Economic Policy Uncertainty",
+      "short": "Global uncertainty",
+      "taxonomy": "severity",
+      "why": "The Baker/Bloom/Davis policy-uncertainty index, whose long-run norm is about 100, so the bands mark multiples of that norm. The global index (GEPU) is held to a 'watch' ceiling here, because it publishes about six months late \u2014 too stale to drive a live alarm.",
+      "axis": {
+        "kind": "level",
+        "unit": "",
+        "value_format": "thousands",
+        "label": "the latest reading"
+      },
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 120
+        },
+        {
+          "status": "watch",
+          "lo": 120,
+          "hi": null
+        }
+      ],
+      "edges": [
+        120
+      ]
+    }
+  }
+}

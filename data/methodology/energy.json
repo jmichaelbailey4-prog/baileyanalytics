@@ -1,0 +1,334 @@
+{
+  "signals": {
+    "energy-oil-fuels::gasoline": {
+      "category": "energy",
+      "category_title": "Energy & Commodities",
+      "lens_id": "energy-oil-fuels",
+      "lens_title": "Oil & Fuels",
+      "indicator_id": "gasoline",
+      "title": "Retail Gasoline \u00b7 Regular",
+      "short": "Gasoline",
+      "taxonomy": "severity",
+      "why": "Scored on the trailing-12-month change, because what strains a household is how fast a cost is rising, not its dollar level. The bands reflect how volatile each fuel or power price normally is; a falling cost reads as relief (ok).",
+      "axis": {
+        "kind": "yoy_computed",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the year-over-year change"
+      },
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 10
+        },
+        {
+          "status": "watch",
+          "lo": 10,
+          "hi": 25
+        },
+        {
+          "status": "elevated",
+          "lo": 25,
+          "hi": 40
+        },
+        {
+          "status": "alert",
+          "lo": 40,
+          "hi": null
+        }
+      ],
+      "edges": [
+        10,
+        25,
+        40
+      ]
+    },
+    "energy-oil-fuels::diesel": {
+      "category": "energy",
+      "category_title": "Energy & Commodities",
+      "lens_id": "energy-oil-fuels",
+      "lens_title": "Oil & Fuels",
+      "indicator_id": "diesel",
+      "title": "Retail Diesel \u00b7 On-Highway",
+      "short": "Diesel",
+      "taxonomy": "severity",
+      "why": "Scored on the trailing-12-month change, because what strains a household is how fast a cost is rising, not its dollar level. The bands reflect how volatile each fuel or power price normally is; a falling cost reads as relief (ok).",
+      "axis": {
+        "kind": "yoy_computed",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the year-over-year change"
+      },
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 10
+        },
+        {
+          "status": "watch",
+          "lo": 10,
+          "hi": 25
+        },
+        {
+          "status": "elevated",
+          "lo": 25,
+          "hi": 40
+        },
+        {
+          "status": "alert",
+          "lo": 40,
+          "hi": null
+        }
+      ],
+      "edges": [
+        10,
+        25,
+        40
+      ]
+    },
+    "energy-oil-fuels::crude-production": {
+      "category": "energy",
+      "category_title": "Energy & Commodities",
+      "lens_id": "energy-oil-fuels",
+      "lens_title": "Oil & Fuels",
+      "indicator_id": "crude-production",
+      "title": "U.S. Crude Oil Production",
+      "short": "Crude output",
+      "taxonomy": "info",
+      "note": "A physical supply-and-demand reading, not a household cost \u2014 this lens's verdict comes from the price indicators."
+    },
+    "energy-oil-fuels::crude-stocks": {
+      "category": "energy",
+      "category_title": "Energy & Commodities",
+      "lens_id": "energy-oil-fuels",
+      "lens_title": "Oil & Fuels",
+      "indicator_id": "crude-stocks",
+      "title": "Crude Inventories \u00b7 excl. SPR",
+      "short": "Crude stocks",
+      "taxonomy": "info",
+      "note": "A physical supply-and-demand reading, not a household cost \u2014 this lens's verdict comes from the price indicators."
+    },
+    "energy-natural-gas::henry-hub": {
+      "category": "energy",
+      "category_title": "Energy & Commodities",
+      "lens_id": "energy-natural-gas",
+      "lens_title": "Natural Gas",
+      "indicator_id": "henry-hub",
+      "title": "Henry Hub Spot Price",
+      "short": "Henry Hub",
+      "taxonomy": "severity",
+      "why": "Scored on the trailing-12-month change, because what strains a household is how fast a cost is rising, not its dollar level. The bands reflect how volatile each fuel or power price normally is; a falling cost reads as relief (ok).",
+      "axis": {
+        "kind": "yoy_computed",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the year-over-year change"
+      },
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 20
+        },
+        {
+          "status": "watch",
+          "lo": 20,
+          "hi": 50
+        },
+        {
+          "status": "elevated",
+          "lo": 50,
+          "hi": 100
+        },
+        {
+          "status": "alert",
+          "lo": 100,
+          "hi": null
+        }
+      ],
+      "edges": [
+        20,
+        50,
+        100
+      ]
+    },
+    "energy-natural-gas::gas-storage": {
+      "category": "energy",
+      "category_title": "Energy & Commodities",
+      "lens_id": "energy-natural-gas",
+      "lens_title": "Natural Gas",
+      "indicator_id": "gas-storage",
+      "title": "Working Gas in Storage \u00b7 Lower 48",
+      "short": "Gas storage",
+      "taxonomy": "info",
+      "note": "A physical supply-and-demand reading, not a household cost \u2014 this lens's verdict comes from the price indicators."
+    },
+    "energy-natural-gas::gas-production": {
+      "category": "energy",
+      "category_title": "Energy & Commodities",
+      "lens_id": "energy-natural-gas",
+      "lens_title": "Natural Gas",
+      "indicator_id": "gas-production",
+      "title": "U.S. Dry Gas Production",
+      "short": "Gas output",
+      "taxonomy": "info",
+      "note": "A physical supply-and-demand reading, not a household cost \u2014 this lens's verdict comes from the price indicators."
+    },
+    "energy-natural-gas::lng-exports": {
+      "category": "energy",
+      "category_title": "Energy & Commodities",
+      "lens_id": "energy-natural-gas",
+      "lens_title": "Natural Gas",
+      "indicator_id": "lng-exports",
+      "title": "U.S. LNG Exports",
+      "short": "LNG exports",
+      "taxonomy": "info",
+      "note": "A physical supply-and-demand reading, not a household cost \u2014 this lens's verdict comes from the price indicators."
+    },
+    "energy-electricity::electricity-price": {
+      "category": "energy",
+      "category_title": "Energy & Commodities",
+      "lens_id": "energy-electricity",
+      "lens_title": "Electricity & the Grid",
+      "indicator_id": "electricity-price",
+      "title": "Retail Electricity \u00b7 Residential",
+      "short": "Power price",
+      "taxonomy": "severity",
+      "why": "Scored on the trailing-12-month change, because what strains a household is how fast a cost is rising, not its dollar level. The bands reflect how volatile each fuel or power price normally is; a falling cost reads as relief (ok).",
+      "axis": {
+        "kind": "yoy_computed",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the year-over-year change"
+      },
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 5
+        },
+        {
+          "status": "watch",
+          "lo": 5,
+          "hi": 10
+        },
+        {
+          "status": "elevated",
+          "lo": 10,
+          "hi": 20
+        },
+        {
+          "status": "alert",
+          "lo": 20,
+          "hi": null
+        }
+      ],
+      "edges": [
+        5,
+        10,
+        20
+      ]
+    },
+    "energy-electricity::renewables-share": {
+      "category": "energy",
+      "category_title": "Energy & Commodities",
+      "lens_id": "energy-electricity",
+      "lens_title": "Electricity & the Grid",
+      "indicator_id": "renewables-share",
+      "title": "Renewables \u00b7 Share of Generation",
+      "short": "Renewables",
+      "taxonomy": "info",
+      "note": "A physical supply-and-demand reading, not a household cost \u2014 this lens's verdict comes from the price indicators."
+    },
+    "energy-electricity::natgas-share": {
+      "category": "energy",
+      "category_title": "Energy & Commodities",
+      "lens_id": "energy-electricity",
+      "lens_title": "Electricity & the Grid",
+      "indicator_id": "natgas-share",
+      "title": "Natural Gas \u00b7 Share of Generation",
+      "short": "Gas share",
+      "taxonomy": "info",
+      "note": "A physical supply-and-demand reading, not a household cost \u2014 this lens's verdict comes from the price indicators."
+    },
+    "energy-electricity::net-generation": {
+      "category": "energy",
+      "category_title": "Energy & Commodities",
+      "lens_id": "energy-electricity",
+      "lens_title": "Electricity & the Grid",
+      "indicator_id": "net-generation",
+      "title": "Total Net Generation",
+      "short": "Net generation",
+      "taxonomy": "info",
+      "note": "A physical supply-and-demand reading, not a household cost \u2014 this lens's verdict comes from the price indicators."
+    },
+    "energy-commodities::food-index": {
+      "category": "energy",
+      "category_title": "Energy & Commodities",
+      "lens_id": "energy-commodities",
+      "lens_title": "Commodities & Materials",
+      "indicator_id": "food-index",
+      "title": "Global Food Prices \u00b7 year-over-year",
+      "short": "Food",
+      "taxonomy": "severity",
+      "why": "A cost already expressed as a year-over-year rate. Same logic as the fuel costs: faster annual increases mean more household strain; flat or falling is ok.",
+      "axis": {
+        "kind": "yoy",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the year-over-year change"
+      },
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 5
+        },
+        {
+          "status": "watch",
+          "lo": 5,
+          "hi": 12
+        },
+        {
+          "status": "elevated",
+          "lo": 12,
+          "hi": 25
+        },
+        {
+          "status": "alert",
+          "lo": 25,
+          "hi": null
+        }
+      ],
+      "edges": [
+        5,
+        12,
+        25
+      ]
+    },
+    "energy-commodities::copper": {
+      "category": "energy",
+      "category_title": "Energy & Commodities",
+      "lens_id": "energy-commodities",
+      "lens_title": "Commodities & Materials",
+      "indicator_id": "copper",
+      "title": "Copper \u00b7 \u201cDr. Copper\u201d",
+      "short": "Copper",
+      "taxonomy": "info",
+      "note": "A market price has no inherent good-or-bad level \u2014 higher or lower isn't itself better or worse."
+    },
+    "energy-commodities::broad-commodities": {
+      "category": "energy",
+      "category_title": "Energy & Commodities",
+      "lens_id": "energy-commodities",
+      "lens_title": "Commodities & Materials",
+      "indicator_id": "broad-commodities",
+      "title": "Broad Commodities \u00b7 year-over-year",
+      "short": "Commodities",
+      "taxonomy": "info",
+      "note": "A market price has no inherent good-or-bad level \u2014 higher or lower isn't itself better or worse."
+    }
+  }
+}

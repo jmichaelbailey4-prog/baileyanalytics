@@ -1,0 +1,732 @@
+{
+  "signals": {
+    "recession-watch::yield-curve": {
+      "category": "economic",
+      "category_title": "Economic Lenses",
+      "lens_id": "recession-watch",
+      "lens_title": "Recession Watch",
+      "indicator_id": "yield-curve",
+      "title": "Yield Curve \u00b7 10-Year minus 2-Year",
+      "short": "Yield curve",
+      "taxonomy": "severity",
+      "why": "Not a static level \u2014 the curve scores by state. An inversion (below zero) is a classic recession warning that preceded every U.S. recession since the 1970s; a recent un-inversion warrants vigilance, because recessions historically begin after the curve climbs back above zero; a positive curve with no recent inversion is the all-clear.",
+      "axis": {
+        "kind": "custom",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": ""
+      }
+    },
+    "recession-watch::sahm-rule": {
+      "category": "economic",
+      "category_title": "Economic Lenses",
+      "lens_id": "recession-watch",
+      "lens_title": "Recession Watch",
+      "indicator_id": "sahm-rule",
+      "title": "Sahm Rule Recession Indicator",
+      "short": "Sahm rule",
+      "taxonomy": "severity",
+      "why": "The Sahm rule trips at 0.50 \u2014 historically consistent with a recession already underway. 0.35\u20130.50 is the warning band as it climbs toward the trigger.",
+      "axis": {
+        "kind": "level",
+        "unit": "",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 0.35
+        },
+        {
+          "status": "watch",
+          "lo": 0.35,
+          "hi": 0.5
+        },
+        {
+          "status": "alert",
+          "lo": 0.5,
+          "hi": null
+        }
+      ],
+      "edges": [
+        0.35,
+        0.5
+      ]
+    },
+    "recession-watch::jobless-claims": {
+      "category": "economic",
+      "category_title": "Economic Lenses",
+      "lens_id": "recession-watch",
+      "lens_title": "Recession Watch",
+      "indicator_id": "jobless-claims",
+      "title": "Initial Jobless Claims \u00b7 weekly",
+      "short": "Jobless claims",
+      "taxonomy": "severity",
+      "why": "Weekly initial jobless claims. Below ~250k, employers aren't shedding workers; 250\u2013300k is a creeping rise; above 300k points to accelerating layoffs.",
+      "axis": {
+        "kind": "level",
+        "unit": "",
+        "value_format": "thousands",
+        "label": "the latest reading"
+      },
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 250000
+        },
+        {
+          "status": "watch",
+          "lo": 250000,
+          "hi": 300000
+        },
+        {
+          "status": "elevated",
+          "lo": 300000,
+          "hi": null
+        }
+      ],
+      "edges": [
+        250000,
+        300000
+      ]
+    },
+    "recession-watch::unemployment": {
+      "category": "economic",
+      "category_title": "Economic Lenses",
+      "lens_id": "recession-watch",
+      "lens_title": "Recession Watch",
+      "indicator_id": "unemployment",
+      "title": "Unemployment Rate",
+      "short": "Unemployment",
+      "taxonomy": "severity",
+      "why": "Scored on the rise above the trailing-12-month low, not the raw level (the Sahm-style signal): a climb of 0.5 points or more off the recent low has preceded past downturns.",
+      "axis": {
+        "kind": "delta_from_low",
+        "unit": "pts",
+        "value_format": "decimal",
+        "label": "the rise above the trailing-12-month low"
+      },
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 0.5
+        },
+        {
+          "status": "watch",
+          "lo": 0.5,
+          "hi": null
+        }
+      ],
+      "edges": [
+        0.5
+      ]
+    },
+    "cost-of-money::fed-funds": {
+      "category": "economic",
+      "category_title": "Economic Lenses",
+      "lens_id": "cost-of-money",
+      "lens_title": "The Cost of Money",
+      "indicator_id": "fed-funds",
+      "title": "Federal Funds Rate",
+      "short": "Fed funds",
+      "taxonomy": "severity",
+      "why": "The Fed's policy rate. At or above 4% is a restrictive stance worth flagging; the read also notes the ~12-month direction.",
+      "axis": {
+        "kind": "level",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 4.0
+        },
+        {
+          "status": "watch",
+          "lo": 4.0,
+          "hi": null
+        }
+      ],
+      "edges": [
+        4.0
+      ]
+    },
+    "cost-of-money::treasury-10y": {
+      "category": "economic",
+      "category_title": "Economic Lenses",
+      "lens_id": "cost-of-money",
+      "lens_title": "The Cost of Money",
+      "indicator_id": "treasury-10y",
+      "title": "10-Year Treasury Yield",
+      "short": "10-year",
+      "taxonomy": "severity",
+      "why": "Scored by level: above the watch line a Treasury yield is pricier than the post-2010 norm for borrowers; above the elevated line it's broadly restrictive. There is no 'alert' here \u2014 an expensive rate is a drag, not a crisis the way a default spike is.",
+      "axis": {
+        "kind": "level",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 4.5
+        },
+        {
+          "status": "watch",
+          "lo": 4.5,
+          "hi": 5.5
+        },
+        {
+          "status": "elevated",
+          "lo": 5.5,
+          "hi": null
+        }
+      ],
+      "edges": [
+        4.5,
+        5.5
+      ]
+    },
+    "cost-of-money::treasury-2y": {
+      "category": "economic",
+      "category_title": "Economic Lenses",
+      "lens_id": "cost-of-money",
+      "lens_title": "The Cost of Money",
+      "indicator_id": "treasury-2y",
+      "title": "2-Year Treasury Yield",
+      "short": "2-year",
+      "taxonomy": "severity",
+      "why": "Scored by level: above the watch line a Treasury yield is pricier than the post-2010 norm for borrowers; above the elevated line it's broadly restrictive. There is no 'alert' here \u2014 an expensive rate is a drag, not a crisis the way a default spike is.",
+      "axis": {
+        "kind": "level",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 4.0
+        },
+        {
+          "status": "watch",
+          "lo": 4.0,
+          "hi": 5.0
+        },
+        {
+          "status": "elevated",
+          "lo": 5.0,
+          "hi": null
+        }
+      ],
+      "edges": [
+        4.0,
+        5.0
+      ]
+    },
+    "cost-of-money::rate-expectations": {
+      "category": "economic",
+      "category_title": "Economic Lenses",
+      "lens_id": "cost-of-money",
+      "lens_title": "The Cost of Money",
+      "indicator_id": "rate-expectations",
+      "title": "Rate Expectations \u00b7 2-Year minus Fed Funds",
+      "short": "2y vs Fed",
+      "taxonomy": "info",
+      "note": "Whether markets expect cuts or hikes isn't itself good or bad \u2014 it's the bond market's forecast, shown for context."
+    },
+    "job-market::unemployment": {
+      "category": "economic",
+      "category_title": "Economic Lenses",
+      "lens_id": "job-market",
+      "lens_title": "The Job Market",
+      "indicator_id": "unemployment",
+      "title": "Unemployment Rate",
+      "short": "Unemployment",
+      "taxonomy": "severity",
+      "why": "Scored on the rise above the trailing-12-month low, not the raw level (the Sahm-style signal): a climb of 0.5 points or more off the recent low has preceded past downturns.",
+      "axis": {
+        "kind": "delta_from_low",
+        "unit": "pts",
+        "value_format": "decimal",
+        "label": "the rise above the trailing-12-month low"
+      },
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 0.5
+        },
+        {
+          "status": "watch",
+          "lo": 0.5,
+          "hi": null
+        }
+      ],
+      "edges": [
+        0.5
+      ]
+    },
+    "job-market::payrolls": {
+      "category": "economic",
+      "category_title": "Economic Lenses",
+      "lens_id": "job-market",
+      "lens_title": "The Job Market",
+      "indicator_id": "payrolls",
+      "title": "Nonfarm Payrolls \u00b7 monthly change",
+      "short": "Payrolls",
+      "taxonomy": "severity",
+      "why": "Monthly jobs added. Outright job losses are an alert; under ~75k and ~150k are slowing-but-positive paces; above that is a healthy clip.",
+      "axis": {
+        "kind": "level",
+        "unit": "",
+        "value_format": "thousands",
+        "label": "the latest reading"
+      },
+      "segments": [
+        {
+          "status": "alert",
+          "lo": null,
+          "hi": 0
+        },
+        {
+          "status": "watch",
+          "lo": 0,
+          "hi": 150000
+        },
+        {
+          "status": "ok",
+          "lo": 150000,
+          "hi": null
+        }
+      ],
+      "edges": [
+        0,
+        150000
+      ]
+    },
+    "job-market::job-openings": {
+      "category": "economic",
+      "category_title": "Economic Lenses",
+      "lens_id": "job-market",
+      "lens_title": "The Job Market",
+      "indicator_id": "job-openings",
+      "title": "Job Openings (JOLTS)",
+      "short": "Openings",
+      "taxonomy": "severity",
+      "why": "Job openings (JOLTS), in millions. Below ~7.5M flags cooling labor demand.",
+      "axis": {
+        "kind": "level",
+        "unit": "M",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "segments": [
+        {
+          "status": "watch",
+          "lo": null,
+          "hi": 7.5
+        },
+        {
+          "status": "ok",
+          "lo": 7.5,
+          "hi": null
+        }
+      ],
+      "edges": [
+        7.5
+      ]
+    },
+    "job-market::wage-growth": {
+      "category": "economic",
+      "category_title": "Economic Lenses",
+      "lens_id": "job-market",
+      "lens_title": "The Job Market",
+      "indicator_id": "wage-growth",
+      "title": "Wage Growth \u00b7 year-over-year",
+      "short": "Wages",
+      "taxonomy": "severity",
+      "why": "In the job-market frame, strong pay is healthy and stalling pay signals a softening labor market, so this warns on the LOW side: under 2% a year is stalled. (The inflation angle lives in Cost of Living's real wages.)",
+      "axis": {
+        "kind": "yoy",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the year-over-year change"
+      },
+      "segments": [
+        {
+          "status": "elevated",
+          "lo": null,
+          "hi": 2.0
+        },
+        {
+          "status": "watch",
+          "lo": 2.0,
+          "hi": 3.0
+        },
+        {
+          "status": "ok",
+          "lo": 3.0,
+          "hi": null
+        }
+      ],
+      "edges": [
+        2.0,
+        3.0
+      ]
+    },
+    "job-market::participation": {
+      "category": "economic",
+      "category_title": "Economic Lenses",
+      "lens_id": "job-market",
+      "lens_title": "The Job Market",
+      "indicator_id": "participation",
+      "title": "Labor-Force Participation Rate",
+      "short": "Participation",
+      "taxonomy": "info",
+      "note": "This level drifts with demographics \u2014 the job-market verdict is carried by unemployment, payrolls, and job openings."
+    },
+    "cost-of-living::cpi": {
+      "category": "economic",
+      "category_title": "Economic Lenses",
+      "lens_id": "cost-of-living",
+      "lens_title": "The Cost of Living",
+      "indicator_id": "cpi",
+      "title": "Inflation \u00b7 CPI (year-over-year)",
+      "short": "CPI",
+      "taxonomy": "severity",
+      "why": "A year-over-year inflation rate (CPI, core, or PCE) against the Fed's 2% goal: near 2% is ok, 2.5\u20134% is still above target, 4%+ is hot.",
+      "axis": {
+        "kind": "yoy",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the year-over-year change"
+      },
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 2.5
+        },
+        {
+          "status": "watch",
+          "lo": 2.5,
+          "hi": 4.0
+        },
+        {
+          "status": "elevated",
+          "lo": 4.0,
+          "hi": null
+        }
+      ],
+      "edges": [
+        2.5,
+        4.0
+      ]
+    },
+    "cost-of-living::core-cpi": {
+      "category": "economic",
+      "category_title": "Economic Lenses",
+      "lens_id": "cost-of-living",
+      "lens_title": "The Cost of Living",
+      "indicator_id": "core-cpi",
+      "title": "Core CPI (year-over-year)",
+      "short": "Core CPI",
+      "taxonomy": "severity",
+      "why": "A year-over-year inflation rate (CPI, core, or PCE) against the Fed's 2% goal: near 2% is ok, 2.5\u20134% is still above target, 4%+ is hot.",
+      "axis": {
+        "kind": "yoy",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the year-over-year change"
+      },
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 2.5
+        },
+        {
+          "status": "watch",
+          "lo": 2.5,
+          "hi": 4.0
+        },
+        {
+          "status": "elevated",
+          "lo": 4.0,
+          "hi": null
+        }
+      ],
+      "edges": [
+        2.5,
+        4.0
+      ]
+    },
+    "cost-of-living::pce": {
+      "category": "economic",
+      "category_title": "Economic Lenses",
+      "lens_id": "cost-of-living",
+      "lens_title": "The Cost of Living",
+      "indicator_id": "pce",
+      "title": "PCE Inflation (year-over-year)",
+      "short": "PCE",
+      "taxonomy": "severity",
+      "why": "A year-over-year inflation rate (CPI, core, or PCE) against the Fed's 2% goal: near 2% is ok, 2.5\u20134% is still above target, 4%+ is hot.",
+      "axis": {
+        "kind": "yoy",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the year-over-year change"
+      },
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 2.5
+        },
+        {
+          "status": "watch",
+          "lo": 2.5,
+          "hi": 4.0
+        },
+        {
+          "status": "elevated",
+          "lo": 4.0,
+          "hi": null
+        }
+      ],
+      "edges": [
+        2.5,
+        4.0
+      ]
+    },
+    "cost-of-living::real-wages": {
+      "category": "economic",
+      "category_title": "Economic Lenses",
+      "lens_id": "cost-of-living",
+      "lens_title": "The Cost of Living",
+      "indicator_id": "real-wages",
+      "title": "Real Wage Growth (year-over-year)",
+      "short": "Real wages",
+      "taxonomy": "severity",
+      "why": "Inflation-adjusted pay. Below zero means paychecks aren't keeping up with prices (watch); positive is ok.",
+      "axis": {
+        "kind": "yoy",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the year-over-year change"
+      },
+      "segments": [
+        {
+          "status": "watch",
+          "lo": null,
+          "hi": 0
+        },
+        {
+          "status": "ok",
+          "lo": 0,
+          "hi": null
+        }
+      ],
+      "edges": [
+        0
+      ]
+    },
+    "fiscal-health::debt-gdp": {
+      "category": "economic",
+      "category_title": "Economic Lenses",
+      "lens_id": "fiscal-health",
+      "lens_title": "Fiscal Health",
+      "indicator_id": "debt-gdp",
+      "title": "Federal Debt \u00b7 % of GDP",
+      "short": "Debt/GDP",
+      "taxonomy": "severity",
+      "why": "Federal debt versus the size of the economy. It crossed 100% around 2013; the bands mark high (90%), larger-than-the-economy (110%), and uncharted (130%).",
+      "axis": {
+        "kind": "level",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 90
+        },
+        {
+          "status": "watch",
+          "lo": 90,
+          "hi": 110
+        },
+        {
+          "status": "elevated",
+          "lo": 110,
+          "hi": 130
+        },
+        {
+          "status": "alert",
+          "lo": 130,
+          "hi": null
+        }
+      ],
+      "edges": [
+        90,
+        110,
+        130
+      ]
+    },
+    "fiscal-health::deficit-12m": {
+      "category": "economic",
+      "category_title": "Economic Lenses",
+      "lens_id": "fiscal-health",
+      "lens_title": "Fiscal Health",
+      "indicator_id": "deficit-12m",
+      "title": "Federal Deficit \u00b7 trailing 12 months",
+      "short": "Deficit",
+      "taxonomy": "severity",
+      "why": "The trailing-12-month deficit in trillions. The bands rise from a sizable structural deficit through crisis-era scale \u2014 the COVID peak was about $3T.",
+      "axis": {
+        "kind": "level",
+        "unit": "$T",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 0.8
+        },
+        {
+          "status": "watch",
+          "lo": 0.8,
+          "hi": 1.5
+        },
+        {
+          "status": "elevated",
+          "lo": 1.5,
+          "hi": 2.5
+        },
+        {
+          "status": "alert",
+          "lo": 2.5,
+          "hi": null
+        }
+      ],
+      "edges": [
+        0.8,
+        1.5,
+        2.5
+      ]
+    },
+    "fiscal-health::interest-cost": {
+      "category": "economic",
+      "category_title": "Economic Lenses",
+      "lens_id": "fiscal-health",
+      "lens_title": "Fiscal Health",
+      "indicator_id": "interest-cost",
+      "title": "Federal Interest Cost \u00b7 annual rate",
+      "short": "Interest cost",
+      "taxonomy": "info",
+      "note": "The dollar interest bill climbs with the economy; the scored read is interest as a share of revenue, alongside debt-to-GDP and the deficit."
+    },
+    "fiscal-health::interest-burden": {
+      "category": "economic",
+      "category_title": "Economic Lenses",
+      "lens_id": "fiscal-health",
+      "lens_title": "Fiscal Health",
+      "indicator_id": "interest-burden",
+      "title": "Interest Cost \u00b7 share of federal revenue",
+      "short": "Interest/revenue",
+      "taxonomy": "severity",
+      "why": "Federal interest as a share of TOTAL receipts \u2014 the conventional ~20% figure. A record-high read prints 'elevated'; 'alert' is reserved for a genuinely unprecedented level above ~22%.",
+      "axis": {
+        "kind": "level",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 10
+        },
+        {
+          "status": "watch",
+          "lo": 10,
+          "hi": 15
+        },
+        {
+          "status": "elevated",
+          "lo": 15,
+          "hi": 22
+        },
+        {
+          "status": "alert",
+          "lo": 22,
+          "hi": null
+        }
+      ],
+      "edges": [
+        10,
+        15,
+        22
+      ]
+    },
+    "fiscal-health::receipts": {
+      "category": "economic",
+      "category_title": "Economic Lenses",
+      "lens_id": "fiscal-health",
+      "lens_title": "Fiscal Health",
+      "indicator_id": "receipts",
+      "title": "Federal Receipts \u00b7 year-over-year",
+      "short": "Receipts",
+      "taxonomy": "severity",
+      "why": "Scored on the year-over-year change where FALLING is the stress signal \u2014 profits, new-business applications, capital-goods orders, sales. Growth is ok; the bands mark progressively deeper contractions.",
+      "axis": {
+        "kind": "yoy",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the year-over-year change"
+      },
+      "segments": [
+        {
+          "status": "alert",
+          "lo": null,
+          "hi": -8
+        },
+        {
+          "status": "elevated",
+          "lo": -8,
+          "hi": -3
+        },
+        {
+          "status": "watch",
+          "lo": -3,
+          "hi": 0
+        },
+        {
+          "status": "ok",
+          "lo": 0,
+          "hi": null
+        }
+      ],
+      "edges": [
+        -8,
+        -3,
+        0
+      ]
+    }
+  }
+}

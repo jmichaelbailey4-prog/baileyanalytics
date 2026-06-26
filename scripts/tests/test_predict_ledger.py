@@ -124,5 +124,37 @@ class TestAggregates(unittest.TestCase):
         self.assertEqual(len(recent["feed"]), 1)
 
 
+class TestCategoryViews(unittest.TestCase):
+    """Per-category open/recent slices so a lens page loads only its category's
+    predictions (predict.js + scoring.js), not the full files."""
+    def test_partitions_open_and_last_by_category(self):
+        e_econ = _entry(key="economic/cost-of-living/cpi")  # category economic
+        e_energy = dict(_entry(key="energy/oil-fuels/diesel"),
+                        category="energy", lens="oil-fuels")
+        last = {e_econ["key"]: dict(e_econ, grade=_grade()),
+                e_energy["key"]: dict(e_energy, grade=_grade())}
+        views = ledger.category_views([e_econ, e_energy], last)
+        self.assertEqual(set(views), {"economic", "energy"})
+        self.assertEqual([p["key"] for p in views["economic"]["open"]],
+                         ["economic/cost-of-living/cpi"])
+        self.assertIn("economic/cost-of-living/cpi", views["economic"]["last"])
+        self.assertNotIn("energy/oil-fuels/diesel", views["economic"]["last"])
+        self.assertEqual([p["key"] for p in views["energy"]["open"]],
+                         ["energy/oil-fuels/diesel"])
+        self.assertIn("energy/oil-fuels/diesel", views["energy"]["last"])
+
+    def test_a_slice_is_a_subset_of_the_full_views(self):
+        e = _entry()
+        views = ledger.category_views([e], {e["key"]: dict(e, grade=_grade())})
+        self.assertEqual(set(views), {"economic"})
+        self.assertEqual(views["economic"]["open"], [e])
+        self.assertEqual(list(views["economic"]["last"]), [e["key"]])
+
+    def test_entries_without_a_category_are_skipped(self):
+        e = dict(_entry(), category="")
+        views = ledger.category_views([e], {e["key"]: e})
+        self.assertEqual(views, {})
+
+
 if __name__ == "__main__":
     unittest.main()

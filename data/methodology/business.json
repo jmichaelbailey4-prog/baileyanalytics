@@ -1,0 +1,533 @@
+{
+  "signals": {
+    "business-profitability::profit-growth": {
+      "category": "business",
+      "category_title": "Corporate & Business Health",
+      "lens_id": "business-profitability",
+      "lens_title": "Corporate Profits",
+      "indicator_id": "profit-growth",
+      "title": "Corporate Profits \u00b7 year-over-year",
+      "short": "Profit growth",
+      "taxonomy": "severity",
+      "why": "Scored on the year-over-year change where FALLING is the stress signal \u2014 profits, new-business applications, capital-goods orders, sales. Growth is ok; the bands mark progressively deeper contractions.",
+      "axis": {
+        "kind": "yoy",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the year-over-year change"
+      },
+      "segments": [
+        {
+          "status": "alert",
+          "lo": null,
+          "hi": -15
+        },
+        {
+          "status": "elevated",
+          "lo": -15,
+          "hi": -5
+        },
+        {
+          "status": "watch",
+          "lo": -5,
+          "hi": 0
+        },
+        {
+          "status": "ok",
+          "lo": 0,
+          "hi": null
+        }
+      ],
+      "edges": [
+        -15,
+        -5,
+        0
+      ]
+    },
+    "business-profitability::nonfinancial-profits": {
+      "category": "business",
+      "category_title": "Corporate & Business Health",
+      "lens_id": "business-profitability",
+      "lens_title": "Corporate Profits",
+      "indicator_id": "nonfinancial-profits",
+      "title": "Nonfinancial Corporate Profits \u00b7 year-over-year",
+      "short": "Nonfin. profits",
+      "taxonomy": "severity",
+      "why": "Scored on the year-over-year change where FALLING is the stress signal \u2014 profits, new-business applications, capital-goods orders, sales. Growth is ok; the bands mark progressively deeper contractions.",
+      "axis": {
+        "kind": "yoy",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the year-over-year change"
+      },
+      "segments": [
+        {
+          "status": "alert",
+          "lo": null,
+          "hi": -15
+        },
+        {
+          "status": "elevated",
+          "lo": -15,
+          "hi": -5
+        },
+        {
+          "status": "watch",
+          "lo": -5,
+          "hi": 0
+        },
+        {
+          "status": "ok",
+          "lo": 0,
+          "hi": null
+        }
+      ],
+      "edges": [
+        -15,
+        -5,
+        0
+      ]
+    },
+    "business-profitability::profit-share": {
+      "category": "business",
+      "category_title": "Corporate & Business Health",
+      "lens_id": "business-profitability",
+      "lens_title": "Corporate Profits",
+      "indicator_id": "profit-share",
+      "title": "Corporate Profits \u00b7 share of GDP",
+      "short": "Profit share",
+      "taxonomy": "info",
+      "note": "A descriptive level shown for context \u2014 neither a high nor a low reading is simply good or bad."
+    },
+    "business-profitability::proprietors-income": {
+      "category": "business",
+      "category_title": "Corporate & Business Health",
+      "lens_id": "business-profitability",
+      "lens_title": "Corporate Profits",
+      "indicator_id": "proprietors-income",
+      "title": "Proprietors' Income \u00b7 year-over-year",
+      "short": "Proprietors",
+      "taxonomy": "info",
+      "note": "Shown for context \u2014 proprietors' income (which includes farm income) is too volatile to score cleanly."
+    },
+    "business-formation::applications": {
+      "category": "business",
+      "category_title": "Corporate & Business Health",
+      "lens_id": "business-formation",
+      "lens_title": "Business Formation",
+      "indicator_id": "applications",
+      "title": "Business Applications \u00b7 year-over-year",
+      "short": "Applications",
+      "taxonomy": "severity",
+      "why": "Scored on the year-over-year change where FALLING is the stress signal \u2014 profits, new-business applications, capital-goods orders, sales. Growth is ok; the bands mark progressively deeper contractions.",
+      "axis": {
+        "kind": "yoy",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the year-over-year change"
+      },
+      "segments": [
+        {
+          "status": "alert",
+          "lo": null,
+          "hi": -15
+        },
+        {
+          "status": "elevated",
+          "lo": -15,
+          "hi": -5
+        },
+        {
+          "status": "watch",
+          "lo": -5,
+          "hi": 0
+        },
+        {
+          "status": "ok",
+          "lo": 0,
+          "hi": null
+        }
+      ],
+      "edges": [
+        -15,
+        -5,
+        0
+      ]
+    },
+    "business-formation::high-propensity": {
+      "category": "business",
+      "category_title": "Corporate & Business Health",
+      "lens_id": "business-formation",
+      "lens_title": "Business Formation",
+      "indicator_id": "high-propensity",
+      "title": "High-Propensity Applications \u00b7 year-over-year",
+      "short": "High-propensity",
+      "taxonomy": "severity",
+      "why": "Scored on the year-over-year change where FALLING is the stress signal \u2014 profits, new-business applications, capital-goods orders, sales. Growth is ok; the bands mark progressively deeper contractions.",
+      "axis": {
+        "kind": "yoy",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the year-over-year change"
+      },
+      "segments": [
+        {
+          "status": "alert",
+          "lo": null,
+          "hi": -15
+        },
+        {
+          "status": "elevated",
+          "lo": -15,
+          "hi": -5
+        },
+        {
+          "status": "watch",
+          "lo": -5,
+          "hi": 0
+        },
+        {
+          "status": "ok",
+          "lo": 0,
+          "hi": null
+        }
+      ],
+      "edges": [
+        -15,
+        -5,
+        0
+      ]
+    },
+    "business-formation::hp-share": {
+      "category": "business",
+      "category_title": "Corporate & Business Health",
+      "lens_id": "business-formation",
+      "lens_title": "Business Formation",
+      "indicator_id": "hp-share",
+      "title": "High-Propensity Share of Applications",
+      "short": "HP share",
+      "taxonomy": "info",
+      "note": "A descriptive level shown for context \u2014 neither a high nor a low reading is simply good or bad."
+    },
+    "business-investment::core-capex": {
+      "category": "business",
+      "category_title": "Corporate & Business Health",
+      "lens_id": "business-investment",
+      "lens_title": "Business Investment",
+      "indicator_id": "core-capex",
+      "title": "Core Capital-Goods Orders \u00b7 year-over-year",
+      "short": "Core capex",
+      "taxonomy": "severity",
+      "why": "Scored on the year-over-year change where FALLING is the stress signal \u2014 profits, new-business applications, capital-goods orders, sales. Growth is ok; the bands mark progressively deeper contractions.",
+      "axis": {
+        "kind": "yoy",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the year-over-year change"
+      },
+      "segments": [
+        {
+          "status": "alert",
+          "lo": null,
+          "hi": -10
+        },
+        {
+          "status": "elevated",
+          "lo": -10,
+          "hi": -3
+        },
+        {
+          "status": "watch",
+          "lo": -3,
+          "hi": 0
+        },
+        {
+          "status": "ok",
+          "lo": 0,
+          "hi": null
+        }
+      ],
+      "edges": [
+        -10,
+        -3,
+        0
+      ]
+    },
+    "business-investment::real-sales": {
+      "category": "business",
+      "category_title": "Corporate & Business Health",
+      "lens_id": "business-investment",
+      "lens_title": "Business Investment",
+      "indicator_id": "real-sales",
+      "title": "Real Business Sales \u00b7 year-over-year",
+      "short": "Real sales",
+      "taxonomy": "severity",
+      "why": "Scored on the year-over-year change where FALLING is the stress signal \u2014 profits, new-business applications, capital-goods orders, sales. Growth is ok; the bands mark progressively deeper contractions.",
+      "axis": {
+        "kind": "yoy",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the year-over-year change"
+      },
+      "segments": [
+        {
+          "status": "alert",
+          "lo": null,
+          "hi": -6
+        },
+        {
+          "status": "elevated",
+          "lo": -6,
+          "hi": -2
+        },
+        {
+          "status": "watch",
+          "lo": -2,
+          "hi": 0
+        },
+        {
+          "status": "ok",
+          "lo": 0,
+          "hi": null
+        }
+      ],
+      "edges": [
+        -6,
+        -2,
+        0
+      ]
+    },
+    "business-investment::inventories-sales": {
+      "category": "business",
+      "category_title": "Corporate & Business Health",
+      "lens_id": "business-investment",
+      "lens_title": "Business Investment",
+      "indicator_id": "inventories-sales",
+      "title": "Inventories-to-Sales Ratio",
+      "short": "Inv./sales",
+      "taxonomy": "severity",
+      "why": "Inventories measured in months of sales. Above ~1.50 is an overhang that typically forces production cuts; 2008 peaked near 1.48, COVID near 1.74.",
+      "axis": {
+        "kind": "level",
+        "unit": "",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 1.4
+        },
+        {
+          "status": "watch",
+          "lo": 1.4,
+          "hi": 1.5
+        },
+        {
+          "status": "elevated",
+          "lo": 1.5,
+          "hi": null
+        }
+      ],
+      "edges": [
+        1.4,
+        1.5
+      ]
+    },
+    "business-credit::baa-spread": {
+      "category": "business",
+      "category_title": "Corporate & Business Health",
+      "lens_id": "business-credit",
+      "lens_title": "Business Credit",
+      "indicator_id": "baa-spread",
+      "title": "Baa Corporate Spread \u00b7 over 10-Year Treasury",
+      "short": "Baa spread",
+      "taxonomy": "severity",
+      "why": "Moody's Baa corporate yield over the 10-year Treasury \u2014 the price of ordinary corporate credit risk. Calm is under 2 points; 2008 peaked near 6, which anchors the alert band.",
+      "axis": {
+        "kind": "level",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 2.0
+        },
+        {
+          "status": "watch",
+          "lo": 2.0,
+          "hi": 2.5
+        },
+        {
+          "status": "elevated",
+          "lo": 2.5,
+          "hi": 3.5
+        },
+        {
+          "status": "alert",
+          "lo": 3.5,
+          "hi": null
+        }
+      ],
+      "edges": [
+        2.0,
+        2.5,
+        3.5
+      ]
+    },
+    "business-credit::lending-standards": {
+      "category": "business",
+      "category_title": "Corporate & Business Health",
+      "lens_id": "business-credit",
+      "lens_title": "Business Credit",
+      "indicator_id": "lending-standards",
+      "title": "Lending Standards \u00b7 net % of banks tightening",
+      "short": "Standards",
+      "taxonomy": "severity",
+      "why": "The net share of banks tightening business-loan standards (the Fed's loan-officer survey). Easing is ok; sustained tightening above ~20% is a classic late-cycle signal; 2008 hit about 84%.",
+      "axis": {
+        "kind": "level",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 0
+        },
+        {
+          "status": "watch",
+          "lo": 0,
+          "hi": 20
+        },
+        {
+          "status": "elevated",
+          "lo": 20,
+          "hi": 50
+        },
+        {
+          "status": "alert",
+          "lo": 50,
+          "hi": null
+        }
+      ],
+      "edges": [
+        0,
+        20,
+        50
+      ]
+    },
+    "business-credit::delinquency": {
+      "category": "business",
+      "category_title": "Corporate & Business Health",
+      "lens_id": "business-credit",
+      "lens_title": "Business Credit",
+      "indicator_id": "delinquency",
+      "title": "Business-Loan Delinquency Rate",
+      "short": "Delinquency",
+      "taxonomy": "severity",
+      "why": "Business loans past due at banks. Under 1.5% is healthy; the bands climb toward the 2009 peak of about 4.4%.",
+      "axis": {
+        "kind": "level",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 1.5
+        },
+        {
+          "status": "watch",
+          "lo": 1.5,
+          "hi": 2.5
+        },
+        {
+          "status": "elevated",
+          "lo": 2.5,
+          "hi": 4.0
+        },
+        {
+          "status": "alert",
+          "lo": 4.0,
+          "hi": null
+        }
+      ],
+      "edges": [
+        1.5,
+        2.5,
+        4.0
+      ]
+    },
+    "business-credit::ci-loan-growth": {
+      "category": "business",
+      "category_title": "Corporate & Business Health",
+      "lens_id": "business-credit",
+      "lens_title": "Business Credit",
+      "indicator_id": "ci-loan-growth",
+      "title": "C&I Loan Growth \u00b7 year-over-year",
+      "short": "C&I loans",
+      "taxonomy": "severity",
+      "why": "Scored on the year-over-year change, two-sided: both an overheating boom and a sharp contraction raise severity, because each is its own kind of instability. The quiet middle band is ok.",
+      "axis": {
+        "kind": "yoy",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the year-over-year change"
+      },
+      "segments": [
+        {
+          "status": "alert",
+          "lo": null,
+          "hi": -12
+        },
+        {
+          "status": "elevated",
+          "lo": -12,
+          "hi": -5
+        },
+        {
+          "status": "watch",
+          "lo": -5,
+          "hi": -0.5
+        },
+        {
+          "status": "ok",
+          "lo": -0.5,
+          "hi": 10
+        },
+        {
+          "status": "watch",
+          "lo": 10,
+          "hi": 20
+        },
+        {
+          "status": "elevated",
+          "lo": 20,
+          "hi": 30
+        },
+        {
+          "status": "alert",
+          "lo": 30,
+          "hi": null
+        }
+      ],
+      "edges": [
+        -12,
+        -5,
+        -0.5,
+        10,
+        20,
+        30
+      ]
+    }
+  }
+}

@@ -104,6 +104,21 @@ def build_methodology():
     return {"generated_at": _now(), "taxonomy": TAXONOMY, "signals": signals}
 
 
+def category_slices(data):
+    """Split full methodology data into per-category {category_id: {"signals": {...}}}.
+    A lens page only needs its own category's signals for the scale strip, so
+    scoring.js fetches the slice instead of the full ~120-signal file (with a
+    fallback to the full file). Every signal carries `category`, so this is a
+    clean partition."""
+    out = {}
+    for key, sig in data.get("signals", {}).items():
+        cat = sig.get("category")
+        if not cat:
+            continue
+        out.setdefault(cat, {"signals": {}})["signals"][key] = sig
+    return out
+
+
 # ---------------------------------------------------------------------------
 # Rendering
 # ---------------------------------------------------------------------------

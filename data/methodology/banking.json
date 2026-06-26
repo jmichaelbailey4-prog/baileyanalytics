@@ -1,0 +1,328 @@
+{
+  "signals": {
+    "bank-asset-quality::noncurrent": {
+      "category": "banking",
+      "category_title": "Banking System Health",
+      "lens_id": "bank-asset-quality",
+      "lens_title": "Asset Quality",
+      "indicator_id": "noncurrent",
+      "title": "Noncurrent Loan Rate \u00b7 loans 90+ days past due",
+      "short": "Noncurrent",
+      "taxonomy": "severity",
+      "why": "Loans 90+ days past due as a share of all loans. Under 1% is low by historical standards; 1\u20132% is creeping; above 2% is elevated.",
+      "axis": {
+        "kind": "level",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 1
+        },
+        {
+          "status": "watch",
+          "lo": 1,
+          "hi": 2
+        },
+        {
+          "status": "elevated",
+          "lo": 2,
+          "hi": null
+        }
+      ],
+      "edges": [
+        1,
+        2
+      ]
+    },
+    "bank-asset-quality::charge-offs": {
+      "category": "banking",
+      "category_title": "Banking System Health",
+      "lens_id": "bank-asset-quality",
+      "lens_title": "Asset Quality",
+      "indicator_id": "charge-offs",
+      "title": "Net Charge-Off Rate \u00b7 annualized",
+      "short": "Charge-offs",
+      "taxonomy": "severity",
+      "why": "Loans written off as losses. Under ~0.6% is benign; the bands mark where losses become a meaningful drag on earnings.",
+      "axis": {
+        "kind": "level",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 0.6
+        },
+        {
+          "status": "watch",
+          "lo": 0.6,
+          "hi": 1.2
+        },
+        {
+          "status": "elevated",
+          "lo": 1.2,
+          "hi": null
+        }
+      ],
+      "edges": [
+        0.6,
+        1.2
+      ]
+    },
+    "bank-profitability::net-margin": {
+      "category": "banking",
+      "category_title": "Banking System Health",
+      "lens_id": "bank-profitability",
+      "lens_title": "Bank Profitability",
+      "indicator_id": "net-margin",
+      "title": "Net Interest Margin \u00b7 annualized",
+      "short": "Margin",
+      "taxonomy": "severity",
+      "why": "Net interest margin. Below ~2.5% is a compressed spread that squeezes bank earnings.",
+      "axis": {
+        "kind": "level",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "segments": [
+        {
+          "status": "watch",
+          "lo": null,
+          "hi": 2.5
+        },
+        {
+          "status": "ok",
+          "lo": 2.5,
+          "hi": null
+        }
+      ],
+      "edges": [
+        2.5
+      ]
+    },
+    "bank-profitability::roa": {
+      "category": "banking",
+      "category_title": "Banking System Health",
+      "lens_id": "bank-profitability",
+      "lens_title": "Bank Profitability",
+      "indicator_id": "roa",
+      "title": "Return on Assets \u00b7 annualized",
+      "short": "ROA",
+      "taxonomy": "severity",
+      "why": "Return on assets. 1%+ is solid bank profitability; 0.5\u20131% is subdued; below 0.5% is weak.",
+      "axis": {
+        "kind": "level",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "segments": [
+        {
+          "status": "elevated",
+          "lo": null,
+          "hi": 0.5
+        },
+        {
+          "status": "watch",
+          "lo": 0.5,
+          "hi": 1.0
+        },
+        {
+          "status": "ok",
+          "lo": 1.0,
+          "hi": null
+        }
+      ],
+      "edges": [
+        0.5,
+        1.0
+      ]
+    },
+    "bank-capital-solvency::risk-based-capital": {
+      "category": "banking",
+      "category_title": "Banking System Health",
+      "lens_id": "bank-capital-solvency",
+      "lens_title": "Capital & Solvency",
+      "indicator_id": "risk-based-capital",
+      "title": "Total Risk-Based Capital Ratio",
+      "short": "Risk-based capital",
+      "taxonomy": "severity",
+      "why": "The regulators' headline solvency gauge: 10%+ is 'well-capitalized', 8\u201310% adequate, below 8% under the minimum.",
+      "axis": {
+        "kind": "level",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "segments": [
+        {
+          "status": "elevated",
+          "lo": null,
+          "hi": 8
+        },
+        {
+          "status": "watch",
+          "lo": 8,
+          "hi": 10
+        },
+        {
+          "status": "ok",
+          "lo": 10,
+          "hi": null
+        }
+      ],
+      "edges": [
+        8,
+        10
+      ]
+    },
+    "bank-capital-solvency::equity-assets": {
+      "category": "banking",
+      "category_title": "Banking System Health",
+      "lens_id": "bank-capital-solvency",
+      "lens_title": "Capital & Solvency",
+      "indicator_id": "equity-assets",
+      "title": "Equity-to-Assets",
+      "short": "Equity/assets",
+      "taxonomy": "severity",
+      "why": "Equity-to-assets. Banks historically run ~9\u201311%; below 9% is on the lighter side, below 7.5% is a thin cushion.",
+      "axis": {
+        "kind": "level",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "segments": [
+        {
+          "status": "elevated",
+          "lo": null,
+          "hi": 7.5
+        },
+        {
+          "status": "watch",
+          "lo": 7.5,
+          "hi": 9
+        },
+        {
+          "status": "ok",
+          "lo": 9,
+          "hi": null
+        }
+      ],
+      "edges": [
+        7.5,
+        9
+      ]
+    },
+    "bank-concentrations-funding::uninsured": {
+      "category": "banking",
+      "category_title": "Banking System Health",
+      "lens_id": "bank-concentrations-funding",
+      "lens_title": "Concentrations & Funding",
+      "indicator_id": "uninsured",
+      "title": "Uninsured-Deposit Share",
+      "short": "Uninsured dep.",
+      "taxonomy": "severity",
+      "why": "Deposits above the $250k FDIC cap \u2014 the money most likely to flee in a panic, as at Silicon Valley Bank. Above ~40% is flight-prone.",
+      "axis": {
+        "kind": "level",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 40
+        },
+        {
+          "status": "watch",
+          "lo": 40,
+          "hi": null
+        }
+      ],
+      "edges": [
+        40
+      ]
+    },
+    "bank-concentrations-funding::loans-deposits": {
+      "category": "banking",
+      "category_title": "Banking System Health",
+      "lens_id": "bank-concentrations-funding",
+      "lens_title": "Concentrations & Funding",
+      "indicator_id": "loans-deposits",
+      "title": "Loans-to-Deposits",
+      "short": "Loans/dep.",
+      "taxonomy": "severity",
+      "why": "Loans as a share of deposits. Above ~90% means the system's funding is stretched.",
+      "axis": {
+        "kind": "level",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 90
+        },
+        {
+          "status": "watch",
+          "lo": 90,
+          "hi": null
+        }
+      ],
+      "edges": [
+        90
+      ]
+    },
+    "bank-concentrations-funding::cre-concentration": {
+      "category": "banking",
+      "category_title": "Banking System Health",
+      "lens_id": "bank-concentrations-funding",
+      "lens_title": "Concentrations & Funding",
+      "indicator_id": "cre-concentration",
+      "title": "CRE Concentration \u00b7 % of capital",
+      "short": "CRE/capital",
+      "taxonomy": "severity",
+      "why": "Commercial real estate as a share of bank capital. Above ~300% is the interagency supervisory concentration flag; ~200% is a notable build.",
+      "axis": {
+        "kind": "level",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the latest reading"
+      },
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 200
+        },
+        {
+          "status": "watch",
+          "lo": 200,
+          "hi": 300
+        },
+        {
+          "status": "elevated",
+          "lo": 300,
+          "hi": null
+        }
+      ],
+      "edges": [
+        200,
+        300
+      ]
+    }
+  }
+}

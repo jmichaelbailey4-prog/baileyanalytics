@@ -896,6 +896,12 @@ def _publish_methodology(root=None):
     root = root or REPO_ROOT
     data = methodology.build_methodology()
     build.write_lens_file(root / "data" / "methodology.json", data)
+    # Per-category slices: a lens page fetches only its category's signals for the
+    # scale strip (scoring.js), not the full ~120-signal file. Additive — scoring.js
+    # falls back to the full file when a slice is absent. Content-aware writes, so no
+    # daily churn (the band specs change only when the rules do).
+    for cat_id, sl in methodology.category_slices(data).items():
+        build.write_lens_file(root / "data" / "methodology" / f"{cat_id}.json", sl)
     _write_text_if_changed(root / "dashboards" / "methodology.html",
                            methodology.render_methodology(data))
 
