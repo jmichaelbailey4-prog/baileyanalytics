@@ -1,17 +1,6 @@
 {
-  "generated_at": "2026-06-26T19:13:22Z",
-  "transitions": [
-    {
-      "lens_id": "cost-of-money",
-      "lens_title": "The Cost of Money",
-      "category": "economic",
-      "href": "/dashboards/cost-of-money.html",
-      "from_status": "ok",
-      "to_status": "watch",
-      "direction": "worsening",
-      "headline": "Borrowing is still expensive \u2014 rates remain elevated."
-    }
-  ],
+  "generated_at": "2026-06-26T19:24:23Z",
+  "transitions": [],
   "top_moves": [
     {
       "lens_id": "energy-commodities",
@@ -232,6 +221,61 @@
       "delta": "1.00 months",
       "dir": "up",
       "why": "Months' supply: a fresh high in this view."
+    },
+    {
+      "lens_id": "business-profitability",
+      "lens_title": "Corporate Profits",
+      "category": "business",
+      "href": "/dashboards/business/profitability.html",
+      "headline": "Corporate America is profitable \u2014 earnings are growing.",
+      "accent": "#34D399",
+      "sparkline": [
+        -1.8,
+        0.8,
+        10.3,
+        13.3,
+        8.3,
+        11.0,
+        -3.2,
+        -2.9,
+        2.2,
+        -2.3,
+        8.1,
+        2.9,
+        -0.2,
+        3.6,
+        5.2,
+        -2.0,
+        -9.8,
+        22.4,
+        14.5,
+        33.9,
+        60.6,
+        16.3,
+        21.5,
+        9.1,
+        5.8,
+        2.7,
+        -2.0,
+        7.6,
+        0.6,
+        7.8,
+        16.0,
+        7.8,
+        9.2,
+        4.6,
+        10.0,
+        -1.7,
+        -3.3,
+        4.3,
+        2.8,
+        18.4
+      ],
+      "stat_label": "Profit growth",
+      "stat_value": "18.40%",
+      "delta": "15.60%",
+      "dir": "up",
+      "why": ""
     }
   ],
   "lenses": [
