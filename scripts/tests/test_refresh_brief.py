@@ -43,6 +43,17 @@ class TestBriefDryRun(unittest.TestCase):
         self.assertTrue(any(l["lens_id"] == "fiscal-health" and l["status"] == "elevated"
                             for l in today["lenses"]))
 
+    def test_brief_bakes_methodology_page_and_json(self):
+        tmp = refresh_lenses.REPO_ROOT
+        refresh_lenses.main(["--brief", "--dry-run"])
+        page = tmp / "dashboards" / "methodology.html"
+        data = tmp / "data" / "methodology.json"
+        self.assertTrue(page.exists())
+        self.assertTrue(data.exists())
+        self.assertIn('id="cost-of-living--cpi"', page.read_text(encoding="utf-8"))
+        self.assertIn("cost-of-living::cpi",
+                      json.loads(data.read_text(encoding="utf-8"))["signals"])
+
     def test_brief_run_writes_feed(self):
         refresh_lenses.main(["--brief", "--dry-run"])
         xml_text = refresh_lenses.FEED_PATH.read_text(encoding="utf-8")

@@ -63,5 +63,16 @@ class TestRender(unittest.TestCase):
         self.assertIn("badge watch", self.html)                    # a band swatch
 
 
+class TestPwaStamperExcludesMethodology(unittest.TestCase):
+    def test_methodology_is_not_a_stamp_target(self):
+        # methodology.py emits its own head (like brief.html), so the pwa-head
+        # stamper must leave it alone — else the head would be double-stamped.
+        from tools import pwa_head
+        root = pathlib.Path("/repo")
+        self.assertFalse(pwa_head.is_target(root / "dashboards" / "methodology.html", root))
+        # control: an ordinary lens page IS a target
+        self.assertTrue(pwa_head.is_target(root / "dashboards" / "recession-watch.html", root))
+
+
 if __name__ == "__main__":
     unittest.main()

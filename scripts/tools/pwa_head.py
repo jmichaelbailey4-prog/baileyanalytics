@@ -26,6 +26,9 @@ def is_target(p, root):
         return False
     if p.name == "brief.html" and p.parent.name == "dashboards":
         return False
+    # methodology.html is generator-owned too (methodology.py emits its own head)
+    if p.name == "methodology.html" and p.parent.name == "dashboards":
+        return False
     rel = p.relative_to(root)
     if len(rel.parts) == 1:
         return True                       # root-level page
