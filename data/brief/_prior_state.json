@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-06-24T19:17:51Z",
+  "captured_at": "2026-06-25T19:33:14Z",
   "statuses": {
     "recession-watch": "ok",
     "cost-of-money": "ok",
@@ -8,7 +8,7 @@
     "fiscal-health": "elevated",
     "consumer-spending": "ok",
     "consumer-credit": "watch",
-    "consumer-income-savings": "elevated",
+    "consumer-income-savings": "watch",
     "consumer-sentiment": "alert",
     "bank-asset-quality": "ok",
     "bank-profitability": "ok",
@@ -24,7 +24,7 @@
     "crypto-structure": "neutral",
     "energy-oil-fuels": "elevated",
     "energy-natural-gas": "ok",
-    "energy-electricity": "elevated",
+    "energy-electricity": "watch",
     "energy-commodities": "alert",
     "housing-home-prices": "ok",
     "housing-affordability": "elevated",

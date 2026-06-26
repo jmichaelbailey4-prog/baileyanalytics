@@ -2,7 +2,7 @@
   "id": "energy-natural-gas",
   "title": "Natural Gas",
   "accent": "#60A5FA",
-  "last_updated": "2026-06-24T19:16:55Z",
+  "last_updated": "2026-06-25T19:32:12Z",
   "status": "ok",
   "headline_read": "Natural gas costs are stable or easing.",
   "recessions": [
@@ -2363,8 +2363,8 @@
       "series_id": "NW2_EPG0_SWO_R48_BCF",
       "observations": [
         {
-          "date": "2016-07-01",
-          "value": "3179"
+          "date": "2016-07-08",
+          "value": "3243"
         },
         {
           "date": "2016-08-05",
@@ -2601,10 +2601,6 @@
         {
           "date": "2021-06-04",
           "value": "2411"
-        },
-        {
-          "date": "2021-06-18",
-          "value": "2482"
         },
         {
           "date": "2021-06-25",
@@ -3645,14 +3641,18 @@
         {
           "date": "2026-06-12",
           "value": "2759"
+        },
+        {
+          "date": "2026-06-19",
+          "value": "2835"
         }
       ],
       "latest": {
-        "date": "2026-06-12",
-        "value": "2759"
+        "date": "2026-06-19",
+        "value": "2835"
       },
       "context": "Working natural gas held in underground storage (Bcf) \u2014 the cushion that buffers winter demand; low storage means price risk.",
-      "read": "Gas in storage is little changed from a year ago, now 2,759.",
+      "read": "Gas in storage is little changed from a year ago, now 2,835.",
       "signal_status": "info",
       "value_format": "thousands"
     },

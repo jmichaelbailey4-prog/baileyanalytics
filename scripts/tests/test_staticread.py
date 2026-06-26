@@ -71,6 +71,25 @@ class TestRenderFragment(unittest.TestCase):
             self.assertEqual(synthesis.find_causal_tokens(w), [], f"causal token in why: {w!r}")
 
 
+class TestSignalNote(unittest.TestCase):
+    def _html(self, **reasons):
+        lens = {"id": "x", "title": "X", "status": "ok", "headline_read": "H",
+                "last_updated": "2026-06-12T06:01:00Z",
+                "indicators": [dict({"id": "i", "title": "I", "short": "I", "unit": "%",
+                                     "value_format": "decimal", "latest": None,
+                                     "observations": [], "read": "r."}, **reasons)]}
+        return staticread.render_fragment(lens)
+
+    def test_combined_note_when_both_reasons(self):
+        html = self._html(no_severity_reason="No score.", no_prediction_reason="No forecast.")
+        self.assertIn('class="signal-note"', html)
+        self.assertIn("Why it isn’t scored or forecast", html)  # curly ’, matches lens.js
+        self.assertIn("No score. No forecast.", html)
+
+    def test_no_note_when_scored_and_predicted(self):
+        self.assertNotIn('class="signal-note"', self._html())
+
+
 class TestEscaping(unittest.TestCase):
     def test_special_chars_in_all_fields_are_escaped(self):
         # the #baked-read fragment is HTML; every data-derived field must be

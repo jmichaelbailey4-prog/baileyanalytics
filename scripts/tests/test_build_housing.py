@@ -30,7 +30,7 @@ class TestBuildHousing(unittest.TestCase):
         lj = build.build_lens(config.HOUSING_AFFORDABILITY, _fetched())
         self.assertEqual(lj["status"], "elevated")  # mortgage 6.84 + FIXHAI 105.6
         ds = next(i for i in lj["indicators"] if i["id"] == "debt-service")
-        self.assertEqual(ds["signal_status"], "info")  # info ignored by status_max
+        self.assertEqual(ds["signal_status"], "ok")  # MDSP now scored; 5.92% is below its median
 
     def test_supply_glut_is_elevated(self):
         lj = build.build_lens(config.HOUSING_SUPPLY_CONSTRUCTION, _fetched())

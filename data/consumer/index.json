@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-17T17:34:12Z",
+  "last_updated": "2026-06-25T13:39:09Z",
   "status": "elevated",
   "lenses": [
     {
@@ -17,9 +17,9 @@
         },
         {
           "k": "Real spending",
-          "v": "2.10%",
-          "d": "0.03%",
-          "dir": "down"
+          "v": "2.13%",
+          "d": "0.41%",
+          "dir": "up"
         }
       ],
       "sparkline": [
@@ -132,24 +132,21 @@
       "id": "consumer-income-savings",
       "title": "Household Income & Savings",
       "accent": "#FBBF24",
-      "status": "elevated",
-      "headline_read": "Household cushions are thin \u2014 savings or real incomes are stretched.",
+      "status": "watch",
+      "headline_read": "Household finances are tightening \u2014 cushions are shrinking.",
       "key_stats": [
         {
           "k": "Saving rate",
-          "v": "2.60%",
-          "d": "0.60%",
-          "dir": "down"
+          "v": "3.00%"
         },
         {
           "k": "Real income",
-          "v": "-1.10%",
-          "d": "1.05%",
-          "dir": "down"
+          "v": "0.02%",
+          "d": "1.09%",
+          "dir": "up"
         }
       ],
       "sparkline": [
-        4.9,
         5.5,
         6.0,
         5.8,
@@ -185,10 +182,11 @@
         3.9,
         3.8,
         3.6,
-        4.3,
-        3.6,
-        3.2,
-        2.6
+        4.4,
+        3.8,
+        3.5,
+        3.0,
+        3.0
       ]
     },
     {
