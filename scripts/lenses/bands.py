@@ -36,6 +36,7 @@ class BandSpec:
     unit: str
     edges: tuple
     segments: tuple
+    value_format: str = "decimal"  # axis formatter: "decimal" | "thousands"
     axis_label: str = ""
     cap: str = ""
     probe: bool = True
