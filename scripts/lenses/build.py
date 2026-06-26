@@ -3,7 +3,18 @@
 import json
 from datetime import datetime, timezone
 
-from . import config, narrative, reasons, recessions, util
+from . import bands, config, narrative, reasons, recessions, util
+
+
+def _attach_scale_now(entry, rule, cleaned):
+    """Bake the rule's decision-axis value (the scoring strip's 'now' marker),
+    only for scored indicators with a static axis. Computed in Python so the
+    yoy_computed axis needs no client-side YoY re-derive. No-op otherwise."""
+    spec = getattr(rule, "band_spec", None)
+    if spec and spec.kind != "custom":
+        nv = bands.decision_value(spec.kind, cleaned)
+        if nv is not None:
+            entry["scale_now"] = round(nv, 4)
 
 
 def _now():
@@ -114,6 +125,7 @@ def build_lens(lens, fetched):
             "value_format": ind.value_format,
         }
         _attach_reasons(entry, ind)
+        _attach_scale_now(entry, ind.rule, cleaned)
         indicators.append(entry)
     headline, overall = narrative.synthesize(lens.id, agg_statuses)
     return {
@@ -156,6 +168,7 @@ def build_banking_lens(lens, series_by_key, tier_rows, ranking_rows):
             "value_format": ind.value_format,
         }
         _attach_reasons(entry, ind)
+        _attach_scale_now(entry, ind.rule, cleaned)
         indicators.append(entry)
     headline, overall = narrative.synthesize(lens.id, agg_statuses)
 
