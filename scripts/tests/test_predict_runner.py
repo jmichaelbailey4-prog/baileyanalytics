@@ -56,9 +56,14 @@ class TestDailyRun(unittest.TestCase):
             self.assertEqual(len(opens), 2)
             e = next(o for o in opens if o["key"] == "economic/cost-of-living/cpi")
             for k in ("id", "point", "lo", "hi", "due", "made_at", "model", "why",
-                      "implied_status", "current_status", "prev_value", "href",
-                      "horizon", "target_period", "unit", "title", "lens_title"):
+                      "implied_status", "current_status", "prev_value", "prev_period",
+                      "href", "horizon", "target_period", "unit", "title", "lens_title"):
                 self.assertIn(k, e)
+            # prev_period is the date of prev_value (cleaned[-1][0]) — the "as of"
+            # stamp the Now anchor renders. It matches the fixture's last CPI date.
+            expected_period = json.loads(FIXTURE.read_text(encoding="utf-8"))[
+                "economic/cost-of-living/cpi"][-1]["date"]
+            self.assertEqual(e["prev_period"], expected_period)
             self.assertIsNone(e["grade"])
             self.assertIn("@", e["model"])
 
@@ -170,6 +175,29 @@ class TestDailyRun(unittest.TestCase):
             self.assertTrue(graded_ids)                        # CPI did grade
             self.assertEqual(graded_ids & {o["id"] for o in opens}, set())
             self.assertNotIn("economic/cost-of-living/cpi", [o["key"] for o in opens])
+
+
+class TestMakeOpenEntryAsOf(unittest.TestCase):
+    """prev_period (the 'as of' stamp) uses the real observation date — but daily
+    series are resampled to a forward-datable Friday, so the stamp is omitted there."""
+    def _entry(self):
+        return next(e for e in roster.build_roster()
+                    if e.key == "economic/cost-of-living/cpi")
+
+    def _make(self, cleaned, cad):
+        champ = {"champion": "naive@1", "season": 1, "err_lo": -0.1, "err_hi": 0.1}
+        with mock.patch.object(runner.models, "predict_one", return_value=cleaned[-1][1]):
+            return runner._make_open_entry(self._entry(), cleaned, cad, champ)
+
+    def test_monthly_keeps_prev_period(self):
+        out = self._make([("2026-03-01", 2.0), ("2026-04-01", 2.1)], "monthly")
+        self.assertEqual(out["prev_period"], "2026-04-01")
+        self.assertEqual(out["prev_value"], 2.1)
+
+    def test_daily_omits_prev_period_but_keeps_value(self):
+        out = self._make([("2026-06-19", 2.0), ("2026-06-26", 2.1)], "daily")
+        self.assertNotIn("prev_period", out)
+        self.assertEqual(out["prev_value"], 2.1)
 
 
 if __name__ == "__main__":

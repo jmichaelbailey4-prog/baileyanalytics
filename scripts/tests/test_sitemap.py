@@ -13,6 +13,7 @@ class TestBuildUrls(unittest.TestCase):
         self.assertIn("https://baileyanalytics.com/", urls)
         self.assertIn("https://baileyanalytics.com/about.html", urls)
         self.assertIn("https://baileyanalytics.com/dashboards/brief.html", urls)
+        self.assertIn("https://baileyanalytics.com/dashboards/methodology.html", urls)
         self.assertIn("https://baileyanalytics.com/dashboards/economic/", urls)
         self.assertIn("https://baileyanalytics.com/dashboards/banking/", urls)
         # favorites.html is intentionally absent — it's noindex, and a noindex URL

@@ -14,6 +14,7 @@ STATIC_PAGES = [
     "/dashboards/",
     "/dashboards/brief.html",
     "/dashboards/brief/",
+    "/dashboards/methodology.html",
     "/dashboards/track-record.html",
     # favorites.html is deliberately NOT here: it's noindex (a per-visitor PWA
     # start_url with no shareable content), and a noindex URL in the sitemap

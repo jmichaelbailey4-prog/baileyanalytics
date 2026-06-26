@@ -71,6 +71,31 @@ class TestRenderFragment(unittest.TestCase):
             self.assertEqual(synthesis.find_causal_tokens(w), [], f"causal token in why: {w!r}")
 
 
+class TestStaticBands(unittest.TestCase):
+    """No-JS readers get a static band summary + a deep link to the methodology
+    page, for scored signals only (matched by real config lens/indicator ids)."""
+    def _frag(self, lens_id, ind_id):
+        lens = {"id": lens_id, "title": "T", "status": "ok", "headline_read": "H",
+                "last_updated": "2026-06-12T06:01:00Z",
+                "indicators": [{"id": ind_id, "title": "I", "short": "I", "unit": "",
+                                "value_format": "decimal", "observations": [],
+                                "latest": {"date": "2026-05-01", "value": "260000"},
+                                "read": "r."}]}
+        return staticread.render_fragment(lens)
+
+    def test_severity_indicator_gets_bands_and_methodology_link(self):
+        html = self._frag("recession-watch", "jobless-claims")  # rule_claims, level
+        self.assertIn('class="hub-bands"', html)
+        self.assertIn("/dashboards/methodology.html#recession-watch--jobless-claims", html)
+        self.assertIn("250,000", html)  # an edge, formatted thousands from the spec
+
+    def test_custom_axis_indicator_has_no_bands(self):
+        self.assertNotIn('class="hub-bands"', self._frag("recession-watch", "yield-curve"))
+
+    def test_unknown_indicator_has_no_bands(self):
+        self.assertNotIn('class="hub-bands"', self._frag("recession-watch", "not-a-real-id"))
+
+
 class TestSignalNote(unittest.TestCase):
     def _html(self, **reasons):
         lens = {"id": "x", "title": "X", "status": "ok", "headline_read": "H",

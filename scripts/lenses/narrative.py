@@ -6,7 +6,7 @@ Each rule takes a chronological list of (date, float) tuples and returns
 
 import functools
 
-from . import util
+from . import bands, util
 
 _NO_DATA = ("Data unavailable.", "unknown")
 
@@ -250,6 +250,9 @@ def restrictive_rate(label, watch, elevated):
                     "for borrowers.", "watch")
         return (f"{label} yield is {v:.2f}% — moderate borrowing costs by recent "
                 "standards.", "ok")
+    _rule.band_spec = bands.BandSpec(kind="level", unit="%",
+        edges=(watch, elevated), segments=("ok", "watch", "elevated"))
+    _rule.band_tag = "restrictive_rate"
     return _rule
 
 
@@ -470,6 +473,9 @@ def credit_spread(label, calm, stressed):
         if v < stressed:
             return (f"The {label} spread is {v:.2f}% — widening off its lows.", "watch")
         return (f"The {label} spread is {v:.2f}% — wide, a sign of credit stress.", "elevated")
+    _rule.band_spec = bands.BandSpec(kind="level", unit="%",
+        edges=(calm, stressed), segments=("ok", "watch", "elevated"))
+    _rule.band_tag = "credit_spread"
     return _rule
 
 
@@ -570,6 +576,9 @@ def consumer_cost(label, watch, elevated, alert):
         if pct <= -1:
             return (f"{label} costs are down {abs(pct):.0f}% over the past year.", "ok")
         return (f"{label} costs are roughly flat over the past year.", "ok")
+    _rule.band_spec = bands.BandSpec(kind="yoy_computed", unit="%",
+        edges=(watch, elevated, alert), segments=("ok", "watch", "elevated", "alert"))
+    _rule.band_tag = "consumer_cost"
     return _rule
 
 
@@ -614,6 +623,9 @@ def yoy_band(label, watch, elevated, alert):
         if v <= -1:
             return (f"{label} costs are falling {abs(v):.1f}% a year.", "ok")
         return (f"{label} costs are roughly flat versus a year ago ({v:+.1f}%).", "ok")
+    _rule.band_spec = bands.BandSpec(kind="yoy", unit="%",
+        edges=(watch, elevated, alert), segments=("ok", "watch", "elevated", "alert"))
+    _rule.band_tag = "yoy_band"
     return _rule
 
 
@@ -646,6 +658,10 @@ def yoy_band_two_sided(label, hot, cold, verb="are"):
             return (f"{label} {verb} down {abs(v):.1f}% from a year ago.", "ok")
         return (f"{label} {verb} little changed from a year ago ({v:+.1f}%).", "ok")
 
+    _rule.band_spec = bands.BandSpec(kind="yoy", unit="%",
+        edges=(cold_a, cold_e, cold_w, hot_w, hot_e, hot_a),
+        segments=("alert", "elevated", "watch", "ok", "watch", "elevated", "alert"))
+    _rule.band_tag = "yoy_band_two_sided"
     return _rule
 
 
@@ -717,6 +733,9 @@ def consumer_delinquency(label, watch, elevated, alert):
         if v >= watch:
             return (f"{label} delinquencies are at {v:.1f}%, creeping up off their lows.", "watch")
         return (f"{label} delinquencies are low at {v:.1f}% — borrowers are keeping up.", "ok")
+    _rule.band_spec = bands.BandSpec(kind="level", unit="%",
+        edges=(watch, elevated, alert), segments=("ok", "watch", "elevated", "alert"))
+    _rule.band_tag = "consumer_delinquency"
     return _rule
 
 
@@ -875,6 +894,10 @@ def market_health(label, hot, cold):
             return (f"{label}: down {abs(pct):.0f}% from a year ago.", "ok")
         return (f"{label}: little changed from a year ago ({pct:+.0f}%).", "ok")
 
+    _rule.band_spec = bands.BandSpec(kind="yoy_computed", unit="%",
+        edges=(cold_a, cold_e, cold_w, hot_w, hot_e, hot_a),
+        segments=("alert", "elevated", "watch", "ok", "watch", "elevated", "alert"))
+    _rule.band_tag = "market_health"
     return _rule
 
 
@@ -985,6 +1008,10 @@ def yoy_contraction_band(label, watch, elevated, alert, verb="are"):
         if v >= 1:
             return (f"{label} {verb} growing {v:.1f}% a year.", "ok")
         return (f"{label} {verb} roughly flat versus a year ago ({v:+.1f}%).", "ok")
+    _rule.band_spec = bands.BandSpec(kind="yoy", unit="%",
+        edges=tuple(sorted((watch, elevated, alert))),
+        segments=("alert", "elevated", "watch", "ok"))
+    _rule.band_tag = "yoy_contraction_band"
     return _rule
 
 
@@ -1131,6 +1158,9 @@ def world_growth(forecast):
         if f:
             text += f" The IMF projects {f['value']:.1f}% for {f['year']}."
         return text, status
+    _rule.band_spec = bands.BandSpec(kind="level", unit="%",
+        edges=(2.0, 2.5, 3.2), segments=("alert", "elevated", "watch", "ok"))
+    _rule.band_tag = "world_growth"
     return _rule
 
 
@@ -1247,7 +1277,117 @@ def epu_band(label, cap=None):
         if cap and util.STATUS_ORDER.get(status, 0) > util.STATUS_ORDER[cap]:
             status = cap
         return text, status
+    _rule.band_spec = bands.BandSpec(kind="level", unit="", value_format="thousands",
+        edges=(120, 200, 300), segments=("ok", "watch", "elevated", "alert"),
+        cap=cap or "")
+    _rule.band_tag = "epu_band"
     return _rule
+
+
+# --- Band descriptors for the bespoke severity rules (score-explain-order, 2026-06-26).
+# The severity factories self-describe above (spec built from their args); these
+# hand-listed specs duplicate each rule body's thresholds and are guarded structurally
+# by test_bands.py, which feeds synthetic observations straddling every declared edge
+# and asserts the live rule flips where the descriptor says. Edit a threshold without
+# editing its spec here and the build turns red. Curated 'why' prose lives in
+# reasons.BAND_WHY[band_tag] (band_tag == the rule's name). `rule_rate_trend` is
+# intentionally absent — it is dead code (defined, wired to no indicator).
+def _bespoke(rule, **kw):
+    rule.band_spec = bands.BandSpec(**kw)
+    rule.band_tag = rule.__name__
+
+
+_bespoke(rule_sahm, kind="level", unit="", edges=(0.35, 0.50),
+         segments=("ok", "watch", "alert"))
+_bespoke(rule_claims, kind="level", unit="", value_format="thousands",
+         edges=(250000, 300000), segments=("ok", "watch", "elevated"))
+_bespoke(rule_unemployment_trend, kind="delta_from_low", unit="pts", edges=(0.5,),
+         segments=("ok", "watch"))
+_bespoke(rule_fed_funds, kind="level", unit="%", edges=(4.0,), segments=("ok", "watch"))
+_bespoke(rule_mortgage, kind="level", unit="%", edges=(5.5, 6.5, 7.5),
+         segments=("ok", "watch", "elevated", "alert"))
+_bespoke(rule_payrolls, kind="level", unit="", value_format="thousands",
+         edges=(0, 75000, 150000), segments=("alert", "watch", "watch", "ok"))
+_bespoke(rule_job_openings, kind="level", unit="M", edges=(7.5,),
+         segments=("watch", "ok"))
+_bespoke(rule_wage_growth, kind="yoy", unit="%", edges=(2.0, 3.0),
+         segments=("elevated", "watch", "ok"))
+_bespoke(rule_auto_sales, kind="level", unit="M", edges=(12, 13.5, 15),
+         segments=("alert", "elevated", "watch", "ok"))
+_bespoke(rule_mortgage_debt_service, kind="level", unit="%", edges=(6, 7, 8),
+         segments=("ok", "watch", "elevated", "alert"))
+_bespoke(rule_interest_burden, kind="level", unit="%", edges=(10, 15, 22),
+         segments=("ok", "watch", "elevated", "alert"))
+_bespoke(rule_inflation, kind="yoy", unit="%", edges=(2.5, 4.0),
+         segments=("ok", "watch", "elevated"))
+_bespoke(rule_real_wages, kind="yoy", unit="%", edges=(0,), segments=("watch", "ok"))
+_bespoke(rule_noncurrent, kind="level", unit="%", edges=(1, 2),
+         segments=("ok", "watch", "elevated"))
+_bespoke(rule_charge_offs, kind="level", unit="%", edges=(0.6, 1.2),
+         segments=("ok", "watch", "elevated"))
+_bespoke(rule_cre_concentration, kind="level", unit="%", edges=(200, 300),
+         segments=("ok", "watch", "elevated"))
+_bespoke(rule_uninsured_share, kind="level", unit="%", edges=(40,),
+         segments=("ok", "watch"))
+_bespoke(rule_capital_ratio, kind="level", unit="%", edges=(7.5, 9),
+         segments=("elevated", "watch", "ok"))
+_bespoke(rule_risk_based_capital, kind="level", unit="%", edges=(8, 10),
+         segments=("elevated", "watch", "ok"))
+_bespoke(rule_net_margin, kind="level", unit="%", edges=(2.5,),
+         segments=("watch", "ok"))
+_bespoke(rule_roa, kind="level", unit="%", edges=(0.5, 1.0),
+         segments=("elevated", "watch", "ok"))
+_bespoke(rule_loans_deposits, kind="level", unit="%", edges=(90,),
+         segments=("ok", "watch"))
+_bespoke(rule_vix, kind="level", unit="", edges=(20, 30),
+         segments=("ok", "watch", "elevated"))
+_bespoke(rule_financial_conditions, kind="level", unit="", edges=(0, 0.5),
+         segments=("ok", "watch", "elevated"))
+_bespoke(rule_m2_growth, kind="yoy", unit="%", edges=(-3, -1, 7, 10),
+         segments=("elevated", "watch", "ok", "watch", "elevated"))
+_bespoke(rule_debt_service, kind="level", unit="%", edges=(10.5, 12, 13),
+         segments=("ok", "watch", "elevated", "alert"))
+_bespoke(rule_saving_rate, kind="level", unit="%", edges=(3, 5),
+         segments=("elevated", "watch", "ok"))
+_bespoke(rule_real_income, kind="yoy", unit="%", edges=(-2, 0),
+         segments=("elevated", "watch", "ok"))
+_bespoke(rule_sentiment, kind="level", unit="", edges=(55, 70, 85),
+         segments=("alert", "elevated", "watch", "ok"))
+_bespoke(rule_inflation_expectations, kind="level", unit="%", edges=(3, 4, 5.5),
+         segments=("ok", "watch", "elevated", "alert"))
+_bespoke(rule_revolving_credit, kind="yoy", unit="%", edges=(8, 12),
+         segments=("ok", "watch", "elevated"))
+_bespoke(rule_debt_gdp, kind="level", unit="%", edges=(90, 110, 130),
+         segments=("ok", "watch", "elevated", "alert"))
+_bespoke(rule_deficit_12m, kind="level", unit="$T", edges=(0.8, 1.5, 2.5),
+         segments=("ok", "watch", "elevated", "alert"))
+_bespoke(rule_affordability, kind="level", unit="", edges=(95, 110, 130),
+         segments=("alert", "elevated", "watch", "ok"))
+_bespoke(rule_mortgage_delinquency, kind="level", unit="%", edges=(2, 4, 7),
+         segments=("ok", "watch", "elevated", "alert"))
+_bespoke(rule_months_supply, kind="level", unit="months", edges=(3, 4, 6, 8, 10),
+         segments=("elevated", "watch", "ok", "watch", "elevated", "alert"))
+_bespoke(rule_rental_vacancy, kind="level", unit="%", edges=(5, 6, 8, 10),
+         segments=("elevated", "watch", "ok", "watch", "elevated"))
+_bespoke(rule_baa_spread, kind="level", unit="%", edges=(2.0, 2.5, 3.5),
+         segments=("ok", "watch", "elevated", "alert"))
+_bespoke(rule_lending_standards, kind="level", unit="%", edges=(0, 20, 50),
+         segments=("ok", "watch", "elevated", "alert"))
+_bespoke(rule_business_delinquency, kind="level", unit="%", edges=(1.5, 2.5, 4.0),
+         segments=("ok", "watch", "elevated", "alert"))
+_bespoke(rule_inventories_sales, kind="level", unit="", edges=(1.40, 1.50),
+         segments=("ok", "watch", "elevated"))
+_bespoke(rule_dollar_yoy, kind="yoy", unit="%", edges=(-12, -9, -5, 5, 9, 12),
+         segments=("alert", "elevated", "watch", "ok", "watch", "elevated", "alert"))
+_bespoke(rule_gscpi, kind="level", unit="σ", edges=(0.5, 1.5, 2.5),
+         segments=("ok", "watch", "elevated", "alert"))
+# History-dependent (the un-inversion state depends on recent history, not just the
+# latest value), so it is NOT a static single-axis band: prose-only on the methodology
+# page, excluded from the edge-flip drift test.
+# Vestigial bands (custom kind never renders edges/segments) — kept in the rule's true
+# order anyway: below zero (inverted) is the elevated recession warning, not 'ok'.
+_bespoke(rule_yield_curve, kind="custom", unit="%", edges=(0,),
+         segments=("elevated", "ok"), probe=False)
 
 
 HEADLINES = {

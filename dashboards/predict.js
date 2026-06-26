@@ -13,6 +13,15 @@
     if (!iso || iso.length < 10) return "";
     return `due ~${MONTHS[+iso.slice(5, 7) - 1]} ${+iso.slice(8, 10)}`;
   }
+  // The "as of" stamp for the current value. A 1st-of-month date (a monthly series)
+  // shows as "May 2026" (no fake day precision); any other date — weekly, or a
+  // quarter-end like a bank call report — keeps its day, matching the lens card.
+  // (Daily series omit the stamp upstream: their resampled date can be forward-dated.)
+  function fmtAsOf(iso) {
+    if (!iso || iso.length < 7) return "";
+    const p = iso.split("-"), mon = MONTHS[+p[1] - 1];
+    return (!p[2] || p[2] === "01") ? `${mon} ${p[0]}` : `${mon} ${+p[2]}, ${p[0]}`;
+  }
   // Mirrors lens.js fmtVal / build.py _fmt — keep in sync (house rule).
   function fmtVal(v, unit, vf) {
     if (v == null || isNaN(v)) return "—";
@@ -53,9 +62,21 @@
   }
   function block(p, g) {
     const range = `${esc(fmtVal(p.lo, p.unit, p.value_format))}–${esc(fmtVal(p.hi, p.unit, p.value_format))}`;
+    const exp = `<strong>~${esc(fmtVal(p.point, p.unit, p.value_format))}</strong>`;
+    // Lead with where the number IS now, when we have it — the forecast's anchor.
+    // Degrade-safe: no prev_value falls back to today's "We expect ~Y" wording.
+    let lead;
+    if (p.prev_value != null && !isNaN(p.prev_value)) {
+      const asof = p.prev_period
+        ? ` <span class="pred-asof">as of ${esc(fmtAsOf(p.prev_period))}</span>` : "";
+      lead = `Now <strong>${esc(fmtVal(p.prev_value, p.unit, p.value_format))}</strong>${asof}
+        &rarr; next print ${exp}`;
+    } else {
+      lead = `We expect ${exp}`;
+    }
     return `<div class="predict">
       <div class="pred-head">Next print <span class="pred-due">${esc(fmtDue(p.due))}</span></div>
-      <div class="pred-line">We expect <strong>~${esc(fmtVal(p.point, p.unit, p.value_format))}</strong>
+      <div class="pred-line">${lead}
         <span class="pred-range">(likely ${range})</span>${statusPhrase(p)}</div>
       <div class="pred-why">${esc(p.why || "")}</div>${marketNote(p)}${lastCall(g)}</div>`;
   }

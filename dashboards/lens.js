@@ -140,7 +140,8 @@
   function indicatorCard(indicator, recessions, defaultRange) {
     const el = document.createElement("div");
     el.className = "ind";
-    el.dataset.indicator = indicator.id;  // hook for predict.js blocks
+    el.dataset.indicator = indicator.id;  // hook for predict.js + scoring.js blocks
+    if (indicator.scale_now != null) el.dataset.scaleNow = indicator.scale_now;  // scoring.js marker
     const latest = indicator.latest ? fmtVal(indicator.latest.value, indicator.unit, indicator.value_format) : "—";
     const fmtAsOf = isMonthly(indicator.observations) ? fmtMonth : fmtDate;
     const asOf = indicator.latest ? `<div class="ind-asof">as of ${fmtAsOf(indicator.latest.date)}</div>` : "";

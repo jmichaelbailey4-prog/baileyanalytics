@@ -15,7 +15,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))  # make `lenses` importable
 from datetime import date
 
-from lenses import brief, briefpage, build, coingecko, config, eia, epu, fdic, feed, fred, imf, nyfed, ogcard, regions, sitemap, staticread, today, util, yahoo
+from lenses import brief, briefpage, build, coingecko, config, eia, epu, fdic, feed, fred, imf, methodology, nyfed, ogcard, regions, sitemap, staticread, today, util, yahoo
 
 OUT_DIR = Path(__file__).resolve().parent.parent / "data" / "lenses"
 BANK_OUT_DIR = Path(__file__).resolve().parent.parent / "data" / "banking"
@@ -714,6 +714,13 @@ def refresh_brief(dry_run):
             _patch_lens_pages()
         except Exception as exc:  # noqa: BLE001 - static reads are additive
             print(f"WARN: lens static reads failed ({exc})", file=sys.stderr)
+        # Scoring methodology page + JSON: built from the band specs (no network),
+        # so it changes only when the rules do — content-aware writes make daily
+        # churn zero. Outside the wrote gate, like the static reads above.
+        try:
+            _publish_methodology()
+        except Exception as exc:  # noqa: BLE001 - methodology is additive
+            print(f"WARN: methodology bake failed ({exc})", file=sys.stderr)
     except Exception as exc:  # noqa: BLE001 - never break the run on a brief failure
         print(f"WARN: brief build failed ({exc}); keeping previous brief", file=sys.stderr)
 
@@ -880,6 +887,17 @@ def _patch_lens_pages(root=None):
             except (ValueError, OSError) as exc:
                 print(f"WARN: static read failed for {lens_file.name}: {exc}",
                       file=sys.stderr)
+
+
+def _publish_methodology(root=None):
+    """Bake the scoring methodology page + data/methodology.json from the band specs.
+    Content-aware (write_lens_file strips generated_at), so quiet days emit nothing.
+    `root` late-binds to REPO_ROOT so tests can redirect it without touching the repo."""
+    root = root or REPO_ROOT
+    data = methodology.build_methodology()
+    build.write_lens_file(root / "data" / "methodology.json", data)
+    _write_text_if_changed(root / "dashboards" / "methodology.html",
+                           methodology.render_methodology(data))
 
 
 def _load_open_predictions():
