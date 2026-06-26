@@ -9,6 +9,9 @@
     try { const r = await fetch(url, { cache: "no-cache" }); return r.ok ? await r.json() : null; }
     catch (e) { return null; }
   }
+  // Page-scoped memo shared with predict.js: open.json is fetched once per lens
+  // page, not once per script.
+  function getOpen() { return (self.__baOpenP = self.__baOpenP || get("/data/predictions/open.json")); }
   // Mirrors lens.js fmtVal / predict.js fmtVal / build.py _fmt — keep in sync (house rule).
   function fmtVal(v, unit, vf) {
     if (v == null || isNaN(v)) return "—";
@@ -75,7 +78,7 @@
     const lensId = ev.detail && ev.detail.id;
     if (!lensId) return;
     const [method, open] = await Promise.all([
-      get("/data/methodology.json"), get("/data/predictions/open.json")]);
+      get("/data/methodology.json"), getOpen()]);
     if (!method || !method.signals) return;
     const preds = {};
     if (open && open.predictions) {

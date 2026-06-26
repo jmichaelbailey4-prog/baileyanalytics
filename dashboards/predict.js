@@ -8,6 +8,9 @@
     try { const r = await fetch(url, { cache: "no-cache" }); return r.ok ? await r.json() : null; }
     catch (e) { return null; }
   }
+  // Page-scoped memo: predict.js and scoring.js both need open.json on a lens
+  // page — share one fetch instead of two (whichever script runs first wins).
+  function getOpen() { return (self.__baOpenP = self.__baOpenP || get("/data/predictions/open.json")); }
   const MONTHS = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
   function fmtDue(iso) {
     if (!iso || iso.length < 10) return "";
@@ -84,7 +87,7 @@
     const lensId = ev.detail && ev.detail.id;
     if (!lensId) return;
     const [open, recent] = await Promise.all([
-      get("/data/predictions/open.json"), get("/data/predictions/recent.json")]);
+      getOpen(), get("/data/predictions/recent.json")]);
     if (!open || !open.predictions) return;
     const mine = {};
     open.predictions.forEach(p => { if (p.lens === lensId) mine[p.indicator] = p; });
