@@ -67,7 +67,7 @@
       document.getElementById("since").textContent =
         "The first predictions are open now — grades land as the prints arrive. Check back this week.";
       document.getElementById("calibration").textContent = "pending";
-      document.getElementById("skill").textContent = "pending";
+      document.getElementById("badge").textContent = "pending";
       return;
     }
     if (tr.since) {
@@ -79,9 +79,11 @@
         `Every one was published before the number existed.`;
     }
     document.getElementById("calibration").textContent = pct(tr.calibration);
-    // Skill is the edge over signal series; "pending" until one is graded.
-    document.getElementById("skill").textContent =
-      tr.skill == null ? "pending" : pct(Math.max(tr.skill, 0));
+    // Badge accuracy on the badge-driving series — a stronger, equally honest
+    // headline than the edge-over-naive skill (which is broken out by category
+    // below). "pending" until at least one signal series is graded.
+    document.getElementById("badge").textContent =
+      tr.status == null ? "pending" : pct(tr.status);
     const cats = Object.entries(tr.categories || {});
     if (cats.length) {
       document.getElementById("cats-sec").hidden = false;
