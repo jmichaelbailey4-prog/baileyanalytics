@@ -44,6 +44,21 @@ class TestScaleNow(unittest.TestCase):
         self.assertNotIn("scale_now", _ind(lj, "yield-curve"))
 
 
+class TestYoyComputedScaleNow(unittest.TestCase):
+    """The yoy_computed marker uses bands' own _value_year_ago; confirm the baked
+    scale_now lands in the same band the rule scored (existing-home-sales = market_health)."""
+    def test_yoy_computed_scale_now_matches_status(self):
+        fetched = json.loads((pathlib.Path(__file__).parent / "fixtures"
+                              / "housing_sample.json").read_text(encoding="utf-8"))
+        lens = next(l for l in config.HOUSING_LENSES if l.id == "housing-home-prices")
+        lj = build.build_lens(lens, fetched)
+        ehs = _ind(lj, "existing-home-sales")
+        spec = next(i for i in lens.indicators if i.id == "existing-home-sales").rule.band_spec
+        self.assertEqual(spec.kind, "yoy_computed")
+        self.assertIn("scale_now", ehs)
+        self.assertEqual(bands.status_at(spec, ehs["scale_now"]), ehs["signal_status"])
+
+
 class TestBankingScaleNow(unittest.TestCase):
     def test_banking_severity_indicator_has_scale_now(self):
         data = json.loads(FDIC_FIX.read_text(encoding="utf-8"))

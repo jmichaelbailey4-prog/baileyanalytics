@@ -13,9 +13,10 @@
     if (!iso || iso.length < 10) return "";
     return `due ~${MONTHS[+iso.slice(5, 7) - 1]} ${+iso.slice(8, 10)}`;
   }
-  // The "as of" stamp for the current value. Monthly/quarterly series date every
-  // point on the 1st, so show "May 2026" (no fake day precision); weekly/daily
-  // keep the day — mirrors lens.js isMonthly/fmtMonth.
+  // The "as of" stamp for the current value. A 1st-of-month date (a monthly series)
+  // shows as "May 2026" (no fake day precision); any other date — weekly, or a
+  // quarter-end like a bank call report — keeps its day, matching the lens card.
+  // (Daily series omit the stamp upstream: their resampled date can be forward-dated.)
   function fmtAsOf(iso) {
     if (!iso || iso.length < 7) return "";
     const p = iso.split("-"), mon = MONTHS[+p[1] - 1];

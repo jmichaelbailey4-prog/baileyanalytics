@@ -114,11 +114,16 @@ def status_at(spec, value):
 
 def segment_ranges(spec):
     """[{status, lo, hi}] per segment, low->high; lo None for the first, hi None
-    for the last; statuses cap-clipped. The methodology page and the strip render
-    from this."""
+    for the last; statuses cap-clipped, then adjacent equal statuses merged into one
+    band (so a capped rule like GEPU reads 'ok | watch', not 'ok | watch | watch |
+    watch'). The methodology page and the strip render from this."""
     out = []
     for i, status in enumerate(spec.segments):
         lo = spec.edges[i - 1] if i > 0 else None
         hi = spec.edges[i] if i < len(spec.edges) else None
-        out.append({"status": _capped(status, spec.cap), "lo": lo, "hi": hi})
+        status = _capped(status, spec.cap)
+        if out and out[-1]["status"] == status:
+            out[-1]["hi"] = hi  # extend the previous band over this edge
+        else:
+            out.append({"status": status, "lo": lo, "hi": hi})
     return out

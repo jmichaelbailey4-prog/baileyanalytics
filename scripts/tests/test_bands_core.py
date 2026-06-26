@@ -46,6 +46,16 @@ class TestSynthAndDecision(unittest.TestCase):
         self.assertIsNone(bands.decision_value("custom", bands.synth_obs("level", 1.0)))
 
 
+class TestValueYearAgoMirror(unittest.TestCase):
+    """bands._value_year_ago is a deliberate copy of narrative's (kept dep-free) and
+    feeds the yoy_computed scale_now marker — guard the two against silent drift."""
+    def test_mirrors_narrative(self):
+        from lenses import narrative
+        obs = [("2023-01-01", 100.0), ("2023-06-01", 105.0),
+               ("2024-01-01", 110.0), ("2024-06-01", 120.0)]
+        self.assertEqual(bands._value_year_ago(obs), narrative._value_year_ago(obs))
+
+
 class TestStatusAt(unittest.TestCase):
     def setUp(self):
         self.s = bands.BandSpec(kind="level", unit="%", edges=(5.5, 6.5, 7.5),
@@ -80,9 +90,13 @@ class TestCap(unittest.TestCase):
         return bands.BandSpec(kind="level", unit="", edges=(120, 200, 300),
                               segments=("ok", "watch", "elevated", "alert"), cap="watch")
 
-    def test_segment_ranges_caps_status(self):
-        statuses = [seg["status"] for seg in bands.segment_ranges(self._capped())]
-        self.assertEqual(statuses, ["ok", "watch", "watch", "watch"])
+    def test_segment_ranges_caps_and_merges(self):
+        # cap collapses ok/watch/watch/watch; adjacent equals then merge to ok|watch,
+        # so the page/strip don't show three redundant 'watch' badges.
+        rows = bands.segment_ranges(self._capped())
+        self.assertEqual([r["status"] for r in rows], ["ok", "watch"])
+        self.assertEqual(rows[0], {"status": "ok", "lo": None, "hi": 120})
+        self.assertEqual(rows[1], {"status": "watch", "lo": 120, "hi": None})
 
     def test_status_at_caps(self):
         self.assertEqual(bands.status_at(self._capped(), 371), "watch")
@@ -93,6 +107,15 @@ class TestCap(unittest.TestCase):
         self.assertEqual([x["status"] for x in bands.segment_ranges(s)],
                          ["ok", "watch", "elevated"])
         self.assertEqual(bands.status_at(s, 5), "elevated")
+
+    def test_adjacent_equal_statuses_merge(self):
+        # payrolls-style ladder (no cap) with two adjacent 'watch' bands merges.
+        s = bands.BandSpec(kind="level", unit="", value_format="thousands",
+                           edges=(0, 75000, 150000),
+                           segments=("alert", "watch", "watch", "ok"))
+        rows = bands.segment_ranges(s)
+        self.assertEqual([r["status"] for r in rows], ["alert", "watch", "ok"])
+        self.assertEqual(rows[1], {"status": "watch", "lo": 0, "hi": 150000})
 
 
 if __name__ == "__main__":

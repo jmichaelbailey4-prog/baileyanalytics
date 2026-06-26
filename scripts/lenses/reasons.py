@@ -85,9 +85,9 @@ BAND_WHY = {
         "mark progressively deeper contractions."),
     "epu_band": (
         "The Baker/Bloom/Davis policy-uncertainty index, whose long-run norm is about 100, "
-        "so the bands mark multiples of that norm. The global index is capped at 'watch' "
-        "because it publishes about six months late — a stale read shouldn't drive a live "
-        "alarm."),
+        "so the bands mark multiples of that norm. The global index (GEPU) is held to a "
+        "'watch' ceiling here, because it publishes about six months late — too stale to "
+        "drive a live alarm."),
     "world_growth": (
         "Annual world real-GDP growth, scored against its long-run trend of about 3.5%. "
         "Below roughly 2% is what economists call a global recession; the bands step down "

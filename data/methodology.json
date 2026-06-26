@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-26T17:25:04Z",
+  "generated_at": "2026-06-26T18:17:14Z",
   "taxonomy": {
     "intro": "Every signal on the site is read by a fixed, documented rule applied to the latest numbers \u2014 never a human judgement call. Here is exactly how each reading becomes the badge you see. There are four kinds of signal:",
     "severity": "Severity \u2014 most signals. A reading maps to one of four badges: ok, watch, elevated, or alert. The thresholds below are the real numbers the code uses; the marker on each lens page shows where the latest reading falls.",
@@ -41,10 +41,6 @@
         "value_format": "decimal",
         "label": "the latest reading"
       },
-      "edges": [
-        0.35,
-        0.5
-      ],
       "segments": [
         {
           "status": "ok",
@@ -61,6 +57,10 @@
           "lo": 0.5,
           "hi": null
         }
+      ],
+      "edges": [
+        0.35,
+        0.5
       ]
     },
     "recession-watch::jobless-claims": {
@@ -79,10 +79,6 @@
         "value_format": "thousands",
         "label": "the latest reading"
       },
-      "edges": [
-        250000,
-        300000
-      ],
       "segments": [
         {
           "status": "ok",
@@ -99,6 +95,10 @@
           "lo": 300000,
           "hi": null
         }
+      ],
+      "edges": [
+        250000,
+        300000
       ]
     },
     "recession-watch::unemployment": {
@@ -117,9 +117,6 @@
         "value_format": "decimal",
         "label": "the rise above the trailing-12-month low"
       },
-      "edges": [
-        0.5
-      ],
       "segments": [
         {
           "status": "ok",
@@ -131,6 +128,9 @@
           "lo": 0.5,
           "hi": null
         }
+      ],
+      "edges": [
+        0.5
       ]
     },
     "cost-of-money::fed-funds": {
@@ -149,9 +149,6 @@
         "value_format": "decimal",
         "label": "the latest reading"
       },
-      "edges": [
-        4.0
-      ],
       "segments": [
         {
           "status": "ok",
@@ -163,6 +160,9 @@
           "lo": 4.0,
           "hi": null
         }
+      ],
+      "edges": [
+        4.0
       ]
     },
     "cost-of-money::treasury-10y": {
@@ -181,10 +181,6 @@
         "value_format": "decimal",
         "label": "the latest reading"
       },
-      "edges": [
-        4.5,
-        5.5
-      ],
       "segments": [
         {
           "status": "ok",
@@ -201,6 +197,10 @@
           "lo": 5.5,
           "hi": null
         }
+      ],
+      "edges": [
+        4.5,
+        5.5
       ]
     },
     "cost-of-money::treasury-2y": {
@@ -219,10 +219,6 @@
         "value_format": "decimal",
         "label": "the latest reading"
       },
-      "edges": [
-        4.0,
-        5.0
-      ],
       "segments": [
         {
           "status": "ok",
@@ -239,6 +235,10 @@
           "lo": 5.0,
           "hi": null
         }
+      ],
+      "edges": [
+        4.0,
+        5.0
       ]
     },
     "cost-of-money::rate-expectations": {
@@ -268,9 +268,6 @@
         "value_format": "decimal",
         "label": "the rise above the trailing-12-month low"
       },
-      "edges": [
-        0.5
-      ],
       "segments": [
         {
           "status": "ok",
@@ -282,6 +279,9 @@
           "lo": 0.5,
           "hi": null
         }
+      ],
+      "edges": [
+        0.5
       ]
     },
     "job-market::payrolls": {
@@ -300,11 +300,6 @@
         "value_format": "thousands",
         "label": "the latest reading"
       },
-      "edges": [
-        0,
-        75000,
-        150000
-      ],
       "segments": [
         {
           "status": "alert",
@@ -314,11 +309,6 @@
         {
           "status": "watch",
           "lo": 0,
-          "hi": 75000
-        },
-        {
-          "status": "watch",
-          "lo": 75000,
           "hi": 150000
         },
         {
@@ -326,6 +316,10 @@
           "lo": 150000,
           "hi": null
         }
+      ],
+      "edges": [
+        0,
+        150000
       ]
     },
     "job-market::job-openings": {
@@ -344,9 +338,6 @@
         "value_format": "decimal",
         "label": "the latest reading"
       },
-      "edges": [
-        7.5
-      ],
       "segments": [
         {
           "status": "watch",
@@ -358,6 +349,9 @@
           "lo": 7.5,
           "hi": null
         }
+      ],
+      "edges": [
+        7.5
       ]
     },
     "job-market::wage-growth": {
@@ -376,10 +370,6 @@
         "value_format": "decimal",
         "label": "the year-over-year change"
       },
-      "edges": [
-        2.0,
-        3.0
-      ],
       "segments": [
         {
           "status": "elevated",
@@ -396,6 +386,10 @@
           "lo": 3.0,
           "hi": null
         }
+      ],
+      "edges": [
+        2.0,
+        3.0
       ]
     },
     "job-market::participation": {
@@ -425,10 +419,6 @@
         "value_format": "decimal",
         "label": "the year-over-year change"
       },
-      "edges": [
-        2.5,
-        4.0
-      ],
       "segments": [
         {
           "status": "ok",
@@ -445,6 +435,10 @@
           "lo": 4.0,
           "hi": null
         }
+      ],
+      "edges": [
+        2.5,
+        4.0
       ]
     },
     "cost-of-living::core-cpi": {
@@ -463,10 +457,6 @@
         "value_format": "decimal",
         "label": "the year-over-year change"
       },
-      "edges": [
-        2.5,
-        4.0
-      ],
       "segments": [
         {
           "status": "ok",
@@ -483,6 +473,10 @@
           "lo": 4.0,
           "hi": null
         }
+      ],
+      "edges": [
+        2.5,
+        4.0
       ]
     },
     "cost-of-living::pce": {
@@ -501,10 +495,6 @@
         "value_format": "decimal",
         "label": "the year-over-year change"
       },
-      "edges": [
-        2.5,
-        4.0
-      ],
       "segments": [
         {
           "status": "ok",
@@ -521,6 +511,10 @@
           "lo": 4.0,
           "hi": null
         }
+      ],
+      "edges": [
+        2.5,
+        4.0
       ]
     },
     "cost-of-living::real-wages": {
@@ -539,9 +533,6 @@
         "value_format": "decimal",
         "label": "the year-over-year change"
       },
-      "edges": [
-        0
-      ],
       "segments": [
         {
           "status": "watch",
@@ -553,6 +544,9 @@
           "lo": 0,
           "hi": null
         }
+      ],
+      "edges": [
+        0
       ]
     },
     "fiscal-health::debt-gdp": {
@@ -571,11 +565,6 @@
         "value_format": "decimal",
         "label": "the latest reading"
       },
-      "edges": [
-        90,
-        110,
-        130
-      ],
       "segments": [
         {
           "status": "ok",
@@ -597,6 +586,11 @@
           "lo": 130,
           "hi": null
         }
+      ],
+      "edges": [
+        90,
+        110,
+        130
       ]
     },
     "fiscal-health::deficit-12m": {
@@ -615,11 +609,6 @@
         "value_format": "decimal",
         "label": "the latest reading"
       },
-      "edges": [
-        0.8,
-        1.5,
-        2.5
-      ],
       "segments": [
         {
           "status": "ok",
@@ -641,6 +630,11 @@
           "lo": 2.5,
           "hi": null
         }
+      ],
+      "edges": [
+        0.8,
+        1.5,
+        2.5
       ]
     },
     "fiscal-health::interest-cost": {
@@ -670,11 +664,6 @@
         "value_format": "decimal",
         "label": "the latest reading"
       },
-      "edges": [
-        10,
-        15,
-        22
-      ],
       "segments": [
         {
           "status": "ok",
@@ -696,6 +685,11 @@
           "lo": 22,
           "hi": null
         }
+      ],
+      "edges": [
+        10,
+        15,
+        22
       ]
     },
     "fiscal-health::receipts": {
@@ -714,11 +708,6 @@
         "value_format": "decimal",
         "label": "the year-over-year change"
       },
-      "edges": [
-        -8,
-        -3,
-        0
-      ],
       "segments": [
         {
           "status": "alert",
@@ -740,6 +729,11 @@
           "lo": 0,
           "hi": null
         }
+      ],
+      "edges": [
+        -8,
+        -3,
+        0
       ]
     },
     "bank-asset-quality::noncurrent": {
@@ -758,10 +752,6 @@
         "value_format": "decimal",
         "label": "the latest reading"
       },
-      "edges": [
-        1,
-        2
-      ],
       "segments": [
         {
           "status": "ok",
@@ -778,6 +768,10 @@
           "lo": 2,
           "hi": null
         }
+      ],
+      "edges": [
+        1,
+        2
       ]
     },
     "bank-asset-quality::charge-offs": {
@@ -796,10 +790,6 @@
         "value_format": "decimal",
         "label": "the latest reading"
       },
-      "edges": [
-        0.6,
-        1.2
-      ],
       "segments": [
         {
           "status": "ok",
@@ -816,6 +806,10 @@
           "lo": 1.2,
           "hi": null
         }
+      ],
+      "edges": [
+        0.6,
+        1.2
       ]
     },
     "bank-profitability::net-margin": {
@@ -834,9 +828,6 @@
         "value_format": "decimal",
         "label": "the latest reading"
       },
-      "edges": [
-        2.5
-      ],
       "segments": [
         {
           "status": "watch",
@@ -848,6 +839,9 @@
           "lo": 2.5,
           "hi": null
         }
+      ],
+      "edges": [
+        2.5
       ]
     },
     "bank-profitability::roa": {
@@ -866,10 +860,6 @@
         "value_format": "decimal",
         "label": "the latest reading"
       },
-      "edges": [
-        0.5,
-        1.0
-      ],
       "segments": [
         {
           "status": "elevated",
@@ -886,6 +876,10 @@
           "lo": 1.0,
           "hi": null
         }
+      ],
+      "edges": [
+        0.5,
+        1.0
       ]
     },
     "bank-capital-solvency::risk-based-capital": {
@@ -904,10 +898,6 @@
         "value_format": "decimal",
         "label": "the latest reading"
       },
-      "edges": [
-        8,
-        10
-      ],
       "segments": [
         {
           "status": "elevated",
@@ -924,6 +914,10 @@
           "lo": 10,
           "hi": null
         }
+      ],
+      "edges": [
+        8,
+        10
       ]
     },
     "bank-capital-solvency::equity-assets": {
@@ -942,10 +936,6 @@
         "value_format": "decimal",
         "label": "the latest reading"
       },
-      "edges": [
-        7.5,
-        9
-      ],
       "segments": [
         {
           "status": "elevated",
@@ -962,6 +952,10 @@
           "lo": 9,
           "hi": null
         }
+      ],
+      "edges": [
+        7.5,
+        9
       ]
     },
     "bank-concentrations-funding::uninsured": {
@@ -980,9 +974,6 @@
         "value_format": "decimal",
         "label": "the latest reading"
       },
-      "edges": [
-        40
-      ],
       "segments": [
         {
           "status": "ok",
@@ -994,6 +985,9 @@
           "lo": 40,
           "hi": null
         }
+      ],
+      "edges": [
+        40
       ]
     },
     "bank-concentrations-funding::loans-deposits": {
@@ -1012,9 +1006,6 @@
         "value_format": "decimal",
         "label": "the latest reading"
       },
-      "edges": [
-        90
-      ],
       "segments": [
         {
           "status": "ok",
@@ -1026,6 +1017,9 @@
           "lo": 90,
           "hi": null
         }
+      ],
+      "edges": [
+        90
       ]
     },
     "bank-concentrations-funding::cre-concentration": {
@@ -1044,10 +1038,6 @@
         "value_format": "decimal",
         "label": "the latest reading"
       },
-      "edges": [
-        200,
-        300
-      ],
       "segments": [
         {
           "status": "ok",
@@ -1064,6 +1054,10 @@
           "lo": 300,
           "hi": null
         }
+      ],
+      "edges": [
+        200,
+        300
       ]
     },
     "market-risk-sentiment::vix": {
@@ -1082,10 +1076,6 @@
         "value_format": "decimal",
         "label": "the latest reading"
       },
-      "edges": [
-        20,
-        30
-      ],
       "segments": [
         {
           "status": "ok",
@@ -1102,6 +1092,10 @@
           "lo": 30,
           "hi": null
         }
+      ],
+      "edges": [
+        20,
+        30
       ]
     },
     "market-risk-sentiment::hy-spread": {
@@ -1120,10 +1114,6 @@
         "value_format": "decimal",
         "label": "the latest reading"
       },
-      "edges": [
-        4.0,
-        6.0
-      ],
       "segments": [
         {
           "status": "ok",
@@ -1140,6 +1130,10 @@
           "lo": 6.0,
           "hi": null
         }
+      ],
+      "edges": [
+        4.0,
+        6.0
       ]
     },
     "market-risk-sentiment::ig-spread": {
@@ -1158,10 +1152,6 @@
         "value_format": "decimal",
         "label": "the latest reading"
       },
-      "edges": [
-        1.5,
-        2.5
-      ],
       "segments": [
         {
           "status": "ok",
@@ -1178,6 +1168,10 @@
           "lo": 2.5,
           "hi": null
         }
+      ],
+      "edges": [
+        1.5,
+        2.5
       ]
     },
     "market-risk-sentiment::nfci": {
@@ -1196,10 +1190,6 @@
         "value_format": "decimal",
         "label": "the latest reading"
       },
-      "edges": [
-        0,
-        0.5
-      ],
       "segments": [
         {
           "status": "ok",
@@ -1216,6 +1206,10 @@
           "lo": 0.5,
           "hi": null
         }
+      ],
+      "edges": [
+        0,
+        0.5
       ]
     },
     "market-scoreboard::sp500": {
@@ -1289,12 +1283,6 @@
         "value_format": "decimal",
         "label": "the year-over-year change"
       },
-      "edges": [
-        -3,
-        -1,
-        7,
-        10
-      ],
       "segments": [
         {
           "status": "elevated",
@@ -1321,6 +1309,12 @@
           "lo": 10,
           "hi": null
         }
+      ],
+      "edges": [
+        -3,
+        -1,
+        7,
+        10
       ]
     },
     "market-liquidity::fed-balance-sheet": {
@@ -1405,14 +1399,6 @@
         "value_format": "decimal",
         "label": "the year-over-year change"
       },
-      "edges": [
-        -8,
-        -4,
-        -1,
-        8,
-        15,
-        25
-      ],
       "segments": [
         {
           "status": "alert",
@@ -1449,6 +1435,14 @@
           "lo": 25,
           "hi": null
         }
+      ],
+      "edges": [
+        -8,
+        -4,
+        -1,
+        8,
+        15,
+        25
       ]
     },
     "consumer-spending::real-spending": {
@@ -1467,14 +1461,6 @@
         "value_format": "decimal",
         "label": "the year-over-year change"
       },
-      "edges": [
-        -4,
-        -2,
-        -0.5,
-        4,
-        6,
-        9
-      ],
       "segments": [
         {
           "status": "alert",
@@ -1511,6 +1497,14 @@
           "lo": 9,
           "hi": null
         }
+      ],
+      "edges": [
+        -4,
+        -2,
+        -0.5,
+        4,
+        6,
+        9
       ]
     },
     "consumer-spending::auto-sales": {
@@ -1529,11 +1523,6 @@
         "value_format": "decimal",
         "label": "the latest reading"
       },
-      "edges": [
-        12,
-        13.5,
-        15
-      ],
       "segments": [
         {
           "status": "alert",
@@ -1555,6 +1544,11 @@
           "lo": 15,
           "hi": null
         }
+      ],
+      "edges": [
+        12,
+        13.5,
+        15
       ]
     },
     "consumer-credit::card-delinquency": {
@@ -1573,11 +1567,6 @@
         "value_format": "decimal",
         "label": "the latest reading"
       },
-      "edges": [
-        2.5,
-        4,
-        6
-      ],
       "segments": [
         {
           "status": "ok",
@@ -1599,6 +1588,11 @@
           "lo": 6,
           "hi": null
         }
+      ],
+      "edges": [
+        2.5,
+        4,
+        6
       ]
     },
     "consumer-credit::consumer-delinquency": {
@@ -1617,11 +1611,6 @@
         "value_format": "decimal",
         "label": "the latest reading"
       },
-      "edges": [
-        2.5,
-        3.5,
-        4.5
-      ],
       "segments": [
         {
           "status": "ok",
@@ -1643,6 +1632,11 @@
           "lo": 4.5,
           "hi": null
         }
+      ],
+      "edges": [
+        2.5,
+        3.5,
+        4.5
       ]
     },
     "consumer-credit::revolving-credit": {
@@ -1661,10 +1655,6 @@
         "value_format": "decimal",
         "label": "the year-over-year change"
       },
-      "edges": [
-        8,
-        12
-      ],
       "segments": [
         {
           "status": "ok",
@@ -1681,6 +1671,10 @@
           "lo": 12,
           "hi": null
         }
+      ],
+      "edges": [
+        8,
+        12
       ]
     },
     "consumer-credit::debt-service": {
@@ -1699,11 +1693,6 @@
         "value_format": "decimal",
         "label": "the latest reading"
       },
-      "edges": [
-        10.5,
-        12,
-        13
-      ],
       "segments": [
         {
           "status": "ok",
@@ -1725,6 +1714,11 @@
           "lo": 13,
           "hi": null
         }
+      ],
+      "edges": [
+        10.5,
+        12,
+        13
       ]
     },
     "consumer-income-savings::saving-rate": {
@@ -1743,10 +1737,6 @@
         "value_format": "decimal",
         "label": "the latest reading"
       },
-      "edges": [
-        3,
-        5
-      ],
       "segments": [
         {
           "status": "elevated",
@@ -1763,6 +1753,10 @@
           "lo": 5,
           "hi": null
         }
+      ],
+      "edges": [
+        3,
+        5
       ]
     },
     "consumer-income-savings::real-income": {
@@ -1781,10 +1775,6 @@
         "value_format": "decimal",
         "label": "the year-over-year change"
       },
-      "edges": [
-        -2,
-        0
-      ],
       "segments": [
         {
           "status": "elevated",
@@ -1801,6 +1791,10 @@
           "lo": 0,
           "hi": null
         }
+      ],
+      "edges": [
+        -2,
+        0
       ]
     },
     "consumer-income-savings::net-worth": {
@@ -1819,11 +1813,6 @@
         "value_format": "decimal",
         "label": "the year-over-year change"
       },
-      "edges": [
-        -8,
-        -3,
-        0
-      ],
       "segments": [
         {
           "status": "alert",
@@ -1845,6 +1834,11 @@
           "lo": 0,
           "hi": null
         }
+      ],
+      "edges": [
+        -8,
+        -3,
+        0
       ]
     },
     "consumer-sentiment::sentiment": {
@@ -1863,11 +1857,6 @@
         "value_format": "decimal",
         "label": "the latest reading"
       },
-      "edges": [
-        55,
-        70,
-        85
-      ],
       "segments": [
         {
           "status": "alert",
@@ -1889,6 +1878,11 @@
           "lo": 85,
           "hi": null
         }
+      ],
+      "edges": [
+        55,
+        70,
+        85
       ]
     },
     "consumer-sentiment::inflation-expectations": {
@@ -1907,11 +1901,6 @@
         "value_format": "decimal",
         "label": "the latest reading"
       },
-      "edges": [
-        3,
-        4,
-        5.5
-      ],
       "segments": [
         {
           "status": "ok",
@@ -1933,6 +1922,11 @@
           "lo": 5.5,
           "hi": null
         }
+      ],
+      "edges": [
+        3,
+        4,
+        5.5
       ]
     },
     "energy-oil-fuels::gasoline": {
@@ -1951,11 +1945,6 @@
         "value_format": "decimal",
         "label": "the year-over-year change"
       },
-      "edges": [
-        10,
-        25,
-        40
-      ],
       "segments": [
         {
           "status": "ok",
@@ -1977,6 +1966,11 @@
           "lo": 40,
           "hi": null
         }
+      ],
+      "edges": [
+        10,
+        25,
+        40
       ]
     },
     "energy-oil-fuels::diesel": {
@@ -1995,11 +1989,6 @@
         "value_format": "decimal",
         "label": "the year-over-year change"
       },
-      "edges": [
-        10,
-        25,
-        40
-      ],
       "segments": [
         {
           "status": "ok",
@@ -2021,6 +2010,11 @@
           "lo": 40,
           "hi": null
         }
+      ],
+      "edges": [
+        10,
+        25,
+        40
       ]
     },
     "energy-oil-fuels::crude-production": {
@@ -2061,11 +2055,6 @@
         "value_format": "decimal",
         "label": "the year-over-year change"
       },
-      "edges": [
-        20,
-        50,
-        100
-      ],
       "segments": [
         {
           "status": "ok",
@@ -2087,6 +2076,11 @@
           "lo": 100,
           "hi": null
         }
+      ],
+      "edges": [
+        20,
+        50,
+        100
       ]
     },
     "energy-natural-gas::gas-storage": {
@@ -2138,11 +2132,6 @@
         "value_format": "decimal",
         "label": "the year-over-year change"
       },
-      "edges": [
-        5,
-        10,
-        20
-      ],
       "segments": [
         {
           "status": "ok",
@@ -2164,6 +2153,11 @@
           "lo": 20,
           "hi": null
         }
+      ],
+      "edges": [
+        5,
+        10,
+        20
       ]
     },
     "energy-electricity::renewables-share": {
@@ -2215,11 +2209,6 @@
         "value_format": "decimal",
         "label": "the year-over-year change"
       },
-      "edges": [
-        5,
-        12,
-        25
-      ],
       "segments": [
         {
           "status": "ok",
@@ -2241,6 +2230,11 @@
           "lo": 25,
           "hi": null
         }
+      ],
+      "edges": [
+        5,
+        12,
+        25
       ]
     },
     "energy-commodities::copper": {
@@ -2281,14 +2275,6 @@
         "value_format": "decimal",
         "label": "the year-over-year change"
       },
-      "edges": [
-        -10,
-        -5,
-        -2,
-        6,
-        10,
-        15
-      ],
       "segments": [
         {
           "status": "alert",
@@ -2325,6 +2311,14 @@
           "lo": 15,
           "hi": null
         }
+      ],
+      "edges": [
+        -10,
+        -5,
+        -2,
+        6,
+        10,
+        15
       ]
     },
     "housing-home-prices::existing-home-sales": {
@@ -2343,14 +2337,6 @@
         "value_format": "decimal",
         "label": "the year-over-year change"
       },
-      "edges": [
-        -30,
-        -20,
-        -10,
-        10,
-        20,
-        30
-      ],
       "segments": [
         {
           "status": "alert",
@@ -2387,6 +2373,14 @@
           "lo": 30,
           "hi": null
         }
+      ],
+      "edges": [
+        -30,
+        -20,
+        -10,
+        10,
+        20,
+        30
       ]
     },
     "housing-home-prices::median-price": {
@@ -2405,14 +2399,6 @@
         "value_format": "decimal",
         "label": "the year-over-year change"
       },
-      "edges": [
-        -10,
-        -5,
-        -2,
-        6,
-        10,
-        15
-      ],
       "segments": [
         {
           "status": "alert",
@@ -2449,6 +2435,14 @@
           "lo": 15,
           "hi": null
         }
+      ],
+      "edges": [
+        -10,
+        -5,
+        -2,
+        6,
+        10,
+        15
       ]
     },
     "housing-affordability::affordability-index": {
@@ -2467,11 +2461,6 @@
         "value_format": "decimal",
         "label": "the latest reading"
       },
-      "edges": [
-        95,
-        110,
-        130
-      ],
       "segments": [
         {
           "status": "alert",
@@ -2493,6 +2482,11 @@
           "lo": 130,
           "hi": null
         }
+      ],
+      "edges": [
+        95,
+        110,
+        130
       ]
     },
     "housing-affordability::debt-service": {
@@ -2511,11 +2505,6 @@
         "value_format": "decimal",
         "label": "the latest reading"
       },
-      "edges": [
-        6,
-        7,
-        8
-      ],
       "segments": [
         {
           "status": "ok",
@@ -2537,6 +2526,11 @@
           "lo": 8,
           "hi": null
         }
+      ],
+      "edges": [
+        6,
+        7,
+        8
       ]
     },
     "housing-affordability::delinquency": {
@@ -2555,11 +2549,6 @@
         "value_format": "decimal",
         "label": "the latest reading"
       },
-      "edges": [
-        2,
-        4,
-        7
-      ],
       "segments": [
         {
           "status": "ok",
@@ -2581,6 +2570,11 @@
           "lo": 7,
           "hi": null
         }
+      ],
+      "edges": [
+        2,
+        4,
+        7
       ]
     },
     "housing-affordability::mortgage-rate": {
@@ -2599,11 +2593,6 @@
         "value_format": "decimal",
         "label": "the latest reading"
       },
-      "edges": [
-        5.5,
-        6.5,
-        7.5
-      ],
       "segments": [
         {
           "status": "ok",
@@ -2625,6 +2614,11 @@
           "lo": 7.5,
           "hi": null
         }
+      ],
+      "edges": [
+        5.5,
+        6.5,
+        7.5
       ]
     },
     "housing-supply-construction::months-supply": {
@@ -2643,13 +2637,6 @@
         "value_format": "decimal",
         "label": "the latest reading"
       },
-      "edges": [
-        3,
-        4,
-        6,
-        8,
-        10
-      ],
       "segments": [
         {
           "status": "elevated",
@@ -2681,6 +2668,13 @@
           "lo": 10,
           "hi": null
         }
+      ],
+      "edges": [
+        3,
+        4,
+        6,
+        8,
+        10
       ]
     },
     "housing-supply-construction::active-listings": {
@@ -2710,14 +2704,6 @@
         "value_format": "decimal",
         "label": "the year-over-year change"
       },
-      "edges": [
-        -35,
-        -20,
-        -10,
-        20,
-        35,
-        50
-      ],
       "segments": [
         {
           "status": "alert",
@@ -2754,6 +2740,14 @@
           "lo": 50,
           "hi": null
         }
+      ],
+      "edges": [
+        -35,
+        -20,
+        -10,
+        20,
+        35,
+        50
       ]
     },
     "housing-supply-construction::building-permits": {
@@ -2772,14 +2766,6 @@
         "value_format": "decimal",
         "label": "the year-over-year change"
       },
-      "edges": [
-        -35,
-        -20,
-        -10,
-        20,
-        35,
-        50
-      ],
       "segments": [
         {
           "status": "alert",
@@ -2816,6 +2802,14 @@
           "lo": 50,
           "hi": null
         }
+      ],
+      "edges": [
+        -35,
+        -20,
+        -10,
+        20,
+        35,
+        50
       ]
     },
     "housing-rent-shelter::rent-cpi": {
@@ -2834,11 +2828,6 @@
         "value_format": "decimal",
         "label": "the year-over-year change"
       },
-      "edges": [
-        4,
-        6,
-        9
-      ],
       "segments": [
         {
           "status": "ok",
@@ -2860,6 +2849,11 @@
           "lo": 9,
           "hi": null
         }
+      ],
+      "edges": [
+        4,
+        6,
+        9
       ]
     },
     "housing-rent-shelter::owners-equivalent-rent": {
@@ -2878,11 +2872,6 @@
         "value_format": "decimal",
         "label": "the year-over-year change"
       },
-      "edges": [
-        4,
-        6,
-        9
-      ],
       "segments": [
         {
           "status": "ok",
@@ -2904,6 +2893,11 @@
           "lo": 9,
           "hi": null
         }
+      ],
+      "edges": [
+        4,
+        6,
+        9
       ]
     },
     "housing-rent-shelter::rental-vacancy": {
@@ -2922,12 +2916,6 @@
         "value_format": "decimal",
         "label": "the latest reading"
       },
-      "edges": [
-        5,
-        6,
-        8,
-        10
-      ],
       "segments": [
         {
           "status": "elevated",
@@ -2954,6 +2942,12 @@
           "lo": 10,
           "hi": null
         }
+      ],
+      "edges": [
+        5,
+        6,
+        8,
+        10
       ]
     },
     "housing-rent-shelter::homeownership": {
@@ -2983,14 +2977,6 @@
         "value_format": "decimal",
         "label": "the year-over-year change"
       },
-      "edges": [
-        -12,
-        -9,
-        -5,
-        5,
-        9,
-        12
-      ],
       "segments": [
         {
           "status": "alert",
@@ -3027,6 +3013,14 @@
           "lo": 12,
           "hi": null
         }
+      ],
+      "edges": [
+        -12,
+        -9,
+        -5,
+        5,
+        9,
+        12
       ]
     },
     "global-dollar-currencies::euro": {
@@ -3078,11 +3072,6 @@
         "value_format": "decimal",
         "label": "the latest reading"
       },
-      "edges": [
-        2.0,
-        2.5,
-        3.2
-      ],
       "segments": [
         {
           "status": "alert",
@@ -3104,6 +3093,11 @@
           "lo": 3.2,
           "hi": null
         }
+      ],
+      "edges": [
+        2.0,
+        2.5,
+        3.2
       ]
     },
     "global-growth::china-growth": {
@@ -3155,11 +3149,6 @@
         "value_format": "decimal",
         "label": "the year-over-year change"
       },
-      "edges": [
-        -6,
-        -2,
-        0
-      ],
       "segments": [
         {
           "status": "alert",
@@ -3181,6 +3170,11 @@
           "lo": 0,
           "hi": null
         }
+      ],
+      "edges": [
+        -6,
+        -2,
+        0
       ]
     },
     "global-trade-supply::gscpi": {
@@ -3199,11 +3193,6 @@
         "value_format": "decimal",
         "label": "the latest reading"
       },
-      "edges": [
-        0.5,
-        1.5,
-        2.5
-      ],
       "segments": [
         {
           "status": "ok",
@@ -3225,6 +3214,11 @@
           "lo": 2.5,
           "hi": null
         }
+      ],
+      "edges": [
+        0.5,
+        1.5,
+        2.5
       ]
     },
     "global-trade-supply::trade-balance": {
@@ -3254,11 +3248,6 @@
         "value_format": "decimal",
         "label": "the year-over-year change"
       },
-      "edges": [
-        4,
-        8,
-        12
-      ],
       "segments": [
         {
           "status": "ok",
@@ -3280,6 +3269,11 @@
           "lo": 12,
           "hi": null
         }
+      ],
+      "edges": [
+        4,
+        8,
+        12
       ]
     },
     "global-trade-supply::china-exports": {
@@ -3302,18 +3296,13 @@
       "title": "U.S. Economic Policy Uncertainty",
       "short": "US uncertainty",
       "taxonomy": "severity",
-      "why": "The Baker/Bloom/Davis policy-uncertainty index, whose long-run norm is about 100, so the bands mark multiples of that norm. The global index is capped at 'watch' because it publishes about six months late \u2014 a stale read shouldn't drive a live alarm.",
+      "why": "The Baker/Bloom/Davis policy-uncertainty index, whose long-run norm is about 100, so the bands mark multiples of that norm. The global index (GEPU) is held to a 'watch' ceiling here, because it publishes about six months late \u2014 too stale to drive a live alarm.",
       "axis": {
         "kind": "level",
         "unit": "",
         "value_format": "thousands",
         "label": "the latest reading"
       },
-      "edges": [
-        120,
-        200,
-        300
-      ],
       "segments": [
         {
           "status": "ok",
@@ -3335,6 +3324,11 @@
           "lo": 300,
           "hi": null
         }
+      ],
+      "edges": [
+        120,
+        200,
+        300
       ]
     },
     "global-uncertainty::gepu": {
@@ -3346,18 +3340,13 @@
       "title": "Global Economic Policy Uncertainty",
       "short": "Global uncertainty",
       "taxonomy": "severity",
-      "why": "The Baker/Bloom/Davis policy-uncertainty index, whose long-run norm is about 100, so the bands mark multiples of that norm. The global index is capped at 'watch' because it publishes about six months late \u2014 a stale read shouldn't drive a live alarm.",
+      "why": "The Baker/Bloom/Davis policy-uncertainty index, whose long-run norm is about 100, so the bands mark multiples of that norm. The global index (GEPU) is held to a 'watch' ceiling here, because it publishes about six months late \u2014 too stale to drive a live alarm.",
       "axis": {
         "kind": "level",
         "unit": "",
         "value_format": "thousands",
         "label": "the latest reading"
       },
-      "edges": [
-        120,
-        200,
-        300
-      ],
       "segments": [
         {
           "status": "ok",
@@ -3367,18 +3356,11 @@
         {
           "status": "watch",
           "lo": 120,
-          "hi": 200
-        },
-        {
-          "status": "watch",
-          "lo": 200,
-          "hi": 300
-        },
-        {
-          "status": "watch",
-          "lo": 300,
           "hi": null
         }
+      ],
+      "edges": [
+        120
       ]
     },
     "business-profitability::profit-growth": {
@@ -3397,11 +3379,6 @@
         "value_format": "decimal",
         "label": "the year-over-year change"
       },
-      "edges": [
-        -15,
-        -5,
-        0
-      ],
       "segments": [
         {
           "status": "alert",
@@ -3423,6 +3400,11 @@
           "lo": 0,
           "hi": null
         }
+      ],
+      "edges": [
+        -15,
+        -5,
+        0
       ]
     },
     "business-profitability::nonfinancial-profits": {
@@ -3441,11 +3423,6 @@
         "value_format": "decimal",
         "label": "the year-over-year change"
       },
-      "edges": [
-        -15,
-        -5,
-        0
-      ],
       "segments": [
         {
           "status": "alert",
@@ -3467,6 +3444,11 @@
           "lo": 0,
           "hi": null
         }
+      ],
+      "edges": [
+        -15,
+        -5,
+        0
       ]
     },
     "business-profitability::profit-share": {
@@ -3507,11 +3489,6 @@
         "value_format": "decimal",
         "label": "the year-over-year change"
       },
-      "edges": [
-        -15,
-        -5,
-        0
-      ],
       "segments": [
         {
           "status": "alert",
@@ -3533,6 +3510,11 @@
           "lo": 0,
           "hi": null
         }
+      ],
+      "edges": [
+        -15,
+        -5,
+        0
       ]
     },
     "business-formation::high-propensity": {
@@ -3551,11 +3533,6 @@
         "value_format": "decimal",
         "label": "the year-over-year change"
       },
-      "edges": [
-        -15,
-        -5,
-        0
-      ],
       "segments": [
         {
           "status": "alert",
@@ -3577,6 +3554,11 @@
           "lo": 0,
           "hi": null
         }
+      ],
+      "edges": [
+        -15,
+        -5,
+        0
       ]
     },
     "business-formation::hp-share": {
@@ -3606,11 +3588,6 @@
         "value_format": "decimal",
         "label": "the year-over-year change"
       },
-      "edges": [
-        -10,
-        -3,
-        0
-      ],
       "segments": [
         {
           "status": "alert",
@@ -3632,6 +3609,11 @@
           "lo": 0,
           "hi": null
         }
+      ],
+      "edges": [
+        -10,
+        -3,
+        0
       ]
     },
     "business-investment::real-sales": {
@@ -3650,11 +3632,6 @@
         "value_format": "decimal",
         "label": "the year-over-year change"
       },
-      "edges": [
-        -6,
-        -2,
-        0
-      ],
       "segments": [
         {
           "status": "alert",
@@ -3676,6 +3653,11 @@
           "lo": 0,
           "hi": null
         }
+      ],
+      "edges": [
+        -6,
+        -2,
+        0
       ]
     },
     "business-investment::inventories-sales": {
@@ -3694,10 +3676,6 @@
         "value_format": "decimal",
         "label": "the latest reading"
       },
-      "edges": [
-        1.4,
-        1.5
-      ],
       "segments": [
         {
           "status": "ok",
@@ -3714,6 +3692,10 @@
           "lo": 1.5,
           "hi": null
         }
+      ],
+      "edges": [
+        1.4,
+        1.5
       ]
     },
     "business-credit::baa-spread": {
@@ -3732,11 +3714,6 @@
         "value_format": "decimal",
         "label": "the latest reading"
       },
-      "edges": [
-        2.0,
-        2.5,
-        3.5
-      ],
       "segments": [
         {
           "status": "ok",
@@ -3758,6 +3735,11 @@
           "lo": 3.5,
           "hi": null
         }
+      ],
+      "edges": [
+        2.0,
+        2.5,
+        3.5
       ]
     },
     "business-credit::lending-standards": {
@@ -3776,11 +3758,6 @@
         "value_format": "decimal",
         "label": "the latest reading"
       },
-      "edges": [
-        0,
-        20,
-        50
-      ],
       "segments": [
         {
           "status": "ok",
@@ -3802,6 +3779,11 @@
           "lo": 50,
           "hi": null
         }
+      ],
+      "edges": [
+        0,
+        20,
+        50
       ]
     },
     "business-credit::delinquency": {
@@ -3820,11 +3802,6 @@
         "value_format": "decimal",
         "label": "the latest reading"
       },
-      "edges": [
-        1.5,
-        2.5,
-        4.0
-      ],
       "segments": [
         {
           "status": "ok",
@@ -3846,6 +3823,11 @@
           "lo": 4.0,
           "hi": null
         }
+      ],
+      "edges": [
+        1.5,
+        2.5,
+        4.0
       ]
     },
     "business-credit::ci-loan-growth": {
@@ -3864,14 +3846,6 @@
         "value_format": "decimal",
         "label": "the year-over-year change"
       },
-      "edges": [
-        -12,
-        -5,
-        -0.5,
-        10,
-        20,
-        30
-      ],
       "segments": [
         {
           "status": "alert",
@@ -3908,6 +3882,14 @@
           "lo": 30,
           "hi": null
         }
+      ],
+      "edges": [
+        -12,
+        -5,
+        -0.5,
+        10,
+        20,
+        30
       ]
     }
   }

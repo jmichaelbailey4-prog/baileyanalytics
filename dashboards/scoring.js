@@ -24,6 +24,7 @@
   function strip(sig, scaleNow, pred, href) {
     const segs = sig.segments, edges = sig.edges;
     const unit = (sig.axis || {}).unit || "", vf = (sig.axis || {}).value_format || "decimal";
+    const axisLabel = (sig.axis || {}).label || "";
     // Linear display range padded beyond the outer thresholds, widened so the
     // current value (and any forecast marker) is always visible.
     const lo0 = edges[0], hi0 = edges[edges.length - 1];
@@ -55,6 +56,10 @@
     const labelX = clamp(nowX, 12, 88);
     const edgesTxt = edges.map(e => esc(fmtVal(e, unit, vf))).join(" · ");
     const ghostTxt = ghost != null ? ` · forecast ~${esc(fmtVal(ghost, unit, vf))}` : "";
+    // When the strip's axis differs from the chart above it (yoy_computed /
+    // delta_from_low plot a transformed value), name what's being scored so "now X"
+    // reconciles with the chart.
+    const scoredOn = (!onAxis && axisLabel) ? `scored on ${esc(axisLabel)} · ` : "";
     return `<div class="scale">
       <div class="scale-head"><span class="scale-lab">How we score this</span>
         <a class="scale-link" href="${esc(href)}">full methodology &rarr;</a></div>
@@ -62,7 +67,7 @@
         <div class="scale-bar" aria-hidden="true">${bars}</div>${marks}
         <div class="scale-nowrap"><span class="scale-now" style="left:${labelX}%">now <b>${esc(fmtVal(scaleNow, unit, vf))}</b></span></div>
       </div>
-      <div class="scale-edges">bands: ${edgesTxt}${ghostTxt}</div>
+      <div class="scale-edges">${scoredOn}bands: ${edgesTxt}${ghostTxt}</div>
     </div>`;
   }
 
@@ -79,7 +84,7 @@
     document.querySelectorAll("#lens-root .ind[data-indicator]").forEach(card => {
       const id = card.dataset.indicator;
       const sig = method.signals[lensId + "::" + id];
-      if (!sig || sig.taxonomy !== "severity" || !sig.segments || !sig.edges) return;
+      if (!sig || sig.taxonomy !== "severity" || !sig.segments || !sig.edges || !sig.edges.length) return;
       const raw = card.dataset.scaleNow;
       if (raw == null || raw === "") return;
       const scaleNow = parseFloat(raw);

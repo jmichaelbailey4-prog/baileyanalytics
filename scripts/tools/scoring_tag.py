@@ -36,7 +36,8 @@ def site_pages(root):
     return [p for p in pages if not is_baked(p, root)]
 
 
-def main(root=ROOT):
+def main(root=None):
+    root = root or ROOT  # late-bind so a test can pass a temp root (CLAUDE.md rule)
     changed = 0
     for path in sorted(site_pages(root)):
         html = path.read_text(encoding="utf-8")

@@ -77,8 +77,11 @@ def _signal_entry(cat, lens, ind):
                          "value_format": spec.value_format,
                          "label": AXIS_LABEL.get(spec.kind, "")}
         if spec.kind != "custom":
-            entry["edges"] = list(spec.edges)
-            entry["segments"] = bands.segment_ranges(spec)
+            segs = bands.segment_ranges(spec)  # cap-clipped + merged
+            entry["segments"] = segs
+            # edges follow the (possibly reduced) merged boundaries, so the strip's
+            # bar boundaries + "bands:" list stay in sync with the shown segments.
+            entry["edges"] = [s["hi"] for s in segs[:-1]]
     else:
         entry["note"] = getattr(ind, "no_severity_reason", "") or DEFAULT_NOTE
     return entry
@@ -133,7 +136,8 @@ def _range_text(seg, unit, vf):
         return f"below {build._fmt(hi, unit, vf)}"
     if hi is None:
         return f"{build._fmt(lo, unit, vf)} and up"
-    return f"{build._fmt(lo, unit, vf)}–{build._fmt(hi, unit, vf)}"
+    # "to" (not an en-dash) so negative two-sided bands don't read "-12.00%--9.00%"
+    return f"{build._fmt(lo, unit, vf)} to {build._fmt(hi, unit, vf)}"
 
 
 def _bands_html(sig):

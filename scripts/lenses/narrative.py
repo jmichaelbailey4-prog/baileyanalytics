@@ -1384,8 +1384,10 @@ _bespoke(rule_gscpi, kind="level", unit="σ", edges=(0.5, 1.5, 2.5),
 # History-dependent (the un-inversion state depends on recent history, not just the
 # latest value), so it is NOT a static single-axis band: prose-only on the methodology
 # page, excluded from the edge-flip drift test.
+# Vestigial bands (custom kind never renders edges/segments) — kept in the rule's true
+# order anyway: below zero (inverted) is the elevated recession warning, not 'ok'.
 _bespoke(rule_yield_curve, kind="custom", unit="%", edges=(0,),
-         segments=("ok", "elevated"), probe=False)
+         segments=("elevated", "ok"), probe=False)
 
 
 HEADLINES = {
