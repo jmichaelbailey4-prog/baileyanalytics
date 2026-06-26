@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-06-26T13:34:23Z",
+  "last_updated": "2026-06-26T19:12:00Z",
   "status": "watch",
   "lenses": [
     {
@@ -69,8 +69,8 @@
       "id": "cost-of-money",
       "title": "The Cost of Money",
       "accent": "#34D399",
-      "status": "ok",
-      "headline_read": "Borrowing costs have eased back toward normal.",
+      "status": "watch",
+      "headline_read": "Borrowing is still expensive \u2014 rates remain elevated.",
       "key_stats": [
         {
           "k": "Fed funds",

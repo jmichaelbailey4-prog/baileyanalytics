@@ -2,7 +2,7 @@
   "id": "housing-supply-construction",
   "title": "Supply & Construction",
   "accent": "#34D399",
-  "last_updated": "2026-06-24T19:17:02Z",
+  "last_updated": "2026-06-26T19:12:44Z",
   "status": "alert",
   "headline_read": "Housing supply is at an extreme \u2014 construction or inventory is flashing red.",
   "recessions": [
@@ -992,501 +992,8 @@
       "context": "How many months it would take to sell every new home on the market at the current sales pace. Roughly 4-6 months is balanced; more is a glut, less is a squeeze.",
       "read": "10.3 months of new-home supply \u2014 a severe glut.",
       "signal_status": "alert",
-      "value_format": "decimal"
-    },
-    {
-      "id": "active-listings",
-      "title": "Active Listings (Realtor.com) \u00b7 millions",
-      "short": "Listings",
-      "unit": "M",
-      "color": "#38BDF8",
-      "series_id": "ACTLISCOUUS",
-      "observations": [
-        {
-          "date": "2016-07-01",
-          "value": "1.46"
-        },
-        {
-          "date": "2016-08-01",
-          "value": "1.46"
-        },
-        {
-          "date": "2016-09-01",
-          "value": "1.44"
-        },
-        {
-          "date": "2016-10-01",
-          "value": "1.41"
-        },
-        {
-          "date": "2016-11-01",
-          "value": "1.34"
-        },
-        {
-          "date": "2016-12-01",
-          "value": "1.24"
-        },
-        {
-          "date": "2017-01-01",
-          "value": "1.15"
-        },
-        {
-          "date": "2017-02-01",
-          "value": "1.15"
-        },
-        {
-          "date": "2017-03-01",
-          "value": "1.17"
-        },
-        {
-          "date": "2017-04-01",
-          "value": "1.20"
-        },
-        {
-          "date": "2017-05-01",
-          "value": "1.25"
-        },
-        {
-          "date": "2017-06-01",
-          "value": "1.29"
-        },
-        {
-          "date": "2017-07-01",
-          "value": "1.32"
-        },
-        {
-          "date": "2017-08-01",
-          "value": "1.33"
-        },
-        {
-          "date": "2017-09-01",
-          "value": "1.31"
-        },
-        {
-          "date": "2017-10-01",
-          "value": "1.29"
-        },
-        {
-          "date": "2017-11-01",
-          "value": "1.23"
-        },
-        {
-          "date": "2017-12-01",
-          "value": "1.13"
-        },
-        {
-          "date": "2018-01-01",
-          "value": "1.04"
-        },
-        {
-          "date": "2018-02-01",
-          "value": "1.05"
-        },
-        {
-          "date": "2018-03-01",
-          "value": "1.07"
-        },
-        {
-          "date": "2018-04-01",
-          "value": "1.10"
-        },
-        {
-          "date": "2018-05-01",
-          "value": "1.16"
-        },
-        {
-          "date": "2018-06-01",
-          "value": "1.22"
-        },
-        {
-          "date": "2018-07-01",
-          "value": "1.26"
-        },
-        {
-          "date": "2018-08-01",
-          "value": "1.29"
-        },
-        {
-          "date": "2018-09-01",
-          "value": "1.30"
-        },
-        {
-          "date": "2018-10-01",
-          "value": "1.30"
-        },
-        {
-          "date": "2018-11-01",
-          "value": "1.27"
-        },
-        {
-          "date": "2018-12-01",
-          "value": "1.19"
-        },
-        {
-          "date": "2019-01-01",
-          "value": "1.11"
-        },
-        {
-          "date": "2019-02-01",
-          "value": "1.10"
-        },
-        {
-          "date": "2019-03-01",
-          "value": "1.12"
-        },
-        {
-          "date": "2019-04-01",
-          "value": "1.14"
-        },
-        {
-          "date": "2019-05-01",
-          "value": "1.18"
-        },
-        {
-          "date": "2019-06-01",
-          "value": "1.22"
-        },
-        {
-          "date": "2019-07-01",
-          "value": "1.24"
-        },
-        {
-          "date": "2019-08-01",
-          "value": "1.24"
-        },
-        {
-          "date": "2019-09-01",
-          "value": "1.22"
-        },
-        {
-          "date": "2019-10-01",
-          "value": "1.21"
-        },
-        {
-          "date": "2019-11-01",
-          "value": "1.14"
-        },
-        {
-          "date": "2019-12-01",
-          "value": "1.03"
-        },
-        {
-          "date": "2020-01-01",
-          "value": "0.95"
-        },
-        {
-          "date": "2020-02-01",
-          "value": "0.93"
-        },
-        {
-          "date": "2020-03-01",
-          "value": "0.94"
-        },
-        {
-          "date": "2020-04-01",
-          "value": "0.94"
-        },
-        {
-          "date": "2020-05-01",
-          "value": "0.93"
-        },
-        {
-          "date": "2020-06-01",
-          "value": "0.87"
-        },
-        {
-          "date": "2020-07-01",
-          "value": "0.82"
-        },
-        {
-          "date": "2020-08-01",
-          "value": "0.78"
-        },
-        {
-          "date": "2020-09-01",
-          "value": "0.75"
-        },
-        {
-          "date": "2020-10-01",
-          "value": "0.73"
-        },
-        {
-          "date": "2020-11-01",
-          "value": "0.68"
-        },
-        {
-          "date": "2020-12-01",
-          "value": "0.61"
-        },
-        {
-          "date": "2021-01-01",
-          "value": "0.53"
-        },
-        {
-          "date": "2021-02-01",
-          "value": "0.46"
-        },
-        {
-          "date": "2021-03-01",
-          "value": "0.44"
-        },
-        {
-          "date": "2021-04-01",
-          "value": "0.44"
-        },
-        {
-          "date": "2021-05-01",
-          "value": "0.45"
-        },
-        {
-          "date": "2021-06-01",
-          "value": "0.49"
-        },
-        {
-          "date": "2021-07-01",
-          "value": "0.55"
-        },
-        {
-          "date": "2021-08-01",
-          "value": "0.57"
-        },
-        {
-          "date": "2021-09-01",
-          "value": "0.58"
-        },
-        {
-          "date": "2021-10-01",
-          "value": "0.57"
-        },
-        {
-          "date": "2021-11-01",
-          "value": "0.51"
-        },
-        {
-          "date": "2021-12-01",
-          "value": "0.45"
-        },
-        {
-          "date": "2022-01-01",
-          "value": "0.38"
-        },
-        {
-          "date": "2022-02-01",
-          "value": "0.35"
-        },
-        {
-          "date": "2022-03-01",
-          "value": "0.35"
-        },
-        {
-          "date": "2022-04-01",
-          "value": "0.38"
-        },
-        {
-          "date": "2022-05-01",
-          "value": "0.48"
-        },
-        {
-          "date": "2022-06-01",
-          "value": "0.57"
-        },
-        {
-          "date": "2022-07-01",
-          "value": "0.69"
-        },
-        {
-          "date": "2022-08-01",
-          "value": "0.73"
-        },
-        {
-          "date": "2022-09-01",
-          "value": "0.73"
-        },
-        {
-          "date": "2022-10-01",
-          "value": "0.75"
-        },
-        {
-          "date": "2022-11-01",
-          "value": "0.75"
-        },
-        {
-          "date": "2022-12-01",
-          "value": "0.68"
-        },
-        {
-          "date": "2023-01-01",
-          "value": "0.62"
-        },
-        {
-          "date": "2023-02-01",
-          "value": "0.58"
-        },
-        {
-          "date": "2023-03-01",
-          "value": "0.56"
-        },
-        {
-          "date": "2023-04-01",
-          "value": "0.56"
-        },
-        {
-          "date": "2023-05-01",
-          "value": "0.58"
-        },
-        {
-          "date": "2023-06-01",
-          "value": "0.61"
-        },
-        {
-          "date": "2023-07-01",
-          "value": "0.65"
-        },
-        {
-          "date": "2023-08-01",
-          "value": "0.67"
-        },
-        {
-          "date": "2023-09-01",
-          "value": "0.70"
-        },
-        {
-          "date": "2023-10-01",
-          "value": "0.74"
-        },
-        {
-          "date": "2023-11-01",
-          "value": "0.76"
-        },
-        {
-          "date": "2023-12-01",
-          "value": "0.71"
-        },
-        {
-          "date": "2024-01-01",
-          "value": "0.67"
-        },
-        {
-          "date": "2024-02-01",
-          "value": "0.66"
-        },
-        {
-          "date": "2024-03-01",
-          "value": "0.69"
-        },
-        {
-          "date": "2024-04-01",
-          "value": "0.73"
-        },
-        {
-          "date": "2024-05-01",
-          "value": "0.79"
-        },
-        {
-          "date": "2024-06-01",
-          "value": "0.84"
-        },
-        {
-          "date": "2024-07-01",
-          "value": "0.88"
-        },
-        {
-          "date": "2024-08-01",
-          "value": "0.91"
-        },
-        {
-          "date": "2024-09-01",
-          "value": "0.94"
-        },
-        {
-          "date": "2024-10-01",
-          "value": "0.95"
-        },
-        {
-          "date": "2024-11-01",
-          "value": "0.95"
-        },
-        {
-          "date": "2024-12-01",
-          "value": "0.87"
-        },
-        {
-          "date": "2025-01-01",
-          "value": "0.83"
-        },
-        {
-          "date": "2025-02-01",
-          "value": "0.85"
-        },
-        {
-          "date": "2025-03-01",
-          "value": "0.89"
-        },
-        {
-          "date": "2025-04-01",
-          "value": "0.96"
-        },
-        {
-          "date": "2025-05-01",
-          "value": "1.04"
-        },
-        {
-          "date": "2025-06-01",
-          "value": "1.08"
-        },
-        {
-          "date": "2025-07-01",
-          "value": "1.10"
-        },
-        {
-          "date": "2025-08-01",
-          "value": "1.10"
-        },
-        {
-          "date": "2025-09-01",
-          "value": "1.10"
-        },
-        {
-          "date": "2025-10-01",
-          "value": "1.10"
-        },
-        {
-          "date": "2025-11-01",
-          "value": "1.07"
-        },
-        {
-          "date": "2025-12-01",
-          "value": "0.98"
-        },
-        {
-          "date": "2026-01-01",
-          "value": "0.91"
-        },
-        {
-          "date": "2026-02-01",
-          "value": "0.92"
-        },
-        {
-          "date": "2026-03-01",
-          "value": "0.95"
-        },
-        {
-          "date": "2026-04-01",
-          "value": "1.00"
-        },
-        {
-          "date": "2026-05-01",
-          "value": "1.06"
-        }
-      ],
-      "latest": {
-        "date": "2026-05-01",
-        "value": "1.06"
-      },
-      "context": "Homes listed for sale nationwide, in millions (Realtor.com count, since 2016) \u2014 the inventory buyers actually get to choose from.",
-      "read": "The number of homes for sale is little changed from a year ago, now 1.06 million.",
-      "signal_status": "info",
-      "value_format": "decimal"
+      "value_format": "decimal",
+      "scale_now": 10.3
     },
     {
       "id": "housing-starts",
@@ -2464,7 +1971,8 @@
       "context": "New homes started each month, in thousands of units at an annual rate (1,465 means ~1.47 million homes/year) \u2014 the construction industry's output, and a classic leading indicator.",
       "read": "Homebuilding: down 9% from a year ago.",
       "signal_status": "ok",
-      "value_format": "thousands"
+      "value_format": "thousands",
+      "scale_now": -8.6889
     },
     {
       "id": "building-permits",
@@ -3442,7 +2950,503 @@
       "context": "Permits pulled for new housing units, in thousands at an annual rate \u2014 the step before starts, so it leads the rest of the construction pipeline.",
       "read": "Permitting: little changed from a year ago (-0%).",
       "signal_status": "ok",
-      "value_format": "thousands"
+      "value_format": "thousands",
+      "scale_now": -0.4237
+    },
+    {
+      "id": "active-listings",
+      "title": "Active Listings (Realtor.com) \u00b7 millions",
+      "short": "Listings",
+      "unit": "M",
+      "color": "#38BDF8",
+      "series_id": "ACTLISCOUUS",
+      "observations": [
+        {
+          "date": "2016-07-01",
+          "value": "1.46"
+        },
+        {
+          "date": "2016-08-01",
+          "value": "1.46"
+        },
+        {
+          "date": "2016-09-01",
+          "value": "1.44"
+        },
+        {
+          "date": "2016-10-01",
+          "value": "1.41"
+        },
+        {
+          "date": "2016-11-01",
+          "value": "1.34"
+        },
+        {
+          "date": "2016-12-01",
+          "value": "1.24"
+        },
+        {
+          "date": "2017-01-01",
+          "value": "1.15"
+        },
+        {
+          "date": "2017-02-01",
+          "value": "1.15"
+        },
+        {
+          "date": "2017-03-01",
+          "value": "1.17"
+        },
+        {
+          "date": "2017-04-01",
+          "value": "1.20"
+        },
+        {
+          "date": "2017-05-01",
+          "value": "1.25"
+        },
+        {
+          "date": "2017-06-01",
+          "value": "1.29"
+        },
+        {
+          "date": "2017-07-01",
+          "value": "1.32"
+        },
+        {
+          "date": "2017-08-01",
+          "value": "1.33"
+        },
+        {
+          "date": "2017-09-01",
+          "value": "1.31"
+        },
+        {
+          "date": "2017-10-01",
+          "value": "1.29"
+        },
+        {
+          "date": "2017-11-01",
+          "value": "1.23"
+        },
+        {
+          "date": "2017-12-01",
+          "value": "1.13"
+        },
+        {
+          "date": "2018-01-01",
+          "value": "1.04"
+        },
+        {
+          "date": "2018-02-01",
+          "value": "1.05"
+        },
+        {
+          "date": "2018-03-01",
+          "value": "1.07"
+        },
+        {
+          "date": "2018-04-01",
+          "value": "1.10"
+        },
+        {
+          "date": "2018-05-01",
+          "value": "1.16"
+        },
+        {
+          "date": "2018-06-01",
+          "value": "1.22"
+        },
+        {
+          "date": "2018-07-01",
+          "value": "1.26"
+        },
+        {
+          "date": "2018-08-01",
+          "value": "1.29"
+        },
+        {
+          "date": "2018-09-01",
+          "value": "1.30"
+        },
+        {
+          "date": "2018-10-01",
+          "value": "1.30"
+        },
+        {
+          "date": "2018-11-01",
+          "value": "1.27"
+        },
+        {
+          "date": "2018-12-01",
+          "value": "1.19"
+        },
+        {
+          "date": "2019-01-01",
+          "value": "1.11"
+        },
+        {
+          "date": "2019-02-01",
+          "value": "1.10"
+        },
+        {
+          "date": "2019-03-01",
+          "value": "1.12"
+        },
+        {
+          "date": "2019-04-01",
+          "value": "1.14"
+        },
+        {
+          "date": "2019-05-01",
+          "value": "1.18"
+        },
+        {
+          "date": "2019-06-01",
+          "value": "1.22"
+        },
+        {
+          "date": "2019-07-01",
+          "value": "1.24"
+        },
+        {
+          "date": "2019-08-01",
+          "value": "1.24"
+        },
+        {
+          "date": "2019-09-01",
+          "value": "1.22"
+        },
+        {
+          "date": "2019-10-01",
+          "value": "1.21"
+        },
+        {
+          "date": "2019-11-01",
+          "value": "1.14"
+        },
+        {
+          "date": "2019-12-01",
+          "value": "1.03"
+        },
+        {
+          "date": "2020-01-01",
+          "value": "0.95"
+        },
+        {
+          "date": "2020-02-01",
+          "value": "0.93"
+        },
+        {
+          "date": "2020-03-01",
+          "value": "0.94"
+        },
+        {
+          "date": "2020-04-01",
+          "value": "0.94"
+        },
+        {
+          "date": "2020-05-01",
+          "value": "0.93"
+        },
+        {
+          "date": "2020-06-01",
+          "value": "0.87"
+        },
+        {
+          "date": "2020-07-01",
+          "value": "0.82"
+        },
+        {
+          "date": "2020-08-01",
+          "value": "0.78"
+        },
+        {
+          "date": "2020-09-01",
+          "value": "0.75"
+        },
+        {
+          "date": "2020-10-01",
+          "value": "0.73"
+        },
+        {
+          "date": "2020-11-01",
+          "value": "0.68"
+        },
+        {
+          "date": "2020-12-01",
+          "value": "0.61"
+        },
+        {
+          "date": "2021-01-01",
+          "value": "0.53"
+        },
+        {
+          "date": "2021-02-01",
+          "value": "0.46"
+        },
+        {
+          "date": "2021-03-01",
+          "value": "0.44"
+        },
+        {
+          "date": "2021-04-01",
+          "value": "0.44"
+        },
+        {
+          "date": "2021-05-01",
+          "value": "0.45"
+        },
+        {
+          "date": "2021-06-01",
+          "value": "0.49"
+        },
+        {
+          "date": "2021-07-01",
+          "value": "0.55"
+        },
+        {
+          "date": "2021-08-01",
+          "value": "0.57"
+        },
+        {
+          "date": "2021-09-01",
+          "value": "0.58"
+        },
+        {
+          "date": "2021-10-01",
+          "value": "0.57"
+        },
+        {
+          "date": "2021-11-01",
+          "value": "0.51"
+        },
+        {
+          "date": "2021-12-01",
+          "value": "0.45"
+        },
+        {
+          "date": "2022-01-01",
+          "value": "0.38"
+        },
+        {
+          "date": "2022-02-01",
+          "value": "0.35"
+        },
+        {
+          "date": "2022-03-01",
+          "value": "0.35"
+        },
+        {
+          "date": "2022-04-01",
+          "value": "0.38"
+        },
+        {
+          "date": "2022-05-01",
+          "value": "0.48"
+        },
+        {
+          "date": "2022-06-01",
+          "value": "0.57"
+        },
+        {
+          "date": "2022-07-01",
+          "value": "0.69"
+        },
+        {
+          "date": "2022-08-01",
+          "value": "0.73"
+        },
+        {
+          "date": "2022-09-01",
+          "value": "0.73"
+        },
+        {
+          "date": "2022-10-01",
+          "value": "0.75"
+        },
+        {
+          "date": "2022-11-01",
+          "value": "0.75"
+        },
+        {
+          "date": "2022-12-01",
+          "value": "0.68"
+        },
+        {
+          "date": "2023-01-01",
+          "value": "0.62"
+        },
+        {
+          "date": "2023-02-01",
+          "value": "0.58"
+        },
+        {
+          "date": "2023-03-01",
+          "value": "0.56"
+        },
+        {
+          "date": "2023-04-01",
+          "value": "0.56"
+        },
+        {
+          "date": "2023-05-01",
+          "value": "0.58"
+        },
+        {
+          "date": "2023-06-01",
+          "value": "0.61"
+        },
+        {
+          "date": "2023-07-01",
+          "value": "0.65"
+        },
+        {
+          "date": "2023-08-01",
+          "value": "0.67"
+        },
+        {
+          "date": "2023-09-01",
+          "value": "0.70"
+        },
+        {
+          "date": "2023-10-01",
+          "value": "0.74"
+        },
+        {
+          "date": "2023-11-01",
+          "value": "0.76"
+        },
+        {
+          "date": "2023-12-01",
+          "value": "0.71"
+        },
+        {
+          "date": "2024-01-01",
+          "value": "0.67"
+        },
+        {
+          "date": "2024-02-01",
+          "value": "0.66"
+        },
+        {
+          "date": "2024-03-01",
+          "value": "0.69"
+        },
+        {
+          "date": "2024-04-01",
+          "value": "0.73"
+        },
+        {
+          "date": "2024-05-01",
+          "value": "0.79"
+        },
+        {
+          "date": "2024-06-01",
+          "value": "0.84"
+        },
+        {
+          "date": "2024-07-01",
+          "value": "0.88"
+        },
+        {
+          "date": "2024-08-01",
+          "value": "0.91"
+        },
+        {
+          "date": "2024-09-01",
+          "value": "0.94"
+        },
+        {
+          "date": "2024-10-01",
+          "value": "0.95"
+        },
+        {
+          "date": "2024-11-01",
+          "value": "0.95"
+        },
+        {
+          "date": "2024-12-01",
+          "value": "0.87"
+        },
+        {
+          "date": "2025-01-01",
+          "value": "0.83"
+        },
+        {
+          "date": "2025-02-01",
+          "value": "0.85"
+        },
+        {
+          "date": "2025-03-01",
+          "value": "0.89"
+        },
+        {
+          "date": "2025-04-01",
+          "value": "0.96"
+        },
+        {
+          "date": "2025-05-01",
+          "value": "1.04"
+        },
+        {
+          "date": "2025-06-01",
+          "value": "1.08"
+        },
+        {
+          "date": "2025-07-01",
+          "value": "1.10"
+        },
+        {
+          "date": "2025-08-01",
+          "value": "1.10"
+        },
+        {
+          "date": "2025-09-01",
+          "value": "1.10"
+        },
+        {
+          "date": "2025-10-01",
+          "value": "1.10"
+        },
+        {
+          "date": "2025-11-01",
+          "value": "1.07"
+        },
+        {
+          "date": "2025-12-01",
+          "value": "0.98"
+        },
+        {
+          "date": "2026-01-01",
+          "value": "0.91"
+        },
+        {
+          "date": "2026-02-01",
+          "value": "0.92"
+        },
+        {
+          "date": "2026-03-01",
+          "value": "0.95"
+        },
+        {
+          "date": "2026-04-01",
+          "value": "1.00"
+        },
+        {
+          "date": "2026-05-01",
+          "value": "1.06"
+        }
+      ],
+      "latest": {
+        "date": "2026-05-01",
+        "value": "1.06"
+      },
+      "context": "Homes listed for sale nationwide, in millions (Realtor.com count, since 2016) \u2014 the inventory buyers actually get to choose from.",
+      "read": "The number of homes for sale is little changed from a year ago, now 1.06 million.",
+      "signal_status": "info",
+      "value_format": "decimal",
+      "no_severity_reason": "Months' supply, which adjusts for the sales pace, carries this lens's supply verdict; this is the raw count for context."
     }
   ]
 }

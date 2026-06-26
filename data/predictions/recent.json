@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-26T13:35:52Z",
+  "generated_at": "2026-06-26T19:24:23Z",
   "last": {
     "business/business-credit/ci-loan-growth": {
       "id": "business/business-credit/ci-loan-growth@2026-05-01",
@@ -256,7 +256,7 @@
         "direction_hit": true,
         "status_hit": true,
         "naive_error": 1.0800000000000018,
-        "revised_to": 18.63
+        "revised_to": 18.89
       }
     },
     "markets/market-risk-sentiment/hy-spread": {
@@ -294,7 +294,7 @@
         "direction_hit": true,
         "status_hit": true,
         "naive_error": 0.010000000000000231,
-        "revised_to": 2.76
+        "revised_to": 2.78
       }
     },
     "markets/market-risk-sentiment/ig-spread": {
@@ -332,7 +332,7 @@
         "direction_hit": false,
         "status_hit": true,
         "naive_error": 0.010000000000000009,
-        "revised_to": 0.75
+        "revised_to": 0.76
       }
     },
     "energy/energy-oil-fuels/gasoline": {
@@ -1048,7 +1048,7 @@
         "direction_hit": true,
         "status_hit": true,
         "naive_error": 162.60000000000036,
-        "revised_to": 4070.0
+        "revised_to": 4083.4
       }
     },
     "markets/market-liquidity/reverse-repo": {
@@ -1086,7 +1086,7 @@
         "direction_hit": false,
         "status_hit": true,
         "naive_error": 3.344,
-        "revised_to": 5.718
+        "revised_to": 6.426
       }
     },
     "consumer/consumer-credit/debt-service": {
@@ -1714,9 +1714,153 @@
         "naive_error": 0.30000000000000004,
         "revised_to": null
       }
+    },
+    "consumer/consumer-sentiment/sentiment": {
+      "id": "consumer/consumer-sentiment/sentiment@2026-05-01",
+      "key": "consumer/consumer-sentiment/sentiment",
+      "category": "consumer",
+      "lens": "consumer-sentiment",
+      "indicator": "sentiment",
+      "series_id": "UMCSENT",
+      "horizon": "next-print",
+      "target_period": "2026-05-01",
+      "due": "2026-06-15",
+      "made_at": "2026-06-12T14:20:42Z",
+      "model": "sarima@1",
+      "point": 49.2544,
+      "lo": 43.2392,
+      "hi": 53.6791,
+      "unit": "",
+      "value_format": "decimal",
+      "prev_value": 49.8,
+      "why": "Sentiment: down 2 straight months. This projects recent momentum, adjusted for the series' typical reversion.",
+      "implied_status": "alert",
+      "current_status": "alert",
+      "title": "Consumer Sentiment (U. Michigan)",
+      "short": "Sentiment",
+      "lens_title": "Consumer Sentiment",
+      "href": "/dashboards/consumer/sentiment.html",
+      "grade": {
+        "actual": 44.8,
+        "graded_at": "2026-06-26T19:13:06Z",
+        "hit": true,
+        "abs_error": 4.4544,
+        "direction_hit": true,
+        "status_hit": true,
+        "naive_error": 5.0,
+        "revised_to": null
+      }
+    },
+    "consumer/consumer-sentiment/inflation-expectations": {
+      "id": "consumer/consumer-sentiment/inflation-expectations@2026-05-01",
+      "key": "consumer/consumer-sentiment/inflation-expectations",
+      "category": "consumer",
+      "lens": "consumer-sentiment",
+      "indicator": "inflation-expectations",
+      "series_id": "MICH",
+      "horizon": "next-print",
+      "target_period": "2026-05-01",
+      "due": "2026-06-15",
+      "made_at": "2026-06-12T14:20:42Z",
+      "model": "ets-seasonal@1",
+      "point": 4.7111,
+      "lo": 4.2586,
+      "hi": 5.2471,
+      "unit": "%",
+      "value_format": "decimal",
+      "prev_value": 4.7,
+      "why": "Inflation exp.: up 2 straight months. This projects the recent trend with the usual seasonal pattern for the month.",
+      "implied_status": "elevated",
+      "current_status": "elevated",
+      "title": "Inflation Expectations \u00b7 1-year ahead",
+      "short": "Inflation exp.",
+      "lens_title": "Consumer Sentiment",
+      "href": "/dashboards/consumer/sentiment.html",
+      "grade": {
+        "actual": 4.8,
+        "graded_at": "2026-06-26T19:13:07Z",
+        "hit": true,
+        "abs_error": 0.08889999999999976,
+        "direction_hit": true,
+        "status_hit": true,
+        "naive_error": 0.09999999999999964,
+        "revised_to": null
+      }
     }
   },
   "feed": [
+    {
+      "id": "consumer/consumer-sentiment/inflation-expectations@2026-05-01",
+      "key": "consumer/consumer-sentiment/inflation-expectations",
+      "category": "consumer",
+      "lens": "consumer-sentiment",
+      "indicator": "inflation-expectations",
+      "series_id": "MICH",
+      "horizon": "next-print",
+      "target_period": "2026-05-01",
+      "due": "2026-06-15",
+      "made_at": "2026-06-12T14:20:42Z",
+      "model": "ets-seasonal@1",
+      "point": 4.7111,
+      "lo": 4.2586,
+      "hi": 5.2471,
+      "unit": "%",
+      "value_format": "decimal",
+      "prev_value": 4.7,
+      "why": "Inflation exp.: up 2 straight months. This projects the recent trend with the usual seasonal pattern for the month.",
+      "implied_status": "elevated",
+      "current_status": "elevated",
+      "title": "Inflation Expectations \u00b7 1-year ahead",
+      "short": "Inflation exp.",
+      "lens_title": "Consumer Sentiment",
+      "href": "/dashboards/consumer/sentiment.html",
+      "grade": {
+        "actual": 4.8,
+        "graded_at": "2026-06-26T19:13:07Z",
+        "hit": true,
+        "abs_error": 0.08889999999999976,
+        "direction_hit": true,
+        "status_hit": true,
+        "naive_error": 0.09999999999999964,
+        "revised_to": null
+      }
+    },
+    {
+      "id": "consumer/consumer-sentiment/sentiment@2026-05-01",
+      "key": "consumer/consumer-sentiment/sentiment",
+      "category": "consumer",
+      "lens": "consumer-sentiment",
+      "indicator": "sentiment",
+      "series_id": "UMCSENT",
+      "horizon": "next-print",
+      "target_period": "2026-05-01",
+      "due": "2026-06-15",
+      "made_at": "2026-06-12T14:20:42Z",
+      "model": "sarima@1",
+      "point": 49.2544,
+      "lo": 43.2392,
+      "hi": 53.6791,
+      "unit": "",
+      "value_format": "decimal",
+      "prev_value": 49.8,
+      "why": "Sentiment: down 2 straight months. This projects recent momentum, adjusted for the series' typical reversion.",
+      "implied_status": "alert",
+      "current_status": "alert",
+      "title": "Consumer Sentiment (U. Michigan)",
+      "short": "Sentiment",
+      "lens_title": "Consumer Sentiment",
+      "href": "/dashboards/consumer/sentiment.html",
+      "grade": {
+        "actual": 44.8,
+        "graded_at": "2026-06-26T19:13:06Z",
+        "hit": true,
+        "abs_error": 4.4544,
+        "direction_hit": true,
+        "status_hit": true,
+        "naive_error": 5.0,
+        "revised_to": null
+      }
+    },
     {
       "id": "markets/market-liquidity/bank-reserves@2026-06-24",
       "key": "markets/market-liquidity/bank-reserves",
@@ -2760,7 +2904,7 @@
         "direction_hit": false,
         "status_hit": true,
         "naive_error": 0.010000000000000009,
-        "revised_to": 0.75
+        "revised_to": 0.76
       }
     },
     {
@@ -2798,7 +2942,7 @@
         "direction_hit": true,
         "status_hit": true,
         "naive_error": 0.010000000000000231,
-        "revised_to": 2.76
+        "revised_to": 2.78
       }
     },
     {
@@ -2836,7 +2980,7 @@
         "direction_hit": true,
         "status_hit": true,
         "naive_error": 1.0800000000000018,
-        "revised_to": 18.63
+        "revised_to": 18.89
       }
     },
     {
@@ -3138,7 +3282,7 @@
         "direction_hit": false,
         "status_hit": true,
         "naive_error": 3.344,
-        "revised_to": 5.718
+        "revised_to": 6.426
       }
     },
     {
@@ -3176,7 +3320,7 @@
         "direction_hit": true,
         "status_hit": true,
         "naive_error": 162.60000000000036,
-        "revised_to": 4070.0
+        "revised_to": 4083.4
       }
     },
     {
@@ -3509,82 +3653,6 @@
         "status_hit": true,
         "naive_error": 0.040000000000000036,
         "revised_to": 3.08
-      }
-    },
-    {
-      "id": "energy/energy-oil-fuels/crude-stocks@2026-06-12",
-      "key": "energy/energy-oil-fuels/crude-stocks",
-      "category": "energy",
-      "lens": "energy-oil-fuels",
-      "indicator": "crude-stocks",
-      "series_id": "WCESTUS1",
-      "horizon": "next-print",
-      "target_period": "2026-06-12",
-      "due": "2026-06-17",
-      "made_at": "2026-06-16T13:10:37Z",
-      "model": "ets-seasonal@1",
-      "point": 419272.5376,
-      "lo": 413640.112,
-      "hi": 424504.53,
-      "unit": "",
-      "value_format": "thousands",
-      "prev_value": 426485.0,
-      "why": "Crude stocks: down 7 straight weeks. This projects the recent trend with the usual seasonal pattern for the week.",
-      "implied_status": "info",
-      "current_status": "info",
-      "descriptive": true,
-      "market_price": false,
-      "title": "Crude Inventories \u00b7 excl. SPR",
-      "short": "Crude stocks",
-      "lens_title": "Oil & Fuels",
-      "href": "/dashboards/energy/oil-fuels.html",
-      "grade": {
-        "actual": 418222.0,
-        "graded_at": "2026-06-17T17:34:41Z",
-        "hit": true,
-        "abs_error": 1050.5375999999815,
-        "direction_hit": true,
-        "status_hit": true,
-        "naive_error": 8263.0,
-        "revised_to": null
-      }
-    },
-    {
-      "id": "energy/energy-oil-fuels/crude-production@2026-06-12",
-      "key": "energy/energy-oil-fuels/crude-production",
-      "category": "energy",
-      "lens": "energy-oil-fuels",
-      "indicator": "crude-production",
-      "series_id": "WCRFPUS2",
-      "horizon": "next-print",
-      "target_period": "2026-06-12",
-      "due": "2026-06-17",
-      "made_at": "2026-06-16T13:10:35Z",
-      "model": "naive@1",
-      "point": 13799.0,
-      "lo": 13723.3,
-      "hi": 13899.0,
-      "unit": "",
-      "value_format": "thousands",
-      "prev_value": 13799.0,
-      "why": "We expect roughly the last value \u2014 this series rarely rewards cleverness.",
-      "implied_status": "info",
-      "current_status": "info",
-      "descriptive": true,
-      "market_price": false,
-      "title": "U.S. Crude Oil Production",
-      "short": "Crude output",
-      "lens_title": "Oil & Fuels",
-      "href": "/dashboards/energy/oil-fuels.html",
-      "grade": {
-        "actual": 13806.0,
-        "graded_at": "2026-06-17T17:34:40Z",
-        "hit": true,
-        "abs_error": 7.0,
-        "direction_hit": false,
-        "status_hit": true,
-        "naive_error": 7.0,
-        "revised_to": null
       }
     }
   ]

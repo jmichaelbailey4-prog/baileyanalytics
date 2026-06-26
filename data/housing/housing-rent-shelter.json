@@ -2,7 +2,7 @@
   "id": "housing-rent-shelter",
   "title": "Rent & Shelter",
   "accent": "#A78BFA",
-  "last_updated": "2026-06-10T18:28:14Z",
+  "last_updated": "2026-06-26T19:12:44Z",
   "status": "ok",
   "headline_read": "The rental market is balanced \u2014 rents are behaving.",
   "recessions": [
@@ -1180,7 +1180,8 @@
       "context": "How fast the rent tenants actually pay is rising versus a year ago, from the rent component of the Consumer Price Index. It moves slowly but relentlessly, and it is a third of core CPI.",
       "read": "Rent costs are rising 2.9% a year.",
       "signal_status": "ok",
-      "value_format": "decimal"
+      "value_format": "decimal",
+      "scale_now": 2.9
     },
     {
       "id": "owners-equivalent-rent",
@@ -2344,9 +2345,10 @@
         "value": "3.3"
       },
       "context": "How fast the implied rent on owner-occupied homes is rising \u2014 the largest single component of the CPI, and the bridge between home prices and inflation.",
-      "read": "Owners' equivalent rent is rising 3.3% a year.",
-      "signal_status": "info",
-      "value_format": "decimal"
+      "read": "Owners' equivalent rent costs are rising 3.3% a year.",
+      "signal_status": "ok",
+      "value_format": "decimal",
+      "scale_now": 3.3
     },
     {
       "id": "rental-vacancy",
@@ -2684,7 +2686,8 @@
       "context": "The share of rental units sitting empty (quarterly). Low vacancy gives landlords pricing power; high vacancy hands it back to renters.",
       "read": "Rental vacancy is 7.3% \u2014 a healthy balance between renters and landlords.",
       "signal_status": "ok",
-      "value_format": "decimal"
+      "value_format": "decimal",
+      "scale_now": 7.3
     },
     {
       "id": "homeownership",
@@ -3022,7 +3025,8 @@
       "context": "The share of households that own their home (quarterly) \u2014 the long arc of whether owning is gaining or losing ground versus renting.",
       "read": "The homeownership rate is 65.3%, up 0.2 points from a year ago.",
       "signal_status": "info",
-      "value_format": "decimal"
+      "value_format": "decimal",
+      "no_severity_reason": "A descriptive level shown for context \u2014 neither a high nor a low reading is simply good or bad."
     }
   ]
 }

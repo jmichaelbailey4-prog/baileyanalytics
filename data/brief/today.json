@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-26T13:35:52Z",
+  "generated_at": "2026-06-26T19:24:23Z",
   "transitions": [],
   "top_moves": [
     {
@@ -292,8 +292,8 @@
       "lens_title": "The Cost of Money",
       "category": "economic",
       "href": "/dashboards/cost-of-money.html",
-      "status": "ok",
-      "headline": "Borrowing costs have eased back toward normal."
+      "status": "watch",
+      "headline": "Borrowing is still expensive \u2014 rates remain elevated."
     },
     {
       "lens_id": "job-market",
@@ -545,8 +545,8 @@
     }
   ],
   "status_counts": {
-    "ok": 17,
-    "watch": 5,
+    "ok": 16,
+    "watch": 6,
     "elevated": 6,
     "alert": 3,
     "neutral": 2
@@ -673,6 +673,14 @@
       "href": "/dashboards/global/uncertainty.html",
       "status": "elevated",
       "headline": "Policy uncertainty is high \u2014 what governments do next is a major source of risk."
+    },
+    {
+      "lens_id": "cost-of-money",
+      "lens_title": "The Cost of Money",
+      "category": "economic",
+      "href": "/dashboards/cost-of-money.html",
+      "status": "watch",
+      "headline": "Borrowing is still expensive \u2014 rates remain elevated."
     },
     {
       "lens_id": "consumer-credit",

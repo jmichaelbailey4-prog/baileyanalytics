@@ -2,7 +2,7 @@
   "id": "energy-commodities",
   "title": "Commodities & Materials",
   "accent": "#A3E635",
-  "last_updated": "2026-06-09T19:01:29Z",
+  "last_updated": "2026-06-26T19:12:40Z",
   "status": "alert",
   "headline_read": "Commodity costs are surging.",
   "recessions": [
@@ -1184,7 +1184,8 @@
       "context": "How fast the IMF's global food commodity index is rising versus a year ago \u2014 the upstream driver of grocery inflation.",
       "read": "Food costs are rising 30.2% a year \u2014 acute pressure on households.",
       "signal_status": "alert",
-      "value_format": "decimal"
+      "value_format": "decimal",
+      "scale_now": 30.2
     },
     {
       "id": "copper",
@@ -2402,7 +2403,8 @@
       "context": "The global price of copper ($/metric ton) \u2014 nicknamed \u201cDr. Copper\u201d for its knack of signalling the direction of the global economy.",
       "read": "Copper is up 41% from a year ago, now 13,484.",
       "signal_status": "info",
-      "value_format": "thousands"
+      "value_format": "thousands",
+      "no_severity_reason": "A market price has no inherent good-or-bad level \u2014 higher or lower isn't itself better or worse."
     },
     {
       "id": "broad-commodities",
@@ -3572,7 +3574,8 @@
       "context": "How fast the IMF's all-commodity price index is rising versus a year ago \u2014 a single gauge of raw-input cost pressure across the economy.",
       "read": "The broad commodity index is rising 0.8% a year.",
       "signal_status": "info",
-      "value_format": "decimal"
+      "value_format": "decimal",
+      "no_severity_reason": "A market price has no inherent good-or-bad level \u2014 higher or lower isn't itself better or worse."
     }
   ]
 }

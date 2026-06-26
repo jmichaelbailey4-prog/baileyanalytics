@@ -2,7 +2,7 @@
   "id": "job-market",
   "title": "The Job Market",
   "accent": "#38BDF8",
-  "last_updated": "2026-06-07T00:03:16Z",
+  "last_updated": "2026-06-26T19:11:59Z",
   "status": "ok",
   "headline_read": "The job market is healthy \u2014 hiring and pay are holding up.",
   "recessions": [
@@ -992,7 +992,8 @@
       "context": "The share of the labor force without a job and actively looking \u2014 the single most-watched gauge of labor-market health.",
       "read": "Unemployment is steady at 4.3%, near its recent lows.",
       "signal_status": "ok",
-      "value_format": "decimal"
+      "value_format": "decimal",
+      "scale_now": 0.2
     },
     {
       "id": "payrolls",
@@ -1966,7 +1967,8 @@
       "context": "How many jobs U.S. employers added (or cut) last month \u2014 the headline number markets and the Fed react to most.",
       "read": "Employers added 172,000 jobs last month \u2014 a healthy clip.",
       "signal_status": "ok",
-      "value_format": "thousands"
+      "value_format": "thousands",
+      "scale_now": 172000.0
     },
     {
       "id": "job-openings",
@@ -2944,7 +2946,8 @@
       "context": "The number of unfilled positions employers are trying to hire for \u2014 a direct read on how strong labor demand is.",
       "read": "7.6 million open jobs, rising as employers compete for workers.",
       "signal_status": "ok",
-      "value_format": "decimal"
+      "value_format": "decimal",
+      "scale_now": 7.6
     },
     {
       "id": "wage-growth",
@@ -3920,9 +3923,10 @@
         "value": "3.44542"
       },
       "context": "How fast average hourly pay is rising versus a year ago. When it outpaces inflation, workers' buying power grows.",
-      "read": "Pay is up 3.4% from a year ago, a modest pace.",
+      "read": "Pay is up 3.4% from a year ago, a solid pace.",
       "signal_status": "ok",
-      "value_format": "decimal"
+      "value_format": "decimal",
+      "scale_now": 3.4454
     },
     {
       "id": "participation",
@@ -4898,9 +4902,10 @@
         "value": "61.8"
       },
       "context": "The share of working-age adults either working or looking for work \u2014 how many people are in the labor force at all.",
-      "read": "Now 61.80%, down 0.60 points over the past year.",
-      "signal_status": "ok",
-      "value_format": "decimal"
+      "read": "Labor-force participation is 61.8%, down 0.6 points from a year ago.",
+      "signal_status": "info",
+      "value_format": "decimal",
+      "no_severity_reason": "This level drifts with demographics \u2014 the job-market verdict is carried by unemployment, payrolls, and job openings."
     }
   ]
 }

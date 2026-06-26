@@ -2,7 +2,7 @@
   "id": "energy-electricity",
   "title": "Electricity & the Grid",
   "accent": "#FBBF24",
-  "last_updated": "2026-06-25T19:32:12Z",
+  "last_updated": "2026-06-26T19:12:40Z",
   "status": "watch",
   "headline_read": "Electricity prices are climbing.",
   "recessions": [
@@ -992,7 +992,8 @@
       "context": "The U.S. average residential electricity price (cents per kWh) \u2014 the power bill households pay every month.",
       "read": "Electricity costs are up 7% over the past year \u2014 climbing.",
       "signal_status": "watch",
-      "value_format": "decimal"
+      "value_format": "decimal",
+      "scale_now": 7.2934
     },
     {
       "id": "renewables-share",
@@ -1970,7 +1971,9 @@
       "context": "The share of U.S. electricity generated from renewables (wind, solar, hydro, and more) \u2014 the clearest single read on the energy transition.",
       "read": "Renewables: 32.4% of U.S. electricity generation, up 1.1 points over the past year.",
       "signal_status": "info",
-      "value_format": "decimal"
+      "value_format": "decimal",
+      "no_severity_reason": "A physical supply-and-demand reading, not a household cost \u2014 this lens's verdict comes from the price indicators.",
+      "no_prediction_reason": "This is computed from other series at refresh time, so there's no single line to forecast directly."
     },
     {
       "id": "natgas-share",
@@ -2948,7 +2951,9 @@
       "context": "The share of U.S. electricity generated from natural gas \u2014 still the single largest source, and the swing fuel that balances the grid.",
       "read": "Natural gas: 37.6% of U.S. electricity generation, up 1.8 points over the past year.",
       "signal_status": "info",
-      "value_format": "decimal"
+      "value_format": "decimal",
+      "no_severity_reason": "A physical supply-and-demand reading, not a household cost \u2014 this lens's verdict comes from the price indicators.",
+      "no_prediction_reason": "This is computed from other series at refresh time, so there's no single line to forecast directly."
     },
     {
       "id": "net-generation",
@@ -3926,7 +3931,9 @@
       "context": "Total U.S. net electricity generation (GWh) \u2014 a read on how much power the economy is consuming.",
       "read": "Net generation is up 3% from a year ago, now 330,707.",
       "signal_status": "info",
-      "value_format": "thousands"
+      "value_format": "thousands",
+      "no_severity_reason": "A physical supply-and-demand reading, not a household cost \u2014 this lens's verdict comes from the price indicators.",
+      "no_prediction_reason": "This is computed from other series at refresh time, so there's no single line to forecast directly."
     }
   ]
 }

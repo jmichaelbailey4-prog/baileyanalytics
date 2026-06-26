@@ -2,7 +2,7 @@
   "id": "consumer-spending",
   "title": "Consumer Spending",
   "accent": "#34D399",
-  "last_updated": "2026-06-25T19:32:20Z",
+  "last_updated": "2026-06-26T19:12:47Z",
   "status": "ok",
   "headline_read": "Consumers are still spending at a healthy pace.",
   "recessions": [
@@ -992,7 +992,8 @@
       "context": "How fast retail and food-service sales are growing versus a year ago (nominal \u2014 inflation is part of the number). A stall here is how consumer recessions announce themselves.",
       "read": "Retail sales are up 6.9% from a year ago \u2014 a steady pace.",
       "signal_status": "ok",
-      "value_format": "decimal"
+      "value_format": "decimal",
+      "scale_now": 6.8765
     },
     {
       "id": "real-spending",
@@ -1970,7 +1971,8 @@
       "context": "Total household consumption adjusted for inflation \u2014 the cleanest read on whether people are actually buying more, or just paying more.",
       "read": "Real consumer spending is up 2.1% from a year ago \u2014 a steady pace.",
       "signal_status": "ok",
-      "value_format": "decimal"
+      "value_format": "decimal",
+      "scale_now": 2.128
     },
     {
       "id": "auto-sales",
@@ -2946,9 +2948,10 @@
         "value": "16.508"
       },
       "context": "Light-vehicle sales in millions at an annual rate \u2014 the classic big-ticket purchase. Households delay new cars first when budgets tighten.",
-      "read": "The pace of vehicle sales is little changed from a year ago, now 16.5 million.",
-      "signal_status": "info",
-      "value_format": "decimal"
+      "read": "Vehicle sales are at 16.5 million a year \u2014 a healthy big-ticket pace.",
+      "signal_status": "ok",
+      "value_format": "decimal",
+      "scale_now": 16.508
     }
   ]
 }

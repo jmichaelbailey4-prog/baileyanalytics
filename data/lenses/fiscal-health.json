@@ -2,7 +2,7 @@
   "id": "fiscal-health",
   "title": "Fiscal Health",
   "accent": "#A78BFA",
-  "last_updated": "2026-06-25T13:38:19Z",
+  "last_updated": "2026-06-26T19:11:59Z",
   "status": "elevated",
   "headline_read": "The U.S. is borrowing heavily \u2014 debt and interest costs are climbing.",
   "recessions": [
@@ -352,7 +352,8 @@
       "context": "Total federal debt measured against the size of the economy \u2014 the single most-cited gauge of fiscal sustainability. It crossed 100% around 2013 and has kept climbing.",
       "read": "Federal debt is 123% of GDP \u2014 larger than the entire economy.",
       "signal_status": "elevated",
-      "value_format": "decimal"
+      "value_format": "decimal",
+      "scale_now": 122.5939
     },
     {
       "id": "deficit-12m",
@@ -1334,345 +1335,347 @@
       "context": "How much the government borrowed over the past 12 months, from the monthly Treasury statement. The rolling year smooths out tax season \u2014 this is the number the 'deficit debate' is actually about.",
       "read": "The U.S. has borrowed $1.7 trillion over the past year \u2014 heavy borrowing for a growing economy.",
       "signal_status": "elevated",
-      "value_format": "decimal"
+      "value_format": "decimal",
+      "scale_now": 1.66
     },
     {
-      "id": "interest-cost",
-      "title": "Federal Interest Cost \u00b7 annual rate",
-      "short": "Interest cost",
-      "unit": "$B",
-      "color": "#FBBF24",
-      "series_id": "A091RC1Q027SBEA",
+      "id": "interest-burden",
+      "title": "Interest Cost \u00b7 share of federal revenue",
+      "short": "Interest/revenue",
+      "unit": "%",
+      "color": "#FB7185",
+      "series_id": "INTEREST_RECEIPTS_SHARE",
       "observations": [
         {
           "date": "2006-04-01",
-          "value": "367.415"
+          "value": "14.4"
         },
         {
           "date": "2006-07-01",
-          "value": "376.299"
+          "value": "14.5"
         },
         {
           "date": "2006-10-01",
-          "value": "386.925"
+          "value": "14.8"
         },
         {
           "date": "2007-01-01",
-          "value": "396.009"
+          "value": "14.8"
         },
         {
           "date": "2007-04-01",
-          "value": "407.914"
+          "value": "15.1"
         },
         {
           "date": "2007-07-01",
-          "value": "414.164"
+          "value": "15.4"
         },
         {
           "date": "2007-10-01",
-          "value": "413.825"
+          "value": "15.3"
         },
         {
           "date": "2008-01-01",
-          "value": "403.473"
+          "value": "15.1"
         },
         {
           "date": "2008-04-01",
-          "value": "388.351"
+          "value": "14.6"
         },
         {
           "date": "2008-07-01",
-          "value": "382.152"
+          "value": "14.7"
         },
         {
           "date": "2008-10-01",
-          "value": "379.614"
+          "value": "15.0"
         },
         {
           "date": "2009-01-01",
-          "value": "361.869"
+          "value": "16.1"
         },
         {
           "date": "2009-04-01",
-          "value": "352.134"
+          "value": "15.7"
         },
         {
           "date": "2009-07-01",
-          "value": "350.317"
+          "value": "15.6"
         },
         {
           "date": "2009-10-01",
-          "value": "353.811"
+          "value": "15.3"
         },
         {
           "date": "2010-01-01",
-          "value": "360.258"
+          "value": "15.1"
         },
         {
           "date": "2010-04-01",
-          "value": "376.93"
+          "value": "15.5"
         },
         {
           "date": "2010-07-01",
-          "value": "389.247"
+          "value": "15.6"
         },
         {
           "date": "2010-10-01",
-          "value": "399.514"
+          "value": "15.8"
         },
         {
           "date": "2011-01-01",
-          "value": "410.805"
+          "value": "15.9"
         },
         {
           "date": "2011-04-01",
-          "value": "424.987"
+          "value": "16.4"
         },
         {
           "date": "2011-07-01",
-          "value": "432.625"
+          "value": "16.8"
         },
         {
           "date": "2011-10-01",
-          "value": "433.35"
+          "value": "16.7"
         },
         {
           "date": "2012-01-01",
-          "value": "428.343"
+          "value": "16.0"
         },
         {
           "date": "2012-04-01",
-          "value": "424.345"
+          "value": "15.8"
         },
         {
           "date": "2012-07-01",
-          "value": "420.974"
+          "value": "15.6"
         },
         {
           "date": "2012-10-01",
-          "value": "416.834"
+          "value": "15.0"
         },
         {
           "date": "2013-01-01",
-          "value": "411.052"
+          "value": "13.7"
         },
         {
           "date": "2013-04-01",
-          "value": "412.508"
+          "value": "12.6"
         },
         {
           "date": "2013-07-01",
-          "value": "416.742"
+          "value": "13.5"
         },
         {
           "date": "2013-10-01",
-          "value": "425.001"
+          "value": "13.0"
         },
         {
           "date": "2014-01-01",
-          "value": "431.952"
+          "value": "13.2"
         },
         {
           "date": "2014-04-01",
-          "value": "440.027"
+          "value": "13.3"
         },
         {
           "date": "2014-07-01",
-          "value": "442.107"
+          "value": "13.3"
         },
         {
           "date": "2014-10-01",
-          "value": "442.283"
+          "value": "13.3"
         },
         {
           "date": "2015-01-01",
-          "value": "428.689"
+          "value": "12.6"
         },
         {
           "date": "2015-04-01",
-          "value": "425.877"
+          "value": "12.3"
         },
         {
           "date": "2015-07-01",
-          "value": "427.881"
+          "value": "12.3"
         },
         {
           "date": "2015-10-01",
-          "value": "434.682"
+          "value": "12.3"
         },
         {
           "date": "2016-01-01",
-          "value": "446.225"
+          "value": "12.9"
         },
         {
           "date": "2016-04-01",
-          "value": "453.291"
+          "value": "13.1"
         },
         {
           "date": "2016-07-01",
-          "value": "457.514"
+          "value": "13.1"
         },
         {
           "date": "2016-10-01",
-          "value": "460.184"
+          "value": "13.1"
         },
         {
           "date": "2017-01-01",
-          "value": "460.669"
+          "value": "13.1"
         },
         {
           "date": "2017-04-01",
-          "value": "471.214"
+          "value": "13.5"
         },
         {
           "date": "2017-07-01",
-          "value": "481.457"
+          "value": "13.6"
         },
         {
           "date": "2017-10-01",
-          "value": "493.441"
+          "value": "10.9"
         },
         {
           "date": "2018-01-01",
-          "value": "507.619"
+          "value": "14.3"
         },
         {
           "date": "2018-04-01",
-          "value": "531.778"
+          "value": "14.9"
         },
         {
           "date": "2018-07-01",
-          "value": "551.891"
+          "value": "15.1"
         },
         {
           "date": "2018-10-01",
-          "value": "571.229"
+          "value": "15.6"
         },
         {
           "date": "2019-01-01",
-          "value": "579.714"
+          "value": "15.8"
         },
         {
           "date": "2019-04-01",
-          "value": "586.409"
+          "value": "15.9"
         },
         {
           "date": "2019-07-01",
-          "value": "578.256"
+          "value": "15.5"
         },
         {
           "date": "2019-10-01",
-          "value": "564.241"
+          "value": "14.9"
         },
         {
           "date": "2020-01-01",
-          "value": "544.122"
+          "value": "14.3"
         },
         {
           "date": "2020-04-01",
-          "value": "514.737"
+          "value": "14.5"
         },
         {
           "date": "2020-07-01",
-          "value": "508.011"
+          "value": "13.3"
         },
         {
           "date": "2020-10-01",
-          "value": "516.711"
+          "value": "13.0"
         },
         {
           "date": "2021-01-01",
-          "value": "533.518"
+          "value": "12.8"
         },
         {
           "date": "2021-04-01",
-          "value": "560.634"
+          "value": "12.8"
         },
         {
           "date": "2021-07-01",
-          "value": "587.92"
+          "value": "12.9"
         },
         {
           "date": "2021-10-01",
-          "value": "612.282"
+          "value": "13.0"
         },
         {
           "date": "2022-01-01",
-          "value": "636.968"
+          "value": "12.5"
         },
         {
           "date": "2022-04-01",
-          "value": "684.758"
+          "value": "13.3"
         },
         {
           "date": "2022-07-01",
-          "value": "752.081"
+          "value": "14.5"
         },
         {
           "date": "2022-10-01",
-          "value": "823.106"
+          "value": "16.0"
         },
         {
           "date": "2023-01-01",
-          "value": "861.267"
+          "value": "18.0"
         },
         {
           "date": "2023-04-01",
-          "value": "894.106"
+          "value": "18.6"
         },
         {
           "date": "2023-07-01",
-          "value": "966.899"
+          "value": "19.9"
         },
         {
           "date": "2023-10-01",
-          "value": "1031.478"
+          "value": "20.8"
         },
         {
           "date": "2024-01-01",
-          "value": "1071.174"
+          "value": "21.1"
         },
         {
           "date": "2024-04-01",
-          "value": "1103.565"
+          "value": "21.3"
         },
         {
           "date": "2024-07-01",
-          "value": "1146.182"
+          "value": "21.8"
         },
         {
           "date": "2024-10-01",
-          "value": "1155.616"
+          "value": "21.6"
         },
         {
           "date": "2025-01-01",
-          "value": "1144.212"
+          "value": "21.1"
         },
         {
           "date": "2025-04-01",
-          "value": "1160.9"
+          "value": "20.6"
         },
         {
           "date": "2025-07-01",
-          "value": "1199.189"
+          "value": "20.6"
         },
         {
           "date": "2025-10-01",
-          "value": "1227.495"
+          "value": "20.7"
         },
         {
           "date": "2026-01-01",
-          "value": "1218.938"
+          "value": "20.6"
         }
       ],
       "latest": {
         "date": "2026-01-01",
-        "value": "1218.938"
+        "value": "20.6"
       },
-      "context": "What the government pays per year to service its debt (quarterly, annualized). Rising rates turned this into one of the largest items in the federal budget \u2014 crowding out everything else.",
-      "read": "The government's interest bill is up 7% from a year ago, now $1,219 billion.",
-      "signal_status": "info",
-      "value_format": "thousands"
+      "context": "Federal interest payments as a share of total federal revenue (including payroll taxes) \u2014 how many cents of every revenue dollar go just to servicing the debt. It has climbed to a modern record (~20%) as rates rose, the highest since the 1990s.",
+      "read": "Interest takes 21 cents of every dollar of federal revenue \u2014 a heavy, near-record claim that crowds out the budget.",
+      "signal_status": "elevated",
+      "value_format": "decimal",
+      "scale_now": 20.6
     },
     {
       "id": "receipts",
@@ -2072,9 +2075,349 @@
         "value": "12.3"
       },
       "context": "How fast federal tax revenue is growing versus a year ago. Healthy receipts growth shrinks the deficit without any policy change; shrinking receipts usually mean a weakening economy.",
-      "read": "The federal tax take is rising 12.3% a year.",
+      "read": "The federal tax take is growing 12.3% a year.",
+      "signal_status": "ok",
+      "value_format": "decimal",
+      "scale_now": 12.3
+    },
+    {
+      "id": "interest-cost",
+      "title": "Federal Interest Cost \u00b7 annual rate",
+      "short": "Interest cost",
+      "unit": "$B",
+      "color": "#FBBF24",
+      "series_id": "A091RC1Q027SBEA",
+      "observations": [
+        {
+          "date": "2006-04-01",
+          "value": "367.415"
+        },
+        {
+          "date": "2006-07-01",
+          "value": "376.299"
+        },
+        {
+          "date": "2006-10-01",
+          "value": "386.925"
+        },
+        {
+          "date": "2007-01-01",
+          "value": "396.009"
+        },
+        {
+          "date": "2007-04-01",
+          "value": "407.914"
+        },
+        {
+          "date": "2007-07-01",
+          "value": "414.164"
+        },
+        {
+          "date": "2007-10-01",
+          "value": "413.825"
+        },
+        {
+          "date": "2008-01-01",
+          "value": "403.473"
+        },
+        {
+          "date": "2008-04-01",
+          "value": "388.351"
+        },
+        {
+          "date": "2008-07-01",
+          "value": "382.152"
+        },
+        {
+          "date": "2008-10-01",
+          "value": "379.614"
+        },
+        {
+          "date": "2009-01-01",
+          "value": "361.869"
+        },
+        {
+          "date": "2009-04-01",
+          "value": "352.134"
+        },
+        {
+          "date": "2009-07-01",
+          "value": "350.317"
+        },
+        {
+          "date": "2009-10-01",
+          "value": "353.811"
+        },
+        {
+          "date": "2010-01-01",
+          "value": "360.258"
+        },
+        {
+          "date": "2010-04-01",
+          "value": "376.93"
+        },
+        {
+          "date": "2010-07-01",
+          "value": "389.247"
+        },
+        {
+          "date": "2010-10-01",
+          "value": "399.514"
+        },
+        {
+          "date": "2011-01-01",
+          "value": "410.805"
+        },
+        {
+          "date": "2011-04-01",
+          "value": "424.987"
+        },
+        {
+          "date": "2011-07-01",
+          "value": "432.625"
+        },
+        {
+          "date": "2011-10-01",
+          "value": "433.35"
+        },
+        {
+          "date": "2012-01-01",
+          "value": "428.343"
+        },
+        {
+          "date": "2012-04-01",
+          "value": "424.345"
+        },
+        {
+          "date": "2012-07-01",
+          "value": "420.974"
+        },
+        {
+          "date": "2012-10-01",
+          "value": "416.834"
+        },
+        {
+          "date": "2013-01-01",
+          "value": "411.052"
+        },
+        {
+          "date": "2013-04-01",
+          "value": "412.508"
+        },
+        {
+          "date": "2013-07-01",
+          "value": "416.742"
+        },
+        {
+          "date": "2013-10-01",
+          "value": "425.001"
+        },
+        {
+          "date": "2014-01-01",
+          "value": "431.952"
+        },
+        {
+          "date": "2014-04-01",
+          "value": "440.027"
+        },
+        {
+          "date": "2014-07-01",
+          "value": "442.107"
+        },
+        {
+          "date": "2014-10-01",
+          "value": "442.283"
+        },
+        {
+          "date": "2015-01-01",
+          "value": "428.689"
+        },
+        {
+          "date": "2015-04-01",
+          "value": "425.877"
+        },
+        {
+          "date": "2015-07-01",
+          "value": "427.881"
+        },
+        {
+          "date": "2015-10-01",
+          "value": "434.682"
+        },
+        {
+          "date": "2016-01-01",
+          "value": "446.225"
+        },
+        {
+          "date": "2016-04-01",
+          "value": "453.291"
+        },
+        {
+          "date": "2016-07-01",
+          "value": "457.514"
+        },
+        {
+          "date": "2016-10-01",
+          "value": "460.184"
+        },
+        {
+          "date": "2017-01-01",
+          "value": "460.669"
+        },
+        {
+          "date": "2017-04-01",
+          "value": "471.214"
+        },
+        {
+          "date": "2017-07-01",
+          "value": "481.457"
+        },
+        {
+          "date": "2017-10-01",
+          "value": "493.441"
+        },
+        {
+          "date": "2018-01-01",
+          "value": "507.619"
+        },
+        {
+          "date": "2018-04-01",
+          "value": "531.778"
+        },
+        {
+          "date": "2018-07-01",
+          "value": "551.891"
+        },
+        {
+          "date": "2018-10-01",
+          "value": "571.229"
+        },
+        {
+          "date": "2019-01-01",
+          "value": "579.714"
+        },
+        {
+          "date": "2019-04-01",
+          "value": "586.409"
+        },
+        {
+          "date": "2019-07-01",
+          "value": "578.256"
+        },
+        {
+          "date": "2019-10-01",
+          "value": "564.241"
+        },
+        {
+          "date": "2020-01-01",
+          "value": "544.122"
+        },
+        {
+          "date": "2020-04-01",
+          "value": "514.737"
+        },
+        {
+          "date": "2020-07-01",
+          "value": "508.011"
+        },
+        {
+          "date": "2020-10-01",
+          "value": "516.711"
+        },
+        {
+          "date": "2021-01-01",
+          "value": "533.518"
+        },
+        {
+          "date": "2021-04-01",
+          "value": "560.634"
+        },
+        {
+          "date": "2021-07-01",
+          "value": "587.92"
+        },
+        {
+          "date": "2021-10-01",
+          "value": "612.282"
+        },
+        {
+          "date": "2022-01-01",
+          "value": "636.968"
+        },
+        {
+          "date": "2022-04-01",
+          "value": "684.758"
+        },
+        {
+          "date": "2022-07-01",
+          "value": "752.081"
+        },
+        {
+          "date": "2022-10-01",
+          "value": "823.106"
+        },
+        {
+          "date": "2023-01-01",
+          "value": "861.267"
+        },
+        {
+          "date": "2023-04-01",
+          "value": "894.106"
+        },
+        {
+          "date": "2023-07-01",
+          "value": "966.899"
+        },
+        {
+          "date": "2023-10-01",
+          "value": "1031.478"
+        },
+        {
+          "date": "2024-01-01",
+          "value": "1071.174"
+        },
+        {
+          "date": "2024-04-01",
+          "value": "1103.565"
+        },
+        {
+          "date": "2024-07-01",
+          "value": "1146.182"
+        },
+        {
+          "date": "2024-10-01",
+          "value": "1155.616"
+        },
+        {
+          "date": "2025-01-01",
+          "value": "1144.212"
+        },
+        {
+          "date": "2025-04-01",
+          "value": "1160.9"
+        },
+        {
+          "date": "2025-07-01",
+          "value": "1199.189"
+        },
+        {
+          "date": "2025-10-01",
+          "value": "1227.495"
+        },
+        {
+          "date": "2026-01-01",
+          "value": "1218.938"
+        }
+      ],
+      "latest": {
+        "date": "2026-01-01",
+        "value": "1218.938"
+      },
+      "context": "What the government pays per year to service its debt (quarterly, annualized). Rising rates turned this into one of the largest items in the federal budget \u2014 crowding out everything else.",
+      "read": "The government's interest bill is up 7% from a year ago, now $1,219 billion.",
       "signal_status": "info",
-      "value_format": "decimal"
+      "value_format": "thousands",
+      "no_severity_reason": "The dollar interest bill climbs with the economy; the scored read is interest as a share of revenue, alongside debt-to-GDP and the deficit."
     }
   ]
 }

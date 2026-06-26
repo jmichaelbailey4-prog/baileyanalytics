@@ -2,7 +2,7 @@
   "id": "consumer-income-savings",
   "title": "Household Income & Savings",
   "accent": "#FBBF24",
-  "last_updated": "2026-06-25T13:39:09Z",
+  "last_updated": "2026-06-26T19:12:47Z",
   "status": "watch",
   "headline_read": "Household finances are tightening \u2014 cushions are shrinking.",
   "recessions": [
@@ -992,7 +992,8 @@
       "context": "The share of after-tax income households save each month. A thin saving rate means no shock absorber \u2014 the historical norm is 5-8%.",
       "read": "The saving rate is 3.0% \u2014 thinner than the historical norm.",
       "signal_status": "watch",
-      "value_format": "decimal"
+      "value_format": "decimal",
+      "scale_now": 3.0
     },
     {
       "id": "real-income",
@@ -1970,7 +1971,8 @@
       "context": "After-tax household income adjusted for inflation. When it falls, spending can only be sustained by savings or debt \u2014 and both run out.",
       "read": "Real income is up 0.0% from a year ago \u2014 purchasing power is growing.",
       "signal_status": "ok",
-      "value_format": "decimal"
+      "value_format": "decimal",
+      "scale_now": 0.0161
     },
     {
       "id": "net-worth",
@@ -2306,9 +2308,10 @@
         "value": "7.98177"
       },
       "context": "Everything households own minus everything they owe (quarterly). Driven by home prices and markets \u2014 the wealth effect behind spending confidence.",
-      "read": "Household net worth is rising 8.0% a year.",
-      "signal_status": "info",
-      "value_format": "decimal"
+      "read": "Household net worth is growing 8.0% a year.",
+      "signal_status": "ok",
+      "value_format": "decimal",
+      "scale_now": 7.9818
     }
   ]
 }

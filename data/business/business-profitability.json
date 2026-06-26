@@ -2,7 +2,7 @@
   "id": "business-profitability",
   "title": "Corporate Profits",
   "accent": "#34D399",
-  "last_updated": "2026-06-25T13:39:13Z",
+  "last_updated": "2026-06-26T19:12:51Z",
   "status": "ok",
   "headline_read": "Corporate America is profitable \u2014 earnings are growing.",
   "recessions": [
@@ -432,7 +432,8 @@
       "context": "How fast after-tax corporate profits are growing versus a year ago (quarterly, all U.S. corporations \u2014 about $3.9 trillion a year). Falling profits are how downturns reach hiring and investment.",
       "read": "Corporate profits are growing 18.4% a year.",
       "signal_status": "ok",
-      "value_format": "decimal"
+      "value_format": "decimal",
+      "scale_now": 18.4
     },
     {
       "id": "nonfinancial-profits",
@@ -848,9 +849,10 @@
         "value": "19.2"
       },
       "context": "The same after-tax profit growth for nonfinancial corporations only \u2014 the 'Main Street corporates' read, with banks stripped out.",
-      "read": "Nonfinancial corporate profit is rising 19.2% a year.",
-      "signal_status": "info",
-      "value_format": "decimal"
+      "read": "Nonfinancial corporate profits are growing 19.2% a year.",
+      "signal_status": "ok",
+      "value_format": "decimal",
+      "scale_now": 19.2
     },
     {
       "id": "profit-share",
@@ -1284,7 +1286,8 @@
       "context": "After-tax corporate profits as a share of GDP \u2014 the closest public proxy for economy-wide profit margins. The post-war norm is 5-7%; the 2020s have run near record highs above 11%.",
       "read": "The corporate-profit share of GDP is 12.4%, up 1.3 points from a year ago.",
       "signal_status": "info",
-      "value_format": "decimal"
+      "value_format": "decimal",
+      "no_severity_reason": "A descriptive level shown for context \u2014 neither a high nor a low reading is simply good or bad."
     },
     {
       "id": "proprietors-income",
@@ -1702,7 +1705,8 @@
       "context": "Income of unincorporated businesses \u2014 sole proprietors and partnerships. The closest thing to a small-business earnings line.",
       "read": "Proprietors' income is rising 1.7% a year.",
       "signal_status": "info",
-      "value_format": "decimal"
+      "value_format": "decimal",
+      "no_severity_reason": "Shown for context \u2014 proprietors' income (which includes farm income) is too volatile to score cleanly."
     }
   ]
 }
