@@ -93,19 +93,32 @@ def decision_value(kind, obs):
     return None  # custom / unknown
 
 
+_SEV_ORDER = {"ok": 0, "watch": 1, "elevated": 2, "alert": 3}
+
+
+def _capped(status, cap):
+    """Clip a status to the spec's ceiling (e.g. GEPU never exceeds 'watch'), so the
+    rendered bands/marker can't show a severity the rule can never actually emit.
+    Mirrors the rule-side cap in narrative.epu_band / util.STATUS_ORDER."""
+    if cap and _SEV_ORDER.get(status, 0) > _SEV_ORDER.get(cap, 99):
+        return cap
+    return status
+
+
 def status_at(spec, value):
-    """The segment status for `value` under the dominant `>=` convention
+    """The (cap-aware) segment status for `value` under the dominant `>=` convention
     (used for the marker / an invariant check, not boundary-exact grading)."""
     i = sum(1 for e in spec.edges if value >= e)
-    return spec.segments[i]
+    return _capped(spec.segments[i], spec.cap)
 
 
 def segment_ranges(spec):
     """[{status, lo, hi}] per segment, low->high; lo None for the first, hi None
-    for the last. The methodology page and the strip render from this."""
+    for the last; statuses cap-clipped. The methodology page and the strip render
+    from this."""
     out = []
     for i, status in enumerate(spec.segments):
         lo = spec.edges[i - 1] if i > 0 else None
         hi = spec.edges[i] if i < len(spec.edges) else None
-        out.append({"status": status, "lo": lo, "hi": hi})
+        out.append({"status": _capped(status, spec.cap), "lo": lo, "hi": hi})
     return out

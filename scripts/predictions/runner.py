@@ -137,7 +137,7 @@ def _make_open_entry(entry, cleaned, cad, champ_rec):
     target = cadence.next_period(cleaned[-1][0], cad)
     _, current_status = ind.rule(cleaned)
     _, implied_status = ind.rule(cleaned + [(target, point)])
-    return {
+    out = {
         "id": f"{entry.key}@{target}", "key": entry.key,
         "category": entry.category, "lens": entry.lens_id, "indicator": ind.id,
         "series_id": getattr(ind, "series_id", ""),  # BankingIndicator has none
@@ -149,8 +149,6 @@ def _make_open_entry(entry, cleaned, cad, champ_rec):
         "hi": round(point + champ_rec["err_hi"], 4),
         "unit": ind.unit, "value_format": ind.value_format,
         "prev_value": values[-1],
-        "prev_period": cleaned[-1][0],  # date of prev_value -> the "as of" stamp
-
         "why": explain.why(name, cad, values, ind.short),
         "implied_status": implied_status, "current_status": current_status,
         "descriptive": entry.descriptive,    # carries no badge (info / neutral lens)
@@ -160,6 +158,13 @@ def _make_open_entry(entry, cleaned, cad, champ_rec):
         "href": brief.lens_href(entry.category, entry.lens_id),
         "grade": None,
     }
+    # The "as of" stamp is the date of prev_value. Daily series are resampled to a
+    # weekly Friday that can be forward-dated and disagrees with the lens card's real
+    # latest date, so omit it there — predict.js then shows "Now X -> next print"
+    # without the stamp (its degrade-safe path). Monthly/quarterly/weekly dates are real.
+    if cad != "daily":
+        out["prev_period"] = cleaned[-1][0]
+    return out
 
 
 def _check_revisions(pred_dir, entry, cleaned, graded_rows):

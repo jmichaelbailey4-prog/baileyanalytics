@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-26T16:42:34Z",
+  "generated_at": "2026-06-26T17:25:04Z",
   "taxonomy": {
     "intro": "Every signal on the site is read by a fixed, documented rule applied to the latest numbers \u2014 never a human judgement call. Here is exactly how each reading becomes the badge you see. There are four kinds of signal:",
     "severity": "Severity \u2014 most signals. A reading maps to one of four badges: ok, watch, elevated, or alert. The thresholds below are the real numbers the code uses; the marker on each lens page shows where the latest reading falls.",
@@ -3370,12 +3370,12 @@
           "hi": 200
         },
         {
-          "status": "elevated",
+          "status": "watch",
           "lo": 200,
           "hi": 300
         },
         {
-          "status": "alert",
+          "status": "watch",
           "lo": 300,
           "hi": null
         }

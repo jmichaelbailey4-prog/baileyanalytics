@@ -72,5 +72,28 @@ class TestSegmentRanges(unittest.TestCase):
         self.assertEqual(r[3], {"status": "alert", "lo": 7.5, "hi": None})
 
 
+class TestCap(unittest.TestCase):
+    """A capped rule (e.g. GEPU's epu_band(cap='watch')) can never show a badge
+    worse than its cap — segment_ranges and status_at must honor that, or the
+    methodology page / strip would paint unreachable elevated/alert bands."""
+    def _capped(self):
+        return bands.BandSpec(kind="level", unit="", edges=(120, 200, 300),
+                              segments=("ok", "watch", "elevated", "alert"), cap="watch")
+
+    def test_segment_ranges_caps_status(self):
+        statuses = [seg["status"] for seg in bands.segment_ranges(self._capped())]
+        self.assertEqual(statuses, ["ok", "watch", "watch", "watch"])
+
+    def test_status_at_caps(self):
+        self.assertEqual(bands.status_at(self._capped(), 371), "watch")
+
+    def test_no_cap_is_unchanged(self):
+        s = bands.BandSpec(kind="level", unit="%", edges=(2.5, 4.0),
+                           segments=("ok", "watch", "elevated"))
+        self.assertEqual([x["status"] for x in bands.segment_ranges(s)],
+                         ["ok", "watch", "elevated"])
+        self.assertEqual(bands.status_at(s, 5), "elevated")
+
+
 if __name__ == "__main__":
     unittest.main()

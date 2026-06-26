@@ -28,10 +28,12 @@
     // current value (and any forecast marker) is always visible.
     const lo0 = edges[0], hi0 = edges[edges.length - 1];
     const pad = ((hi0 - lo0) || Math.abs(hi0) || 1) * 0.18;
-    // Ghost (forecast) marker only when the forecast lands on this same axis —
-    // for a yoy_computed axis the prediction is a level, not the YoY shown here.
-    const ghost = (pred && (sig.axis || {}).kind !== "yoy_computed" && pred.point != null)
-      ? pred.point : null;
+    // Ghost (forecast) marker only when the forecast lands on THIS axis — i.e. a
+    // raw level or an already-YoY series. For yoy_computed (rule derives YoY from a
+    // level) and delta_from_low (rise above a trailing low), the prediction's `point`
+    // is in different units than the strip plots, so a marker there would mislead.
+    const onAxis = ["level", "yoy"].indexOf((sig.axis || {}).kind) !== -1;
+    const ghost = (pred && onAxis && pred.point != null) ? pred.point : null;
     let dMin = lo0 - pad, dMax = hi0 + pad;
     [scaleNow, ghost].forEach(v => {
       if (v != null) { dMin = Math.min(dMin, v - pad * 0.5); dMax = Math.max(dMax, v + pad * 0.5); }
@@ -46,9 +48,9 @@
       bars += `<span class="scale-seg ${esc(s.status)}" style="left:${left}%;width:${Math.max(right - left, 0)}%"></span>`;
     });
     const nowX = pos(scaleNow);
-    let marks = `<span class="scale-mark" style="left:${nowX}%"></span>`;
+    let marks = `<span class="scale-mark" aria-hidden="true" style="left:${nowX}%"></span>`;
     if (ghost != null) {
-      marks += `<span class="scale-ghost" style="left:${pos(ghost)}%" title="forecast ~${esc(fmtVal(ghost, unit, vf))}"></span>`;
+      marks += `<span class="scale-ghost" aria-hidden="true" style="left:${pos(ghost)}%" title="forecast ~${esc(fmtVal(ghost, unit, vf))}"></span>`;
     }
     const labelX = clamp(nowX, 12, 88);
     const edgesTxt = edges.map(e => esc(fmtVal(e, unit, vf))).join(" · ");
@@ -57,7 +59,7 @@
       <div class="scale-head"><span class="scale-lab">How we score this</span>
         <a class="scale-link" href="${esc(href)}">full methodology &rarr;</a></div>
       <div class="scale-track">
-        <div class="scale-bar" aria-hidden="true">${bars}${marks}</div>
+        <div class="scale-bar" aria-hidden="true">${bars}</div>${marks}
         <div class="scale-nowrap"><span class="scale-now" style="left:${labelX}%">now <b>${esc(fmtVal(scaleNow, unit, vf))}</b></span></div>
       </div>
       <div class="scale-edges">bands: ${edgesTxt}${ghostTxt}</div>
