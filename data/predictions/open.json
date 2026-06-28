@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-26T19:13:22Z",
+  "generated_at": "2026-06-28T14:52:13Z",
   "predictions": [
     {
       "id": "economic/recession-watch/yield-curve@2026-07-03",
@@ -556,6 +556,36 @@
       "lens_title": "Fiscal Health",
       "href": "/dashboards/fiscal-health.html",
       "grade": null
+    },
+    {
+      "id": "economic/fiscal-health/interest-burden@2026-04-01",
+      "key": "economic/fiscal-health/interest-burden",
+      "category": "economic",
+      "lens": "fiscal-health",
+      "indicator": "interest-burden",
+      "series_id": "INTEREST_RECEIPTS_SHARE",
+      "horizon": "next-print",
+      "target_period": "2026-04-01",
+      "due": "2026-07-28",
+      "made_at": "2026-06-28T14:51:47Z",
+      "model": "drift@1",
+      "point": 20.6785,
+      "lo": 20.082,
+      "hi": 21.857,
+      "unit": "%",
+      "value_format": "decimal",
+      "prev_value": 20.6,
+      "why": "This projects the series' long-run average step from today's level.",
+      "implied_status": "elevated",
+      "current_status": "elevated",
+      "descriptive": false,
+      "market_price": false,
+      "title": "Interest Cost \u00b7 share of federal revenue",
+      "short": "Interest/revenue",
+      "lens_title": "Fiscal Health",
+      "href": "/dashboards/fiscal-health.html",
+      "grade": null,
+      "prev_period": "2026-01-01"
     },
     {
       "id": "economic/fiscal-health/receipts@2026-04-01",
