@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-28T08:43:06Z",
+  "generated_at": "2026-06-27T11:17:20Z",
   "transitions": [],
   "top_moves": [
     {
@@ -554,7 +554,7 @@
   "verdict": {
     "status": "watch",
     "shape": "contained-pressure",
-    "sentence": "The economy is holding up, but not without strain: energy and commodity costs are squeezing budgets and the housing market is out of balance, while banks are solid and markets are calm.",
+    "sentence": "Pressure is real but contained: energy and commodity costs are squeezing budgets and the housing market is out of balance; meanwhile banks are solid and markets are calm.",
     "short": "Holding up, but energy and commodity costs are squeezing budgets."
   },
   "watching": [

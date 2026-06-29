@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-06-26T19:13:22Z",
+  "generated_at": "2026-06-29T10:25:42Z",
   "since": "2026-06-12T14:20:31Z",
-  "graded": 68,
-  "coverage": 23,
-  "calibration": 0.8088235294117647,
+  "graded": 69,
+  "coverage": 24,
+  "calibration": 0.7971014492753623,
   "direction": 0.5333333333333333,
   "status": 0.8666666666666667,
   "skill": 0.0018284789729852147,
@@ -57,9 +57,9 @@
       "skill": 0.07899923069204229
     },
     "markets": {
-      "graded": 20,
-      "coverage": 11,
-      "calibration": 0.75,
+      "graded": 21,
+      "coverage": 12,
+      "calibration": 0.7142857142857143,
       "direction": 0.7777777777777778,
       "status": 1.0,
       "skill": 0.11331872766767681
