@@ -1360,7 +1360,7 @@
       "direction_hit": true,
       "status_hit": true,
       "naive_error": 1.0800000000000018,
-      "revised_to": 18.89
+      "revised_to": 18.41
     }
   },
   {
@@ -1398,7 +1398,7 @@
       "direction_hit": true,
       "status_hit": true,
       "naive_error": 0.010000000000000231,
-      "revised_to": 2.78
+      "revised_to": 2.83
     }
   },
   {
@@ -1436,7 +1436,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 0.010000000000000009,
-      "revised_to": 0.76
+      "revised_to": 0.77
     }
   },
   {
@@ -2554,7 +2554,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 158.4000000000001,
-      "revised_to": null
+      "revised_to": 4037.6
     }
   }
 ]

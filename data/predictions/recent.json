@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-29T10:25:42Z",
+  "generated_at": "2026-06-29T16:41:25Z",
   "last": {
     "business/business-credit/ci-loan-growth": {
       "id": "business/business-credit/ci-loan-growth@2026-05-01",
@@ -256,7 +256,7 @@
         "direction_hit": true,
         "status_hit": true,
         "naive_error": 1.0800000000000018,
-        "revised_to": 18.89
+        "revised_to": 18.41
       }
     },
     "markets/market-risk-sentiment/hy-spread": {
@@ -294,7 +294,7 @@
         "direction_hit": true,
         "status_hit": true,
         "naive_error": 0.010000000000000231,
-        "revised_to": 2.78
+        "revised_to": 2.83
       }
     },
     "markets/market-risk-sentiment/ig-spread": {
@@ -332,7 +332,7 @@
         "direction_hit": false,
         "status_hit": true,
         "naive_error": 0.010000000000000009,
-        "revised_to": 0.76
+        "revised_to": 0.77
       }
     },
     "energy/energy-oil-fuels/gasoline": {
@@ -1048,7 +1048,7 @@
         "direction_hit": false,
         "status_hit": true,
         "naive_error": 158.4000000000001,
-        "revised_to": null
+        "revised_to": 4037.6
       }
     },
     "markets/market-liquidity/reverse-repo": {
@@ -1824,7 +1824,7 @@
         "direction_hit": false,
         "status_hit": true,
         "naive_error": 158.4000000000001,
-        "revised_to": null
+        "revised_to": 4037.6
       }
     },
     {
@@ -2942,7 +2942,7 @@
         "direction_hit": false,
         "status_hit": true,
         "naive_error": 0.010000000000000009,
-        "revised_to": 0.76
+        "revised_to": 0.77
       }
     },
     {
@@ -2980,7 +2980,7 @@
         "direction_hit": true,
         "status_hit": true,
         "naive_error": 0.010000000000000231,
-        "revised_to": 2.78
+        "revised_to": 2.83
       }
     },
     {
@@ -3018,7 +3018,7 @@
         "direction_hit": true,
         "status_hit": true,
         "naive_error": 1.0800000000000018,
-        "revised_to": 18.89
+        "revised_to": 18.41
       }
     },
     {
