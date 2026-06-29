@@ -2,7 +2,7 @@
   "id": "bank-asset-quality",
   "title": "Asset Quality",
   "accent": "#FBBF24",
-  "last_updated": "2026-06-08T00:27:56Z",
+  "last_updated": "2026-06-29T17:22:40Z",
   "status": "ok",
   "headline_read": "Bank loan quality is strong \u2014 few loans are going bad.",
   "recessions": [],
@@ -346,7 +346,8 @@
       "context": "The share of all bank loans that are 90+ days late or no longer accruing interest \u2014 the broadest gauge of credit going bad.",
       "read": "Just 0.98% of loans are 90+ days past due \u2014 low by historical standards.",
       "signal_status": "ok",
-      "value_format": "decimal"
+      "value_format": "decimal",
+      "scale_now": 0.9766
     },
     {
       "id": "charge-offs",
@@ -687,7 +688,8 @@
       "context": "Loans banks have given up on and written off as losses, as a share of total loans \u2014 money that's gone, not just late.",
       "read": "Banks are writing off 0.57% of loans as losses \u2014 a benign level.",
       "signal_status": "ok",
-      "value_format": "decimal"
+      "value_format": "decimal",
+      "scale_now": 0.5672
     }
   ],
   "tiers": {
@@ -759,13 +761,6 @@
           "status": "elevated"
         },
         {
-          "name": "STATE STREET BANK&TRUST CO",
-          "location": "BOSTON, MA",
-          "asset": "$386.5B",
-          "value": "9.34%",
-          "status": "elevated"
-        },
-        {
           "name": "SIGNATURE BANK",
           "location": "ROSEMONT, IL",
           "asset": "$2.0B",
@@ -819,6 +814,13 @@
           "location": "BOISE, ID",
           "asset": "$1.5B",
           "value": "5.47%",
+          "status": "elevated"
+        },
+        {
+          "name": "CFG BANK",
+          "location": "LUTHERVILLE, MD",
+          "asset": "$5.7B",
+          "value": "4.93%",
           "status": "elevated"
         }
       ]

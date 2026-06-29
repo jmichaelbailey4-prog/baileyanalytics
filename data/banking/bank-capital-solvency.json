@@ -2,7 +2,7 @@
   "id": "bank-capital-solvency",
   "title": "Capital & Solvency",
   "accent": "#38BDF8",
-  "last_updated": "2026-06-08T00:52:06Z",
+  "last_updated": "2026-06-29T17:22:40Z",
   "status": "ok",
   "headline_read": "Banks are well-capitalized.",
   "recessions": [],
@@ -346,7 +346,8 @@
       "context": "Capital measured against risk-weighted assets \u2014 the regulators' headline solvency gauge. Banks are 'well-capitalized' above 10%.",
       "read": "The total risk-based capital ratio is 15.2% \u2014 comfortably 'well-capitalized'.",
       "signal_status": "ok",
-      "value_format": "decimal"
+      "value_format": "decimal",
+      "scale_now": 15.1605
     },
     {
       "id": "equity-assets",
@@ -687,7 +688,8 @@
       "context": "Shareholder equity as a share of total assets \u2014 a simpler, unweighted view of the cushion between losses and insolvency.",
       "read": "Equity is 10.0% of assets \u2014 a healthy capital cushion.",
       "signal_status": "ok",
-      "value_format": "decimal"
+      "value_format": "decimal",
+      "scale_now": 9.9747
     }
   ],
   "tiers": {

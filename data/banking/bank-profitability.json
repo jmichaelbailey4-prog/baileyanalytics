@@ -2,7 +2,7 @@
   "id": "bank-profitability",
   "title": "Bank Profitability",
   "accent": "#34D399",
-  "last_updated": "2026-06-08T04:32:55Z",
+  "last_updated": "2026-06-29T17:22:40Z",
   "status": "ok",
   "headline_read": "Banks are solidly profitable.",
   "recessions": [],
@@ -346,7 +346,8 @@
       "context": "The spread banks earn between what they make on loans and pay on deposits, relative to assets \u2014 the core engine of bank earnings.",
       "read": "Net interest margin is 3.27% \u2014 a healthy spread on lending.",
       "signal_status": "ok",
-      "value_format": "decimal"
+      "value_format": "decimal",
+      "scale_now": 3.2685
     },
     {
       "id": "roa",
@@ -687,7 +688,8 @@
       "context": "Industry profit measured against total assets \u2014 the standard yardstick for how efficiently banks turn assets into earnings.",
       "read": "Banks earned 1.25% on their assets \u2014 solid profitability.",
       "signal_status": "ok",
-      "value_format": "decimal"
+      "value_format": "decimal",
+      "scale_now": 1.255
     }
   ],
   "tiers": {
