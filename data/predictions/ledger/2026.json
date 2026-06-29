@@ -1020,7 +1020,7 @@
       "direction_hit": true,
       "status_hit": true,
       "naive_error": 162.60000000000036,
-      "revised_to": 4096.3
+      "revised_to": 4078.7
     }
   },
   {
@@ -1512,7 +1512,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 2299.029999999999,
-      "revised_to": 59964.66
+      "revised_to": 59367.05
     }
   },
   {
@@ -1550,7 +1550,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 66.97000000000003,
-      "revised_to": 1571.63
+      "revised_to": 1566.4
     }
   },
   {
@@ -2516,6 +2516,44 @@
       "direction_hit": true,
       "status_hit": true,
       "naive_error": 0.09999999999999964,
+      "revised_to": null
+    }
+  },
+  {
+    "id": "markets/market-scoreboard/gold@2026-07-03",
+    "key": "markets/market-scoreboard/gold",
+    "category": "markets",
+    "lens": "market-scoreboard",
+    "indicator": "gold",
+    "series_id": "XAUUSD",
+    "horizon": "next-print",
+    "target_period": "2026-07-03",
+    "due": "2026-07-08",
+    "made_at": "2026-06-22T18:59:34Z",
+    "model": "ets@1",
+    "point": 4213.7137,
+    "lo": 4072.7674,
+    "hi": 4330.6096,
+    "unit": "$",
+    "value_format": "thousands",
+    "prev_value": 4210.5,
+    "why": "This projects the recent level and trend forward one week.",
+    "implied_status": "up",
+    "current_status": "up",
+    "descriptive": true,
+    "market_price": true,
+    "title": "Gold",
+    "short": "Gold",
+    "lens_title": "Asset-Class Scoreboard",
+    "href": "/dashboards/markets/scoreboard.html",
+    "grade": {
+      "actual": 4052.1,
+      "graded_at": "2026-06-29T10:25:18Z",
+      "hit": false,
+      "abs_error": 161.61370000000034,
+      "direction_hit": false,
+      "status_hit": true,
+      "naive_error": 158.4000000000001,
       "revised_to": null
     }
   }
