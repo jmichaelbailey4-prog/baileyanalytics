@@ -73,7 +73,7 @@
         "direction_hit": false,
         "status_hit": true,
         "naive_error": 0.040000000000000036,
-        "revised_to": 4.41
+        "revised_to": 4.4
       }
     },
     "economic/cost-of-money/treasury-2y": {
@@ -111,7 +111,7 @@
         "direction_hit": false,
         "status_hit": true,
         "naive_error": 0.16999999999999993,
-        "revised_to": 4.11
+        "revised_to": 4.09
       }
     },
     "economic/cost-of-money/rate-expectations": {
@@ -149,7 +149,7 @@
         "direction_hit": false,
         "status_hit": true,
         "naive_error": 0.16999999999999998,
-        "revised_to": 0.48
+        "revised_to": 0.46
       }
     },
     "economic/recession-watch/jobless-claims": {
