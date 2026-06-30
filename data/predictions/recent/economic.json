@@ -261,6 +261,42 @@
         "naive_error": 0.30569999999999986,
         "revised_to": null
       }
+    },
+    "economic/job-market/job-openings": {
+      "id": "economic/job-market/job-openings@2026-05-01",
+      "key": "economic/job-market/job-openings",
+      "category": "economic",
+      "lens": "job-market",
+      "indicator": "job-openings",
+      "series_id": "JTSJOL",
+      "horizon": "next-print",
+      "target_period": "2026-05-01",
+      "due": "2026-06-15",
+      "made_at": "2026-06-12T14:20:32Z",
+      "model": "naive@1",
+      "point": 7.6,
+      "lo": 7.2,
+      "hi": 8.2,
+      "unit": "M",
+      "value_format": "decimal",
+      "prev_value": 7.6,
+      "why": "We expect roughly the last value \u2014 this series rarely rewards cleverness.",
+      "implied_status": "ok",
+      "current_status": "ok",
+      "title": "Job Openings (JOLTS)",
+      "short": "Openings",
+      "lens_title": "The Job Market",
+      "href": "/dashboards/job-market.html",
+      "grade": {
+        "actual": 7.6,
+        "graded_at": "2026-06-30T15:34:04Z",
+        "hit": true,
+        "abs_error": 0.0,
+        "direction_hit": true,
+        "status_hit": true,
+        "naive_error": 0.0,
+        "revised_to": null
+      }
     }
   }
 }

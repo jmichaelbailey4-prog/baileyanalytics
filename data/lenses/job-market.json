@@ -2,7 +2,7 @@
   "id": "job-market",
   "title": "The Job Market",
   "accent": "#38BDF8",
-  "last_updated": "2026-06-26T19:11:59Z",
+  "last_updated": "2026-06-30T15:32:54Z",
   "status": "ok",
   "headline_read": "The job market is healthy \u2014 hiring and pay are holding up.",
   "recessions": [
@@ -1979,10 +1979,6 @@
       "series_id": "JTSJOL",
       "observations": [
         {
-          "date": "2006-05-01",
-          "value": "4.5"
-        },
-        {
           "date": "2006-06-01",
           "value": "4.6"
         },
@@ -2937,14 +2933,18 @@
         {
           "date": "2026-04-01",
           "value": "7.6"
+        },
+        {
+          "date": "2026-05-01",
+          "value": "7.6"
         }
       ],
       "latest": {
-        "date": "2026-04-01",
+        "date": "2026-05-01",
         "value": "7.6"
       },
       "context": "The number of unfilled positions employers are trying to hire for \u2014 a direct read on how strong labor demand is.",
-      "read": "7.6 million open jobs, rising as employers compete for workers.",
+      "read": "7.6 million open jobs, holding roughly steady.",
       "signal_status": "ok",
       "value_format": "decimal",
       "scale_now": 7.6

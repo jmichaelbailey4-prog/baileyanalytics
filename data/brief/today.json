@@ -1,6 +1,17 @@
 {
-  "generated_at": "2026-06-30T08:58:59Z",
-  "transitions": [],
+  "generated_at": "2026-06-30T15:34:43Z",
+  "transitions": [
+    {
+      "lens_id": "energy-oil-fuels",
+      "lens_title": "Oil & Fuels",
+      "category": "energy",
+      "href": "/dashboards/energy/oil-fuels.html",
+      "from_status": "elevated",
+      "to_status": "watch",
+      "direction": "improving",
+      "headline": "Fuel costs are climbing."
+    }
+  ],
   "top_moves": [
     {
       "lens_id": "energy-commodities",
@@ -221,61 +232,6 @@
       "delta": "1.00 months",
       "dir": "up",
       "why": "Months' supply: a fresh high in this view."
-    },
-    {
-      "lens_id": "market-scoreboard",
-      "lens_title": "Asset-Class Scoreboard",
-      "category": "markets",
-      "href": "/dashboards/markets/scoreboard.html",
-      "headline": "How the major asset classes are moving right now.",
-      "accent": "#22D3EE",
-      "sparkline": [
-        7230.12,
-        7200.75,
-        7259.22,
-        7365.12,
-        7337.11,
-        7398.93,
-        7412.84,
-        7400.96,
-        7444.25,
-        7501.24,
-        7408.5,
-        7403.05,
-        7353.61,
-        7432.97,
-        7445.72,
-        7473.47,
-        7519.12,
-        7520.36,
-        7563.63,
-        7580.06,
-        7599.96,
-        7609.78,
-        7553.68,
-        7584.31,
-        7383.74,
-        7405.73,
-        7386.65,
-        7266.99,
-        7394.3,
-        7431.46,
-        7554.29,
-        7511.35,
-        7420.1,
-        7500.58,
-        7472.79,
-        7365.46,
-        7358.22,
-        7357.49,
-        7354.02,
-        7440.43
-      ],
-      "stat_label": "S&P 500",
-      "stat_value": "7,440",
-      "delta": "86",
-      "dir": "up",
-      "why": ""
     }
   ],
   "lenses": [
@@ -452,8 +408,8 @@
       "lens_title": "Oil & Fuels",
       "category": "energy",
       "href": "/dashboards/energy/oil-fuels.html",
-      "status": "elevated",
-      "headline": "Fuel costs are well above last year."
+      "status": "watch",
+      "headline": "Fuel costs are climbing."
     },
     {
       "lens_id": "energy-natural-gas",
@@ -546,32 +502,18 @@
   ],
   "status_counts": {
     "ok": 16,
-    "watch": 6,
-    "elevated": 6,
+    "watch": 7,
+    "elevated": 5,
     "alert": 3,
     "neutral": 2
   },
   "verdict": {
     "status": "watch",
     "shape": "contained-pressure",
-    "sentence": "The economy is holding up, but not without strain: energy and commodity costs are squeezing budgets and the housing market is out of balance, while banks are solid and markets are calm.",
-    "short": "Holding up, but energy and commodity costs are squeezing budgets."
+    "sentence": "The economy is holding up, but not without strain: the housing market is out of balance and household finances are stretched thin, while banks are solid and markets are calm.",
+    "short": "Holding up, but the housing market is out of balance."
   },
   "watching": [
-    {
-      "key": "energy/energy-oil-fuels/diesel",
-      "indicator": "diesel",
-      "lens": "energy-oil-fuels",
-      "category": "energy",
-      "title": "Retail Diesel \u00b7 On-Highway",
-      "lens_title": "Oil & Fuels",
-      "due": "2026-07-04",
-      "point_fmt": "$4.72",
-      "implied_status": "watch",
-      "current_status": "elevated",
-      "change": true,
-      "href": "/dashboards/energy/oil-fuels.html"
-    },
     {
       "key": "housing/housing-supply-construction/months-supply",
       "indicator": "months-supply",
@@ -599,6 +541,20 @@
       "current_status": "watch",
       "change": false,
       "href": "/dashboards/global/uncertainty.html"
+    },
+    {
+      "key": "housing/housing-home-prices/case-shiller",
+      "indicator": "case-shiller",
+      "lens": "housing-home-prices",
+      "category": "housing",
+      "title": "Case-Shiller Home Prices \u00b7 year-over-year",
+      "lens_title": "Home-Price Stability",
+      "due": "2026-05-15",
+      "point_fmt": "0.60%",
+      "implied_status": "ok",
+      "current_status": "ok",
+      "change": false,
+      "href": "/dashboards/housing/home-prices.html"
     }
   ],
   "pressure": [
@@ -641,14 +597,6 @@
       "href": "/dashboards/fiscal-health.html",
       "status": "elevated",
       "headline": "The U.S. is borrowing heavily \u2014 debt and interest costs are climbing."
-    },
-    {
-      "lens_id": "energy-oil-fuels",
-      "lens_title": "Oil & Fuels",
-      "category": "energy",
-      "href": "/dashboards/energy/oil-fuels.html",
-      "status": "elevated",
-      "headline": "Fuel costs are well above last year."
     },
     {
       "lens_id": "housing-affordability",
@@ -713,6 +661,14 @@
       "href": "/dashboards/business/credit.html",
       "status": "watch",
       "headline": "Business credit bears watching \u2014 conditions are tightening at the margin."
+    },
+    {
+      "lens_id": "energy-oil-fuels",
+      "lens_title": "Oil & Fuels",
+      "category": "energy",
+      "href": "/dashboards/energy/oil-fuels.html",
+      "status": "watch",
+      "headline": "Fuel costs are climbing."
     },
     {
       "lens_id": "energy-electricity",

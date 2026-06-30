@@ -281,16 +281,16 @@
       "grade": null
     },
     {
-      "id": "economic/job-market/job-openings@2026-05-01",
+      "id": "economic/job-market/job-openings@2026-06-01",
       "key": "economic/job-market/job-openings",
       "category": "economic",
       "lens": "job-market",
       "indicator": "job-openings",
       "series_id": "JTSJOL",
       "horizon": "next-print",
-      "target_period": "2026-05-01",
-      "due": "2026-06-15",
-      "made_at": "2026-06-12T14:20:32Z",
+      "target_period": "2026-06-01",
+      "due": "2026-07-15",
+      "made_at": "2026-06-30T15:34:04Z",
       "model": "naive@1",
       "point": 7.6,
       "lo": 7.2,
@@ -301,11 +301,14 @@
       "why": "We expect roughly the last value \u2014 this series rarely rewards cleverness.",
       "implied_status": "ok",
       "current_status": "ok",
+      "descriptive": false,
+      "market_price": false,
       "title": "Job Openings (JOLTS)",
       "short": "Openings",
       "lens_title": "The Job Market",
       "href": "/dashboards/job-market.html",
-      "grade": null
+      "grade": null,
+      "prev_period": "2026-05-01"
     },
     {
       "id": "economic/job-market/wage-growth@2026-06-01",
