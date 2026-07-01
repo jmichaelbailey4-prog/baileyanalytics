@@ -2554,7 +2554,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 158.4000000000001,
-      "revised_to": 4041.8
+      "revised_to": 3991.2
     }
   },
   {
@@ -2592,7 +2592,7 @@
       "direction_hit": false,
       "status_hit": false,
       "naive_error": 0.010000000000000009,
-      "revised_to": null
+      "revised_to": 0.3
     }
   },
   {
@@ -2630,7 +2630,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 32.35999999999967,
-      "revised_to": null
+      "revised_to": 7499.36
     }
   },
   {
@@ -2668,7 +2668,7 @@
       "direction_hit": true,
       "status_hit": true,
       "naive_error": 3804.820000000007,
-      "revised_to": null
+      "revised_to": 58585.96
     }
   },
   {
@@ -2706,7 +2706,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 116.17000000000007,
-      "revised_to": null
+      "revised_to": 1571.71
     }
   },
   {
@@ -2744,7 +2744,7 @@
       "direction_hit": true,
       "status_hit": true,
       "naive_error": 0.379,
-      "revised_to": null
+      "revised_to": 26.9
     }
   },
   {
@@ -3198,6 +3198,120 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 0.02939999999999987,
+      "revised_to": null
+    }
+  },
+  {
+    "id": "economic/cost-of-money/treasury-10y@2026-07-03",
+    "key": "economic/cost-of-money/treasury-10y",
+    "category": "economic",
+    "lens": "cost-of-money",
+    "indicator": "treasury-10y",
+    "series_id": "DGS10",
+    "horizon": "next-print",
+    "target_period": "2026-07-03",
+    "due": "2026-07-08",
+    "made_at": "2026-06-24T13:56:20Z",
+    "model": "naive@1",
+    "point": 4.51,
+    "lo": 4.4,
+    "hi": 4.63,
+    "unit": "%",
+    "value_format": "decimal",
+    "prev_value": 4.51,
+    "why": "We expect roughly the last value \u2014 this series rarely rewards cleverness.",
+    "implied_status": "ok",
+    "current_status": "ok",
+    "descriptive": false,
+    "market_price": false,
+    "title": "10-Year Treasury Yield",
+    "short": "10-year",
+    "lens_title": "The Cost of Money",
+    "href": "/dashboards/cost-of-money.html",
+    "grade": {
+      "actual": 4.38,
+      "graded_at": "2026-07-01T09:33:31Z",
+      "hit": false,
+      "abs_error": 0.1299999999999999,
+      "direction_hit": false,
+      "status_hit": true,
+      "naive_error": 0.1299999999999999,
+      "revised_to": null
+    }
+  },
+  {
+    "id": "economic/cost-of-money/treasury-2y@2026-07-03",
+    "key": "economic/cost-of-money/treasury-2y",
+    "category": "economic",
+    "lens": "cost-of-money",
+    "indicator": "treasury-2y",
+    "series_id": "DGS2",
+    "horizon": "next-print",
+    "target_period": "2026-07-03",
+    "due": "2026-07-08",
+    "made_at": "2026-06-24T13:56:21Z",
+    "model": "naive@1",
+    "point": 4.24,
+    "lo": 4.096,
+    "hi": 4.39,
+    "unit": "%",
+    "value_format": "decimal",
+    "prev_value": 4.24,
+    "why": "2-year: up 2 straight weeks. We expect roughly the last value \u2014 this series rarely rewards cleverness.",
+    "implied_status": "ok",
+    "current_status": "ok",
+    "descriptive": false,
+    "market_price": false,
+    "title": "2-Year Treasury Yield",
+    "short": "2-year",
+    "lens_title": "The Cost of Money",
+    "href": "/dashboards/cost-of-money.html",
+    "grade": {
+      "actual": 4.1,
+      "graded_at": "2026-07-01T09:33:32Z",
+      "hit": true,
+      "abs_error": 0.14000000000000057,
+      "direction_hit": false,
+      "status_hit": false,
+      "naive_error": 0.14000000000000057,
+      "revised_to": null
+    }
+  },
+  {
+    "id": "economic/cost-of-money/rate-expectations@2026-07-03",
+    "key": "economic/cost-of-money/rate-expectations",
+    "category": "economic",
+    "lens": "cost-of-money",
+    "indicator": "rate-expectations",
+    "series_id": "DGS2_FEDFUNDS_SPREAD",
+    "horizon": "next-print",
+    "target_period": "2026-07-03",
+    "due": "2026-07-08",
+    "made_at": "2026-06-24T13:56:21Z",
+    "model": "naive@1",
+    "point": 0.61,
+    "lo": 0.48,
+    "hi": 0.767,
+    "unit": "%",
+    "value_format": "decimal",
+    "prev_value": 0.61,
+    "why": "2y vs Fed: up 2 straight weeks. We expect roughly the last value \u2014 this series rarely rewards cleverness.",
+    "implied_status": "info",
+    "current_status": "info",
+    "descriptive": true,
+    "market_price": false,
+    "title": "Rate Expectations \u00b7 2-Year minus Fed Funds",
+    "short": "2y vs Fed",
+    "lens_title": "The Cost of Money",
+    "href": "/dashboards/cost-of-money.html",
+    "grade": {
+      "actual": 0.47,
+      "graded_at": "2026-07-01T09:33:32Z",
+      "hit": false,
+      "abs_error": 0.14,
+      "direction_hit": false,
+      "status_hit": true,
+      "naive_error": 0.14,
       "revised_to": null
     }
   }

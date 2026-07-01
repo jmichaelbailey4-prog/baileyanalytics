@@ -301,7 +301,7 @@
         "direction_hit": false,
         "status_hit": true,
         "naive_error": 158.4000000000001,
-        "revised_to": 4041.8
+        "revised_to": 3991.2
       }
     },
     "markets/market-liquidity/reverse-repo": {
@@ -339,7 +339,7 @@
         "direction_hit": true,
         "status_hit": true,
         "naive_error": 0.379,
-        "revised_to": null
+        "revised_to": 26.9
       }
     },
     "markets/market-scoreboard/sp500": {
@@ -377,7 +377,7 @@
         "direction_hit": false,
         "status_hit": true,
         "naive_error": 32.35999999999967,
-        "revised_to": null
+        "revised_to": 7499.36
       }
     },
     "markets/market-scoreboard/btc": {
@@ -415,7 +415,7 @@
         "direction_hit": true,
         "status_hit": true,
         "naive_error": 3804.820000000007,
-        "revised_to": null
+        "revised_to": 58585.96
       }
     },
     "markets/market-scoreboard/eth": {
@@ -453,7 +453,7 @@
         "direction_hit": false,
         "status_hit": true,
         "naive_error": 116.17000000000007,
-        "revised_to": null
+        "revised_to": 1571.71
       }
     },
     "markets/market-liquidity/m2-growth": {
