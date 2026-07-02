@@ -2,7 +2,7 @@
   "id": "business-credit",
   "title": "Business Credit",
   "accent": "#F87171",
-  "last_updated": "2026-06-26T19:12:51Z",
+  "last_updated": "2026-07-02T08:43:50Z",
   "status": "watch",
   "headline_read": "Business credit bears watching \u2014 conditions are tightening at the margin.",
   "recessions": [
@@ -24,10 +24,6 @@
       "color": "#F87171",
       "series_id": "BAA10YM",
       "observations": [
-        {
-          "date": "2006-06-01",
-          "value": "1.67"
-        },
         {
           "date": "2006-07-01",
           "value": "1.67"
@@ -983,17 +979,21 @@
         {
           "date": "2026-05-01",
           "value": "1.62"
+        },
+        {
+          "date": "2026-06-01",
+          "value": "1.53"
         }
       ],
       "latest": {
-        "date": "2026-05-01",
-        "value": "1.62"
+        "date": "2026-06-01",
+        "value": "1.53"
       },
       "context": "The extra yield investors demand to hold Moody's Baa-rated corporate bonds over 10-year Treasuries \u2014 the price of ordinary corporate credit risk, with history back to 1953. 2008 peaked near 6 points. (A different index family from the ICE BofA spreads on the Markets risk lens.)",
-      "read": "The Baa spread is 1.62 points \u2014 corporate credit is priced calm.",
+      "read": "The Baa spread is 1.53 points \u2014 corporate credit is priced calm.",
       "signal_status": "ok",
       "value_format": "decimal",
-      "scale_now": 1.62
+      "scale_now": 1.53
     },
     {
       "id": "lending-standards",

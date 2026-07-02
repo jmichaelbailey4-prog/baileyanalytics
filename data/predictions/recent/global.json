@@ -187,6 +187,44 @@
         "naive_error": 0.02939999999999987,
         "revised_to": null
       }
+    },
+    "global/global-uncertainty/us-epu": {
+      "id": "global/global-uncertainty/us-epu@2026-06",
+      "key": "global/global-uncertainty/us-epu",
+      "category": "global",
+      "lens": "global-uncertainty",
+      "indicator": "us-epu",
+      "series_id": "USEPU",
+      "horizon": "next-print",
+      "target_period": "2026-06",
+      "due": "2026-07-15",
+      "made_at": "2026-06-16T16:24:37Z",
+      "model": "sarima@1",
+      "point": 272.4089,
+      "lo": 208.6569,
+      "hi": 354.6535,
+      "unit": "",
+      "value_format": "thousands",
+      "prev_value": 296.08,
+      "why": "US uncertainty: down 2 straight months. This projects recent momentum, adjusted for the series' typical reversion.",
+      "implied_status": "elevated",
+      "current_status": "elevated",
+      "descriptive": false,
+      "market_price": false,
+      "title": "U.S. Economic Policy Uncertainty",
+      "short": "US uncertainty",
+      "lens_title": "Uncertainty & Risk",
+      "href": "/dashboards/global/uncertainty.html",
+      "grade": {
+        "actual": 243.73,
+        "graded_at": "2026-07-02T08:44:27Z",
+        "hit": true,
+        "abs_error": 28.678900000000027,
+        "direction_hit": true,
+        "status_hit": true,
+        "naive_error": 52.349999999999994,
+        "revised_to": null
+      }
     }
   }
 }

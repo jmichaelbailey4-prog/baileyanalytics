@@ -1,20 +1,20 @@
 {
-  "generated_at": "2026-07-01T15:48:29Z",
+  "generated_at": "2026-07-02T08:44:30Z",
   "since": "2026-06-12T14:20:31Z",
-  "graded": 90,
-  "coverage": 34,
-  "calibration": 0.7888888888888889,
-  "direction": 0.5,
-  "status": 0.8571428571428571,
-  "skill": 0.0018374683796448243,
+  "graded": 97,
+  "coverage": 37,
+  "calibration": 0.7938144329896907,
+  "direction": 0.48333333333333334,
+  "status": 0.8666666666666667,
+  "skill": 0.0034770658225959927,
   "categories": {
     "business": {
-      "graded": 4,
+      "graded": 5,
       "coverage": 0,
       "calibration": 1.0,
-      "direction": 0.5,
+      "direction": 0.4,
       "status": 1.0,
-      "skill": -0.10830985915493119
+      "skill": -0.09612500000000135
     },
     "consumer": {
       "graded": 7,
@@ -25,28 +25,28 @@
       "skill": 0.06317975781959118
     },
     "economic": {
-      "graded": 17,
+      "graded": 18,
       "coverage": 3,
-      "calibration": 0.7058823529411765,
-      "direction": 0.21428571428571427,
-      "status": 0.7857142857142857,
-      "skill": 3.0932909025338517e-06
+      "calibration": 0.7222222222222222,
+      "direction": 0.2,
+      "status": 0.8,
+      "skill": 2.6790427557488172e-06
     },
     "energy": {
-      "graded": 17,
-      "coverage": 8,
-      "calibration": 0.8823529411764706,
-      "direction": 0.6666666666666666,
-      "status": 0.8888888888888888,
-      "skill": 0.34674022066198407
+      "graded": 20,
+      "coverage": 10,
+      "calibration": 0.9,
+      "direction": 0.6,
+      "status": 0.9,
+      "skill": 0.29622964867180646
     },
     "global": {
-      "graded": 10,
+      "graded": 11,
       "coverage": 6,
-      "calibration": 0.7,
+      "calibration": 0.7272727272727273,
       "direction": 1.0,
       "status": 1.0,
-      "skill": 0.23716340337828756
+      "skill": 0.4322122129615762
     },
     "housing": {
       "graded": 6,
@@ -57,9 +57,9 @@
       "skill": 0.07899923069204229
     },
     "markets": {
-      "graded": 29,
-      "coverage": 16,
-      "calibration": 0.7586206896551724,
+      "graded": 30,
+      "coverage": 17,
+      "calibration": 0.7333333333333333,
       "direction": 0.5384615384615384,
       "status": 1.0,
       "skill": 0.09437343955349708
