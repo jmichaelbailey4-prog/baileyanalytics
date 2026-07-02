@@ -1,6 +1,17 @@
 {
-  "generated_at": "2026-07-02T08:44:30Z",
-  "transitions": [],
+  "generated_at": "2026-07-02T15:22:16Z",
+  "transitions": [
+    {
+      "lens_id": "job-market",
+      "lens_title": "The Job Market",
+      "category": "economic",
+      "href": "/dashboards/job-market.html",
+      "from_status": "ok",
+      "to_status": "watch",
+      "direction": "worsening",
+      "headline": "The job market is cooling \u2014 still solid, but losing momentum."
+    }
+  ],
   "top_moves": [
     {
       "lens_id": "energy-commodities",
@@ -221,61 +232,6 @@
       "delta": "1.00 months",
       "dir": "up",
       "why": "Months' supply: a fresh high in this view."
-    },
-    {
-      "lens_id": "business-profitability",
-      "lens_title": "Corporate Profits",
-      "category": "business",
-      "href": "/dashboards/business/profitability.html",
-      "headline": "Corporate America is profitable \u2014 earnings are growing.",
-      "accent": "#34D399",
-      "sparkline": [
-        -1.8,
-        0.8,
-        10.3,
-        13.3,
-        8.3,
-        11.0,
-        -3.2,
-        -2.9,
-        2.2,
-        -2.3,
-        8.1,
-        2.9,
-        -0.2,
-        3.6,
-        5.2,
-        -2.0,
-        -9.8,
-        22.4,
-        14.5,
-        33.9,
-        60.6,
-        16.3,
-        21.5,
-        9.1,
-        5.8,
-        2.7,
-        -2.0,
-        7.6,
-        0.6,
-        7.8,
-        16.0,
-        7.8,
-        9.2,
-        4.6,
-        10.0,
-        -1.7,
-        -3.3,
-        4.3,
-        2.8,
-        18.4
-      ],
-      "stat_label": "Profit growth",
-      "stat_value": "18.40%",
-      "delta": "15.60%",
-      "dir": "up",
-      "why": ""
     }
   ],
   "lenses": [
@@ -300,8 +256,8 @@
       "lens_title": "The Job Market",
       "category": "economic",
       "href": "/dashboards/job-market.html",
-      "status": "ok",
-      "headline": "The job market is healthy \u2014 hiring and pay are holding up."
+      "status": "watch",
+      "headline": "The job market is cooling \u2014 still solid, but losing momentum."
     },
     {
       "lens_id": "cost-of-living",
@@ -545,8 +501,8 @@
     }
   ],
   "status_counts": {
-    "ok": 16,
-    "watch": 7,
+    "ok": 15,
+    "watch": 8,
     "elevated": 5,
     "alert": 3,
     "neutral": 2
@@ -673,6 +629,14 @@
       "href": "/dashboards/cost-of-money.html",
       "status": "watch",
       "headline": "Borrowing is still expensive \u2014 rates remain elevated."
+    },
+    {
+      "lens_id": "job-market",
+      "lens_title": "The Job Market",
+      "category": "economic",
+      "href": "/dashboards/job-market.html",
+      "status": "watch",
+      "headline": "The job market is cooling \u2014 still solid, but losing momentum."
     },
     {
       "lens_id": "consumer-credit",

@@ -105,7 +105,7 @@
         "direction_hit": true,
         "status_hit": true,
         "naive_error": 0.0,
-        "revised_to": null
+        "revised_to": 10.4
       }
     },
     "business/business-investment/real-sales": {

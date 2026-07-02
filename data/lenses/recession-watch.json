@@ -2,7 +2,7 @@
   "id": "recession-watch",
   "title": "Recession Watch",
   "accent": "#F87171",
-  "last_updated": "2026-07-02T08:42:56Z",
+  "last_updated": "2026-07-02T15:20:30Z",
   "status": "ok",
   "headline_read": "The economy looks steady \u2014 no major recession signals right now.",
   "recessions": [
@@ -3003,10 +3003,6 @@
       "series_id": "SAHMREALTIME",
       "observations": [
         {
-          "date": "2006-06-01",
-          "value": "-0.03"
-        },
-        {
           "date": "2006-07-01",
           "value": "0.03"
         },
@@ -3961,17 +3957,21 @@
         {
           "date": "2026-05-01",
           "value": "0.1"
+        },
+        {
+          "date": "2026-06-01",
+          "value": "0.07"
         }
       ],
       "latest": {
-        "date": "2026-05-01",
-        "value": "0.1"
+        "date": "2026-06-01",
+        "value": "0.07"
       },
       "context": "A real-time recession alarm built from unemployment: it trips when the 3-month average jobless rate rises 0.5 points above its prior-year low. It has flagged every recession since 1970 with almost no false alarms.",
-      "read": "The Sahm rule is at 0.10, well below its 0.50 recession trigger.",
+      "read": "The Sahm rule is at 0.07, well below its 0.50 recession trigger.",
       "signal_status": "ok",
       "value_format": "decimal",
-      "scale_now": 0.1
+      "scale_now": 0.07
     },
     {
       "id": "jobless-claims",
@@ -3982,8 +3982,8 @@
       "series_id": "ICSA",
       "observations": [
         {
-          "date": "2016-07-09",
-          "value": "252000"
+          "date": "2016-07-16",
+          "value": "260000"
         },
         {
           "date": "2016-08-06",
@@ -4220,10 +4220,6 @@
         {
           "date": "2021-06-05",
           "value": "420000"
-        },
-        {
-          "date": "2021-06-26",
-          "value": "368000"
         },
         {
           "date": "2021-07-03",
@@ -5263,11 +5259,15 @@
         },
         {
           "date": "2026-06-20",
+          "value": "216000"
+        },
+        {
+          "date": "2026-06-27",
           "value": "215000"
         }
       ],
       "latest": {
-        "date": "2026-06-20",
+        "date": "2026-06-27",
         "value": "215000"
       },
       "context": "How many people filed for unemployment benefits last week \u2014 the freshest read on layoffs. A sustained climb is one of the earliest signs of a weakening economy.",
@@ -5284,10 +5284,6 @@
       "color": "#38BDF8",
       "series_id": "UNRATE",
       "observations": [
-        {
-          "date": "2006-06-01",
-          "value": "4.6"
-        },
         {
           "date": "2006-07-01",
           "value": "4.7"
@@ -6243,17 +6239,21 @@
         {
           "date": "2026-05-01",
           "value": "4.3"
+        },
+        {
+          "date": "2026-06-01",
+          "value": "4.2"
         }
       ],
       "latest": {
-        "date": "2026-05-01",
-        "value": "4.3"
+        "date": "2026-06-01",
+        "value": "4.2"
       },
       "context": "The share of the labor force without a job and looking. A steady, sustained rise off its lows is a hallmark of an economy tipping into recession.",
-      "read": "Unemployment is steady at 4.3%, near its recent lows.",
+      "read": "Unemployment is steady at 4.2%, near its recent lows.",
       "signal_status": "ok",
       "value_format": "decimal",
-      "scale_now": 0.2
+      "scale_now": 0.1
     }
   ]
 }
