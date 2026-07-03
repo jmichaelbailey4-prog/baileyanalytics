@@ -147,5 +147,30 @@ class TestEscaping(unittest.TestCase):
         self.assertNotIn("<spread>", html)
 
 
+class TestPercentileLine(unittest.TestCase):
+    def test_ordinal_copy(self):
+        self.assertEqual(staticread.percentile_line({"p": 97.2, "since": 1963}),
+                         "That’s the 97th percentile of all its readings since 1963.")
+        self.assertEqual(staticread.percentile_line({"p": 21.6, "since": 2006}),
+                         "That’s the 22nd percentile of all its readings since 2006.")
+
+    def test_extremes_read_as_records(self):
+        self.assertIn("lowest reading", staticread.percentile_line({"p": 0.0, "since": 1952}))
+        self.assertIn("highest reading", staticread.percentile_line({"p": 99.9, "since": 1948}))
+
+    def test_none_safe(self):
+        self.assertEqual(staticread.percentile_line(None), "")
+        self.assertEqual(staticread.percentile_line({}), "")
+
+    def test_fragment_carries_the_line(self):
+        lens = {"id": "x", "headline_read": "H", "indicators": [{
+            "id": "i", "title": "T", "short": "S", "unit": "%", "value_format": "decimal",
+            "latest": {"date": "2026-06-01", "value": "4.2"}, "read": "R.",
+            "observations": [], "percentile": {"p": 97.2, "since": 1963}}]}
+        html = staticread.render_fragment(lens)
+        self.assertIn("97th percentile", html)
+        self.assertIn('class="pctile"', html)
+
+
 if __name__ == "__main__":
     unittest.main()

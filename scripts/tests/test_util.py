@@ -127,5 +127,40 @@ class TestThinObservations(unittest.TestCase):
         self.assertEqual(util.thin_observations([], keep_years=2), [])
 
 
+class TestPercentileContext(unittest.TestCase):
+    def _series(self, values, start_year=1990):
+        return [(f"{start_year + i // 12:04d}-{1 + i % 12:02d}-01", float(v))
+                for i, v in enumerate(values)]
+
+    def test_short_history_is_none(self):
+        self.assertIsNone(util.percentile_context(self._series(range(39))))
+
+    def test_record_high_and_low(self):
+        rising = self._series(list(range(50)))
+        out = util.percentile_context(rising)
+        self.assertEqual(out, {"p": 98.0, "since": 1990})  # 49/50 strictly below
+        falling = self._series(list(range(50, 0, -1)))
+        self.assertEqual(util.percentile_context(falling)["p"], 0.0)
+
+    def test_since_is_first_year(self):
+        out = util.percentile_context(self._series(range(60), start_year=1963))
+        self.assertEqual(out["since"], 1963)
+
+
+class TestThinQuarterlyTier(unittest.TestCase):
+    def test_points_older_than_15y_thin_to_quarterly(self):
+        obs = [{"date": f"{y:04d}-{m:02d}-01", "value": "1"}
+               for y in range(2000, 2027) for m in range(1, 13)][:312]  # 2000-01..2025-12
+        out = util.thin_observations(obs)
+        dates = [o["date"] for o in out]
+        old = [d for d in dates if d < "2010-12"]   # >15y before the 2025-12 tail
+        # one point per quarter in the old tier
+        quarters = {(d[:4], (int(d[5:7]) - 1) // 3) for d in old}
+        self.assertEqual(len(old), len(quarters))
+        # and the recent 2 years stay at full monthly resolution
+        recent = [d for d in dates if d >= "2023-12"]
+        self.assertEqual(len(recent), 25)
+
+
 if __name__ == "__main__":
     unittest.main()

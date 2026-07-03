@@ -108,6 +108,10 @@ def build_lens(lens, fetched):
         raw = fetched.get(ind.fetch_key, [])
         if ind.derive:
             raw = ind.derive(raw)
+        # percentile context reads the FULL post-derive series, before thinning
+        pct = None
+        if not getattr(ind, "market_price", False):
+            pct = util.percentile_context(util.clean(raw))
         # thin AFTER derive: diffs/YoY need the full-resolution chain
         raw = util.thin_observations(raw)
         cleaned = util.clean(raw)
@@ -128,6 +132,8 @@ def build_lens(lens, fetched):
             "signal_status": status,
             "value_format": ind.value_format,
         }
+        if pct:
+            entry["percentile"] = pct
         _attach_reasons(entry, ind)
         _attach_scale_now(entry, ind.rule, cleaned)
         indicators.append(entry)
@@ -171,6 +177,9 @@ def build_banking_lens(lens, series_by_key, tier_rows, ranking_rows):
             "context": ind.context, "read": text, "signal_status": status,
             "value_format": ind.value_format,
         }
+        pct = util.percentile_context(cleaned)
+        if pct:
+            entry["percentile"] = pct
         _attach_reasons(entry, ind)
         _attach_scale_now(entry, ind.rule, cleaned)
         indicators.append(entry)

@@ -25,22 +25,28 @@ def human_date(iso_date, short=False):
     return f"{month} {dt.day}, {dt.year}"
 
 
-def thin_observations(raw_observations, keep_years=2, monthly_after_years=5):
+def thin_observations(raw_observations, keep_years=2, monthly_after_years=5,
+                      quarterly_after_years=15):
     """Shrink a published series: keep every point in the trailing `keep_years`
-    window, thin to one per ISO week out to `monthly_after_years`, and one per
-    calendar month beyond that. Weekly and slower cadences pass through the
-    weekly tier unchanged; monthly and slower pass through both.
+    window, thin to one per ISO week out to `monthly_after_years`, one per
+    calendar month out to `quarterly_after_years`, and one per quarter beyond
+    that. Weekly and slower cadences pass through the weekly tier unchanged;
+    monthly and slower pass through it too; quarterly and slower pass through
+    every tier.
 
     Rules only look back ~1 year from the latest point, so they are unaffected.
     This thins only the *published* JSON — sources retain full history, so
-    nothing is lost for future modeling work.
+    nothing is lost for future modeling work. The quarterly tier (added
+    2026-07-03 with the percentile-context fetch-depth raises) keeps decades of
+    Max-chart history to a bounded payload.
     """
     if not raw_observations:
         return raw_observations
     last = raw_observations[-1]["date"]
     weekly_boundary = f"{int(last[:4]) - keep_years}{last[4:]}"
     monthly_boundary = f"{int(last[:4]) - monthly_after_years}{last[4:]}"
-    out, seen_weeks, seen_months = [], set(), set()
+    quarterly_boundary = f"{int(last[:4]) - quarterly_after_years}{last[4:]}"
+    out, seen_weeks, seen_months, seen_quarters = [], set(), set(), set()
     for obs in raw_observations:
         if obs["date"] >= weekly_boundary:
             out.append(obs)
@@ -48,6 +54,12 @@ def thin_observations(raw_observations, keep_years=2, monthly_after_years=5):
         parts = obs["date"].split("-")
         if len(parts) < 3:  # EIA monthly periods are "YYYY-MM" — monthly never thins
             out.append(obs)
+            continue
+        if obs["date"] < quarterly_boundary:
+            quarter = (parts[0], (int(parts[1]) - 1) // 3)
+            if quarter not in seen_quarters:
+                seen_quarters.add(quarter)
+                out.append(obs)
             continue
         if obs["date"] < monthly_boundary:
             month = (parts[0], parts[1])
@@ -60,6 +72,19 @@ def thin_observations(raw_observations, keep_years=2, monthly_after_years=5):
             seen_weeks.add(week)
             out.append(obs)
     return out
+
+
+def percentile_context(cleaned, min_points=40):
+    """Where the latest reading sits in the series' own fetched history:
+    {"p": 0-100 (share of past readings strictly below the latest, 1dp),
+     "since": first year} — or None when history is too short to be honest.
+    Computed on the full pre-thin series, so `since` matches the Max chart."""
+    if len(cleaned) < min_points:
+        return None
+    latest = cleaned[-1][1]
+    below = sum(1 for _, v in cleaned if v < latest)
+    return {"p": round(100.0 * below / len(cleaned), 1),
+            "since": int(cleaned[0][0][:4])}
 
 
 def to_float(value):

@@ -9,6 +9,29 @@ from html import escape
 
 from . import build, methodology, synthesis, util
 
+
+def _ordinal(n):
+    """1 -> '1st', 22 -> '22nd' … mirrors lens.js ordinal() — keep in sync."""
+    if 10 <= n % 100 <= 20:
+        return f"{n}th"
+    return f"{n}{ {1: 'st', 2: 'nd', 3: 'rd'}.get(n % 10, 'th') }"
+
+
+def percentile_line(pct):
+    """Reader copy for a baked percentile record — mirrors lens.js
+    percentileLine() (keep in sync). None-safe."""
+    if not pct:
+        return ""
+    p_, since = pct.get("p"), pct.get("since")
+    if p_ is None or since is None:
+        return ""
+    if p_ < 0.5:
+        return f"That’s the lowest reading in its history here (since {since})."
+    if p_ > 99.5:
+        return f"That’s the highest reading in its history here (since {since})."
+    return (f"That’s the {_ordinal(int(round(p_)))} percentile of all its "
+            f"readings since {since}.")
+
 # Recent observations the per-indicator 'why' reads. Bounds the 'recent readings'
 # scope so a "fresh high" claim stays honestly recent rather than all-time.
 WHY_WINDOW = 40
@@ -35,10 +58,12 @@ def render_fragment(lens_json):
         value = (build._fmt(latest["value"], ind.get("unit", ""),
                             ind.get("value_format", "decimal"))
                  if latest else "—")
+        pline = percentile_line(ind.get("percentile"))
+        pct_html = f' <span class="pctile">{escape(pline)}</span>' if pline else ""
         parts.append(
             f"<h2>{escape(ind.get('title', ''))}</h2>"
             f"<p><strong>{escape(ind.get('short', ''))}: {escape(value)}</strong>"
-            f" — {escape(ind.get('read', ''))}</p>")
+            f" — {escape(ind.get('read', ''))}{pct_html}</p>")
         # static band summary + methodology deep link for scored signals (no-JS/crawlers
         # mirror of the scoring.js strip); None for info/momentum/custom/unknown signals
         sb = methodology.static_bands(lens_json.get("id", ""), ind.get("id", ""))

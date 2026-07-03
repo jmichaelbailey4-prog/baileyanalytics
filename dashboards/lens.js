@@ -131,6 +131,19 @@
     });
   }
 
+  // Percentile context — mirrors staticread.percentile_line (Python twin,
+  // keep in sync): where today's reading sits in the full fetched history.
+  function ordinal(n) {
+    if (n % 100 >= 10 && n % 100 <= 20) return n + "th";
+    return n + ({ 1: "st", 2: "nd", 3: "rd" }[n % 10] || "th");
+  }
+  function percentileLine(pct) {
+    if (!pct || pct.p == null || pct.since == null) return "";
+    if (pct.p < 0.5) return `That’s the lowest reading in its history here (since ${pct.since}).`;
+    if (pct.p > 99.5) return `That’s the highest reading in its history here (since ${pct.since}).`;
+    return `That’s the ${ordinal(Math.round(pct.p))} percentile of all its readings since ${pct.since}.`;
+  }
+
   // The muted "why a signal carries no score / forecast" note. Mirrors
   // build.signal_note (Python) — keep the matrix + headings in sync.
   function signalNote(ind) {
@@ -162,7 +175,9 @@
       <div class="chart-box"><canvas role="img" aria-label="${esc(indicator.title)} — line chart"></canvas></div>
       <div class="context">
         <div class="ctx-block"><div class="lbl">What it is</div><p>${esc(indicator.context)}</p></div>
-        <div class="ctx-block read"><div class="lbl">The read right now</div><p>${esc(indicator.read)}</p></div>
+        <div class="ctx-block read"><div class="lbl">The read right now</div><p>${esc(indicator.read)}${
+          percentileLine(indicator.percentile) ? ` <span class="pctile">${esc(percentileLine(indicator.percentile))}</span>` : ""
+        }</p></div>
       </div>
       ${signalNote(indicator)}`;
     const canvas = el.querySelector("canvas");
