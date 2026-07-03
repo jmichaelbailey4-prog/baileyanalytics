@@ -224,6 +224,19 @@ Fleet: 4 consolidated finder agents + orchestrator self-review as the 5th angle 
 
 (none yet)
 
+## Continuation session (same day): recommendations implemented on Michael's go
+
+Michael's instruction: "Move forward with all the recommendations you came up with that you can do, then isolate what I must do myself." Implemented, all TDD'd and verified:
+
+1. **Percentile context (top recommendation) — SHIPPED.** `util.percentile_context` baked per indicator from the full pre-thin fetch (≥40 obs; market prices excluded); one muted sentence after the read in lens.js + the no-JS baked read (mirror-twins, test-pinned incl. curly-quote parity); record-low/high phrasings at extremes. Verified live: yield curve "32nd percentile since 1976" rendered on-page; sentiment 0.0th/1952, months-supply 97.2nd/1963, debt/GDP 97.9th/1966 baked — matching the Pass 9 prototype exactly.
+2. **Fetch-depth raises — SHIPPED.** 56 curated series to full history + USREC shading to ~80y + a quarterly-after-15y thin tier. Payload note: the two daily-flagship files (recession-watch, cost-of-money) now run 190–270KB raw ≈ 40–55KB wire under Cloudflare compression, one fetch per page, SW-cached after first view — accepted trade for decades-deep Max charts + honest percentiles; flagged for Michael's payload veto.
+3. **Four indicators — SHIPPED, live-verified before entry** (core PCE 3.41%, auto-loan 7.36%, groceries +2.73% vs global food +30.2%, quits 1.9%). Roster grows 107→111 at the next tournament.
+4. **Band-governance tool — SHIPPED.** `scripts/tools/backtest_bands.py` + the convention in CLAUDE.md ("no band change without a backtest run"; includes the don't-enumerate-years caveat this session earned).
+5. **Per-lens og cards — SHIPPED.** Static-safe by design (title+category, no badge — scraper caches can't show a stale status); 33 cards baked on-branch; og:image stamped on all 33 lens pages; write-if-changed bake step in --brief.
+6. **Preview data bake** — economic/consumer/housing rebuilt live on-branch so the features are previewable; the cron reproduces the rest post-merge.
+
+**Downgraded to proposals (deliberate triage, not blockers):** the public "How this framework read past cycles" page (tool + baseline committed; the page is a designed phase with reader-facing prose Michael reviews anyway — see next-moves big bet #1); "Related lenses" cross-links from relationships.py; the Stress Breadth index (next-moves big bet #2). The prediction "Now" anchors and new-indicator forecasts appear after the first post-merge daily run + Sunday tournament.
+
 ## GUI screenshot-review prompt (paste into a Claude GUI chat with the screenshots)
 
 > I run baileyanalytics.com, a daily plain-English economics dashboard. I'm attaching screenshots
