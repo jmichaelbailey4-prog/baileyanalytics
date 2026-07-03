@@ -897,15 +897,10 @@ def _patch_lens_pages(root=None):
             page = root / brief.lens_href(category, lens_file.stem).lstrip("/")
             if not page.exists():
                 continue
-            # Skip the parse + render when the page is at least as new as its
-            # data: only a lens JSON rewritten THIS run (newer mtime than the
-            # committed page) can change the baked fragment. The fragment depends
-            # solely on the JSON, so a newer page can never be stale.
-            try:
-                if page.stat().st_mtime >= lens_file.stat().st_mtime:
-                    continue
-            except OSError:
-                pass
+            # No mtime gate: _patch_region_file is already content-aware, and the
+            # gate's only saving (parsing ~33 small JSONs) cost a real footgun —
+            # after a data-branch merge the checkout's mtimes made every patch
+            # silently skip until the files were touched (audit 2026-07-03).
             try:
                 lens_json = json.loads(lens_file.read_text(encoding="utf-8"))
                 _patch_region_file(page, "baked-read",
