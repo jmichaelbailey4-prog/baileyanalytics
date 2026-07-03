@@ -146,6 +146,8 @@
   function indicatorCard(indicator, recessions, defaultRange) {
     const el = document.createElement("div");
     el.className = "ind";
+    el.id = "ind-" + indicator.id;        // shareable anchor (#ind-<id>)
+    el.style.scrollMarginTop = "1rem";
     el.dataset.indicator = indicator.id;  // hook for predict.js + scoring.js blocks
     if (indicator.scale_now != null) el.dataset.scaleNow = indicator.scale_now;  // scoring.js marker
     const latest = indicator.latest ? fmtVal(indicator.latest.value, indicator.unit, indicator.value_format) : "—";
@@ -281,6 +283,12 @@
     // `category` (the page-declared category id) lets predict.js/scoring.js fetch
     // the right per-category prediction/methodology slice without re-deriving it.
     document.dispatchEvent(new CustomEvent("lens:rendered", { detail: { id: lens.id, category: favCategory } }));
+    // Deep links to an indicator card (#ind-<id>) — the content doesn't exist
+    // until this render, so the browser's own fragment scroll already gave up.
+    if (location.hash) {
+      const target = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+      if (target) target.scrollIntoView();
+    }
   }
 
   // Recolor existing charts when the theme flips (personalize.js dispatches

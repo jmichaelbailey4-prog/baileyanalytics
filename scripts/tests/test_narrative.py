@@ -147,28 +147,6 @@ class TestFedFunds(unittest.TestCase):
         self.assertEqual(narrative.rule_fed_funds([]), ("Data unavailable.", "unknown"))
 
 
-class TestRateTrend(unittest.TestCase):
-    def test_up_over_year(self):
-        obs = [("2025-06-01", 3.5), ("2026-06-01", 4.4)]
-        text, status = narrative.rule_rate_trend(obs)
-        self.assertEqual(status, "ok")
-        self.assertIn("up", text)
-
-    def test_little_changed(self):
-        obs = [("2025-06-01", 4.35), ("2026-06-01", 4.38)]
-        _, status = narrative.rule_rate_trend(obs)
-        self.assertEqual(status, "ok")
-
-    def test_empty_is_unknown(self):
-        self.assertEqual(narrative.rule_rate_trend([]), ("Data unavailable.", "unknown"))
-
-    def test_short_history_omits_year_phrase(self):
-        obs = [("2026-04-01", 4.30), ("2026-05-01", 4.38)]
-        text, status = narrative.rule_rate_trend(obs)
-        self.assertEqual(status, "ok")
-        self.assertNotIn("over the past year", text)
-
-
 class TestMortgage(unittest.TestCase):
     def test_punishing_is_alert(self):
         _, status = narrative.rule_mortgage([("2026-06-01", 7.8)])

@@ -147,24 +147,6 @@ def rule_fed_funds(obs):
     return (f"The Fed's policy rate is {v:.2f}%, {stance}.", status)
 
 
-def rule_rate_trend(obs):
-    """Generic market-rate read: current level and ~12-month direction."""
-    if not obs:
-        return _NO_DATA
-    v = obs[-1][1]
-    prior = _value_year_ago(obs)
-    if prior is None:
-        return (f"Now {v:.2f}%.", "ok")
-    delta = v - prior
-    if delta >= 0.1:
-        move = f"up {delta:.2f} points over the past year"
-    elif delta <= -0.1:
-        move = f"down {abs(delta):.2f} points over the past year"
-    else:
-        move = "little changed over the past year"
-    return (f"Now {v:.2f}%, {move}.", "ok")
-
-
 def rule_rate_expectations(obs):
     """DGS2 minus the fed funds rate: the bond market's pricing of the Fed's
     next moves. Descriptive (info) — it carries no good/bad verdict, so it
@@ -1340,8 +1322,7 @@ def epu_band(label, cap=None):
 # by test_bands.py, which feeds synthetic observations straddling every declared edge
 # and asserts the live rule flips where the descriptor says. Edit a threshold without
 # editing its spec here and the build turns red. Curated 'why' prose lives in
-# reasons.BAND_WHY[band_tag] (band_tag == the rule's name). `rule_rate_trend` is
-# intentionally absent — it is dead code (defined, wired to no indicator).
+# reasons.BAND_WHY[band_tag] (band_tag == the rule's name).
 def _bespoke(rule, **kw):
     rule.band_spec = bands.BandSpec(**kw)
     rule.band_tag = rule.__name__
