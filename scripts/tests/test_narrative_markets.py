@@ -16,7 +16,16 @@ class TestRiskSentimentRules(unittest.TestCase):
         self.assertEqual(narrative.rule_vix([("d", 14.0)])[1], "ok")
         self.assertEqual(narrative.rule_vix([("d", 24.0)])[1], "watch")
         self.assertEqual(narrative.rule_vix([("d", 38.0)])[1], "elevated")
+        # 40+ has fired only in 1998 / 2008-09 / 2011 / 2020 (band backtest 2026-07-03)
+        self.assertEqual(narrative.rule_vix([("d", 45.0)])[1], "alert")
         self.assertEqual(narrative.rule_vix([])[1], "unknown")
+
+    def test_credit_spread_crisis_tier(self):
+        hy = narrative.credit_spread("high-yield", 4.0, 6.0, crisis=8.0)
+        self.assertEqual(hy([("d", 9.5)])[1], "alert")
+        self.assertEqual(hy([("d", 7.0)])[1], "elevated")
+        ig = narrative.credit_spread("investment-grade", 1.5, 2.5, crisis=3.5)
+        self.assertEqual(ig([("d", 3.8)])[1], "alert")
 
     def test_credit_spread_factory(self):
         hy = narrative.credit_spread("high-yield", 4.0, 6.0)
@@ -31,6 +40,7 @@ class TestRiskSentimentRules(unittest.TestCase):
         self.assertEqual(narrative.rule_financial_conditions([("d", -0.4)])[1], "ok")
         self.assertEqual(narrative.rule_financial_conditions([("d", 0.2)])[1], "watch")
         self.assertEqual(narrative.rule_financial_conditions([("d", 0.8)])[1], "elevated")
+        self.assertEqual(narrative.rule_financial_conditions([("d", 1.3)])[1], "alert")
 
 
 class TestMarketLevel(unittest.TestCase):

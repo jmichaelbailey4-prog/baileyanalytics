@@ -719,7 +719,7 @@ MARKET_RISK_SENTIMENT = Lens(
             id="hy-spread", title="High-Yield Credit Spread", short="HY spread", unit="%",
             color="#FB923C", series_id="BAMLH0A0HYM2",
             limit=900,  # ICE BofA: FRED API only serves a rolling ~3y window
-            rule=narrative.credit_spread("high-yield", 4.0, 6.0),
+            rule=narrative.credit_spread("high-yield", 4.0, 6.0, crisis=8.0),
             context=("The extra yield investors demand to hold risky 'junk' corporate bonds over "
                      "Treasuries. It widens when markets fear defaults — an early stress signal. "
                      "Note: FRED serves only a rolling ~3-year window of this ICE BofA series, so "
@@ -729,7 +729,7 @@ MARKET_RISK_SENTIMENT = Lens(
             id="ig-spread", title="Investment-Grade Credit Spread", short="IG spread", unit="%",
             color="#FBBF24", series_id="BAMLC0A0CM",
             limit=900,  # ICE BofA: FRED API only serves a rolling ~3y window
-            rule=narrative.credit_spread("investment-grade", 1.5, 2.5),
+            rule=narrative.credit_spread("investment-grade", 1.5, 2.5, crisis=3.5),
             context=("The same risk premium for higher-quality corporate bonds. Because these "
                      "borrowers are safer, widening here signals stress reaching the core of credit. "
                      "Note: FRED serves only a rolling ~3-year window of this ICE BofA series, so "

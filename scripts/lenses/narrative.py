@@ -363,7 +363,9 @@ def rule_real_wages(obs):
 # --- Banking System Health rules (FDIC Call Report metrics) ---
 
 def rule_noncurrent(obs):
-    """Noncurrent loan rate (% of loans 90+ days late). <1 ok, 1-2 watch, >=2 elevated."""
+    """Noncurrent loan rate (% of loans 90+ days late). <1 ok, 1-2 watch,
+    2-3 elevated, >=3 alert (3%+ has occurred only in the 2009-2013 crisis
+    aftermath — band backtest 2026-07-03)."""
     if not obs:
         return _NO_DATA
     v = obs[-1][1]
@@ -371,11 +373,14 @@ def rule_noncurrent(obs):
         return (f"Just {v:.2f}% of loans are 90+ days past due — low by historical standards.", "ok")
     if v < 2.0:
         return (f"Noncurrent loans are at {v:.2f}%, creeping up off recent lows.", "watch")
-    return (f"Noncurrent loans have climbed to {v:.2f}% — elevated and worth watching.", "elevated")
+    if v < 3.0:
+        return (f"Noncurrent loans have climbed to {v:.2f}% — elevated and worth watching.", "elevated")
+    return (f"Noncurrent loans have reached {v:.2f}% — financial-crisis territory.", "alert")
 
 
 def rule_charge_offs(obs):
-    """Net charge-off rate (% of loans). <0.6 ok, 0.6-1.2 watch, >=1.2 elevated."""
+    """Net charge-off rate (% of loans). <0.6 ok, 0.6-1.2 watch, 1.2-2 elevated,
+    >=2 alert (2%+ has occurred only in 2009-2010 — band backtest 2026-07-03)."""
     if not obs:
         return _NO_DATA
     v = obs[-1][1]
@@ -383,7 +388,9 @@ def rule_charge_offs(obs):
         return (f"Banks are writing off {v:.2f}% of loans as losses — a benign level.", "ok")
     if v < 1.2:
         return (f"Loan losses are running at {v:.2f}%, above the calm-period norm.", "watch")
-    return (f"Loan losses have reached {v:.2f}% — a meaningful drag on earnings.", "elevated")
+    if v < 2.0:
+        return (f"Loan losses have reached {v:.2f}% — a meaningful drag on earnings.", "elevated")
+    return (f"Loan losses have hit {v:.2f}% — write-offs at financial-crisis scale.", "alert")
 
 
 def rule_cre_concentration(obs):
@@ -443,7 +450,8 @@ def rule_net_margin(obs):
 
 
 def rule_roa(obs):
-    """Return on assets (%). >=1.0 ok, 0.5-1.0 watch, <0.5 elevated."""
+    """Return on assets (%). >=1.0 ok, 0.5-1.0 watch, 0-0.5 elevated, <0 alert
+    (an industry-wide loss — seen only at the depth of the 2008-09 crisis)."""
     if not obs:
         return _NO_DATA
     v = obs[-1][1]
@@ -451,7 +459,9 @@ def rule_roa(obs):
         return (f"Banks earned {v:.2f}% on their assets — solid profitability.", "ok")
     if v >= 0.5:
         return (f"Return on assets is {v:.2f}% — subdued profitability.", "watch")
-    return (f"Return on assets is just {v:.2f}% — earnings are weak.", "elevated")
+    if v >= 0:
+        return (f"Return on assets is just {v:.2f}% — earnings are weak.", "elevated")
+    return (f"Return on assets is {v:.2f}% — the banking industry is losing money.", "alert")
 
 
 def rule_loans_deposits(obs):
@@ -467,7 +477,9 @@ def rule_loans_deposits(obs):
 # --- Markets & Financial Conditions rules ---
 
 def rule_vix(obs):
-    """CBOE VIX level. <20 calm, 20-30 nervous, >=30 fearful."""
+    """CBOE VIX level. <20 calm, 20-30 nervous, 30-40 fearful, >=40 crisis-grade
+    (since 1990, 40+ has printed only around 1998, 2008-09, 2011, and 2020 —
+    band backtest 2026-07-03)."""
     if not obs:
         return _NO_DATA
     v = obs[-1][1]
@@ -475,11 +487,16 @@ def rule_vix(obs):
         return (f"The VIX is at {v:.1f} — markets are calm.", "ok")
     if v < 30:
         return (f"The VIX is at {v:.1f} — some nervousness, but not panic.", "watch")
-    return (f"The VIX is at {v:.1f} — markets are fearful.", "elevated")
+    if v < 40:
+        return (f"The VIX is at {v:.1f} — markets are fearful.", "elevated")
+    return (f"The VIX is at {v:.1f} — panic levels seen only in genuine crises.", "alert")
 
 
-def credit_spread(label, calm, stressed):
-    """Factory: a credit-spread rule with its own calm/stressed thresholds (%)."""
+def credit_spread(label, calm, stressed, crisis=None):
+    """Factory: a credit-spread rule with its own calm/stressed thresholds (%).
+    `crisis` (optional) adds an alert tier for spread levels seen only in
+    2008/2020-scale credit crises — FRED's rolling API window can't chart that
+    history, but the peaks are public record on FRED's own site."""
     def _rule(obs):
         if not obs:
             return _NO_DATA
@@ -488,15 +505,24 @@ def credit_spread(label, calm, stressed):
             return (f"The {label} spread is {v:.2f}% — tight, signaling calm credit conditions.", "ok")
         if v < stressed:
             return (f"The {label} spread is {v:.2f}% — widening off its lows.", "watch")
-        return (f"The {label} spread is {v:.2f}% — wide, a sign of credit stress.", "elevated")
-    _rule.band_spec = bands.BandSpec(kind="level", unit="%",
-        edges=(calm, stressed), segments=("ok", "watch", "elevated"))
+        if crisis is None or v < crisis:
+            return (f"The {label} spread is {v:.2f}% — wide, a sign of credit stress.", "elevated")
+        return (f"The {label} spread is {v:.2f}% — blowout levels seen only in "
+                "full credit crises.", "alert")
+    if crisis is None:
+        _rule.band_spec = bands.BandSpec(kind="level", unit="%",
+            edges=(calm, stressed), segments=("ok", "watch", "elevated"))
+    else:
+        _rule.band_spec = bands.BandSpec(kind="level", unit="%",
+            edges=(calm, stressed, crisis), segments=("ok", "watch", "elevated", "alert"))
     _rule.band_tag = "credit_spread"
     return _rule
 
 
 def rule_financial_conditions(obs):
-    """Chicago Fed NFCI. <=0 looser than average, 0-0.5 a touch tight, >=0.5 tight."""
+    """Chicago Fed NFCI. <=0 looser than average, 0-0.5 a touch tight, 0.5-1.0
+    tight, >=1.0 crisis-grade (in the modern era, 1.0+ has printed only in
+    2008-09 — band backtest 2026-07-03)."""
     if not obs:
         return _NO_DATA
     v = obs[-1][1]
@@ -504,7 +530,9 @@ def rule_financial_conditions(obs):
         return (f"The NFCI is {v:.2f} — financial conditions are looser than average.", "ok")
     if v < 0.5:
         return (f"The NFCI is {v:.2f} — conditions a touch tighter than average.", "watch")
-    return (f"The NFCI is {v:.2f} — financial conditions are tight.", "elevated")
+    if v < 1.0:
+        return (f"The NFCI is {v:.2f} — financial conditions are tight.", "elevated")
+    return (f"The NFCI is {v:.2f} — a squeeze on the scale of past financial crises.", "alert")
 
 
 def market_level(label, up=2.0, down=-2.0):
@@ -1343,10 +1371,10 @@ _bespoke(rule_interest_burden, kind="level", unit="%", edges=(10, 15, 22),
 _bespoke(rule_inflation, kind="yoy", unit="%", edges=(2.5, 4.0),
          segments=("ok", "watch", "elevated"))
 _bespoke(rule_real_wages, kind="yoy", unit="%", edges=(0,), segments=("watch", "ok"))
-_bespoke(rule_noncurrent, kind="level", unit="%", edges=(1, 2),
-         segments=("ok", "watch", "elevated"))
-_bespoke(rule_charge_offs, kind="level", unit="%", edges=(0.6, 1.2),
-         segments=("ok", "watch", "elevated"))
+_bespoke(rule_noncurrent, kind="level", unit="%", edges=(1, 2, 3),
+         segments=("ok", "watch", "elevated", "alert"))
+_bespoke(rule_charge_offs, kind="level", unit="%", edges=(0.6, 1.2, 2.0),
+         segments=("ok", "watch", "elevated", "alert"))
 _bespoke(rule_cre_concentration, kind="level", unit="%", edges=(200, 300),
          segments=("ok", "watch", "elevated"))
 _bespoke(rule_uninsured_share, kind="level", unit="%", edges=(40,),
@@ -1357,14 +1385,14 @@ _bespoke(rule_risk_based_capital, kind="level", unit="%", edges=(8, 10),
          segments=("elevated", "watch", "ok"))
 _bespoke(rule_net_margin, kind="level", unit="%", edges=(2.5,),
          segments=("watch", "ok"))
-_bespoke(rule_roa, kind="level", unit="%", edges=(0.5, 1.0),
-         segments=("elevated", "watch", "ok"))
+_bespoke(rule_roa, kind="level", unit="%", edges=(0, 0.5, 1.0),
+         segments=("alert", "elevated", "watch", "ok"))
 _bespoke(rule_loans_deposits, kind="level", unit="%", edges=(90,),
          segments=("ok", "watch"))
-_bespoke(rule_vix, kind="level", unit="", edges=(20, 30),
-         segments=("ok", "watch", "elevated"))
-_bespoke(rule_financial_conditions, kind="level", unit="", edges=(0, 0.5),
-         segments=("ok", "watch", "elevated"))
+_bespoke(rule_vix, kind="level", unit="", edges=(20, 30, 40),
+         segments=("ok", "watch", "elevated", "alert"))
+_bespoke(rule_financial_conditions, kind="level", unit="", edges=(0, 0.5, 1.0),
+         segments=("ok", "watch", "elevated", "alert"))
 _bespoke(rule_m2_growth, kind="yoy", unit="%", edges=(-3, -1, 7, 10),
          segments=("elevated", "watch", "ok", "watch", "elevated"))
 _bespoke(rule_debt_service, kind="level", unit="%", edges=(10.5, 12, 13),

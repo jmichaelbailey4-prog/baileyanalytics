@@ -19,6 +19,11 @@ class TestNoncurrent(unittest.TestCase):
         _, s = narrative.rule_noncurrent([("2024-12-31", 2.1)])
         self.assertEqual(s, "elevated")
 
+    def test_crisis_scale_is_alert(self):
+        # >=3% has occurred only 2009Q1-2013Q2 (band backtest 2026-07-03)
+        _, s = narrative.rule_noncurrent([("2024-12-31", 3.4)])
+        self.assertEqual(s, "alert")
+
     def test_empty_is_unknown(self):
         self.assertEqual(narrative.rule_noncurrent([]), ("Data unavailable.", "unknown"))
 
@@ -31,6 +36,11 @@ class TestChargeOffs(unittest.TestCase):
     def test_high_is_elevated(self):
         _, s = narrative.rule_charge_offs([("2024-12-31", 1.5)])
         self.assertEqual(s, "elevated")
+
+    def test_crisis_scale_is_alert(self):
+        # >=2% has occurred only 2009Q2-2010Q4 (band backtest 2026-07-03)
+        _, s = narrative.rule_charge_offs([("2024-12-31", 2.3)])
+        self.assertEqual(s, "alert")
 
 
 class TestCreConcentration(unittest.TestCase):
@@ -92,6 +102,10 @@ class TestRoa(unittest.TestCase):
     def test_weak_is_elevated(self):
         _, s = narrative.rule_roa([("2024-12-31", 0.3)])
         self.assertEqual(s, "elevated")
+
+    def test_industry_losing_money_is_alert(self):
+        _, s = narrative.rule_roa([("2024-12-31", -0.1)])
+        self.assertEqual(s, "alert")
 
 
 class TestLoansDeposits(unittest.TestCase):
