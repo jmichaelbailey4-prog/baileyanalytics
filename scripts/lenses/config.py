@@ -7,7 +7,8 @@ from . import derive, imf, narrative, reasons
 
 # Helper series fetched but not displayed directly.
 USREC_KEY = "USREC:lin"
-USREC_LIMIT = 240  # ~20 years of monthly data, enough to shade recent charts
+USREC_LIMIT = 960  # ~80 years of monthly data — shading must reach as far
+                   # back as the deepened Max charts (percentile-depth raises)
 
 
 @dataclass(frozen=True)
@@ -89,7 +90,7 @@ RECESSION_WATCH = Lens(
             unit="%",
             color="#F87171",
             series_id="T10Y2Y",
-            limit=2600,  # ~10y daily
+            limit=13000,  # ~10y daily
             rule=narrative.rule_yield_curve,
             context=(
                 "The gap between 10-year and 2-year Treasury yields. When it goes "
@@ -104,7 +105,7 @@ RECESSION_WATCH = Lens(
             unit="",
             color="#FBBF24",
             series_id="SAHMREALTIME",
-            limit=240,
+            limit=820,
             rule=narrative.rule_sahm,
             context=(
                 "A real-time recession alarm built from unemployment: it trips when the "
@@ -119,7 +120,7 @@ RECESSION_WATCH = Lens(
             unit="",
             color="#34D399",
             series_id="ICSA",
-            limit=520,  # ~10y weekly
+            limit=3100,  # ~10y weekly
             rule=narrative.rule_claims,
             value_format="thousands",
             context=(
@@ -135,7 +136,7 @@ RECESSION_WATCH = Lens(
             unit="%",
             color="#38BDF8",
             series_id="UNRATE",
-            limit=240,
+            limit=950,
             rule=narrative.rule_unemployment_trend,
             context=(
                 "The share of the labor force without a job and looking. A steady, "
@@ -158,7 +159,7 @@ COST_OF_MONEY = Lens(
             unit="%",
             color="#34D399",
             series_id="FEDFUNDS",
-            limit=240,
+            limit=880,
             rule=narrative.rule_fed_funds,
             context=(
                 "The interest rate the Federal Reserve sets to steer the economy — the "
@@ -172,7 +173,7 @@ COST_OF_MONEY = Lens(
             unit="%",
             color="#38BDF8",
             series_id="DGS10",
-            limit=2600,
+            limit=16700,
             rule=narrative.restrictive_rate("The 10-year Treasury", 4.5, 5.5),
             context=(
                 "The yield on 10-year U.S. government debt — the benchmark that drives "
@@ -186,7 +187,7 @@ COST_OF_MONEY = Lens(
             unit="%",
             color="#A78BFA",
             series_id="DGS2",
-            limit=2600,
+            limit=13000,
             rule=narrative.restrictive_rate("The 2-year Treasury", 4.0, 5.0),
             context=(
                 "The yield on 2-year government debt — closely tied to where investors "
@@ -225,7 +226,7 @@ JOB_MARKET = Lens(
             unit="%",
             color="#38BDF8",
             series_id="UNRATE",
-            limit=240,
+            limit=950,
             rule=narrative.rule_unemployment_trend,
             context=(
                 "The share of the labor force without a job and actively looking — the "
@@ -239,7 +240,7 @@ JOB_MARKET = Lens(
             unit="",
             color="#34D399",
             series_id="PAYEMS",
-            limit=240,
+            limit=1050,
             rule=narrative.rule_payrolls,
             derive=derive.payroll_change,
             value_format="thousands",
@@ -255,7 +256,7 @@ JOB_MARKET = Lens(
             unit="M",
             color="#A78BFA",
             series_id="JTSJOL",
-            limit=240,
+            limit=320,
             rule=narrative.rule_job_openings,
             derive=derive.to_millions,
             context=(
@@ -285,7 +286,7 @@ JOB_MARKET = Lens(
             unit="%",
             color="#22D3EE",
             series_id="CIVPART",
-            limit=240,
+            limit=950,
             rule=narrative.level_points("Labor-force participation"),
             context=(
                 "The share of working-age adults either working or looking for work — how "
@@ -308,7 +309,7 @@ COST_OF_LIVING = Lens(
             color="#FBBF24",
             series_id="CPIAUCSL",
             units_transform="pc1",
-            limit=240,
+            limit=950,
             rule=narrative.rule_inflation,
             context=(
                 "The Consumer Price Index — the headline measure of how fast the prices "
@@ -323,7 +324,7 @@ COST_OF_LIVING = Lens(
             color="#FB923C",
             series_id="CPILFESL",
             units_transform="pc1",
-            limit=240,
+            limit=830,
             rule=narrative.rule_inflation,
             context=(
                 "CPI excluding volatile food and energy. Because it strips out the noisiest "
@@ -338,7 +339,7 @@ COST_OF_LIVING = Lens(
             color="#38BDF8",
             series_id="PCEPI",
             units_transform="pc1",
-            limit=240,
+            limit=820,
             rule=narrative.rule_inflation,
             context=(
                 "The Personal Consumption Expenditures price index — the inflation gauge "
@@ -375,7 +376,7 @@ FISCAL_HEALTH = Lens(
             unit="%",
             color="#A78BFA",
             series_id="GFDEGDQ188S",
-            limit=80,  # ~20y quarterly
+            limit=245,  # ~20y quarterly
             rule=narrative.rule_debt_gdp,
             context=(
                 "Total federal debt measured against the size of the economy — the "
@@ -390,7 +391,7 @@ FISCAL_HEALTH = Lens(
             unit="$T",
             color="#F87171",
             series_id="MTSDS133FMS",
-            limit=252,  # ~21y monthly; the derive consumes 12 months per point
+            limit=570,  # ~21y monthly; the derive consumes 12 months per point
             rule=narrative.rule_deficit_12m,
             derive=derive.trailing_12m_deficit,
             context=(
@@ -406,7 +407,7 @@ FISCAL_HEALTH = Lens(
             unit="$B",
             color="#FBBF24",
             series_id="A091RC1Q027SBEA",
-            limit=80,
+            limit=330,
             value_format="thousands",
             rule=narrative.energy_level("The government's interest bill", fmt="${:,.0f} billion"),
             context=(
@@ -439,7 +440,7 @@ FISCAL_HEALTH = Lens(
             unit="%",
             color="#34D399",
             series_id="W006RC1Q027SBEA",
-            limit=100,
+            limit=330,
             derive=derive.yoy_pct,
             rule=narrative.yoy_contraction_band("The federal tax take", 0, -3, -8, verb="is"),
             context=(
@@ -711,7 +712,7 @@ MARKET_RISK_SENTIMENT = Lens(
     indicators=[
         Indicator(
             id="vix", title="Volatility · VIX", short="VIX", unit="", color="#FB7185",
-            series_id="VIXCLS", limit=2600, rule=narrative.rule_vix,
+            series_id="VIXCLS", limit=9500, rule=narrative.rule_vix,
             context=("The market's 'fear gauge' — the expected volatility of the S&P 500 "
                      "over the coming month. It spikes when investors are scared and falls when calm."),
         ),
@@ -737,7 +738,7 @@ MARKET_RISK_SENTIMENT = Lens(
         ),
         Indicator(
             id="nfci", title="Financial Conditions · NFCI", short="NFCI", unit="", color="#38BDF8",
-            series_id="NFCI", limit=520, rule=narrative.rule_financial_conditions,
+            series_id="NFCI", limit=2900, rule=narrative.rule_financial_conditions,
             context=("The Chicago Fed's broad gauge of financial conditions across money, debt, and "
                      "equity markets. Zero is average; positive means tighter (more stressed) than normal."),
         ),
@@ -792,7 +793,7 @@ MARKET_LIQUIDITY = Lens(
     indicators=[
         Indicator(
             id="m2-growth", title="M2 Money Supply · year-over-year", short="M2 growth",
-            unit="%", color="#2DD4BF", series_id="M2SL", units_transform="pc1", limit=300,
+            unit="%", color="#2DD4BF", series_id="M2SL", units_transform="pc1", limit=820,
             rule=narrative.rule_m2_growth,
             context=("How fast the broad money supply is growing versus a year ago. Double-digit "
                      "growth (2020-21) preceded the inflation surge; the 2022-23 contraction was "
@@ -844,7 +845,7 @@ CONSUMER_SPENDING = Lens(
     indicators=[
         Indicator(
             id="retail-sales", title="Retail Sales · year-over-year", short="Retail sales",
-            unit="%", color="#34D399", series_id="RSAFS", units_transform="pc1", limit=240,
+            unit="%", color="#34D399", series_id="RSAFS", units_transform="pc1", limit=420,
             rule=narrative.yoy_band_two_sided("Retail sales", hot=(8, 15, 25), cold=(-1, -4, -8)),
             context=("How fast retail and food-service sales are growing versus a year ago "
                      "(nominal — inflation is part of the number). A stall here is how consumer "
@@ -860,7 +861,7 @@ CONSUMER_SPENDING = Lens(
         ),
         Indicator(
             id="auto-sales", title="Vehicle Sales · annual rate", short="Auto sales",
-            unit="M", color="#FBBF24", series_id="TOTALSA", limit=240,
+            unit="M", color="#FBBF24", series_id="TOTALSA", limit=620,
             rule=narrative.rule_auto_sales,
             context=("Light-vehicle sales in millions at an annual rate — the classic big-ticket "
                      "purchase. Households delay new cars first when budgets tighten."),
@@ -873,7 +874,7 @@ CONSUMER_CREDIT = Lens(
     indicators=[
         Indicator(
             id="card-delinquency", title="Credit-Card Delinquency Rate", short="Card delinq.",
-            unit="%", color="#F87171", series_id="DRCCLACBS", limit=80,
+            unit="%", color="#F87171", series_id="DRCCLACBS", limit=160,
             rule=narrative.consumer_delinquency("Credit-card", 2.5, 4, 6),
             context=("The share of bank credit-card balances 30+ days past due (quarterly). "
                      "Cards go bad first — this is the earliest warning in consumer credit. "
@@ -881,21 +882,21 @@ CONSUMER_CREDIT = Lens(
         ),
         Indicator(
             id="consumer-delinquency", title="Consumer-Loan Delinquency Rate", short="Loan delinq.",
-            unit="%", color="#FB923C", series_id="DRCLACBS", limit=80,
+            unit="%", color="#FB923C", series_id="DRCLACBS", limit=160,
             rule=narrative.consumer_delinquency("Consumer-loan", 2.5, 3.5, 4.5),
             context=("Delinquency across all consumer loans at banks — cards, autos, and "
                      "personal loans together (quarterly)."),
         ),
         Indicator(
             id="revolving-credit", title="Card Balances · year-over-year", short="Card balances",
-            unit="%", color="#A78BFA", series_id="REVOLSL", units_transform="pc1", limit=240,
+            unit="%", color="#A78BFA", series_id="REVOLSL", units_transform="pc1", limit=710,
             rule=narrative.rule_revolving_credit,
             context=("How fast revolving credit (mostly credit cards) is growing. Balances "
                      "growing much faster than incomes mean households are borrowing to keep up."),
         ),
         Indicator(
             id="debt-service", title="Household Debt Service · % of income", short="Debt service",
-            unit="%", color="#FBBF24", series_id="TDSP", limit=80,
+            unit="%", color="#FBBF24", series_id="TDSP", limit=190,
             rule=narrative.rule_debt_service,
             context=("All required debt payments — mortgage and consumer — as a share of "
                      "disposable income (quarterly). The 2007 peak was about 13%."),
@@ -908,14 +909,14 @@ CONSUMER_INCOME = Lens(
     indicators=[
         Indicator(
             id="saving-rate", title="Personal Saving Rate", short="Saving rate",
-            unit="%", color="#FBBF24", series_id="PSAVERT", limit=240,
+            unit="%", color="#FBBF24", series_id="PSAVERT", limit=820,
             rule=narrative.rule_saving_rate,
             context=("The share of after-tax income households save each month. A thin saving "
                      "rate means no shock absorber — the historical norm is 5-8%."),
         ),
         Indicator(
             id="real-income", title="Real Disposable Income · year-over-year", short="Real income",
-            unit="%", color="#34D399", series_id="DSPIC96", units_transform="pc1", limit=240,
+            unit="%", color="#34D399", series_id="DSPIC96", units_transform="pc1", limit=820,
             rule=narrative.rule_real_income,
             context=("After-tax household income adjusted for inflation. When it falls, spending "
                      "can only be sustained by savings or debt — and both run out."),
@@ -935,7 +936,7 @@ CONSUMER_SENTIMENT = Lens(
     indicators=[
         Indicator(
             id="sentiment", title="Consumer Sentiment (U. Michigan)", short="Sentiment",
-            unit="", color="#38BDF8", series_id="UMCSENT", limit=240,
+            unit="", color="#38BDF8", series_id="UMCSENT", limit=900,
             rule=narrative.rule_sentiment,
             context=("The University of Michigan's monthly survey of how households feel about "
                      "their finances and the economy. Its long-run range is roughly 50-110 — "
@@ -944,7 +945,7 @@ CONSUMER_SENTIMENT = Lens(
         ),
         Indicator(
             id="inflation-expectations", title="Inflation Expectations · 1-year ahead", short="Inflation exp.",
-            unit="%", color="#FBBF24", series_id="MICH", limit=240,
+            unit="%", color="#FBBF24", series_id="MICH", limit=590,
             rule=narrative.rule_inflation_expectations,
             context=("What households expect inflation to be over the next year, from the same "
                      "Michigan survey. The Fed watches this closely: once expectations de-anchor, "
@@ -1092,7 +1093,7 @@ ENERGY_COMMODITIES = Lens(
     indicators=[
         Indicator(
             id="food-index", title="Global Food Prices · year-over-year", short="Global food", unit="%",
-            color="#A3E635", series_id="PFOODINDEXM", limit=300, derive=derive.yoy_pct,
+            color="#A3E635", series_id="PFOODINDEXM", limit=420, derive=derive.yoy_pct,
             rule=narrative.yoy_band("Global food", 5, 12, 25), value_format="decimal",
             context=("How fast the IMF's global food commodity index is rising versus a year "
                      "ago — the upstream driver of grocery inflation."),
@@ -1106,7 +1107,7 @@ ENERGY_COMMODITIES = Lens(
         ),
         Indicator(
             id="broad-commodities", title="Broad Commodities · year-over-year", short="Commodities", unit="%",
-            color="#38BDF8", series_id="PALLFNFINDEXM", limit=300, derive=derive.yoy_pct,
+            color="#38BDF8", series_id="PALLFNFINDEXM", limit=420, derive=derive.yoy_pct,
             rule=narrative.yoy_info("The broad commodity index"), value_format="decimal", market_price=True,
             context=("How fast the IMF's all-commodity price index is rising versus a year ago "
                      "— a single gauge of raw-input cost pressure across the economy."),
@@ -1132,7 +1133,7 @@ HOUSING_HOME_PRICES = Lens(
         Indicator(
             id="case-shiller", title="Case-Shiller Home Prices · year-over-year",
             short="Case-Shiller", unit="%", color="#F472B6",
-            series_id="CSUSHPINSA", limit=300, derive=derive.yoy_pct,
+            series_id="CSUSHPINSA", limit=480, derive=derive.yoy_pct,
             rule=narrative.yoy_band_two_sided("Home prices", hot=(6, 10, 15), cold=(-2, -5, -10)),
             context=("How fast U.S. home prices are rising or falling versus a year ago, from "
                      "the S&P Case-Shiller national index — the most-watched measure of home "
@@ -1149,7 +1150,7 @@ HOUSING_HOME_PRICES = Lens(
         Indicator(
             id="median-price", title="Median Sales Price of Houses Sold",
             short="Median price", unit="$", color="#34D399",
-            series_id="MSPUS", limit=80, value_format="thousands",
+            series_id="MSPUS", limit=260, value_format="thousands",
             rule=narrative.market_health("Median home price", hot=(6, 10, 15), cold=(-2, -5, -10)),
             context=("The median price of homes actually sold (quarterly) — a dollars-and-cents "
                      "companion to the Case-Shiller index."),
@@ -1175,7 +1176,7 @@ HOUSING_AFFORDABILITY = Lens(
         Indicator(
             id="debt-service", title="Mortgage Debt Service · % of income",
             short="Debt service", unit="%", color="#38BDF8",
-            series_id="MDSP", limit=80,
+            series_id="MDSP", limit=190,
             rule=narrative.rule_mortgage_debt_service,
             context=("Mortgage payments as a share of household disposable income (quarterly) — "
                      "how heavy the aggregate mortgage burden actually is."),
@@ -1183,7 +1184,7 @@ HOUSING_AFFORDABILITY = Lens(
         Indicator(
             id="delinquency", title="Mortgage Delinquency Rate · banks",
             short="Delinquency", unit="%", color="#F87171",
-            series_id="DRSFRMACBS", limit=80,
+            series_id="DRSFRMACBS", limit=160,
             rule=narrative.rule_mortgage_delinquency,
             context=("The share of single-family mortgages at commercial banks that are past "
                      "due (quarterly) — where affordability stress turns into credit stress."),
@@ -1191,7 +1192,7 @@ HOUSING_AFFORDABILITY = Lens(
         Indicator(
             id="mortgage-rate", title="30-Year Fixed Mortgage Rate",
             short="30-yr mortgage", unit="%", color="#FBBF24",
-            series_id="MORTGAGE30US", limit=1040,
+            series_id="MORTGAGE30US", limit=2900,
             rule=narrative.rule_mortgage,
             context=("The average rate on a 30-year fixed home loan — the input behind the "
                      "affordability squeeze above: it sets what a buyer can afford each month."),
@@ -1205,7 +1206,7 @@ HOUSING_SUPPLY_CONSTRUCTION = Lens(
         Indicator(
             id="months-supply", title="Months of New-Home Supply",
             short="Months' supply", unit="months", color="#FBBF24",
-            series_id="MSACSR", limit=240,
+            series_id="MSACSR", limit=760,
             rule=narrative.rule_months_supply,
             context=("How many months it would take to sell every new home on the market at "
                      "the current sales pace. Roughly 4-6 months is balanced; more is a glut, "
@@ -1222,7 +1223,7 @@ HOUSING_SUPPLY_CONSTRUCTION = Lens(
         Indicator(
             id="housing-starts", title="Housing Starts · thousands, annual rate",
             short="Starts", unit="", color="#34D399",
-            series_id="HOUST", limit=240, value_format="thousands",
+            series_id="HOUST", limit=820, value_format="thousands",
             rule=narrative.market_health("Homebuilding", hot=(20, 35, 50), cold=(-10, -20, -35)),
             context=("New homes started each month, in thousands of units at an annual rate "
                      "(1,465 means ~1.47 million homes/year) — the construction industry's "
@@ -1231,7 +1232,7 @@ HOUSING_SUPPLY_CONSTRUCTION = Lens(
         Indicator(
             id="building-permits", title="Building Permits · thousands, annual rate",
             short="Permits", unit="", color="#A78BFA",
-            series_id="PERMIT", limit=240, value_format="thousands",
+            series_id="PERMIT", limit=790, value_format="thousands",
             rule=narrative.market_health("Permitting", hot=(20, 35, 50), cold=(-10, -20, -35)),
             context=("Permits pulled for new housing units, in thousands at an annual rate — "
                      "the step before starts, so it leads the rest of the construction pipeline."),
@@ -1245,7 +1246,7 @@ HOUSING_RENT_SHELTER = Lens(
         Indicator(
             id="rent-cpi", title="Rent Inflation · CPI rent, year-over-year",
             short="Rent CPI", unit="%", color="#A78BFA",
-            series_id="CUSR0000SEHA", limit=300, derive=derive.yoy_pct,
+            series_id="CUSR0000SEHA", limit=960, derive=derive.yoy_pct,
             rule=narrative.yoy_band("Rent", 4, 6, 9),
             context=("How fast the rent tenants actually pay is rising versus a year ago, from "
                      "the rent component of the Consumer Price Index. It moves slowly but "
@@ -1254,7 +1255,7 @@ HOUSING_RENT_SHELTER = Lens(
         Indicator(
             id="owners-equivalent-rent", title="Owners' Equivalent Rent · year-over-year",
             short="OER", unit="%", color="#38BDF8",
-            series_id="CUSR0000SEHC", limit=300, derive=derive.yoy_pct,
+            series_id="CUSR0000SEHC", limit=890, derive=derive.yoy_pct,
             rule=narrative.yoy_band("Owners' equivalent rent", 4, 6, 9),
             context=("How fast the implied rent on owner-occupied homes is rising — the largest "
                      "single component of the CPI, and the bridge between home prices and "
@@ -1263,7 +1264,7 @@ HOUSING_RENT_SHELTER = Lens(
         Indicator(
             id="rental-vacancy", title="Rental Vacancy Rate",
             short="Vacancy", unit="%", color="#34D399",
-            series_id="RRVRUSQ156N", limit=80,
+            series_id="RRVRUSQ156N", limit=290,
             rule=narrative.rule_rental_vacancy,
             context=("The share of rental units sitting empty (quarterly). Low vacancy gives "
                      "landlords pricing power; high vacancy hands it back to renters."),
@@ -1271,7 +1272,7 @@ HOUSING_RENT_SHELTER = Lens(
         Indicator(
             id="homeownership", title="Homeownership Rate",
             short="Ownership", unit="%", color="#F472B6",
-            series_id="RHORUSQ156N", limit=80,
+            series_id="RHORUSQ156N", limit=250,
             rule=narrative.level_points("The homeownership rate"),
             context=("The share of households that own their home (quarterly) — the long arc "
                      "of whether owning is gaining or losing ground versus renting."),
@@ -1406,7 +1407,7 @@ GLOBAL_TRADE_SUPPLY = Lens(
         Indicator(
             id="trade-balance", title="U.S. Trade Deficit · goods & services",
             short="Trade deficit", unit="$B", color="#38BDF8",
-            series_id="BOPGSTB", limit=300,
+            series_id="BOPGSTB", limit=410,
             derive=derive.scaled(-1000, 1),  # balance is negative; show deficit size
             rule=narrative.rule_trade_deficit,
             context=("How much more the U.S. imports than it exports, in billions per "
@@ -1416,7 +1417,7 @@ GLOBAL_TRADE_SUPPLY = Lens(
         Indicator(
             id="import-prices", title="Import Prices · year-over-year",
             short="Import prices", unit="%", color="#FB923C",
-            series_id="IR", units_transform="pc1", limit=300,
+            series_id="IR", units_transform="pc1", limit=540,
             rule=narrative.yoy_band("Import", 4, 8, 12),
             context=("How fast the prices of everything the U.S. imports are rising "
                      "versus a year ago. Tariffs, a weaker dollar, and supply shocks "
@@ -1484,7 +1485,7 @@ BUSINESS_PROFITABILITY = Lens(
         Indicator(
             id="profit-growth", title="Corporate Profits · year-over-year",
             short="Profit growth", unit="%", color="#34D399",
-            series_id="CP", limit=104, derive=derive.yoy_pct,
+            series_id="CP", limit=330, derive=derive.yoy_pct,
             rule=narrative.yoy_contraction_band("Corporate profits", 0, -5, -15),
             context=("How fast after-tax corporate profits are growing versus a year ago "
                      "(quarterly, all U.S. corporations — about $3.9 trillion a year). "
@@ -1493,7 +1494,7 @@ BUSINESS_PROFITABILITY = Lens(
         Indicator(
             id="nonfinancial-profits", title="Nonfinancial Corporate Profits · year-over-year",
             short="Nonfin. profits", unit="%", color="#38BDF8",
-            series_id="NFCPATAX", limit=104, derive=derive.yoy_pct,
+            series_id="NFCPATAX", limit=330, derive=derive.yoy_pct,
             rule=narrative.yoy_contraction_band("Nonfinancial corporate profits", 0, -5, -15),
             context=("The same after-tax profit growth for nonfinancial corporations only — "
                      "the 'Main Street corporates' read, with banks stripped out."),
@@ -1510,7 +1511,7 @@ BUSINESS_PROFITABILITY = Lens(
         Indicator(
             id="proprietors-income", title="Proprietors' Income · year-over-year",
             short="Proprietors", unit="%", color="#FBBF24",
-            series_id="PROPINC", limit=104, derive=derive.yoy_pct,
+            series_id="PROPINC", limit=330, derive=derive.yoy_pct,
             rule=narrative.yoy_info("Proprietors' income"),
             context=("Income of unincorporated businesses — sole proprietors and "
                      "partnerships. The closest thing to a small-business earnings line."),
@@ -1556,7 +1557,7 @@ BUSINESS_INVESTMENT = Lens(
         Indicator(
             id="core-capex", title="Core Capital-Goods Orders · year-over-year",
             short="Core capex", unit="%", color="#FBBF24",
-            series_id="NEWORDER", limit=300, derive=derive.yoy_pct,
+            series_id="NEWORDER", limit=420, derive=derive.yoy_pct,
             rule=narrative.yoy_contraction_band("Core capital-goods orders", 0, -3, -10),
             context=("Orders for nondefense capital goods excluding aircraft — the cleanest "
                      "monthly read on whether businesses are investing in equipment. "
@@ -1565,7 +1566,7 @@ BUSINESS_INVESTMENT = Lens(
         Indicator(
             id="real-sales", title="Real Business Sales · year-over-year",
             short="Real sales", unit="%", color="#34D399",
-            series_id="CMRMTSPL", limit=300, derive=derive.yoy_pct,
+            series_id="CMRMTSPL", limit=720, derive=derive.yoy_pct,
             rule=narrative.yoy_contraction_band("Real business sales", 0, -2, -6),
             context=("Real manufacturing and trade sales — total business volume adjusted "
                      "for inflation, one of the inputs NBER uses to date recessions."),
@@ -1573,7 +1574,7 @@ BUSINESS_INVESTMENT = Lens(
         Indicator(
             id="inventories-sales", title="Inventories-to-Sales Ratio",
             short="Inv./sales", unit="", color="#38BDF8",
-            series_id="ISRATIO", limit=240,
+            series_id="ISRATIO", limit=420,
             rule=narrative.rule_inventories_sales,
             context=("Total business inventories measured against a month of sales. Rising "
                      "means goods are piling up unsold — the overhang that precedes "
@@ -1588,7 +1589,7 @@ BUSINESS_CREDIT = Lens(
         Indicator(
             id="baa-spread", title="Baa Corporate Spread · over 10-Year Treasury",
             short="Baa spread", unit="%", color="#F87171",
-            series_id="BAA10YM", limit=240,
+            series_id="BAA10YM", limit=890,
             rule=narrative.rule_baa_spread,
             context=("The extra yield investors demand to hold Moody's Baa-rated corporate "
                      "bonds over 10-year Treasuries — the price of ordinary corporate credit "
@@ -1598,7 +1599,7 @@ BUSINESS_CREDIT = Lens(
         Indicator(
             id="lending-standards", title="Lending Standards · net % of banks tightening",
             short="Standards", unit="%", color="#FBBF24",
-            series_id="DRTSCILM", limit=80,
+            series_id="DRTSCILM", limit=150,
             rule=narrative.rule_lending_standards,
             context=("From the Fed's quarterly loan-officer survey: the share of banks "
                      "tightening standards on commercial & industrial loans minus the share "
@@ -1607,7 +1608,7 @@ BUSINESS_CREDIT = Lens(
         Indicator(
             id="delinquency", title="Business-Loan Delinquency Rate",
             short="Delinquency", unit="%", color="#FB923C",
-            series_id="DRBLACBS", limit=80,
+            series_id="DRBLACBS", limit=160,
             rule=narrative.rule_business_delinquency,
             context=("The share of commercial & industrial loans at banks that are past due "
                      "(quarterly) — where business credit stress stops being a forecast and "
@@ -1616,7 +1617,7 @@ BUSINESS_CREDIT = Lens(
         Indicator(
             id="ci-loan-growth", title="C&I Loan Growth · year-over-year",
             short="C&I loans", unit="%", color="#A78BFA",
-            series_id="BUSLOANS", limit=300, derive=derive.yoy_pct,
+            series_id="BUSLOANS", limit=950, derive=derive.yoy_pct,
             rule=narrative.yoy_band_two_sided("C&I lending", hot=(10, 20, 30),
                                               cold=(-0.5, -5, -12), verb="is"),
             context=("How fast bank lending to businesses is growing. Outright contraction "

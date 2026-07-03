@@ -161,7 +161,7 @@ def _inject_economic_computed(fetched, out_dir, api_key=None):
     receipts = fetched.get("W018RC1Q027SBEA:lin")
     if receipts is None and api_key:
         try:
-            receipts = fred.fetch_observations("W018RC1Q027SBEA", api_key, 200)
+            receipts = fred.fetch_observations("W018RC1Q027SBEA", api_key, 330)
         except Exception as exc:  # noqa: BLE001 - keep prior data on a fetch failure
             print(f"WARN: total-receipts fetch failed ({exc}); keeping previous interest burden",
                   file=sys.stderr)
@@ -536,7 +536,7 @@ def _inject_business_shares(fetched, api_key):
     gdp = fetched.get("GDP:lin")
     if gdp is None and api_key:
         try:
-            gdp = fred.fetch_observations("GDP", api_key, 104)
+            gdp = fred.fetch_observations("GDP", api_key, 330)
         except Exception as exc:  # noqa: BLE001 - keep prior on failure
             print(f"WARN: GDP fetch failed ({exc}); keeping previous profit share", file=sys.stderr)
     share = util.pct_share(fetched.get("CP:lin"), gdp) if gdp else []
