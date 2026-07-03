@@ -11,18 +11,18 @@ Branch: `audit-2026-07-03` (from main @ c618de9, the 2026-07-03 06:00 UTC cron r
 
 - [x] Setup: branch created, ledger committed
 - [x] Pass 0 — Recon
-- [ ] Pass 1 — Correctness & code quality
-- [ ] Pass 2 — Logic & statistical honesty
-- [ ] Pass 3 — UX & site flow
-- [ ] Pass 4 — Content & legibility
-- [ ] Pass 5 — Aesthetics
-- [ ] Pass 6 — Metrics & presentation choices
-- [ ] Pass 7 — Review panel
-- [ ] Pass 8 — The rulebook itself
-- [ ] Pass 9 — Data science & sophistication
-- [ ] Pass 10 — Implementation
-- [ ] Pass 11 — Verification
-- [ ] Pass 12 — Final report & next-moves memo
+- [x] Pass 1 — Correctness & code quality
+- [x] Pass 2 — Logic & statistical honesty
+- [x] Pass 3 — UX & site flow
+- [x] Pass 4 — Content & legibility
+- [x] Pass 5 — Aesthetics
+- [x] Pass 6 — Metrics & presentation choices
+- [x] Pass 7 — Review panel
+- [x] Pass 8 — The rulebook itself
+- [x] Pass 9 — Data science & sophistication
+- [x] Pass 10 — Implementation (14 fix/polish/opinion commits + 2 self-review catches)
+- [x] Pass 11 — Verification: full suite 938 OK, JS 21 OK; /code-review max fleet — results below
+- [x] Pass 12 — Final report & next-moves memo (`2026-07-03-next-moves.md`)
 
 ## Pass 0 — Recon record
 
@@ -199,6 +199,30 @@ Convergence: P3-01 (statistician + rival + journalist), P2-02 (CFO + rival + Pas
 
 (none yet)
 
+## GUI screenshot-review prompt (paste into a Claude GUI chat with the screenshots)
+
+> I run baileyanalytics.com, a daily plain-English economics dashboard. I'm attaching screenshots
+> for a visual-judgment review — code-level consistency is already verified, so judge only what
+> needs human/visual eyes. For each screenshot answer: does it *feel* credible and premium, or
+> does anything read cheap, cramped, or off-brand? Specifically:
+> 1. **Home, desktop, dark + light** (1440px): does the hero hierarchy land (title → tagline →
+>    verdict pill → email)? Do the 8 tiles read as one system? Does the light theme feel as
+>    intentional as dark, or like an inversion?
+> 2. **Home, phone (~390px), dark**: do the 2-up chips feel native-app quality? Is the sentence +
+>    big-number combo scannable, or busy?
+> 3. **Today's Brief, desktop + phone, dark**: is the verdict panel the obvious start point? Do
+>    the mover cards' italic "why" lines read as insight or clutter?
+> 4. **One lens page (Recession Watch), dark + light**: do the scale strips under charts help or
+>    add noise? Is the "Next print" block visually subordinate to the chart? Do the red-accent
+>    numbers on an "ok" page create false alarm?
+> 5. **A tile sparkline vs its badge** (housing tile: mint-green rising line beside an "elevated"
+>    badge): does the identity-color line fight the status color, and if so should sparklines be
+>    neutral gray?
+> 6. **An og card image** (og/brief-YYYY-MM-DD.png at social-card size): would you stop scrolling
+>    for it in a timeline? Is the text legible at thumbnail size?
+> Capture: Chrome device toolbar, 1440×900 and 390×844, both themes via the sun/moon toggle,
+> normal daily data. End with: the ONE visual change that would most raise perceived quality.
+
 ## Blocked
 
-(none yet)
+(none — no denied actions, no unresolvable steps this session)
