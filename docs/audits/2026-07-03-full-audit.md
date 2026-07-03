@@ -125,6 +125,27 @@ Cross-cutting: ① historical-percentile context per indicator (Pass 9) is the h
 
 Convergence: P3-01 (statistician + rival + journalist), P2-02 (CFO + rival + Pass 2), per-lens sharing (advisor + growth PM + roadmap).
 
+### Pass 8 — the rulebook itself (keep / change / retire)
+
+- **Zero-build static-bake + marker-patch exceptions — KEEP.** It is the site's superpower: $0 hosting, auditable diffs, no deploy pipeline to break, offline-testable bakes. The exceptions (brief bake, marker regions, baked reads) are contained, content-aware, and tested. Re-derived: still pays rent.
+- **Four-way fmtVal duplication — CHANGE (cheaply).** The duplication itself is tolerable (4 small pure functions), but nothing *enforces* identity — P1-01 proves drift exists today (rounding). Rather than a build step, add (a) the rounding fix and (b) a **drift test**: extract the three JS fmtVal bodies and assert byte-identity, plus golden-value cases run through Python `_fmt` and `node` for the JS twin. Implemented in Pass 10. Retire the "must stay behaviorally identical by vigilance" convention in favor of "identical by test".
+- **Three-way theme/chrome duplication (lens.css + home + about inline) — KEEP for now.** Consolidating means home/about loading lens.css (regression risk for two bespoke pages) or a CSS build step (violates zero-build). The documented trap + contrast tests hold. Revisit only if a fourth bespoke surface appears.
+- **"Stdlib for lens code; libraries where earned" — KEEP.** Explicitly re-affirmed by Michael 2026-06-11; predictions already use the scientific stack. No retrofit.
+- **No-cache full-refetch — KEEP.** Self-heals revisions (FDIC restatements observed); cost is minutes of free CI. The per-source cadence split already handles scale.
+- **Cron/backup-cron/monitoring — KEEP.** Backup slots, write-main concurrency, push-retry loops, dead-man's-switch: this is a genuinely mature ops posture for a $0 stack.
+- **Band-threshold governance — CHANGE.** Thresholds are code-guarded (drift-lock) and prose-justified (BAND_WHY), but nothing *empirical* backs them. Adopt: **no band change ships without a backtest run** (Pass 9 delivers the tool + first full run in `docs/audits/2026-07-03-bands-backtest.md`). This also arms the public credibility story.
+- **Test strategy — KEEP + two additions.** 932-test Python suite is load-bearing and healthy; node:test for pure JS is the right line; "manually verified DOM renderers" stays acceptable. Additions (Pass 10): the fmtVal drift test; a headline-copy honesty guard after P2-01's fix.
+- **Delivery workflow — KEEP.** This audit itself runs inside it (branch, review gate, Michael's go).
+- **CLAUDE.md / memory accuracy — two drifts found:** CLAUDE.md says "six dashboard categories" and lists 6 (Global + Business missing from the architecture bullet list) and "~615 tests" (actual ~932). Fixed as [polish] in Pass 10. Memory files spot-checked accurate.
+- **This prompt's own blind spots (logged honestly):** (a) it front-loads defect-hunting on a codebase that is in strong shape — the real value concentrated in ~6 credibility/copy edges and one prediction-integrity hole; (b) the 26-persona floor produced diminishing returns after ~15 seats (several justified-clean); (c) "fetch live surfaces" was near-redundant given machine-committed surfaces, though it did prove parity and caught the CF email-obfuscation behavior.
+
+### Pass 9 — data science & sophistication (full results: `2026-07-03-bands-backtest.md`)
+
+- Backtested all 22 long-history production rules against NBER dating (prefix evaluation, month-end grid). Framework verdict: honest conditions board; leading pieces (curve 5/6 warned, months-supply 5/8, payrolls 6/9, NFCI 4/7, standards) genuinely led. Two rules regime-anchored (claims, mortgage rate) — already hedged in copy; durable fix = percentile context, not band surgery.
+- **P2-02 alert tiers now evidence-backed**: VIX≥40 (11 months in 36y — 1998/2008-09/2011/2020 only), NFCI≥1.0 (modern era: 2008-09 only), noncurrent≥3.0 (2009–2013 only), charge-offs≥2.0 (2009–2010 only), ROA≤0; claims alert REJECTED (fires in normal years). → implement.
+- **P9-01 · Credibility · FIXHAI is a rolling ~14-obs window on FRED** (never had depth since category launch; verified across all 9 file commits + live API). Undisclosed short "Max" range + silently no prediction for the affordability lead. → disclosure note + windowed-series accumulation (FIXHAI + ICE HY/IG). Status: open → Pass 10.
+- Prototypes run: percentile context (sentiment 0.0th pctile, months-supply 97.2th, debt/GDP 97.9th — compelling, build-next), diffusion index (2008 peak 64% elev+; today 23% ≈ mid-2007 breadth — strong first-composite candidate), yield-curve logit (AUC 0.72, P=26% today — next-phase with out-of-sample framing), lead-lag (standards→delinquency r=0.61 at +5Q — supports the map edge). PCA rejected (black-box loadings vs the diffusion index answering the same question explainably).
+
 ## Notes on solid ground (verified, no finding)
 - Live == repo byte-identical on 21 surfaces (only CF email-protection rewrite on home).
 - refresh_lenses failure paths: every source guarded, prior-data fallbacks throughout; write paths content-aware; `--dry-run` hazards documented and real.
