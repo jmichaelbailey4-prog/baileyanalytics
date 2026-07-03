@@ -94,7 +94,10 @@ def _watching_rows(today):
     rows = []
     for x in (today.get("watching") or [])[:3]:
         if x.get("change"):
-            claim = (f"we expect <strong>{escape(x['point_fmt'])}</strong> — which would tip "
+            # Mirrors briefpage: improving changes "ease", worsening ones "tip".
+            verb = ("ease" if util.STATUS_ORDER.get(x.get("implied_status"), 0)
+                    < util.STATUS_ORDER.get(x.get("current_status"), 0) else "tip")
+            claim = (f"we expect <strong>{escape(x['point_fmt'])}</strong> — which would {verb} "
                      f"{escape(x['lens_title'])} to {_badge(x['implied_status'])}")
         else:
             claim = f"we expect <strong>{escape(x['point_fmt'])}</strong>, no status change"

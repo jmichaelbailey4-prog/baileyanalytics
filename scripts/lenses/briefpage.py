@@ -111,7 +111,11 @@ def _watching(watching):
     for x in watching:
         if x.get("change"):
             _imp = escape(x.get("implied_status") or "unknown")
-            claim = (f'we expect <strong>{escape(x["point_fmt"])}</strong> — which would tip '
+            # "tip" reads as worsening — an improving change (alert -> elevated)
+            # says "ease" instead (audit 2026-07-03).
+            verb = ("ease" if util.STATUS_ORDER.get(x.get("implied_status"), 0)
+                    < util.STATUS_ORDER.get(x.get("current_status"), 0) else "tip")
+            claim = (f'we expect <strong>{escape(x["point_fmt"])}</strong> — which would {verb} '
                      f'{escape(x["lens_title"])} to <span class="badge '
                      f'{_imp}">{_imp}</span>')
         else:
