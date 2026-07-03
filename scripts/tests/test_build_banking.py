@@ -41,7 +41,10 @@ class TestBuildBanking(unittest.TestCase):
         rk = out["rankings"][0]
         self.assertEqual(rk["rows"][0]["name"], "X BANK")
         self.assertEqual(rk["rows"][0]["value"], "6.40%")
-        self.assertEqual(rk["rows"][0]["status"], "elevated")  # 6.4% via rule_noncurrent
+        # 6.4% via rule_noncurrent — crisis territory since the 2026-07-03
+        # alert tier (>=3% fired only in 2009-2013 nationally; a single bank
+        # at 6.4% CRE delinquency honestly wears the strongest pill).
+        self.assertEqual(rk["rows"][0]["status"], "alert")
 
 
 if __name__ == "__main__":

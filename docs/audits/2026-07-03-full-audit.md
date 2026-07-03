@@ -152,9 +152,48 @@ Convergence: P3-01 (statistician + rival + journalist), P2-02 (CFO + rival + Pas
 - synthesis honesty stack (tier-gated map, high-precision linter, self-grounded whys) is as documented; `relationship_sentence` raises on tier violations; `today._safe_relationships` guards separately. 
 - `state.classify_shape` "ok excludes pressure" claim holds mathematically up to 11 categories (RMS 2/√N ≥ 0.6 ⟺ N ≤ 11).
 
+## Status map (Pass 10 outcomes)
+
+| ID | Finding | Status |
+|---|---|---|
+| P2-05 | Sentiment record-low copy contradiction | fixed@21f48cb |
+| P2-01 | Headlines naming unsupported drivers (6 spots) | fixed@11e4bb4 |
+| P3-01 | Daily partial-week grading + "Now" mismatch | fixed@28283e1 |
+| P2-02 | Unreachable alert states (banking + risk sentiment) | fixed@abfbe33 (backtest-grounded tiers) |
+| P9-01 | FIXHAI rolling window: history loss + no disclosure | fixed@70f9c07 |
+| P7-03 | No SRI on Chart.js CDN | fixed@e907deb |
+| P3-02 | GEPU overdue row tops Track Record | fixed@94bb29e |
+| P4-01 | "would tip" used for improvements | fixed@03e8941 |
+| P1-01 | fmtVal rounding twin drift | fixed@b6f57c4 (+ cross-language golden battery) |
+| P1-03 | Baked-read mtime-gate footgun | fixed@84a0bd9 |
+| P7-01 | No per-indicator anchors | fixed@a6396cb |
+| P1-04 | Dead rule_rate_trend | fixed@a6396cb (redirect stubs deliberately KEPT — inbound links) |
+| P3-03 | Hero order (verdict above email) | fixed@b7fedd4 [opinion] |
+| P7-02 | No digest path from lens pages | fixed@f66124c [opinion] |
+| Pass 6 energy | "Food" label misread | fixed@caf8444 [opinion] |
+| P2-03 | unemployment-trend "steady near lows" wording | accepted-risk (wording is true within its 12-mo window; a delta-stating rewrite would lengthen every ok read — revisit with percentile context) |
+| P2-04 | Brief transition memory loses a day on index outage | accepted-risk (self-healing, rare, no reader-visible falsehood) |
+| P1-02 | _status_of latent trap for trend rules | accepted-risk (documented here; no live path) |
+| P2-08 | "fresh high in this view" beside ok reads | accepted-risk (window-scoped and true) |
+| P3-04 | CF email obfuscation breaks no-JS mailto | proposed → decision list (Cloudflare setting, not repo) |
+| P5-01 | Identity-accent sparklines vs status | proposed → GUI screenshot review |
+| Pass 6 adds | auto-loan rate, food-at-home CPI, core PCE, quits, unrealized bank losses | proposed → next-moves memo |
+| Pass 9 | percentile context, Stress Breadth index, probit, backtest-as-content | proposed → next-moves memo |
+
 ## Decision Log
 
 - **D-001** Branched `audit-2026-07-03` from freshly-pulled main (c618de9) rather than the stale `sitewide-polish-2026-06` checkout. Runner-up: audit the checkout as-found. Why: the prompt's safety floor says pull main; the polish branch is already merged/deployed, so main is the live product.
+- **D-002** P3-01 fix shape: drop the trailing partial week in `weekly_resample` + display-only `now_value`, rather than re-dating partial weeks or changing the grading anchor. Runner-up: grade against the partial week but suppress the revision footnote. Why: "grade the first print" for a weekly target must mean a completed week; anchor semantics (naive benchmark) stay comparable with history.
+- **D-003** Alert tiers adopted only where the backtest shows crisis-only firing (VIX 40, NFCI 1.0, noncurrent 3.0, charge-offs 2.0, ROA<0, HY 8/IG 3.5 with prose-only justification); claims alert REJECTED on evidence. Runner-up: percentile-based dynamic bands — deferred to the memo (bigger change, needs design).
+- **D-004** FIXHAI: accumulate-forward + disclose, rather than swapping to a scraped NAR source or a computed proxy. Runner-up: computed affordability (payment/income) — proposed in the memo; source-swap rejected (licensing).
+- **D-005** fmtVal duplication: enforce identity by test (golden battery both sides) rather than restructure to a shared module. Why: zero-build constraint; the four functions are 10 lines each; the failure mode is drift, which tests catch.
+- **D-006** Kept `dashboards/state.html` + `economic.html` redirect stubs (P1-04 partial): external links may exist; each is ~1KB. Removal is churn with real 404 risk.
+- **D-007** GEPU overdue handling client-side (track-record.js) rather than lag-aware `due_estimate`. Why: due semantics feed grading-adjacent surfaces; a display-side label is honest and contained.
+
+## Deviations
+
+- **DEV-001** Edited the parent-level `CLAUDE.md` (outside the git repo, so outside the branch): "six dashboard categories" → eight (+ Global/Business bullets + FIXHAI window note), "~615 tests" → ~940. House precedent (distribution phase did the same); these corrections are true regardless of whether this branch merges. If Michael discards the audit wholesale, the FIXHAI/WINDOWED_SERIES sentence in CLAUDE.md should be reverted; the rest stands on its own.
+- **DEV-002** The prompt says subagents are authorized for breadth; none were used. Why: the codebase (~13.4k LOC) was readable inline within budget, and central findings needed cross-file reasoning that fan-out summaries would have flattened.
 
 ## Deviations
 
