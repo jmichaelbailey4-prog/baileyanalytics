@@ -180,6 +180,29 @@ Convergence: P3-01 (statistician + rival + journalist), P2-02 (CFO + rival + Pas
 | Pass 6 adds | auto-loan rate, food-at-home CPI, core PCE, quits, unrealized bank losses | proposed → next-moves memo |
 | Pass 9 | percentile context, Stress Breadth index, probit, backtest-as-content | proposed → next-moves memo |
 
+## Pass 11 — /code-review (max) record
+
+Fleet: 4 consolidated finder agents + orchestrator self-review as the 5th angle + inline sweep. Two finders (line-scan, removed-behavior) were killed mid-run by a session limit; their angles were covered by the orchestrator's documented inline analysis (see Deviations DEV-003). Verification: in-session with quoted code evidence (the orchestrator authored the diff and re-read every flagged site).
+
+**Confirmed + fixed (commit `[fix] code-review fleet round …` + `5fc0dfb`):**
+1. predict.js `statusPhrase` still said "would tip" for improving changes (the third renderer of the same claim) — fixed + both sides now test-pinned.
+2. VIX BAND_WHY/docstring enumerated "only 1998/2008-09/2011/2020" — falsified by the site's own April-2025 chart (the audit backtest sampled month-ends; intra-month spikes escape it). Reworded non-enumerating; method caveat recorded here.
+3. credit-spread alert prose "seen only in full credit crises (2008, March 2020)" — overclaim vs 2011/2016 episodes; reworded to "severe credit-stress episodes".
+4. Banking "3%+/2%+ occurred only in…" — window-relative facts phrased as all-history (early-90s S&L exceeded them); scoped to "in the two decades of data shown".
+5. Sentiment record-low read claimed "never been this pessimistic" on an exact tie — 3-way handling (record / matching the record / near).
+6. Track Record overdue label asserted a cause ("publishes on a long lag") the code can't know — now states only the fact.
+7. Lens-page subscribe links targeted `#subscribe` before any rebake emits it — one-time byte-identical catch-up applied to `dashboards/brief.html` (house catch-up pattern).
+8. WINDOWED_SERIES had no markets-side test and a silent-no-op rename mode — added the ICE end-to-end test + a config-integrity test pinning every triplet.
+9. predict.js now_value/now_date could de-pair on a NaN fallback — single guard (`5fc0dfb`).
+10. "Four twins" is now five (track-record.js) — comments + CLAUDE.md corrected.
+11. credit_spread's two-arm BandSpec construction collapsed to one.
+
+**Dismissed, with reasons:**
+- *Deduplicate tip/ease into state.build_watching emitting a verb field* — real, but it changes the today.json schema consumed by three renderers for a two-word policy; the three copies are now individually test-pinned. Revisit if a fourth renderer appears.
+- *WINDOWED_SERIES as an Indicator flag (altitude)* — the rename-desync risk the finder named is now killed statically by the integrity test; moving refresh behavior into config is a taste call not worth churn at n=3 entries.
+- *Emit now_value for every cadence* — deliberately daily-only: the field's meaning is "differs from the grading anchor"; emitting duplicates elsewhere blurs that contract.
+- *now/anchor rationale comment appears twice in runner* — trimmed to two (docstring + one block comment); the remaining pair serves different readers (API vs implementation).
+
 ## Decision Log
 
 - **D-001** Branched `audit-2026-07-03` from freshly-pulled main (c618de9) rather than the stale `sitewide-polish-2026-06` checkout. Runner-up: audit the checkout as-found. Why: the prompt's safety floor says pull main; the polish branch is already merged/deployed, so main is the live product.
@@ -193,7 +216,9 @@ Convergence: P3-01 (statistician + rival + journalist), P2-02 (CFO + rival + Pas
 ## Deviations
 
 - **DEV-001** Edited the parent-level `CLAUDE.md` (outside the git repo, so outside the branch): "six dashboard categories" → eight (+ Global/Business bullets + FIXHAI window note), "~615 tests" → ~940. House precedent (distribution phase did the same); these corrections are true regardless of whether this branch merges. If Michael discards the audit wholesale, the FIXHAI/WINDOWED_SERIES sentence in CLAUDE.md should be reverted; the rest stands on its own.
-- **DEV-002** The prompt says subagents are authorized for breadth; none were used. Why: the codebase (~13.4k LOC) was readable inline within budget, and central findings needed cross-file reasoning that fan-out summaries would have flattened.
+- **DEV-002** The prompt says subagents are authorized for breadth; during the audit passes none were used (the ~13.4k-LOC codebase was readable inline, and the central findings needed cross-file reasoning). The /code-review pass DID use the multi-agent fleet per the skill contract and house precedent.
+- **DEV-003** Two review finder agents (line-scan, removed-behavior) were terminated by a session usage limit mid-run. Per the autonomy contract this was treated as a detour: both angles had already been executed inline by the orchestrator during Pass 10/11 (documented weekly_resample edge walk, infer-before-resample ordering, `_accumulate_windowed`×`lens_ready` interaction, `_fmt` float-boundary equivalence with `Math.round`, `isLate` boolean-coercion sort, HEADLINES test survival, 4-segment strip rendering), and the inline sweep ran with the verified list in hand. Residual risk: lower independence on those two angles than a clean fleet run.
+- **DEV-004** `_settheme_*.html` helper files were created inside the repo for ~2 minutes to prime headless-Chrome theme profiles, then deleted (never staged). Noted for completeness.
 
 ## Deviations
 
