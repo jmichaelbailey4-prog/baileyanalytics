@@ -163,7 +163,7 @@ class TestBuildJobMarket(unittest.TestCase):
     def test_builds_with_derived_payrolls(self):
         lj = build.build_lens(config.JOB_MARKET, _load_fixture())
         self.assertEqual(lj["id"], "job-market")
-        self.assertEqual(len(lj["indicators"]), 5)
+        self.assertEqual(len(lj["indicators"]), 6)  # + quits (2026-07-03)
         payrolls = next(i for i in lj["indicators"] if i["id"] == "payrolls")
         self.assertEqual(payrolls["latest"], {"date": "2026-05-01", "value": "177000"})
         self.assertEqual(payrolls["value_format"], "thousands")
@@ -173,7 +173,7 @@ class TestBuildCostOfLiving(unittest.TestCase):
     def test_builds_with_four_indicators(self):
         lj = build.build_lens(config.COST_OF_LIVING, _load_fixture())
         self.assertEqual(lj["id"], "cost-of-living")
-        self.assertEqual(len(lj["indicators"]), 4)
+        self.assertEqual(len(lj["indicators"]), 5)  # + core PCE (2026-07-03)
         self.assertEqual(lj["status"], "watch")
 
 

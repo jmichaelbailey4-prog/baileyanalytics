@@ -280,6 +280,21 @@ JOB_MARKET = Lens(
             ),
         ),
         Indicator(
+            id="quits",
+            title="Quits Rate (JOLTS)",
+            short="Quits",
+            unit="%",
+            color="#F472B6",
+            series_id="JTSQUR",
+            limit=320,
+            rule=narrative.level_points("The quits rate"),
+            context=(
+                "The share of workers who voluntarily quit each month (since 2000). "
+                "People quit when they're confident they can find something better — "
+                "so a falling quits rate is the insiders' read on a cooling market."
+            ),
+        ),
+        Indicator(
             id="participation",
             title="Labor-Force Participation Rate",
             short="Participation",
@@ -344,6 +359,22 @@ COST_OF_LIVING = Lens(
             context=(
                 "The Personal Consumption Expenditures price index — the inflation gauge "
                 "the Federal Reserve watches most closely when setting interest rates."
+            ),
+        ),
+        Indicator(
+            id="core-pce",
+            title="Core PCE Inflation (year-over-year)",
+            short="Core PCE",
+            unit="%",
+            color="#A78BFA",
+            series_id="PCEPILFE",
+            units_transform="pc1",
+            limit=820,
+            rule=narrative.rule_inflation,
+            context=(
+                "PCE excluding food and energy — the measure the Fed's 2% target is "
+                "actually stated in. When policymakers say \u201cinflation,\u201d this "
+                "is the number they mean."
             ),
         ),
         Indicator(
@@ -901,6 +932,14 @@ CONSUMER_CREDIT = Lens(
             context=("All required debt payments — mortgage and consumer — as a share of "
                      "disposable income (quarterly). The 2007 peak was about 13%."),
         ),
+        Indicator(
+            id="auto-loan-rate", title="New-Car Loan Rate · 48-month", short="Auto loan rate",
+            unit="%", color="#22D3EE", series_id="TERMCBAUTO48NS", limit=660,
+            rule=narrative.level_points("The average new-car loan rate"),
+            context=("What banks charge on a 48-month new-car loan (quarterly, since "
+                     "1972) — the interest rate households actually meet when they "
+                     "finance a car, as opposed to the Treasury rates markets watch."),
+        ),
     ],
 )
 
@@ -1097,6 +1136,15 @@ ENERGY_COMMODITIES = Lens(
             rule=narrative.yoy_band("Global food", 5, 12, 25), value_format="decimal",
             context=("How fast the IMF's global food commodity index is rising versus a year "
                      "ago — the upstream driver of grocery inflation."),
+        ),
+        Indicator(
+            id="grocery-cpi", title="U.S. Grocery Prices · year-over-year", short="Groceries", unit="%",
+            color="#F472B6", series_id="CUSR0000SAF11", units_transform="pc1", limit=960,
+            rule=narrative.yoy_band("Grocery prices", 3, 6, 10),
+            context=("What U.S. shoppers actually pay at the grocery store (CPI food at "
+                     "home) versus a year ago — the household-facing counterpart to the "
+                     "global commodity index above. The two can diverge for months: "
+                     "commodity spikes reach shelves slowly, if at all."),
         ),
         Indicator(
             id="copper", title="Copper · “Dr. Copper”", short="Copper", unit="$",
@@ -1650,6 +1698,7 @@ _AGG_FALSE = {"aggregate": False}  # scored, but held out of the lens badge
 _SIGNAL_NOTES = {
     # Non-aggregating scored "echoes" — a chip, but a lead carries the verdict.
     ("housing-home-prices", "median-price"): _AGG_FALSE,
+    ("energy-commodities", "grocery-cpi"): _AGG_FALSE,
     ("housing-rent-shelter", "owners-equivalent-rent"): _AGG_FALSE,
     ("business-profitability", "nonfinancial-profits"): _AGG_FALSE,
     ("business-formation", "high-propensity"): _AGG_FALSE,
@@ -1659,6 +1708,8 @@ _SIGNAL_NOTES = {
     # Why no score (info / momentum signals).
     ("cost-of-money", "rate-expectations"): {"no_severity_reason": reasons.RATE_EXPECTATIONS},
     ("job-market", "participation"): {"no_severity_reason": reasons.DEMOGRAPHIC_LEVEL},
+    ("job-market", "quits"): {"no_severity_reason": reasons.QUITS},
+    ("consumer-credit", "auto-loan-rate"): {"no_severity_reason": reasons.AUTO_RATE},
     ("fiscal-health", "interest-cost"): {"no_severity_reason": reasons.INTEREST_DOLLARS},
     ("market-scoreboard", "sp500"): {"no_severity_reason": reasons.NEUTRAL_SCOREBOARD},
     ("market-scoreboard", "oil"): {"no_severity_reason": reasons.NEUTRAL_SCOREBOARD},

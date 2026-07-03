@@ -30,6 +30,11 @@ LEVEL_CONTEXT = ("A descriptive level shown for context — neither a high nor a
 RAW_INVENTORY = ("Months' supply, which adjusts for the sales pace, carries this lens's "
                  "supply verdict; this is the raw count for context.")
 CONTEXT_GROWTH = "Shown for context alongside this lens's lead growth reading."
+AUTO_RATE = ("A retail borrowing rate shown for context — the scored consumer-stress "
+             "reads here are delinquencies, balances, and debt service.")
+QUITS = ("The quits rate tends to track workers' confidence in finding another job — "
+         "shown for context; the verdict is carried by unemployment, payrolls, and "
+         "openings.")
 CONTEXT_DEMAND = ("Shown for context — a noisy global-demand pulse the lens's scored "
                   "indicators read more cleanly.")
 SMALL_BUSINESS_NOISE = ("Shown for context — proprietors' income (which includes farm "
