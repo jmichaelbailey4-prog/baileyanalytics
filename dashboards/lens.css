@@ -66,6 +66,9 @@ main{max-width:48rem;margin:0 auto}
    of text, so color alone fails axe's link-in-text-block (matches index.html). */
 .foot a{color:var(--muted);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:2px;text-decoration-color:var(--border)}
 .foot a:hover{color:var(--text);text-decoration-color:var(--muted)}
+.lens-sub{margin-top:1.75rem;font-size:.85rem;color:var(--muted)}
+.lens-sub a{color:var(--blue);text-decoration:none}
+.lens-sub a:hover{text-decoration:underline}
 .status-msg{text-align:center;color:var(--dim);font-size:.9rem;padding:4rem 0}
 .status-msg.error{color:var(--red)}
 /* Small screens: the fixed corner header can't hold the wordmark plus four

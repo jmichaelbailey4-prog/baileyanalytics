@@ -164,7 +164,7 @@ def _subscribe():
     if not BUTTONDOWN_USERNAME:
         return ""
     return (
-        '<section class="subscribe-band"><h2 class="sec-head">Get this in your inbox</h2>'
+        '<section class="subscribe-band" id="subscribe"><h2 class="sec-head">Get this in your inbox</h2>'
         '<p class="sec-sub">Free, every morning the board changes. One email, no spam, '
         "unsubscribe anytime.</p>"
         f'<form class="subscribe-form" action="https://buttondown.com/api/emails/embed-subscribe/'
