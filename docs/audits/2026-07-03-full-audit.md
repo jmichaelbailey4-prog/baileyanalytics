@@ -73,6 +73,59 @@ Branch: `audit-2026-07-03` (from main @ c618de9, the 2026-07-03 06:00 UTC cron r
 - **P3-04 · Low · no-JS contact email is unusable** — Cloudflare Scrape Shield rewrites the mailto to "[email protected]" + a decode script; with JS off the address is unreadable (About + home). Not fixable in-repo; recommend Michael disable Email Address Obfuscation in Cloudflare (the address is deliberately public). Status: proposed (decision list).
 - **P5-00 · verified clean** — badge/status palette consistent + AA-gated in both themes (test_theme_contrast + renders); tokens single-sourced in lens.css with documented home/about inline twins; charts theme-aware; banking tables scoped; mobile layout correct (the 390px "clipping" in headless shots is Chrome's ~500px min-window artifact — layout fits pixel-perfect at 500px; matches prior Playwright verification). 404 page correct (noindex, full nav). og card + JSON-LD + canonicals present on baked pages.
 - **P5-01 · Note · accent ≠ status color** — tile sparklines use lens identity accents (housing glut = rising mint-green line under an "elevated" badge). Deliberate convention; flagged for the GUI visual review rather than changed. Status: proposed (screenshot-review item).
+
+### Pass 6 — metrics & presentation choices (keep / change / add / drop)
+
+Benchmark: what a paid terminal or top-tier newsletter shows an executive. Verdict per category:
+
+| Category | Keep (works) | Change | Add (candidates) | Drop |
+|---|---|---|---|---|
+| Economic | All five lenses; fiscal set unusually complete | P2-01 headline copy; P2-03 unemployment wording | Core PCE (the Fed's stated target) alongside PCE; quits rate (JTSQUR) as the insider labor signal — proposals | — |
+| Consumer | Whole set tells the cushions-vs-spending story | P2-05 sentiment record-low copy | Auto-loan rate (TERMCBAUTO48NS) or card APR — the consumer's own cost of money (factory-worker seat) — proposal | — |
+| Banking | CAMELS-ish coverage; tiers + spotlights differentiate | **P2-02: add alert tiers** (noncurrent/charge-offs/capital) so a 2009-scale crisis doesn't read "elevated" | Unrealized securities losses (the SVB lesson; spec §9 leftover) — proposal | — |
+| Markets | Risk set canonical; liquidity lens a genuine differentiator | **P2-02: VIX/HY/IG alert tiers** (2008/2020-grounded) | — | — |
+| Energy | Physical+price split is right | "Food" label reads as US groceries but is the IMF **global commodity** index — clarify label/context | US grocery CPI (food-at-home YoY) — proposal | — |
+| Housing | Two-sided model validated live (glut side firing) | — | — | — |
+| Global | The world view most US dashboards lack | P3-02 GEPU overdue handling | — | — |
+| Business | SLOOS + Baa is the right credit core | — | — | — |
+
+Cross-cutting: ① historical-percentile context per indicator (Pass 9) is the highest-leverage presentation upgrade; ② per-indicator shareable anchors (journalist seat) — cheap [polish]; ③ "Related lenses" cross-links reusing relationships.py edges — proposal.
+
+### Pass 7 — the review panel (26 seats; ≥2 findings or justified-clean; convergence cross-referenced)
+
+**Readers.**
+- *Factory worker (car loan):* found the verdict fast; but his actual question ("what will a car loan cost me?") has no direct answer — Cost of Money is all Treasuries/Fed. → ADD auto-loan rate (Pass 6). Verdict: returns weekly; wouldn't subscribe yet.
+- *Single parent (groceries/rent):* Cost of Living + Rent & Shelter answer her directly; but "Food +30.2%" (global commodity index) reads as "my groceries are up 30%" — a misread the short label invites. → Pass 6 energy change. Rent-CPI "a third of core CPI" copy is excellent. Would share the brief.
+- *First-time homebuyer:* affordability lens is exactly his question; months-supply glut + price stability answer "should I wait?" honestly without advising. **Genuinely clean seat** (every number he needs, in his words, bands explained).
+- *Retiree (fixed income):* CPI + rates + saving rate present; would like deposit rates (what banks pay savers) — noted, not added (niche vs page weight). Trusts the "as of" stamps. Bookmark.
+- *Job seeker:* openings falling + claims low = "hiring slow, layoffs low" — the read said exactly that. **Clean seat.**
+- *Small-business owner:* SLOOS + Baa + C&I growth + proprietors' income — unusually well served vs mainstream press. Clean-ish.
+- *CEO (30 seconds):* home = 8 badges + one verdict sentence — passes the 30-second test outright. Wish: a per-tile trend arrow vs yesterday (deltas exist on stats, not badges). Note only.
+- *CFO/treasurer:* cost-of-money + spreads + banking tiers = the morning sweep; would pay for alerting (roadmap). P2-02 unreachable alerts would burn him in a crisis — convergence.
+- *Insurance exec:* housing/CRE/banking concentration set reads professionally (custody filter shows). Would want CRE by geography — out of scope.
+- *CPA:* fiscal-health is his client narrative; "cents of every revenue dollar" is quotable. **Clean seat.**
+- *Financial advisor (Monday talking points):* brief + movers + whys are literally his script; wants per-lens og/share cards to forward one chart — convergence with roadmap og item.
+- *Marketing director:* sentiment at a record low + spending still ok = exactly her paradox, stated plainly. Clean.
+- *Farmer:* diesel + food commodity + natgas present; no crop-level prices (accepted — macro site).
+- *Local journalist (deadline):* every number has "as of" + source + methodology anchor — citable. Gap: no per-indicator anchor links (→ P7-01 [polish]: `id` per indicator card + scroll-on-hash).
+- *Econ teacher + student:* methodology page + strips are a teaching aid. Terminology nit: "trailing-12-month change" vs "year-over-year" used side-by-side (both accurate; accepted).
+- *Retail investor:* market-price honesty note + track record beat his brokerage's research tab for candor. Clean.
+
+**Critics.**
+- *FT/NYT graphics editor:* charts are competent plotted series, not annotated journalism — no event markers on the lines; the prose read substitutes. Annotation layer = big-bet roadmap item, not a defect.
+- *Award-winning web designer:* consistent tokens, disciplined scales; identity-accent sparklines can fight status badges (P5-01); very-tall-viewport home top void — GUI-review notes.
+- *Brand strategist:* "built in the open" + repo link + real bio + graded record = unusually strong trust stack for a solo site. Clean-ish.
+- *Growth PM:* retention hooks exist (digest/PWA/favorites); dead-ends handled. Gaps: no related-lens cross-links on lens pages (proposal); **subscribe form absent from lens pages** — the highest-traffic SEO entry points (→ P7-02 [opinion]).
+- *SEO specialist:* baked reads, canonicals, JSON-LD, sitemap, archive — strong. Clean-ish.
+- *Accessibility auditor:* aria-current/focus/aria-pressed/canvas labels/reduced-motion/AA gates/noscript — strongest a11y posture at this size. Effectively clean.
+- *Performance engineer (3-yo phone):* sliced payloads (~30KB), pinned CDN, PWA precache; `cache:no-cache` revalidation is a deliberate freshness>speed trade. Clean-ish.
+- *Security researcher:* esc() discipline, hardened JSON-LD, minimal workflow perms. Gap: **no SRI on the Chart.js CDN pin** — a CDN compromise would run script on all 33 lens pages (→ P7-03 [fix]: integrity/crossorigin attributes). Meta-CSP possible but high-friction — proposal only.
+- *Statistician:* empirical bands honestly labeled ~80%, realized 81% ✓; skill gate ✓; first-print freeze principled — **except the daily partial-week hole (P3-01; convergence raises priority)**. Percentile context absent (Pass 9).
+- *Rival dashboard operator:* dunk list = P2-02, P2-05, P3-02, P3-01, food-label — all found + queued for fix. Post-fix his best remaining dunk is "no history behind the badges" — answered by Pass 9's backtest feature if shipped.
+
+Convergence: P3-01 (statistician + rival + journalist), P2-02 (CFO + rival + Pass 2), per-lens sharing (advisor + growth PM + roadmap).
+
+## Notes on solid ground (verified, no finding)
 - Live == repo byte-identical on 21 surfaces (only CF email-protection rewrite on home).
 - refresh_lenses failure paths: every source guarded, prior-data fallbacks throughout; write paths content-aware; `--dry-run` hazards documented and real.
 - synthesis honesty stack (tier-gated map, high-precision linter, self-grounded whys) is as documented; `relationship_sentence` raises on tier violations; `today._safe_relationships` guards separately. 
