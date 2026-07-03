@@ -57,7 +57,7 @@
       const range = `${esc(fmtVal(p.lo, p.unit, p.value_format))}–${esc(fmtVal(p.hi, p.unit, p.value_format))}`;
       const move = isMove(p)
         ? ` <span class="badge ${esc(p.implied_status)}">&rarr; ${esc(p.implied_status)}</span>` : "";
-      const due = isLate(p) ? " · awaiting a late print — this source publishes on a long lag"
+      const due = isLate(p) ? " · still awaiting a print, well past the usual date"
         : (p.due ? ` · due ${esc(fmtDue(p.due))}` : "");
       return `<a class="track-row" href="${esc(p.href)}">
         <span class="track-ind">${esc(p.title)}</span>

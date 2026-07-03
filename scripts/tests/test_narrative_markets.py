@@ -16,7 +16,7 @@ class TestRiskSentimentRules(unittest.TestCase):
         self.assertEqual(narrative.rule_vix([("d", 14.0)])[1], "ok")
         self.assertEqual(narrative.rule_vix([("d", 24.0)])[1], "watch")
         self.assertEqual(narrative.rule_vix([("d", 38.0)])[1], "elevated")
-        # 40+ has fired only in 1998 / 2008-09 / 2011 / 2020 (band backtest 2026-07-03)
+        # 40+ closes cluster around major market shocks (band backtest 2026-07-03)
         self.assertEqual(narrative.rule_vix([("d", 45.0)])[1], "alert")
         self.assertEqual(narrative.rule_vix([])[1], "unknown")
 

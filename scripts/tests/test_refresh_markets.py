@@ -101,5 +101,57 @@ class TestCryptoDominanceNullGuard(unittest.TestCase):
                           {"date": "2026-06-11", "value": 54.0}])
 
 
+class TestWindowedAccumulation(unittest.TestCase):
+    def test_ice_spread_history_accumulates_across_refreshes(self):
+        """FRED serves the ICE BofA spreads only as a rolling ~3y window — a
+        refresh must merge the fresh window over prior baked observations so
+        published history can only grow (audit 2026-07-03)."""
+        import json
+        import pathlib as _pl
+        import tempfile
+        with tempfile.TemporaryDirectory() as td:
+            tmp = _pl.Path(td)
+            orig = refresh_lenses.MARKETS_OUT_DIR
+            orig_hist = refresh_lenses.CRYPTO_HISTORY
+            refresh_lenses.MARKETS_OUT_DIR = tmp
+            refresh_lenses.CRYPTO_HISTORY = tmp / "_crypto_history.json"
+            try:
+                self.assertEqual(refresh_lenses.main(["--markets", "--dry-run"]), 0)
+                path = tmp / "market-risk-sentiment.json"
+                data = json.loads(path.read_text(encoding="utf-8"))
+                ind = next(i for i in data["indicators"] if i["id"] == "hy-spread")
+                ind["observations"].insert(0, {"date": "2019-01-01", "value": "5.00"})
+                path.write_text(json.dumps(data), encoding="utf-8")
+                self.assertEqual(refresh_lenses.main(["--markets", "--dry-run"]), 0)
+                data2 = json.loads(path.read_text(encoding="utf-8"))
+                ind2 = next(i for i in data2["indicators"] if i["id"] == "hy-spread")
+                dates = [o["date"] for o in ind2["observations"]]
+                self.assertIn("2019-01-01", dates)
+                self.assertEqual(dates, sorted(dates))
+            finally:
+                refresh_lenses.MARKETS_OUT_DIR = orig
+                refresh_lenses.CRYPTO_HISTORY = orig_hist
+
+
+class TestWindowedSeriesIntegrity(unittest.TestCase):
+    def test_every_windowed_entry_matches_a_real_config_indicator(self):
+        """WINDOWED_SERIES hardcodes (lens_id, indicator_id, fetch_key); a lens
+        or indicator rename would silently turn accumulation into a no-op and
+        published history would resume sliding off with FRED's window. Pin the
+        triplets to config so a rename turns this red instead."""
+        from lenses import config
+        by_cat = {c["id"]: c["lenses"] for c in config.CATEGORIES}
+        cat_for = {"housing": "housing", "markets": "markets"}
+        for group, entries in refresh_lenses.WINDOWED_SERIES.items():
+            lenses = by_cat[cat_for[group]]
+            for lens_id, ind_id, key in entries:
+                lens = next((l for l in lenses if l.id == lens_id), None)
+                self.assertIsNotNone(lens, f"unknown lens {lens_id}")
+                ind = next((i for i in lens.indicators if i.id == ind_id), None)
+                self.assertIsNotNone(ind, f"unknown indicator {ind_id} in {lens_id}")
+                self.assertEqual(key, ind.fetch_key,
+                                 f"fetch_key drift for {lens_id}/{ind_id}")
+
+
 if __name__ == "__main__":
     unittest.main()

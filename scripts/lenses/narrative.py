@@ -346,8 +346,9 @@ def rule_real_wages(obs):
 
 def rule_noncurrent(obs):
     """Noncurrent loan rate (% of loans 90+ days late). <1 ok, 1-2 watch,
-    2-3 elevated, >=3 alert (3%+ has occurred only in the 2009-2013 crisis
-    aftermath — band backtest 2026-07-03)."""
+    2-3 elevated, >=3 alert (in the FDIC data window shown, 2006->, 3%+ occurred
+    only in the 2009-2013 crisis aftermath; the early-1990s S&L era also ran
+    above 3% — band backtest 2026-07-03)."""
     if not obs:
         return _NO_DATA
     v = obs[-1][1]
@@ -362,7 +363,8 @@ def rule_noncurrent(obs):
 
 def rule_charge_offs(obs):
     """Net charge-off rate (% of loans). <0.6 ok, 0.6-1.2 watch, 1.2-2 elevated,
-    >=2 alert (2%+ has occurred only in 2009-2010 — band backtest 2026-07-03)."""
+    >=2 alert (in the FDIC data window shown, 2006->, 2%+ occurred only in
+    2009-2010 — band backtest 2026-07-03)."""
     if not obs:
         return _NO_DATA
     v = obs[-1][1]
@@ -460,8 +462,9 @@ def rule_loans_deposits(obs):
 
 def rule_vix(obs):
     """CBOE VIX level. <20 calm, 20-30 nervous, 30-40 fearful, >=40 crisis-grade
-    (since 1990, 40+ has printed only around 1998, 2008-09, 2011, and 2020 —
-    band backtest 2026-07-03)."""
+    (daily closes at 40+ are rare and cluster around major market shocks —
+    band backtest 2026-07-03; do NOT enumerate years: intra-month spikes make
+    any exhaustive list falsifiable against the chart)."""
     if not obs:
         return _NO_DATA
     v = obs[-1][1]
@@ -476,9 +479,10 @@ def rule_vix(obs):
 
 def credit_spread(label, calm, stressed, crisis=None):
     """Factory: a credit-spread rule with its own calm/stressed thresholds (%).
-    `crisis` (optional) adds an alert tier for spread levels seen only in
-    2008/2020-scale credit crises — FRED's rolling API window can't chart that
-    history, but the peaks are public record on FRED's own site."""
+    `crisis` (optional) adds an alert tier for spread levels reached historically
+    only in severe credit-stress episodes (2008, 2011, early 2016, March 2020 for
+    high-yield) — FRED's rolling API window can't chart that history, but the
+    peaks are public record on FRED's own site."""
     def _rule(obs):
         if not obs:
             return _NO_DATA
@@ -489,14 +493,12 @@ def credit_spread(label, calm, stressed, crisis=None):
             return (f"The {label} spread is {v:.2f}% — widening off its lows.", "watch")
         if crisis is None or v < crisis:
             return (f"The {label} spread is {v:.2f}% — wide, a sign of credit stress.", "elevated")
-        return (f"The {label} spread is {v:.2f}% — blowout levels seen only in "
-                "full credit crises.", "alert")
-    if crisis is None:
-        _rule.band_spec = bands.BandSpec(kind="level", unit="%",
-            edges=(calm, stressed), segments=("ok", "watch", "elevated"))
-    else:
-        _rule.band_spec = bands.BandSpec(kind="level", unit="%",
-            edges=(calm, stressed, crisis), segments=("ok", "watch", "elevated", "alert"))
+        return (f"The {label} spread is {v:.2f}% — blowout levels seen in past "
+                "severe credit-stress episodes.", "alert")
+    extra = () if crisis is None else (crisis,)
+    _rule.band_spec = bands.BandSpec(kind="level", unit="%",
+        edges=(calm, stressed) + extra,
+        segments=("ok", "watch", "elevated") + (("alert",) if extra else ()))
     _rule.band_tag = "credit_spread"
     return _rule
 
@@ -831,9 +833,13 @@ def rule_sentiment(obs):
         return _NO_DATA
     v = obs[-1][1]
     if v < 55:
-        if v <= min(val for _, val in obs):
+        prior = [val for _, val in obs[:-1]]
+        if prior and v < min(prior):
             return (f"Consumer sentiment is {v:.0f} — a record low; households have "
                     "never been this pessimistic in the data shown.", "alert")
+        if prior and v == min(prior):
+            return (f"Consumer sentiment is {v:.0f} — matching its record low; "
+                    "households are deeply pessimistic.", "alert")
         return (f"Consumer sentiment is {v:.0f} — near record lows; households are deeply pessimistic.", "alert")
     if v < 70:
         return (f"Consumer sentiment is {v:.0f} — recession-grade gloom.", "elevated")

@@ -109,7 +109,8 @@ class TestFmt(unittest.TestCase):
 
 
 class TestFmtParityGoldens(unittest.TestCase):
-    """The shared golden battery for the four formatting twins. The SAME table
+    """The shared golden battery for the five formatting twins (build._fmt +
+    the four JS fmtVal copies). The SAME table
     runs against lens.js / predict.js / scoring.js / track-record.js in
     scripts/tests/js/fmtval-parity.test.js — keep the two tables identical, so
     drifting any one twin turns a suite red on one side or the other."""

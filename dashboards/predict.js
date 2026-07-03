@@ -58,9 +58,11 @@
     if (p.descriptive || !p.implied_status || p.implied_status === "unknown"
         || p.implied_status === "info") return "";
     const badge = `<span class="badge ${esc(p.implied_status)}">${esc(p.implied_status)}</span>`;
-    return p.implied_status !== p.current_status
-      ? ` — would tip this signal to ${badge}`
-      : ` — would keep this signal ${badge}`;
+    if (p.implied_status === p.current_status) return ` — would keep this signal ${badge}`;
+    // Mirrors briefpage/digest: improving changes "ease", worsening ones "tip".
+    const SEV = { ok: 0, watch: 1, elevated: 2, alert: 3 };
+    const verb = (SEV[p.implied_status] || 0) < (SEV[p.current_status] || 0) ? "ease" : "tip";
+    return ` — would ${verb} this signal to ${badge}`;
   }
   function lastCall(g) {
     if (!g || !g.grade) return "";

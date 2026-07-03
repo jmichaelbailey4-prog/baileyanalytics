@@ -78,8 +78,9 @@ BAND_WHY = {
         "The extra yield investors demand over Treasuries. Tight spreads signal calm "
         "credit; the bands mark where spreads have historically started to price real "
         "default risk (the high-yield band sits wider than investment-grade because junk "
-        "spreads are structurally larger). The alert line marks blowout levels seen only "
-        "in full credit crises like 2008 and March 2020."),
+        "spreads are structurally larger). The alert line marks blowout levels reached "
+        "historically only in severe credit-stress episodes — 2008, 2011, early 2016, "
+        "and March 2020 for high-yield."),
     "yoy_contraction_band": (
         "Scored on the year-over-year change where FALLING is the stress signal — profits, "
         "new-business applications, capital-goods orders, sales. Growth is ok; the bands "
@@ -146,11 +147,13 @@ BAND_WHY = {
         "(watch); positive is ok."),
     "rule_noncurrent": (
         "Loans 90+ days past due as a share of all loans. Under 1% is low by historical "
-        "standards; 1–2% is creeping; above 2% is elevated; 3%+ has occurred only in "
-        "the 2009–2013 crisis aftermath."),
+        "standards; 1–2% is creeping; above 2% is elevated; 3%+ marks crisis territory — "
+        "in the two decades of data shown it occurred only in the 2009–2013 aftermath "
+        "(the early-1990s S&L era also ran that high)."),
     "rule_charge_offs": (
         "Loans written off as losses. Under ~0.6% is benign; the bands mark where losses "
-        "become a meaningful drag on earnings; 2%+ has occurred only in 2009–2010."),
+        "become a meaningful drag on earnings; in the two decades of data shown, 2%+ "
+        "occurred only in 2009–2010."),
     "rule_cre_concentration": (
         "Commercial real estate as a share of bank capital. Above ~300% is the interagency "
         "supervisory concentration flag; ~200% is a notable build."),
@@ -174,8 +177,8 @@ BAND_WHY = {
         "Loans as a share of deposits. Above ~90% means the system's funding is stretched."),
     "rule_vix": (
         "The equity 'fear gauge'. Below 20 is calm; 20–30 is nervous; 30+ is fearful; "
-        "40+ is panic — since 1990 it has printed there only around 1998, 2008–09, "
-        "2011, and 2020."),
+        "40+ is panic — closes that high are rare, clustering around major market "
+        "shocks like 1998, 2008–09, 2020, and spring 2025."),
     "rule_financial_conditions": (
         "The Chicago Fed NFCI, where zero is average. Positive means tighter (more "
         "stressed) than normal; 0.5+ is tight; 1.0+ has printed in the modern era "

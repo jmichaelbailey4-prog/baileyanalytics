@@ -209,5 +209,28 @@ class TestThemeHeadInBrief(unittest.TestCase):
         self.assertLess(html.index("<!-- theme:head -->"), html.index("<!-- pwa:head -->"))
 
 
+class TestWatchingVerbDirection(unittest.TestCase):
+    """Mirrors test_digest.TestWatchingVerb — the web brief and the email must
+    agree on tip (worsening) vs ease (improving)."""
+
+    def _today(self, current, implied):
+        row = {"key": "k", "title": "Months of New-Home Supply", "lens_title":
+               "Supply & Construction", "point_fmt": "10.00 months", "change": True,
+               "current_status": current, "implied_status": implied, "href": "/x"}
+        return {"generated_at": "2026-07-03T06:00:00Z", "transitions": [],
+                "top_moves": [], "lenses": [], "status_counts": {},
+                "verdict": {"status": "watch", "sentence": "S."},
+                "watching": [row], "pressure": [], "categories": []}
+
+    def test_worsening_says_tip(self):
+        html = briefpage.render_brief(self._today("watch", "elevated"), og_image="/og/site.png")
+        self.assertIn("would tip", html)
+
+    def test_improving_says_ease(self):
+        html = briefpage.render_brief(self._today("alert", "elevated"), og_image="/og/site.png")
+        self.assertIn("would ease", html)
+        self.assertNotIn("would tip", html)
+
+
 if __name__ == "__main__":
     unittest.main()

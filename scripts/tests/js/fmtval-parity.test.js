@@ -1,4 +1,4 @@
-/* The four fmtVal/_fmt twins (build.py, lens.js, predict.js, scoring.js,
+/* The five fmtVal/_fmt twins (build.py, lens.js, predict.js, scoring.js,
    track-record.js) must agree. This test extracts each JS implementation from
    its source file and runs all of them over the shared golden battery; the
    Python side runs the SAME battery in test_build.py (TestFmtParityGoldens).

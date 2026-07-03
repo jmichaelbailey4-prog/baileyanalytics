@@ -408,6 +408,13 @@ class TestConsumerRules(unittest.TestCase):
         text2, status2 = narrative.rule_sentiment(obs2)
         self.assertEqual(status2, "alert")
         self.assertIn("near record lows", text2)
+        # An exact TIE with an earlier trough must not claim "never been this
+        # pessimistic" — the chart shows an equal earlier point.
+        obs3 = [("2026-05-01", 44.8), ("2026-06-01", 60.0), ("2026-07-01", 44.8)]
+        text3, status3 = narrative.rule_sentiment(obs3)
+        self.assertEqual(status3, "alert")
+        self.assertIn("matching its record low", text3)
+        self.assertNotIn("never", text3)
 
     def test_inflation_expectations(self):
         self.assertEqual(narrative.rule_inflation_expectations([("d", 5.6)])[1], "alert")

@@ -170,10 +170,7 @@ def _make_open_entry(entry, cleaned, cad, champ_rec, latest_raw=None):
     if cad != "daily":
         out["prev_period"] = cleaned[-1][0]
     elif latest_raw:
-        # Daily series: the weekly anchor (prev_value) trails the lens card's
-        # latest print, so the surface shows the true daily latest as "Now"
-        # (display-only — grading and the naive benchmark keep the anchor).
-        out["now_value"] = round(latest_raw[1], 4)
+        out["now_value"] = round(latest_raw[1], 4)   # display-only; see comment above
         out["now_date"] = latest_raw[0]
     return out
 
