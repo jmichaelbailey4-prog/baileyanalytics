@@ -1414,8 +1414,8 @@ _bespoke(rule_yield_curve, kind="custom", unit="%", edges=(0,),
 
 HEADLINES = {
     "recession-watch": {
-        "alert": "Recession signals are flashing — multiple indicators have tripped.",
-        "elevated": "Recession risk is elevated — the yield curve is warning.",
+        "alert": "Recession signals are flashing red.",
+        "elevated": "Recession risk is elevated — a key warning signal is flashing.",
         "watch": "No recession underway — but the warning lights are no longer all green.",
         "ok": "The economy looks steady — no major recession signals right now.",
         "unknown": "Some recession signals are temporarily unavailable.",
@@ -1450,7 +1450,7 @@ HEADLINES = {
     },
     "bank-asset-quality": {
         "alert": "Loan losses are mounting — credit quality is deteriorating fast.",
-        "elevated": "Problem loans are elevated — commercial real estate is the pressure point.",
+        "elevated": "Problem loans are elevated across the system.",
         "watch": "Loan books are healthy overall, but problem loans are creeping up.",
         "ok": "Bank loan quality is strong — few loans are going bad.",
         "unknown": "Some asset-quality data is temporarily unavailable.",
@@ -1504,7 +1504,7 @@ HEADLINES = {
         "unknown": "Some spending data is temporarily unavailable.",
     },
     "consumer-credit": {
-        "alert": "Consumer credit is cracking — delinquencies at crisis levels.",
+        "alert": "Consumer credit is cracking — stress has reached crisis levels.",
         "elevated": "Consumer credit stress is real — late payments are climbing.",
         "watch": "Consumer credit bears watching — debt loads are creeping up.",
         "ok": "Consumer credit is healthy — households are keeping up with their debts.",
@@ -1554,7 +1554,7 @@ HEADLINES = {
     },
     "housing-home-prices": {
         "alert": "The housing market is flashing red — prices or sales are at an extreme.",
-        "elevated": "The housing market is out of balance — prices and sales are under strain.",
+        "elevated": "The housing market is out of balance — prices or sales are under strain.",
         "watch": "The housing market is shifting — prices or sales are moving off balance.",
         "ok": "The housing market looks balanced — prices and sales are steady.",
         "unknown": "Some home-price data is temporarily unavailable.",
@@ -1595,7 +1595,7 @@ HEADLINES = {
         "unknown": "Some formation data is temporarily unavailable.",
     },
     "business-investment": {
-        "alert": "Business investment is collapsing — capex and sales are contracting hard.",
+        "alert": "Business investment is collapsing — orders or sales are contracting hard.",
         "elevated": "Business investment is contracting.",
         "watch": "Business investment is wobbling — orders or sales are slipping.",
         "ok": "Businesses are investing — orders and sales are growing.",
