@@ -80,8 +80,9 @@
     // Daily series carry now_value/now_date (the true daily latest) so "Now"
     // matches the number on the card above, not the weekly model anchor.
     // Degrade-safe: no now/prev value falls back to "We expect ~Y" wording.
-    const nowVal = (p.now_value != null && !isNaN(p.now_value)) ? p.now_value : p.prev_value;
-    const nowDate = p.now_value != null ? p.now_date : p.prev_period;
+    const hasNow = p.now_value != null && !isNaN(p.now_value);
+    const nowVal = hasNow ? p.now_value : p.prev_value;
+    const nowDate = hasNow ? p.now_date : p.prev_period;
     let lead;
     if (nowVal != null && !isNaN(nowVal)) {
       const asof = nowDate

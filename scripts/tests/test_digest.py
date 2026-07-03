@@ -88,5 +88,22 @@ class TestBody(unittest.TestCase):
         self.assertIn("risk &amp; reward &lt;note&gt;", html)
 
 
+class TestWatchingVerb(unittest.TestCase):
+    def _row(self, current, implied):
+        return {"key": "k", "title": "Months of New-Home Supply", "lens_title":
+                "Supply & Construction", "point_fmt": "10.00 months", "change": True,
+                "current_status": current, "implied_status": implied, "href": "/x"}
+
+    def test_worsening_says_tip(self):
+        t = dict(TODAY, watching=[self._row("watch", "elevated")])
+        self.assertIn("would tip", digest.build_digest(t)["html"])
+
+    def test_improving_says_ease(self):
+        t = dict(TODAY, watching=[self._row("alert", "elevated")])
+        html = digest.build_digest(t)["html"]
+        self.assertIn("would ease", html)
+        self.assertNotIn("would tip", html)
+
+
 if __name__ == "__main__":
     unittest.main()
