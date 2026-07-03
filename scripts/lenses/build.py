@@ -1,6 +1,7 @@
 """Assemble lens JSON + hub index from config and fetched data; write to disk."""
 
 import json
+import math
 from datetime import datetime, timezone
 
 from . import bands, config, narrative, reasons, recessions, util
@@ -38,7 +39,10 @@ def _fmt(value, unit, value_format="decimal"):
         return "—"
     sign = "-" if f < 0 else ""
     a = abs(f)
-    num = f"{round(a):,}" if value_format == "thousands" else f"{a:.2f}"
+    # floor(a + 0.5): round-half-UP, matching JS Math.round in the three fmtVal
+    # twins — Python's round() is banker's (2578.5 -> 2578 vs JS 2579), which
+    # could bake a hub stat one off the page value at exact-.5 prints.
+    num = f"{math.floor(a + 0.5):,}" if value_format == "thousands" else f"{a:.2f}"
     if not unit:
         return sign + num
     if unit.startswith("$"):  # "$" -> "$4.15"; "$T" -> "$2.40T"; "$B" -> "-$55.90B"

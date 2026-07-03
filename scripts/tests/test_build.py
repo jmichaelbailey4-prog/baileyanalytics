@@ -108,6 +108,32 @@ class TestFmt(unittest.TestCase):
         self.assertEqual(build._fmt(None, "%"), "—")
 
 
+class TestFmtParityGoldens(unittest.TestCase):
+    """The shared golden battery for the four formatting twins. The SAME table
+    runs against lens.js / predict.js / scoring.js / track-record.js in
+    scripts/tests/js/fmtval-parity.test.js — keep the two tables identical, so
+    drifting any one twin turns a suite red on one side or the other."""
+
+    GOLDENS = [
+        (2578.5, "Bcf", "thousands", "2,579 Bcf"),   # half-up, the drift case
+        (0.5, "", "thousands", "1"),
+        (-55.9, "$B", "decimal", "-$55.90B"),
+        (2.4, "$T", "decimal", "$2.40T"),
+        (4.153, "$", "decimal", "$4.15"),
+        (9.4, "months", "decimal", "9.40 months"),
+        (4.17, "M", "decimal", "4.17M"),
+        (215000, "", "thousands", "215,000"),
+        (-1.234, "%", "decimal", "-1.23%"),
+        (1.77, "σ", "decimal", "1.77σ"),
+        (7483.24, "", "thousands", "7,483"),
+    ]
+
+    def test_goldens(self):
+        for value, unit, vf, want in self.GOLDENS:
+            self.assertEqual(build._fmt(value, unit, vf), want,
+                             f"_fmt({value!r}, {unit!r}, {vf!r})")
+
+
 class TestWriteOutputs(unittest.TestCase):
     def test_skips_unchanged_file(self):
         import tempfile
