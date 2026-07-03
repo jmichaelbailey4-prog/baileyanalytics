@@ -315,6 +315,7 @@ def refresh_markets(dry_run):
         fetched, failed = fetch_all(config.MARKET_FRED_LENSES, api_key)
 
     _inject_gold(fetched, dry_run)
+    _accumulate_windowed(fetched, MARKETS_OUT_DIR, WINDOWED_SERIES["markets"])
 
     ready = [lens for lens in config.MARKET_FRED_LENSES if lens_ready(lens, failed)]
     for lens in config.MARKET_FRED_LENSES:
@@ -426,6 +427,29 @@ def refresh_energy(dry_run):
     return 0
 
 
+# Series FRED serves only as a rolling window (source licensing): FIXHAI is a
+# ~14-month window (NAR), the two ICE BofA spreads a ~3-year window. Each
+# refresh merges the fresh window over prior baked observations so published
+# history can only grow — otherwise a window slide silently deletes months the
+# site already published (audit 2026-07-03; same pattern as _crypto_history).
+WINDOWED_SERIES = {
+    "housing": (("housing-affordability", "affordability-index", "FIXHAI:lin"),),
+    "markets": (("market-risk-sentiment", "hy-spread", "BAMLH0A0HYM2:lin"),
+                ("market-risk-sentiment", "ig-spread", "BAMLC0A0CM:lin")),
+}
+
+
+def _accumulate_windowed(fetched, out_dir, entries):
+    """Merge prior baked observations under each windowed series' fetch key.
+    The fresh fetch wins on overlapping dates (revisions still self-heal);
+    prior-only dates persist. No-op when there's nothing fetched AND no prior."""
+    for lens_id, ind_id, key in entries:
+        merged = util.merge_series(_prior_obs(out_dir, lens_id, ind_id),
+                                   fetched.get(key) or [])
+        if merged:
+            fetched[key] = merged
+
+
 def refresh_housing(dry_run):
     """Build + write the housing (FRED) lenses. Returns an exit code (0 ok, non-zero error)."""
     if dry_run:
@@ -437,6 +461,8 @@ def refresh_housing(dry_run):
             print("FRED_API_KEY not set", file=sys.stderr)
             return 1
         fetched, failed = fetch_all(config.HOUSING_LENSES, api_key)
+
+    _accumulate_windowed(fetched, HOUSING_OUT_DIR, WINDOWED_SERIES["housing"])
 
     ready = [lens for lens in config.HOUSING_LENSES if lens_ready(lens, failed)]
     for lens in config.HOUSING_LENSES:

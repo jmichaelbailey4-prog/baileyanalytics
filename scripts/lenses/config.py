@@ -1167,7 +1167,10 @@ HOUSING_AFFORDABILITY = Lens(
             rule=narrative.rule_affordability,
             context=("The National Association of Realtors index: 100 means the median-income "
                      "family can just barely afford the median home. Higher is better — "
-                     "the historical norm is 130-180."),
+                     "the historical norm is 130-180. Note: FRED serves only a rolling "
+                     "~1-year window of this NAR-licensed index, so its chart history is "
+                     "shorter than the other indicators here; we accumulate it forward "
+                     "from mid-2025."),
         ),
         Indicator(
             id="debt-service", title="Mortgage Debt Service · % of income",
