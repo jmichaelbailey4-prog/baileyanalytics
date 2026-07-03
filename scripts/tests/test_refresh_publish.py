@@ -98,5 +98,20 @@ class TestCategoryListSync(unittest.TestCase):
                          set(brief.CATEGORIES))
 
 
+class TestPublishLensCards(unittest.TestCase):
+    def test_bakes_one_card_per_lens_page_write_if_changed(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as td:
+            root = pathlib.Path(td)
+            refresh_lenses._publish_lens_cards(root=root)
+            cards = sorted((root / "og").glob("lens-*.png"))
+            # 32 config lenses + the injected crypto lens = every lens page
+            self.assertEqual(len(cards), 33)
+            self.assertIn("lens-economic-recession-watch.png", [c.name for c in cards])
+            before = {c: c.stat().st_mtime_ns for c in cards}
+            refresh_lenses._publish_lens_cards(root=root)  # unchanged -> no rewrite
+            self.assertEqual(before, {c: c.stat().st_mtime_ns for c in cards})
+
+
 if __name__ == "__main__":
     unittest.main()

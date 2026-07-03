@@ -85,6 +85,35 @@ def render_card(status, sentence, date_label):
     return buf.getvalue()
 
 
+def render_lens_card(lens_title, category_title):
+    """Per-lens link-preview card: category eyebrow, big lens title, wordmark.
+    Deliberately STATIC-SAFE — no badge or read, because social scrapers cache
+    per-URL for days and a cached 'ok' pill during a crisis would be the exact
+    credibility failure the site exists to avoid (audit 2026-07-03). Content
+    changes only when a title changes, so write-if-changed keeps repo churn nil."""
+    img = Image.new("RGB", (W, H), BG)
+    d = ImageDraw.Draw(img)
+    margin = 80
+    d.text((margin, 64), "BAILEY ANALYTICS", font=_font(34, "semibold"), fill=TEXT)
+    d.line([(margin, 130), (W - margin, 130)], fill=BORDER, width=2)
+    d.text((margin, 196), category_title.upper(), font=_font(30, "semibold"), fill=MUTED)
+    max_w = W - 2 * margin
+    for size in (72, 62, 52):
+        title_font = _font(size, "semibold")
+        lines = _wrap(d, lens_title, title_font, max_w)
+        if len(lines) <= 3:
+            break
+    y = 260
+    for line in lines[:3]:
+        d.text((margin, y), line, font=title_font, fill=TEXT)
+        y += int(size * 1.25)
+    d.text((margin, H - 80), "baileyanalytics.com — the daily plain-English read",
+           font=_font(26), fill=FAINT)
+    buf = io.BytesIO()
+    img.save(buf, format="PNG", optimize=True)
+    return buf.getvalue()
+
+
 def render_site_card():
     """One-time static brand card for non-brief pages."""
     img = Image.new("RGB", (W, H), BG)

@@ -747,6 +747,12 @@ def refresh_brief(dry_run):
             _publish_methodology()
         except Exception as exc:  # noqa: BLE001 - methodology is additive
             print(f"WARN: methodology bake failed ({exc})", file=sys.stderr)
+        # Per-lens og cards (static-safe: title + category only) — rewritten only
+        # when a title changes, so quiet days emit nothing.
+        try:
+            _publish_lens_cards()
+        except Exception as exc:  # noqa: BLE001 - cards are additive
+            print(f"WARN: lens og cards failed ({exc})", file=sys.stderr)
     except Exception as exc:  # noqa: BLE001 - never break the run on a brief failure
         print(f"WARN: brief build failed ({exc}); keeping previous brief", file=sys.stderr)
 
@@ -925,6 +931,32 @@ def _publish_methodology(root=None):
         build.write_lens_file(root / "data" / "methodology" / f"{cat_id}.json", sl)
     _write_text_if_changed(root / "dashboards" / "methodology.html",
                            methodology.render_methodology(data))
+
+
+def _lens_card_specs():
+    """(png_name, lens_title, category_title) for every lens page, incl. the
+    injected crypto lens. png name mirrors the page slug: lens-<cat>-<slug>.png
+    (economic pages are flat, so lens-economic-<id>.png)."""
+    specs = []
+    for cat in config.CATEGORIES:
+        for lens in cat["lenses"]:
+            slug = brief.lens_href(cat["id"], lens.id).rsplit("/", 1)[-1].replace(".html", "")
+            specs.append((f"lens-{cat['id']}-{slug}.png", lens.title, cat["title"]))
+    specs.append(("lens-markets-crypto-structure.png", "Crypto Market Structure",
+                  "Markets & Financial Conditions"))
+    return specs
+
+
+def _publish_lens_cards(root=None):
+    """Bake og/lens-*.png link-preview cards (write-if-changed on bytes)."""
+    root = root or REPO_ROOT
+    og_dir = root / "og"
+    og_dir.mkdir(exist_ok=True)
+    for name, lens_title, cat_title in _lens_card_specs():
+        png = ogcard.render_lens_card(lens_title, cat_title)
+        path = og_dir / name
+        if not path.exists() or path.read_bytes() != png:
+            path.write_bytes(png)
 
 
 def _load_open_predictions():

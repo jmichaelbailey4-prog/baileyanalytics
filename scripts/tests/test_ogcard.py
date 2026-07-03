@@ -31,7 +31,7 @@ class TestRenderCard(unittest.TestCase):
 
     def test_unknown_status_uses_fallback_color(self):
         png = ogcard.render_card("bogus", "Sentence.", "June 12, 2026")
-        self.assertTrue(png.startswith(b"\x89PNG"))
+        self.assertEqual(Image.open(io.BytesIO(png)).size, (1200, 630))
 
     def test_site_card(self):
         png = ogcard.render_site_card()
@@ -39,6 +39,19 @@ class TestRenderCard(unittest.TestCase):
 
     def test_unsplittable_word_still_renders_canvas(self):
         png = ogcard.render_card("ok", "https://example.com/" + "x" * 120, "June 12, 2026")
+        self.assertEqual(Image.open(io.BytesIO(png)).size, (1200, 630))
+
+
+class TestLensCard(unittest.TestCase):
+    def test_returns_png_and_card_size(self):
+        png = ogcard.render_lens_card("Recession Watch", "Economic Lenses")
+        self.assertEqual(Image.open(io.BytesIO(png)).size, (1200, 630))
+        self.assertGreater(len(png), 5000)
+
+    def test_long_title_wraps_without_error(self):
+        png = ogcard.render_lens_card(
+            "An Extremely Long Hypothetical Lens Title That Must Wrap Cleanly "
+            "Across Multiple Lines", "Corporate & Business Health")
         self.assertEqual(Image.open(io.BytesIO(png)).size, (1200, 630))
 
 
