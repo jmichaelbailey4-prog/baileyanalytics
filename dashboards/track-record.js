@@ -46,12 +46,19 @@
     document.getElementById("open-intro").textContent =
       `${preds.length} predictions are open right now — each published before its number existed, ` +
       `each awaiting its print and a public grade.${moveCopy}`;
-    const rows = preds.slice().sort((a, b) => (a.due || "").localeCompare(b.due || ""));
+    // Far-overdue rows are lagging *sources* (GEPU publishes ~6 months late),
+    // not stale promises — sort them last and say why, or the list opens with
+    // "due ~Jan 15" in July.
+    const cutoff = new Date(Date.now() - 45 * 864e5).toISOString().slice(0, 10);
+    const isLate = p => p.due && p.due < cutoff;
+    const rows = preds.slice().sort((a, b) =>
+      (isLate(a) - isLate(b)) || (a.due || "").localeCompare(b.due || ""));
     document.getElementById("open").innerHTML = rows.map(p => {
       const range = `${esc(fmtVal(p.lo, p.unit, p.value_format))}–${esc(fmtVal(p.hi, p.unit, p.value_format))}`;
       const move = isMove(p)
         ? ` <span class="badge ${esc(p.implied_status)}">&rarr; ${esc(p.implied_status)}</span>` : "";
-      const due = p.due ? ` · due ${esc(fmtDue(p.due))}` : "";
+      const due = isLate(p) ? " · awaiting a late print — this source publishes on a long lag"
+        : (p.due ? ` · due ${esc(fmtDue(p.due))}` : "");
       return `<a class="track-row" href="${esc(p.href)}">
         <span class="track-ind">${esc(p.title)}</span>
         <span class="track-said">we expect ~${esc(fmtVal(p.point, p.unit, p.value_format))}
