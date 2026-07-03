@@ -1091,9 +1091,9 @@ ENERGY_COMMODITIES = Lens(
     id="energy-commodities", title="Commodities & Materials", accent="#A3E635",
     indicators=[
         Indicator(
-            id="food-index", title="Global Food Prices · year-over-year", short="Food", unit="%",
+            id="food-index", title="Global Food Prices · year-over-year", short="Global food", unit="%",
             color="#A3E635", series_id="PFOODINDEXM", limit=300, derive=derive.yoy_pct,
-            rule=narrative.yoy_band("Food", 5, 12, 25), value_format="decimal",
+            rule=narrative.yoy_band("Global food", 5, 12, 25), value_format="decimal",
             context=("How fast the IMF's global food commodity index is rising versus a year "
                      "ago — the upstream driver of grocery inflation."),
         ),
