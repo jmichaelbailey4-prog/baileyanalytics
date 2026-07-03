@@ -189,7 +189,8 @@ BAND_WHY = {
         "zero is a warning; a 2%+ annual drop erodes purchasing power fast."),
     "rule_sentiment": (
         "U. Michigan consumer sentiment, long-run range roughly 50–110. 85+ is fine; the "
-        "bands step down through recession-grade gloom; the 2022 record low was about 50."),
+        "bands step down through recession-grade gloom; readings below 55 have historically "
+        "been record-territory lows."),
     "rule_inflation_expectations": (
         "One-year-ahead household inflation expectations, which the Fed watches for "
         "de-anchoring. Above ~3% is a touch high; 5.5%+ suggests expectations coming "

@@ -938,8 +938,9 @@ CONSUMER_SENTIMENT = Lens(
             unit="", color="#38BDF8", series_id="UMCSENT", limit=240,
             rule=narrative.rule_sentiment,
             context=("The University of Michigan's monthly survey of how households feel about "
-                     "their finances and the economy. Long-run range roughly 50-110; the 2022 "
-                     "record low was about 50."),
+                     "their finances and the economy. Its long-run range is roughly 50-110 — "
+                     "readings in the low 50s or below have historically marked the deepest "
+                     "gloom on record."),
         ),
         Indicator(
             id="inflation-expectations", title="Inflation Expectations · 1-year ahead", short="Inflation exp.",

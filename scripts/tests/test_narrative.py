@@ -417,6 +417,20 @@ class TestConsumerRules(unittest.TestCase):
         self.assertEqual(narrative.rule_sentiment([("d", 78.0)])[1], "watch")
         self.assertEqual(narrative.rule_sentiment([("d", 95.0)])[1], "ok")
 
+    def test_sentiment_record_low_read(self):
+        # A fresh all-time low in the shown history must say so — not "near
+        # record lows" while the chart bottoms below every prior point.
+        obs = [("2022-06-01", 50.0), ("2024-01-01", 70.0), ("2026-05-01", 44.8)]
+        text, status = narrative.rule_sentiment(obs)
+        self.assertEqual(status, "alert")
+        self.assertIn("a record low", text)
+        self.assertNotIn("near record lows", text)
+        # Below 55 but above a past low -> the "near record lows" wording.
+        obs2 = [("2022-06-01", 44.0), ("2024-01-01", 70.0), ("2026-05-01", 50.2)]
+        text2, status2 = narrative.rule_sentiment(obs2)
+        self.assertEqual(status2, "alert")
+        self.assertIn("near record lows", text2)
+
     def test_inflation_expectations(self):
         self.assertEqual(narrative.rule_inflation_expectations([("d", 5.6)])[1], "alert")
         self.assertEqual(narrative.rule_inflation_expectations([("d", 4.7)])[1], "elevated")

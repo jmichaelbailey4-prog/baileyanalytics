@@ -812,12 +812,18 @@ def rule_real_income(obs):
 
 
 def rule_sentiment(obs):
-    """UMCSENT: U. Michigan consumer sentiment. Long-run range roughly 50-110;
-    the 2022 record low was ~50. >=85 ok, 70-85 watch, 55-70 elevated, <55 alert."""
+    """UMCSENT: U. Michigan consumer sentiment. Long-run range roughly 50-110
+    (the mid-2022 trough was ~50). >=85 ok, 70-85 watch, 55-70 elevated, <55 alert.
+    The alert read self-detects a fresh record low against the shown history, so
+    the copy can never claim "near record lows" beside a chart printing below
+    every prior point (that happened live in May 2026 at 44.8)."""
     if not obs:
         return _NO_DATA
     v = obs[-1][1]
     if v < 55:
+        if v <= min(val for _, val in obs):
+            return (f"Consumer sentiment is {v:.0f} — a record low; households have "
+                    "never been this pessimistic in the data shown.", "alert")
         return (f"Consumer sentiment is {v:.0f} — near record lows; households are deeply pessimistic.", "alert")
     if v < 70:
         return (f"Consumer sentiment is {v:.0f} — recession-grade gloom.", "elevated")
