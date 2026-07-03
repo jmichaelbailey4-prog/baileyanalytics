@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-03T08:52:06Z",
+  "generated_at": "2026-07-03T15:15:57Z",
   "last": {
     "business/business-credit/ci-loan-growth": {
       "id": "business/business-credit/ci-loan-growth@2026-05-01",
@@ -1048,7 +1048,7 @@
         "direction_hit": false,
         "status_hit": true,
         "naive_error": 158.4000000000001,
-        "revised_to": 4195.1
+        "revised_to": 4184.4
       }
     },
     "markets/market-liquidity/reverse-repo": {
@@ -2260,9 +2260,85 @@
         "naive_error": 0.10000000000000009,
         "revised_to": null
       }
+    },
+    "housing/housing-supply-construction/active-listings": {
+      "id": "housing/housing-supply-construction/active-listings@2026-06-01",
+      "key": "housing/housing-supply-construction/active-listings",
+      "category": "housing",
+      "lens": "housing-supply-construction",
+      "indicator": "active-listings",
+      "series_id": "ACTLISCOUUS",
+      "horizon": "next-print",
+      "target_period": "2026-06-01",
+      "due": "2026-07-15",
+      "made_at": "2026-06-16T13:10:48Z",
+      "model": "ets-seasonal@1",
+      "point": 1.1085,
+      "lo": 1.0813,
+      "hi": 1.136,
+      "unit": "M",
+      "value_format": "decimal",
+      "prev_value": 1.06,
+      "why": "Listings: up 4 straight months. This projects the recent trend with the usual seasonal pattern for the month.",
+      "implied_status": "info",
+      "current_status": "info",
+      "descriptive": true,
+      "market_price": false,
+      "title": "Active Listings (Realtor.com) \u00b7 millions",
+      "short": "Listings",
+      "lens_title": "Supply & Construction",
+      "href": "/dashboards/housing/supply-construction.html",
+      "grade": {
+        "actual": 1.1,
+        "graded_at": "2026-07-03T15:15:48Z",
+        "hit": true,
+        "abs_error": 0.008499999999999952,
+        "direction_hit": true,
+        "status_hit": true,
+        "naive_error": 0.040000000000000036,
+        "revised_to": null
+      }
     }
   },
   "feed": [
+    {
+      "id": "housing/housing-supply-construction/active-listings@2026-06-01",
+      "key": "housing/housing-supply-construction/active-listings",
+      "category": "housing",
+      "lens": "housing-supply-construction",
+      "indicator": "active-listings",
+      "series_id": "ACTLISCOUUS",
+      "horizon": "next-print",
+      "target_period": "2026-06-01",
+      "due": "2026-07-15",
+      "made_at": "2026-06-16T13:10:48Z",
+      "model": "ets-seasonal@1",
+      "point": 1.1085,
+      "lo": 1.0813,
+      "hi": 1.136,
+      "unit": "M",
+      "value_format": "decimal",
+      "prev_value": 1.06,
+      "why": "Listings: up 4 straight months. This projects the recent trend with the usual seasonal pattern for the month.",
+      "implied_status": "info",
+      "current_status": "info",
+      "descriptive": true,
+      "market_price": false,
+      "title": "Active Listings (Realtor.com) \u00b7 millions",
+      "short": "Listings",
+      "lens_title": "Supply & Construction",
+      "href": "/dashboards/housing/supply-construction.html",
+      "grade": {
+        "actual": 1.1,
+        "graded_at": "2026-07-03T15:15:48Z",
+        "hit": true,
+        "abs_error": 0.008499999999999952,
+        "direction_hit": true,
+        "status_hit": true,
+        "naive_error": 0.040000000000000036,
+        "revised_to": null
+      }
+    },
     {
       "id": "housing/housing-affordability/mortgage-rate@2026-07-02",
       "key": "housing/housing-affordability/mortgage-rate",
@@ -3798,7 +3874,7 @@
         "direction_hit": false,
         "status_hit": true,
         "naive_error": 158.4000000000001,
-        "revised_to": 4195.1
+        "revised_to": 4184.4
       }
     },
     {
@@ -4092,44 +4168,6 @@
         "direction_hit": false,
         "status_hit": true,
         "naive_error": 0.0,
-        "revised_to": null
-      }
-    },
-    {
-      "id": "energy/energy-natural-gas/gas-storage@2026-06-19",
-      "key": "energy/energy-natural-gas/gas-storage",
-      "category": "energy",
-      "lens": "energy-natural-gas",
-      "indicator": "gas-storage",
-      "series_id": "NW2_EPG0_SWO_R48_BCF",
-      "horizon": "next-print",
-      "target_period": "2026-06-19",
-      "due": "2026-06-24",
-      "made_at": "2026-06-18T17:50:18Z",
-      "model": "theta@1",
-      "point": 2843.6749,
-      "lo": 2793.929,
-      "hi": 2894.1266,
-      "unit": "Bcf",
-      "value_format": "thousands",
-      "prev_value": 2759.0,
-      "why": "Gas storage: up 12 straight weeks. This blends the series' long-run trend line with its recent level.",
-      "implied_status": "info",
-      "current_status": "info",
-      "descriptive": true,
-      "market_price": false,
-      "title": "Working Gas in Storage \u00b7 Lower 48",
-      "short": "Gas storage",
-      "lens_title": "Natural Gas",
-      "href": "/dashboards/energy/natural-gas.html",
-      "grade": {
-        "actual": 2835.0,
-        "graded_at": "2026-06-25T19:32:57Z",
-        "hit": true,
-        "abs_error": 8.67489999999998,
-        "direction_hit": true,
-        "status_hit": true,
-        "naive_error": 76.0,
         "revised_to": null
       }
     }

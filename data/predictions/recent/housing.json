@@ -219,6 +219,44 @@
         "naive_error": 0.10000000000000009,
         "revised_to": null
       }
+    },
+    "housing/housing-supply-construction/active-listings": {
+      "id": "housing/housing-supply-construction/active-listings@2026-06-01",
+      "key": "housing/housing-supply-construction/active-listings",
+      "category": "housing",
+      "lens": "housing-supply-construction",
+      "indicator": "active-listings",
+      "series_id": "ACTLISCOUUS",
+      "horizon": "next-print",
+      "target_period": "2026-06-01",
+      "due": "2026-07-15",
+      "made_at": "2026-06-16T13:10:48Z",
+      "model": "ets-seasonal@1",
+      "point": 1.1085,
+      "lo": 1.0813,
+      "hi": 1.136,
+      "unit": "M",
+      "value_format": "decimal",
+      "prev_value": 1.06,
+      "why": "Listings: up 4 straight months. This projects the recent trend with the usual seasonal pattern for the month.",
+      "implied_status": "info",
+      "current_status": "info",
+      "descriptive": true,
+      "market_price": false,
+      "title": "Active Listings (Realtor.com) \u00b7 millions",
+      "short": "Listings",
+      "lens_title": "Supply & Construction",
+      "href": "/dashboards/housing/supply-construction.html",
+      "grade": {
+        "actual": 1.1,
+        "graded_at": "2026-07-03T15:15:48Z",
+        "hit": true,
+        "abs_error": 0.008499999999999952,
+        "direction_hit": true,
+        "status_hit": true,
+        "naive_error": 0.040000000000000036,
+        "revised_to": null
+      }
     }
   }
 }

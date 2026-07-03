@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-03T08:52:06Z",
+  "generated_at": "2026-07-03T15:15:57Z",
   "predictions": [
     {
       "id": "economic/recession-watch/yield-curve@2026-07-10",
@@ -2154,24 +2154,24 @@
       "grade": null
     },
     {
-      "id": "housing/housing-supply-construction/active-listings@2026-06-01",
+      "id": "housing/housing-supply-construction/active-listings@2026-07-01",
       "key": "housing/housing-supply-construction/active-listings",
       "category": "housing",
       "lens": "housing-supply-construction",
       "indicator": "active-listings",
       "series_id": "ACTLISCOUUS",
       "horizon": "next-print",
-      "target_period": "2026-06-01",
-      "due": "2026-07-15",
-      "made_at": "2026-06-16T13:10:48Z",
+      "target_period": "2026-07-01",
+      "due": "2026-08-15",
+      "made_at": "2026-07-03T15:15:49Z",
       "model": "ets-seasonal@1",
-      "point": 1.1085,
-      "lo": 1.0813,
-      "hi": 1.136,
+      "point": 1.1387,
+      "lo": 1.1115,
+      "hi": 1.1662,
       "unit": "M",
       "value_format": "decimal",
-      "prev_value": 1.06,
-      "why": "Listings: up 4 straight months. This projects the recent trend with the usual seasonal pattern for the month.",
+      "prev_value": 1.1,
+      "why": "Listings: up 5 straight months. This projects the recent trend with the usual seasonal pattern for the month.",
       "implied_status": "info",
       "current_status": "info",
       "descriptive": true,
@@ -2180,7 +2180,8 @@
       "short": "Listings",
       "lens_title": "Supply & Construction",
       "href": "/dashboards/housing/supply-construction.html",
-      "grade": null
+      "grade": null,
+      "prev_period": "2026-06-01"
     },
     {
       "id": "housing/housing-supply-construction/housing-starts@2026-06-01",

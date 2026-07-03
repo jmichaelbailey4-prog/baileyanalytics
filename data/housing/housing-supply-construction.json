@@ -2,7 +2,7 @@
   "id": "housing-supply-construction",
   "title": "Supply & Construction",
   "accent": "#34D399",
-  "last_updated": "2026-06-26T19:12:44Z",
+  "last_updated": "2026-07-03T15:14:59Z",
   "status": "alert",
   "headline_read": "Housing supply is at an extreme \u2014 construction or inventory is flashing red.",
   "recessions": [
@@ -3436,14 +3436,18 @@
         {
           "date": "2026-05-01",
           "value": "1.06"
+        },
+        {
+          "date": "2026-06-01",
+          "value": "1.10"
         }
       ],
       "latest": {
-        "date": "2026-05-01",
-        "value": "1.06"
+        "date": "2026-06-01",
+        "value": "1.10"
       },
       "context": "Homes listed for sale nationwide, in millions (Realtor.com count, since 2016) \u2014 the inventory buyers actually get to choose from.",
-      "read": "The number of homes for sale is little changed from a year ago, now 1.06 million.",
+      "read": "The number of homes for sale is little changed from a year ago, now 1.10 million.",
       "signal_status": "info",
       "value_format": "decimal",
       "no_severity_reason": "Months' supply, which adjusts for the sales pace, carries this lens's supply verdict; this is the raw count for context."
