@@ -33,7 +33,7 @@
         "direction_hit": true,
         "status_hit": true,
         "naive_error": 0.39999999999999947,
-        "revised_to": null
+        "revised_to": 8.0
       }
     },
     "business/business-investment/inventories-sales": {

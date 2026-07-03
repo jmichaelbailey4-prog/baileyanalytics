@@ -32,7 +32,7 @@
       "direction_hit": true,
       "status_hit": true,
       "naive_error": 0.39999999999999947,
-      "revised_to": null
+      "revised_to": 8.0
     }
   },
   {
@@ -2554,7 +2554,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 158.4000000000001,
-      "revised_to": 4140.7
+      "revised_to": 4195.1
     }
   },
   {
@@ -2592,7 +2592,7 @@
       "direction_hit": false,
       "status_hit": false,
       "naive_error": 0.010000000000000009,
-      "revised_to": 0.31
+      "revised_to": 0.35
     }
   },
   {
@@ -2630,7 +2630,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 32.35999999999967,
-      "revised_to": 7483.23
+      "revised_to": 7483.24
     }
   },
   {
@@ -2668,7 +2668,7 @@
       "direction_hit": true,
       "status_hit": true,
       "naive_error": 3804.820000000007,
-      "revised_to": 59881.98
+      "revised_to": 61422.31
     }
   },
   {
@@ -2706,7 +2706,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 116.17000000000007,
-      "revised_to": 1604.17
+      "revised_to": 1699.04
     }
   },
   {
@@ -2744,7 +2744,7 @@
       "direction_hit": true,
       "status_hit": true,
       "naive_error": 0.379,
-      "revised_to": 1.001
+      "revised_to": 2.175
     }
   },
   {
@@ -3236,7 +3236,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 0.1299999999999999,
-      "revised_to": 4.44
+      "revised_to": 4.48
     }
   },
   {
@@ -3274,7 +3274,7 @@
       "direction_hit": false,
       "status_hit": false,
       "naive_error": 0.14000000000000057,
-      "revised_to": 4.14
+      "revised_to": 4.17
     }
   },
   {
@@ -3312,7 +3312,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 0.14,
-      "revised_to": 0.51
+      "revised_to": 0.54
     }
   },
   {
@@ -3904,6 +3904,156 @@
       "direction_hit": true,
       "status_hit": true,
       "naive_error": 87.0,
+      "revised_to": null
+    }
+  },
+  {
+    "id": "markets/market-liquidity/fed-balance-sheet@2026-07-01",
+    "key": "markets/market-liquidity/fed-balance-sheet",
+    "category": "markets",
+    "lens": "market-liquidity",
+    "indicator": "fed-balance-sheet",
+    "series_id": "WALCL",
+    "horizon": "next-print",
+    "target_period": "2026-07-01",
+    "due": "2026-07-06",
+    "made_at": "2026-06-26T13:35:31Z",
+    "model": "naive@1",
+    "point": 6.74,
+    "lo": 6.72,
+    "hi": 6.75,
+    "unit": "$T",
+    "value_format": "decimal",
+    "prev_value": 6.74,
+    "why": "We expect roughly the last value \u2014 this series rarely rewards cleverness.",
+    "implied_status": "info",
+    "current_status": "info",
+    "descriptive": true,
+    "market_price": false,
+    "title": "Fed Balance Sheet \u00b7 total assets",
+    "short": "Fed assets",
+    "lens_title": "Liquidity & the Fed",
+    "href": "/dashboards/markets/liquidity.html",
+    "grade": {
+      "actual": 6.72,
+      "graded_at": "2026-07-03T08:51:42Z",
+      "hit": true,
+      "abs_error": 0.020000000000000462,
+      "direction_hit": false,
+      "status_hit": true,
+      "naive_error": 0.020000000000000462,
+      "revised_to": null
+    }
+  },
+  {
+    "id": "markets/market-liquidity/bank-reserves@2026-07-01",
+    "key": "markets/market-liquidity/bank-reserves",
+    "category": "markets",
+    "lens": "market-liquidity",
+    "indicator": "bank-reserves",
+    "series_id": "WRESBAL",
+    "horizon": "next-print",
+    "target_period": "2026-07-01",
+    "due": "2026-07-06",
+    "made_at": "2026-06-26T13:35:31Z",
+    "model": "naive@1",
+    "point": 2.95,
+    "lo": 2.86,
+    "hi": 3.027,
+    "unit": "$T",
+    "value_format": "decimal",
+    "prev_value": 2.95,
+    "why": "Reserves: down 2 straight weeks. We expect roughly the last value \u2014 this series rarely rewards cleverness.",
+    "implied_status": "info",
+    "current_status": "info",
+    "descriptive": true,
+    "market_price": false,
+    "title": "Bank Reserves at the Fed",
+    "short": "Reserves",
+    "lens_title": "Liquidity & the Fed",
+    "href": "/dashboards/markets/liquidity.html",
+    "grade": {
+      "actual": 2.97,
+      "graded_at": "2026-07-03T08:51:42Z",
+      "hit": true,
+      "abs_error": 0.020000000000000018,
+      "direction_hit": false,
+      "status_hit": true,
+      "naive_error": 0.020000000000000018,
+      "revised_to": null
+    }
+  },
+  {
+    "id": "housing/housing-home-prices/case-shiller@2026-04-01",
+    "key": "housing/housing-home-prices/case-shiller",
+    "category": "housing",
+    "lens": "housing-home-prices",
+    "indicator": "case-shiller",
+    "series_id": "CSUSHPINSA",
+    "horizon": "next-print",
+    "target_period": "2026-04-01",
+    "due": "2026-05-15",
+    "made_at": "2026-06-12T14:20:49Z",
+    "model": "sarima@1",
+    "point": 0.6047,
+    "lo": 0.1967,
+    "hi": 0.9619,
+    "unit": "%",
+    "value_format": "decimal",
+    "prev_value": 0.7,
+    "why": "Case-Shiller: down 4 straight months. This projects recent momentum, adjusted for the series' typical reversion.",
+    "implied_status": "ok",
+    "current_status": "ok",
+    "title": "Case-Shiller Home Prices \u00b7 year-over-year",
+    "short": "Case-Shiller",
+    "lens_title": "Home-Price Stability",
+    "href": "/dashboards/housing/home-prices.html",
+    "grade": {
+      "actual": 0.8,
+      "graded_at": "2026-07-03T08:51:56Z",
+      "hit": true,
+      "abs_error": 0.19530000000000003,
+      "direction_hit": false,
+      "status_hit": true,
+      "naive_error": 0.10000000000000009,
+      "revised_to": null
+    }
+  },
+  {
+    "id": "housing/housing-affordability/mortgage-rate@2026-07-02",
+    "key": "housing/housing-affordability/mortgage-rate",
+    "category": "housing",
+    "lens": "housing-affordability",
+    "indicator": "mortgage-rate",
+    "series_id": "MORTGAGE30US",
+    "horizon": "next-print",
+    "target_period": "2026-07-02",
+    "due": "2026-07-07",
+    "made_at": "2026-06-25T19:33:04Z",
+    "model": "ets@1",
+    "point": 6.4922,
+    "lo": 6.4049,
+    "hi": 6.5881,
+    "unit": "%",
+    "value_format": "decimal",
+    "prev_value": 6.49,
+    "why": "This projects the recent level and trend forward one week.",
+    "implied_status": "watch",
+    "current_status": "watch",
+    "descriptive": false,
+    "market_price": false,
+    "title": "30-Year Fixed Mortgage Rate",
+    "short": "30-yr mortgage",
+    "lens_title": "Affordability & Financing",
+    "href": "/dashboards/housing/affordability.html",
+    "grade": {
+      "actual": 6.43,
+      "graded_at": "2026-07-03T08:51:59Z",
+      "hit": true,
+      "abs_error": 0.0622000000000007,
+      "direction_hit": false,
+      "status_hit": true,
+      "naive_error": 0.0600000000000005,
       "revised_to": null
     }
   }
