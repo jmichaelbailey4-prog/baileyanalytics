@@ -35,8 +35,16 @@ def infer(obs):
 
 
 def weekly_resample(obs):
-    """[(date,val)] daily -> last obs per ISO week, dated that week's Friday."""
-    out, cur_week, cur = [], None, None
+    """[(date,val)] daily -> last obs per COMPLETED ISO week, dated that week's Friday.
+
+    The trailing group is kept only when its last observation already falls on
+    Friday or later — otherwise it is an in-progress week and is dropped.
+    Forward-dating a partial week let daily-series predictions be graded
+    mid-week against an incomplete value and then footnoted as a "revision"
+    that never happened at the source (first-print integrity, audit 2026-07-03).
+    A holiday-shortened week (last print Thursday) still emits once a later
+    week begins, since only the trailing group can be incomplete."""
+    out, cur_week, cur, cur_wd = [], None, None, 0
     for d, v in obs:
         dt = _parse(d)
         wk = dt.isocalendar()[:2]
@@ -44,9 +52,10 @@ def weekly_resample(obs):
             if cur is not None:
                 out.append(cur)
             cur_week = wk
-        friday = dt + timedelta(days=5 - dt.isocalendar()[2])  # ISO weekday: Fri = 5
+        cur_wd = dt.isocalendar()[2]
+        friday = dt + timedelta(days=5 - cur_wd)  # ISO weekday: Fri = 5
         cur = (friday.isoformat(), v)
-    if cur is not None:
+    if cur is not None and cur_wd >= 5:  # trailing week only when Friday has printed
         out.append(cur)
     return out
 

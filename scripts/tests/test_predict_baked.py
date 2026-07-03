@@ -46,12 +46,12 @@ class TestNoDoubleDerive(unittest.TestCase):
         return [{"date": o["date"], "value": "0"} for o in obs]
 
     def test_baked_entry_is_not_re_derived(self):
-        cleaned, _ = runner._prepared_series(
+        cleaned, _, _ = runner._prepared_series(
             _entry(baked=True, derive=self._zero), [dict(o) for o in self.RAW])
         self.assertEqual([v for _, v in cleaned], [10.0, 20.0, 30.0, 40.0])
 
     def test_direct_fetch_entry_is_still_derived(self):
-        cleaned, _ = runner._prepared_series(
+        cleaned, _, _ = runner._prepared_series(
             _entry(baked=False, derive=self._zero), [dict(o) for o in self.RAW])
         self.assertEqual([v for _, v in cleaned], [0.0, 0.0, 0.0, 0.0])
 
@@ -100,7 +100,7 @@ class TestBakedHistory(unittest.TestCase):
         self.assertFalse(hasattr(e.indicator, "derive"))
         raw = runner._baked_history(e)
         self.assertTrue(raw)
-        cleaned, cad = runner._prepared_series(e, raw)
+        cleaned, cad, _ = runner._prepared_series(e, raw)
         self.assertEqual(cad, "quarterly")
         self.assertGreater(len(cleaned), 36)
 

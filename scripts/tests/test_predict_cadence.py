@@ -39,10 +39,29 @@ class TestInfer(unittest.TestCase):
 
 class TestWeeklyResample(unittest.TestCase):
     def test_last_obs_per_iso_week_dated_friday(self):
+        # The trailing group ends on a Tuesday — an INCOMPLETE week. It must be
+        # dropped: forward-dating it to Friday let predictions be graded mid-week
+        # against a partial week, then footnoted as a "revision" that never
+        # happened at the source (observed live on the yield curve, 2026-07-03).
         obs = [("2026-06-01", 1.0), ("2026-06-02", 2.0), ("2026-06-03", 3.0),  # wk 23
-               ("2026-06-08", 4.0), ("2026-06-09", 5.0)]                        # wk 24
+               ("2026-06-08", 4.0), ("2026-06-09", 5.0)]                        # wk 24 (partial)
         out = cadence.weekly_resample(obs)
-        self.assertEqual(out, [("2026-06-05", 3.0), ("2026-06-12", 5.0)])
+        self.assertEqual(out, [("2026-06-05", 3.0)])
+
+    def test_trailing_week_kept_once_friday_prints(self):
+        obs = [("2026-06-01", 1.0), ("2026-06-03", 3.0),                        # wk 23
+               ("2026-06-08", 4.0), ("2026-06-12", 6.0)]                        # wk 24 ends Friday
+        out = cadence.weekly_resample(obs)
+        self.assertEqual(out, [("2026-06-05", 3.0), ("2026-06-12", 6.0)])
+
+    def test_holiday_short_week_emits_once_a_later_week_exists(self):
+        # Week 27 ends Thursday (a Friday market holiday). It still emits — as
+        # that week's last observation dated its Friday — once week 28 begins,
+        # because only the TRAILING group can be incomplete.
+        obs = [("2026-06-29", 1.0), ("2026-07-02", 2.0),                        # wk 27, ends Thu
+               ("2026-07-06", 3.0)]                                              # wk 28 (partial)
+        out = cadence.weekly_resample(obs)
+        self.assertEqual(out, [("2026-07-03", 2.0)])
 
 
 class TestNextPeriod(unittest.TestCase):

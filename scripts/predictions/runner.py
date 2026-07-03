@@ -78,17 +78,22 @@ def _fetch_history(entry, dry_run, fixture_cache):
 
 
 def _prepared_series(entry, raw):
-    """(cleaned [(date,float)], cadence) — derive applied, dailies resampled weekly.
+    """(cleaned [(date,float)], cadence, latest_raw) — derive applied, dailies
+    resampled to completed weeks. `latest_raw` is the freshest pre-resample
+    observation (date, value) or None: for daily series the resampled anchor
+    trails the number a reader sees on the lens card, so the surface needs the
+    true latest for its "Now" display (grading still uses the weekly anchor).
     Baked entries are already post-derive, so we skip ind.derive for them (and
     BankingIndicator carries no `derive` attribute at all)."""
     derive = getattr(entry.indicator, "derive", None)
     if derive and not entry.baked:
         raw = derive(raw)
     cleaned = util.clean(raw)
+    latest_raw = cleaned[-1] if cleaned else None
     cad = cadence.infer(cleaned)
     if cad == "daily":
         cleaned = cadence.weekly_resample(cleaned)
-    return cleaned, cad
+    return cleaned, cad, latest_raw
 
 
 def run_tournament(pred_dir, dry_run, entries):
@@ -98,7 +103,7 @@ def run_tournament(pred_dir, dry_run, entries):
     registry = {}
     for entry in entries:
         try:
-            cleaned, cad = _prepared_series(entry, _fetch_history(entry, dry_run, fixture_cache))
+            cleaned, cad, _ = _prepared_series(entry, _fetch_history(entry, dry_run, fixture_cache))
             if cad in ("annual", "unknown"):
                 continue
             season = cadence.SEASON[cad]
@@ -129,7 +134,7 @@ def _lens_title(entry):
     return entry.lens_id
 
 
-def _make_open_entry(entry, cleaned, cad, champ_rec):
+def _make_open_entry(entry, cleaned, cad, champ_rec, latest_raw=None):
     ind = entry.indicator
     name = champ_rec["champion"].split("@")[0]
     values = [v for _, v in cleaned]
@@ -158,12 +163,18 @@ def _make_open_entry(entry, cleaned, cad, champ_rec):
         "href": brief.lens_href(entry.category, entry.lens_id),
         "grade": None,
     }
-    # The "as of" stamp is the date of prev_value. Daily series are resampled to a
-    # weekly Friday that can be forward-dated and disagrees with the lens card's real
-    # latest date, so omit it there — predict.js then shows "Now X -> next print"
-    # without the stamp (its degrade-safe path). Monthly/quarterly/weekly dates are real.
+    # The "as of" stamp is the date of prev_value; monthly/quarterly/weekly dates
+    # are real. Daily series get no prev_period (their weekly anchor date isn't
+    # what the lens card shows) — instead they carry now_value/now_date, the true
+    # daily latest, so the surface's "Now" matches the card (audit 2026-07-03).
     if cad != "daily":
         out["prev_period"] = cleaned[-1][0]
+    elif latest_raw:
+        # Daily series: the weekly anchor (prev_value) trails the lens card's
+        # latest print, so the surface shows the true daily latest as "Now"
+        # (display-only — grading and the naive benchmark keep the anchor).
+        out["now_value"] = round(latest_raw[1], 4)
+        out["now_date"] = latest_raw[0]
     return out
 
 
@@ -200,7 +211,7 @@ def run_daily(pred_dir, dry_run, entries):
     for entry in entries:
         graded_this_run = False
         try:
-            cleaned, cad = _prepared_series(entry, _fetch_history(entry, dry_run, fixture_cache))
+            cleaned, cad, latest_raw = _prepared_series(entry, _fetch_history(entry, dry_run, fixture_cache))
             if not cleaned or cad in ("annual", "unknown"):
                 if entry.key in open_by_key:
                     next_open.append(open_by_key[entry.key])  # data gap: keep prior open entry
@@ -220,7 +231,8 @@ def run_daily(pred_dir, dry_run, entries):
             if prior is not None:
                 next_open.append(prior)          # target not printed yet: stays open
             elif entry.key in registry:
-                next_open.append(_make_open_entry(entry, cleaned, cad, registry[entry.key]))
+                next_open.append(_make_open_entry(entry, cleaned, cad, registry[entry.key],
+                                                  latest_raw=latest_raw))
             # no champion (pre-bootstrap): grade/footnote ran, nothing emitted
         except Exception as exc:  # noqa: BLE001 - one series never sinks the job
             print(f"WARN: daily prediction failed for {entry.key}: {exc}", file=sys.stderr)

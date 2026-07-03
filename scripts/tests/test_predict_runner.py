@@ -184,20 +184,31 @@ class TestMakeOpenEntryAsOf(unittest.TestCase):
         return next(e for e in roster.build_roster()
                     if e.key == "economic/cost-of-living/cpi")
 
-    def _make(self, cleaned, cad):
+    def _make(self, cleaned, cad, latest_raw=None):
         champ = {"champion": "naive@1", "season": 1, "err_lo": -0.1, "err_hi": 0.1}
         with mock.patch.object(runner.models, "predict_one", return_value=cleaned[-1][1]):
-            return runner._make_open_entry(self._entry(), cleaned, cad, champ)
+            return runner._make_open_entry(self._entry(), cleaned, cad, champ,
+                                           latest_raw=latest_raw)
 
     def test_monthly_keeps_prev_period(self):
         out = self._make([("2026-03-01", 2.0), ("2026-04-01", 2.1)], "monthly")
         self.assertEqual(out["prev_period"], "2026-04-01")
         self.assertEqual(out["prev_value"], 2.1)
+        self.assertNotIn("now_value", out)  # non-daily: the anchor IS the latest
 
     def test_daily_omits_prev_period_but_keeps_value(self):
         out = self._make([("2026-06-19", 2.0), ("2026-06-26", 2.1)], "daily")
         self.assertNotIn("prev_period", out)
         self.assertEqual(out["prev_value"], 2.1)
+
+    def test_daily_carries_true_latest_as_now(self):
+        # The weekly anchor (prev_value, last completed Friday) can trail the
+        # card's latest daily print — the surface's "Now" must match the card.
+        out = self._make([("2026-06-19", 2.0), ("2026-06-26", 2.1)], "daily",
+                         latest_raw=("2026-07-02", 2.35))
+        self.assertEqual(out["now_value"], 2.35)
+        self.assertEqual(out["now_date"], "2026-07-02")
+        self.assertEqual(out["prev_value"], 2.1)  # grading anchor unchanged
 
 
 if __name__ == "__main__":

@@ -77,12 +77,16 @@
     const range = `${esc(fmtVal(p.lo, p.unit, p.value_format))}–${esc(fmtVal(p.hi, p.unit, p.value_format))}`;
     const exp = `<strong>~${esc(fmtVal(p.point, p.unit, p.value_format))}</strong>`;
     // Lead with where the number IS now, when we have it — the forecast's anchor.
-    // Degrade-safe: no prev_value falls back to today's "We expect ~Y" wording.
+    // Daily series carry now_value/now_date (the true daily latest) so "Now"
+    // matches the number on the card above, not the weekly model anchor.
+    // Degrade-safe: no now/prev value falls back to "We expect ~Y" wording.
+    const nowVal = (p.now_value != null && !isNaN(p.now_value)) ? p.now_value : p.prev_value;
+    const nowDate = p.now_value != null ? p.now_date : p.prev_period;
     let lead;
-    if (p.prev_value != null && !isNaN(p.prev_value)) {
-      const asof = p.prev_period
-        ? ` <span class="pred-asof">as of ${esc(fmtAsOf(p.prev_period))}</span>` : "";
-      lead = `Now <strong>${esc(fmtVal(p.prev_value, p.unit, p.value_format))}</strong>${asof}
+    if (nowVal != null && !isNaN(nowVal)) {
+      const asof = nowDate
+        ? ` <span class="pred-asof">as of ${esc(fmtAsOf(nowDate))}</span>` : "";
+      lead = `Now <strong>${esc(fmtVal(nowVal, p.unit, p.value_format))}</strong>${asof}
         &rarr; next print ${exp}`;
     } else {
       lead = `We expect ${exp}`;
