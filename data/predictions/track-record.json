@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-07-03T15:15:57Z",
+  "generated_at": "2026-07-04T08:26:50Z",
   "since": "2026-06-12T14:20:31Z",
-  "graded": 110,
-  "coverage": 41,
-  "calibration": 0.8090909090909091,
+  "graded": 111,
+  "coverage": 42,
+  "calibration": 0.8108108108108109,
   "direction": 0.4492753623188406,
   "status": 0.855072463768116,
   "skill": 0.0003857616074056658,
@@ -17,8 +17,8 @@
       "skill": -0.09612500000000135
     },
     "consumer": {
-      "graded": 7,
-      "coverage": 0,
+      "graded": 8,
+      "coverage": 1,
       "calibration": 1.0,
       "direction": 0.5714285714285714,
       "status": 0.7142857142857143,

@@ -251,6 +251,44 @@
         "naive_error": 0.09999999999999964,
         "revised_to": null
       }
+    },
+    "consumer/consumer-spending/auto-sales": {
+      "id": "consumer/consumer-spending/auto-sales@2026-06-01",
+      "key": "consumer/consumer-spending/auto-sales",
+      "category": "consumer",
+      "lens": "consumer-spending",
+      "indicator": "auto-sales",
+      "series_id": "TOTALSA",
+      "horizon": "next-print",
+      "target_period": "2026-06-01",
+      "due": "2026-07-15",
+      "made_at": "2026-06-16T13:10:28Z",
+      "model": "naive@1",
+      "point": 16.485,
+      "lo": 15.3615,
+      "hi": 17.386,
+      "unit": "M",
+      "value_format": "decimal",
+      "prev_value": 16.485,
+      "why": "We expect roughly the last value \u2014 this series rarely rewards cleverness.",
+      "implied_status": "info",
+      "current_status": "info",
+      "descriptive": true,
+      "market_price": false,
+      "title": "Vehicle Sales \u00b7 annual rate",
+      "short": "Auto sales",
+      "lens_title": "Consumer Spending",
+      "href": "/dashboards/consumer/spending.html",
+      "grade": {
+        "actual": 16.949,
+        "graded_at": "2026-07-04T08:26:30Z",
+        "hit": true,
+        "abs_error": 0.4640000000000022,
+        "direction_hit": false,
+        "status_hit": false,
+        "naive_error": 0.4640000000000022,
+        "revised_to": null
+      }
     }
   }
 }

@@ -2554,7 +2554,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 158.4000000000001,
-      "revised_to": 4184.4
+      "revised_to": 4187.3
     }
   },
   {
@@ -2668,7 +2668,7 @@
       "direction_hit": true,
       "status_hit": true,
       "naive_error": 3804.820000000007,
-      "revised_to": 61422.31
+      "revised_to": 62537.99
     }
   },
   {
@@ -2706,7 +2706,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 116.17000000000007,
-      "revised_to": 1699.04
+      "revised_to": 1756.31
     }
   },
   {
@@ -2932,7 +2932,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 0.1499999999999999,
-      "revised_to": 2.74
+      "revised_to": 2.75
     }
   },
   {
@@ -2970,7 +2970,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 0.020000000000000018,
-      "revised_to": null
+      "revised_to": 0.75
     }
   },
   {
@@ -4092,6 +4092,44 @@
       "direction_hit": true,
       "status_hit": true,
       "naive_error": 0.040000000000000036,
+      "revised_to": null
+    }
+  },
+  {
+    "id": "consumer/consumer-spending/auto-sales@2026-06-01",
+    "key": "consumer/consumer-spending/auto-sales",
+    "category": "consumer",
+    "lens": "consumer-spending",
+    "indicator": "auto-sales",
+    "series_id": "TOTALSA",
+    "horizon": "next-print",
+    "target_period": "2026-06-01",
+    "due": "2026-07-15",
+    "made_at": "2026-06-16T13:10:28Z",
+    "model": "naive@1",
+    "point": 16.485,
+    "lo": 15.3615,
+    "hi": 17.386,
+    "unit": "M",
+    "value_format": "decimal",
+    "prev_value": 16.485,
+    "why": "We expect roughly the last value \u2014 this series rarely rewards cleverness.",
+    "implied_status": "info",
+    "current_status": "info",
+    "descriptive": true,
+    "market_price": false,
+    "title": "Vehicle Sales \u00b7 annual rate",
+    "short": "Auto sales",
+    "lens_title": "Consumer Spending",
+    "href": "/dashboards/consumer/spending.html",
+    "grade": {
+      "actual": 16.949,
+      "graded_at": "2026-07-04T08:26:30Z",
+      "hit": true,
+      "abs_error": 0.4640000000000022,
+      "direction_hit": false,
+      "status_hit": false,
+      "naive_error": 0.4640000000000022,
       "revised_to": null
     }
   }
