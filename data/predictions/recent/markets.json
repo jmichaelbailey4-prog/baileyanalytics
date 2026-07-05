@@ -415,7 +415,7 @@
         "direction_hit": true,
         "status_hit": true,
         "naive_error": 3804.820000000007,
-        "revised_to": 62537.99
+        "revised_to": 63027.09
       }
     },
     "markets/market-scoreboard/eth": {
@@ -453,7 +453,7 @@
         "direction_hit": false,
         "status_hit": true,
         "naive_error": 116.17000000000007,
-        "revised_to": 1756.31
+        "revised_to": 1776.59
       }
     },
     "markets/market-liquidity/m2-growth": {

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-04T08:26:50Z",
+  "generated_at": "2026-07-05T08:42:58Z",
   "last": {
     "business/business-credit/ci-loan-growth": {
       "id": "business/business-credit/ci-loan-growth@2026-05-01",
@@ -1350,7 +1350,7 @@
         "direction_hit": true,
         "status_hit": true,
         "naive_error": 3804.820000000007,
-        "revised_to": 62537.99
+        "revised_to": 63027.09
       }
     },
     "markets/market-scoreboard/eth": {
@@ -1388,7 +1388,7 @@
         "direction_hit": false,
         "status_hit": true,
         "naive_error": 116.17000000000007,
-        "revised_to": 1756.31
+        "revised_to": 1776.59
       }
     },
     "markets/market-liquidity/m2-growth": {
@@ -3798,7 +3798,7 @@
         "direction_hit": false,
         "status_hit": true,
         "naive_error": 116.17000000000007,
-        "revised_to": 1756.31
+        "revised_to": 1776.59
       }
     },
     {
@@ -3836,7 +3836,7 @@
         "direction_hit": true,
         "status_hit": true,
         "naive_error": 3804.820000000007,
-        "revised_to": 62537.99
+        "revised_to": 63027.09
       }
     },
     {
