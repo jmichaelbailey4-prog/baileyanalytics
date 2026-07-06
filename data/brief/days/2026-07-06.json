@@ -1,17 +1,6 @@
 {
-  "generated_at": "2026-07-06T16:26:27Z",
-  "transitions": [
-    {
-      "lens_id": "global-trade-supply",
-      "lens_title": "Trade & Supply Chain",
-      "category": "global",
-      "href": "/dashboards/global/trade-supply.html",
-      "from_status": "elevated",
-      "to_status": "watch",
-      "direction": "improving",
-      "headline": "Trade frictions are building \u2014 supply chains or import costs bear watching."
-    }
-  ],
+  "generated_at": "2026-07-06T16:54:04Z",
+  "transitions": [],
   "top_moves": [
     {
       "lens_id": "energy-commodities",
@@ -62,11 +51,11 @@
         11.6,
         30.2
       ],
-      "stat_label": "Food",
+      "stat_label": "Global food",
       "stat_value": "30.20%",
       "delta": "18.60%",
       "dir": "up",
-      "why": "Food: up 7 readings in a row, to a fresh high."
+      "why": "Global food: up 7 readings in a row, to a fresh high."
     },
     {
       "lens_id": "market-liquidity",
@@ -122,6 +111,61 @@
       "delta": "0.86%",
       "dir": "up",
       "why": "M2 growth: a fresh high in this view."
+    },
+    {
+      "lens_id": "global-trade-supply",
+      "lens_title": "Trade & Supply Chain",
+      "category": "global",
+      "href": "/dashboards/global/trade-supply.html",
+      "headline": "Trade frictions are building \u2014 supply chains or import costs bear watching.",
+      "accent": "#FBBF24",
+      "sparkline": [
+        -1.16,
+        -1.31,
+        -1.58,
+        -1.1,
+        -0.92,
+        -1.08,
+        -0.65,
+        -0.38,
+        0.17,
+        -0.16,
+        -0.35,
+        -0.19,
+        -0.36,
+        -0.96,
+        -0.59,
+        -0.35,
+        -0.05,
+        0.21,
+        0.11,
+        -0.38,
+        -0.29,
+        -0.27,
+        -0.19,
+        -0.0,
+        -0.19,
+        -0.24,
+        0.29,
+        0.1,
+        0.03,
+        -0.08,
+        -0.02,
+        -0.07,
+        -0.12,
+        0.58,
+        0.45,
+        0.57,
+        0.71,
+        1.84,
+        1.81,
+        1.25
+      ],
+      "stat_label": "Supply chain",
+      "stat_value": "1.25\u03c3",
+      "delta": "0.56\u03c3",
+      "dir": "down",
+      "why": ""
     },
     {
       "lens_id": "consumer-spending",

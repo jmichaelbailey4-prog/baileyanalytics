@@ -9,7 +9,7 @@
       "title": "Volatility \u00b7 VIX",
       "short": "VIX",
       "taxonomy": "severity",
-      "why": "The equity 'fear gauge'. Below 20 is calm; 20\u201330 is nervous; 30+ is fearful.",
+      "why": "The equity 'fear gauge'. Below 20 is calm; 20\u201330 is nervous; 30+ is fearful; 40+ is panic \u2014 closes that high are rare, clustering around major market shocks like 1998, 2008\u201309, 2020, and spring 2025.",
       "axis": {
         "kind": "level",
         "unit": "",
@@ -30,12 +30,18 @@
         {
           "status": "elevated",
           "lo": 30,
+          "hi": 40
+        },
+        {
+          "status": "alert",
+          "lo": 40,
           "hi": null
         }
       ],
       "edges": [
         20,
-        30
+        30,
+        40
       ]
     },
     "market-risk-sentiment::hy-spread": {
@@ -47,7 +53,7 @@
       "title": "High-Yield Credit Spread",
       "short": "HY spread",
       "taxonomy": "severity",
-      "why": "The extra yield investors demand over Treasuries. Tight spreads signal calm credit; the bands mark where spreads have historically started to price real default risk (the high-yield band sits wider than investment-grade because junk spreads are structurally larger).",
+      "why": "The extra yield investors demand over Treasuries. Tight spreads signal calm credit; the bands mark where spreads have historically started to price real default risk (the high-yield band sits wider than investment-grade because junk spreads are structurally larger). The alert line marks blowout levels reached historically only in severe credit-stress episodes \u2014 2008, 2011, early 2016, and March 2020 for high-yield.",
       "axis": {
         "kind": "level",
         "unit": "%",
@@ -68,12 +74,18 @@
         {
           "status": "elevated",
           "lo": 6.0,
+          "hi": 8.0
+        },
+        {
+          "status": "alert",
+          "lo": 8.0,
           "hi": null
         }
       ],
       "edges": [
         4.0,
-        6.0
+        6.0,
+        8.0
       ]
     },
     "market-risk-sentiment::ig-spread": {
@@ -85,7 +97,7 @@
       "title": "Investment-Grade Credit Spread",
       "short": "IG spread",
       "taxonomy": "severity",
-      "why": "The extra yield investors demand over Treasuries. Tight spreads signal calm credit; the bands mark where spreads have historically started to price real default risk (the high-yield band sits wider than investment-grade because junk spreads are structurally larger).",
+      "why": "The extra yield investors demand over Treasuries. Tight spreads signal calm credit; the bands mark where spreads have historically started to price real default risk (the high-yield band sits wider than investment-grade because junk spreads are structurally larger). The alert line marks blowout levels reached historically only in severe credit-stress episodes \u2014 2008, 2011, early 2016, and March 2020 for high-yield.",
       "axis": {
         "kind": "level",
         "unit": "%",
@@ -106,12 +118,18 @@
         {
           "status": "elevated",
           "lo": 2.5,
+          "hi": 3.5
+        },
+        {
+          "status": "alert",
+          "lo": 3.5,
           "hi": null
         }
       ],
       "edges": [
         1.5,
-        2.5
+        2.5,
+        3.5
       ]
     },
     "market-risk-sentiment::nfci": {
@@ -123,7 +141,7 @@
       "title": "Financial Conditions \u00b7 NFCI",
       "short": "NFCI",
       "taxonomy": "severity",
-      "why": "The Chicago Fed NFCI, where zero is average. Positive means tighter (more stressed) than normal; 0.5+ is tight.",
+      "why": "The Chicago Fed NFCI, where zero is average. Positive means tighter (more stressed) than normal; 0.5+ is tight; 1.0+ has printed in the modern era only during 2008\u201309.",
       "axis": {
         "kind": "level",
         "unit": "",
@@ -144,12 +162,18 @@
         {
           "status": "elevated",
           "lo": 0.5,
+          "hi": 1.0
+        },
+        {
+          "status": "alert",
+          "lo": 1.0,
           "hi": null
         }
       ],
       "edges": [
         0,
-        0.5
+        0.5,
+        1.0
       ]
     },
     "market-scoreboard::sp500": {

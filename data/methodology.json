@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-06-26T18:17:14Z",
+  "generated_at": "2026-07-06T16:54:06Z",
   "taxonomy": {
     "intro": "Every signal on the site is read by a fixed, documented rule applied to the latest numbers \u2014 never a human judgement call. Here is exactly how each reading becomes the badge you see. There are four kinds of signal:",
     "severity": "Severity \u2014 most signals. A reading maps to one of four badges: ok, watch, elevated, or alert. The thresholds below are the real numbers the code uses; the marker on each lens page shows where the latest reading falls.",
@@ -392,6 +392,17 @@
         3.0
       ]
     },
+    "job-market::quits": {
+      "category": "economic",
+      "category_title": "Economic Lenses",
+      "lens_id": "job-market",
+      "lens_title": "The Job Market",
+      "indicator_id": "quits",
+      "title": "Quits Rate (JOLTS)",
+      "short": "Quits",
+      "taxonomy": "info",
+      "note": "The quits rate tends to track workers' confidence in finding another job \u2014 shown for context; the verdict is carried by unemployment, payrolls, and openings."
+    },
     "job-market::participation": {
       "category": "economic",
       "category_title": "Economic Lenses",
@@ -487,6 +498,44 @@
       "indicator_id": "pce",
       "title": "PCE Inflation (year-over-year)",
       "short": "PCE",
+      "taxonomy": "severity",
+      "why": "A year-over-year inflation rate (CPI, core, or PCE) against the Fed's 2% goal: near 2% is ok, 2.5\u20134% is still above target, 4%+ is hot.",
+      "axis": {
+        "kind": "yoy",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the year-over-year change"
+      },
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 2.5
+        },
+        {
+          "status": "watch",
+          "lo": 2.5,
+          "hi": 4.0
+        },
+        {
+          "status": "elevated",
+          "lo": 4.0,
+          "hi": null
+        }
+      ],
+      "edges": [
+        2.5,
+        4.0
+      ]
+    },
+    "cost-of-living::core-pce": {
+      "category": "economic",
+      "category_title": "Economic Lenses",
+      "lens_id": "cost-of-living",
+      "lens_title": "The Cost of Living",
+      "indicator_id": "core-pce",
+      "title": "Core PCE Inflation (year-over-year)",
+      "short": "Core PCE",
       "taxonomy": "severity",
       "why": "A year-over-year inflation rate (CPI, core, or PCE) against the Fed's 2% goal: near 2% is ok, 2.5\u20134% is still above target, 4%+ is hot.",
       "axis": {
@@ -745,7 +794,7 @@
       "title": "Noncurrent Loan Rate \u00b7 loans 90+ days past due",
       "short": "Noncurrent",
       "taxonomy": "severity",
-      "why": "Loans 90+ days past due as a share of all loans. Under 1% is low by historical standards; 1\u20132% is creeping; above 2% is elevated.",
+      "why": "Loans 90+ days past due as a share of all loans. Under 1% is low by historical standards; 1\u20132% is creeping; above 2% is elevated; 3%+ marks crisis territory \u2014 in the two decades of data shown it occurred only in the 2009\u20132013 aftermath (the early-1990s S&L era also ran that high).",
       "axis": {
         "kind": "level",
         "unit": "%",
@@ -766,12 +815,18 @@
         {
           "status": "elevated",
           "lo": 2,
+          "hi": 3
+        },
+        {
+          "status": "alert",
+          "lo": 3,
           "hi": null
         }
       ],
       "edges": [
         1,
-        2
+        2,
+        3
       ]
     },
     "bank-asset-quality::charge-offs": {
@@ -783,7 +838,7 @@
       "title": "Net Charge-Off Rate \u00b7 annualized",
       "short": "Charge-offs",
       "taxonomy": "severity",
-      "why": "Loans written off as losses. Under ~0.6% is benign; the bands mark where losses become a meaningful drag on earnings.",
+      "why": "Loans written off as losses. Under ~0.6% is benign; the bands mark where losses become a meaningful drag on earnings; in the two decades of data shown, 2%+ occurred only in 2009\u20132010.",
       "axis": {
         "kind": "level",
         "unit": "%",
@@ -804,12 +859,18 @@
         {
           "status": "elevated",
           "lo": 1.2,
+          "hi": 2.0
+        },
+        {
+          "status": "alert",
+          "lo": 2.0,
           "hi": null
         }
       ],
       "edges": [
         0.6,
-        1.2
+        1.2,
+        2.0
       ]
     },
     "bank-profitability::net-margin": {
@@ -853,7 +914,7 @@
       "title": "Return on Assets \u00b7 annualized",
       "short": "ROA",
       "taxonomy": "severity",
-      "why": "Return on assets. 1%+ is solid bank profitability; 0.5\u20131% is subdued; below 0.5% is weak.",
+      "why": "Return on assets. 1%+ is solid bank profitability; 0.5\u20131% is subdued; below 0.5% is weak; below zero the industry as a whole is losing money \u2014 seen only at the depth of 2008\u201309.",
       "axis": {
         "kind": "level",
         "unit": "%",
@@ -862,8 +923,13 @@
       },
       "segments": [
         {
-          "status": "elevated",
+          "status": "alert",
           "lo": null,
+          "hi": 0
+        },
+        {
+          "status": "elevated",
+          "lo": 0,
           "hi": 0.5
         },
         {
@@ -878,6 +944,7 @@
         }
       ],
       "edges": [
+        0,
         0.5,
         1.0
       ]
@@ -1069,7 +1136,7 @@
       "title": "Volatility \u00b7 VIX",
       "short": "VIX",
       "taxonomy": "severity",
-      "why": "The equity 'fear gauge'. Below 20 is calm; 20\u201330 is nervous; 30+ is fearful.",
+      "why": "The equity 'fear gauge'. Below 20 is calm; 20\u201330 is nervous; 30+ is fearful; 40+ is panic \u2014 closes that high are rare, clustering around major market shocks like 1998, 2008\u201309, 2020, and spring 2025.",
       "axis": {
         "kind": "level",
         "unit": "",
@@ -1090,12 +1157,18 @@
         {
           "status": "elevated",
           "lo": 30,
+          "hi": 40
+        },
+        {
+          "status": "alert",
+          "lo": 40,
           "hi": null
         }
       ],
       "edges": [
         20,
-        30
+        30,
+        40
       ]
     },
     "market-risk-sentiment::hy-spread": {
@@ -1107,7 +1180,7 @@
       "title": "High-Yield Credit Spread",
       "short": "HY spread",
       "taxonomy": "severity",
-      "why": "The extra yield investors demand over Treasuries. Tight spreads signal calm credit; the bands mark where spreads have historically started to price real default risk (the high-yield band sits wider than investment-grade because junk spreads are structurally larger).",
+      "why": "The extra yield investors demand over Treasuries. Tight spreads signal calm credit; the bands mark where spreads have historically started to price real default risk (the high-yield band sits wider than investment-grade because junk spreads are structurally larger). The alert line marks blowout levels reached historically only in severe credit-stress episodes \u2014 2008, 2011, early 2016, and March 2020 for high-yield.",
       "axis": {
         "kind": "level",
         "unit": "%",
@@ -1128,12 +1201,18 @@
         {
           "status": "elevated",
           "lo": 6.0,
+          "hi": 8.0
+        },
+        {
+          "status": "alert",
+          "lo": 8.0,
           "hi": null
         }
       ],
       "edges": [
         4.0,
-        6.0
+        6.0,
+        8.0
       ]
     },
     "market-risk-sentiment::ig-spread": {
@@ -1145,7 +1224,7 @@
       "title": "Investment-Grade Credit Spread",
       "short": "IG spread",
       "taxonomy": "severity",
-      "why": "The extra yield investors demand over Treasuries. Tight spreads signal calm credit; the bands mark where spreads have historically started to price real default risk (the high-yield band sits wider than investment-grade because junk spreads are structurally larger).",
+      "why": "The extra yield investors demand over Treasuries. Tight spreads signal calm credit; the bands mark where spreads have historically started to price real default risk (the high-yield band sits wider than investment-grade because junk spreads are structurally larger). The alert line marks blowout levels reached historically only in severe credit-stress episodes \u2014 2008, 2011, early 2016, and March 2020 for high-yield.",
       "axis": {
         "kind": "level",
         "unit": "%",
@@ -1166,12 +1245,18 @@
         {
           "status": "elevated",
           "lo": 2.5,
+          "hi": 3.5
+        },
+        {
+          "status": "alert",
+          "lo": 3.5,
           "hi": null
         }
       ],
       "edges": [
         1.5,
-        2.5
+        2.5,
+        3.5
       ]
     },
     "market-risk-sentiment::nfci": {
@@ -1183,7 +1268,7 @@
       "title": "Financial Conditions \u00b7 NFCI",
       "short": "NFCI",
       "taxonomy": "severity",
-      "why": "The Chicago Fed NFCI, where zero is average. Positive means tighter (more stressed) than normal; 0.5+ is tight.",
+      "why": "The Chicago Fed NFCI, where zero is average. Positive means tighter (more stressed) than normal; 0.5+ is tight; 1.0+ has printed in the modern era only during 2008\u201309.",
       "axis": {
         "kind": "level",
         "unit": "",
@@ -1204,12 +1289,18 @@
         {
           "status": "elevated",
           "lo": 0.5,
+          "hi": 1.0
+        },
+        {
+          "status": "alert",
+          "lo": 1.0,
           "hi": null
         }
       ],
       "edges": [
         0,
-        0.5
+        0.5,
+        1.0
       ]
     },
     "market-scoreboard::sp500": {
@@ -1721,6 +1812,17 @@
         13
       ]
     },
+    "consumer-credit::auto-loan-rate": {
+      "category": "consumer",
+      "category_title": "The Consumer",
+      "lens_id": "consumer-credit",
+      "lens_title": "Consumer Credit Stress",
+      "indicator_id": "auto-loan-rate",
+      "title": "New-Car Loan Rate \u00b7 48-month",
+      "short": "Auto loan rate",
+      "taxonomy": "info",
+      "note": "A retail borrowing rate shown for context \u2014 the scored consumer-stress reads here are delinquencies, balances, and debt service."
+    },
     "consumer-income-savings::saving-rate": {
       "category": "consumer",
       "category_title": "The Consumer",
@@ -1850,7 +1952,7 @@
       "title": "Consumer Sentiment (U. Michigan)",
       "short": "Sentiment",
       "taxonomy": "severity",
-      "why": "U. Michigan consumer sentiment, long-run range roughly 50\u2013110. 85+ is fine; the bands step down through recession-grade gloom; the 2022 record low was about 50.",
+      "why": "U. Michigan consumer sentiment, long-run range roughly 50\u2013110. 85+ is fine; the bands step down through recession-grade gloom; readings below 55 have historically been record-territory lows.",
       "axis": {
         "kind": "level",
         "unit": "",
@@ -2200,7 +2302,7 @@
       "lens_title": "Commodities & Materials",
       "indicator_id": "food-index",
       "title": "Global Food Prices \u00b7 year-over-year",
-      "short": "Food",
+      "short": "Global food",
       "taxonomy": "severity",
       "why": "A cost already expressed as a year-over-year rate. Same logic as the fuel costs: faster annual increases mean more household strain; flat or falling is ok.",
       "axis": {
@@ -2235,6 +2337,50 @@
         5,
         12,
         25
+      ]
+    },
+    "energy-commodities::grocery-cpi": {
+      "category": "energy",
+      "category_title": "Energy & Commodities",
+      "lens_id": "energy-commodities",
+      "lens_title": "Commodities & Materials",
+      "indicator_id": "grocery-cpi",
+      "title": "U.S. Grocery Prices \u00b7 year-over-year",
+      "short": "Groceries",
+      "taxonomy": "severity",
+      "why": "A cost already expressed as a year-over-year rate. Same logic as the fuel costs: faster annual increases mean more household strain; flat or falling is ok.",
+      "axis": {
+        "kind": "yoy",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the year-over-year change"
+      },
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 3
+        },
+        {
+          "status": "watch",
+          "lo": 3,
+          "hi": 6
+        },
+        {
+          "status": "elevated",
+          "lo": 6,
+          "hi": 10
+        },
+        {
+          "status": "alert",
+          "lo": 10,
+          "hi": null
+        }
+      ],
+      "edges": [
+        3,
+        6,
+        10
       ]
     },
     "energy-commodities::copper": {

@@ -9,7 +9,7 @@
       "title": "Noncurrent Loan Rate \u00b7 loans 90+ days past due",
       "short": "Noncurrent",
       "taxonomy": "severity",
-      "why": "Loans 90+ days past due as a share of all loans. Under 1% is low by historical standards; 1\u20132% is creeping; above 2% is elevated.",
+      "why": "Loans 90+ days past due as a share of all loans. Under 1% is low by historical standards; 1\u20132% is creeping; above 2% is elevated; 3%+ marks crisis territory \u2014 in the two decades of data shown it occurred only in the 2009\u20132013 aftermath (the early-1990s S&L era also ran that high).",
       "axis": {
         "kind": "level",
         "unit": "%",
@@ -30,12 +30,18 @@
         {
           "status": "elevated",
           "lo": 2,
+          "hi": 3
+        },
+        {
+          "status": "alert",
+          "lo": 3,
           "hi": null
         }
       ],
       "edges": [
         1,
-        2
+        2,
+        3
       ]
     },
     "bank-asset-quality::charge-offs": {
@@ -47,7 +53,7 @@
       "title": "Net Charge-Off Rate \u00b7 annualized",
       "short": "Charge-offs",
       "taxonomy": "severity",
-      "why": "Loans written off as losses. Under ~0.6% is benign; the bands mark where losses become a meaningful drag on earnings.",
+      "why": "Loans written off as losses. Under ~0.6% is benign; the bands mark where losses become a meaningful drag on earnings; in the two decades of data shown, 2%+ occurred only in 2009\u20132010.",
       "axis": {
         "kind": "level",
         "unit": "%",
@@ -68,12 +74,18 @@
         {
           "status": "elevated",
           "lo": 1.2,
+          "hi": 2.0
+        },
+        {
+          "status": "alert",
+          "lo": 2.0,
           "hi": null
         }
       ],
       "edges": [
         0.6,
-        1.2
+        1.2,
+        2.0
       ]
     },
     "bank-profitability::net-margin": {
@@ -117,7 +129,7 @@
       "title": "Return on Assets \u00b7 annualized",
       "short": "ROA",
       "taxonomy": "severity",
-      "why": "Return on assets. 1%+ is solid bank profitability; 0.5\u20131% is subdued; below 0.5% is weak.",
+      "why": "Return on assets. 1%+ is solid bank profitability; 0.5\u20131% is subdued; below 0.5% is weak; below zero the industry as a whole is losing money \u2014 seen only at the depth of 2008\u201309.",
       "axis": {
         "kind": "level",
         "unit": "%",
@@ -126,8 +138,13 @@
       },
       "segments": [
         {
-          "status": "elevated",
+          "status": "alert",
           "lo": null,
+          "hi": 0
+        },
+        {
+          "status": "elevated",
+          "lo": 0,
           "hi": 0.5
         },
         {
@@ -142,6 +159,7 @@
         }
       ],
       "edges": [
+        0,
         0.5,
         1.0
       ]

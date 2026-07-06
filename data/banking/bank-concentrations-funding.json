@@ -2,7 +2,7 @@
   "id": "bank-concentrations-funding",
   "title": "Concentrations & Funding",
   "accent": "#A78BFA",
-  "last_updated": "2026-06-29T17:22:40Z",
+  "last_updated": "2026-07-06T16:54:04Z",
   "status": "watch",
   "headline_read": "Some concentration and funding risks are building.",
   "recessions": [],
@@ -347,6 +347,10 @@
       "read": "40.5% of deposits sit above the FDIC insurance cap \u2014 flight-prone if confidence cracks.",
       "signal_status": "watch",
       "value_format": "decimal",
+      "percentile": {
+        "p": 84.0,
+        "since": 2006
+      },
       "scale_now": 40.4838
     },
     {
@@ -689,6 +693,10 @@
       "read": "Banks have lent out 66% of deposits \u2014 comfortable funding headroom.",
       "signal_status": "ok",
       "value_format": "decimal",
+      "percentile": {
+        "p": 25.9,
+        "since": 2006
+      },
       "scale_now": 65.7591
     },
     {
@@ -1031,6 +1039,10 @@
       "read": "Commercial real estate is 99% of capital \u2014 a manageable share.",
       "signal_status": "ok",
       "value_format": "decimal",
+      "percentile": {
+        "p": 82.7,
+        "since": 2006
+      },
       "scale_now": 98.8039
     }
   ],

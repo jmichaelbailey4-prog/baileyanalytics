@@ -2,7 +2,7 @@
   "id": "bank-profitability",
   "title": "Bank Profitability",
   "accent": "#34D399",
-  "last_updated": "2026-06-29T17:22:40Z",
+  "last_updated": "2026-07-06T16:54:04Z",
   "status": "ok",
   "headline_read": "Banks are solidly profitable.",
   "recessions": [],
@@ -347,6 +347,10 @@
       "read": "Net interest margin is 3.27% \u2014 a healthy spread on lending.",
       "signal_status": "ok",
       "value_format": "decimal",
+      "percentile": {
+        "p": 49.4,
+        "since": 2006
+      },
       "scale_now": 3.2685
     },
     {
@@ -689,6 +693,10 @@
       "read": "Banks earned 1.25% on their assets \u2014 solid profitability.",
       "signal_status": "ok",
       "value_format": "decimal",
+      "percentile": {
+        "p": 76.5,
+        "since": 2006
+      },
       "scale_now": 1.255
     }
   ],

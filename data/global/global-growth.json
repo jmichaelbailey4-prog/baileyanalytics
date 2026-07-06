@@ -2,10 +2,50 @@
   "id": "global-growth",
   "title": "Global Growth",
   "accent": "#34D399",
-  "last_updated": "2026-06-26T19:12:55Z",
+  "last_updated": "2026-07-06T16:47:29Z",
   "status": "ok",
   "headline_read": "The world economy is growing around its long-run trend.",
   "recessions": [
+    {
+      "start": "1948-12-01",
+      "end": "1949-11-01"
+    },
+    {
+      "start": "1953-08-01",
+      "end": "1954-06-01"
+    },
+    {
+      "start": "1957-09-01",
+      "end": "1958-05-01"
+    },
+    {
+      "start": "1960-05-01",
+      "end": "1961-03-01"
+    },
+    {
+      "start": "1970-01-01",
+      "end": "1970-12-01"
+    },
+    {
+      "start": "1973-12-01",
+      "end": "1975-04-01"
+    },
+    {
+      "start": "1980-02-01",
+      "end": "1980-08-01"
+    },
+    {
+      "start": "1981-08-01",
+      "end": "1982-12-01"
+    },
+    {
+      "start": "1990-08-01",
+      "end": "1991-04-01"
+    },
+    {
+      "start": "2001-04-01",
+      "end": "2001-12-01"
+    },
     {
       "start": "2008-01-01",
       "end": "2009-07-01"
@@ -217,6 +257,10 @@
       "read": "The world economy grew 3.4% in 2025 \u2014 around its long-run trend. The IMF projects 3.1% for 2026.",
       "signal_status": "ok",
       "value_format": "decimal",
+      "percentile": {
+        "p": 50.0,
+        "since": 1980
+      },
       "no_prediction_reason": "This series updates only once or twice a year \u2014 too few data points to build an honest forecast range. (The IMF's own projection is noted in the read above.)",
       "scale_now": 3.4413
     },
@@ -717,6 +761,10 @@
       "read": "Euro-area real GDP is roughly flat versus a year ago (+0.3%).",
       "signal_status": "ok",
       "value_format": "decimal",
+      "percentile": {
+        "p": 16.7,
+        "since": 1996
+      },
       "scale_now": 0.3034
     },
     {
@@ -920,6 +968,10 @@
       "read": "China's economy grew 5.0% in 2025, matching the year before.",
       "signal_status": "info",
       "value_format": "decimal",
+      "percentile": {
+        "p": 8.7,
+        "since": 1980
+      },
       "no_severity_reason": "Shown for context alongside this lens's lead growth reading.",
       "no_prediction_reason": "This series updates only once or twice a year \u2014 too few data points to build an honest forecast range. (The IMF's own projection is noted in the read above.)"
     },
@@ -1280,6 +1332,10 @@
       "read": "World consumer prices are rising 4.1% in 2025, easing from 5.8% the year before.",
       "signal_status": "info",
       "value_format": "decimal",
+      "percentile": {
+        "p": 34.8,
+        "since": 1980
+      },
       "no_severity_reason": "Shown for context alongside this lens's lead growth reading.",
       "no_prediction_reason": "This series updates only once or twice a year \u2014 too few data points to build an honest forecast range. (The IMF's own projection is noted in the read above.)"
     }

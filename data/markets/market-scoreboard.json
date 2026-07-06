@@ -2,10 +2,50 @@
   "id": "market-scoreboard",
   "title": "Asset-Class Scoreboard",
   "accent": "#22D3EE",
-  "last_updated": "2026-07-06T16:24:59Z",
+  "last_updated": "2026-07-06T16:46:22Z",
   "status": "neutral",
   "headline_read": "How the major asset classes are moving right now.",
   "recessions": [
+    {
+      "start": "1948-12-01",
+      "end": "1949-11-01"
+    },
+    {
+      "start": "1953-08-01",
+      "end": "1954-06-01"
+    },
+    {
+      "start": "1957-09-01",
+      "end": "1958-05-01"
+    },
+    {
+      "start": "1960-05-01",
+      "end": "1961-03-01"
+    },
+    {
+      "start": "1970-01-01",
+      "end": "1970-12-01"
+    },
+    {
+      "start": "1973-12-01",
+      "end": "1975-04-01"
+    },
+    {
+      "start": "1980-02-01",
+      "end": "1980-08-01"
+    },
+    {
+      "start": "1981-08-01",
+      "end": "1982-12-01"
+    },
+    {
+      "start": "1990-08-01",
+      "end": "1991-04-01"
+    },
+    {
+      "start": "2001-04-01",
+      "end": "2001-12-01"
+    },
     {
       "start": "2008-01-01",
       "end": "2009-07-01"
@@ -3001,6 +3041,10 @@
       "read": "The S&P 500 is up 20% over the past year, now 7,483.24.",
       "signal_status": "up",
       "value_format": "thousands",
+      "percentile": {
+        "p": 99.4,
+        "since": 2016
+      },
       "no_severity_reason": "Part of a neutral scoreboard \u2014 it shows which way the price is moving, not whether that's good or bad."
     },
     {
@@ -5972,6 +6016,10 @@
       "read": "WTI crude is little changed over the past year, now 71.87.",
       "signal_status": "flat",
       "value_format": "decimal",
+      "percentile": {
+        "p": 65.8,
+        "since": 2016
+      },
       "no_severity_reason": "Part of a neutral scoreboard \u2014 it shows which way the price is moving, not whether that's good or bad."
     },
     {
@@ -8860,17 +8908,21 @@
         },
         {
           "date": "2026-07-06",
-          "value": "4152.00"
+          "value": "4159.50"
         }
       ],
       "latest": {
         "date": "2026-07-06",
-        "value": "4152.00"
+        "value": "4159.50"
       },
       "context": "Gold (dollars per troy ounce) \u2014 the classic safe-haven asset investors flee to in times of stress. Sourced from Yahoo Finance (COMEX futures).",
-      "read": "Gold is up 25% over the past year, now 4,152.00.",
+      "read": "Gold is up 25% over the past year, now 4,159.50.",
       "signal_status": "up",
       "value_format": "thousands",
+      "percentile": {
+        "p": 94.2,
+        "since": 2016
+      },
       "no_severity_reason": "Part of a neutral scoreboard \u2014 it shows which way the price is moving, not whether that's good or bad."
     },
     {
@@ -12550,6 +12602,10 @@
       "read": "Bitcoin is down 42% over the past year, now 63,577.07.",
       "signal_status": "down",
       "value_format": "thousands",
+      "percentile": {
+        "p": 71.6,
+        "since": 2019
+      },
       "no_severity_reason": "Part of a neutral scoreboard \u2014 it shows which way the price is moving, not whether that's good or bad."
     },
     {
@@ -16229,6 +16285,10 @@
       "read": "Ethereum is down 31% over the past year, now 1,783.23.",
       "signal_status": "down",
       "value_format": "thousands",
+      "percentile": {
+        "p": 40.7,
+        "since": 2019
+      },
       "no_severity_reason": "Part of a neutral scoreboard \u2014 it shows which way the price is moving, not whether that's good or bad."
     }
   ]

@@ -2,10 +2,50 @@
   "id": "energy-oil-fuels",
   "title": "Oil & Fuels",
   "accent": "#FB923C",
-  "last_updated": "2026-07-02T08:43:38Z",
+  "last_updated": "2026-07-06T16:47:07Z",
   "status": "watch",
   "headline_read": "Fuel costs are climbing.",
   "recessions": [
+    {
+      "start": "1948-12-01",
+      "end": "1949-11-01"
+    },
+    {
+      "start": "1953-08-01",
+      "end": "1954-06-01"
+    },
+    {
+      "start": "1957-09-01",
+      "end": "1958-05-01"
+    },
+    {
+      "start": "1960-05-01",
+      "end": "1961-03-01"
+    },
+    {
+      "start": "1970-01-01",
+      "end": "1970-12-01"
+    },
+    {
+      "start": "1973-12-01",
+      "end": "1975-04-01"
+    },
+    {
+      "start": "1980-02-01",
+      "end": "1980-08-01"
+    },
+    {
+      "start": "1981-08-01",
+      "end": "1982-12-01"
+    },
+    {
+      "start": "1990-08-01",
+      "end": "1991-04-01"
+    },
+    {
+      "start": "2001-04-01",
+      "end": "2001-12-01"
+    },
     {
       "start": "2008-01-01",
       "end": "2009-07-01"
@@ -1317,6 +1357,10 @@
       "read": "Gasoline costs are up 19% over the past year \u2014 climbing.",
       "signal_status": "watch",
       "value_format": "decimal",
+      "percentile": {
+        "p": 91.2,
+        "since": 2016
+      },
       "scale_now": 19.2344
     },
     {
@@ -2620,6 +2664,10 @@
       "read": "Diesel costs are up 24% over the past year \u2014 climbing.",
       "signal_status": "watch",
       "value_format": "decimal",
+      "percentile": {
+        "p": 88.8,
+        "since": 2016
+      },
       "scale_now": 23.6556
     },
     {
@@ -3923,6 +3971,10 @@
       "read": "U.S. crude production is little changed from a year ago, now 13,810.",
       "signal_status": "info",
       "value_format": "thousands",
+      "percentile": {
+        "p": 97.9,
+        "since": 2016
+      },
       "no_severity_reason": "A physical supply-and-demand reading, not a household cost \u2014 this lens's verdict comes from the price indicators."
     },
     {
@@ -5226,6 +5278,10 @@
       "read": "Crude inventories is little changed from a year ago, now 408,359.",
       "signal_status": "info",
       "value_format": "thousands",
+      "percentile": {
+        "p": 1.9,
+        "since": 2016
+      },
       "no_severity_reason": "A physical supply-and-demand reading, not a household cost \u2014 this lens's verdict comes from the price indicators."
     }
   ]

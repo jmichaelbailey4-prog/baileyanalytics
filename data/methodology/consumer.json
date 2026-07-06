@@ -338,6 +338,17 @@
         13
       ]
     },
+    "consumer-credit::auto-loan-rate": {
+      "category": "consumer",
+      "category_title": "The Consumer",
+      "lens_id": "consumer-credit",
+      "lens_title": "Consumer Credit Stress",
+      "indicator_id": "auto-loan-rate",
+      "title": "New-Car Loan Rate \u00b7 48-month",
+      "short": "Auto loan rate",
+      "taxonomy": "info",
+      "note": "A retail borrowing rate shown for context \u2014 the scored consumer-stress reads here are delinquencies, balances, and debt service."
+    },
     "consumer-income-savings::saving-rate": {
       "category": "consumer",
       "category_title": "The Consumer",
@@ -467,7 +478,7 @@
       "title": "Consumer Sentiment (U. Michigan)",
       "short": "Sentiment",
       "taxonomy": "severity",
-      "why": "U. Michigan consumer sentiment, long-run range roughly 50\u2013110. 85+ is fine; the bands step down through recession-grade gloom; the 2022 record low was about 50.",
+      "why": "U. Michigan consumer sentiment, long-run range roughly 50\u2013110. 85+ is fine; the bands step down through recession-grade gloom; readings below 55 have historically been record-territory lows.",
       "axis": {
         "kind": "level",
         "unit": "",

@@ -384,6 +384,17 @@
         3.0
       ]
     },
+    "job-market::quits": {
+      "category": "economic",
+      "category_title": "Economic Lenses",
+      "lens_id": "job-market",
+      "lens_title": "The Job Market",
+      "indicator_id": "quits",
+      "title": "Quits Rate (JOLTS)",
+      "short": "Quits",
+      "taxonomy": "info",
+      "note": "The quits rate tends to track workers' confidence in finding another job \u2014 shown for context; the verdict is carried by unemployment, payrolls, and openings."
+    },
     "job-market::participation": {
       "category": "economic",
       "category_title": "Economic Lenses",
@@ -479,6 +490,44 @@
       "indicator_id": "pce",
       "title": "PCE Inflation (year-over-year)",
       "short": "PCE",
+      "taxonomy": "severity",
+      "why": "A year-over-year inflation rate (CPI, core, or PCE) against the Fed's 2% goal: near 2% is ok, 2.5\u20134% is still above target, 4%+ is hot.",
+      "axis": {
+        "kind": "yoy",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the year-over-year change"
+      },
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 2.5
+        },
+        {
+          "status": "watch",
+          "lo": 2.5,
+          "hi": 4.0
+        },
+        {
+          "status": "elevated",
+          "lo": 4.0,
+          "hi": null
+        }
+      ],
+      "edges": [
+        2.5,
+        4.0
+      ]
+    },
+    "cost-of-living::core-pce": {
+      "category": "economic",
+      "category_title": "Economic Lenses",
+      "lens_id": "cost-of-living",
+      "lens_title": "The Cost of Living",
+      "indicator_id": "core-pce",
+      "title": "Core PCE Inflation (year-over-year)",
+      "short": "Core PCE",
       "taxonomy": "severity",
       "why": "A year-over-year inflation rate (CPI, core, or PCE) against the Fed's 2% goal: near 2% is ok, 2.5\u20134% is still above target, 4%+ is hot.",
       "axis": {

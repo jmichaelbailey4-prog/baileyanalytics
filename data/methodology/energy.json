@@ -271,7 +271,7 @@
       "lens_title": "Commodities & Materials",
       "indicator_id": "food-index",
       "title": "Global Food Prices \u00b7 year-over-year",
-      "short": "Food",
+      "short": "Global food",
       "taxonomy": "severity",
       "why": "A cost already expressed as a year-over-year rate. Same logic as the fuel costs: faster annual increases mean more household strain; flat or falling is ok.",
       "axis": {
@@ -306,6 +306,50 @@
         5,
         12,
         25
+      ]
+    },
+    "energy-commodities::grocery-cpi": {
+      "category": "energy",
+      "category_title": "Energy & Commodities",
+      "lens_id": "energy-commodities",
+      "lens_title": "Commodities & Materials",
+      "indicator_id": "grocery-cpi",
+      "title": "U.S. Grocery Prices \u00b7 year-over-year",
+      "short": "Groceries",
+      "taxonomy": "severity",
+      "why": "A cost already expressed as a year-over-year rate. Same logic as the fuel costs: faster annual increases mean more household strain; flat or falling is ok.",
+      "axis": {
+        "kind": "yoy",
+        "unit": "%",
+        "value_format": "decimal",
+        "label": "the year-over-year change"
+      },
+      "segments": [
+        {
+          "status": "ok",
+          "lo": null,
+          "hi": 3
+        },
+        {
+          "status": "watch",
+          "lo": 3,
+          "hi": 6
+        },
+        {
+          "status": "elevated",
+          "lo": 6,
+          "hi": 10
+        },
+        {
+          "status": "alert",
+          "lo": 10,
+          "hi": null
+        }
+      ],
+      "edges": [
+        3,
+        6,
+        10
       ]
     },
     "energy-commodities::copper": {

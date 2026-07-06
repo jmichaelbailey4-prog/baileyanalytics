@@ -2,10 +2,50 @@
   "id": "energy-electricity",
   "title": "Electricity & the Grid",
   "accent": "#FBBF24",
-  "last_updated": "2026-06-26T19:12:40Z",
+  "last_updated": "2026-07-06T16:47:07Z",
   "status": "watch",
   "headline_read": "Electricity prices are climbing.",
   "recessions": [
+    {
+      "start": "1948-12-01",
+      "end": "1949-11-01"
+    },
+    {
+      "start": "1953-08-01",
+      "end": "1954-06-01"
+    },
+    {
+      "start": "1957-09-01",
+      "end": "1958-05-01"
+    },
+    {
+      "start": "1960-05-01",
+      "end": "1961-03-01"
+    },
+    {
+      "start": "1970-01-01",
+      "end": "1970-12-01"
+    },
+    {
+      "start": "1973-12-01",
+      "end": "1975-04-01"
+    },
+    {
+      "start": "1980-02-01",
+      "end": "1980-08-01"
+    },
+    {
+      "start": "1981-08-01",
+      "end": "1982-12-01"
+    },
+    {
+      "start": "1990-08-01",
+      "end": "1991-04-01"
+    },
+    {
+      "start": "2001-04-01",
+      "end": "2001-12-01"
+    },
     {
       "start": "2008-01-01",
       "end": "2009-07-01"
@@ -993,6 +1033,10 @@
       "read": "Electricity costs are up 7% over the past year \u2014 climbing.",
       "signal_status": "watch",
       "value_format": "decimal",
+      "percentile": {
+        "p": 99.2,
+        "since": 2006
+      },
       "scale_now": 7.2934
     },
     {
@@ -1972,6 +2016,10 @@
       "read": "Renewables: 32.4% of U.S. electricity generation, up 1.1 points over the past year.",
       "signal_status": "info",
       "value_format": "decimal",
+      "percentile": {
+        "p": 99.2,
+        "since": 2006
+      },
       "no_severity_reason": "A physical supply-and-demand reading, not a household cost \u2014 this lens's verdict comes from the price indicators.",
       "no_prediction_reason": "This is computed from other series at refresh time, so there's no single line to forecast directly."
     },
@@ -2952,6 +3000,10 @@
       "read": "Natural gas: 37.6% of U.S. electricity generation, up 1.8 points over the past year.",
       "signal_status": "info",
       "value_format": "decimal",
+      "percentile": {
+        "p": 70.0,
+        "since": 2006
+      },
       "no_severity_reason": "A physical supply-and-demand reading, not a household cost \u2014 this lens's verdict comes from the price indicators.",
       "no_prediction_reason": "This is computed from other series at refresh time, so there's no single line to forecast directly."
     },
@@ -3932,6 +3984,10 @@
       "read": "Net generation is up 3% from a year ago, now 330,707.",
       "signal_status": "info",
       "value_format": "thousands",
+      "percentile": {
+        "p": 43.8,
+        "since": 2006
+      },
       "no_severity_reason": "A physical supply-and-demand reading, not a household cost \u2014 this lens's verdict comes from the price indicators.",
       "no_prediction_reason": "This is computed from other series at refresh time, so there's no single line to forecast directly."
     }
