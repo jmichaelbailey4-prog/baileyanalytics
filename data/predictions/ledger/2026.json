@@ -2554,7 +2554,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 158.4000000000001,
-      "revised_to": 4184.4
+      "revised_to": 4112.7
     }
   },
   {
@@ -2668,7 +2668,7 @@
       "direction_hit": true,
       "status_hit": true,
       "naive_error": 3804.820000000007,
-      "revised_to": 61422.31
+      "revised_to": 63577.07
     }
   },
   {
@@ -2706,7 +2706,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 116.17000000000007,
-      "revised_to": 1699.04
+      "revised_to": 1783.23
     }
   },
   {
@@ -2894,7 +2894,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 0.36999999999999744,
-      "revised_to": 16.59
+      "revised_to": 15.81
     }
   },
   {
@@ -2932,7 +2932,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 0.1499999999999999,
-      "revised_to": 2.74
+      "revised_to": 2.75
     }
   },
   {
@@ -2970,7 +2970,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 0.020000000000000018,
-      "revised_to": null
+      "revised_to": 0.75
     }
   },
   {
@@ -4092,6 +4092,120 @@
       "direction_hit": true,
       "status_hit": true,
       "naive_error": 0.040000000000000036,
+      "revised_to": null
+    }
+  },
+  {
+    "id": "consumer/consumer-spending/auto-sales@2026-06-01",
+    "key": "consumer/consumer-spending/auto-sales",
+    "category": "consumer",
+    "lens": "consumer-spending",
+    "indicator": "auto-sales",
+    "series_id": "TOTALSA",
+    "horizon": "next-print",
+    "target_period": "2026-06-01",
+    "due": "2026-07-15",
+    "made_at": "2026-06-16T13:10:28Z",
+    "model": "naive@1",
+    "point": 16.485,
+    "lo": 15.3615,
+    "hi": 17.386,
+    "unit": "M",
+    "value_format": "decimal",
+    "prev_value": 16.485,
+    "why": "We expect roughly the last value \u2014 this series rarely rewards cleverness.",
+    "implied_status": "info",
+    "current_status": "info",
+    "descriptive": true,
+    "market_price": false,
+    "title": "Vehicle Sales \u00b7 annual rate",
+    "short": "Auto sales",
+    "lens_title": "Consumer Spending",
+    "href": "/dashboards/consumer/spending.html",
+    "grade": {
+      "actual": 16.949,
+      "graded_at": "2026-07-04T08:26:30Z",
+      "hit": true,
+      "abs_error": 0.4640000000000022,
+      "direction_hit": false,
+      "status_hit": false,
+      "naive_error": 0.4640000000000022,
+      "revised_to": null
+    }
+  },
+  {
+    "id": "markets/market-scoreboard/gold@2026-07-10",
+    "key": "markets/market-scoreboard/gold",
+    "category": "markets",
+    "lens": "market-scoreboard",
+    "indicator": "gold",
+    "series_id": "XAUUSD",
+    "horizon": "next-print",
+    "target_period": "2026-07-10",
+    "due": "2026-07-15",
+    "made_at": "2026-06-29T10:25:19Z",
+    "model": "ets@1",
+    "point": 4033.0072,
+    "lo": 3890.5825,
+    "hi": 4149.9031,
+    "unit": "$",
+    "value_format": "thousands",
+    "prev_value": 4052.1,
+    "why": "Gold: down 2 straight weeks. This projects the recent level and trend forward one week.",
+    "implied_status": "up",
+    "current_status": "up",
+    "descriptive": true,
+    "market_price": true,
+    "title": "Gold",
+    "short": "Gold",
+    "lens_title": "Asset-Class Scoreboard",
+    "href": "/dashboards/markets/scoreboard.html",
+    "grade": {
+      "actual": 4152.2,
+      "graded_at": "2026-07-06T09:58:49Z",
+      "hit": false,
+      "abs_error": 119.1927999999998,
+      "direction_hit": false,
+      "status_hit": true,
+      "naive_error": 100.09999999999991,
+      "revised_to": 4152.8
+    }
+  },
+  {
+    "id": "global/global-trade-supply/gscpi@2026-06",
+    "key": "global/global-trade-supply/gscpi",
+    "category": "global",
+    "lens": "global-trade-supply",
+    "indicator": "gscpi",
+    "series_id": "GSCPI",
+    "horizon": "next-print",
+    "target_period": "2026-06",
+    "due": "2026-07-15",
+    "made_at": "2026-06-16T16:24:35Z",
+    "model": "drift@1",
+    "point": 1.7766,
+    "lo": 1.1764,
+    "hi": 2.3581,
+    "unit": "\u03c3",
+    "value_format": "decimal",
+    "prev_value": 1.77,
+    "why": "This projects the series' long-run average step from today's level.",
+    "implied_status": "elevated",
+    "current_status": "elevated",
+    "descriptive": false,
+    "market_price": false,
+    "title": "Global Supply Chain Pressure Index",
+    "short": "Supply chain",
+    "lens_title": "Trade & Supply Chain",
+    "href": "/dashboards/global/trade-supply.html",
+    "grade": {
+      "actual": 1.25,
+      "graded_at": "2026-07-06T16:26:22Z",
+      "hit": true,
+      "abs_error": 0.5266,
+      "direction_hit": false,
+      "status_hit": false,
+      "naive_error": 0.52,
       "revised_to": null
     }
   }

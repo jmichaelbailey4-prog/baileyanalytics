@@ -1,17 +1,6 @@
 {
-  "generated_at": "2026-07-06T16:26:27Z",
-  "transitions": [
-    {
-      "lens_id": "global-trade-supply",
-      "lens_title": "Trade & Supply Chain",
-      "category": "global",
-      "href": "/dashboards/global/trade-supply.html",
-      "from_status": "elevated",
-      "to_status": "watch",
-      "direction": "improving",
-      "headline": "Trade frictions are building \u2014 supply chains or import costs bear watching."
-    }
-  ],
+  "generated_at": "2026-07-04T08:26:50Z",
+  "transitions": [],
   "top_moves": [
     {
       "lens_id": "energy-commodities",
@@ -232,6 +221,61 @@
       "delta": "1.00 months",
       "dir": "up",
       "why": "Months' supply: a fresh high in this view."
+    },
+    {
+      "lens_id": "recession-watch",
+      "lens_title": "Recession Watch",
+      "category": "economic",
+      "href": "/dashboards/recession-watch.html",
+      "headline": "The economy looks steady \u2014 no major recession signals right now.",
+      "accent": "#F87171",
+      "sparkline": [
+        0.49,
+        0.49,
+        0.48,
+        0.47,
+        0.46,
+        0.48,
+        0.47,
+        0.5,
+        0.54,
+        0.54,
+        0.53,
+        0.49,
+        0.43,
+        0.49,
+        0.48,
+        0.46,
+        0.47,
+        0.42,
+        0.41,
+        0.41,
+        0.42,
+        0.38,
+        0.41,
+        0.4,
+        0.42,
+        0.4,
+        0.39,
+        0.4,
+        0.38,
+        0.29,
+        0.27,
+        0.27,
+        0.34,
+        0.3,
+        0.31,
+        0.31,
+        0.28,
+        0.3,
+        0.31,
+        0.35
+      ],
+      "stat_label": "Yield curve",
+      "stat_value": "0.35%",
+      "delta": "0.04%",
+      "dir": "up",
+      "why": "Yield curve: up 3 readings in a row."
     }
   ],
   "lenses": [
@@ -488,8 +532,8 @@
       "lens_title": "Trade & Supply Chain",
       "category": "global",
       "href": "/dashboards/global/trade-supply.html",
-      "status": "watch",
-      "headline": "Trade frictions are building \u2014 supply chains or import costs bear watching."
+      "status": "elevated",
+      "headline": "Global trade is under real strain \u2014 supply chains or import costs are stressed."
     },
     {
       "lens_id": "global-uncertainty",
@@ -502,15 +546,15 @@
   ],
   "status_counts": {
     "ok": 15,
-    "watch": 9,
-    "elevated": 4,
+    "watch": 8,
+    "elevated": 5,
     "alert": 3,
     "neutral": 2
   },
   "verdict": {
     "status": "watch",
     "shape": "contained-pressure",
-    "sentence": "The economy is holding up, but not without strain: the housing market is out of balance and household finances are stretched thin, while banks are solid and markets are calm.",
+    "sentence": "Most of the economy is on solid footing \u2014 banks are solid and markets are calm \u2014 but the housing market is out of balance and household finances are stretched thin.",
     "short": "Holding up, but the housing market is out of balance."
   },
   "watching": [
@@ -607,6 +651,14 @@
       "headline": "Housing affordability is badly stretched."
     },
     {
+      "lens_id": "global-trade-supply",
+      "lens_title": "Trade & Supply Chain",
+      "category": "global",
+      "href": "/dashboards/global/trade-supply.html",
+      "status": "elevated",
+      "headline": "Global trade is under real strain \u2014 supply chains or import costs are stressed."
+    },
+    {
       "lens_id": "global-uncertainty",
       "lens_title": "Uncertainty & Risk",
       "category": "global",
@@ -677,14 +729,6 @@
       "href": "/dashboards/energy/electricity.html",
       "status": "watch",
       "headline": "Electricity prices are climbing."
-    },
-    {
-      "lens_id": "global-trade-supply",
-      "lens_title": "Trade & Supply Chain",
-      "category": "global",
-      "href": "/dashboards/global/trade-supply.html",
-      "status": "watch",
-      "headline": "Trade frictions are building \u2014 supply chains or import costs bear watching."
     }
   ],
   "categories": [
