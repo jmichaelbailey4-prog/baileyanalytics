@@ -35,7 +35,7 @@
         "direction_hit": false,
         "status_hit": true,
         "naive_error": 0.36999999999999744,
-        "revised_to": 16.59
+        "revised_to": 15.81
       }
     },
     "markets/market-risk-sentiment/hy-spread": {
@@ -301,7 +301,7 @@
         "direction_hit": false,
         "status_hit": true,
         "naive_error": 100.09999999999991,
-        "revised_to": null
+        "revised_to": 4152.8
       }
     },
     "markets/market-liquidity/reverse-repo": {

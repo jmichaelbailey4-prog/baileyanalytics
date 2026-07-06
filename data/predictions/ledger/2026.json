@@ -2894,7 +2894,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 0.36999999999999744,
-      "revised_to": 16.59
+      "revised_to": 15.81
     }
   },
   {
@@ -4168,6 +4168,44 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 100.09999999999991,
+      "revised_to": 4152.8
+    }
+  },
+  {
+    "id": "global/global-trade-supply/gscpi@2026-06",
+    "key": "global/global-trade-supply/gscpi",
+    "category": "global",
+    "lens": "global-trade-supply",
+    "indicator": "gscpi",
+    "series_id": "GSCPI",
+    "horizon": "next-print",
+    "target_period": "2026-06",
+    "due": "2026-07-15",
+    "made_at": "2026-06-16T16:24:35Z",
+    "model": "drift@1",
+    "point": 1.7766,
+    "lo": 1.1764,
+    "hi": 2.3581,
+    "unit": "\u03c3",
+    "value_format": "decimal",
+    "prev_value": 1.77,
+    "why": "This projects the series' long-run average step from today's level.",
+    "implied_status": "elevated",
+    "current_status": "elevated",
+    "descriptive": false,
+    "market_price": false,
+    "title": "Global Supply Chain Pressure Index",
+    "short": "Supply chain",
+    "lens_title": "Trade & Supply Chain",
+    "href": "/dashboards/global/trade-supply.html",
+    "grade": {
+      "actual": 1.25,
+      "graded_at": "2026-07-06T16:26:22Z",
+      "hit": true,
+      "abs_error": 0.5266,
+      "direction_hit": false,
+      "status_hit": false,
+      "naive_error": 0.52,
       "revised_to": null
     }
   }
