@@ -2,7 +2,7 @@
   "id": "market-liquidity",
   "title": "Liquidity & the Fed",
   "accent": "#2DD4BF",
-  "last_updated": "2026-07-06T16:46:22Z",
+  "last_updated": "2026-07-07T09:25:23Z",
   "status": "ok",
   "headline_read": "Liquidity is ample \u2014 no monetary squeeze in sight.",
   "recessions": [
@@ -4266,12 +4266,8 @@
       "series_id": "RRPONTSYD",
       "observations": [
         {
-          "date": "2021-07-09",
-          "value": "780.596"
-        },
-        {
-          "date": "2021-07-12",
-          "value": "776.472"
+          "date": "2021-07-13",
+          "value": "798.267"
         },
         {
           "date": "2021-07-19",
@@ -4892,22 +4888,6 @@
         {
           "date": "2024-07-01",
           "value": "451.783"
-        },
-        {
-          "date": "2024-07-02",
-          "value": "443.369"
-        },
-        {
-          "date": "2024-07-03",
-          "value": "425.898"
-        },
-        {
-          "date": "2024-07-04",
-          "value": "."
-        },
-        {
-          "date": "2024-07-05",
-          "value": "390.632"
         },
         {
           "date": "2024-07-08",
@@ -6984,18 +6964,26 @@
         {
           "date": "2026-07-02",
           "value": "2.175"
+        },
+        {
+          "date": "2026-07-03",
+          "value": "."
+        },
+        {
+          "date": "2026-07-06",
+          "value": "2.719"
         }
       ],
       "latest": {
-        "date": "2026-07-02",
-        "value": "2.175"
+        "date": "2026-07-06",
+        "value": "2.719"
       },
       "context": "Spare cash money-market funds park at the Fed overnight. It acts as the system's overflow tank: a high balance means excess liquidity; near zero means the buffer is spent and QT bites reserves directly.",
-      "read": "The overnight reverse-repo facility is down 99% from a year ago, now $2.2 billion.",
+      "read": "The overnight reverse-repo facility is down 99% from a year ago, now $2.7 billion.",
       "signal_status": "info",
       "value_format": "decimal",
       "percentile": {
-        "p": 7.6,
+        "p": 8.5,
         "since": 2021
       },
       "no_severity_reason": "A descriptive level of the monetary plumbing \u2014 this lens's verdict is carried by M2 money-supply growth."

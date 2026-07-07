@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-06T16:26:26Z",
+  "generated_at": "2026-07-07T09:26:47Z",
   "last": {
     "business/business-credit/ci-loan-growth": {
       "id": "business/business-credit/ci-loan-growth@2026-05-01",
@@ -294,7 +294,7 @@
         "direction_hit": false,
         "status_hit": true,
         "naive_error": 0.1499999999999999,
-        "revised_to": 2.75
+        "revised_to": 2.74
       }
     },
     "markets/market-risk-sentiment/ig-spread": {
@@ -3686,7 +3686,7 @@
         "direction_hit": false,
         "status_hit": true,
         "naive_error": 0.1499999999999999,
-        "revised_to": 2.75
+        "revised_to": 2.74
       }
     },
     {
