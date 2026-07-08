@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-07T15:46:39Z",
+  "generated_at": "2026-07-08T08:10:58Z",
   "last": {
     "business/business-credit/ci-loan-growth": {
       "id": "business/business-credit/ci-loan-growth@2026-05-01",
@@ -448,7 +448,7 @@
         "direction_hit": false,
         "status_hit": true,
         "naive_error": 0.1299999999999999,
-        "revised_to": 4.48
+        "revised_to": 4.49
       }
     },
     "economic/cost-of-money/treasury-2y": {
@@ -486,7 +486,7 @@
         "direction_hit": false,
         "status_hit": false,
         "naive_error": 0.14000000000000057,
-        "revised_to": 4.17
+        "revised_to": 4.14
       }
     },
     "economic/cost-of-money/rate-expectations": {
@@ -524,7 +524,7 @@
         "direction_hit": false,
         "status_hit": true,
         "naive_error": 0.14,
-        "revised_to": 0.54
+        "revised_to": 0.51
       }
     },
     "markets/market-risk-sentiment/nfci": {
@@ -3386,7 +3386,7 @@
         "direction_hit": false,
         "status_hit": true,
         "naive_error": 0.14,
-        "revised_to": 0.54
+        "revised_to": 0.51
       }
     },
     {
@@ -3424,7 +3424,7 @@
         "direction_hit": false,
         "status_hit": false,
         "naive_error": 0.14000000000000057,
-        "revised_to": 4.17
+        "revised_to": 4.14
       }
     },
     {
@@ -3462,7 +3462,7 @@
         "direction_hit": false,
         "status_hit": true,
         "naive_error": 0.1299999999999999,
-        "revised_to": 4.48
+        "revised_to": 4.49
       }
     },
     {
