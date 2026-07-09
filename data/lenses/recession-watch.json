@@ -2,7 +2,7 @@
   "id": "recession-watch",
   "title": "Recession Watch",
   "accent": "#F87171",
-  "last_updated": "2026-07-08T08:09:43Z",
+  "last_updated": "2026-07-09T09:27:41Z",
   "status": "ok",
   "headline_read": "The economy looks steady \u2014 no major recession signals right now.",
   "recessions": [
@@ -65,8 +65,8 @@
       "series_id": "T10Y2Y",
       "observations": [
         {
-          "date": "1976-09-08",
-          "value": "1.20"
+          "date": "1976-09-09",
+          "value": "1.17"
         },
         {
           "date": "1976-10-01",
@@ -629,8 +629,8 @@
           "value": "2.72"
         },
         {
-          "date": "2011-07-07",
-          "value": "2.68"
+          "date": "2011-07-08",
+          "value": "2.63"
         },
         {
           "date": "2011-08-01",
@@ -1113,7 +1113,7 @@
           "value": "1.23"
         },
         {
-          "date": "2021-07-07",
+          "date": "2021-07-08",
           "value": "1.11"
         },
         {
@@ -3827,18 +3827,22 @@
         {
           "date": "2026-07-07",
           "value": "0.36"
+        },
+        {
+          "date": "2026-07-08",
+          "value": "0.35"
         }
       ],
       "latest": {
-        "date": "2026-07-07",
-        "value": "0.36"
+        "date": "2026-07-08",
+        "value": "0.35"
       },
       "context": "The gap between 10-year and 2-year Treasury yields. When it goes negative (\u201cinverts\u201d), investors expect rate cuts ahead \u2014 and every U.S. recession since the 1970s was preceded by an inversion.",
-      "read": "The curve is positive (+0.36) with no recent inversion \u2014 no recession warning from the curve right now.",
+      "read": "The curve is positive (+0.35) with no recent inversion \u2014 no recession warning from the curve right now.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 32.7,
+        "p": 32.3,
         "since": 1976
       }
     },
