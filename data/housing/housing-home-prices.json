@@ -2,7 +2,7 @@
   "id": "housing-home-prices",
   "title": "Home-Price Stability",
   "accent": "#F472B6",
-  "last_updated": "2026-07-03T22:24:16Z",
+  "last_updated": "2026-07-09T16:03:29Z",
   "status": "ok",
   "headline_read": "The housing market looks balanced \u2014 prices and sales are steady.",
   "recessions": [
@@ -1184,10 +1184,6 @@
       "series_id": "EXHOSLUSM495S",
       "observations": [
         {
-          "date": "2025-05-01",
-          "value": "4.04"
-        },
-        {
           "date": "2025-06-01",
           "value": "3.98"
         },
@@ -1233,18 +1229,22 @@
         },
         {
           "date": "2026-05-01",
-          "value": "4.17"
+          "value": "4.19"
+        },
+        {
+          "date": "2026-06-01",
+          "value": "4.09"
         }
       ],
       "latest": {
-        "date": "2026-05-01",
-        "value": "4.17"
+        "date": "2026-06-01",
+        "value": "4.09"
       },
       "context": "How many existing homes are selling, in millions at an annual rate \u2014 the market's pulse. A collapse in sales is how a housing freeze shows up first.",
       "read": "Home sales: up 3% from a year ago \u2014 a steady pace.",
       "signal_status": "ok",
       "value_format": "decimal",
-      "scale_now": 3.2178
+      "scale_now": 2.7638
     },
     {
       "id": "median-price",
