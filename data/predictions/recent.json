@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-10T09:21:40Z",
+  "generated_at": "2026-07-10T15:36:07Z",
   "last": {
     "business/business-credit/ci-loan-growth": {
       "id": "business/business-credit/ci-loan-growth@2026-05-01",
@@ -1058,7 +1058,7 @@
         "direction_hit": false,
         "status_hit": true,
         "naive_error": 100.09999999999991,
-        "revised_to": 4106.8
+        "revised_to": 4115.6
       }
     },
     "markets/market-liquidity/reverse-repo": {
@@ -3376,7 +3376,7 @@
         "direction_hit": false,
         "status_hit": true,
         "naive_error": 100.09999999999991,
-        "revised_to": 4106.8
+        "revised_to": 4115.6
       }
     },
     {
