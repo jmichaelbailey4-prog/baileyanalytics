@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-12T08:04:11Z",
+  "generated_at": "2026-07-13T08:52:19Z",
   "last": {
     "business/business-credit/ci-loan-growth": {
       "id": "business/business-credit/ci-loan-growth@2026-06-01",
@@ -1058,7 +1058,7 @@
         "direction_hit": false,
         "status_hit": true,
         "naive_error": 100.09999999999991,
-        "revised_to": 4113.7
+        "revised_to": 4104.1
       }
     },
     "markets/market-liquidity/reverse-repo": {
@@ -1360,7 +1360,7 @@
         "direction_hit": true,
         "status_hit": true,
         "naive_error": 3928.9200000000055,
-        "revised_to": 63831.03
+        "revised_to": 63809.21
       }
     },
     "markets/market-scoreboard/eth": {
@@ -1398,7 +1398,7 @@
         "direction_hit": false,
         "status_hit": true,
         "naive_error": 183.77999999999997,
-        "revised_to": 1787.88
+        "revised_to": 1810.11
       }
     },
     "markets/market-liquidity/m2-growth": {
@@ -2759,7 +2759,7 @@
         "direction_hit": false,
         "status_hit": true,
         "naive_error": 183.77999999999997,
-        "revised_to": 1787.88
+        "revised_to": 1810.11
       }
     },
     {
@@ -2797,7 +2797,7 @@
         "direction_hit": true,
         "status_hit": true,
         "naive_error": 3928.9200000000055,
-        "revised_to": 63831.03
+        "revised_to": 63809.21
       }
     },
     {
@@ -3602,7 +3602,7 @@
         "direction_hit": false,
         "status_hit": true,
         "naive_error": 100.09999999999991,
-        "revised_to": 4113.7
+        "revised_to": 4104.1
       }
     },
     {
