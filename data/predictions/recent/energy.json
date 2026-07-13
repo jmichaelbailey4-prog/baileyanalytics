@@ -344,6 +344,44 @@
         "naive_error": 35543.0,
         "revised_to": null
       }
+    },
+    "energy/energy-commodities/copper": {
+      "id": "energy/energy-commodities/copper@2026-06-01",
+      "key": "energy/energy-commodities/copper",
+      "category": "energy",
+      "lens": "energy-commodities",
+      "indicator": "copper",
+      "series_id": "PCOPPUSDM",
+      "horizon": "next-print",
+      "target_period": "2026-06-01",
+      "due": "2026-07-15",
+      "made_at": "2026-06-16T13:10:45Z",
+      "model": "sarima@1",
+      "point": 13575.6855,
+      "lo": 13120.2971,
+      "hi": 14080.6682,
+      "unit": "$",
+      "value_format": "thousands",
+      "prev_value": 13483.75153846154,
+      "why": "Copper: up 2 straight months. This projects recent momentum, adjusted for the series' typical reversion.",
+      "implied_status": "info",
+      "current_status": "info",
+      "descriptive": true,
+      "market_price": true,
+      "title": "Copper \u00b7 \u201cDr. Copper\u201d",
+      "short": "Copper",
+      "lens_title": "Commodities & Materials",
+      "href": "/dashboards/energy/commodities.html",
+      "grade": {
+        "actual": 13552.04090909091,
+        "graded_at": "2026-07-13T15:45:04Z",
+        "hit": true,
+        "abs_error": 23.644590909088947,
+        "direction_hit": true,
+        "status_hit": true,
+        "naive_error": 68.28937062937075,
+        "revised_to": null
+      }
     }
   }
 }

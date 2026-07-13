@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-07-09T16:03:24Z",
-  "status": "elevated",
+  "last_updated": "2026-07-13T15:44:24Z",
+  "status": "watch",
   "lenses": [
     {
       "id": "energy-oil-fuels",
@@ -193,14 +193,14 @@
       "id": "energy-commodities",
       "title": "Commodities & Materials",
       "accent": "#A3E635",
-      "status": "alert",
-      "headline_read": "Commodity costs are surging.",
+      "status": "watch",
+      "headline_read": "Commodity costs are climbing.",
       "key_stats": [
         {
           "k": "Global food",
-          "v": "30.20%",
-          "d": "18.60%",
-          "dir": "up"
+          "v": "5.10%",
+          "d": "2.70%",
+          "dir": "down"
         },
         {
           "k": "Groceries",
@@ -248,8 +248,8 @@
         0.0,
         5.9,
         7.8,
-        11.6,
-        30.2
+        7.8,
+        5.1
       ]
     }
   ]

@@ -2,9 +2,9 @@
   "id": "energy-commodities",
   "title": "Commodities & Materials",
   "accent": "#A3E635",
-  "last_updated": "2026-07-06T16:47:07Z",
-  "status": "alert",
-  "headline_read": "Commodity costs are surging.",
+  "last_updated": "2026-07-13T15:44:24Z",
+  "status": "watch",
+  "headline_read": "Commodity costs are climbing.",
   "recessions": [
     {
       "start": "1948-12-01",
@@ -1078,26 +1078,26 @@
         },
         {
           "date": "2026-05-01",
-          "value": "11.6"
+          "value": "7.8"
         },
         {
           "date": "2026-06-01",
-          "value": "30.2"
+          "value": "5.1"
         }
       ],
       "latest": {
         "date": "2026-06-01",
-        "value": "30.2"
+        "value": "5.1"
       },
       "context": "How fast the IMF's global food commodity index is rising versus a year ago \u2014 the upstream driver of grocery inflation.",
-      "read": "Global food costs are rising 30.2% a year \u2014 acute pressure on households.",
-      "signal_status": "alert",
+      "read": "Global food costs are rising 5.1% a year \u2014 climbing.",
+      "signal_status": "watch",
       "value_format": "decimal",
       "percentile": {
-        "p": 96.8,
+        "p": 62.9,
         "since": 1993
       },
-      "scale_now": 30.2
+      "scale_now": 5.1
     },
     {
       "id": "grocery-cpi",
@@ -2807,10 +2807,6 @@
       "series_id": "PCOPPUSDM",
       "observations": [
         {
-          "date": "2001-06-01",
-          "value": "1610.46904761905"
-        },
-        {
           "date": "2001-07-01",
           "value": "1526.77045454545"
         },
@@ -2969,10 +2965,6 @@
         {
           "date": "2011-04-01",
           "value": "9482.75"
-        },
-        {
-          "date": "2011-05-01",
-          "value": "8931.675"
         },
         {
           "date": "2011-06-01",
@@ -3692,15 +3684,19 @@
         },
         {
           "date": "2026-05-01",
-          "value": "13483.75153846154"
+          "value": "13512.15619047619"
+        },
+        {
+          "date": "2026-06-01",
+          "value": "13552.04090909091"
         }
       ],
       "latest": {
-        "date": "2026-05-01",
-        "value": "13483.75153846154"
+        "date": "2026-06-01",
+        "value": "13552.04090909091"
       },
       "context": "The global price of copper ($/metric ton) \u2014 nicknamed \u201cDr. Copper\u201d for its knack of signalling the direction of the global economy.",
-      "read": "Copper is up 41% from a year ago, now 13,484.",
+      "read": "Copper is up 38% from a year ago, now 13,552.",
       "signal_status": "info",
       "value_format": "thousands",
       "no_severity_reason": "A market price has no inherent good-or-bad level \u2014 higher or lower isn't itself better or worse."
@@ -4711,7 +4707,7 @@
         },
         {
           "date": "2026-01-01",
-          "value": "4.3"
+          "value": "4.4"
         },
         {
           "date": "2026-02-01",
@@ -4727,19 +4723,19 @@
         },
         {
           "date": "2026-05-01",
-          "value": "34.4"
+          "value": "33.0"
         },
         {
           "date": "2026-06-01",
-          "value": "0.8"
+          "value": "17.3"
         }
       ],
       "latest": {
         "date": "2026-06-01",
-        "value": "0.8"
+        "value": "17.3"
       },
       "context": "How fast the IMF's all-commodity price index is rising versus a year ago \u2014 a single gauge of raw-input cost pressure across the economy.",
-      "read": "The broad commodity index is rising 0.8% a year.",
+      "read": "The broad commodity index is rising 17.3% a year.",
       "signal_status": "info",
       "value_format": "decimal",
       "no_severity_reason": "A market price has no inherent good-or-bad level \u2014 higher or lower isn't itself better or worse."
