@@ -1,29 +1,28 @@
 {
-  "last_updated": "2026-07-13T15:44:24Z",
+  "last_updated": "2026-07-14T14:57:44Z",
   "status": "watch",
   "lenses": [
     {
       "id": "energy-oil-fuels",
       "title": "Oil & Fuels",
       "accent": "#FB923C",
-      "status": "watch",
-      "headline_read": "Fuel costs are climbing.",
+      "status": "elevated",
+      "headline_read": "Fuel costs are well above last year.",
       "key_stats": [
         {
           "k": "Gasoline",
-          "v": "$3.78",
-          "d": "$0.05",
-          "dir": "down"
+          "v": "$3.85",
+          "d": "$0.08",
+          "dir": "up"
         },
         {
           "k": "Diesel",
-          "v": "$4.58",
-          "d": "$0.09",
-          "dir": "down"
+          "v": "$4.80",
+          "d": "$0.22",
+          "dir": "up"
         }
       ],
       "sparkline": [
-        3.124,
         3.061,
         3.019,
         3.035,
@@ -62,7 +61,8 @@
         4.052,
         3.914,
         3.831,
-        3.777
+        3.777,
+        3.855
       ]
     },
     {
@@ -204,8 +204,8 @@
         },
         {
           "k": "Groceries",
-          "v": "2.73%",
-          "d": "0.22%",
+          "v": "2.70%",
+          "d": "0.03%",
           "dir": "down"
         }
       ],

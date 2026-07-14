@@ -2,7 +2,7 @@
   "id": "housing-rent-shelter",
   "title": "Rent & Shelter",
   "accent": "#A78BFA",
-  "last_updated": "2026-07-03T22:24:16Z",
+  "last_updated": "2026-07-14T14:57:48Z",
   "status": "ok",
   "headline_read": "The rental market is balanced \u2014 rents are behaving.",
   "recessions": [
@@ -535,10 +535,6 @@
         {
           "date": "2011-04-01",
           "value": "1.3"
-        },
-        {
-          "date": "2011-05-01",
-          "value": "1.4"
         },
         {
           "date": "2011-06-01",
@@ -1255,21 +1251,25 @@
         {
           "date": "2026-05-01",
           "value": "2.9"
+        },
+        {
+          "date": "2026-06-01",
+          "value": "2.8"
         }
       ],
       "latest": {
-        "date": "2026-05-01",
-        "value": "2.9"
+        "date": "2026-06-01",
+        "value": "2.8"
       },
       "context": "How fast the rent tenants actually pay is rising versus a year ago, from the rent component of the Consumer Price Index. It moves slowly but relentlessly, and it is a third of core CPI.",
-      "read": "Rent costs are rising 2.9% a year.",
+      "read": "Rent costs are rising 2.8% a year.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 27.1,
+        "p": 23.8,
         "since": 1982
       },
-      "scale_now": 2.9
+      "scale_now": 2.8
     },
     {
       "id": "owners-equivalent-rent",
@@ -1717,10 +1717,6 @@
         },
         {
           "date": "2011-04-01",
-          "value": "0.9"
-        },
-        {
-          "date": "2011-05-01",
           "value": "0.9"
         },
         {
@@ -2438,10 +2434,14 @@
         {
           "date": "2026-05-01",
           "value": "3.3"
+        },
+        {
+          "date": "2026-06-01",
+          "value": "3.3"
         }
       ],
       "latest": {
-        "date": "2026-05-01",
+        "date": "2026-06-01",
         "value": "3.3"
       },
       "context": "How fast the implied rent on owner-occupied homes is rising \u2014 the largest single component of the CPI, and the bridge between home prices and inflation.",
@@ -2449,7 +2449,7 @@
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 50.0,
+        "p": 49.9,
         "since": 1984
       },
       "scale_now": 3.3

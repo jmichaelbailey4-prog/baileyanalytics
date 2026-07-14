@@ -2,7 +2,7 @@
   "id": "energy-commodities",
   "title": "Commodities & Materials",
   "accent": "#A3E635",
-  "last_updated": "2026-07-13T15:44:24Z",
+  "last_updated": "2026-07-14T14:57:44Z",
   "status": "watch",
   "headline_read": "Commodity costs are climbing.",
   "recessions": [
@@ -2060,10 +2060,6 @@
           "value": "3.88326"
         },
         {
-          "date": "2011-05-01",
-          "value": "4.44008"
-        },
-        {
           "date": "2011-06-01",
           "value": "4.81771"
         },
@@ -2782,21 +2778,25 @@
         {
           "date": "2026-05-01",
           "value": "2.73459"
+        },
+        {
+          "date": "2026-06-01",
+          "value": "2.70431"
         }
       ],
       "latest": {
-        "date": "2026-05-01",
-        "value": "2.73459"
+        "date": "2026-06-01",
+        "value": "2.70431"
       },
       "context": "What U.S. shoppers actually pay at the grocery store (CPI food at home) versus a year ago \u2014 the household-facing counterpart to the global commodity index above. The two can diverge for months: commodity spikes reach shelves slowly, if at all.",
       "read": "Grocery prices costs are rising 2.7% a year.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 52.5,
+        "p": 52.0,
         "since": 1953
       },
-      "scale_now": 2.7346
+      "scale_now": 2.7043
     },
     {
       "id": "copper",
