@@ -2,7 +2,7 @@
   "id": "market-liquidity",
   "title": "Liquidity & the Fed",
   "accent": "#2DD4BF",
-  "last_updated": "2026-07-14T07:48:15Z",
+  "last_updated": "2026-07-15T07:52:06Z",
   "status": "ok",
   "headline_read": "Liquidity is ample \u2014 no monetary squeeze in sight.",
   "recessions": [
@@ -4274,8 +4274,8 @@
       "series_id": "RRPONTSYD",
       "observations": [
         {
-          "date": "2021-07-20",
-          "value": "848.102"
+          "date": "2021-07-21",
+          "value": "886.206"
         },
         {
           "date": "2021-07-26",
@@ -6980,18 +6980,22 @@
         {
           "date": "2026-07-13",
           "value": "0.795"
+        },
+        {
+          "date": "2026-07-14",
+          "value": "0.278"
         }
       ],
       "latest": {
-        "date": "2026-07-13",
-        "value": "0.795"
+        "date": "2026-07-14",
+        "value": "0.278"
       },
       "context": "Spare cash money-market funds park at the Fed overnight. It acts as the system's overflow tank: a high balance means excess liquidity; near zero means the buffer is spent and QT bites reserves directly.",
-      "read": "The overnight reverse-repo facility is down 100% from a year ago, now $0.8 billion.",
+      "read": "The overnight reverse-repo facility is down 100% from a year ago, now $0.3 billion.",
       "signal_status": "info",
       "value_format": "decimal",
       "percentile": {
-        "p": 3.6,
+        "p": 0.8,
         "since": 2021
       },
       "no_severity_reason": "A descriptive level of the monetary plumbing \u2014 this lens's verdict is carried by M2 money-supply growth."
