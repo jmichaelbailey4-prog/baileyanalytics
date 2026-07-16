@@ -2,7 +2,7 @@
   "id": "energy-natural-gas",
   "title": "Natural Gas",
   "accent": "#60A5FA",
-  "last_updated": "2026-07-09T16:03:24Z",
+  "last_updated": "2026-07-16T07:58:01Z",
   "status": "ok",
   "headline_read": "Natural gas costs are stable or easing.",
   "recessions": [
@@ -65,12 +65,8 @@
       "series_id": "RNGWHHD",
       "observations": [
         {
-          "date": "2022-11-21",
-          "value": "6.23"
-        },
-        {
-          "date": "2022-11-28",
-          "value": "6"
+          "date": "2022-11-29",
+          "value": "6.03"
         },
         {
           "date": "2022-12-05",
@@ -407,22 +403,6 @@
         {
           "date": "2024-07-08",
           "value": "2.1"
-        },
-        {
-          "date": "2024-07-09",
-          "value": "2.42"
-        },
-        {
-          "date": "2024-07-10",
-          "value": "2.4"
-        },
-        {
-          "date": "2024-07-11",
-          "value": "2.23"
-        },
-        {
-          "date": "2024-07-12",
-          "value": "2.17"
         },
         {
           "date": "2024-07-15",
@@ -2383,21 +2363,41 @@
         {
           "date": "2026-07-06",
           "value": "3.29"
+        },
+        {
+          "date": "2026-07-07",
+          "value": "3.13"
+        },
+        {
+          "date": "2026-07-08",
+          "value": "3.13"
+        },
+        {
+          "date": "2026-07-09",
+          "value": "3.17"
+        },
+        {
+          "date": "2026-07-10",
+          "value": "2.73"
+        },
+        {
+          "date": "2026-07-13",
+          "value": "2.83"
         }
       ],
       "latest": {
-        "date": "2026-07-06",
-        "value": "3.29"
+        "date": "2026-07-13",
+        "value": "2.83"
       },
       "context": "The U.S. benchmark natural-gas price ($/MMBtu) \u2014 it drives home heating bills and a large share of electricity generation cost.",
-      "read": "Natural gas costs are up 2% over the past year.",
+      "read": "Natural gas costs are down 12% over the past year.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 78.4,
+        "p": 52.1,
         "since": 2022
       },
-      "scale_now": 1.5432
+      "scale_now": -12.1118
     },
     {
       "id": "gas-storage",
