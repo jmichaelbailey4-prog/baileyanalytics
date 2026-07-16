@@ -1,24 +1,24 @@
 {
   "predictions": [
     {
-      "id": "consumer/consumer-spending/retail-sales@2026-06-01",
+      "id": "consumer/consumer-spending/retail-sales@2026-07-01",
       "key": "consumer/consumer-spending/retail-sales",
       "category": "consumer",
       "lens": "consumer-spending",
       "indicator": "retail-sales",
       "series_id": "RSAFS",
       "horizon": "next-print",
-      "target_period": "2026-06-01",
-      "due": "2026-07-15",
-      "made_at": "2026-06-17T17:34:32Z",
+      "target_period": "2026-07-01",
+      "due": "2026-08-15",
+      "made_at": "2026-07-16T15:07:49Z",
       "model": "naive@1",
-      "point": 6.8765,
-      "lo": 4.3029,
-      "hi": 9.1493,
+      "point": 6.7192,
+      "lo": 4.1456,
+      "hi": 8.9192,
       "unit": "%",
       "value_format": "decimal",
-      "prev_value": 6.87646,
-      "why": "Retail sales: up 5 straight months. We expect roughly the last value \u2014 this series rarely rewards cleverness.",
+      "prev_value": 6.71916,
+      "why": "We expect roughly the last value \u2014 this series rarely rewards cleverness.",
       "implied_status": "ok",
       "current_status": "ok",
       "descriptive": false,
@@ -27,7 +27,8 @@
       "short": "Retail sales",
       "lens_title": "Consumer Spending",
       "href": "/dashboards/consumer/spending.html",
-      "grade": null
+      "grade": null,
+      "prev_period": "2026-06-01"
     },
     {
       "id": "consumer/consumer-spending/real-spending@2026-06-01",

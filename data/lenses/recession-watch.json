@@ -2,7 +2,7 @@
   "id": "recession-watch",
   "title": "Recession Watch",
   "accent": "#F87171",
-  "last_updated": "2026-07-16T07:57:21Z",
+  "last_updated": "2026-07-16T15:06:18Z",
   "status": "ok",
   "headline_read": "The economy looks steady \u2014 no major recession signals right now.",
   "recessions": [
@@ -5430,7 +5430,7 @@
       "series_id": "ICSA",
       "observations": [
         {
-          "date": "1967-02-11",
+          "date": "1967-02-18",
           "value": "229000"
         },
         {
@@ -6146,8 +6146,8 @@
           "value": "418000"
         },
         {
-          "date": "2011-07-09",
-          "value": "408000"
+          "date": "2011-07-16",
+          "value": "420000"
         },
         {
           "date": "2011-08-06",
@@ -6628,10 +6628,6 @@
         {
           "date": "2021-07-03",
           "value": "371000"
-        },
-        {
-          "date": "2021-07-10",
-          "value": "333000"
         },
         {
           "date": "2021-07-17",
@@ -7671,22 +7667,26 @@
         },
         {
           "date": "2026-07-04",
-          "value": "215000"
+          "value": "216000"
+        },
+        {
+          "date": "2026-07-11",
+          "value": "208000"
         }
       ],
       "latest": {
-        "date": "2026-07-04",
-        "value": "215000"
+        "date": "2026-07-11",
+        "value": "208000"
       },
       "context": "How many people filed for unemployment benefits last week \u2014 the freshest read on layoffs. A sustained climb is one of the earliest signs of a weakening economy.",
-      "read": "Initial jobless claims are low at 215,000 \u2014 employers aren't shedding workers.",
+      "read": "Initial jobless claims are low at 208,000 \u2014 employers aren't shedding workers.",
       "signal_status": "ok",
       "value_format": "thousands",
       "percentile": {
-        "p": 7.7,
+        "p": 4.8,
         "since": 1967
       },
-      "scale_now": 215000.0
+      "scale_now": 208000.0
     },
     {
       "id": "unemployment",

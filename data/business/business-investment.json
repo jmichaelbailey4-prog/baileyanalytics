@@ -2,7 +2,7 @@
   "id": "business-investment",
   "title": "Business Investment",
   "accent": "#FBBF24",
-  "last_updated": "2026-07-06T16:47:35Z",
+  "last_updated": "2026-07-16T15:07:33Z",
   "status": "ok",
   "headline_read": "Businesses are investing \u2014 orders and sales are growing.",
   "recessions": [
@@ -2547,7 +2547,7 @@
       "series_id": "ISRATIO",
       "observations": [
         {
-          "date": "1991-05-01",
+          "date": "1991-06-01",
           "value": "."
         },
         {
@@ -3588,22 +3588,26 @@
         },
         {
           "date": "2026-04-01",
-          "value": "1.31"
+          "value": "1.30"
+        },
+        {
+          "date": "2026-05-01",
+          "value": "1.28"
         }
       ],
       "latest": {
-        "date": "2026-04-01",
-        "value": "1.31"
+        "date": "2026-05-01",
+        "value": "1.28"
       },
       "context": "Total business inventories measured against a month of sales. Rising means goods are piling up unsold \u2014 the overhang that precedes production cuts. The COVID spike hit 1.74; 2008 peaked near 1.48.",
-      "read": "Inventories equal 1.31 months of sales \u2014 lean and healthy.",
+      "read": "Inventories equal 1.28 months of sales \u2014 lean and healthy.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 27.7,
+        "p": 12.8,
         "since": 1992
       },
-      "scale_now": 1.31
+      "scale_now": 1.28
     }
   ]
 }
