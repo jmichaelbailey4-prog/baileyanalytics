@@ -304,7 +304,7 @@
         "direction_hit": true,
         "status_hit": true,
         "naive_error": 151.5999999999999,
-        "revised_to": null
+        "revised_to": 4000.7
       }
     },
     "markets/market-liquidity/reverse-repo": {

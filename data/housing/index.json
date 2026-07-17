@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-07-14T14:57:48Z",
+  "last_updated": "2026-07-17T14:47:27Z",
   "status": "elevated",
   "lenses": [
     {
@@ -116,9 +116,9 @@
         },
         {
           "k": "Starts",
-          "v": "1,177",
-          "d": "215",
-          "dir": "down"
+          "v": "1,427",
+          "d": "228",
+          "dir": "up"
         }
       ],
       "sparkline": [
