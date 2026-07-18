@@ -2,7 +2,7 @@
   "id": "business-credit",
   "title": "Business Credit",
   "accent": "#F87171",
-  "last_updated": "2026-07-11T07:42:25Z",
+  "last_updated": "2026-07-18T07:29:34Z",
   "status": "watch",
   "headline_read": "Business credit bears watching \u2014 conditions are tightening at the margin.",
   "recessions": [
@@ -4727,7 +4727,7 @@
         },
         {
           "date": "2026-05-01",
-          "value": "8.0"
+          "value": "7.9"
         },
         {
           "date": "2026-06-01",
@@ -4743,7 +4743,7 @@
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 48.7,
+        "p": 48.8,
         "since": 1948
       },
       "scale_now": 8.0
