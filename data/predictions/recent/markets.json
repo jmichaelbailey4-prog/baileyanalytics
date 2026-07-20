@@ -304,7 +304,7 @@
         "direction_hit": true,
         "status_hit": true,
         "naive_error": 151.5999999999999,
-        "revised_to": 4018.8
+        "revised_to": 4012.7
       }
     },
     "markets/market-liquidity/reverse-repo": {
@@ -422,7 +422,7 @@
         "direction_hit": false,
         "status_hit": true,
         "naive_error": 156.83000000000175,
-        "revised_to": 64793.76
+        "revised_to": 64571.18
       },
       "now_value": 64057.01,
       "now_date": "2026-07-10"
@@ -462,7 +462,7 @@
         "direction_hit": false,
         "status_hit": true,
         "naive_error": 45.8900000000001,
-        "revised_to": 1861.27
+        "revised_to": 1866.98
       },
       "now_value": 1793.8,
       "now_date": "2026-07-10"
