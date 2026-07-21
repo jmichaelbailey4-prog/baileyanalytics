@@ -2,7 +2,7 @@
   "id": "market-liquidity",
   "title": "Liquidity & the Fed",
   "accent": "#2DD4BF",
-  "last_updated": "2026-07-18T07:28:41Z",
+  "last_updated": "2026-07-21T08:09:27Z",
   "status": "ok",
   "headline_read": "Liquidity is ample \u2014 no monetary squeeze in sight.",
   "recessions": [
@@ -4266,8 +4266,8 @@
       "series_id": "RRPONTSYD",
       "observations": [
         {
-          "date": "2021-07-26",
-          "value": "891.203"
+          "date": "2021-07-27",
+          "value": "927.419"
         },
         {
           "date": "2021-08-02",
@@ -4888,18 +4888,6 @@
         {
           "date": "2024-07-15",
           "value": "413.28"
-        },
-        {
-          "date": "2024-07-17",
-          "value": "399.401"
-        },
-        {
-          "date": "2024-07-18",
-          "value": "391.652"
-        },
-        {
-          "date": "2024-07-19",
-          "value": "379.801"
         },
         {
           "date": "2024-07-22",
@@ -6980,18 +6968,22 @@
         {
           "date": "2026-07-17",
           "value": "0.1"
+        },
+        {
+          "date": "2026-07-20",
+          "value": "0.03"
         }
       ],
       "latest": {
-        "date": "2026-07-17",
-        "value": "0.1"
+        "date": "2026-07-20",
+        "value": "0.03"
       },
       "context": "Spare cash money-market funds park at the Fed overnight. It acts as the system's overflow tank: a high balance means excess liquidity; near zero means the buffer is spent and QT bites reserves directly.",
-      "read": "The overnight reverse-repo facility is down 100% from a year ago, now $0.1 billion.",
+      "read": "The overnight reverse-repo facility is down 100% from a year ago, now $0.0 billion.",
       "signal_status": "info",
       "value_format": "decimal",
       "percentile": {
-        "p": 0.1,
+        "p": 0.0,
         "since": 2021
       },
       "no_severity_reason": "A descriptive level of the monetary plumbing \u2014 this lens's verdict is carried by M2 money-supply growth."
