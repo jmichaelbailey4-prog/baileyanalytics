@@ -2,7 +2,7 @@
   "id": "energy-oil-fuels",
   "title": "Oil & Fuels",
   "accent": "#FB923C",
-  "last_updated": "2026-07-16T07:58:01Z",
+  "last_updated": "2026-07-21T15:09:21Z",
   "status": "elevated",
   "headline_read": "Fuel costs are well above last year.",
   "recessions": [
@@ -1358,7 +1358,7 @@
       "signal_status": "watch",
       "value_format": "decimal",
       "percentile": {
-        "p": 91.5,
+        "p": 86.3,
         "since": 2016
       },
       "scale_now": 23.36
@@ -1372,8 +1372,8 @@
       "series_id": "EMD_EPD2D_PTE_NUS_DPG",
       "observations": [
         {
-          "date": "2016-08-01",
-          "value": "2.348"
+          "date": "2016-08-08",
+          "value": "2.316"
         },
         {
           "date": "2016-09-05",
@@ -1610,10 +1610,6 @@
         {
           "date": "2021-07-05",
           "value": "3.331"
-        },
-        {
-          "date": "2021-07-19",
-          "value": "3.344"
         },
         {
           "date": "2021-07-26",
@@ -2654,21 +2650,25 @@
         {
           "date": "2026-07-13",
           "value": "4.796"
+        },
+        {
+          "date": "2026-07-20",
+          "value": "5.134"
         }
       ],
       "latest": {
-        "date": "2026-07-13",
-        "value": "4.796"
+        "date": "2026-07-20",
+        "value": "5.134"
       },
       "context": "The U.S. average on-highway diesel price \u2014 the fuel that moves freight, so it feeds into the price of nearly everything.",
-      "read": "Diesel costs are up 28% over the past year \u2014 a real squeeze.",
+      "read": "Diesel costs are up 37% over the past year \u2014 a real squeeze.",
       "signal_status": "elevated",
       "value_format": "decimal",
       "percentile": {
-        "p": 89.0,
+        "p": 92.3,
         "since": 2016
       },
-      "scale_now": 28.2696
+      "scale_now": 36.6152
     },
     {
       "id": "crude-production",

@@ -2,7 +2,7 @@
   "id": "market-scoreboard",
   "title": "Asset-Class Scoreboard",
   "accent": "#22D3EE",
-  "last_updated": "2026-07-21T08:09:27Z",
+  "last_updated": "2026-07-21T15:06:51Z",
   "status": "neutral",
   "headline_read": "How the major asset classes are moving right now.",
   "recessions": [
@@ -8908,15 +8908,15 @@
         },
         {
           "date": "2026-07-21",
-          "value": "4075.10"
+          "value": "4074.40"
         }
       ],
       "latest": {
         "date": "2026-07-21",
-        "value": "4075.10"
+        "value": "4074.40"
       },
       "context": "Gold (dollars per troy ounce) \u2014 the classic safe-haven asset investors flee to in times of stress. Sourced from Yahoo Finance (COMEX futures).",
-      "read": "Gold is up 20% over the past year, now 4,075.10.",
+      "read": "Gold is up 20% over the past year, now 4,074.40.",
       "signal_status": "up",
       "value_format": "thousands",
       "percentile": {

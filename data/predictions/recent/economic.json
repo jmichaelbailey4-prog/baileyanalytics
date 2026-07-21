@@ -666,6 +666,42 @@
         "naive_error": 0.2571500000000002,
         "revised_to": null
       }
+    },
+    "economic/cost-of-living/real-wages": {
+      "id": "economic/cost-of-living/real-wages@2026-04-01",
+      "key": "economic/cost-of-living/real-wages",
+      "category": "economic",
+      "lens": "cost-of-living",
+      "indicator": "real-wages",
+      "series_id": "LES1252881600Q",
+      "horizon": "next-print",
+      "target_period": "2026-04-01",
+      "due": "2026-07-28",
+      "made_at": "2026-06-12T14:20:36Z",
+      "model": "sarima@1",
+      "point": 0.8351,
+      "lo": -0.7591,
+      "hi": 2.1581,
+      "unit": "%",
+      "value_format": "decimal",
+      "prev_value": 0.80429,
+      "why": "Real wages: down 3 straight quarters. This projects recent momentum, adjusted for the series' typical reversion.",
+      "implied_status": "ok",
+      "current_status": "ok",
+      "title": "Real Wage Growth (year-over-year)",
+      "short": "Real wages",
+      "lens_title": "The Cost of Living",
+      "href": "/dashboards/cost-of-living.html",
+      "grade": {
+        "actual": 0.53191,
+        "graded_at": "2026-07-21T15:09:44Z",
+        "hit": true,
+        "abs_error": 0.30318999999999996,
+        "direction_hit": false,
+        "status_hit": true,
+        "naive_error": 0.27237999999999996,
+        "revised_to": null
+      }
     }
   }
 }
