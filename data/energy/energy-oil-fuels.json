@@ -2,7 +2,7 @@
   "id": "energy-oil-fuels",
   "title": "Oil & Fuels",
   "accent": "#FB923C",
-  "last_updated": "2026-07-21T15:09:21Z",
+  "last_updated": "2026-07-22T08:10:27Z",
   "status": "elevated",
   "headline_read": "Fuel costs are well above last year.",
   "recessions": [
@@ -65,8 +65,8 @@
       "series_id": "EMM_EPMR_PTE_NUS_DPG",
       "observations": [
         {
-          "date": "2016-08-01",
-          "value": "2.159"
+          "date": "2016-08-08",
+          "value": "2.15"
         },
         {
           "date": "2016-09-05",
@@ -303,10 +303,6 @@
         {
           "date": "2021-07-05",
           "value": "3.122"
-        },
-        {
-          "date": "2021-07-19",
-          "value": "3.153"
         },
         {
           "date": "2021-07-26",
@@ -1347,21 +1343,25 @@
         {
           "date": "2026-07-13",
           "value": "3.855"
+        },
+        {
+          "date": "2026-07-20",
+          "value": "4.001"
         }
       ],
       "latest": {
-        "date": "2026-07-13",
-        "value": "3.855"
+        "date": "2026-07-20",
+        "value": "4.001"
       },
       "context": "The U.S. average retail price for a gallon of regular gasoline \u2014 the energy cost households feel most directly.",
-      "read": "Gasoline costs are up 23% over the past year \u2014 climbing.",
-      "signal_status": "watch",
+      "read": "Gasoline costs are up 28% over the past year \u2014 a real squeeze.",
+      "signal_status": "elevated",
       "value_format": "decimal",
       "percentile": {
-        "p": 86.3,
+        "p": 93.3,
         "since": 2016
       },
-      "scale_now": 23.36
+      "scale_now": 27.8275
     },
     {
       "id": "diesel",
