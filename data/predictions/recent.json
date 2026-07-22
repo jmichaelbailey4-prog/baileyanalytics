@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-21T15:11:22Z",
+  "generated_at": "2026-07-22T15:09:29Z",
   "last": {
     "business/business-credit/ci-loan-growth": {
       "id": "business/business-credit/ci-loan-growth@2026-06-01",
@@ -550,24 +550,24 @@
       "now_date": "2026-07-10"
     },
     "markets/market-risk-sentiment/nfci": {
-      "id": "markets/market-risk-sentiment/nfci@2026-07-10",
+      "id": "markets/market-risk-sentiment/nfci@2026-07-17",
       "key": "markets/market-risk-sentiment/nfci",
       "category": "markets",
       "lens": "market-risk-sentiment",
       "indicator": "nfci",
       "series_id": "NFCI",
       "horizon": "next-print",
-      "target_period": "2026-07-10",
-      "due": "2026-07-15",
-      "made_at": "2026-07-08T15:26:19Z",
+      "target_period": "2026-07-17",
+      "due": "2026-07-22",
+      "made_at": "2026-07-15T14:57:25Z",
       "model": "ets-seasonal@1",
-      "point": -0.5264,
-      "lo": -0.5297,
-      "hi": -0.5238,
+      "point": -0.5518,
+      "lo": -0.555,
+      "hi": -0.5491,
       "unit": "",
       "value_format": "decimal",
-      "prev_value": -0.515,
-      "why": "NFCI: down 3 straight weeks. This projects the recent trend with the usual seasonal pattern for the week.",
+      "prev_value": -0.538,
+      "why": "NFCI: down 5 straight weeks. This projects the recent trend with the usual seasonal pattern for the week.",
       "implied_status": "ok",
       "current_status": "ok",
       "descriptive": false,
@@ -577,16 +577,16 @@
       "lens_title": "Risk Sentiment",
       "href": "/dashboards/markets/risk-sentiment.html",
       "grade": {
-        "actual": -0.538,
-        "graded_at": "2026-07-15T14:57:24Z",
-        "hit": false,
-        "abs_error": 0.011600000000000055,
+        "actual": -0.552,
+        "graded_at": "2026-07-22T15:09:05Z",
+        "hit": true,
+        "abs_error": 0.000200000000000089,
         "direction_hit": true,
         "status_hit": true,
-        "naive_error": 0.02300000000000002,
+        "naive_error": 0.014000000000000012,
         "revised_to": null
       },
-      "prev_period": "2026-07-03"
+      "prev_period": "2026-07-10"
     },
     "consumer/consumer-spending/retail-sales": {
       "id": "consumer/consumer-spending/retail-sales@2026-06-01",
@@ -2986,6 +2986,45 @@
   },
   "feed": [
     {
+      "id": "markets/market-risk-sentiment/nfci@2026-07-17",
+      "key": "markets/market-risk-sentiment/nfci",
+      "category": "markets",
+      "lens": "market-risk-sentiment",
+      "indicator": "nfci",
+      "series_id": "NFCI",
+      "horizon": "next-print",
+      "target_period": "2026-07-17",
+      "due": "2026-07-22",
+      "made_at": "2026-07-15T14:57:25Z",
+      "model": "ets-seasonal@1",
+      "point": -0.5518,
+      "lo": -0.555,
+      "hi": -0.5491,
+      "unit": "",
+      "value_format": "decimal",
+      "prev_value": -0.538,
+      "why": "NFCI: down 5 straight weeks. This projects the recent trend with the usual seasonal pattern for the week.",
+      "implied_status": "ok",
+      "current_status": "ok",
+      "descriptive": false,
+      "market_price": false,
+      "title": "Financial Conditions \u00b7 NFCI",
+      "short": "NFCI",
+      "lens_title": "Risk Sentiment",
+      "href": "/dashboards/markets/risk-sentiment.html",
+      "grade": {
+        "actual": -0.552,
+        "graded_at": "2026-07-22T15:09:05Z",
+        "hit": true,
+        "abs_error": 0.000200000000000089,
+        "direction_hit": true,
+        "status_hit": true,
+        "naive_error": 0.014000000000000012,
+        "revised_to": null
+      },
+      "prev_period": "2026-07-10"
+    },
+    {
       "id": "energy/energy-oil-fuels/diesel@2026-07-20",
       "key": "energy/energy-oil-fuels/diesel",
       "category": "energy",
@@ -4311,7 +4350,7 @@
         "direction_hit": true,
         "status_hit": true,
         "naive_error": 0.02300000000000002,
-        "revised_to": null
+        "revised_to": -0.539
       },
       "prev_period": "2026-07-03"
     },
@@ -4877,44 +4916,6 @@
         "direction_hit": false,
         "status_hit": false,
         "naive_error": 0.17999999999999972,
-        "revised_to": null
-      }
-    },
-    {
-      "id": "energy/energy-commodities/copper@2026-06-01",
-      "key": "energy/energy-commodities/copper",
-      "category": "energy",
-      "lens": "energy-commodities",
-      "indicator": "copper",
-      "series_id": "PCOPPUSDM",
-      "horizon": "next-print",
-      "target_period": "2026-06-01",
-      "due": "2026-07-15",
-      "made_at": "2026-06-16T13:10:45Z",
-      "model": "sarima@1",
-      "point": 13575.6855,
-      "lo": 13120.2971,
-      "hi": 14080.6682,
-      "unit": "$",
-      "value_format": "thousands",
-      "prev_value": 13483.75153846154,
-      "why": "Copper: up 2 straight months. This projects recent momentum, adjusted for the series' typical reversion.",
-      "implied_status": "info",
-      "current_status": "info",
-      "descriptive": true,
-      "market_price": true,
-      "title": "Copper \u00b7 \u201cDr. Copper\u201d",
-      "short": "Copper",
-      "lens_title": "Commodities & Materials",
-      "href": "/dashboards/energy/commodities.html",
-      "grade": {
-        "actual": 13552.04090909091,
-        "graded_at": "2026-07-13T15:45:04Z",
-        "hit": true,
-        "abs_error": 23.644590909088947,
-        "direction_hit": true,
-        "status_hit": true,
-        "naive_error": 68.28937062937075,
         "revised_to": null
       }
     }

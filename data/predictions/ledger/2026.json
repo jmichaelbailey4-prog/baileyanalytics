@@ -1814,7 +1814,7 @@
       "direction_hit": true,
       "status_hit": true,
       "naive_error": 0.01100000000000001,
-      "revised_to": -0.501
+      "revised_to": -0.502
     }
   },
   {
@@ -3350,7 +3350,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 0.01200000000000001,
-      "revised_to": -0.51
+      "revised_to": -0.511
     }
   },
   {
@@ -4322,7 +4322,7 @@
       "direction_hit": true,
       "status_hit": true,
       "naive_error": 0.01100000000000001,
-      "revised_to": -0.524
+      "revised_to": -0.525
     },
     "prev_period": "2026-06-26"
   },
@@ -5840,7 +5840,7 @@
       "direction_hit": true,
       "status_hit": true,
       "naive_error": 0.02300000000000002,
-      "revised_to": null
+      "revised_to": -0.539
     },
     "prev_period": "2026-07-03"
   },
@@ -7134,5 +7134,44 @@
       "revised_to": null
     },
     "prev_period": "2026-07-13"
+  },
+  {
+    "id": "markets/market-risk-sentiment/nfci@2026-07-17",
+    "key": "markets/market-risk-sentiment/nfci",
+    "category": "markets",
+    "lens": "market-risk-sentiment",
+    "indicator": "nfci",
+    "series_id": "NFCI",
+    "horizon": "next-print",
+    "target_period": "2026-07-17",
+    "due": "2026-07-22",
+    "made_at": "2026-07-15T14:57:25Z",
+    "model": "ets-seasonal@1",
+    "point": -0.5518,
+    "lo": -0.555,
+    "hi": -0.5491,
+    "unit": "",
+    "value_format": "decimal",
+    "prev_value": -0.538,
+    "why": "NFCI: down 5 straight weeks. This projects the recent trend with the usual seasonal pattern for the week.",
+    "implied_status": "ok",
+    "current_status": "ok",
+    "descriptive": false,
+    "market_price": false,
+    "title": "Financial Conditions \u00b7 NFCI",
+    "short": "NFCI",
+    "lens_title": "Risk Sentiment",
+    "href": "/dashboards/markets/risk-sentiment.html",
+    "grade": {
+      "actual": -0.552,
+      "graded_at": "2026-07-22T15:09:05Z",
+      "hit": true,
+      "abs_error": 0.000200000000000089,
+      "direction_hit": true,
+      "status_hit": true,
+      "naive_error": 0.014000000000000012,
+      "revised_to": null
+    },
+    "prev_period": "2026-07-10"
   }
 ]
