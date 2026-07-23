@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-07-23T08:13:42Z",
+  "last_updated": "2026-07-23T15:12:56Z",
   "status": "watch",
   "lenses": [
     {
@@ -80,8 +80,8 @@
         },
         {
           "k": "Gas storage",
-          "v": "3,024 Bcf",
-          "d": "41 Bcf",
+          "v": "3,056 Bcf",
+          "d": "32 Bcf",
           "dir": "up"
         }
       ],

@@ -2,7 +2,7 @@
   "id": "recession-watch",
   "title": "Recession Watch",
   "accent": "#F87171",
-  "last_updated": "2026-07-23T08:13:00Z",
+  "last_updated": "2026-07-23T15:12:11Z",
   "status": "ok",
   "headline_read": "The economy looks steady \u2014 no major recession signals right now.",
   "recessions": [
@@ -5430,8 +5430,8 @@
       "series_id": "ICSA",
       "observations": [
         {
-          "date": "1967-02-18",
-          "value": "229000"
+          "date": "1967-02-25",
+          "value": "242000"
         },
         {
           "date": "1967-04-01",
@@ -6146,8 +6146,8 @@
           "value": "418000"
         },
         {
-          "date": "2011-07-16",
-          "value": "420000"
+          "date": "2011-07-23",
+          "value": "411000"
         },
         {
           "date": "2011-08-06",
@@ -6628,10 +6628,6 @@
         {
           "date": "2021-07-03",
           "value": "371000"
-        },
-        {
-          "date": "2021-07-17",
-          "value": "387000"
         },
         {
           "date": "2021-07-24",
@@ -7667,26 +7663,30 @@
         },
         {
           "date": "2026-07-04",
-          "value": "216000"
+          "value": "217000"
         },
         {
           "date": "2026-07-11",
-          "value": "208000"
+          "value": "209000"
+        },
+        {
+          "date": "2026-07-18",
+          "value": "187000"
         }
       ],
       "latest": {
-        "date": "2026-07-11",
-        "value": "208000"
+        "date": "2026-07-18",
+        "value": "187000"
       },
       "context": "How many people filed for unemployment benefits last week \u2014 the freshest read on layoffs. A sustained climb is one of the earliest signs of a weakening economy.",
-      "read": "Initial jobless claims are low at 208,000 \u2014 employers aren't shedding workers.",
+      "read": "Initial jobless claims are low at 187,000 \u2014 employers aren't shedding workers.",
       "signal_status": "ok",
       "value_format": "thousands",
       "percentile": {
-        "p": 4.8,
+        "p": 0.6,
         "since": 1967
       },
-      "scale_now": 208000.0
+      "scale_now": 187000.0
     },
     {
       "id": "unemployment",

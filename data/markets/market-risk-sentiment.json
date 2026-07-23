@@ -2,7 +2,7 @@
   "id": "market-risk-sentiment",
   "title": "Risk Sentiment",
   "accent": "#FB7185",
-  "last_updated": "2026-07-22T15:08:06Z",
+  "last_updated": "2026-07-23T15:12:17Z",
   "status": "ok",
   "headline_read": "Markets are calm \u2014 volatility and credit stress are low.",
   "recessions": [
@@ -65,8 +65,8 @@
       "series_id": "VIXCLS",
       "observations": [
         {
-          "date": "1990-02-21",
-          "value": "23.89"
+          "date": "1990-02-22",
+          "value": "22.54"
         },
         {
           "date": "1990-04-02",
@@ -413,8 +413,8 @@
           "value": "15.87"
         },
         {
-          "date": "2011-07-21",
-          "value": "17.56"
+          "date": "2011-07-22",
+          "value": "17.52"
         },
         {
           "date": "2011-08-01",
@@ -897,8 +897,8 @@
           "value": "15.48"
         },
         {
-          "date": "2021-07-21",
-          "value": "17.91"
+          "date": "2021-07-22",
+          "value": "17.69"
         },
         {
           "date": "2021-07-26",
@@ -3611,21 +3611,25 @@
         {
           "date": "2026-07-21",
           "value": "17.05"
+        },
+        {
+          "date": "2026-07-22",
+          "value": "16.64"
         }
       ],
       "latest": {
-        "date": "2026-07-21",
-        "value": "17.05"
+        "date": "2026-07-22",
+        "value": "16.64"
       },
       "context": "The market's 'fear gauge' \u2014 the expected volatility of the S&P 500 over the coming month. It spikes when investors are scared and falls when calm.",
-      "read": "The VIX is at 17.1 \u2014 markets are calm.",
+      "read": "The VIX is at 16.6 \u2014 markets are calm.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 46.8,
+        "p": 43.9,
         "since": 1990
       },
-      "scale_now": 17.05
+      "scale_now": 16.64
     },
     {
       "id": "hy-spread",
@@ -5974,21 +5978,25 @@
         {
           "date": "2026-07-21",
           "value": "2.69"
+        },
+        {
+          "date": "2026-07-22",
+          "value": "2.68"
         }
       ],
       "latest": {
-        "date": "2026-07-21",
-        "value": "2.69"
+        "date": "2026-07-22",
+        "value": "2.68"
       },
       "context": "The extra yield investors demand to hold risky 'junk' corporate bonds over Treasuries. It widens when markets fear defaults \u2014 an early stress signal. Note: FRED serves only a rolling ~3-year window of this ICE BofA series, so its chart history is shorter than the other indicators here.",
-      "read": "The high-yield spread is 2.69% \u2014 tight, signaling calm credit conditions.",
+      "read": "The high-yield spread is 2.68% \u2014 tight, signaling calm credit conditions.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 6.6,
+        "p": 5.7,
         "since": 2023
       },
-      "scale_now": 2.69
+      "scale_now": 2.68
     },
     {
       "id": "ig-spread",
@@ -8337,10 +8345,14 @@
         {
           "date": "2026-07-21",
           "value": "0.78"
+        },
+        {
+          "date": "2026-07-22",
+          "value": "0.78"
         }
       ],
       "latest": {
-        "date": "2026-07-21",
+        "date": "2026-07-22",
         "value": "0.78"
       },
       "context": "The same risk premium for higher-quality corporate bonds. Because these borrowers are safer, widening here signals stress reaching the core of credit. Note: FRED serves only a rolling ~3-year window of this ICE BofA series, so its chart history is shorter than the other indicators here.",

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-23T08:14:29Z",
+  "generated_at": "2026-07-23T15:14:06Z",
   "predictions": [
     {
       "id": "economic/recession-watch/yield-curve@2026-07-24",
@@ -63,23 +63,23 @@
       "prev_period": "2026-06-01"
     },
     {
-      "id": "economic/recession-watch/jobless-claims@2026-07-18",
+      "id": "economic/recession-watch/jobless-claims@2026-07-25",
       "key": "economic/recession-watch/jobless-claims",
       "category": "economic",
       "lens": "recession-watch",
       "indicator": "jobless-claims",
       "series_id": "ICSA",
       "horizon": "next-print",
-      "target_period": "2026-07-18",
-      "due": "2026-07-23",
-      "made_at": "2026-07-16T15:07:39Z",
+      "target_period": "2026-07-25",
+      "due": "2026-07-30",
+      "made_at": "2026-07-23T15:13:21Z",
       "model": "naive@1",
-      "point": 208000.0,
-      "lo": 197000.0,
-      "hi": 221000.0,
+      "point": 187000.0,
+      "lo": 176000.0,
+      "hi": 199400.0,
       "unit": "",
       "value_format": "thousands",
-      "prev_value": 208000.0,
+      "prev_value": 187000.0,
       "why": "Jobless claims: down 2 straight weeks. We expect roughly the last value \u2014 this series rarely rewards cleverness.",
       "implied_status": "ok",
       "current_status": "ok",
@@ -90,7 +90,7 @@
       "lens_title": "Recession Watch",
       "href": "/dashboards/recession-watch.html",
       "grade": null,
-      "prev_period": "2026-07-11"
+      "prev_period": "2026-07-18"
     },
     {
       "id": "economic/recession-watch/unemployment@2026-07-01",
@@ -1911,24 +1911,24 @@
       "now_date": "2026-07-20"
     },
     {
-      "id": "energy/energy-natural-gas/gas-storage@2026-07-17",
+      "id": "energy/energy-natural-gas/gas-storage@2026-07-24",
       "key": "energy/energy-natural-gas/gas-storage",
       "category": "energy",
       "lens": "energy-natural-gas",
       "indicator": "gas-storage",
       "series_id": "NW2_EPG0_SWO_R48_BCF",
       "horizon": "next-print",
-      "target_period": "2026-07-17",
-      "due": "2026-07-22",
-      "made_at": "2026-07-16T15:08:04Z",
+      "target_period": "2026-07-24",
+      "due": "2026-07-29",
+      "made_at": "2026-07-23T15:13:49Z",
       "model": "ets-seasonal@1",
-      "point": 3059.8018,
-      "lo": 3004.9508,
-      "hi": 3114.3768,
+      "point": 3097.7253,
+      "lo": 3042.8742,
+      "hi": 3152.3002,
       "unit": "Bcf",
       "value_format": "thousands",
-      "prev_value": 3024.0,
-      "why": "Gas storage: up 16 straight weeks. This projects the recent trend with the usual seasonal pattern for the week.",
+      "prev_value": 3056.0,
+      "why": "Gas storage: up 17 straight weeks. This projects the recent trend with the usual seasonal pattern for the week.",
       "implied_status": "info",
       "current_status": "info",
       "descriptive": true,
@@ -1938,7 +1938,7 @@
       "lens_title": "Natural Gas",
       "href": "/dashboards/energy/natural-gas.html",
       "grade": null,
-      "prev_period": "2026-07-10"
+      "prev_period": "2026-07-17"
     },
     {
       "id": "energy/energy-natural-gas/gas-production@2026-05",
