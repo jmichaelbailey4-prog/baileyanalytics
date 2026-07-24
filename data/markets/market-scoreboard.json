@@ -2,7 +2,7 @@
   "id": "market-scoreboard",
   "title": "Asset-Class Scoreboard",
   "accent": "#22D3EE",
-  "last_updated": "2026-07-23T15:12:17Z",
+  "last_updated": "2026-07-24T08:09:25Z",
   "status": "neutral",
   "headline_read": "How the major asset classes are moving right now.",
   "recessions": [
@@ -65,8 +65,8 @@
       "series_id": "SP500",
       "observations": [
         {
-          "date": "2016-08-04",
-          "value": "2164.25"
+          "date": "2016-08-05",
+          "value": "2182.87"
         },
         {
           "date": "2016-09-01",
@@ -305,8 +305,8 @@
           "value": "4319.94"
         },
         {
-          "date": "2021-07-22",
-          "value": "4367.48"
+          "date": "2021-07-23",
+          "value": "4411.79"
         },
         {
           "date": "2021-07-26",
@@ -3023,18 +3023,22 @@
         {
           "date": "2026-07-22",
           "value": "7498.9600000000"
+        },
+        {
+          "date": "2026-07-23",
+          "value": "7408.3000000000"
         }
       ],
       "latest": {
-        "date": "2026-07-22",
-        "value": "7498.9600000000"
+        "date": "2026-07-23",
+        "value": "7408.3000000000"
       },
       "context": "The benchmark index of 500 large U.S. companies \u2014 the headline gauge of U.S. stocks.",
-      "read": "The S&P 500 is up 19% over the past year, now 7,498.96.",
+      "read": "The S&P 500 is up 17% over the past year, now 7,408.30.",
       "signal_status": "up",
       "value_format": "thousands",
       "percentile": {
-        "p": 99.1,
+        "p": 98.4,
         "since": 2016
       },
       "no_severity_reason": "Part of a neutral scoreboard \u2014 it shows which way the price is moving, not whether that's good or bad."
@@ -6267,10 +6271,6 @@
           "value": "1775.90"
         },
         {
-          "date": "2021-07-23",
-          "value": "1801.40"
-        },
-        {
           "date": "2021-07-26",
           "value": "1798.70"
         },
@@ -6897,10 +6897,6 @@
         {
           "date": "2024-07-22",
           "value": "2392.00"
-        },
-        {
-          "date": "2024-07-23",
-          "value": "2404.60"
         },
         {
           "date": "2024-07-24",
@@ -8912,19 +8908,23 @@
         },
         {
           "date": "2026-07-23",
-          "value": "4060.90"
+          "value": "4046.60"
+        },
+        {
+          "date": "2026-07-24",
+          "value": "4051.20"
         }
       ],
       "latest": {
-        "date": "2026-07-23",
-        "value": "4060.90"
+        "date": "2026-07-24",
+        "value": "4051.20"
       },
       "context": "Gold (dollars per troy ounce) \u2014 the classic safe-haven asset investors flee to in times of stress. Sourced from Yahoo Finance (COMEX futures).",
-      "read": "Gold is up 20% over the past year, now 4,060.90.",
+      "read": "Gold is up 20% over the past year, now 4,051.20.",
       "signal_status": "up",
       "value_format": "thousands",
       "percentile": {
-        "p": 93.1,
+        "p": 93.0,
         "since": 2016
       },
       "no_severity_reason": "Part of a neutral scoreboard \u2014 it shows which way the price is moving, not whether that's good or bad."
@@ -8938,8 +8938,8 @@
       "series_id": "CBBTCUSD",
       "observations": [
         {
-          "date": "2019-06-10",
-          "value": "8046.13"
+          "date": "2019-06-11",
+          "value": "7918.2"
         },
         {
           "date": "2019-07-01",
@@ -9042,8 +9042,8 @@
           "value": "33538.49"
         },
         {
-          "date": "2021-07-22",
-          "value": "32327.95"
+          "date": "2021-07-23",
+          "value": "33700.0"
         },
         {
           "date": "2021-07-26",
@@ -12592,18 +12592,22 @@
         {
           "date": "2026-07-22",
           "value": "66063.67"
+        },
+        {
+          "date": "2026-07-23",
+          "value": "65000.99"
         }
       ],
       "latest": {
-        "date": "2026-07-22",
-        "value": "66063.67"
+        "date": "2026-07-23",
+        "value": "65000.99"
       },
       "context": "The price of Bitcoin in U.S. dollars (Coinbase) \u2014 the largest cryptocurrency and a barometer of risk appetite in digital assets.",
-      "read": "Bitcoin is down 44% over the past year, now 66,063.67.",
+      "read": "Bitcoin is down 45% over the past year, now 65,000.99.",
       "signal_status": "down",
       "value_format": "thousands",
       "percentile": {
-        "p": 74.2,
+        "p": 73.1,
         "since": 2019
       },
       "no_severity_reason": "Part of a neutral scoreboard \u2014 it shows which way the price is moving, not whether that's good or bad."
@@ -12617,8 +12621,8 @@
       "series_id": "CBETHUSD",
       "observations": [
         {
-          "date": "2019-06-10",
-          "value": "248.39"
+          "date": "2019-06-11",
+          "value": "245.47"
         },
         {
           "date": "2019-07-01",
@@ -12721,8 +12725,8 @@
           "value": "2109.49"
         },
         {
-          "date": "2021-07-22",
-          "value": "2027.56"
+          "date": "2021-07-23",
+          "value": "2125.21"
         },
         {
           "date": "2021-07-26",
@@ -16271,18 +16275,22 @@
         {
           "date": "2026-07-22",
           "value": "1933.13"
+        },
+        {
+          "date": "2026-07-23",
+          "value": "1875.5"
         }
       ],
       "latest": {
-        "date": "2026-07-22",
-        "value": "1933.13"
+        "date": "2026-07-23",
+        "value": "1875.5"
       },
       "context": "The price of Ether in U.S. dollars (Coinbase) \u2014 the second-largest cryptocurrency and the backbone of most decentralized applications.",
-      "read": "Ethereum is down 47% over the past year, now 1,933.13.",
+      "read": "Ethereum is down 49% over the past year, now 1,875.50.",
       "signal_status": "down",
       "value_format": "thousands",
       "percentile": {
-        "p": 49.4,
+        "p": 46.7,
         "since": 2019
       },
       "no_severity_reason": "Part of a neutral scoreboard \u2014 it shows which way the price is moving, not whether that's good or bad."
