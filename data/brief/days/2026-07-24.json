@@ -1,6 +1,17 @@
 {
-  "generated_at": "2026-07-24T08:10:46Z",
-  "transitions": [],
+  "generated_at": "2026-07-24T15:03:35Z",
+  "transitions": [
+    {
+      "lens_id": "housing-supply-construction",
+      "lens_title": "Supply & Construction",
+      "category": "housing",
+      "href": "/dashboards/housing/supply-construction.html",
+      "from_status": "alert",
+      "to_status": "elevated",
+      "direction": "improving",
+      "headline": "Housing supply is out of balance \u2014 inventory or construction is strained."
+    }
+  ],
   "top_moves": [
     {
       "lens_id": "cost-of-living",
@@ -166,61 +177,6 @@
       "delta": "0.56\u03c3",
       "dir": "down",
       "why": ""
-    },
-    {
-      "lens_id": "housing-supply-construction",
-      "lens_title": "Supply & Construction",
-      "category": "housing",
-      "href": "/dashboards/housing/supply-construction.html",
-      "headline": "Housing supply is at an extreme \u2014 construction or inventory is flashing red.",
-      "accent": "#34D399",
-      "sparkline": [
-        8.3,
-        8.1,
-        7.8,
-        6.9,
-        7.5,
-        7.0,
-        8.0,
-        7.7,
-        7.7,
-        8.9,
-        8.6,
-        8.1,
-        8.5,
-        8.2,
-        7.9,
-        8.3,
-        8.2,
-        7.6,
-        8.2,
-        7.9,
-        9.1,
-        8.8,
-        8.4,
-        9.0,
-        9.4,
-        9.3,
-        8.6,
-        9.7,
-        9.0,
-        9.2,
-        8.5,
-        8.2,
-        9.0,
-        7.7,
-        7.9,
-        9.9,
-        9.3,
-        8.7,
-        9.3,
-        10.3
-      ],
-      "stat_label": "Months' supply",
-      "stat_value": "10.30 months",
-      "delta": "1.00 months",
-      "dir": "up",
-      "why": "Months' supply: a fresh high in this view."
     },
     {
       "lens_id": "market-scoreboard",
@@ -500,8 +456,8 @@
       "lens_title": "Supply & Construction",
       "category": "housing",
       "href": "/dashboards/housing/supply-construction.html",
-      "status": "alert",
-      "headline": "Housing supply is at an extreme \u2014 construction or inventory is flashing red."
+      "status": "elevated",
+      "headline": "Housing supply is out of balance \u2014 inventory or construction is strained."
     },
     {
       "lens_id": "housing-rent-shelter",
@@ -547,31 +503,17 @@
   "status_counts": {
     "ok": 15,
     "watch": 9,
-    "elevated": 5,
-    "alert": 2,
+    "elevated": 6,
+    "alert": 1,
     "neutral": 2
   },
   "verdict": {
     "status": "watch",
     "shape": "contained-pressure",
-    "sentence": "The economy is holding up, but not without strain: the housing market is out of balance and household finances are stretched thin, while banks are solid and markets are calm.",
-    "short": "Holding up, but the housing market is out of balance."
+    "sentence": "The economy is holding up, but not without strain: household finances are stretched thin, while banks are solid and markets are calm.",
+    "short": "Holding up, but household finances are stretched thin."
   },
   "watching": [
-    {
-      "key": "housing/housing-supply-construction/months-supply",
-      "indicator": "months-supply",
-      "lens": "housing-supply-construction",
-      "category": "housing",
-      "title": "Months of New-Home Supply",
-      "lens_title": "Supply & Construction",
-      "due": "2026-07-15",
-      "point_fmt": "10.00 months",
-      "implied_status": "elevated",
-      "current_status": "alert",
-      "change": true,
-      "href": "/dashboards/housing/supply-construction.html"
-    },
     {
       "key": "housing/housing-home-prices/case-shiller",
       "indicator": "case-shiller",
@@ -599,6 +541,20 @@
       "current_status": "ok",
       "change": false,
       "href": "/dashboards/business/investment.html"
+    },
+    {
+      "key": "economic/job-market/job-openings",
+      "indicator": "job-openings",
+      "lens": "job-market",
+      "category": "economic",
+      "title": "Job Openings (JOLTS)",
+      "lens_title": "The Job Market",
+      "due": "2026-07-15",
+      "point_fmt": "7.60M",
+      "implied_status": "ok",
+      "current_status": "ok",
+      "change": false,
+      "href": "/dashboards/job-market.html"
     }
   ],
   "pressure": [
@@ -609,14 +565,6 @@
       "href": "/dashboards/consumer/sentiment.html",
       "status": "alert",
       "headline": "Consumers are deeply pessimistic \u2014 sentiment is near record lows."
-    },
-    {
-      "lens_id": "housing-supply-construction",
-      "lens_title": "Supply & Construction",
-      "category": "housing",
-      "href": "/dashboards/housing/supply-construction.html",
-      "status": "alert",
-      "headline": "Housing supply is at an extreme \u2014 construction or inventory is flashing red."
     },
     {
       "lens_id": "cost-of-living",
@@ -649,6 +597,14 @@
       "href": "/dashboards/housing/affordability.html",
       "status": "elevated",
       "headline": "Housing affordability is badly stretched."
+    },
+    {
+      "lens_id": "housing-supply-construction",
+      "lens_title": "Supply & Construction",
+      "category": "housing",
+      "href": "/dashboards/housing/supply-construction.html",
+      "status": "elevated",
+      "headline": "Housing supply is out of balance \u2014 inventory or construction is strained."
     },
     {
       "lens_id": "global-uncertainty",
@@ -777,9 +733,9 @@
     {
       "category": "housing",
       "title": "Housing & Real Estate",
-      "status": "elevated",
+      "status": "watch",
       "href": "/dashboards/housing/",
-      "sentence": "The housing market is out of balance."
+      "sentence": "Housing is mostly balanced, but parts of the market are drifting out of balance."
     },
     {
       "category": "global",

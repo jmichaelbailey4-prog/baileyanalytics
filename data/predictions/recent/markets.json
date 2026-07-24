@@ -312,7 +312,7 @@
         "direction_hit": false,
         "status_hit": true,
         "naive_error": 50.5,
-        "revised_to": null
+        "revised_to": 4063.0
       },
       "now_value": 4000.6,
       "now_date": "2026-07-17"
