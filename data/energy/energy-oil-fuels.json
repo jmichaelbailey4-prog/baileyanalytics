@@ -2,7 +2,7 @@
   "id": "energy-oil-fuels",
   "title": "Oil & Fuels",
   "accent": "#FB923C",
-  "last_updated": "2026-07-23T08:13:42Z",
+  "last_updated": "2026-07-26T14:39:53Z",
   "status": "elevated",
   "headline_read": "Fuel costs are well above last year.",
   "recessions": [
@@ -1358,7 +1358,7 @@
       "signal_status": "elevated",
       "value_format": "decimal",
       "percentile": {
-        "p": 93.3,
+        "p": 89.1,
         "since": 2016
       },
       "scale_now": 27.8275
@@ -2665,7 +2665,7 @@
       "signal_status": "elevated",
       "value_format": "decimal",
       "percentile": {
-        "p": 92.3,
+        "p": 87.5,
         "since": 2016
       },
       "scale_now": 36.6152
@@ -3972,7 +3972,7 @@
       "signal_status": "info",
       "value_format": "thousands",
       "percentile": {
-        "p": 96.9,
+        "p": 95.0,
         "since": 2016
       },
       "no_severity_reason": "A physical supply-and-demand reading, not a household cost \u2014 this lens's verdict comes from the price indicators."
@@ -5279,7 +5279,7 @@
       "signal_status": "info",
       "value_format": "thousands",
       "percentile": {
-        "p": 4.2,
+        "p": 3.7,
         "since": 2016
       },
       "no_severity_reason": "A physical supply-and-demand reading, not a household cost \u2014 this lens's verdict comes from the price indicators."
