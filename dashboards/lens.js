@@ -291,7 +291,7 @@
       <div class="indicators"></div>
       ${tiersHtml(lens.tiers)}
       ${rankingsHtml(lens.rankings)}
-      <div class="lens-sub">Want this read daily? <a href="/dashboards/brief.html#subscribe">Get Today&rsquo;s Brief by email</a> — free, every morning the board changes.</div>
+      <div class="lens-sub">Want the bigger picture? <a href="/dashboards/brief.html#subscribe">Get The Week in Review by email</a> — one free email every Friday morning.</div>
       <div class="foot">${opts.foot}</div>`;
     const holder = root.querySelector(".indicators");
     const defaultRange = opts.defaultRange || "1Y";

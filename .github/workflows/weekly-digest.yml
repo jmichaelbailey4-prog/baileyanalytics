@@ -1,0 +1,48 @@
+name: Weekly email digest
+
+# The subscriber email: one roundup of the whole week, Friday morning (~7am ET).
+# The website still publishes Today's Brief daily (refresh-fred.yml) — only the
+# email is weekly.
+#
+# Reads committed data only (data/brief/days/, written by the daily refresh) and
+# commits nothing, so it needs no write permission and deliberately stays OUT of
+# the write-main concurrency group the data workflows share.
+
+on:
+  schedule:
+    # Friday 10:30 UTC: early enough that send_weekly_digest schedules the email
+    # for a clean 11:00 UTC (~7am ET) rather than "now + 5 min". The day's brief
+    # was committed by the 06:00 refresh hours earlier.
+    - cron: "30 10 * * 5"
+    # GitHub cron is best-effort and occasionally skips a slot entirely (observed
+    # 2026-06-10), so a same-day backup run self-heals; the already-sent check
+    # makes the second run free when the first one worked.
+    - cron: "0 15 * * 5"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: weekly-digest
+  cancel-in-progress: false
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install pipeline dependencies
+        run: pip install -r requirements.txt
+
+      - name: Send the weekly roundup (Buttondown)
+        env:
+          BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
+        run: python scripts/send_weekly_digest.py

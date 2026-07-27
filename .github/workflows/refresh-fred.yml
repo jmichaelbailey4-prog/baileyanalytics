@@ -90,19 +90,12 @@ jobs:
         run: python scripts/predict.py daily
 
       - name: Rebuild Today's Brief (no network; includes the merged verdict)
-        id: brief
         if: ${{ success() || failure() }}
         run: python scripts/refresh_lenses.py --brief
 
-      - name: Send the daily email digest (Buttondown)
-        # Gate on the brief actually rebuilding: an earlier source failure must
-        # not block the email (the day's brief still published), but a failed
-        # brief rebuild must (no fresh content to send). send_digest also guards
-        # itself via the archive manifest — this makes the dependency explicit.
-        if: ${{ steps.brief.outcome == 'success' }}
-        env:
-          BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
-        run: python scripts/send_digest.py
+      # NOTE: the subscriber email is WEEKLY as of 2026-07-27 and no longer
+      # sends from here — see .github/workflows/weekly-digest.yml. This job
+      # still publishes the brief daily; only the email moved.
 
       - name: Commit and push if data changed
         if: ${{ success() || failure() }}
