@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-07-25T07:53:22Z",
+  "generated_at": "2026-07-27T15:46:54Z",
   "since": "2026-06-12T14:20:31Z",
-  "graded": 208,
+  "graded": 211,
   "coverage": 89,
-  "calibration": 0.7980769230769231,
-  "direction": 0.42857142857142855,
-  "status": 0.865546218487395,
-  "skill": 0.0011305497605187398,
+  "calibration": 0.8009478672985783,
+  "direction": 0.4262295081967213,
+  "status": 0.8688524590163934,
+  "skill": 0.0011307393690266343,
   "categories": {
     "business": {
       "graded": 10,
@@ -57,12 +57,12 @@
       "skill": 0.22632096985143701
     },
     "markets": {
-      "graded": 64,
+      "graded": 67,
       "coverage": 42,
-      "calibration": 0.78125,
-      "direction": 0.5454545454545454,
+      "calibration": 0.7910447761194029,
+      "direction": 0.52,
       "status": 1.0,
-      "skill": 0.04968667501347168
+      "skill": 0.05104019649461433
     }
   }
 }
