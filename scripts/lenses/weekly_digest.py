@@ -214,6 +214,11 @@ def build_weekly(days, end_iso=None, span=WINDOW_DAYS):
 
     window = window_dates(end_iso, span)
     latest = days[-1]
+    # No readings at all (every category failed to load) makes status_counts all
+    # zeros, and the counts phrase would then announce "All clear across the
+    # dashboards" — a confident lie. Nothing to report means no email.
+    if not latest.get("lenses"):
+        return None
     counts = latest.get("status_counts") or {}
     attention = counts.get("watch", 0) + counts.get("elevated", 0) + counts.get("alert", 0)
     verdict = latest.get("verdict") or {}

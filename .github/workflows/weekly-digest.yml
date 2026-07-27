@@ -50,12 +50,16 @@ jobs:
       - name: Send the weekly roundup (Buttondown)
         env:
           BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
-          # Empty on a scheduled run, so the cron always takes the real branch.
-          # A manual dispatch defaults to the preview, so a bootstrap run can
-          # exercise the whole job without mailing the live list.
+          EVENT: ${{ github.event_name }}
           DRY_RUN: ${{ inputs.dry_run }}
+        # Safe by default in the direction that matters: a manual dispatch
+        # previews unless it explicitly asked to send, so a bootstrap run can
+        # exercise the whole job without mailing the live list even if the
+        # inputs expression ever evaluates to something unexpected. Scheduled
+        # runs are never a dispatch and always send for real.
         run: |
-          if [[ "$DRY_RUN" == "true" ]]; then
+          if [[ "$EVENT" == "workflow_dispatch" && "$DRY_RUN" != "false" ]]; then
+            echo "Manual dispatch — preview only (set dry_run=false to send)."
             python scripts/send_weekly_digest.py --dry-run
           else
             python scripts/send_weekly_digest.py

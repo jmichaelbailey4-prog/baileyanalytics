@@ -306,6 +306,13 @@ class TestBuildWeekly(unittest.TestCase):
         self.assertIsNone(weekly_digest.build_weekly(
             [day("2026-07-01", BOARD)], end_iso="2026-07-31"))
 
+    def test_a_week_with_no_readings_sends_nothing_rather_than_all_clear(self):
+        """If every category failed to load, status_counts is all zeros and the
+        counts phrase reads 'All clear across the dashboards' — a confident lie.
+        No readings means no email."""
+        self.assertIsNone(weekly_digest.build_weekly(
+            [day("2026-07-31", [])], end_iso="2026-07-31"))
+
     def test_subject_leads_with_the_net_status_change(self):
         self.assertEqual(
             self.built["subject"],

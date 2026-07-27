@@ -65,7 +65,10 @@ def main(argv=None):
     days = load_week(DAYS_DIR, end_iso)
     built = weekly_digest.build_weekly(days, end_iso=end_iso)
     if not built:
-        print(f"No published briefs in the week ending {end_iso} — no email.")
+        # Either a genuinely quiet week (no publication days in the window) or a
+        # week whose latest brief carried no readings at all. Both mean the same
+        # thing to a subscriber: nothing worth an email.
+        print(f"Nothing to report for the week ending {end_iso} — no email.")
         return 0
 
     if dry_run:
