@@ -1,12 +1,17 @@
 #!/usr/bin/env python3
-"""Send Today's Brief as an email via the Buttondown API.
+"""Send ONE day's brief as an email via the Buttondown API.
 
-Runs as a workflow step after the --brief pass. Decision chain (each exit is
-quiet and exit-code 0 except a real API failure, which exits 1 so the step
-shows red):
+NOTE (2026-07-27): the shipped subscriber cadence is WEEKLY — see
+scripts/send_weekly_digest.py and .github/workflows/weekly-digest.yml. No
+workflow schedules this script any more; it stays as the manual one-off sender
+for a mid-week event worth its own email (run it locally with a key, or wire it
+to a workflow_dispatch).
+
+Decision chain (each exit is quiet and exit-code 0 except a real API failure,
+which exits 1 so the step shows red):
   1. no BUTTONDOWN_API_KEY            -> skip (forks, local runs)
   2. today isn't a publication day    -> skip (quiet day; manifest has no entry)
-  3. Buttondown already has today's   -> skip (backup cron / rerun)
+  3. Buttondown already has today's   -> skip (rerun)
   4. POST the digest, scheduled for 11:00 UTC (~7am ET), or now+5min if a
      catch-up run is already past 11:00 (never exactly "now" — Buttondown
      rejects a scheduled publish_date that isn't safely in the future)
@@ -18,19 +23,16 @@ import json
 import os
 import sys
 import urllib.error
-import urllib.request
-from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from lenses import digest
+from lenses import buttondown, digest
 
-API = "https://api.buttondown.com/v1/emails"
-# Explicit newest-first ordering so the already-sent dedup check reliably sees
-# today's email (sent minutes/hours earlier) on the first page, regardless of
-# Buttondown's default sort. The archive-manifest publication gate is the
-# primary guard; this is the backstop against a same-day duplicate send.
-LIST_URL = API + "?ordering=-creation_date"
+# Re-exported so existing callers and tests keep one import surface; the logic
+# now lives in lenses/buttondown.py, shared with the weekly sender.
+publish_at = buttondown.publish_at
+already_sent = buttondown.already_sent
+
 BRIEF_DIR = Path(__file__).resolve().parent.parent / "data" / "brief"
 
 
@@ -38,42 +40,6 @@ def should_send(manifest, day):
     """Publication-day gate: the --brief pass appended today to the manifest
     iff the brief's content changed today."""
     return any(e.get("date") == day for e in manifest or [])
-
-
-def already_sent(emails_json, token):
-    """True if any recent Buttondown email's subject carries today's date token
-    (every digest subject ends with it — see digest.date_token)."""
-    return any(token in (e.get("subject") or "")
-               for e in (emails_json or {}).get("results", []))
-
-
-# A catch-up run (13:00 backup cron / manual dispatch past 11:00 UTC) must not
-# schedule at exactly "now": Buttondown 400s ("publish date is in the past") a
-# scheduled email whose publish_date isn't comfortably in the future by the time
-# the request lands. Push it a few minutes out instead.
-SEND_BUFFER = timedelta(minutes=5)
-_FMT = "%Y-%m-%dT%H:%M:%SZ"
-
-
-def publish_at(day, now_iso):
-    """Schedule for 11:00 UTC (~7am ET); if we're already past it (backup cron or
-    a manual catch-up run), schedule a few minutes out rather than at 'now' so the
-    publish_date is always safely in the future. `now_iso` is a UTC 'Z' string."""
-    target = f"{day}T11:00:00Z"
-    if now_iso < target:
-        return target
-    soon = datetime.strptime(now_iso, _FMT).replace(tzinfo=timezone.utc) + SEND_BUFFER
-    return soon.strftime(_FMT)
-
-
-def _request(url, api_key, payload=None):
-    req = urllib.request.Request(
-        url, headers={"Authorization": f"Token {api_key}",
-                      "Content-Type": "application/json"},
-        data=json.dumps(payload).encode("utf-8") if payload else None,
-        method="POST" if payload else "GET")
-    with urllib.request.urlopen(req, timeout=30) as resp:
-        return json.loads(resp.read().decode("utf-8"))
 
 
 def main(argv=None):
@@ -90,8 +56,7 @@ def main(argv=None):
     built = digest.build_digest(today)
 
     if dry_run:
-        print("SUBJECT:", built["subject"])
-        print(built["html"])
+        buttondown.print_preview(built["subject"], built["html"])
         return 0
 
     api_key = os.environ.get("BUTTONDOWN_API_KEY")
@@ -109,13 +74,12 @@ def main(argv=None):
 
     token = digest.date_token(day)
     try:
-        if already_sent(_request(LIST_URL, api_key), token):
+        if already_sent(buttondown.list_emails(api_key), token):
             print(f"Digest for {token} already exists on Buttondown — skipping.")
             return 0
-        now_iso = datetime.now(timezone.utc).strftime(_FMT)
-        payload = {"subject": built["subject"], "body": built["html"],
-                   "status": "scheduled", "publish_date": publish_at(day, now_iso)}
-        created = _request(API, api_key, payload)
+        created = buttondown.create_scheduled(
+            api_key, built["subject"], built["html"],
+            publish_at(day, buttondown.now_iso()))
         print(f"Digest scheduled: {created.get('id', '?')} — {built['subject']}")
         return 0
     except urllib.error.HTTPError as exc:
