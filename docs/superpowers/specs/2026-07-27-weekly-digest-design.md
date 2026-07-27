@@ -118,7 +118,11 @@ New:
 - `.github/workflows/weekly-digest.yml` — Friday 10:30 UTC + a 15:00 UTC same-day backup
   (mirrors refresh-fred's dual-cron self-heal) + `workflow_dispatch`. Reads committed
   data only, commits nothing, so it needs no repo write permission and stays out of the
-  `write-main` concurrency group.
+  `write-main` concurrency group. 10:30 rather than 11:00 so the send is *scheduled* for
+  a clean 11:00 instead of "now + 5 min". The dispatch takes a `dry_run` input that
+  **defaults to true**: a bootstrap run exercises the whole job — checkout, install,
+  window selection, gate — without mailing the live list. The scheduled runs leave the
+  input empty and always take the real branch.
 
 Changed:
 

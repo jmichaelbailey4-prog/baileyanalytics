@@ -180,6 +180,18 @@ class TestNetTransitions(unittest.TestCase):
                           for n in weekly_digest.net_transitions(days)],
                          [("ok", "watch")])
 
+    def test_a_flip_that_starts_on_the_first_in_window_day_reports_nothing(self):
+        """Regression guard for a phantom 'improvement': the week opens with the
+        change already applied, then it reverts. Without the baseline reversion
+        this reads as watch -> ok, an improvement that never happened."""
+        days = [
+            day("2026-07-27", [lens("job-market", "watch")] + BOARD[1:],
+                transitions=[transition("job-market", "ok", "watch")]),
+            day("2026-07-31", BOARD,
+                transitions=[transition("job-market", "watch", "ok")]),
+        ]
+        self.assertEqual(weekly_digest.net_transitions(days), [])
+
     def test_a_lens_added_mid_week_is_not_a_transition(self):
         """A lens absent from the start-of-week board has no 'from' status."""
         days = [day("2026-07-27", BOARD),

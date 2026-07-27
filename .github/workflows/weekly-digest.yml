@@ -19,6 +19,11 @@ on:
     # makes the second run free when the first one worked.
     - cron: "0 15 * * 5"
   workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Preview only — build and print the email, never send it"
+        type: boolean
+        default: true
 
 permissions:
   contents: read
@@ -45,4 +50,13 @@ jobs:
       - name: Send the weekly roundup (Buttondown)
         env:
           BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
-        run: python scripts/send_weekly_digest.py
+          # Empty on a scheduled run, so the cron always takes the real branch.
+          # A manual dispatch defaults to the preview, so a bootstrap run can
+          # exercise the whole job without mailing the live list.
+          DRY_RUN: ${{ inputs.dry_run }}
+        run: |
+          if [[ "$DRY_RUN" == "true" ]]; then
+            python scripts/send_weekly_digest.py --dry-run
+          else
+            python scripts/send_weekly_digest.py
+          fi
