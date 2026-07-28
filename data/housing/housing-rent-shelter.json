@@ -2,7 +2,7 @@
   "id": "housing-rent-shelter",
   "title": "Rent & Shelter",
   "accent": "#A78BFA",
-  "last_updated": "2026-07-14T14:57:48Z",
+  "last_updated": "2026-07-28T15:24:54Z",
   "status": "ok",
   "headline_read": "The rental market is balanced \u2014 rents are behaving.",
   "recessions": [
@@ -3585,10 +3585,14 @@
         {
           "date": "2026-01-01",
           "value": "7.3"
+        },
+        {
+          "date": "2026-04-01",
+          "value": "7.3"
         }
       ],
       "latest": {
-        "date": "2026-01-01",
+        "date": "2026-04-01",
         "value": "7.3"
       },
       "context": "The share of rental units sitting empty (quarterly). Low vacancy gives landlords pricing power; high vacancy hands it back to renters.",
@@ -3596,7 +3600,7 @@
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 50.2,
+        "p": 50.0,
         "since": 1956
       },
       "scale_now": 7.3
@@ -4588,18 +4592,22 @@
         {
           "date": "2026-01-01",
           "value": "65.3"
+        },
+        {
+          "date": "2026-04-01",
+          "value": "65.0"
         }
       ],
       "latest": {
-        "date": "2026-01-01",
-        "value": "65.3"
+        "date": "2026-04-01",
+        "value": "65.0"
       },
       "context": "The share of households that own their home (quarterly) \u2014 the long arc of whether owning is gaining or losing ground versus renting.",
-      "read": "The homeownership rate is 65.3%, up 0.2 points from a year ago.",
+      "read": "The homeownership rate is 65.0%, little changed from a year ago.",
       "signal_status": "info",
       "value_format": "decimal",
       "percentile": {
-        "p": 58.8,
+        "p": 53.7,
         "since": 1965
       },
       "no_severity_reason": "A descriptive level shown for context \u2014 neither a high nor a low reading is simply good or bad."

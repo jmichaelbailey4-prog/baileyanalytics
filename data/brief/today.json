@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-28T08:17:58Z",
+  "generated_at": "2026-07-28T15:25:39Z",
   "transitions": [],
   "top_moves": [
     {
@@ -559,6 +559,20 @@
   },
   "watching": [
     {
+      "key": "energy/energy-oil-fuels/diesel",
+      "indicator": "diesel",
+      "lens": "energy-oil-fuels",
+      "category": "energy",
+      "title": "Retail Diesel \u00b7 On-Highway",
+      "lens_title": "Oil & Fuels",
+      "due": "2026-08-08",
+      "point_fmt": "$5.44",
+      "implied_status": "alert",
+      "current_status": "elevated",
+      "change": true,
+      "href": "/dashboards/energy/oil-fuels.html"
+    },
+    {
       "key": "housing/housing-home-prices/case-shiller",
       "indicator": "case-shiller",
       "lens": "housing-home-prices",
@@ -585,20 +599,6 @@
       "current_status": "ok",
       "change": false,
       "href": "/dashboards/business/investment.html"
-    },
-    {
-      "key": "economic/job-market/job-openings",
-      "indicator": "job-openings",
-      "lens": "job-market",
-      "category": "economic",
-      "title": "Job Openings (JOLTS)",
-      "lens_title": "The Job Market",
-      "due": "2026-07-15",
-      "point_fmt": "7.60M",
-      "implied_status": "ok",
-      "current_status": "ok",
-      "change": false,
-      "href": "/dashboards/job-market.html"
     }
   ],
   "pressure": [
