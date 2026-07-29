@@ -1,24 +1,24 @@
 {
   "predictions": [
     {
-      "id": "housing/housing-home-prices/case-shiller@2026-05-01",
+      "id": "housing/housing-home-prices/case-shiller@2026-06-01",
       "key": "housing/housing-home-prices/case-shiller",
       "category": "housing",
       "lens": "housing-home-prices",
       "indicator": "case-shiller",
       "series_id": "CSUSHPINSA",
       "horizon": "next-print",
-      "target_period": "2026-05-01",
-      "due": "2026-06-15",
-      "made_at": "2026-07-03T08:51:57Z",
+      "target_period": "2026-06-01",
+      "due": "2026-07-15",
+      "made_at": "2026-07-29T08:23:52Z",
       "model": "ets@1",
-      "point": 0.89,
-      "lo": 0.4541,
-      "hi": 1.2771,
+      "point": 1.28,
+      "lo": 0.8799,
+      "hi": 1.6672,
       "unit": "%",
       "value_format": "decimal",
-      "prev_value": 0.8,
-      "why": "This projects the recent level and trend forward one month.",
+      "prev_value": 1.1,
+      "why": "Case-Shiller: up 2 straight months. This projects the recent level and trend forward one month.",
       "implied_status": "ok",
       "current_status": "ok",
       "descriptive": false,
@@ -28,7 +28,7 @@
       "lens_title": "Home-Price Stability",
       "href": "/dashboards/housing/home-prices.html",
       "grade": null,
-      "prev_period": "2026-04-01"
+      "prev_period": "2026-05-01"
     },
     {
       "id": "housing/housing-home-prices/median-price@2026-07-01",

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-07-28T15:25:38Z",
+  "generated_at": "2026-07-29T08:23:59Z",
   "predictions": [
     {
       "id": "economic/recession-watch/yield-curve@2026-07-31",
@@ -1261,24 +1261,24 @@
       "now_date": "2026-07-24"
     },
     {
-      "id": "markets/market-liquidity/m2-growth@2026-06-01",
+      "id": "markets/market-liquidity/m2-growth@2026-07-01",
       "key": "markets/market-liquidity/m2-growth",
       "category": "markets",
       "lens": "market-liquidity",
       "indicator": "m2-growth",
       "series_id": "M2SL",
       "horizon": "next-print",
-      "target_period": "2026-06-01",
-      "due": "2026-07-15",
-      "made_at": "2026-06-23T19:33:34Z",
+      "target_period": "2026-07-01",
+      "due": "2026-08-15",
+      "made_at": "2026-07-29T08:23:36Z",
       "model": "ets@1",
-      "point": 6.201,
-      "lo": 5.4915,
-      "hi": 6.9029,
+      "point": 5.5398,
+      "lo": 4.8296,
+      "hi": 6.2743,
       "unit": "%",
       "value_format": "decimal",
-      "prev_value": 5.58031,
-      "why": "M2 growth: up 2 straight months. This projects the recent level and trend forward one month.",
+      "prev_value": 5.52576,
+      "why": "This projects the recent level and trend forward one month.",
       "implied_status": "ok",
       "current_status": "ok",
       "descriptive": false,
@@ -1287,7 +1287,8 @@
       "short": "M2 growth",
       "lens_title": "Liquidity & the Fed",
       "href": "/dashboards/markets/liquidity.html",
-      "grade": null
+      "grade": null,
+      "prev_period": "2026-06-01"
     },
     {
       "id": "markets/market-liquidity/fed-balance-sheet@2026-07-29",
@@ -2147,24 +2148,24 @@
       "grade": null
     },
     {
-      "id": "housing/housing-home-prices/case-shiller@2026-05-01",
+      "id": "housing/housing-home-prices/case-shiller@2026-06-01",
       "key": "housing/housing-home-prices/case-shiller",
       "category": "housing",
       "lens": "housing-home-prices",
       "indicator": "case-shiller",
       "series_id": "CSUSHPINSA",
       "horizon": "next-print",
-      "target_period": "2026-05-01",
-      "due": "2026-06-15",
-      "made_at": "2026-07-03T08:51:57Z",
+      "target_period": "2026-06-01",
+      "due": "2026-07-15",
+      "made_at": "2026-07-29T08:23:52Z",
       "model": "ets@1",
-      "point": 0.89,
-      "lo": 0.4541,
-      "hi": 1.2771,
+      "point": 1.28,
+      "lo": 0.8799,
+      "hi": 1.6672,
       "unit": "%",
       "value_format": "decimal",
-      "prev_value": 0.8,
-      "why": "This projects the recent level and trend forward one month.",
+      "prev_value": 1.1,
+      "why": "Case-Shiller: up 2 straight months. This projects the recent level and trend forward one month.",
       "implied_status": "ok",
       "current_status": "ok",
       "descriptive": false,
@@ -2174,7 +2175,7 @@
       "lens_title": "Home-Price Stability",
       "href": "/dashboards/housing/home-prices.html",
       "grade": null,
-      "prev_period": "2026-04-01"
+      "prev_period": "2026-05-01"
     },
     {
       "id": "housing/housing-home-prices/median-price@2026-07-01",
