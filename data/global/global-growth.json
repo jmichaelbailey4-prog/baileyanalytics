@@ -2,7 +2,7 @@
   "id": "global-growth",
   "title": "Global Growth",
   "accent": "#34D399",
-  "last_updated": "2026-07-20T15:15:00Z",
+  "last_updated": "2026-07-30T15:15:55Z",
   "status": "ok",
   "headline_read": "The world economy is growing around its long-run trend.",
   "recessions": [
@@ -272,10 +272,6 @@
       "color": "#A78BFA",
       "series_id": "CLVMEURSCAB1GQEA19",
       "observations": [
-        {
-          "date": "1996-04-01",
-          "value": "1.41825"
-        },
         {
           "date": "1996-07-01",
           "value": "1.63879"
@@ -751,21 +747,25 @@
         {
           "date": "2026-01-01",
           "value": "0.47783"
+        },
+        {
+          "date": "2026-04-01",
+          "value": "0.93742"
         }
       ],
       "latest": {
-        "date": "2026-01-01",
-        "value": "0.47783"
+        "date": "2026-04-01",
+        "value": "0.93742"
       },
       "context": "The euro area's quarterly GDP versus a year earlier \u2014 the only quarterly pulse in this lens, so it updates between the IMF's April and October forecast rounds.",
-      "read": "Euro-area real GDP is roughly flat versus a year ago (+0.5%).",
+      "read": "Euro-area real GDP is roughly flat versus a year ago (+0.9%).",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 18.3,
+        "p": 25.8,
         "since": 1996
       },
-      "scale_now": 0.4778
+      "scale_now": 0.9374
     },
     {
       "id": "china-growth",

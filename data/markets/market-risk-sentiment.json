@@ -2,7 +2,7 @@
   "id": "market-risk-sentiment",
   "title": "Risk Sentiment",
   "accent": "#FB7185",
-  "last_updated": "2026-07-29T15:10:39Z",
+  "last_updated": "2026-07-30T15:14:56Z",
   "status": "ok",
   "headline_read": "Markets are calm \u2014 volatility and credit stress are low.",
   "recessions": [
@@ -5978,21 +5978,25 @@
         {
           "date": "2026-07-28",
           "value": "2.84"
+        },
+        {
+          "date": "2026-07-29",
+          "value": "2.87"
         }
       ],
       "latest": {
-        "date": "2026-07-28",
-        "value": "2.84"
+        "date": "2026-07-29",
+        "value": "2.87"
       },
       "context": "The extra yield investors demand to hold risky 'junk' corporate bonds over Treasuries. It widens when markets fear defaults \u2014 an early stress signal. Note: FRED serves only a rolling ~3-year window of this ICE BofA series, so its chart history is shorter than the other indicators here.",
-      "read": "The high-yield spread is 2.84% \u2014 tight, signaling calm credit conditions.",
+      "read": "The high-yield spread is 2.87% \u2014 tight, signaling calm credit conditions.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 24.6,
+        "p": 30.0,
         "since": 2023
       },
-      "scale_now": 2.84
+      "scale_now": 2.87
     },
     {
       "id": "ig-spread",
@@ -8345,10 +8349,14 @@
         {
           "date": "2026-07-28",
           "value": "0.81"
+        },
+        {
+          "date": "2026-07-29",
+          "value": "0.81"
         }
       ],
       "latest": {
-        "date": "2026-07-28",
+        "date": "2026-07-29",
         "value": "0.81"
       },
       "context": "The same risk premium for higher-quality corporate bonds. Because these borrowers are safer, widening here signals stress reaching the core of credit. Note: FRED serves only a rolling ~3-year window of this ICE BofA series, so its chart history is shorter than the other indicators here.",

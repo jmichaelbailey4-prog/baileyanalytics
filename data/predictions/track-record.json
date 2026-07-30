@@ -1,49 +1,49 @@
 {
-  "generated_at": "2026-07-30T08:10:18Z",
+  "generated_at": "2026-07-30T15:16:29Z",
   "since": "2026-06-12T14:20:31Z",
-  "graded": 230,
-  "coverage": 97,
-  "calibration": 0.8,
-  "direction": 0.42105263157894735,
-  "status": 0.8796992481203008,
-  "skill": 0.001127613330770716,
+  "graded": 237,
+  "coverage": 101,
+  "calibration": 0.8016877637130801,
+  "direction": 0.4117647058823529,
+  "status": 0.875,
+  "skill": 0.001060379677856993,
   "categories": {
     "business": {
-      "graded": 11,
-      "coverage": 2,
-      "calibration": 0.9090909090909091,
+      "graded": 12,
+      "coverage": 3,
+      "calibration": 0.9166666666666666,
       "direction": 0.3333333333333333,
       "status": 1.0,
       "skill": -0.006558891454965687
     },
     "consumer": {
-      "graded": 11,
+      "graded": 13,
       "coverage": 2,
       "calibration": 1.0,
-      "direction": 0.4444444444444444,
-      "status": 0.7777777777777778,
-      "skill": 0.016897000679828134
+      "direction": 0.36363636363636365,
+      "status": 0.7272727272727273,
+      "skill": 0.015552726305021358
     },
     "economic": {
-      "graded": 44,
-      "coverage": 6,
-      "calibration": 0.75,
-      "direction": 0.18421052631578946,
-      "status": 0.8157894736842105,
-      "skill": -9.131616389712605e-07
+      "graded": 46,
+      "coverage": 7,
+      "calibration": 0.7391304347826086,
+      "direction": 0.1794871794871795,
+      "status": 0.8205128205128205,
+      "skill": -8.584826003410484e-07
     },
     "energy": {
-      "graded": 46,
-      "coverage": 23,
-      "calibration": 0.7608695652173914,
+      "graded": 47,
+      "coverage": 24,
+      "calibration": 0.7659574468085106,
       "direction": 0.5217391304347826,
       "status": 0.8695652173913043,
       "skill": 0.14200006807969734
     },
     "global": {
-      "graded": 27,
-      "coverage": 16,
-      "calibration": 0.8518518518518519,
+      "graded": 28,
+      "coverage": 17,
+      "calibration": 0.8571428571428571,
       "direction": 0.7272727272727273,
       "status": 0.9090909090909091,
       "skill": 0.4327984807618209

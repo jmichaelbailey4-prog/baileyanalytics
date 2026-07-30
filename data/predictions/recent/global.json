@@ -349,6 +349,44 @@
         "naive_error": 38.52000000000004,
         "revised_to": null
       }
+    },
+    "global/global-growth/ea-gdp-quarterly": {
+      "id": "global/global-growth/ea-gdp-quarterly@2026-04-01",
+      "key": "global/global-growth/ea-gdp-quarterly",
+      "category": "global",
+      "lens": "global-growth",
+      "indicator": "ea-gdp-quarterly",
+      "series_id": "CLVMEURSCAB1GQEA19",
+      "horizon": "next-print",
+      "target_period": "2026-04-01",
+      "due": "2026-07-28",
+      "made_at": "2026-06-16T13:10:51Z",
+      "model": "naive@1",
+      "point": 0.3034,
+      "lo": -1.033,
+      "hi": 0.9699,
+      "unit": "%",
+      "value_format": "decimal",
+      "prev_value": 0.30336,
+      "why": "EA quarterly: down 4 straight quarters. We expect roughly the last value \u2014 this series rarely rewards cleverness.",
+      "implied_status": "info",
+      "current_status": "info",
+      "descriptive": true,
+      "market_price": false,
+      "title": "Euro Area Real GDP \u00b7 year-over-year",
+      "short": "EA quarterly",
+      "lens_title": "Global Growth",
+      "href": "/dashboards/global/growth.html",
+      "grade": {
+        "actual": 0.93742,
+        "graded_at": "2026-07-30T15:16:25Z",
+        "hit": true,
+        "abs_error": 0.63402,
+        "direction_hit": true,
+        "status_hit": false,
+        "naive_error": 0.6340600000000001,
+        "revised_to": null
+      }
     }
   }
 }

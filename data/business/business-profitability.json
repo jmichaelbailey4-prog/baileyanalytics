@@ -2,7 +2,7 @@
   "id": "business-profitability",
   "title": "Corporate Profits",
   "accent": "#34D399",
-  "last_updated": "2026-07-06T16:47:35Z",
+  "last_updated": "2026-07-30T15:15:51Z",
   "status": "ok",
   "headline_read": "Corporate America is profitable \u2014 earnings are growing.",
   "recessions": [
@@ -5156,18 +5156,22 @@
         {
           "date": "2026-01-01",
           "value": "1.7"
+        },
+        {
+          "date": "2026-04-01",
+          "value": "2.7"
         }
       ],
       "latest": {
-        "date": "2026-01-01",
-        "value": "1.7"
+        "date": "2026-04-01",
+        "value": "2.7"
       },
       "context": "Income of unincorporated businesses \u2014 sole proprietors and partnerships. The closest thing to a small-business earnings line.",
-      "read": "Proprietors' income is rising 1.7% a year.",
+      "read": "Proprietors' income is rising 2.7% a year.",
       "signal_status": "info",
       "value_format": "decimal",
       "percentile": {
-        "p": 22.0,
+        "p": 29.0,
         "since": 1948
       },
       "no_severity_reason": "Shown for context \u2014 proprietors' income (which includes farm income) is too volatile to score cleanly."

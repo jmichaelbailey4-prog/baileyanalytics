@@ -2,7 +2,7 @@
   "id": "fiscal-health",
   "title": "Fiscal Health",
   "accent": "#A78BFA",
-  "last_updated": "2026-07-14T07:48:12Z",
+  "last_updated": "2026-07-30T15:14:52Z",
   "status": "elevated",
   "headline_read": "The U.S. is borrowing heavily \u2014 debt and interest costs are climbing.",
   "recessions": [
@@ -6111,18 +6111,22 @@
         {
           "date": "2026-01-01",
           "value": "1218.938"
+        },
+        {
+          "date": "2026-04-01",
+          "value": "1247.033"
         }
       ],
       "latest": {
-        "date": "2026-01-01",
-        "value": "1218.938"
+        "date": "2026-04-01",
+        "value": "1247.033"
       },
       "context": "What the government pays per year to service its debt (quarterly, annualized). Rising rates turned this into one of the largest items in the federal budget \u2014 crowding out everything else.",
-      "read": "The government's interest bill is up 7% from a year ago, now $1,219 billion.",
+      "read": "The government's interest bill is up 7% from a year ago, now $1,247 billion.",
       "signal_status": "info",
       "value_format": "thousands",
       "percentile": {
-        "p": 99.4,
+        "p": 99.7,
         "since": 1947
       },
       "no_severity_reason": "The dollar interest bill climbs with the economy; the scored read is interest as a share of revenue, alongside debt-to-GDP and the deficit."

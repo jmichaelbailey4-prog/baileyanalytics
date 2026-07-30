@@ -1,6 +1,17 @@
 {
-  "generated_at": "2026-07-30T08:10:18Z",
-  "transitions": [],
+  "generated_at": "2026-07-30T15:16:29Z",
+  "transitions": [
+    {
+      "lens_id": "consumer-income-savings",
+      "lens_title": "Household Income & Savings",
+      "category": "consumer",
+      "href": "/dashboards/consumer/income-savings.html",
+      "from_status": "watch",
+      "to_status": "elevated",
+      "direction": "worsening",
+      "headline": "Household cushions are thin \u2014 savings or real incomes are stretched."
+    }
+  ],
   "top_moves": [
     {
       "lens_id": "recession-watch",
@@ -221,61 +232,6 @@
       "delta": "113",
       "dir": "down",
       "why": ""
-    },
-    {
-      "lens_id": "global-trade-supply",
-      "lens_title": "Trade & Supply Chain",
-      "category": "global",
-      "href": "/dashboards/global/trade-supply.html",
-      "headline": "Trade frictions are building \u2014 supply chains or import costs bear watching.",
-      "accent": "#FBBF24",
-      "sparkline": [
-        -1.16,
-        -1.31,
-        -1.58,
-        -1.1,
-        -0.92,
-        -1.08,
-        -0.65,
-        -0.38,
-        0.17,
-        -0.16,
-        -0.35,
-        -0.19,
-        -0.36,
-        -0.96,
-        -0.59,
-        -0.35,
-        -0.05,
-        0.21,
-        0.11,
-        -0.38,
-        -0.29,
-        -0.27,
-        -0.19,
-        -0.0,
-        -0.19,
-        -0.24,
-        0.29,
-        0.1,
-        0.03,
-        -0.08,
-        -0.02,
-        -0.07,
-        -0.12,
-        0.58,
-        0.45,
-        0.57,
-        0.71,
-        1.84,
-        1.81,
-        1.25
-      ],
-      "stat_label": "Supply chain",
-      "stat_value": "1.25\u03c3",
-      "delta": "0.56\u03c3",
-      "dir": "down",
-      "why": ""
     }
   ],
   "lenses": [
@@ -340,8 +296,8 @@
       "lens_title": "Household Income & Savings",
       "category": "consumer",
       "href": "/dashboards/consumer/income-savings.html",
-      "status": "watch",
-      "headline": "Household finances are tightening \u2014 cushions are shrinking."
+      "status": "elevated",
+      "headline": "Household cushions are thin \u2014 savings or real incomes are stretched."
     },
     {
       "lens_id": "consumer-sentiment",
@@ -546,8 +502,8 @@
   ],
   "status_counts": {
     "ok": 15,
-    "watch": 9,
-    "elevated": 6,
+    "watch": 8,
+    "elevated": 7,
     "alert": 1,
     "neutral": 2
   },
@@ -627,6 +583,14 @@
       "headline": "The U.S. is borrowing heavily \u2014 debt and interest costs are climbing."
     },
     {
+      "lens_id": "consumer-income-savings",
+      "lens_title": "Household Income & Savings",
+      "category": "consumer",
+      "href": "/dashboards/consumer/income-savings.html",
+      "status": "elevated",
+      "headline": "Household cushions are thin \u2014 savings or real incomes are stretched."
+    },
+    {
       "lens_id": "energy-oil-fuels",
       "lens_title": "Oil & Fuels",
       "category": "energy",
@@ -681,14 +645,6 @@
       "href": "/dashboards/consumer/credit-stress.html",
       "status": "watch",
       "headline": "Consumer credit bears watching \u2014 debt loads are creeping up."
-    },
-    {
-      "lens_id": "consumer-income-savings",
-      "lens_title": "Household Income & Savings",
-      "category": "consumer",
-      "href": "/dashboards/consumer/income-savings.html",
-      "status": "watch",
-      "headline": "Household finances are tightening \u2014 cushions are shrinking."
     },
     {
       "lens_id": "bank-concentrations-funding",
