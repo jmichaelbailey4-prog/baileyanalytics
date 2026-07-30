@@ -2,7 +2,7 @@
   "id": "energy-natural-gas",
   "title": "Natural Gas",
   "accent": "#60A5FA",
-  "last_updated": "2026-07-27T09:34:14Z",
+  "last_updated": "2026-07-30T08:09:32Z",
   "status": "ok",
   "headline_read": "Natural gas costs are stable or easing.",
   "recessions": [
@@ -65,12 +65,8 @@
       "series_id": "RNGWHHD",
       "observations": [
         {
-          "date": "2022-12-06",
-          "value": "4.58"
-        },
-        {
-          "date": "2022-12-12",
-          "value": "6.73"
+          "date": "2022-12-13",
+          "value": "7.2"
         },
         {
           "date": "2022-12-19",
@@ -407,22 +403,6 @@
         {
           "date": "2024-07-22",
           "value": "2.19"
-        },
-        {
-          "date": "2024-07-23",
-          "value": "2.13"
-        },
-        {
-          "date": "2024-07-24",
-          "value": "2"
-        },
-        {
-          "date": "2024-07-25",
-          "value": "2"
-        },
-        {
-          "date": "2024-07-26",
-          "value": "1.98"
         },
         {
           "date": "2024-07-29",
@@ -2383,21 +2363,41 @@
         {
           "date": "2026-07-20",
           "value": "2.8"
+        },
+        {
+          "date": "2026-07-21",
+          "value": "2.8"
+        },
+        {
+          "date": "2026-07-22",
+          "value": "2.93"
+        },
+        {
+          "date": "2026-07-23",
+          "value": "2.92"
+        },
+        {
+          "date": "2026-07-24",
+          "value": "2.87"
+        },
+        {
+          "date": "2026-07-27",
+          "value": "2.63"
         }
       ],
       "latest": {
-        "date": "2026-07-20",
-        "value": "2.8"
+        "date": "2026-07-27",
+        "value": "2.63"
       },
       "context": "The U.S. benchmark natural-gas price ($/MMBtu) \u2014 it drives home heating bills and a large share of electricity generation cost.",
-      "read": "Natural gas costs have fallen 20% over the past year \u2014 relief for households.",
+      "read": "Natural gas costs are down 15% over the past year.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 51.1,
+        "p": 40.8,
         "since": 2022
       },
-      "scale_now": -20.0
+      "scale_now": -15.1613
     },
     {
       "id": "gas-storage",

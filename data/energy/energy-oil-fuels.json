@@ -2,7 +2,7 @@
   "id": "energy-oil-fuels",
   "title": "Oil & Fuels",
   "accent": "#FB923C",
-  "last_updated": "2026-07-28T15:24:50Z",
+  "last_updated": "2026-07-30T08:09:32Z",
   "status": "elevated",
   "headline_read": "Fuel costs are well above last year.",
   "recessions": [
@@ -2679,8 +2679,8 @@
       "series_id": "WCRFPUS2",
       "observations": [
         {
-          "date": "2016-08-05",
-          "value": "8445"
+          "date": "2016-08-12",
+          "value": "8597"
         },
         {
           "date": "2016-09-02",
@@ -2917,10 +2917,6 @@
         {
           "date": "2021-07-02",
           "value": "11300"
-        },
-        {
-          "date": "2021-07-23",
-          "value": "11200"
         },
         {
           "date": "2021-07-30",
@@ -3961,18 +3957,22 @@
         {
           "date": "2026-07-17",
           "value": "13798"
+        },
+        {
+          "date": "2026-07-24",
+          "value": "13796"
         }
       ],
       "latest": {
-        "date": "2026-07-17",
-        "value": "13798"
+        "date": "2026-07-24",
+        "value": "13796"
       },
       "context": "U.S. field production of crude oil (thousand barrels per day) \u2014 the supply side that, with demand, sets the price of oil.",
-      "read": "U.S. crude production is up 3% from a year ago, now 13,798.",
+      "read": "U.S. crude production is up 4% from a year ago, now 13,796.",
       "signal_status": "info",
       "value_format": "thousands",
       "percentile": {
-        "p": 96.9,
+        "p": 96.7,
         "since": 2016
       },
       "no_severity_reason": "A physical supply-and-demand reading, not a household cost \u2014 this lens's verdict comes from the price indicators."
@@ -3986,8 +3986,8 @@
       "series_id": "WCESTUS1",
       "observations": [
         {
-          "date": "2016-08-05",
-          "value": "492969"
+          "date": "2016-08-12",
+          "value": "490461"
         },
         {
           "date": "2016-09-02",
@@ -4224,10 +4224,6 @@
         {
           "date": "2021-07-02",
           "value": "445476"
-        },
-        {
-          "date": "2021-07-23",
-          "value": "435598"
         },
         {
           "date": "2021-07-30",
@@ -5268,18 +5264,22 @@
         {
           "date": "2026-07-17",
           "value": "411675"
+        },
+        {
+          "date": "2026-07-24",
+          "value": "404508"
         }
       ],
       "latest": {
-        "date": "2026-07-17",
-        "value": "411675"
+        "date": "2026-07-24",
+        "value": "404508"
       },
       "context": "Commercial crude oil inventories (thousand barrels, excluding the Strategic Petroleum Reserve) \u2014 low stocks point to upward price pressure.",
-      "read": "Crude inventories is little changed from a year ago, now 411,675.",
+      "read": "Crude inventories is down 3% from a year ago, now 404,508.",
       "signal_status": "info",
       "value_format": "thousands",
       "percentile": {
-        "p": 4.2,
+        "p": 1.0,
         "since": 2016
       },
       "no_severity_reason": "A physical supply-and-demand reading, not a household cost \u2014 this lens's verdict comes from the price indicators."
