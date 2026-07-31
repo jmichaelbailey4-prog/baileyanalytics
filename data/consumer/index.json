@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-07-30T15:15:47Z",
+  "last_updated": "2026-07-31T08:36:40Z",
   "status": "elevated",
   "lenses": [
     {
@@ -17,8 +17,8 @@
         },
         {
           "k": "Real spending",
-          "v": "2.13%",
-          "d": "0.41%",
+          "v": "2.54%",
+          "d": "0.15%",
           "dir": "up"
         }
       ],

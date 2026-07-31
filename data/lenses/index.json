@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-07-30T08:08:48Z",
+  "last_updated": "2026-07-31T08:35:51Z",
   "status": "watch",
   "lenses": [
     {
@@ -11,9 +11,7 @@
       "key_stats": [
         {
           "k": "Yield curve",
-          "v": "0.45%",
-          "d": "0.10%",
-          "dir": "up"
+          "v": "0.45%"
         },
         {
           "k": "Sahm rule",
@@ -23,7 +21,6 @@
         }
       ],
       "sparkline": [
-        0.41,
         0.41,
         0.42,
         0.38,
@@ -62,6 +59,7 @@
         0.36,
         0.34,
         0.35,
+        0.45,
         0.45
       ]
     },
@@ -78,9 +76,9 @@
         },
         {
           "k": "10-year",
-          "v": "4.61%",
-          "d": "0.04%",
-          "dir": "down"
+          "v": "4.67%",
+          "d": "0.06%",
+          "dir": "up"
         }
       ],
       "sparkline": [
@@ -193,8 +191,8 @@
       "id": "cost-of-living",
       "title": "The Cost of Living",
       "accent": "#FBBF24",
-      "status": "elevated",
-      "headline_read": "Inflation is still hot \u2014 well above the Fed's target.",
+      "status": "watch",
+      "headline_read": "Inflation has cooled but isn't beaten \u2014 still above target.",
       "key_stats": [
         {
           "k": "CPI",

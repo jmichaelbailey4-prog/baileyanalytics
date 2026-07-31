@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-07-27T15:46:23Z",
+  "last_updated": "2026-07-31T08:36:43Z",
   "status": "ok",
   "lenses": [
     {
@@ -143,9 +143,9 @@
         },
         {
           "k": "Real sales",
-          "v": "1.30%",
-          "d": "0.40%",
-          "dir": "down"
+          "v": "2.30%",
+          "d": "0.70%",
+          "dir": "up"
         }
       ],
       "sparkline": [

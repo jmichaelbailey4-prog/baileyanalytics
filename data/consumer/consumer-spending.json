@@ -2,7 +2,7 @@
   "id": "consumer-spending",
   "title": "Consumer Spending",
   "accent": "#34D399",
-  "last_updated": "2026-07-16T15:07:29Z",
+  "last_updated": "2026-07-31T08:36:40Z",
   "status": "ok",
   "headline_read": "Consumers are still spending at a healthy pace.",
   "recessions": [
@@ -1124,10 +1124,6 @@
       "series_id": "PCEC96",
       "observations": [
         {
-          "date": "2006-06-01",
-          "value": "."
-        },
-        {
           "date": "2006-07-01",
           "value": "."
         },
@@ -1206,10 +1202,6 @@
         {
           "date": "2011-04-01",
           "value": "2.07360"
-        },
-        {
-          "date": "2011-05-01",
-          "value": "1.70217"
         },
         {
           "date": "2011-06-01",
@@ -1925,26 +1917,30 @@
         },
         {
           "date": "2026-04-01",
-          "value": "1.71886"
+          "value": "1.85202"
         },
         {
           "date": "2026-05-01",
-          "value": "2.12800"
+          "value": "2.39468"
+        },
+        {
+          "date": "2026-06-01",
+          "value": "2.54398"
         }
       ],
       "latest": {
-        "date": "2026-05-01",
-        "value": "2.12800"
+        "date": "2026-06-01",
+        "value": "2.54398"
       },
       "context": "Total household consumption adjusted for inflation \u2014 the cleanest read on whether people are actually buying more, or just paying more.",
-      "read": "Real consumer spending is up 2.1% from a year ago \u2014 a steady pace.",
+      "read": "Real consumer spending is up 2.5% from a year ago \u2014 a steady pace.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 41.6,
+        "p": 61.3,
         "since": 2008
       },
-      "scale_now": 2.128
+      "scale_now": 2.544
     },
     {
       "id": "auto-sales",
@@ -3224,42 +3220,42 @@
         },
         {
           "date": "2026-01-01",
-          "value": "14.987"
+          "value": "14.988"
         },
         {
           "date": "2026-02-01",
-          "value": "15.881"
+          "value": "15.883"
         },
         {
           "date": "2026-03-01",
-          "value": "16.676"
+          "value": "16.678"
         },
         {
           "date": "2026-04-01",
-          "value": "16.588"
+          "value": "16.605"
         },
         {
           "date": "2026-05-01",
-          "value": "16.506"
+          "value": "16.52"
         },
         {
           "date": "2026-06-01",
-          "value": "16.949"
+          "value": "17.037"
         }
       ],
       "latest": {
         "date": "2026-06-01",
-        "value": "16.949"
+        "value": "17.037"
       },
       "context": "Light-vehicle sales in millions at an annual rate \u2014 the classic big-ticket purchase. Households delay new cars first when budgets tighten.",
-      "read": "Vehicle sales are at 16.9 million a year \u2014 a healthy big-ticket pace.",
+      "read": "Vehicle sales are at 17.0 million a year \u2014 a healthy big-ticket pace.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 75.9,
+        "p": 78.1,
         "since": 1976
       },
-      "scale_now": 16.949
+      "scale_now": 17.037
     }
   ]
 }

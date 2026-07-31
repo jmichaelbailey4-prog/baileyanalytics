@@ -2,9 +2,9 @@
   "id": "market-risk-sentiment",
   "title": "Risk Sentiment",
   "accent": "#FB7185",
-  "last_updated": "2026-07-30T15:14:56Z",
-  "status": "ok",
-  "headline_read": "Markets are calm \u2014 volatility and credit stress are low.",
+  "last_updated": "2026-07-31T08:35:55Z",
+  "status": "watch",
+  "headline_read": "A few cracks are showing \u2014 sentiment is no longer all calm.",
   "recessions": [
     {
       "start": "1948-12-01",
@@ -65,8 +65,8 @@
       "series_id": "VIXCLS",
       "observations": [
         {
-          "date": "1990-02-28",
-          "value": "21.99"
+          "date": "1990-03-01",
+          "value": "21.90"
         },
         {
           "date": "1990-04-02",
@@ -413,8 +413,8 @@
           "value": "15.87"
         },
         {
-          "date": "2011-07-28",
-          "value": "23.74"
+          "date": "2011-07-29",
+          "value": "25.25"
         },
         {
           "date": "2011-08-01",
@@ -897,8 +897,8 @@
           "value": "15.48"
         },
         {
-          "date": "2021-07-28",
-          "value": "18.31"
+          "date": "2021-07-29",
+          "value": "17.7"
         },
         {
           "date": "2021-08-02",
@@ -3611,21 +3611,25 @@
         {
           "date": "2026-07-28",
           "value": "18.21"
+        },
+        {
+          "date": "2026-07-29",
+          "value": "20.66"
         }
       ],
       "latest": {
-        "date": "2026-07-28",
-        "value": "18.21"
+        "date": "2026-07-29",
+        "value": "20.66"
       },
       "context": "The market's 'fear gauge' \u2014 the expected volatility of the S&P 500 over the coming month. It spikes when investors are scared and falls when calm.",
-      "read": "The VIX is at 18.2 \u2014 markets are calm.",
-      "signal_status": "ok",
+      "read": "The VIX is at 20.7 \u2014 some nervousness, but not panic.",
+      "signal_status": "watch",
       "value_format": "decimal",
       "percentile": {
-        "p": 53.6,
+        "p": 66.2,
         "since": 1990
       },
-      "scale_now": 18.21
+      "scale_now": 20.66
     },
     {
       "id": "hy-spread",
