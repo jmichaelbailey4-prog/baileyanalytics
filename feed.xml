@@ -5,15 +5,15 @@
 <atom:link href="https://baileyanalytics.com/feed.xml" rel="self" type="application/rss+xml"/>
 <description>Daily plain-English status changes and movers across the Bailey Analytics economic dashboards.</description>
 <item>
-<title>Today's Brief — 1 alert · 6 elevated · 10 on watch</title>
+<title>Today's Brief — 1 alert · 6 elevated · 9 on watch</title>
 <link>https://baileyanalytics.com/dashboards/brief.html</link>
 <guid isPermaLink="false">brief-2026-07-31</guid>
 <pubDate>Fri, 31 Jul 2026 00:00:00 +0000</pubDate>
-<description>Risk Sentiment: ok → watch — A few cracks are showing — sentiment is no longer all calm.
-The Cost of Living: elevated → watch — Inflation has cooled but isn't beaten — still above target.
+<description>Risk Sentiment: watch → ok — Markets are calm — volatility and credit stress are low.
+Crypto Market Structure: BTC dominance 56.09% (▼0.52%)
 Natural Gas: Henry Hub $2.63 (▼$0.24)
-Asset-Class Scoreboard: S&amp;P 500 7,316 (▼113)
-Trade &amp; Supply Chain: Supply chain 1.25σ (▼0.56σ)</description>
+The Cost of Living: CPI 3.46% (▼0.70%)
+Asset-Class Scoreboard: S&amp;P 500 7,316 (▼113)</description>
 </item>
 <item>
 <title>Today's Brief — 1 alert · 7 elevated · 8 on watch</title>

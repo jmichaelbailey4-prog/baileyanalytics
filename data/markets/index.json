@@ -1,29 +1,28 @@
 {
-  "last_updated": "2026-07-31T08:36:22Z",
-  "status": "watch",
+  "last_updated": "2026-07-31T15:23:17Z",
+  "status": "ok",
   "lenses": [
     {
       "id": "market-risk-sentiment",
       "title": "Risk Sentiment",
       "accent": "#FB7185",
-      "status": "watch",
-      "headline_read": "A few cracks are showing \u2014 sentiment is no longer all calm.",
+      "status": "ok",
+      "headline_read": "Markets are calm \u2014 volatility and credit stress are low.",
       "key_stats": [
         {
           "k": "VIX",
-          "v": "20.66",
-          "d": "2.45",
-          "dir": "up"
+          "v": "17.09",
+          "d": "3.57",
+          "dir": "down"
         },
         {
           "k": "HY spread",
-          "v": "2.87%",
+          "v": "2.84%",
           "d": "0.03%",
-          "dir": "up"
+          "dir": "down"
         }
       ],
       "sparkline": [
-        15.4,
         21.51,
         18.92,
         19.87,
@@ -62,7 +61,8 @@
         18.58,
         18.67,
         18.21,
-        20.66
+        20.66,
+        17.09
       ]
     },
     {
@@ -200,14 +200,14 @@
       "key_stats": [
         {
           "k": "BTC dominance",
-          "v": "56.42%",
-          "d": "0.20%",
+          "v": "56.09%",
+          "d": "0.52%",
           "dir": "down"
         },
         {
           "k": "Alt rotation",
-          "v": "105.59",
-          "d": "1.39",
+          "v": "104.60",
+          "d": "2.44",
           "dir": "up"
         }
       ],
@@ -251,7 +251,7 @@
         56.35429898953313,
         56.603338976435346,
         56.615212894827884,
-        56.418947405893874
+        56.090859588273524
       ]
     }
   ]

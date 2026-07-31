@@ -2,7 +2,7 @@
   "id": "energy-natural-gas",
   "title": "Natural Gas",
   "accent": "#60A5FA",
-  "last_updated": "2026-07-30T15:15:41Z",
+  "last_updated": "2026-07-31T15:23:30Z",
   "status": "ok",
   "headline_read": "Natural gas costs are stable or easing.",
   "recessions": [
@@ -3715,10 +3715,6 @@
       "series_id": "N9070US2",
       "observations": [
         {
-          "date": "2006-05",
-          "value": "1555948"
-        },
-        {
           "date": "2006-06",
           "value": "1538715"
         },
@@ -4612,51 +4608,51 @@
         },
         {
           "date": "2025-01",
-          "value": "3232747"
+          "value": "3232733"
         },
         {
           "date": "2025-02",
-          "value": "2936341"
+          "value": "2936329"
         },
         {
           "date": "2025-03",
-          "value": "3326869"
+          "value": "3326508"
         },
         {
           "date": "2025-04",
-          "value": "3206970"
+          "value": "3205902"
         },
         {
           "date": "2025-05",
-          "value": "3302851"
+          "value": "3301713"
         },
         {
           "date": "2025-06",
-          "value": "3225903"
+          "value": "3224554"
         },
         {
           "date": "2025-07",
-          "value": "3349578"
+          "value": "3347968"
         },
         {
           "date": "2025-08",
-          "value": "3368151"
+          "value": "3368101"
         },
         {
           "date": "2025-09",
-          "value": "3248374"
+          "value": "3247818"
         },
         {
           "date": "2025-10",
-          "value": "3327295"
+          "value": "3327289"
         },
         {
           "date": "2025-11",
-          "value": "3308316"
+          "value": "3308307"
         },
         {
           "date": "2025-12",
-          "value": "3460493"
+          "value": "3460485"
         },
         {
           "date": "2026-01",
@@ -4664,27 +4660,31 @@
         },
         {
           "date": "2026-02",
-          "value": "3098708"
+          "value": "3098695"
         },
         {
           "date": "2026-03",
-          "value": "3434095"
+          "value": "3432839"
         },
         {
           "date": "2026-04",
-          "value": "3327661"
+          "value": "3327990"
+        },
+        {
+          "date": "2026-05",
+          "value": "3418479"
         }
       ],
       "latest": {
-        "date": "2026-04",
-        "value": "3327661"
+        "date": "2026-05",
+        "value": "3418479"
       },
       "context": "U.S. dry natural-gas production \u2014 record output has reshaped both home energy costs and the country's role as an exporter.",
-      "read": "Dry gas production is up 4% from a year ago, now 3,327,661.",
+      "read": "Dry gas production is up 4% from a year ago, now 3,418,479.",
       "signal_status": "info",
       "value_format": "thousands",
       "percentile": {
-        "p": 97.5,
+        "p": 98.8,
         "since": 2006
       },
       "no_severity_reason": "A physical supply-and-demand reading, not a household cost \u2014 this lens's verdict comes from the price indicators."
@@ -4697,10 +4697,6 @@
       "color": "#A78BFA",
       "series_id": "N9133US2",
       "observations": [
-        {
-          "date": "2006-05",
-          "value": "5589"
-        },
         {
           "date": "2006-06",
           "value": "5598"
@@ -5651,23 +5647,27 @@
         },
         {
           "date": "2026-03",
-          "value": "573479"
+          "value": "573089"
         },
         {
           "date": "2026-04",
           "value": "537936"
+        },
+        {
+          "date": "2026-05",
+          "value": "502812"
         }
       ],
       "latest": {
-        "date": "2026-04",
-        "value": "537936"
+        "date": "2026-05",
+        "value": "502812"
       },
       "context": "U.S. liquefied natural gas exports \u2014 a fast-growing link between domestic gas prices and global demand.",
-      "read": "LNG exports is up 20% from a year ago, now 537,936.",
+      "read": "LNG exports is up 16% from a year ago, now 502,812.",
       "signal_status": "info",
       "value_format": "thousands",
       "percentile": {
-        "p": 98.3,
+        "p": 97.1,
         "since": 2006
       },
       "no_severity_reason": "A physical supply-and-demand reading, not a household cost \u2014 this lens's verdict comes from the price indicators."

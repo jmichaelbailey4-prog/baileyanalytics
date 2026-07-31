@@ -2,7 +2,7 @@
   "id": "consumer-sentiment",
   "title": "Consumer Sentiment",
   "accent": "#38BDF8",
-  "last_updated": "2026-07-03T22:24:11Z",
+  "last_updated": "2026-07-31T15:23:38Z",
   "status": "alert",
   "headline_read": "Consumers are deeply pessimistic \u2014 sentiment is near record lows.",
   "recessions": [
@@ -1005,10 +1005,6 @@
           "value": "69.8"
         },
         {
-          "date": "2011-05-01",
-          "value": "74.3"
-        },
-        {
           "date": "2011-06-01",
           "value": "71.5"
         },
@@ -1727,21 +1723,25 @@
         {
           "date": "2026-05-01",
           "value": "44.8"
+        },
+        {
+          "date": "2026-06-01",
+          "value": "49.5"
         }
       ],
       "latest": {
-        "date": "2026-05-01",
-        "value": "44.8"
+        "date": "2026-06-01",
+        "value": "49.5"
       },
       "context": "The University of Michigan's monthly survey of how households feel about their finances and the economy. Its long-run range is roughly 50-110 \u2014 readings in the low 50s or below have historically marked the deepest gloom on record.",
-      "read": "Consumer sentiment is 45 \u2014 a record low; households have never been this pessimistic in the data shown.",
+      "read": "Consumer sentiment is 50 \u2014 near record lows; households are deeply pessimistic.",
       "signal_status": "alert",
       "value_format": "decimal",
       "percentile": {
-        "p": 0.0,
+        "p": 0.1,
         "since": 1952
       },
-      "scale_now": 44.8
+      "scale_now": 49.5
     },
     {
       "id": "inflation-expectations",
@@ -2286,10 +2286,6 @@
         {
           "date": "2011-04-01",
           "value": "4.6"
-        },
-        {
-          "date": "2011-05-01",
-          "value": "4.1"
         },
         {
           "date": "2011-06-01",
@@ -3010,21 +3006,25 @@
         {
           "date": "2026-05-01",
           "value": "4.8"
+        },
+        {
+          "date": "2026-06-01",
+          "value": "4.6"
         }
       ],
       "latest": {
-        "date": "2026-05-01",
-        "value": "4.8"
+        "date": "2026-06-01",
+        "value": "4.6"
       },
       "context": "What households expect inflation to be over the next year, from the same Michigan survey. The Fed watches this closely: once expectations de-anchor, inflation feeds on itself.",
-      "read": "Households expect 4.8% inflation next year \u2014 well above the Fed's comfort zone.",
+      "read": "Households expect 4.6% inflation next year \u2014 well above the Fed's comfort zone.",
       "signal_status": "elevated",
       "value_format": "decimal",
       "percentile": {
-        "p": 86.7,
+        "p": 83.0,
         "since": 1978
       },
-      "scale_now": 4.8
+      "scale_now": 4.6
     }
   ]
 }

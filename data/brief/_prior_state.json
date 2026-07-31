@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-07-31T08:37:21Z",
+  "captured_at": "2026-07-31T15:24:19Z",
   "statuses": {
     "recession-watch": "ok",
     "cost-of-money": "watch",
@@ -18,7 +18,7 @@
     "business-formation": "ok",
     "business-investment": "ok",
     "business-credit": "watch",
-    "market-risk-sentiment": "watch",
+    "market-risk-sentiment": "ok",
     "market-scoreboard": "neutral",
     "market-liquidity": "ok",
     "crypto-structure": "neutral",
