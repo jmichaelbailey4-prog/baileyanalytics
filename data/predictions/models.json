@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-02T07:58:59Z",
+  "generated_at": "2026-08-02T13:42:48Z",
   "indicators": {
     "economic/recession-watch/yield-curve": {
       "champion": "ets@1",
@@ -510,13 +510,13 @@
     },
     "markets/market-scoreboard/gold": {
       "champion": "ets@1",
-      "mae": 82.15402051790646,
-      "naive_mae": 83.66730769230774,
-      "snaive_mae": 1091.0471153846154,
+      "mae": 82.48931200816659,
+      "naive_mae": 83.86826923076927,
+      "snaive_mae": 1091.6038461538462,
       "err_lo": -147.50570192077612,
       "err_hi": 116.89590881349596,
       "n_origins": 104,
-      "skill": 0.9247016747861108,
+      "skill": 0.9244329228970664,
       "cadence": "daily",
       "season": 52,
       "explain": "this projects the recent level and trend forward one {period}"
