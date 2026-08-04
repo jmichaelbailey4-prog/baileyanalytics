@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-08-04T08:24:42Z",
+  "generated_at": "2026-08-04T15:28:23Z",
   "transitions": [
     {
-      "lens_id": "business-credit",
-      "lens_title": "Business Credit",
-      "category": "business",
-      "href": "/dashboards/business/credit.html",
-      "from_status": "watch",
-      "to_status": "ok",
-      "direction": "improving",
-      "headline": "Business credit is flowing \u2014 spreads and delinquencies are low."
+      "lens_id": "energy-oil-fuels",
+      "lens_title": "Oil & Fuels",
+      "category": "energy",
+      "href": "/dashboards/energy/oil-fuels.html",
+      "from_status": "elevated",
+      "to_status": "alert",
+      "direction": "worsening",
+      "headline": "Fuel costs are spiking \u2014 acute pressure at the pump."
     }
   ],
   "top_moves": [
@@ -244,6 +244,14 @@
       "headline": "The economy looks steady \u2014 no major recession signals right now."
     },
     {
+      "lens_id": "cost-of-money",
+      "lens_title": "The Cost of Money",
+      "category": "economic",
+      "href": "/dashboards/cost-of-money.html",
+      "status": "watch",
+      "headline": "Borrowing is still expensive \u2014 rates remain elevated."
+    },
+    {
       "lens_id": "job-market",
       "lens_title": "The Job Market",
       "category": "economic",
@@ -400,8 +408,8 @@
       "lens_title": "Oil & Fuels",
       "category": "energy",
       "href": "/dashboards/energy/oil-fuels.html",
-      "status": "elevated",
-      "headline": "Fuel costs are well above last year."
+      "status": "alert",
+      "headline": "Fuel costs are spiking \u2014 acute pressure at the pump."
     },
     {
       "lens_id": "energy-natural-gas",
@@ -494,46 +502,18 @@
   ],
   "status_counts": {
     "ok": 16,
-    "watch": 7,
-    "elevated": 6,
-    "alert": 1,
+    "watch": 8,
+    "elevated": 5,
+    "alert": 2,
     "neutral": 2
   },
   "verdict": {
     "status": "watch",
     "shape": "contained-pressure",
-    "sentence": "The economy is holding up, but not without strain: household finances are stretched thin, while banks are solid and markets are calm.",
+    "sentence": "The economy is holding up, but not without strain: household finances are stretched thin and energy and commodity costs are squeezing budgets, while banks are solid and markets are calm.",
     "short": "Holding up, but household finances are stretched thin."
   },
   "watching": [
-    {
-      "key": "energy/energy-oil-fuels/diesel",
-      "indicator": "diesel",
-      "lens": "energy-oil-fuels",
-      "category": "energy",
-      "title": "Retail Diesel \u00b7 On-Highway",
-      "lens_title": "Oil & Fuels",
-      "due": "2026-08-08",
-      "point_fmt": "$5.44",
-      "implied_status": "alert",
-      "current_status": "elevated",
-      "change": true,
-      "href": "/dashboards/energy/oil-fuels.html"
-    },
-    {
-      "key": "economic/job-market/job-openings",
-      "indicator": "job-openings",
-      "lens": "job-market",
-      "category": "economic",
-      "title": "Job Openings (JOLTS)",
-      "lens_title": "The Job Market",
-      "due": "2026-07-15",
-      "point_fmt": "7.60M",
-      "implied_status": "ok",
-      "current_status": "ok",
-      "change": false,
-      "href": "/dashboards/job-market.html"
-    },
     {
       "key": "consumer/consumer-credit/revolving-credit",
       "indicator": "revolving-credit",
@@ -547,6 +527,34 @@
       "current_status": "ok",
       "change": false,
       "href": "/dashboards/consumer/credit-stress.html"
+    },
+    {
+      "key": "energy/energy-electricity/electricity-price",
+      "indicator": "electricity-price",
+      "lens": "energy-electricity",
+      "category": "energy",
+      "title": "Retail Electricity \u00b7 Residential",
+      "lens_title": "Electricity & the Grid",
+      "due": "2026-07-15",
+      "point_fmt": "18.73\u00a2/kWh",
+      "implied_status": "watch",
+      "current_status": "watch",
+      "change": false,
+      "href": "/dashboards/energy/electricity.html"
+    },
+    {
+      "key": "housing/housing-home-prices/case-shiller",
+      "indicator": "case-shiller",
+      "lens": "housing-home-prices",
+      "category": "housing",
+      "title": "Case-Shiller Home Prices \u00b7 year-over-year",
+      "lens_title": "Home-Price Stability",
+      "due": "2026-07-15",
+      "point_fmt": "1.28%",
+      "implied_status": "ok",
+      "current_status": "ok",
+      "change": false,
+      "href": "/dashboards/housing/home-prices.html"
     }
   ],
   "pressure": [
@@ -557,6 +565,14 @@
       "href": "/dashboards/consumer/sentiment.html",
       "status": "alert",
       "headline": "Consumers are deeply pessimistic \u2014 sentiment is near record lows."
+    },
+    {
+      "lens_id": "energy-oil-fuels",
+      "lens_title": "Oil & Fuels",
+      "category": "energy",
+      "href": "/dashboards/energy/oil-fuels.html",
+      "status": "alert",
+      "headline": "Fuel costs are spiking \u2014 acute pressure at the pump."
     },
     {
       "lens_id": "fiscal-health",
@@ -573,14 +589,6 @@
       "href": "/dashboards/consumer/income-savings.html",
       "status": "elevated",
       "headline": "Household cushions are thin \u2014 savings or real incomes are stretched."
-    },
-    {
-      "lens_id": "energy-oil-fuels",
-      "lens_title": "Oil & Fuels",
-      "category": "energy",
-      "href": "/dashboards/energy/oil-fuels.html",
-      "status": "elevated",
-      "headline": "Fuel costs are well above last year."
     },
     {
       "lens_id": "housing-affordability",
@@ -605,6 +613,14 @@
       "href": "/dashboards/global/uncertainty.html",
       "status": "elevated",
       "headline": "Policy uncertainty is high \u2014 what governments do next is a major source of risk."
+    },
+    {
+      "lens_id": "cost-of-money",
+      "lens_title": "The Cost of Money",
+      "category": "economic",
+      "href": "/dashboards/cost-of-money.html",
+      "status": "watch",
+      "headline": "Borrowing is still expensive \u2014 rates remain elevated."
     },
     {
       "lens_id": "job-market",
@@ -702,9 +718,9 @@
     {
       "category": "energy",
       "title": "Energy & Commodities",
-      "status": "watch",
+      "status": "elevated",
       "href": "/dashboards/energy/",
-      "sentence": "Energy costs bear watching \u2014 some prices are drifting the wrong way."
+      "sentence": "Energy and commodity costs are squeezing budgets."
     },
     {
       "category": "housing",
