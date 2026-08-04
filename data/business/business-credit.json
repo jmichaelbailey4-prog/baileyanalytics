@@ -2,9 +2,9 @@
   "id": "business-credit",
   "title": "Business Credit",
   "accent": "#F87171",
-  "last_updated": "2026-07-18T07:29:34Z",
-  "status": "watch",
-  "headline_read": "Business credit bears watching \u2014 conditions are tightening at the margin.",
+  "last_updated": "2026-08-04T08:23:59Z",
+  "status": "ok",
+  "headline_read": "Business credit is flowing \u2014 spreads and delinquencies are low.",
   "recessions": [
     {
       "start": "1948-12-01",
@@ -997,10 +997,6 @@
           "value": "2.56"
         },
         {
-          "date": "2011-06-01",
-          "value": "2.75"
-        },
-        {
           "date": "2011-07-01",
           "value": "2.76"
         },
@@ -1719,21 +1715,25 @@
         {
           "date": "2026-06-01",
           "value": "1.53"
+        },
+        {
+          "date": "2026-07-01",
+          "value": "1.59"
         }
       ],
       "latest": {
-        "date": "2026-06-01",
-        "value": "1.53"
+        "date": "2026-07-01",
+        "value": "1.59"
       },
       "context": "The extra yield investors demand to hold Moody's Baa-rated corporate bonds over 10-year Treasuries \u2014 the price of ordinary corporate credit risk, with history back to 1953. 2008 peaked near 6 points. (A different index family from the ICE BofA spreads on the Markets risk lens.)",
-      "read": "The Baa spread is 1.53 points \u2014 corporate credit is priced calm.",
+      "read": "The Baa spread is 1.59 points \u2014 corporate credit is priced calm.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 31.3,
+        "p": 34.7,
         "since": 1953
       },
-      "scale_now": 1.53
+      "scale_now": 1.59
     },
     {
       "id": "lending-standards",
@@ -2322,21 +2322,25 @@
         {
           "date": "2026-04-01",
           "value": "8.1"
+        },
+        {
+          "date": "2026-07-01",
+          "value": "0.0000000000"
         }
       ],
       "latest": {
-        "date": "2026-04-01",
-        "value": "8.1"
+        "date": "2026-07-01",
+        "value": "0.0000000000"
       },
       "context": "From the Fed's quarterly loan-officer survey: the share of banks tightening standards on commercial & industrial loans minus the share easing. Sustained tightening above ~20% has preceded every modern recession.",
-      "read": "A net 8% of banks are tightening business-loan standards \u2014 mild tightening.",
-      "signal_status": "watch",
+      "read": "Banks are neither tightening nor easing business-loan standards on balance.",
+      "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 64.8,
+        "p": 46.6,
         "since": 1990
       },
-      "scale_now": 8.1
+      "scale_now": 0.0
     },
     {
       "id": "delinquency",

@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-07-31T08:36:43Z",
+  "last_updated": "2026-08-04T08:23:59Z",
   "status": "ok",
   "lenses": [
     {
@@ -195,24 +195,23 @@
       "id": "business-credit",
       "title": "Business Credit",
       "accent": "#F87171",
-      "status": "watch",
-      "headline_read": "Business credit bears watching \u2014 conditions are tightening at the margin.",
+      "status": "ok",
+      "headline_read": "Business credit is flowing \u2014 spreads and delinquencies are low.",
       "key_stats": [
         {
           "k": "Baa spread",
-          "v": "1.53%",
-          "d": "0.09%",
-          "dir": "down"
+          "v": "1.59%",
+          "d": "0.06%",
+          "dir": "up"
         },
         {
           "k": "Standards",
-          "v": "8.10%",
-          "d": "2.80%",
-          "dir": "up"
+          "v": "0.00%",
+          "d": "8.10%",
+          "dir": "down"
         }
       ],
       "sparkline": [
-        2.05,
         2.07,
         2.2,
         2.0,
@@ -251,7 +250,8 @@
         1.79,
         1.71,
         1.62,
-        1.53
+        1.53,
+        1.59
       ]
     }
   ]

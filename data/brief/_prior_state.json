@@ -1,8 +1,7 @@
 {
-  "captured_at": "2026-07-31T15:24:19Z",
+  "captured_at": "2026-08-04T08:24:42Z",
   "statuses": {
     "recession-watch": "ok",
-    "cost-of-money": "watch",
     "job-market": "watch",
     "cost-of-living": "watch",
     "fiscal-health": "elevated",
@@ -17,7 +16,7 @@
     "business-profitability": "ok",
     "business-formation": "ok",
     "business-investment": "ok",
-    "business-credit": "watch",
+    "business-credit": "ok",
     "market-risk-sentiment": "ok",
     "market-scoreboard": "neutral",
     "market-liquidity": "ok",
