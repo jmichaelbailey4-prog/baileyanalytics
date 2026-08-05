@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-04T15:28:23Z",
+  "generated_at": "2026-08-05T15:19:10Z",
   "last": {
     "business/business-credit/ci-loan-growth": {
       "id": "business/business-credit/ci-loan-growth@2026-06-01",
@@ -550,24 +550,24 @@
       "now_date": "2026-07-24"
     },
     "markets/market-risk-sentiment/nfci": {
-      "id": "markets/market-risk-sentiment/nfci@2026-07-24",
+      "id": "markets/market-risk-sentiment/nfci@2026-07-31",
       "key": "markets/market-risk-sentiment/nfci",
       "category": "markets",
       "lens": "market-risk-sentiment",
       "indicator": "nfci",
       "series_id": "NFCI",
       "horizon": "next-print",
-      "target_period": "2026-07-24",
-      "due": "2026-07-29",
-      "made_at": "2026-07-22T15:09:06Z",
+      "target_period": "2026-07-31",
+      "due": "2026-08-05",
+      "made_at": "2026-07-29T15:11:55Z",
       "model": "ets-seasonal@1",
-      "point": -0.5635,
-      "lo": -0.5669,
-      "hi": -0.5607,
+      "point": -0.5628,
+      "lo": -0.5662,
+      "hi": -0.56,
       "unit": "",
       "value_format": "decimal",
-      "prev_value": -0.552,
-      "why": "NFCI: down 6 straight weeks. This projects the recent trend with the usual seasonal pattern for the week.",
+      "prev_value": -0.554,
+      "why": "NFCI: down 7 straight weeks. This projects the recent trend with the usual seasonal pattern for the week.",
       "implied_status": "ok",
       "current_status": "ok",
       "descriptive": false,
@@ -577,16 +577,16 @@
       "lens_title": "Risk Sentiment",
       "href": "/dashboards/markets/risk-sentiment.html",
       "grade": {
-        "actual": -0.554,
-        "graded_at": "2026-07-29T15:11:54Z",
+        "actual": -0.529,
+        "graded_at": "2026-08-05T15:18:49Z",
         "hit": false,
-        "abs_error": 0.009499999999999953,
-        "direction_hit": true,
+        "abs_error": 0.03379999999999994,
+        "direction_hit": false,
         "status_hit": true,
-        "naive_error": 0.0020000000000000018,
+        "naive_error": 0.025000000000000022,
         "revised_to": null
       },
-      "prev_period": "2026-07-17"
+      "prev_period": "2026-07-24"
     },
     "consumer/consumer-spending/retail-sales": {
       "id": "consumer/consumer-spending/retail-sales@2026-06-01",
@@ -3371,6 +3371,45 @@
   },
   "feed": [
     {
+      "id": "markets/market-risk-sentiment/nfci@2026-07-31",
+      "key": "markets/market-risk-sentiment/nfci",
+      "category": "markets",
+      "lens": "market-risk-sentiment",
+      "indicator": "nfci",
+      "series_id": "NFCI",
+      "horizon": "next-print",
+      "target_period": "2026-07-31",
+      "due": "2026-08-05",
+      "made_at": "2026-07-29T15:11:55Z",
+      "model": "ets-seasonal@1",
+      "point": -0.5628,
+      "lo": -0.5662,
+      "hi": -0.56,
+      "unit": "",
+      "value_format": "decimal",
+      "prev_value": -0.554,
+      "why": "NFCI: down 7 straight weeks. This projects the recent trend with the usual seasonal pattern for the week.",
+      "implied_status": "ok",
+      "current_status": "ok",
+      "descriptive": false,
+      "market_price": false,
+      "title": "Financial Conditions \u00b7 NFCI",
+      "short": "NFCI",
+      "lens_title": "Risk Sentiment",
+      "href": "/dashboards/markets/risk-sentiment.html",
+      "grade": {
+        "actual": -0.529,
+        "graded_at": "2026-08-05T15:18:49Z",
+        "hit": false,
+        "abs_error": 0.03379999999999994,
+        "direction_hit": false,
+        "status_hit": true,
+        "naive_error": 0.025000000000000022,
+        "revised_to": null
+      },
+      "prev_period": "2026-07-24"
+    },
+    {
       "id": "global/global-trade-supply/trade-balance@2026-06-01",
       "key": "global/global-trade-supply/trade-balance",
       "category": "global",
@@ -5206,7 +5245,7 @@
         "direction_hit": true,
         "status_hit": true,
         "naive_error": 0.0020000000000000018,
-        "revised_to": null
+        "revised_to": -0.53
       },
       "prev_period": "2026-07-17"
     },
@@ -5285,44 +5324,6 @@
         "status_hit": true,
         "naive_error": 0.054549999999999876,
         "revised_to": null
-      }
-    },
-    {
-      "id": "business/business-investment/core-capex@2026-06-01",
-      "key": "business/business-investment/core-capex",
-      "category": "business",
-      "lens": "business-investment",
-      "indicator": "core-capex",
-      "series_id": "NEWORDER",
-      "horizon": "next-print",
-      "target_period": "2026-06-01",
-      "due": "2026-07-15",
-      "made_at": "2026-06-25T19:33:12Z",
-      "model": "naive@1",
-      "point": 10.5,
-      "lo": 7.95,
-      "hi": 13.2,
-      "unit": "%",
-      "value_format": "decimal",
-      "prev_value": 10.5,
-      "why": "We expect roughly the last value \u2014 this series rarely rewards cleverness.",
-      "implied_status": "ok",
-      "current_status": "ok",
-      "descriptive": false,
-      "market_price": false,
-      "title": "Core Capital-Goods Orders \u00b7 year-over-year",
-      "short": "Core capex",
-      "lens_title": "Business Investment",
-      "href": "/dashboards/business/investment.html",
-      "grade": {
-        "actual": 12.5,
-        "graded_at": "2026-07-28T15:25:37Z",
-        "hit": true,
-        "abs_error": 2.0,
-        "direction_hit": false,
-        "status_hit": true,
-        "naive_error": 2.0,
-        "revised_to": 12.9
       }
     }
   ]
