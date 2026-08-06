@@ -2,7 +2,7 @@
   "id": "global-uncertainty",
   "title": "Uncertainty & Risk",
   "accent": "#A78BFA",
-  "last_updated": "2026-08-06T08:17:32Z",
+  "last_updated": "2026-08-06T15:18:38Z",
   "status": "elevated",
   "headline_read": "Policy uncertainty is high \u2014 what governments do next is a major source of risk.",
   "recessions": [
@@ -6130,30 +6130,26 @@
         },
         {
           "date": "2026-05",
-          "value": "328.46"
+          "value": "329.08"
         },
         {
           "date": "2026-06",
-          "value": "269.79"
-        },
-        {
-          "date": "2026-07",
-          "value": "219.32"
+          "value": "243.73"
         }
       ],
       "latest": {
-        "date": "2026-07",
-        "value": "219.32"
+        "date": "2026-06",
+        "value": "243.73"
       },
       "context": "The Baker/Bloom/Davis index of U.S. economic policy uncertainty, built by counting newspaper coverage of policy-driven economic uncertainty. The long-run norm is about 100; it spikes around elections, debt-ceiling standoffs, trade wars, and crises.",
-      "read": "U.S. policy uncertainty is at 219 \u2014 far above its long-run norm of about 100.",
+      "read": "U.S. policy uncertainty is at 244 \u2014 far above its long-run norm of about 100.",
       "signal_status": "elevated",
       "value_format": "thousands",
       "percentile": {
-        "p": 97.0,
+        "p": 97.8,
         "since": 1900
       },
-      "scale_now": 219.32
+      "scale_now": 243.73
     },
     {
       "id": "gepu",
