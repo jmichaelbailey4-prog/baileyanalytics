@@ -1,6 +1,17 @@
 {
-  "generated_at": "2026-08-07T07:03:58Z",
-  "transitions": [],
+  "generated_at": "2026-08-07T14:18:07Z",
+  "transitions": [
+    {
+      "lens_id": "job-market",
+      "lens_title": "The Job Market",
+      "category": "economic",
+      "href": "/dashboards/job-market.html",
+      "from_status": "watch",
+      "to_status": "alert",
+      "direction": "worsening",
+      "headline": "The job market is contracting \u2014 employers are cutting jobs."
+    }
+  ],
   "top_moves": [
     {
       "lens_id": "energy-natural-gas",
@@ -221,64 +232,17 @@
       "delta": "15.60%",
       "dir": "up",
       "why": ""
-    },
-    {
-      "lens_id": "global-trade-supply",
-      "lens_title": "Trade & Supply Chain",
-      "category": "global",
-      "href": "/dashboards/global/trade-supply.html",
-      "headline": "Trade frictions are building \u2014 supply chains or import costs bear watching.",
-      "accent": "#FBBF24",
-      "sparkline": [
-        -1.33,
-        -1.59,
-        -1.11,
-        -0.92,
-        -1.1,
-        -0.66,
-        -0.39,
-        0.19,
-        -0.15,
-        -0.35,
-        -0.19,
-        -0.36,
-        -0.97,
-        -0.58,
-        -0.35,
-        -0.04,
-        0.23,
-        0.12,
-        -0.38,
-        -0.31,
-        -0.29,
-        -0.2,
-        -0.01,
-        -0.2,
-        -0.24,
-        0.29,
-        0.09,
-        0.02,
-        -0.08,
-        -0.02,
-        -0.08,
-        -0.13,
-        0.58,
-        0.47,
-        0.58,
-        0.68,
-        1.84,
-        1.81,
-        1.19,
-        0.79
-      ],
-      "stat_label": "Supply chain",
-      "stat_value": "0.79\u03c3",
-      "delta": "0.40\u03c3",
-      "dir": "down",
-      "why": "Supply chain: down 3 readings in a row."
     }
   ],
   "lenses": [
+    {
+      "lens_id": "recession-watch",
+      "lens_title": "Recession Watch",
+      "category": "economic",
+      "href": "/dashboards/recession-watch.html",
+      "status": "ok",
+      "headline": "The economy looks steady \u2014 no major recession signals right now."
+    },
     {
       "lens_id": "cost-of-money",
       "lens_title": "The Cost of Money",
@@ -292,8 +256,8 @@
       "lens_title": "The Job Market",
       "category": "economic",
       "href": "/dashboards/job-market.html",
-      "status": "watch",
-      "headline": "The job market is cooling \u2014 still solid, but losing momentum."
+      "status": "alert",
+      "headline": "The job market is contracting \u2014 employers are cutting jobs."
     },
     {
       "lens_id": "cost-of-living",
@@ -537,16 +501,16 @@
     }
   ],
   "status_counts": {
-    "ok": 15,
-    "watch": 8,
+    "ok": 16,
+    "watch": 7,
     "elevated": 5,
-    "alert": 2,
+    "alert": 3,
     "neutral": 2
   },
   "verdict": {
     "status": "watch",
     "shape": "contained-pressure",
-    "sentence": "Most of the economy is on solid footing \u2014 banks are solid and markets are calm \u2014 but household finances are stretched thin and energy and commodity costs are squeezing budgets.",
+    "sentence": "Most of the economy is on solid footing \u2014 banks are solid and markets are calm \u2014 but household finances are stretched thin and the core economy is under real strain.",
     "short": "Holding up, but household finances are stretched thin."
   },
   "watching": [
@@ -594,6 +558,14 @@
     }
   ],
   "pressure": [
+    {
+      "lens_id": "job-market",
+      "lens_title": "The Job Market",
+      "category": "economic",
+      "href": "/dashboards/job-market.html",
+      "status": "alert",
+      "headline": "The job market is contracting \u2014 employers are cutting jobs."
+    },
     {
       "lens_id": "consumer-sentiment",
       "lens_title": "Consumer Sentiment",
@@ -659,14 +631,6 @@
       "headline": "Borrowing is still expensive \u2014 rates remain elevated."
     },
     {
-      "lens_id": "job-market",
-      "lens_title": "The Job Market",
-      "category": "economic",
-      "href": "/dashboards/job-market.html",
-      "status": "watch",
-      "headline": "The job market is cooling \u2014 still solid, but losing momentum."
-    },
-    {
       "lens_id": "cost-of-living",
       "lens_title": "The Cost of Living",
       "category": "economic",
@@ -719,9 +683,9 @@
     {
       "category": "economic",
       "title": "Economic Lenses",
-      "status": "watch",
+      "status": "elevated",
       "href": "/dashboards/economic/",
-      "sentence": "Mostly steady \u2014 a corner or two of the economy runs hot."
+      "sentence": "The core economy is under real strain."
     },
     {
       "category": "consumer",

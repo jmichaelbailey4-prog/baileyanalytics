@@ -1,7 +1,70 @@
 {
-  "last_updated": "2026-08-07T07:02:12Z",
-  "status": "watch",
+  "last_updated": "2026-08-07T14:14:57Z",
+  "status": "elevated",
   "lenses": [
+    {
+      "id": "recession-watch",
+      "title": "Recession Watch",
+      "accent": "#F87171",
+      "status": "ok",
+      "headline_read": "The economy looks steady \u2014 no major recession signals right now.",
+      "key_stats": [
+        {
+          "k": "Yield curve",
+          "v": "0.44%",
+          "d": "0.01%",
+          "dir": "down"
+        },
+        {
+          "k": "Sahm rule",
+          "v": "-0.03",
+          "d": "0.10",
+          "dir": "down"
+        }
+      ],
+      "sparkline": [
+        0.42,
+        0.4,
+        0.39,
+        0.4,
+        0.38,
+        0.29,
+        0.27,
+        0.27,
+        0.34,
+        0.3,
+        0.31,
+        0.31,
+        0.28,
+        0.3,
+        0.31,
+        0.35,
+        0.35,
+        0.36,
+        0.35,
+        0.38,
+        0.35,
+        0.36,
+        0.4,
+        0.42,
+        0.41,
+        0.37,
+        0.39,
+        0.37,
+        0.36,
+        0.34,
+        0.36,
+        0.34,
+        0.35,
+        0.45,
+        0.45,
+        0.47,
+        0.45,
+        0.43,
+        0.45,
+        0.44
+      ]
+    },
     {
       "id": "cost-of-money",
       "title": "The Cost of Money",
@@ -65,24 +128,23 @@
       "id": "job-market",
       "title": "The Job Market",
       "accent": "#38BDF8",
-      "status": "watch",
-      "headline_read": "The job market is cooling \u2014 still solid, but losing momentum.",
+      "status": "alert",
+      "headline_read": "The job market is contracting \u2014 employers are cutting jobs.",
       "key_stats": [
         {
           "k": "Unemployment",
-          "v": "4.20%",
+          "v": "4.10%",
           "d": "0.10%",
           "dir": "down"
         },
         {
           "k": "Payrolls",
-          "v": "57,000",
-          "d": "72,000",
+          "v": "-23,000",
+          "d": "43,000",
           "dir": "down"
         }
       ],
       "sparkline": [
-        3.6,
         3.5,
         3.4,
         3.6,
@@ -121,7 +183,8 @@
         4.3,
         4.3,
         4.3,
-        4.2
+        4.2,
+        4.1
       ]
     },
     {

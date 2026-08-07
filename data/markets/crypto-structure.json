@@ -2,7 +2,7 @@
   "id": "crypto-structure",
   "title": "Crypto Market Structure",
   "accent": "#818CF8",
-  "last_updated": "2026-08-07T07:02:48Z",
+  "last_updated": "2026-08-07T14:15:56Z",
   "status": "neutral",
   "headline_read": "How capital is rotating across the crypto market.",
   "recessions": [],
@@ -260,12 +260,12 @@
         },
         {
           "date": "2026-08-07",
-          "value": 56.626153091062605
+          "value": 56.699277706948045
         }
       ],
       "latest": {
         "date": "2026-08-07",
-        "value": 56.626153091062605
+        "value": 56.699277706948045
       },
       "context": "Bitcoin's share of total cryptocurrency market value. A rising share signals caution; a falling share signals risk appetite. History accumulates daily.",
       "read": "Bitcoin is 57% of total crypto market value.",
@@ -1983,12 +1983,12 @@
         },
         {
           "date": "2026-08-07",
-          "value": 127.36
+          "value": 127.43
         }
       ],
       "latest": {
         "date": "2026-08-07",
-        "value": 127.36
+        "value": 127.43
       },
       "context": "Small- and mid-cap coins' market value relative to Bitcoin and Ether, indexed to 100 at the start of the window. Rising means alts are outperforming (risk-on); falling means a flight to the majors.",
       "read": "Small- and mid-cap coins are outperforming Bitcoin and Ether \u2014 a risk-on rotation into alts.",
