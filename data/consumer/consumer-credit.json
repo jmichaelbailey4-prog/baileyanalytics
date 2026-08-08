@@ -2,7 +2,7 @@
   "id": "consumer-credit",
   "title": "Consumer Credit Stress",
   "accent": "#F87171",
-  "last_updated": "2026-07-09T09:28:31Z",
+  "last_updated": "2026-08-08T06:36:19Z",
   "status": "watch",
   "headline_read": "Consumer credit bears watching \u2014 debt loads are creeping up.",
   "recessions": [
@@ -1999,10 +1999,6 @@
           "value": "-6.95701"
         },
         {
-          "date": "2011-05-01",
-          "value": "-5.67471"
-        },
-        {
           "date": "2011-06-01",
           "value": "-4.65139"
         },
@@ -2572,11 +2568,11 @@
         },
         {
           "date": "2023-04-01",
-          "value": "12.96042"
+          "value": "12.96046"
         },
         {
           "date": "2023-05-01",
-          "value": "12.78702"
+          "value": "12.78700"
         },
         {
           "date": "2023-06-01",
@@ -2584,11 +2580,11 @@
         },
         {
           "date": "2023-07-01",
-          "value": "11.13927"
+          "value": "11.13869"
         },
         {
           "date": "2023-08-01",
-          "value": "11.08184"
+          "value": "11.08171"
         },
         {
           "date": "2023-09-01",
@@ -2596,47 +2592,47 @@
         },
         {
           "date": "2023-10-01",
-          "value": "9.84324"
+          "value": "9.84332"
         },
         {
           "date": "2023-11-01",
-          "value": "9.94155"
+          "value": "9.94140"
         },
         {
           "date": "2023-12-01",
-          "value": "8.90681"
+          "value": "8.90682"
         },
         {
           "date": "2024-01-01",
-          "value": "9.04304"
+          "value": "9.04377"
         },
         {
           "date": "2024-02-01",
-          "value": "9.53005"
+          "value": "9.53040"
         },
         {
           "date": "2024-03-01",
-          "value": "8.18864"
+          "value": "8.18865"
         },
         {
           "date": "2024-04-01",
-          "value": "7.32954"
+          "value": "7.32996"
         },
         {
           "date": "2024-05-01",
-          "value": "7.25142"
+          "value": "7.25152"
         },
         {
           "date": "2024-06-01",
-          "value": "6.67257"
+          "value": "6.67256"
         },
         {
           "date": "2024-07-01",
-          "value": "6.50833"
+          "value": "6.50888"
         },
         {
           "date": "2024-08-01",
-          "value": "5.37615"
+          "value": "5.37627"
         },
         {
           "date": "2024-09-01",
@@ -2644,35 +2640,35 @@
         },
         {
           "date": "2024-10-01",
-          "value": "5.46448"
+          "value": "5.46440"
         },
         {
           "date": "2024-11-01",
-          "value": "3.11194"
+          "value": "3.11208"
         },
         {
           "date": "2024-12-01",
-          "value": "-0.14630"
+          "value": "-0.14631"
         },
         {
           "date": "2025-01-01",
-          "value": "-0.48681"
+          "value": "-0.49103"
         },
         {
           "date": "2025-02-01",
-          "value": "-1.15107"
+          "value": "-1.15842"
         },
         {
           "date": "2025-03-01",
-          "value": "-2.12867"
+          "value": "-2.12868"
         },
         {
           "date": "2025-04-01",
-          "value": "-1.79564"
+          "value": "-1.77465"
         },
         {
           "date": "2025-05-01",
-          "value": "-2.37080"
+          "value": "-2.33313"
         },
         {
           "date": "2025-06-01",
@@ -2680,11 +2676,11 @@
         },
         {
           "date": "2025-07-01",
-          "value": "-2.02864"
+          "value": "-2.03391"
         },
         {
           "date": "2025-08-01",
-          "value": "-2.38940"
+          "value": "-2.37824"
         },
         {
           "date": "2025-09-01",
@@ -2692,11 +2688,11 @@
         },
         {
           "date": "2025-10-01",
-          "value": "-2.59333"
+          "value": "-2.61424"
         },
         {
           "date": "2025-11-01",
-          "value": "-1.89963"
+          "value": "-1.91897"
         },
         {
           "date": "2025-12-01",
@@ -2704,11 +2700,11 @@
         },
         {
           "date": "2026-01-01",
-          "value": "1.85507"
+          "value": "1.85477"
         },
         {
           "date": "2026-02-01",
-          "value": "1.76321"
+          "value": "1.76544"
         },
         {
           "date": "2026-03-01",
@@ -2716,26 +2712,30 @@
         },
         {
           "date": "2026-04-01",
-          "value": "3.87770"
+          "value": "3.86474"
         },
         {
           "date": "2026-05-01",
-          "value": "3.42268"
+          "value": "3.39202"
+        },
+        {
+          "date": "2026-06-01",
+          "value": "3.78930"
         }
       ],
       "latest": {
-        "date": "2026-05-01",
-        "value": "3.42268"
+        "date": "2026-06-01",
+        "value": "3.78930"
       },
       "context": "How fast revolving credit (mostly credit cards) is growing. Balances growing much faster than incomes mean households are borrowing to keep up.",
-      "read": "Card balances are growing 3.4% a year \u2014 a sustainable pace.",
+      "read": "Card balances are growing 3.8% a year \u2014 a sustainable pace.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 21.9,
+        "p": 24.1,
         "since": 1969
       },
-      "scale_now": 3.4227
+      "scale_now": 3.7893
     },
     {
       "id": "debt-service",
