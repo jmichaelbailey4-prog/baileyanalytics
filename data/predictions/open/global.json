@@ -304,24 +304,24 @@
       "prev_period": "2026-07"
     },
     {
-      "id": "global/global-uncertainty/gepu@2026-07",
+      "id": "global/global-uncertainty/gepu@2026-08",
       "key": "global/global-uncertainty/gepu",
       "category": "global",
       "lens": "global-uncertainty",
       "indicator": "gepu",
       "series_id": "GEPU",
       "horizon": "next-print",
-      "target_period": "2026-07",
-      "due": "2026-08-15",
-      "made_at": "2026-07-08T15:26:43Z",
+      "target_period": "2026-08",
+      "due": "2026-09-15",
+      "made_at": "2026-08-09T06:40:44Z",
       "model": "ets-seasonal@1",
-      "point": 313.035,
-      "lo": 258.9891,
-      "hi": 378.1683,
+      "point": 230.6229,
+      "lo": 176.7066,
+      "hi": 295.8736,
       "unit": "",
       "value_format": "thousands",
-      "prev_value": 278.23,
-      "why": "Global uncertainty: down 3 straight months. This projects the recent trend with the usual seasonal pattern for the month.",
+      "prev_value": 241.69,
+      "why": "Global uncertainty: down 4 straight months. This projects the recent trend with the usual seasonal pattern for the month.",
       "implied_status": "watch",
       "current_status": "watch",
       "descriptive": false,
@@ -331,7 +331,7 @@
       "lens_title": "Uncertainty & Risk",
       "href": "/dashboards/global/uncertainty.html",
       "grade": null,
-      "prev_period": "2026-06"
+      "prev_period": "2026-07"
     }
   ]
 }

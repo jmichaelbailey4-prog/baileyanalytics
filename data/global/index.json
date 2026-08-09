@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-08-07T07:03:22Z",
+  "last_updated": "2026-08-09T06:40:21Z",
   "status": "watch",
   "lenses": [
     {
@@ -206,8 +206,8 @@
         },
         {
           "k": "Global uncertainty",
-          "v": "278",
-          "d": "43",
+          "v": "242",
+          "d": "41",
           "dir": "down"
         }
       ],
