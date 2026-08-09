@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-09T06:13:46Z",
+  "generated_at": "2026-08-09T13:13:00Z",
   "indicators": {
     "economic/recession-watch/yield-curve": {
       "champion": "ets@1",
@@ -612,6 +612,19 @@
       "season": 12,
       "explain": "we expect roughly the last value \u2014 this series rarely rewards cleverness"
     },
+    "consumer/consumer-spending/real-spending": {
+      "champion": "naive@1",
+      "mae": 1.1547761458333332,
+      "naive_mae": 1.1547761458333332,
+      "snaive_mae": 3.9065935416666666,
+      "err_lo": -1.0134500000000002,
+      "err_hi": 0.71916,
+      "n_origins": 96,
+      "skill": 0.7044033034108094,
+      "cadence": "monthly",
+      "season": 12,
+      "explain": "we expect roughly the last value \u2014 this series rarely rewards cleverness"
+    },
     "consumer/consumer-spending/auto-sales": {
       "champion": "naive@1",
       "mae": 0.6730729166666668,
@@ -624,6 +637,19 @@
       "cadence": "monthly",
       "season": 12,
       "explain": "we expect roughly the last value \u2014 this series rarely rewards cleverness"
+    },
+    "consumer/consumer-credit/card-delinquency": {
+      "champion": "ets@1",
+      "mae": 0.08884628881350662,
+      "naive_mae": 0.11125000000000002,
+      "snaive_mae": 0.3671875,
+      "err_lo": -0.17584740483025588,
+      "err_hi": 0.13399291787636597,
+      "n_origins": 32,
+      "skill": 0.7580356389759819,
+      "cadence": "quarterly",
+      "season": 4,
+      "explain": "this projects the recent level and trend forward one {period}"
     },
     "consumer/consumer-credit/consumer-delinquency": {
       "champion": "ets-seasonal@1",
@@ -1212,13 +1238,13 @@
     },
     "global/global-uncertainty/gepu": {
       "champion": "ets-seasonal@1",
-      "mae": 38.86451223206173,
-      "naive_mae": 42.66822916666666,
-      "snaive_mae": 84.38166666666666,
-      "err_lo": -53.91633258047173,
-      "err_hi": 65.25065461780332,
+      "mae": 39.26645046340506,
+      "naive_mae": 42.415937500000005,
+      "snaive_mae": 85.2709375,
+      "err_lo": -55.336483845279304,
+      "err_hi": 61.82923965512691,
       "n_origins": 96,
-      "skill": 0.5394199502412247,
+      "skill": 0.5395095724917407,
       "cadence": "monthly",
       "season": 12,
       "explain": "this projects the recent trend with the usual seasonal pattern for the {period}"
