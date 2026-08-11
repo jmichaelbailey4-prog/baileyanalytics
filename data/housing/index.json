@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-07-29T08:23:13Z",
+  "last_updated": "2026-08-11T14:22:46Z",
   "status": "watch",
   "lenses": [
     {
@@ -17,8 +17,8 @@
         },
         {
           "k": "Home sales",
-          "v": "4.09M",
-          "d": "0.10M",
+          "v": "4.06M",
+          "d": "0.07M",
           "dir": "down"
         }
       ],

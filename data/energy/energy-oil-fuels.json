@@ -2,9 +2,9 @@
   "id": "energy-oil-fuels",
   "title": "Oil & Fuels",
   "accent": "#FB923C",
-  "last_updated": "2026-08-06T08:17:14Z",
-  "status": "alert",
-  "headline_read": "Fuel costs are spiking \u2014 acute pressure at the pump.",
+  "last_updated": "2026-08-11T14:22:41Z",
+  "status": "elevated",
+  "headline_read": "Fuel costs are well above last year.",
   "recessions": [
     {
       "start": "1948-12-01",
@@ -65,8 +65,8 @@
       "series_id": "EMM_EPMR_PTE_NUS_DPG",
       "observations": [
         {
-          "date": "2016-08-22",
-          "value": "2.193"
+          "date": "2016-08-29",
+          "value": "2.237"
         },
         {
           "date": "2016-09-05",
@@ -307,10 +307,6 @@
         {
           "date": "2021-08-02",
           "value": "3.159"
-        },
-        {
-          "date": "2021-08-09",
-          "value": "3.172"
         },
         {
           "date": "2021-08-16",
@@ -1351,21 +1347,25 @@
         {
           "date": "2026-08-03",
           "value": "4.079"
+        },
+        {
+          "date": "2026-08-10",
+          "value": "4.006"
         }
       ],
       "latest": {
-        "date": "2026-08-03",
-        "value": "4.079"
+        "date": "2026-08-10",
+        "value": "4.006"
       },
       "context": "The U.S. average retail price for a gallon of regular gasoline \u2014 the energy cost households feel most directly.",
-      "read": "Gasoline costs are up 31% over the past year \u2014 a real squeeze.",
+      "read": "Gasoline costs are up 28% over the past year \u2014 a real squeeze.",
       "signal_status": "elevated",
       "value_format": "decimal",
       "percentile": {
-        "p": 93.8,
+        "p": 92.9,
         "since": 2016
       },
-      "scale_now": 30.6116
+      "scale_now": 27.5796
     },
     {
       "id": "diesel",
@@ -1376,8 +1376,8 @@
       "series_id": "EMD_EPD2D_PTE_NUS_DPG",
       "observations": [
         {
-          "date": "2016-08-22",
-          "value": "2.37"
+          "date": "2016-08-29",
+          "value": "2.409"
         },
         {
           "date": "2016-09-05",
@@ -1618,10 +1618,6 @@
         {
           "date": "2021-08-02",
           "value": "3.367"
-        },
-        {
-          "date": "2021-08-09",
-          "value": "3.364"
         },
         {
           "date": "2021-08-16",
@@ -2662,21 +2658,25 @@
         {
           "date": "2026-08-03",
           "value": "5.348"
+        },
+        {
+          "date": "2026-08-10",
+          "value": "5.257"
         }
       ],
       "latest": {
-        "date": "2026-08-03",
-        "value": "5.348"
+        "date": "2026-08-10",
+        "value": "5.257"
       },
       "context": "The U.S. average on-highway diesel price \u2014 the fuel that moves freight, so it feeds into the price of nearly everything.",
-      "read": "Diesel costs have surged 41% over the past year \u2014 acute pressure on households.",
-      "signal_status": "alert",
+      "read": "Diesel costs are up 38% over the past year \u2014 a real squeeze.",
+      "signal_status": "elevated",
       "value_format": "decimal",
       "percentile": {
-        "p": 95.4,
+        "p": 93.8,
         "since": 2016
       },
-      "scale_now": 40.5519
+      "scale_now": 38.3421
     },
     {
       "id": "crude-production",

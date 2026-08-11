@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-08-11T06:52:20Z",
+  "generated_at": "2026-08-11T14:23:41Z",
   "since": "2026-06-12T14:20:31Z",
-  "graded": 310,
+  "graded": 312,
   "coverage": 133,
-  "calibration": 0.8096774193548387,
-  "direction": 0.3728813559322034,
-  "status": 0.8813559322033898,
-  "skill": 0.0005667840632258558,
+  "calibration": 0.8044871794871795,
+  "direction": 0.3687150837988827,
+  "status": 0.8770949720670391,
+  "skill": 0.0005664674563852223,
   "categories": {
     "business": {
       "graded": 15,
@@ -33,12 +33,12 @@
       "skill": -1.3001304401960567e-06
     },
     "energy": {
-      "graded": 55,
+      "graded": 57,
       "coverage": 29,
-      "calibration": 0.7454545454545455,
-      "direction": 0.5,
-      "status": 0.8846153846153846,
-      "skill": 0.09597177285548253
+      "calibration": 0.7192982456140351,
+      "direction": 0.4642857142857143,
+      "status": 0.8571428571428571,
+      "skill": 0.07241226674093693
     },
     "global": {
       "graded": 40,

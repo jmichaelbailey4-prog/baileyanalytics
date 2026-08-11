@@ -1,6 +1,17 @@
 {
-  "generated_at": "2026-08-11T06:52:20Z",
-  "transitions": [],
+  "generated_at": "2026-08-11T14:23:41Z",
+  "transitions": [
+    {
+      "lens_id": "energy-oil-fuels",
+      "lens_title": "Oil & Fuels",
+      "category": "energy",
+      "href": "/dashboards/energy/oil-fuels.html",
+      "from_status": "alert",
+      "to_status": "elevated",
+      "direction": "improving",
+      "headline": "Fuel costs are well above last year."
+    }
+  ],
   "top_moves": [
     {
       "lens_id": "energy-natural-gas",
@@ -221,61 +232,6 @@
       "delta": "15.60%",
       "dir": "up",
       "why": ""
-    },
-    {
-      "lens_id": "global-trade-supply",
-      "lens_title": "Trade & Supply Chain",
-      "category": "global",
-      "href": "/dashboards/global/trade-supply.html",
-      "headline": "Trade frictions are building \u2014 supply chains or import costs bear watching.",
-      "accent": "#FBBF24",
-      "sparkline": [
-        -1.33,
-        -1.59,
-        -1.11,
-        -0.92,
-        -1.1,
-        -0.66,
-        -0.39,
-        0.19,
-        -0.15,
-        -0.35,
-        -0.19,
-        -0.36,
-        -0.97,
-        -0.58,
-        -0.35,
-        -0.04,
-        0.23,
-        0.12,
-        -0.38,
-        -0.31,
-        -0.29,
-        -0.2,
-        -0.01,
-        -0.2,
-        -0.24,
-        0.29,
-        0.09,
-        0.02,
-        -0.08,
-        -0.02,
-        -0.08,
-        -0.13,
-        0.58,
-        0.47,
-        0.58,
-        0.68,
-        1.84,
-        1.81,
-        1.19,
-        0.79
-      ],
-      "stat_label": "Supply chain",
-      "stat_value": "0.79\u03c3",
-      "delta": "0.40\u03c3",
-      "dir": "down",
-      "why": "Supply chain: down 3 readings in a row."
     }
   ],
   "lenses": [
@@ -452,8 +408,8 @@
       "lens_title": "Oil & Fuels",
       "category": "energy",
       "href": "/dashboards/energy/oil-fuels.html",
-      "status": "alert",
-      "headline": "Fuel costs are spiking \u2014 acute pressure at the pump."
+      "status": "elevated",
+      "headline": "Fuel costs are well above last year."
     },
     {
       "lens_id": "energy-natural-gas",
@@ -547,8 +503,8 @@
   "status_counts": {
     "ok": 16,
     "watch": 7,
-    "elevated": 5,
-    "alert": 3,
+    "elevated": 6,
+    "alert": 2,
     "neutral": 2
   },
   "verdict": {
@@ -619,14 +575,6 @@
       "headline": "Consumers are deeply pessimistic \u2014 sentiment is near record lows."
     },
     {
-      "lens_id": "energy-oil-fuels",
-      "lens_title": "Oil & Fuels",
-      "category": "energy",
-      "href": "/dashboards/energy/oil-fuels.html",
-      "status": "alert",
-      "headline": "Fuel costs are spiking \u2014 acute pressure at the pump."
-    },
-    {
       "lens_id": "fiscal-health",
       "lens_title": "Fiscal Health",
       "category": "economic",
@@ -641,6 +589,14 @@
       "href": "/dashboards/consumer/income-savings.html",
       "status": "elevated",
       "headline": "Household cushions are thin \u2014 savings or real incomes are stretched."
+    },
+    {
+      "lens_id": "energy-oil-fuels",
+      "lens_title": "Oil & Fuels",
+      "category": "energy",
+      "href": "/dashboards/energy/oil-fuels.html",
+      "status": "elevated",
+      "headline": "Fuel costs are well above last year."
     },
     {
       "lens_id": "housing-affordability",
@@ -762,9 +718,9 @@
     {
       "category": "energy",
       "title": "Energy & Commodities",
-      "status": "elevated",
+      "status": "watch",
       "href": "/dashboards/energy/",
-      "sentence": "Energy and commodity costs are squeezing budgets."
+      "sentence": "Energy costs bear watching \u2014 some prices are drifting the wrong way."
     },
     {
       "category": "housing",
