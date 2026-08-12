@@ -2,7 +2,7 @@
   "id": "housing-rent-shelter",
   "title": "Rent & Shelter",
   "accent": "#A78BFA",
-  "last_updated": "2026-07-28T15:24:54Z",
+  "last_updated": "2026-08-12T14:22:46Z",
   "status": "ok",
   "headline_read": "The rental market is balanced \u2014 rents are behaving.",
   "recessions": [
@@ -535,10 +535,6 @@
         {
           "date": "2011-04-01",
           "value": "1.3"
-        },
-        {
-          "date": "2011-06-01",
-          "value": "1.5"
         },
         {
           "date": "2011-07-01",
@@ -1255,21 +1251,25 @@
         {
           "date": "2026-06-01",
           "value": "2.8"
+        },
+        {
+          "date": "2026-07-01",
+          "value": "2.9"
         }
       ],
       "latest": {
-        "date": "2026-06-01",
-        "value": "2.8"
+        "date": "2026-07-01",
+        "value": "2.9"
       },
       "context": "How fast the rent tenants actually pay is rising versus a year ago, from the rent component of the Consumer Price Index. It moves slowly but relentlessly, and it is a third of core CPI.",
-      "read": "Rent costs are rising 2.8% a year.",
+      "read": "Rent costs are rising 2.9% a year.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 23.8,
+        "p": 27.2,
         "since": 1982
       },
-      "scale_now": 2.8
+      "scale_now": 2.9
     },
     {
       "id": "owners-equivalent-rent",
@@ -1718,10 +1718,6 @@
         {
           "date": "2011-04-01",
           "value": "0.9"
-        },
-        {
-          "date": "2011-06-01",
-          "value": "1.0"
         },
         {
           "date": "2011-07-01",
@@ -2438,21 +2434,25 @@
         {
           "date": "2026-06-01",
           "value": "3.3"
+        },
+        {
+          "date": "2026-07-01",
+          "value": "3.2"
         }
       ],
       "latest": {
-        "date": "2026-06-01",
-        "value": "3.3"
+        "date": "2026-07-01",
+        "value": "3.2"
       },
       "context": "How fast the implied rent on owner-occupied homes is rising \u2014 the largest single component of the CPI, and the bridge between home prices and inflation.",
-      "read": "Owners' equivalent rent costs are rising 3.3% a year.",
+      "read": "Owners' equivalent rent costs are rising 3.2% a year.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 49.9,
+        "p": 42.7,
         "since": 1984
       },
-      "scale_now": 3.3
+      "scale_now": 3.2
     },
     {
       "id": "rental-vacancy",

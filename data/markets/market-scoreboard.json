@@ -2,7 +2,7 @@
   "id": "market-scoreboard",
   "title": "Asset-Class Scoreboard",
   "accent": "#22D3EE",
-  "last_updated": "2026-08-12T07:09:59Z",
+  "last_updated": "2026-08-12T14:21:58Z",
   "status": "neutral",
   "headline_read": "How the major asset classes are moving right now.",
   "recessions": [
@@ -8912,19 +8912,19 @@
         },
         {
           "date": "2026-08-12",
-          "value": "4463.00"
+          "value": "4493.60"
         }
       ],
       "latest": {
         "date": "2026-08-12",
-        "value": "4463.00"
+        "value": "4493.60"
       },
       "context": "Gold (dollars per troy ounce) \u2014 the classic safe-haven asset investors flee to in times of stress. Sourced from Yahoo Finance (COMEX futures).",
-      "read": "Gold is up 33% over the past year, now 4,463.00.",
+      "read": "Gold is up 34% over the past year, now 4,493.60.",
       "signal_status": "up",
       "value_format": "thousands",
       "percentile": {
-        "p": 96.0,
+        "p": 96.3,
         "since": 2016
       },
       "no_severity_reason": "Part of a neutral scoreboard \u2014 it shows which way the price is moving, not whether that's good or bad."
