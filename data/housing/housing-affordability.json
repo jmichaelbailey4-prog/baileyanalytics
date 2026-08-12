@@ -2,7 +2,7 @@
   "id": "housing-affordability",
   "title": "Affordability & Financing",
   "accent": "#FBBF24",
-  "last_updated": "2026-08-07T07:03:07Z",
+  "last_updated": "2026-08-12T07:10:40Z",
   "status": "elevated",
   "headline_read": "Housing affordability is badly stretched.",
   "recessions": [
@@ -74,11 +74,11 @@
         },
         {
           "date": "2025-06-01",
-          "value": "95.5"
+          "value": "."
         },
         {
           "date": "2025-07-01",
-          "value": "98.3"
+          "value": "."
         },
         {
           "date": "2025-08-01",
@@ -122,18 +122,22 @@
         },
         {
           "date": "2026-06-01",
-          "value": "102.3"
+          "value": "101.8"
+        },
+        {
+          "date": "2026-07-01",
+          "value": "103.3"
         }
       ],
       "latest": {
-        "date": "2026-06-01",
-        "value": "102.3"
+        "date": "2026-07-01",
+        "value": "103.3"
       },
       "context": "The National Association of Realtors index: 100 means the median-income family can just barely afford the median home. Higher is better \u2014 the historical norm is 130-180. Note: FRED serves only a rolling ~1-year window of this NAR-licensed index, so its chart history is shorter than the other indicators here; we accumulate it forward from mid-2025.",
-      "read": "The affordability index is 102 \u2014 the median family barely qualifies for the median home.",
+      "read": "The affordability index is 103 \u2014 the median family barely qualifies for the median home.",
       "signal_status": "elevated",
       "value_format": "decimal",
-      "scale_now": 102.3
+      "scale_now": 103.3
     },
     {
       "id": "debt-service",
