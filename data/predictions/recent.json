@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-13T07:15:25Z",
+  "generated_at": "2026-08-13T14:25:06Z",
   "last": {
     "business/business-credit/ci-loan-growth": {
       "id": "business/business-credit/ci-loan-growth@2026-06-01",
@@ -745,24 +745,24 @@
       "now_date": "2026-08-03"
     },
     "economic/recession-watch/jobless-claims": {
-      "id": "economic/recession-watch/jobless-claims@2026-08-01",
+      "id": "economic/recession-watch/jobless-claims@2026-08-08",
       "key": "economic/recession-watch/jobless-claims",
       "category": "economic",
       "lens": "recession-watch",
       "indicator": "jobless-claims",
       "series_id": "ICSA",
       "horizon": "next-print",
-      "target_period": "2026-08-01",
-      "due": "2026-08-06",
-      "made_at": "2026-07-30T15:15:56Z",
+      "target_period": "2026-08-08",
+      "due": "2026-08-13",
+      "made_at": "2026-08-06T15:18:40Z",
       "model": "naive@1",
-      "point": 197000.0,
-      "lo": 185300.0,
-      "hi": 209400.0,
+      "point": 199000.0,
+      "lo": 187300.0,
+      "hi": 211400.0,
       "unit": "",
       "value_format": "thousands",
-      "prev_value": 197000.0,
-      "why": "We expect roughly the last value \u2014 this series rarely rewards cleverness.",
+      "prev_value": 199000.0,
+      "why": "Jobless claims: up 2 straight weeks. We expect roughly the last value \u2014 this series rarely rewards cleverness.",
       "implied_status": "ok",
       "current_status": "ok",
       "descriptive": false,
@@ -772,16 +772,16 @@
       "lens_title": "Recession Watch",
       "href": "/dashboards/recession-watch.html",
       "grade": {
-        "actual": 199000.0,
-        "graded_at": "2026-08-06T15:18:40Z",
+        "actual": 209000.0,
+        "graded_at": "2026-08-13T14:24:35Z",
         "hit": true,
-        "abs_error": 2000.0,
+        "abs_error": 10000.0,
         "direction_hit": false,
         "status_hit": true,
-        "naive_error": 2000.0,
+        "naive_error": 10000.0,
         "revised_to": null
       },
-      "prev_period": "2026-07-25"
+      "prev_period": "2026-08-01"
     },
     "markets/market-scoreboard/oil": {
       "id": "markets/market-scoreboard/oil@2026-08-07",
@@ -3412,6 +3412,45 @@
   },
   "feed": [
     {
+      "id": "economic/recession-watch/jobless-claims@2026-08-08",
+      "key": "economic/recession-watch/jobless-claims",
+      "category": "economic",
+      "lens": "recession-watch",
+      "indicator": "jobless-claims",
+      "series_id": "ICSA",
+      "horizon": "next-print",
+      "target_period": "2026-08-08",
+      "due": "2026-08-13",
+      "made_at": "2026-08-06T15:18:40Z",
+      "model": "naive@1",
+      "point": 199000.0,
+      "lo": 187300.0,
+      "hi": 211400.0,
+      "unit": "",
+      "value_format": "thousands",
+      "prev_value": 199000.0,
+      "why": "Jobless claims: up 2 straight weeks. We expect roughly the last value \u2014 this series rarely rewards cleverness.",
+      "implied_status": "ok",
+      "current_status": "ok",
+      "descriptive": false,
+      "market_price": false,
+      "title": "Initial Jobless Claims \u00b7 weekly",
+      "short": "Jobless claims",
+      "lens_title": "Recession Watch",
+      "href": "/dashboards/recession-watch.html",
+      "grade": {
+        "actual": 209000.0,
+        "graded_at": "2026-08-13T14:24:35Z",
+        "hit": true,
+        "abs_error": 10000.0,
+        "direction_hit": false,
+        "status_hit": true,
+        "naive_error": 10000.0,
+        "revised_to": null
+      },
+      "prev_period": "2026-08-01"
+    },
+    {
       "id": "business/business-formation/hp-share@2026-07-01",
       "key": "business/business-formation/hp-share",
       "category": "business",
@@ -5258,7 +5297,7 @@
         "direction_hit": false,
         "status_hit": true,
         "naive_error": 2000.0,
-        "revised_to": null
+        "revised_to": 200000.0
       },
       "prev_period": "2026-07-25"
     },
@@ -5340,45 +5379,6 @@
       },
       "now_value": 2.63,
       "now_date": "2026-07-27"
-    },
-    {
-      "id": "energy/energy-oil-fuels/crude-stocks@2026-07-31",
-      "key": "energy/energy-oil-fuels/crude-stocks",
-      "category": "energy",
-      "lens": "energy-oil-fuels",
-      "indicator": "crude-stocks",
-      "series_id": "WCESTUS1",
-      "horizon": "next-print",
-      "target_period": "2026-07-31",
-      "due": "2026-08-05",
-      "made_at": "2026-07-30T08:10:05Z",
-      "model": "ets-seasonal@1",
-      "point": 405430.1913,
-      "lo": 399797.7657,
-      "hi": 410939.6135,
-      "unit": "",
-      "value_format": "thousands",
-      "prev_value": 404508.0,
-      "why": "This projects the recent trend with the usual seasonal pattern for the week.",
-      "implied_status": "info",
-      "current_status": "info",
-      "descriptive": true,
-      "market_price": false,
-      "title": "Crude Inventories \u00b7 excl. SPR",
-      "short": "Crude stocks",
-      "lens_title": "Oil & Fuels",
-      "href": "/dashboards/energy/oil-fuels.html",
-      "grade": {
-        "actual": 406987.0,
-        "graded_at": "2026-08-06T08:17:49Z",
-        "hit": true,
-        "abs_error": 1556.8086999999941,
-        "direction_hit": true,
-        "status_hit": true,
-        "naive_error": 2479.0,
-        "revised_to": null
-      },
-      "prev_period": "2026-07-24"
     }
   ]
 }

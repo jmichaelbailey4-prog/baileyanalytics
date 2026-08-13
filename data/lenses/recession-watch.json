@@ -2,7 +2,7 @@
   "id": "recession-watch",
   "title": "Recession Watch",
   "accent": "#F87171",
-  "last_updated": "2026-08-13T07:13:51Z",
+  "last_updated": "2026-08-13T14:23:34Z",
   "status": "ok",
   "headline_read": "The economy looks steady \u2014 no major recession signals right now.",
   "recessions": [
@@ -5426,8 +5426,8 @@
       "series_id": "ICSA",
       "observations": [
         {
-          "date": "1967-03-11",
-          "value": "241000"
+          "date": "1967-03-18",
+          "value": "245000"
         },
         {
           "date": "1967-04-01",
@@ -6142,8 +6142,8 @@
           "value": "418000"
         },
         {
-          "date": "2011-08-06",
-          "value": "405000"
+          "date": "2011-08-13",
+          "value": "409000"
         },
         {
           "date": "2011-09-03",
@@ -7663,22 +7663,26 @@
         },
         {
           "date": "2026-08-01",
-          "value": "199000"
+          "value": "200000"
+        },
+        {
+          "date": "2026-08-08",
+          "value": "209000"
         }
       ],
       "latest": {
-        "date": "2026-08-01",
-        "value": "199000"
+        "date": "2026-08-08",
+        "value": "209000"
       },
       "context": "How many people filed for unemployment benefits last week \u2014 the freshest read on layoffs. A sustained climb is one of the earliest signs of a weakening economy.",
-      "read": "Initial jobless claims are low at 199,000 \u2014 employers aren't shedding workers.",
+      "read": "Initial jobless claims are low at 209,000 \u2014 employers aren't shedding workers.",
       "signal_status": "ok",
       "value_format": "thousands",
       "percentile": {
-        "p": 2.5,
+        "p": 5.1,
         "since": 1967
       },
-      "scale_now": 199000.0
+      "scale_now": 209000.0
     },
     {
       "id": "unemployment",

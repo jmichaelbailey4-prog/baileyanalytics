@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-13T07:15:25Z",
+  "generated_at": "2026-08-13T14:25:06Z",
   "predictions": [
     {
       "id": "economic/recession-watch/yield-curve@2026-08-14",
@@ -63,24 +63,24 @@
       "prev_period": "2026-07-01"
     },
     {
-      "id": "economic/recession-watch/jobless-claims@2026-08-08",
+      "id": "economic/recession-watch/jobless-claims@2026-08-15",
       "key": "economic/recession-watch/jobless-claims",
       "category": "economic",
       "lens": "recession-watch",
       "indicator": "jobless-claims",
       "series_id": "ICSA",
       "horizon": "next-print",
-      "target_period": "2026-08-08",
-      "due": "2026-08-13",
-      "made_at": "2026-08-06T15:18:40Z",
+      "target_period": "2026-08-15",
+      "due": "2026-08-20",
+      "made_at": "2026-08-13T14:24:36Z",
       "model": "naive@1",
-      "point": 199000.0,
-      "lo": 187300.0,
-      "hi": 211400.0,
+      "point": 209000.0,
+      "lo": 198000.0,
+      "hi": 221400.0,
       "unit": "",
       "value_format": "thousands",
-      "prev_value": 199000.0,
-      "why": "Jobless claims: up 2 straight weeks. We expect roughly the last value \u2014 this series rarely rewards cleverness.",
+      "prev_value": 209000.0,
+      "why": "Jobless claims: up 3 straight weeks. We expect roughly the last value \u2014 this series rarely rewards cleverness.",
       "implied_status": "ok",
       "current_status": "ok",
       "descriptive": false,
@@ -90,7 +90,7 @@
       "lens_title": "Recession Watch",
       "href": "/dashboards/recession-watch.html",
       "grade": null,
-      "prev_period": "2026-08-01"
+      "prev_period": "2026-08-08"
     },
     {
       "id": "economic/recession-watch/unemployment@2026-08-01",
