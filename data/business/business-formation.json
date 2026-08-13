@@ -2,7 +2,7 @@
   "id": "business-formation",
   "title": "Business Formation",
   "accent": "#38BDF8",
-  "last_updated": "2026-07-10T09:21:07Z",
+  "last_updated": "2026-08-13T07:14:42Z",
   "status": "ok",
   "headline_read": "New businesses are forming at a healthy clip.",
   "recessions": [
@@ -159,10 +159,6 @@
         {
           "date": "2011-04-01",
           "value": "3.6"
-        },
-        {
-          "date": "2011-06-01",
-          "value": "7.4"
         },
         {
           "date": "2011-07-01",
@@ -834,11 +830,11 @@
         },
         {
           "date": "2025-06-01",
-          "value": "5.4"
+          "value": "6.1"
         },
         {
           "date": "2025-07-01",
-          "value": "11.7"
+          "value": "10.4"
         },
         {
           "date": "2025-08-01",
@@ -878,26 +874,30 @@
         },
         {
           "date": "2026-05-01",
-          "value": "17.1"
+          "value": "17.9"
         },
         {
           "date": "2026-06-01",
-          "value": "15.6"
+          "value": "15.8"
+        },
+        {
+          "date": "2026-07-01",
+          "value": "23.4"
         }
       ],
       "latest": {
-        "date": "2026-06-01",
-        "value": "15.6"
+        "date": "2026-07-01",
+        "value": "23.4"
       },
       "context": "How fast new business applications are growing versus a year ago (Census Business Formation Statistics \u2014 roughly half a million applications a month). Falling applications mean fading dynamism.",
-      "read": "Business applications are growing 15.6% a year.",
+      "read": "Business applications are growing 23.4% a year.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 89.3,
+        "p": 94.1,
         "since": 2005
       },
-      "scale_now": 15.6
+      "scale_now": 23.4
     },
     {
       "id": "high-propensity",
@@ -1002,10 +1002,6 @@
         {
           "date": "2011-04-01",
           "value": "3.1"
-        },
-        {
-          "date": "2011-06-01",
-          "value": "8.8"
         },
         {
           "date": "2011-07-01",
@@ -1681,7 +1677,7 @@
         },
         {
           "date": "2025-07-01",
-          "value": "3.3"
+          "value": "2.9"
         },
         {
           "date": "2025-08-01",
@@ -1721,26 +1717,30 @@
         },
         {
           "date": "2026-05-01",
-          "value": "3.7"
+          "value": "3.8"
         },
         {
           "date": "2026-06-01",
-          "value": "5.2"
+          "value": "5.3"
+        },
+        {
+          "date": "2026-07-01",
+          "value": "5.9"
         }
       ],
       "latest": {
-        "date": "2026-06-01",
-        "value": "5.2"
+        "date": "2026-07-01",
+        "value": "5.9"
       },
       "context": "Growth in applications with characteristics that make them likely to become employer businesses \u2014 the quality signal inside the headline count.",
-      "read": "High-propensity applications are growing 5.2% a year.",
+      "read": "High-propensity applications are growing 5.9% a year.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 74.2,
+        "p": 78.7,
         "since": 2005
       },
-      "scale_now": 5.2
+      "scale_now": 5.9
     },
     {
       "id": "hp-share",
@@ -1861,10 +1861,6 @@
         {
           "date": "2011-04-01",
           "value": "46.4"
-        },
-        {
-          "date": "2011-06-01",
-          "value": "46.5"
         },
         {
           "date": "2011-07-01",
@@ -2536,11 +2532,11 @@
         },
         {
           "date": "2025-06-01",
-          "value": "31.0"
+          "value": "30.8"
         },
         {
           "date": "2025-07-01",
-          "value": "30.3"
+          "value": "30.6"
         },
         {
           "date": "2025-08-01",
@@ -2580,23 +2576,27 @@
         },
         {
           "date": "2026-05-01",
-          "value": "27.9"
+          "value": "27.8"
         },
         {
           "date": "2026-06-01",
-          "value": "28.2"
+          "value": "28.0"
+        },
+        {
+          "date": "2026-07-01",
+          "value": "26.2"
         }
       ],
       "latest": {
-        "date": "2026-06-01",
-        "value": "28.2"
+        "date": "2026-07-01",
+        "value": "26.2"
       },
       "context": "What fraction of all business applications look likely to become employers \u2014 formation quality over time. It ran near half before the pandemic-era boom in solo ventures pushed it below a third.",
-      "read": "The high-propensity share of applications is 28.2%, down 2.8 points from a year ago.",
+      "read": "The high-propensity share of applications is 26.2%, down 4.4 points from a year ago.",
       "signal_status": "info",
       "value_format": "decimal",
       "percentile": {
-        "p": 1.5,
+        "p": 0.0,
         "since": 2004
       },
       "no_severity_reason": "A descriptive level shown for context \u2014 neither a high nor a low reading is simply good or bad."

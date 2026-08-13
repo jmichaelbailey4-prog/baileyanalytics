@@ -2,7 +2,7 @@
   "id": "energy-oil-fuels",
   "title": "Oil & Fuels",
   "accent": "#FB923C",
-  "last_updated": "2026-08-11T14:22:41Z",
+  "last_updated": "2026-08-13T07:14:31Z",
   "status": "elevated",
   "headline_read": "Fuel costs are well above last year.",
   "recessions": [
@@ -2687,8 +2687,8 @@
       "series_id": "WCRFPUS2",
       "observations": [
         {
-          "date": "2016-08-19",
-          "value": "8548"
+          "date": "2016-08-26",
+          "value": "8488"
         },
         {
           "date": "2016-09-02",
@@ -3969,14 +3969,18 @@
         {
           "date": "2026-07-31",
           "value": "13804"
+        },
+        {
+          "date": "2026-08-07",
+          "value": "13805"
         }
       ],
       "latest": {
-        "date": "2026-07-31",
-        "value": "13804"
+        "date": "2026-08-07",
+        "value": "13805"
       },
       "context": "U.S. field production of crude oil (thousand barrels per day) \u2014 the supply side that, with demand, sets the price of oil.",
-      "read": "U.S. crude production is up 4% from a year ago, now 13,804.",
+      "read": "U.S. crude production is up 4% from a year ago, now 13,805.",
       "signal_status": "info",
       "value_format": "thousands",
       "percentile": {
@@ -3994,8 +3998,8 @@
       "series_id": "WCESTUS1",
       "observations": [
         {
-          "date": "2016-08-19",
-          "value": "492962"
+          "date": "2016-08-26",
+          "value": "495238"
         },
         {
           "date": "2016-09-02",
@@ -5276,18 +5280,22 @@
         {
           "date": "2026-07-31",
           "value": "406987"
+        },
+        {
+          "date": "2026-08-07",
+          "value": "424410"
         }
       ],
       "latest": {
-        "date": "2026-07-31",
-        "value": "406987"
+        "date": "2026-08-07",
+        "value": "424410"
       },
       "context": "Commercial crude oil inventories (thousand barrels, excluding the Strategic Petroleum Reserve) \u2014 low stocks point to upward price pressure.",
-      "read": "Crude inventories is down 5% from a year ago, now 406,987.",
+      "read": "Crude inventories is little changed from a year ago, now 424,410.",
       "signal_status": "info",
       "value_format": "thousands",
       "percentile": {
-        "p": 1.7,
+        "p": 26.0,
         "since": 2016
       },
       "no_severity_reason": "A physical supply-and-demand reading, not a household cost \u2014 this lens's verdict comes from the price indicators."
