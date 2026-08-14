@@ -2,7 +2,7 @@
   "id": "fiscal-health",
   "title": "Fiscal Health",
   "accent": "#A78BFA",
-  "last_updated": "2026-07-30T15:14:52Z",
+  "last_updated": "2026-08-14T07:10:36Z",
   "status": "elevated",
   "headline_read": "The U.S. is borrowing heavily \u2014 debt and interest costs are climbing.",
   "recessions": [
@@ -1532,10 +1532,6 @@
           "value": "1.36"
         },
         {
-          "date": "2011-06-01",
-          "value": "1.26"
-        },
-        {
           "date": "2011-07-01",
           "value": "1.23"
         },
@@ -2254,21 +2250,25 @@
         {
           "date": "2026-06-01",
           "value": "1.80"
+        },
+        {
+          "date": "2026-07-01",
+          "value": "1.95"
         }
       ],
       "latest": {
-        "date": "2026-06-01",
-        "value": "1.80"
+        "date": "2026-07-01",
+        "value": "1.95"
       },
       "context": "How much the government borrowed over the past 12 months, from the monthly Treasury statement. The rolling year smooths out tax season \u2014 this is the number the 'deficit debate' is actually about.",
-      "read": "The U.S. has borrowed $1.8 trillion over the past year \u2014 heavy borrowing for a growing economy.",
+      "read": "The U.S. has borrowed $1.9 trillion over the past year \u2014 heavy borrowing for a growing economy.",
       "signal_status": "elevated",
       "value_format": "decimal",
       "percentile": {
-        "p": 91.6,
+        "p": 93.3,
         "since": 1981
       },
-      "scale_now": 1.8
+      "scale_now": 1.95
     },
     {
       "id": "interest-burden",

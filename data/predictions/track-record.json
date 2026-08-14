@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-08-13T14:25:06Z",
+  "generated_at": "2026-08-14T07:12:19Z",
   "since": "2026-06-12T14:20:31Z",
-  "graded": 326,
-  "coverage": 137,
-  "calibration": 0.8006134969325154,
-  "direction": 0.36507936507936506,
-  "status": 0.8783068783068783,
-  "skill": 0.0005430246232036584,
+  "graded": 332,
+  "coverage": 141,
+  "calibration": 0.8042168674698795,
+  "direction": 0.3612565445026178,
+  "status": 0.8795811518324608,
+  "skill": 0.0005429572994174459,
   "categories": {
     "business": {
       "graded": 18,
@@ -25,17 +25,17 @@
       "skill": 0.06925131249399885
     },
     "economic": {
-      "graded": 69,
+      "graded": 70,
       "coverage": 11,
-      "calibration": 0.782608695652174,
-      "direction": 0.1896551724137931,
-      "status": 0.8103448275862069,
-      "skill": -6.55274285721319e-07
+      "calibration": 0.7857142857142857,
+      "direction": 0.1864406779661017,
+      "status": 0.8135593220338984,
+      "skill": -6.552739062470891e-07
     },
     "energy": {
-      "graded": 61,
-      "coverage": 31,
-      "calibration": 0.7213114754098361,
+      "graded": 62,
+      "coverage": 32,
+      "calibration": 0.7258064516129032,
       "direction": 0.43333333333333335,
       "status": 0.8666666666666667,
       "skill": 0.06231078621195674
@@ -49,17 +49,17 @@
       "skill": 0.04734238245168043
     },
     "housing": {
-      "graded": 26,
+      "graded": 27,
       "coverage": 6,
-      "calibration": 0.8846153846153846,
-      "direction": 0.55,
-      "status": 0.85,
-      "skill": 0.22605018509522778
+      "calibration": 0.8888888888888888,
+      "direction": 0.5238095238095238,
+      "status": 0.8571428571428571,
+      "skill": 0.2260134671111037
     },
     "markets": {
-      "graded": 94,
-      "coverage": 59,
-      "calibration": 0.776595744680851,
+      "graded": 97,
+      "coverage": 62,
+      "calibration": 0.7835051546391752,
       "direction": 0.45714285714285713,
       "status": 1.0,
       "skill": -0.01298740772128526

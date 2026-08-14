@@ -2,7 +2,7 @@
   "id": "market-liquidity",
   "title": "Liquidity & the Fed",
   "accent": "#2DD4BF",
-  "last_updated": "2026-08-13T07:13:55Z",
+  "last_updated": "2026-08-14T07:10:41Z",
   "status": "ok",
   "headline_read": "Liquidity is ample \u2014 no monetary squeeze in sight.",
   "recessions": [
@@ -1652,8 +1652,8 @@
       "series_id": "WALCL",
       "observations": [
         {
-          "date": "2016-08-24",
-          "value": "4.47"
+          "date": "2016-08-31",
+          "value": "4.46"
         },
         {
           "date": "2016-09-07",
@@ -1894,10 +1894,6 @@
         {
           "date": "2021-08-04",
           "value": "8.24"
-        },
-        {
-          "date": "2021-08-11",
-          "value": "8.26"
         },
         {
           "date": "2021-08-18",
@@ -2938,18 +2934,22 @@
         {
           "date": "2026-08-05",
           "value": "6.75"
+        },
+        {
+          "date": "2026-08-12",
+          "value": "6.76"
         }
       ],
       "latest": {
-        "date": "2026-08-05",
-        "value": "6.75"
+        "date": "2026-08-12",
+        "value": "6.76"
       },
       "context": "Everything the Federal Reserve holds, in trillions. Rising means the Fed is injecting liquidity (QE); falling means it's draining (QT) \u2014 the tide that lifts or lowers all markets.",
-      "read": "The Fed's balance sheet is little changed from a year ago, now $6.75 trillion.",
+      "read": "The Fed's balance sheet is little changed from a year ago, now $6.76 trillion.",
       "signal_status": "info",
       "value_format": "decimal",
       "percentile": {
-        "p": 50.8,
+        "p": 51.0,
         "since": 2016
       },
       "no_severity_reason": "A descriptive level of the monetary plumbing \u2014 this lens's verdict is carried by M2 money-supply growth."
@@ -2963,8 +2963,8 @@
       "series_id": "WRESBAL",
       "observations": [
         {
-          "date": "2016-08-24",
-          "value": "2.36"
+          "date": "2016-08-31",
+          "value": "2.34"
         },
         {
           "date": "2016-09-07",
@@ -3205,10 +3205,6 @@
         {
           "date": "2021-08-04",
           "value": "4.01"
-        },
-        {
-          "date": "2021-08-11",
-          "value": "4.09"
         },
         {
           "date": "2021-08-18",
@@ -4249,18 +4245,22 @@
         {
           "date": "2026-08-05",
           "value": "2.99"
+        },
+        {
+          "date": "2026-08-12",
+          "value": "2.94"
         }
       ],
       "latest": {
-        "date": "2026-08-05",
-        "value": "2.99"
+        "date": "2026-08-12",
+        "value": "2.94"
       },
       "context": "Cash banks park at the Fed \u2014 the system's core liquidity buffer. When QT drains reserves too low, funding markets seize up (as in September 2019).",
-      "read": "The level of bank reserves is down 11% from a year ago, now $2.99 trillion.",
+      "read": "The level of bank reserves is down 12% from a year ago, now $2.94 trillion.",
       "signal_status": "info",
       "value_format": "decimal",
       "percentile": {
-        "p": 45.8,
+        "p": 42.7,
         "since": 2016
       },
       "no_severity_reason": "A descriptive level of the monetary plumbing \u2014 this lens's verdict is carried by M2 money-supply growth."
@@ -4274,8 +4274,8 @@
       "series_id": "RRPONTSYD",
       "observations": [
         {
-          "date": "2021-08-19",
-          "value": "1109.938"
+          "date": "2021-08-20",
+          "value": "1111.905"
         },
         {
           "date": "2021-08-23",
@@ -6988,18 +6988,22 @@
         {
           "date": "2026-08-12",
           "value": "0.725"
+        },
+        {
+          "date": "2026-08-13",
+          "value": "0.45"
         }
       ],
       "latest": {
-        "date": "2026-08-12",
-        "value": "0.725"
+        "date": "2026-08-13",
+        "value": "0.45"
       },
       "context": "Spare cash money-market funds park at the Fed overnight. It acts as the system's overflow tank: a high balance means excess liquidity; near zero means the buffer is spent and QT bites reserves directly.",
-      "read": "The overnight reverse-repo facility is down 99% from a year ago, now $0.7 billion.",
+      "read": "The overnight reverse-repo facility is down 99% from a year ago, now $0.5 billion.",
       "signal_status": "info",
       "value_format": "decimal",
       "percentile": {
-        "p": 3.8,
+        "p": 2.2,
         "since": 2021
       },
       "no_severity_reason": "A descriptive level of the monetary plumbing \u2014 this lens's verdict is carried by M2 money-supply growth."
