@@ -574,7 +574,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 2.0029500000000002,
-      "revised_to": 7.32849
+      "revised_to": 7.23276
     }
   },
   {
@@ -6072,7 +6072,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 0.15730000000000022,
-      "revised_to": null
+      "revised_to": 6.75317
     }
   },
   {
@@ -8972,7 +8972,7 @@
       "direction_hit": true,
       "status_hit": false,
       "naive_error": 0.6340600000000001,
-      "revised_to": null
+      "revised_to": 0.93891
     }
   },
   {
@@ -12588,7 +12588,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 35.599999999999454,
-      "revised_to": null
+      "revised_to": 4447.6
     },
     "now_value": 4353.8,
     "now_date": "2026-08-07"
@@ -12748,5 +12748,83 @@
       "revised_to": null
     },
     "prev_period": "2026-08-06"
+  },
+  {
+    "id": "consumer/consumer-spending/retail-sales@2026-07-01",
+    "key": "consumer/consumer-spending/retail-sales",
+    "category": "consumer",
+    "lens": "consumer-spending",
+    "indicator": "retail-sales",
+    "series_id": "RSAFS",
+    "horizon": "next-print",
+    "target_period": "2026-07-01",
+    "due": "2026-08-15",
+    "made_at": "2026-07-16T15:07:49Z",
+    "model": "naive@1",
+    "point": 6.7192,
+    "lo": 4.1456,
+    "hi": 8.9192,
+    "unit": "%",
+    "value_format": "decimal",
+    "prev_value": 6.71916,
+    "why": "We expect roughly the last value \u2014 this series rarely rewards cleverness.",
+    "implied_status": "ok",
+    "current_status": "ok",
+    "descriptive": false,
+    "market_price": false,
+    "title": "Retail Sales \u00b7 year-over-year",
+    "short": "Retail sales",
+    "lens_title": "Consumer Spending",
+    "href": "/dashboards/consumer/spending.html",
+    "grade": {
+      "actual": 5.00924,
+      "graded_at": "2026-08-14T14:18:08Z",
+      "hit": true,
+      "abs_error": 1.7099599999999997,
+      "direction_hit": false,
+      "status_hit": true,
+      "naive_error": 1.7099199999999994,
+      "revised_to": null
+    },
+    "prev_period": "2026-06-01"
+  },
+  {
+    "id": "business/business-investment/inventories-sales@2026-06-01",
+    "key": "business/business-investment/inventories-sales",
+    "category": "business",
+    "lens": "business-investment",
+    "indicator": "inventories-sales",
+    "series_id": "ISRATIO",
+    "horizon": "next-print",
+    "target_period": "2026-06-01",
+    "due": "2026-07-15",
+    "made_at": "2026-07-16T15:08:20Z",
+    "model": "naive@1",
+    "point": 1.28,
+    "lo": 1.26,
+    "hi": 1.3,
+    "unit": "",
+    "value_format": "decimal",
+    "prev_value": 1.28,
+    "why": "Inv./sales: down 7 straight months. We expect roughly the last value \u2014 this series rarely rewards cleverness.",
+    "implied_status": "ok",
+    "current_status": "ok",
+    "descriptive": false,
+    "market_price": false,
+    "title": "Inventories-to-Sales Ratio",
+    "short": "Inv./sales",
+    "lens_title": "Business Investment",
+    "href": "/dashboards/business/investment.html",
+    "grade": {
+      "actual": 1.3,
+      "graded_at": "2026-08-14T14:18:32Z",
+      "hit": true,
+      "abs_error": 0.020000000000000018,
+      "direction_hit": false,
+      "status_hit": true,
+      "naive_error": 0.020000000000000018,
+      "revised_to": null
+    },
+    "prev_period": "2026-05-01"
   }
 ]

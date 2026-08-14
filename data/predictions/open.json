@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-14T07:12:19Z",
+  "generated_at": "2026-08-14T14:18:33Z",
   "predictions": [
     {
       "id": "economic/recession-watch/yield-curve@2026-08-14",
@@ -1384,24 +1384,24 @@
       "now_date": "2026-08-07"
     },
     {
-      "id": "consumer/consumer-spending/retail-sales@2026-07-01",
+      "id": "consumer/consumer-spending/retail-sales@2026-08-01",
       "key": "consumer/consumer-spending/retail-sales",
       "category": "consumer",
       "lens": "consumer-spending",
       "indicator": "retail-sales",
       "series_id": "RSAFS",
       "horizon": "next-print",
-      "target_period": "2026-07-01",
-      "due": "2026-08-15",
-      "made_at": "2026-07-16T15:07:49Z",
+      "target_period": "2026-08-01",
+      "due": "2026-09-15",
+      "made_at": "2026-08-14T14:18:08Z",
       "model": "naive@1",
-      "point": 6.7192,
-      "lo": 4.1456,
-      "hi": 8.9192,
+      "point": 5.0092,
+      "lo": 2.4356,
+      "hi": 7.2825,
       "unit": "%",
       "value_format": "decimal",
-      "prev_value": 6.71916,
-      "why": "We expect roughly the last value \u2014 this series rarely rewards cleverness.",
+      "prev_value": 5.00924,
+      "why": "Retail sales: down 2 straight months. We expect roughly the last value \u2014 this series rarely rewards cleverness.",
       "implied_status": "ok",
       "current_status": "ok",
       "descriptive": false,
@@ -1411,7 +1411,7 @@
       "lens_title": "Consumer Spending",
       "href": "/dashboards/consumer/spending.html",
       "grade": null,
-      "prev_period": "2026-06-01"
+      "prev_period": "2026-07-01"
     },
     {
       "id": "consumer/consumer-spending/real-spending@2026-07-01",
@@ -3137,24 +3137,24 @@
       "prev_period": "2026-05-01"
     },
     {
-      "id": "business/business-investment/inventories-sales@2026-06-01",
+      "id": "business/business-investment/inventories-sales@2026-07-01",
       "key": "business/business-investment/inventories-sales",
       "category": "business",
       "lens": "business-investment",
       "indicator": "inventories-sales",
       "series_id": "ISRATIO",
       "horizon": "next-print",
-      "target_period": "2026-06-01",
-      "due": "2026-07-15",
-      "made_at": "2026-07-16T15:08:20Z",
+      "target_period": "2026-07-01",
+      "due": "2026-08-15",
+      "made_at": "2026-08-14T14:18:32Z",
       "model": "naive@1",
-      "point": 1.28,
-      "lo": 1.26,
-      "hi": 1.3,
+      "point": 1.3,
+      "lo": 1.28,
+      "hi": 1.32,
       "unit": "",
       "value_format": "decimal",
-      "prev_value": 1.28,
-      "why": "Inv./sales: down 7 straight months. We expect roughly the last value \u2014 this series rarely rewards cleverness.",
+      "prev_value": 1.3,
+      "why": "We expect roughly the last value \u2014 this series rarely rewards cleverness.",
       "implied_status": "ok",
       "current_status": "ok",
       "descriptive": false,
@@ -3164,7 +3164,7 @@
       "lens_title": "Business Investment",
       "href": "/dashboards/business/investment.html",
       "grade": null,
-      "prev_period": "2026-05-01"
+      "prev_period": "2026-06-01"
     },
     {
       "id": "business/business-credit/baa-spread@2026-08-01",
