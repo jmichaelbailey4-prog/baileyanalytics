@@ -2,7 +2,7 @@
   "id": "energy-oil-fuels",
   "title": "Oil & Fuels",
   "accent": "#FB923C",
-  "last_updated": "2026-08-13T07:14:31Z",
+  "last_updated": "2026-08-15T13:37:17Z",
   "status": "elevated",
   "headline_read": "Fuel costs are well above last year.",
   "recessions": [
@@ -3984,7 +3984,7 @@
       "signal_status": "info",
       "value_format": "thousands",
       "percentile": {
-        "p": 97.1,
+        "p": 95.3,
         "since": 2016
       },
       "no_severity_reason": "A physical supply-and-demand reading, not a household cost \u2014 this lens's verdict comes from the price indicators."
