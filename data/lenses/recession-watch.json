@@ -2,7 +2,7 @@
   "id": "recession-watch",
   "title": "Recession Watch",
   "accent": "#F87171",
-  "last_updated": "2026-08-15T06:21:30Z",
+  "last_updated": "2026-08-18T06:26:53Z",
   "status": "ok",
   "headline_read": "The economy looks steady \u2014 no major recession signals right now.",
   "recessions": [
@@ -65,8 +65,8 @@
       "series_id": "T10Y2Y",
       "observations": [
         {
-          "date": "1976-10-18",
-          "value": "1.54"
+          "date": "1976-10-19",
+          "value": "1.50"
         },
         {
           "date": "1977-01-03",
@@ -625,8 +625,8 @@
           "value": "2.72"
         },
         {
-          "date": "2011-08-15",
-          "value": "2.10"
+          "date": "2011-08-17",
+          "value": "1.98"
         },
         {
           "date": "2011-09-01",
@@ -1109,8 +1109,8 @@
           "value": "1.03"
         },
         {
-          "date": "2021-08-16",
-          "value": "1.05"
+          "date": "2021-08-17",
+          "value": "1.03"
         },
         {
           "date": "2021-08-23",
@@ -1735,18 +1735,6 @@
         {
           "date": "2024-08-12",
           "value": "-0.11"
-        },
-        {
-          "date": "2024-08-14",
-          "value": "-0.11"
-        },
-        {
-          "date": "2024-08-15",
-          "value": "-0.16"
-        },
-        {
-          "date": "2024-08-16",
-          "value": "-0.17"
         },
         {
           "date": "2024-08-19",
@@ -3827,18 +3815,22 @@
         {
           "date": "2026-08-14",
           "value": "0.51"
+        },
+        {
+          "date": "2026-08-17",
+          "value": "0.53"
         }
       ],
       "latest": {
-        "date": "2026-08-14",
-        "value": "0.51"
+        "date": "2026-08-17",
+        "value": "0.53"
       },
       "context": "The gap between 10-year and 2-year Treasury yields. When it goes negative (\u201cinverts\u201d), investors expect rate cuts ahead \u2014 and every U.S. recession since the 1970s was preceded by an inversion.",
-      "read": "The curve is positive (+0.51) with no recent inversion \u2014 no recession warning from the curve right now.",
+      "read": "The curve is positive (+0.53) with no recent inversion \u2014 no recession warning from the curve right now.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 39.7,
+        "p": 40.9,
         "since": 1976
       }
     },

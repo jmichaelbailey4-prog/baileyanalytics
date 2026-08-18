@@ -2,7 +2,7 @@
   "id": "global-trade-supply",
   "title": "Trade & Supply Chain",
   "accent": "#FBBF24",
-  "last_updated": "2026-08-06T15:18:38Z",
+  "last_updated": "2026-08-18T06:30:54Z",
   "status": "watch",
   "headline_read": "Trade frictions are building \u2014 supply chains or import costs bear watching.",
   "recessions": [
@@ -3742,10 +3742,6 @@
       "series_id": "XTEXVA01CNM667S",
       "observations": [
         {
-          "date": "2001-05-01",
-          "value": "4.45163"
-        },
-        {
           "date": "2001-07-01",
           "value": "5.35372"
         },
@@ -3904,10 +3900,6 @@
         {
           "date": "2011-04-01",
           "value": "30.76109"
-        },
-        {
-          "date": "2011-05-01",
-          "value": "16.49759"
         },
         {
           "date": "2011-06-01",
@@ -4624,18 +4616,26 @@
         {
           "date": "2026-04-01",
           "value": "13.75159"
+        },
+        {
+          "date": "2026-05-01",
+          "value": "20.45306"
+        },
+        {
+          "date": "2026-06-01",
+          "value": "25.38658"
         }
       ],
       "latest": {
-        "date": "2026-04-01",
-        "value": "13.75159"
+        "date": "2026-06-01",
+        "value": "25.38658"
       },
       "context": "The growth of China's exports versus a year ago \u2014 the single best pulse on global goods demand, since China ships roughly a seventh of the world's exports.",
-      "read": "China's export trade is rising 13.8% a year.",
+      "read": "China's export trade is rising 25.4% a year.",
       "signal_status": "info",
       "value_format": "decimal",
       "percentile": {
-        "p": 56.0,
+        "p": 73.7,
         "since": 2001
       },
       "no_severity_reason": "Shown for context \u2014 a noisy global-demand pulse the lens's scored indicators read more cleanly."

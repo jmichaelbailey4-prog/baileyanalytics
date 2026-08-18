@@ -2,7 +2,7 @@
   "id": "market-liquidity",
   "title": "Liquidity & the Fed",
   "accent": "#2DD4BF",
-  "last_updated": "2026-08-15T06:21:35Z",
+  "last_updated": "2026-08-18T06:26:57Z",
   "status": "ok",
   "headline_read": "Liquidity is ample \u2014 no monetary squeeze in sight.",
   "recessions": [
@@ -4274,8 +4274,8 @@
       "series_id": "RRPONTSYD",
       "observations": [
         {
-          "date": "2021-08-23",
-          "value": "1135.697"
+          "date": "2021-08-24",
+          "value": "1129.737"
         },
         {
           "date": "2021-08-30",
@@ -4896,18 +4896,6 @@
         {
           "date": "2024-08-12",
           "value": "328.641"
-        },
-        {
-          "date": "2024-08-14",
-          "value": "328.472"
-        },
-        {
-          "date": "2024-08-15",
-          "value": "307.141"
-        },
-        {
-          "date": "2024-08-16",
-          "value": "330.317"
         },
         {
           "date": "2024-08-19",
@@ -6988,18 +6976,22 @@
         {
           "date": "2026-08-14",
           "value": "0.25"
+        },
+        {
+          "date": "2026-08-17",
+          "value": "0.255"
         }
       ],
       "latest": {
-        "date": "2026-08-14",
-        "value": "0.25"
+        "date": "2026-08-17",
+        "value": "0.255"
       },
       "context": "Spare cash money-market funds park at the Fed overnight. It acts as the system's overflow tank: a high balance means excess liquidity; near zero means the buffer is spent and QT bites reserves directly.",
-      "read": "The overnight reverse-repo facility is down 99% from a year ago, now $0.2 billion.",
+      "read": "The overnight reverse-repo facility is down 99% from a year ago, now $0.3 billion.",
       "signal_status": "info",
       "value_format": "decimal",
       "percentile": {
-        "p": 1.0,
+        "p": 1.2,
         "since": 2021
       },
       "no_severity_reason": "A descriptive level of the monetary plumbing \u2014 this lens's verdict is carried by M2 money-supply growth."

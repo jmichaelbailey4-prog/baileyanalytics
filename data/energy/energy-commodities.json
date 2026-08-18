@@ -2,9 +2,9 @@
   "id": "energy-commodities",
   "title": "Commodities & Materials",
   "accent": "#A3E635",
-  "last_updated": "2026-08-12T14:22:40Z",
-  "status": "watch",
-  "headline_read": "Commodity costs are climbing.",
+  "last_updated": "2026-08-18T06:29:57Z",
+  "status": "ok",
+  "headline_read": "Commodity costs are stable or easing.",
   "recessions": [
     {
       "start": "1948-12-01",
@@ -359,10 +359,6 @@
         {
           "date": "2011-04-01",
           "value": "27.8"
-        },
-        {
-          "date": "2011-06-01",
-          "value": "32.7"
         },
         {
           "date": "2011-07-01",
@@ -1078,26 +1074,30 @@
         },
         {
           "date": "2026-05-01",
-          "value": "7.8"
+          "value": "7.9"
         },
         {
           "date": "2026-06-01",
-          "value": "5.1"
+          "value": "4.4"
+        },
+        {
+          "date": "2026-07-01",
+          "value": "4.8"
         }
       ],
       "latest": {
-        "date": "2026-06-01",
-        "value": "5.1"
+        "date": "2026-07-01",
+        "value": "4.8"
       },
       "context": "How fast the IMF's global food commodity index is rising versus a year ago \u2014 the upstream driver of grocery inflation.",
-      "read": "Global food costs are rising 5.1% a year \u2014 climbing.",
-      "signal_status": "watch",
+      "read": "Global food costs are rising 4.8% a year.",
+      "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 62.9,
+        "p": 61.8,
         "since": 1993
       },
-      "scale_now": 5.1
+      "scale_now": 4.8
     },
     {
       "id": "grocery-cpi",
@@ -2807,8 +2807,8 @@
       "series_id": "PCOPPUSDM",
       "observations": [
         {
-          "date": "2001-07-01",
-          "value": "1526.77045454545"
+          "date": "2001-08-01",
+          "value": "1466.41136363636"
         },
         {
           "date": "2001-10-01",
@@ -2965,10 +2965,6 @@
         {
           "date": "2011-04-01",
           "value": "9482.75"
-        },
-        {
-          "date": "2011-06-01",
-          "value": "9066.852272727273"
         },
         {
           "date": "2011-07-01",
@@ -3689,14 +3685,18 @@
         {
           "date": "2026-06-01",
           "value": "13552.04090909091"
+        },
+        {
+          "date": "2026-07-01",
+          "value": "13542.82086956522"
         }
       ],
       "latest": {
-        "date": "2026-06-01",
-        "value": "13552.04090909091"
+        "date": "2026-07-01",
+        "value": "13542.82086956522"
       },
       "context": "The global price of copper ($/metric ton) \u2014 nicknamed \u201cDr. Copper\u201d for its knack of signalling the direction of the global economy.",
-      "read": "Copper is up 38% from a year ago, now 13,552.",
+      "read": "Copper is up 39% from a year ago, now 13,543.",
       "signal_status": "info",
       "value_format": "thousands",
       "no_severity_reason": "A market price has no inherent good-or-bad level \u2014 higher or lower isn't itself better or worse."
@@ -4004,10 +4004,6 @@
         {
           "date": "2011-04-01",
           "value": "30.1"
-        },
-        {
-          "date": "2011-06-01",
-          "value": "34.3"
         },
         {
           "date": "2011-07-01",
@@ -4723,19 +4719,23 @@
         },
         {
           "date": "2026-05-01",
-          "value": "33.0"
+          "value": "33.1"
         },
         {
           "date": "2026-06-01",
-          "value": "17.3"
+          "value": "17.1"
+        },
+        {
+          "date": "2026-07-01",
+          "value": "16.6"
         }
       ],
       "latest": {
-        "date": "2026-06-01",
-        "value": "17.3"
+        "date": "2026-07-01",
+        "value": "16.6"
       },
       "context": "How fast the IMF's all-commodity price index is rising versus a year ago \u2014 a single gauge of raw-input cost pressure across the economy.",
-      "read": "The broad commodity index is rising 17.3% a year.",
+      "read": "The broad commodity index is rising 16.6% a year.",
       "signal_status": "info",
       "value_format": "decimal",
       "no_severity_reason": "A market price has no inherent good-or-bad level \u2014 higher or lower isn't itself better or worse."
