@@ -2,7 +2,7 @@
   "id": "energy-oil-fuels",
   "title": "Oil & Fuels",
   "accent": "#FB923C",
-  "last_updated": "2026-08-17T06:38:35Z",
+  "last_updated": "2026-08-18T13:49:56Z",
   "status": "elevated",
   "headline_read": "Fuel costs are well above last year.",
   "recessions": [
@@ -1362,7 +1362,7 @@
       "signal_status": "elevated",
       "value_format": "decimal",
       "percentile": {
-        "p": 92.9,
+        "p": 88.5,
         "since": 2016
       },
       "scale_now": 27.5796

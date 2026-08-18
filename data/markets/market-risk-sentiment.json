@@ -2,7 +2,7 @@
   "id": "market-risk-sentiment",
   "title": "Risk Sentiment",
   "accent": "#FB7185",
-  "last_updated": "2026-08-18T06:26:57Z",
+  "last_updated": "2026-08-18T13:45:55Z",
   "status": "ok",
   "headline_read": "Markets are calm \u2014 volatility and credit stress are low.",
   "recessions": [
@@ -65,8 +65,8 @@
       "series_id": "VIXCLS",
       "observations": [
         {
-          "date": "1990-03-19",
-          "value": "18.29"
+          "date": "1990-03-20",
+          "value": "19.06"
         },
         {
           "date": "1990-04-02",
@@ -413,8 +413,8 @@
           "value": "15.87"
         },
         {
-          "date": "2011-08-15",
-          "value": "31.87"
+          "date": "2011-08-17",
+          "value": "31.58"
         },
         {
           "date": "2011-09-01",
@@ -897,8 +897,8 @@
           "value": "19.46"
         },
         {
-          "date": "2021-08-16",
-          "value": "16.12"
+          "date": "2021-08-17",
+          "value": "17.91"
         },
         {
           "date": "2021-08-23",
@@ -1523,18 +1523,6 @@
         {
           "date": "2024-08-12",
           "value": "20.71"
-        },
-        {
-          "date": "2024-08-14",
-          "value": "16.19"
-        },
-        {
-          "date": "2024-08-15",
-          "value": "15.23"
-        },
-        {
-          "date": "2024-08-16",
-          "value": "14.8"
         },
         {
           "date": "2024-08-19",
@@ -3615,21 +3603,25 @@
         {
           "date": "2026-08-14",
           "value": "14.25"
+        },
+        {
+          "date": "2026-08-17",
+          "value": "15.19"
         }
       ],
       "latest": {
-        "date": "2026-08-14",
-        "value": "14.25"
+        "date": "2026-08-17",
+        "value": "15.19"
       },
       "context": "The market's 'fear gauge' \u2014 the expected volatility of the S&P 500 over the coming month. It spikes when investors are scared and falls when calm.",
-      "read": "The VIX is at 14.2 \u2014 markets are calm.",
+      "read": "The VIX is at 15.2 \u2014 markets are calm.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 26.9,
+        "p": 33.4,
         "since": 1990
       },
-      "scale_now": 14.25
+      "scale_now": 15.19
     },
     {
       "id": "hy-spread",

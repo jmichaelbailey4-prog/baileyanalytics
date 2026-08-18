@@ -1,17 +1,6 @@
 {
-  "generated_at": "2026-08-18T06:33:52Z",
-  "transitions": [
-    {
-      "lens_id": "energy-commodities",
-      "lens_title": "Commodities & Materials",
-      "category": "energy",
-      "href": "/dashboards/energy/commodities.html",
-      "from_status": "watch",
-      "to_status": "ok",
-      "direction": "improving",
-      "headline": "Commodity costs are stable or easing."
-    }
-  ],
+  "generated_at": "2026-08-18T13:53:30Z",
+  "transitions": [],
   "top_moves": [
     {
       "lens_id": "crypto-structure",
@@ -60,11 +49,11 @@
         56.10040316445099,
         56.146576959944205,
         56.27826188726556,
-        56.57096998420798
+        56.51156383225826
       ],
       "stat_label": "BTC dominance",
-      "stat_value": "56.57%",
-      "delta": "0.29%",
+      "stat_value": "56.51%",
+      "delta": "0.23%",
       "dir": "up",
       "why": "BTC dominance: up 4 readings in a row."
     },
@@ -232,6 +221,61 @@
       "delta": "15.60%",
       "dir": "up",
       "why": ""
+    },
+    {
+      "lens_id": "global-trade-supply",
+      "lens_title": "Trade & Supply Chain",
+      "category": "global",
+      "href": "/dashboards/global/trade-supply.html",
+      "headline": "Trade frictions are building \u2014 supply chains or import costs bear watching.",
+      "accent": "#FBBF24",
+      "sparkline": [
+        -1.33,
+        -1.59,
+        -1.11,
+        -0.92,
+        -1.1,
+        -0.66,
+        -0.39,
+        0.19,
+        -0.15,
+        -0.35,
+        -0.19,
+        -0.36,
+        -0.97,
+        -0.58,
+        -0.35,
+        -0.04,
+        0.23,
+        0.12,
+        -0.38,
+        -0.31,
+        -0.29,
+        -0.2,
+        -0.01,
+        -0.2,
+        -0.24,
+        0.29,
+        0.09,
+        0.02,
+        -0.08,
+        -0.02,
+        -0.08,
+        -0.13,
+        0.58,
+        0.47,
+        0.58,
+        0.68,
+        1.84,
+        1.81,
+        1.19,
+        0.79
+      ],
+      "stat_label": "Supply chain",
+      "stat_value": "0.79\u03c3",
+      "delta": "0.40\u03c3",
+      "dir": "down",
+      "why": "Supply chain: down 3 readings in a row."
     }
   ],
   "lenses": [
@@ -515,6 +559,20 @@
   },
   "watching": [
     {
+      "key": "housing/housing-supply-construction/housing-starts",
+      "indicator": "housing-starts",
+      "lens": "housing-supply-construction",
+      "category": "housing",
+      "title": "Housing Starts \u00b7 thousands, annual rate",
+      "lens_title": "Supply & Construction",
+      "due": "2026-09-15",
+      "point_fmt": "1,295",
+      "implied_status": "ok",
+      "current_status": "watch",
+      "change": true,
+      "href": "/dashboards/housing/supply-construction.html"
+    },
+    {
       "key": "energy/energy-electricity/electricity-price",
       "indicator": "electricity-price",
       "lens": "energy-electricity",
@@ -541,20 +599,6 @@
       "current_status": "ok",
       "change": false,
       "href": "/dashboards/housing/home-prices.html"
-    },
-    {
-      "key": "business/business-investment/real-sales",
-      "indicator": "real-sales",
-      "lens": "business-investment",
-      "category": "business",
-      "title": "Real Business Sales \u00b7 year-over-year",
-      "lens_title": "Business Investment",
-      "due": "2026-07-15",
-      "point_fmt": "2.30%",
-      "implied_status": "ok",
-      "current_status": "ok",
-      "change": false,
-      "href": "/dashboards/business/investment.html"
     }
   ],
   "pressure": [
