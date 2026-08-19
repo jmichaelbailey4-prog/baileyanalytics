@@ -5,6 +5,17 @@
 <atom:link href="https://baileyanalytics.com/feed.xml" rel="self" type="application/rss+xml"/>
 <description>Daily plain-English status changes and movers across the Bailey Analytics economic dashboards.</description>
 <item>
+<title>Today's Brief — 3 alert · 5 elevated · 6 on watch</title>
+<link>https://baileyanalytics.com/dashboards/brief.html</link>
+<guid isPermaLink="false">brief-2026-08-19</guid>
+<pubDate>Wed, 19 Aug 2026 00:00:00 +0000</pubDate>
+<description>Oil &amp; Fuels: elevated → alert — Fuel costs are spiking — acute pressure at the pump.
+Business Investment: Core capex 12.90% (▲2.00%)
+Consumer Spending: Retail sales 5.01% (▼1.74%)
+Corporate Profits: Profit growth 18.40% (▲15.60%)
+Trade &amp; Supply Chain: Supply chain 0.79σ (▼0.40σ)</description>
+</item>
+<item>
 <title>Today's Brief — 2 alert · 6 elevated · 6 on watch</title>
 <link>https://baileyanalytics.com/dashboards/brief.html</link>
 <guid isPermaLink="false">brief-2026-08-18</guid>
@@ -317,17 +328,6 @@ Risk Sentiment: VIX 18.77 (▲2.04)</description>
 <link>https://baileyanalytics.com/dashboards/brief.html</link>
 <guid isPermaLink="false">brief-2026-07-19</guid>
 <pubDate>Sun, 19 Jul 2026 00:00:00 +0000</pubDate>
-<description>The Cost of Living: CPI 3.46% (▼0.70%)
-Liquidity &amp; the Fed: M2 growth 5.58% (▲0.86%)
-Trade &amp; Supply Chain: Supply chain 1.25σ (▼0.56σ)
-Supply &amp; Construction: Months' supply 10.30 months (▲1.00 months)
-Corporate Profits: Profit growth 18.40% (▲15.60%)</description>
-</item>
-<item>
-<title>Today's Brief — 2 alert · 5 elevated · 9 on watch</title>
-<link>https://baileyanalytics.com/dashboards/brief.html</link>
-<guid isPermaLink="false">brief-2026-07-18</guid>
-<pubDate>Sat, 18 Jul 2026 00:00:00 +0000</pubDate>
 <description>The Cost of Living: CPI 3.46% (▼0.70%)
 Liquidity &amp; the Fed: M2 growth 5.58% (▲0.86%)
 Trade &amp; Supply Chain: Supply chain 1.25σ (▼0.56σ)

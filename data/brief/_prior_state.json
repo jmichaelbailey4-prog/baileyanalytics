@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-08-18T06:33:52Z",
+  "captured_at": "2026-08-19T06:29:36Z",
   "statuses": {
     "recession-watch": "ok",
     "cost-of-money": "watch",
@@ -22,7 +22,7 @@
     "market-scoreboard": "neutral",
     "market-liquidity": "ok",
     "crypto-structure": "neutral",
-    "energy-oil-fuels": "elevated",
+    "energy-oil-fuels": "alert",
     "energy-natural-gas": "ok",
     "energy-electricity": "watch",
     "energy-commodities": "ok",
