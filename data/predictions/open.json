@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-19T06:29:36Z",
+  "generated_at": "2026-08-19T14:07:23Z",
   "predictions": [
     {
       "id": "economic/recession-watch/yield-curve@2026-08-21",
@@ -1078,23 +1078,23 @@
       "now_date": "2026-08-14"
     },
     {
-      "id": "markets/market-risk-sentiment/nfci@2026-08-14",
+      "id": "markets/market-risk-sentiment/nfci@2026-08-21",
       "key": "markets/market-risk-sentiment/nfci",
       "category": "markets",
       "lens": "market-risk-sentiment",
       "indicator": "nfci",
       "series_id": "NFCI",
       "horizon": "next-print",
-      "target_period": "2026-08-14",
-      "due": "2026-08-19",
-      "made_at": "2026-08-12T14:23:11Z",
+      "target_period": "2026-08-21",
+      "due": "2026-08-26",
+      "made_at": "2026-08-19T13:59:19Z",
       "model": "ets-seasonal@1",
-      "point": -0.5511,
-      "lo": -0.5544,
-      "hi": -0.5484,
+      "point": -0.5614,
+      "lo": -0.5646,
+      "hi": -0.5583,
       "unit": "",
       "value_format": "decimal",
-      "prev_value": -0.549,
+      "prev_value": -0.559,
       "why": "NFCI: down 9 straight weeks. This projects the recent trend with the usual seasonal pattern for the week.",
       "implied_status": "ok",
       "current_status": "ok",
@@ -1105,7 +1105,7 @@
       "lens_title": "Risk Sentiment",
       "href": "/dashboards/markets/risk-sentiment.html",
       "grade": null,
-      "prev_period": "2026-08-07"
+      "prev_period": "2026-08-14"
     },
     {
       "id": "markets/market-scoreboard/sp500@2026-08-21",

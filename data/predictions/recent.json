@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-19T06:29:36Z",
+  "generated_at": "2026-08-19T14:07:23Z",
   "last": {
     "business/business-credit/ci-loan-growth": {
       "id": "business/business-credit/ci-loan-growth@2026-07-01",
@@ -556,24 +556,24 @@
       "now_date": "2026-08-07"
     },
     "markets/market-risk-sentiment/nfci": {
-      "id": "markets/market-risk-sentiment/nfci@2026-08-07",
+      "id": "markets/market-risk-sentiment/nfci@2026-08-14",
       "key": "markets/market-risk-sentiment/nfci",
       "category": "markets",
       "lens": "market-risk-sentiment",
       "indicator": "nfci",
       "series_id": "NFCI",
       "horizon": "next-print",
-      "target_period": "2026-08-07",
-      "due": "2026-08-12",
-      "made_at": "2026-08-05T15:18:50Z",
+      "target_period": "2026-08-14",
+      "due": "2026-08-19",
+      "made_at": "2026-08-12T14:23:11Z",
       "model": "ets-seasonal@1",
-      "point": -0.5271,
-      "lo": -0.5305,
-      "hi": -0.5243,
+      "point": -0.5511,
+      "lo": -0.5544,
+      "hi": -0.5484,
       "unit": "",
       "value_format": "decimal",
-      "prev_value": -0.529,
-      "why": "This projects the recent trend with the usual seasonal pattern for the week.",
+      "prev_value": -0.549,
+      "why": "NFCI: down 9 straight weeks. This projects the recent trend with the usual seasonal pattern for the week.",
       "implied_status": "ok",
       "current_status": "ok",
       "descriptive": false,
@@ -583,16 +583,16 @@
       "lens_title": "Risk Sentiment",
       "href": "/dashboards/markets/risk-sentiment.html",
       "grade": {
-        "actual": -0.549,
-        "graded_at": "2026-08-12T14:23:11Z",
+        "actual": -0.559,
+        "graded_at": "2026-08-19T13:59:18Z",
         "hit": false,
-        "abs_error": 0.02190000000000003,
-        "direction_hit": false,
+        "abs_error": 0.007900000000000018,
+        "direction_hit": true,
         "status_hit": true,
-        "naive_error": 0.020000000000000018,
+        "naive_error": 0.010000000000000009,
         "revised_to": null
       },
-      "prev_period": "2026-07-31"
+      "prev_period": "2026-08-07"
     },
     "consumer/consumer-spending/retail-sales": {
       "id": "consumer/consumer-spending/retail-sales@2026-07-01",
@@ -3536,6 +3536,45 @@
   },
   "feed": [
     {
+      "id": "markets/market-risk-sentiment/nfci@2026-08-14",
+      "key": "markets/market-risk-sentiment/nfci",
+      "category": "markets",
+      "lens": "market-risk-sentiment",
+      "indicator": "nfci",
+      "series_id": "NFCI",
+      "horizon": "next-print",
+      "target_period": "2026-08-14",
+      "due": "2026-08-19",
+      "made_at": "2026-08-12T14:23:11Z",
+      "model": "ets-seasonal@1",
+      "point": -0.5511,
+      "lo": -0.5544,
+      "hi": -0.5484,
+      "unit": "",
+      "value_format": "decimal",
+      "prev_value": -0.549,
+      "why": "NFCI: down 9 straight weeks. This projects the recent trend with the usual seasonal pattern for the week.",
+      "implied_status": "ok",
+      "current_status": "ok",
+      "descriptive": false,
+      "market_price": false,
+      "title": "Financial Conditions \u00b7 NFCI",
+      "short": "NFCI",
+      "lens_title": "Risk Sentiment",
+      "href": "/dashboards/markets/risk-sentiment.html",
+      "grade": {
+        "actual": -0.559,
+        "graded_at": "2026-08-19T13:59:18Z",
+        "hit": false,
+        "abs_error": 0.007900000000000018,
+        "direction_hit": true,
+        "status_hit": true,
+        "naive_error": 0.010000000000000009,
+        "revised_to": null
+      },
+      "prev_period": "2026-08-07"
+    },
+    {
       "id": "energy/energy-oil-fuels/diesel@2026-08-17",
       "key": "energy/energy-oil-fuels/diesel",
       "category": "energy",
@@ -5299,7 +5338,7 @@
         "direction_hit": false,
         "status_hit": true,
         "naive_error": 0.020000000000000018,
-        "revised_to": null
+        "revised_to": -0.555
       },
       "prev_period": "2026-07-31"
     },
@@ -5458,46 +5497,6 @@
         "revised_to": null
       },
       "prev_period": "2026-08-03"
-    },
-    {
-      "id": "global/global-dollar-currencies/yuan@2026-08-07",
-      "key": "global/global-dollar-currencies/yuan",
-      "category": "global",
-      "lens": "global-dollar-currencies",
-      "indicator": "yuan",
-      "series_id": "DEXCHUS",
-      "horizon": "next-print",
-      "target_period": "2026-08-07",
-      "due": "2026-08-12",
-      "made_at": "2026-08-04T08:24:38Z",
-      "model": "ets@1",
-      "point": 6.7483,
-      "lo": 6.716,
-      "hi": 6.7752,
-      "unit": "",
-      "value_format": "decimal",
-      "prev_value": 6.7509,
-      "why": "Yuan: down 5 straight weeks. This projects the recent level and trend forward one week.",
-      "implied_status": "info",
-      "current_status": "info",
-      "descriptive": true,
-      "market_price": true,
-      "title": "Chinese Yuan \u00b7 yuan per dollar",
-      "short": "Yuan",
-      "lens_title": "The Dollar & Currencies",
-      "href": "/dashboards/global/dollar-currencies.html",
-      "grade": {
-        "actual": 6.7474,
-        "graded_at": "2026-08-11T06:52:15Z",
-        "hit": true,
-        "abs_error": 0.000900000000000567,
-        "direction_hit": true,
-        "status_hit": true,
-        "naive_error": 0.0034999999999998366,
-        "revised_to": null
-      },
-      "now_value": 6.7509,
-      "now_date": "2026-07-31"
     }
   ]
 }
