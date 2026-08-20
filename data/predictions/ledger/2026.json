@@ -12510,7 +12510,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 10000.0,
-      "revised_to": null
+      "revised_to": 212000.0
     },
     "prev_period": "2026-08-01"
   },
@@ -14008,5 +14008,44 @@
     },
     "now_value": 2.79,
     "now_date": "2026-08-11"
+  },
+  {
+    "id": "economic/recession-watch/jobless-claims@2026-08-15",
+    "key": "economic/recession-watch/jobless-claims",
+    "category": "economic",
+    "lens": "recession-watch",
+    "indicator": "jobless-claims",
+    "series_id": "ICSA",
+    "horizon": "next-print",
+    "target_period": "2026-08-15",
+    "due": "2026-08-20",
+    "made_at": "2026-08-13T14:24:36Z",
+    "model": "naive@1",
+    "point": 209000.0,
+    "lo": 198000.0,
+    "hi": 221400.0,
+    "unit": "",
+    "value_format": "thousands",
+    "prev_value": 209000.0,
+    "why": "Jobless claims: up 3 straight weeks. We expect roughly the last value \u2014 this series rarely rewards cleverness.",
+    "implied_status": "ok",
+    "current_status": "ok",
+    "descriptive": false,
+    "market_price": false,
+    "title": "Initial Jobless Claims \u00b7 weekly",
+    "short": "Jobless claims",
+    "lens_title": "Recession Watch",
+    "href": "/dashboards/recession-watch.html",
+    "grade": {
+      "actual": 206000.0,
+      "graded_at": "2026-08-20T13:54:45Z",
+      "hit": true,
+      "abs_error": 3000.0,
+      "direction_hit": false,
+      "status_hit": true,
+      "naive_error": 3000.0,
+      "revised_to": null
+    },
+    "prev_period": "2026-08-08"
   }
 ]

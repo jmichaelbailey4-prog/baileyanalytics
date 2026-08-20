@@ -2,7 +2,7 @@
   "id": "energy-natural-gas",
   "title": "Natural Gas",
   "accent": "#60A5FA",
-  "last_updated": "2026-08-20T06:33:12Z",
+  "last_updated": "2026-08-20T13:54:28Z",
   "status": "ok",
   "headline_read": "Natural gas costs are stable or easing.",
   "recessions": [
@@ -2398,7 +2398,7 @@
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 53.7,
+        "p": 34.8,
         "since": 2023
       },
       "scale_now": -4.7297
