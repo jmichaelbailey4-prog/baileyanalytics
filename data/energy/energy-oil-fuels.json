@@ -2,7 +2,7 @@
   "id": "energy-oil-fuels",
   "title": "Oil & Fuels",
   "accent": "#FB923C",
-  "last_updated": "2026-08-20T13:54:28Z",
+  "last_updated": "2026-08-21T06:32:01Z",
   "status": "alert",
   "headline_read": "Fuel costs are spiking \u2014 acute pressure at the pump.",
   "recessions": [
@@ -2665,7 +2665,7 @@
       "signal_status": "alert",
       "value_format": "decimal",
       "percentile": {
-        "p": 94.4,
+        "p": 96.5,
         "since": 2016
       },
       "scale_now": 45.285
@@ -3986,10 +3986,6 @@
       "series_id": "WCESTUS1",
       "observations": [
         {
-          "date": "2016-08-26",
-          "value": "495238"
-        },
-        {
           "date": "2016-09-02",
           "value": "480725"
         },
@@ -4228,10 +4224,6 @@
         {
           "date": "2021-08-06",
           "value": "438777"
-        },
-        {
-          "date": "2021-08-13",
-          "value": "435544"
         },
         {
           "date": "2021-08-20",
@@ -5272,18 +5264,22 @@
         {
           "date": "2026-08-07",
           "value": "424410"
+        },
+        {
+          "date": "2026-08-14",
+          "value": "428815"
         }
       ],
       "latest": {
-        "date": "2026-08-07",
-        "value": "424410"
+        "date": "2026-08-14",
+        "value": "428815"
       },
       "context": "Commercial crude oil inventories (thousand barrels, excluding the Strategic Petroleum Reserve) \u2014 low stocks point to upward price pressure.",
-      "read": "Crude inventories is little changed from a year ago, now 424,410.",
+      "read": "Crude inventories is little changed from a year ago, now 428,815.",
       "signal_status": "info",
       "value_format": "thousands",
       "percentile": {
-        "p": 34.5,
+        "p": 34.0,
         "since": 2016
       },
       "no_severity_reason": "A physical supply-and-demand reading, not a household cost \u2014 this lens's verdict comes from the price indicators."
