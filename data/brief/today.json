@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-21T06:32:59Z",
+  "generated_at": "2026-08-21T13:51:16Z",
   "transitions": [],
   "top_moves": [
     {
@@ -49,11 +49,11 @@
         56.51156383225826,
         56.617363251650175,
         58.57793715294787,
-        59.10647173548733
+        59.26432102483366
       ],
       "stat_label": "BTC dominance",
-      "stat_value": "59.11%",
-      "delta": "0.53%",
+      "stat_value": "59.26%",
+      "delta": "0.69%",
       "dir": "up",
       "why": "BTC dominance: up 7 readings in a row, to a fresh high."
     },

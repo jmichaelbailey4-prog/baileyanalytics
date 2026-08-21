@@ -2,7 +2,7 @@
   "id": "market-risk-sentiment",
   "title": "Risk Sentiment",
   "accent": "#FB7185",
-  "last_updated": "2026-08-21T06:31:23Z",
+  "last_updated": "2026-08-21T13:49:36Z",
   "status": "ok",
   "headline_read": "Markets are calm \u2014 volatility and credit stress are low.",
   "recessions": [
@@ -65,8 +65,8 @@
       "series_id": "VIXCLS",
       "observations": [
         {
-          "date": "1990-03-22",
-          "value": "22.74"
+          "date": "1990-03-23",
+          "value": "20.46"
         },
         {
           "date": "1990-04-02",
@@ -413,8 +413,8 @@
           "value": "15.87"
         },
         {
-          "date": "2011-08-19",
-          "value": "43.05"
+          "date": "2011-08-22",
+          "value": "42.44"
         },
         {
           "date": "2011-09-01",
@@ -897,8 +897,8 @@
           "value": "19.46"
         },
         {
-          "date": "2021-08-19",
-          "value": "21.67"
+          "date": "2021-08-20",
+          "value": "18.56"
         },
         {
           "date": "2021-08-23",
@@ -3615,21 +3615,25 @@
         {
           "date": "2026-08-19",
           "value": "14.89"
+        },
+        {
+          "date": "2026-08-20",
+          "value": "16.01"
         }
       ],
       "latest": {
-        "date": "2026-08-19",
-        "value": "14.89"
+        "date": "2026-08-20",
+        "value": "16.01"
       },
       "context": "The market's 'fear gauge' \u2014 the expected volatility of the S&P 500 over the coming month. It spikes when investors are scared and falls when calm.",
-      "read": "The VIX is at 14.9 \u2014 markets are calm.",
+      "read": "The VIX is at 16.0 \u2014 markets are calm.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 31.4,
+        "p": 39.2,
         "since": 1990
       },
-      "scale_now": 14.89
+      "scale_now": 16.01
     },
     {
       "id": "hy-spread",
