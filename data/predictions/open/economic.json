@@ -1,23 +1,23 @@
 {
   "predictions": [
     {
-      "id": "economic/recession-watch/yield-curve@2026-08-21",
+      "id": "economic/recession-watch/yield-curve@2026-08-28",
       "key": "economic/recession-watch/yield-curve",
       "category": "economic",
       "lens": "recession-watch",
       "indicator": "yield-curve",
       "series_id": "T10Y2Y",
       "horizon": "next-print",
-      "target_period": "2026-08-21",
-      "due": "2026-08-26",
-      "made_at": "2026-08-15T06:24:32Z",
+      "target_period": "2026-08-28",
+      "due": "2026-09-02",
+      "made_at": "2026-08-22T06:24:14Z",
       "model": "ets@1",
-      "point": 0.5044,
-      "lo": 0.4346,
-      "hi": 0.5794,
+      "point": 0.501,
+      "lo": 0.4312,
+      "hi": 0.576,
       "unit": "%",
       "value_format": "decimal",
-      "prev_value": 0.51,
+      "prev_value": 0.5,
       "why": "This projects the recent level and trend forward one week.",
       "implied_status": "ok",
       "current_status": "ok",
@@ -28,8 +28,8 @@
       "lens_title": "Recession Watch",
       "href": "/dashboards/recession-watch.html",
       "grade": null,
-      "now_value": 0.51,
-      "now_date": "2026-08-14"
+      "now_value": 0.5,
+      "now_date": "2026-08-21"
     },
     {
       "id": "economic/recession-watch/sahm-rule@2026-08-01",
