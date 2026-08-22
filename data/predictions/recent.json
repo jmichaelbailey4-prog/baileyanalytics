@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-22T06:24:49Z",
+  "generated_at": "2026-08-22T13:36:16Z",
   "last": {
     "business/business-credit/ci-loan-growth": {
       "id": "business/business-credit/ci-loan-growth@2026-07-01",
@@ -36,7 +36,7 @@
         "direction_hit": true,
         "status_hit": true,
         "naive_error": 0.40000000000000036,
-        "revised_to": null
+        "revised_to": 8.6
       },
       "prev_period": "2026-06-01"
     },
@@ -4948,7 +4948,7 @@
         "direction_hit": true,
         "status_hit": true,
         "naive_error": 0.40000000000000036,
-        "revised_to": null
+        "revised_to": 8.6
       },
       "prev_period": "2026-06-01"
     },

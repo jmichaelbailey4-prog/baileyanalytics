@@ -32,7 +32,7 @@
       "direction_hit": true,
       "status_hit": true,
       "naive_error": 0.39999999999999947,
-      "revised_to": 7.9
+      "revised_to": 8.0
     }
   },
   {
@@ -5085,7 +5085,7 @@
       "direction_hit": true,
       "status_hit": true,
       "naive_error": 0.09999999999999964,
-      "revised_to": null
+      "revised_to": 8.4
     }
   },
   {
@@ -13062,7 +13062,7 @@
       "direction_hit": true,
       "status_hit": true,
       "naive_error": 0.40000000000000036,
-      "revised_to": null
+      "revised_to": 8.6
     },
     "prev_period": "2026-06-01"
   },
