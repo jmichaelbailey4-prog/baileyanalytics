@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-08-23T13:36:34Z",
+  "generated_at": "2026-08-24T13:57:08Z",
   "predictions": [
     {
       "id": "economic/recession-watch/yield-curve@2026-08-28",
@@ -985,24 +985,24 @@
       "grade": null
     },
     {
-      "id": "markets/market-risk-sentiment/vix@2026-08-21",
+      "id": "markets/market-risk-sentiment/vix@2026-08-28",
       "key": "markets/market-risk-sentiment/vix",
       "category": "markets",
       "lens": "market-risk-sentiment",
       "indicator": "vix",
       "series_id": "VIXCLS",
       "horizon": "next-print",
-      "target_period": "2026-08-21",
-      "due": "2026-08-26",
-      "made_at": "2026-08-17T13:44:04Z",
+      "target_period": "2026-08-28",
+      "due": "2026-09-02",
+      "made_at": "2026-08-24T13:56:32Z",
       "model": "ets@1",
-      "point": 14.3228,
-      "lo": 9.6873,
-      "hi": 18.1223,
+      "point": 15.0556,
+      "lo": 10.6545,
+      "hi": 18.855,
       "unit": "",
       "value_format": "decimal",
-      "prev_value": 14.25,
-      "why": "VIX: down 4 straight weeks. This projects the recent level and trend forward one week.",
+      "prev_value": 15.13,
+      "why": "This projects the recent level and trend forward one week.",
       "implied_status": "ok",
       "current_status": "ok",
       "descriptive": false,
@@ -1012,8 +1012,8 @@
       "lens_title": "Risk Sentiment",
       "href": "/dashboards/markets/risk-sentiment.html",
       "grade": null,
-      "now_value": 14.25,
-      "now_date": "2026-08-14"
+      "now_value": 15.13,
+      "now_date": "2026-08-21"
     },
     {
       "id": "markets/market-risk-sentiment/hy-spread@2026-08-21",
