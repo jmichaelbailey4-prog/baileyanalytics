@@ -14083,7 +14083,7 @@
       "direction_hit": true,
       "status_hit": true,
       "naive_error": 219.0,
-      "revised_to": 4680.6
+      "revised_to": 4624.1
     },
     "now_value": 4389.4,
     "now_date": "2026-08-14"
@@ -14359,7 +14359,7 @@
       "direction_hit": true,
       "status_hit": true,
       "naive_error": 15158.200000000004,
-      "revised_to": 77117.73
+      "revised_to": 77637.69
     },
     "now_value": 62968.43,
     "now_date": "2026-08-14"
@@ -14399,7 +14399,7 @@
       "direction_hit": true,
       "status_hit": true,
       "naive_error": 629.1599999999999,
-      "revised_to": 2423.65
+      "revised_to": 2459.15
     },
     "now_value": 1879.92,
     "now_date": "2026-08-14"
