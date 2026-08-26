@@ -2,7 +2,7 @@
   "id": "energy-oil-fuels",
   "title": "Oil & Fuels",
   "accent": "#FB923C",
-  "last_updated": "2026-08-26T06:36:09Z",
+  "last_updated": "2026-08-26T13:58:06Z",
   "status": "alert",
   "headline_read": "Fuel costs are spiking \u2014 acute pressure at the pump.",
   "recessions": [
@@ -1358,7 +1358,7 @@
       "signal_status": "elevated",
       "value_format": "decimal",
       "percentile": {
-        "p": 90.0,
+        "p": 93.8,
         "since": 2016
       },
       "scale_now": 30.72
@@ -1372,8 +1372,8 @@
       "series_id": "EMD_EPD2D_PTE_NUS_DPG",
       "observations": [
         {
-          "date": "2016-09-05",
-          "value": "2.407"
+          "date": "2016-09-12",
+          "value": "2.399"
         },
         {
           "date": "2016-10-03",
@@ -1610,10 +1610,6 @@
         {
           "date": "2021-08-02",
           "value": "3.367"
-        },
-        {
-          "date": "2021-08-23",
-          "value": "3.324"
         },
         {
           "date": "2021-08-30",
@@ -2654,21 +2650,25 @@
         {
           "date": "2026-08-17",
           "value": "5.454"
+        },
+        {
+          "date": "2026-08-24",
+          "value": "5.652"
         }
       ],
       "latest": {
-        "date": "2026-08-17",
-        "value": "5.454"
+        "date": "2026-08-24",
+        "value": "5.652"
       },
       "context": "The U.S. average on-highway diesel price \u2014 the fuel that moves freight, so it feeds into the price of nearly everything.",
-      "read": "Diesel costs have surged 45% over the past year \u2014 acute pressure on households.",
+      "read": "Diesel costs have surged 52% over the past year \u2014 acute pressure on households.",
       "signal_status": "alert",
       "value_format": "decimal",
       "percentile": {
-        "p": 96.5,
+        "p": 98.8,
         "since": 2016
       },
-      "scale_now": 45.285
+      "scale_now": 52.2219
     },
     {
       "id": "crude-production",

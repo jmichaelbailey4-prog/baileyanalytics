@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-08-26T06:36:09Z",
+  "last_updated": "2026-08-26T13:58:06Z",
   "status": "elevated",
   "lenses": [
     {
@@ -17,7 +17,7 @@
         },
         {
           "k": "Diesel",
-          "v": "$5.45",
+          "v": "$5.65",
           "d": "$0.20",
           "dir": "up"
         }
@@ -132,24 +132,23 @@
       "id": "energy-electricity",
       "title": "Electricity & the Grid",
       "accent": "#FBBF24",
-      "status": "watch",
-      "headline_read": "Electricity prices are climbing.",
+      "status": "ok",
+      "headline_read": "Power bills are steady.",
       "key_stats": [
         {
           "k": "Power price",
-          "v": "18.44\u00a2/kWh",
-          "d": "0.39\u00a2/kWh",
+          "v": "18.34\u00a2/kWh",
+          "d": "0.10\u00a2/kWh",
           "dir": "down"
         },
         {
           "k": "Renewables",
-          "v": "29.70%",
-          "d": "2.70%",
+          "v": "27.40%",
+          "d": "2.30%",
           "dir": "down"
         }
       ],
       "sparkline": [
-        15.98,
         16.04,
         16.1,
         16.14,
@@ -188,7 +187,8 @@
         17.65,
         18.83,
         18.83,
-        18.44
+        18.44,
+        18.34
       ]
     },
     {

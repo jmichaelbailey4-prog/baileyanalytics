@@ -2,7 +2,7 @@
   "id": "business-investment",
   "title": "Business Investment",
   "accent": "#FBBF24",
-  "last_updated": "2026-08-14T14:17:51Z",
+  "last_updated": "2026-08-26T13:58:19Z",
   "status": "ok",
   "headline_read": "Businesses are investing \u2014 orders and sales are growing.",
   "recessions": [
@@ -359,10 +359,6 @@
         {
           "date": "2011-04-01",
           "value": "17.7"
-        },
-        {
-          "date": "2011-06-01",
-          "value": "7.0"
         },
         {
           "date": "2011-07-01",
@@ -1082,11 +1078,15 @@
         },
         {
           "date": "2026-06-01",
+          "value": "13.4"
+        },
+        {
+          "date": "2026-07-01",
           "value": "12.9"
         }
       ],
       "latest": {
-        "date": "2026-06-01",
+        "date": "2026-07-01",
         "value": "12.9"
       },
       "context": "Orders for nondefense capital goods excluding aircraft \u2014 the cleanest monthly read on whether businesses are investing in equipment. (Headline durable goods is skipped here: aircraft orders make it noise.)",
@@ -1094,7 +1094,7 @@
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 89.8,
+        "p": 89.6,
         "since": 1993
       },
       "scale_now": 12.9
@@ -1802,10 +1802,6 @@
         {
           "date": "2011-04-01",
           "value": "3.1"
-        },
-        {
-          "date": "2011-05-01",
-          "value": "2.6"
         },
         {
           "date": "2011-06-01",
@@ -2526,21 +2522,25 @@
         {
           "date": "2026-05-01",
           "value": "2.3"
+        },
+        {
+          "date": "2026-06-01",
+          "value": "2.2"
         }
       ],
       "latest": {
-        "date": "2026-05-01",
-        "value": "2.3"
+        "date": "2026-06-01",
+        "value": "2.2"
       },
       "context": "Real manufacturing and trade sales \u2014 total business volume adjusted for inflation, one of the inputs NBER uses to date recessions.",
-      "read": "Real business sales are growing 2.3% a year.",
+      "read": "Real business sales are growing 2.2% a year.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 38.8,
+        "p": 37.5,
         "since": 1968
       },
-      "scale_now": 2.3
+      "scale_now": 2.2
     },
     {
       "id": "inventories-sales",

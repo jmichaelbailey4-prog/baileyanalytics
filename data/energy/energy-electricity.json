@@ -2,9 +2,9 @@
   "id": "energy-electricity",
   "title": "Electricity & the Grid",
   "accent": "#FBBF24",
-  "last_updated": "2026-07-24T08:10:02Z",
-  "status": "watch",
-  "headline_read": "Electricity prices are climbing.",
+  "last_updated": "2026-08-26T13:58:06Z",
+  "status": "ok",
+  "headline_read": "Power bills are steady.",
   "recessions": [
     {
       "start": "1948-12-01",
@@ -64,10 +64,6 @@
       "color": "#FBBF24",
       "series_id": "ELEC_PRICE_RES_US",
       "observations": [
-        {
-          "date": "2006-06",
-          "value": "10.85"
-        },
         {
           "date": "2006-07",
           "value": "10.96"
@@ -1023,21 +1019,25 @@
         {
           "date": "2026-05",
           "value": "18.44"
+        },
+        {
+          "date": "2026-06",
+          "value": "18.34"
         }
       ],
       "latest": {
-        "date": "2026-05",
-        "value": "18.44"
+        "date": "2026-06",
+        "value": "18.34"
       },
       "context": "The U.S. average residential electricity price (cents per kWh) \u2014 the power bill households pay every month.",
-      "read": "Electricity costs are up 6% over the past year \u2014 climbing.",
-      "signal_status": "watch",
+      "read": "Electricity costs are up 5% over the past year.",
+      "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 98.8,
+        "p": 98.3,
         "since": 2006
       },
-      "scale_now": 6.16
+      "scale_now": 4.98
     },
     {
       "id": "renewables-share",
@@ -1047,10 +1047,6 @@
       "color": "#34D399",
       "series_id": "RENEW_SHARE",
       "observations": [
-        {
-          "date": "2006-06",
-          "value": "10.3"
-        },
         {
           "date": "2006-07",
           "value": "8.2"
@@ -2006,18 +2002,22 @@
         {
           "date": "2026-05",
           "value": "29.7"
+        },
+        {
+          "date": "2026-06",
+          "value": "27.4"
         }
       ],
       "latest": {
-        "date": "2026-05",
-        "value": "29.7"
+        "date": "2026-06",
+        "value": "27.4"
       },
       "context": "The share of U.S. electricity generated from renewables (wind, solar, hydro, and more) \u2014 the clearest single read on the energy transition.",
-      "read": "Renewables: 29.7% of U.S. electricity generation, up 1.8 points over the past year.",
+      "read": "Renewables: 27.4% of U.S. electricity generation, up 3.2 points over the past year.",
       "signal_status": "info",
       "value_format": "decimal",
       "percentile": {
-        "p": 97.9,
+        "p": 95.8,
         "since": 2006
       },
       "no_severity_reason": "A physical supply-and-demand reading, not a household cost \u2014 this lens's verdict comes from the price indicators.",
@@ -2031,10 +2031,6 @@
       "color": "#60A5FA",
       "series_id": "NG_SHARE",
       "observations": [
-        {
-          "date": "2006-06",
-          "value": "22.3"
-        },
         {
           "date": "2006-07",
           "value": "26.3"
@@ -2990,18 +2986,22 @@
         {
           "date": "2026-05",
           "value": "38.7"
+        },
+        {
+          "date": "2026-06",
+          "value": "40.8"
         }
       ],
       "latest": {
-        "date": "2026-05",
-        "value": "38.7"
+        "date": "2026-06",
+        "value": "40.8"
       },
       "context": "The share of U.S. electricity generated from natural gas \u2014 still the single largest source, and the swing fuel that balances the grid.",
-      "read": "Natural gas: 38.7% of U.S. electricity generation, down 0.6 points over the past year.",
+      "read": "Natural gas: 40.8% of U.S. electricity generation, down 1.1 points over the past year.",
       "signal_status": "info",
       "value_format": "decimal",
       "percentile": {
-        "p": 72.5,
+        "p": 83.3,
         "since": 2006
       },
       "no_severity_reason": "A physical supply-and-demand reading, not a household cost \u2014 this lens's verdict comes from the price indicators.",
@@ -3015,10 +3015,6 @@
       "color": "#38BDF8",
       "series_id": "NET_GEN_TOTAL",
       "observations": [
-        {
-          "date": "2006-06",
-          "value": "364259.79756"
-        },
         {
           "date": "2006-07",
           "value": "410420.79333"
@@ -3974,18 +3970,22 @@
         {
           "date": "2026-05",
           "value": "354690.52571"
+        },
+        {
+          "date": "2026-06",
+          "value": "399671.28516"
         }
       ],
       "latest": {
-        "date": "2026-05",
-        "value": "354690.52571"
+        "date": "2026-06",
+        "value": "399671.28516"
       },
       "context": "Total U.S. net electricity generation (GWh) \u2014 a read on how much power the economy is consuming.",
-      "read": "Net generation is up 3% from a year ago, now 354,691.",
+      "read": "Net generation is little changed from a year ago, now 399,671.",
       "signal_status": "info",
       "value_format": "thousands",
       "percentile": {
-        "p": 66.7,
+        "p": 87.5,
         "since": 2006
       },
       "no_severity_reason": "A physical supply-and-demand reading, not a household cost \u2014 this lens's verdict comes from the price indicators.",

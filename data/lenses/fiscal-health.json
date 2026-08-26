@@ -2,7 +2,7 @@
   "id": "fiscal-health",
   "title": "Fiscal Health",
   "accent": "#A78BFA",
-  "last_updated": "2026-08-14T07:10:36Z",
+  "last_updated": "2026-08-26T13:57:25Z",
   "status": "elevated",
   "headline_read": "The U.S. is borrowing heavily \u2014 debt and interest costs are climbing.",
   "recessions": [
@@ -3545,21 +3545,25 @@
         {
           "date": "2026-01-01",
           "value": "20.6"
+        },
+        {
+          "date": "2026-04-01",
+          "value": "20.7"
         }
       ],
       "latest": {
-        "date": "2026-01-01",
-        "value": "20.6"
+        "date": "2026-04-01",
+        "value": "20.7"
       },
       "context": "Federal interest payments as a share of total federal revenue (including payroll taxes) \u2014 how many cents of every revenue dollar go just to servicing the debt. It has climbed to a modern record (~20%) as rates rose, the highest since the 1990s.",
       "read": "Interest takes 21 cents of every dollar of federal revenue \u2014 a heavy, near-record claim that crowds out the budget.",
       "signal_status": "elevated",
       "value_format": "decimal",
       "percentile": {
-        "p": 74.4,
+        "p": 76.1,
         "since": 1947
       },
-      "scale_now": 20.6
+      "scale_now": 20.7
     },
     {
       "id": "receipts",
@@ -4820,21 +4824,25 @@
         {
           "date": "2026-01-01",
           "value": "12.3"
+        },
+        {
+          "date": "2026-04-01",
+          "value": "8.2"
         }
       ],
       "latest": {
-        "date": "2026-01-01",
-        "value": "12.3"
+        "date": "2026-04-01",
+        "value": "8.2"
       },
       "context": "How fast federal tax revenue is growing versus a year ago. Healthy receipts growth shrinks the deficit without any policy change; shrinking receipts usually mean a weakening economy.",
-      "read": "The federal tax take is growing 12.3% a year.",
+      "read": "The federal tax take is growing 8.2% a year.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 78.6,
+        "p": 56.7,
         "since": 1948
       },
-      "scale_now": 12.3
+      "scale_now": 8.2
     },
     {
       "id": "interest-cost",

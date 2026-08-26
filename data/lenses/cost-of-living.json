@@ -2,7 +2,7 @@
   "id": "cost-of-living",
   "title": "The Cost of Living",
   "accent": "#FBBF24",
-  "last_updated": "2026-08-12T14:21:52Z",
+  "last_updated": "2026-08-26T13:57:25Z",
   "status": "watch",
   "headline_read": "Inflation has cooled but isn't beaten \u2014 still above target.",
   "recessions": [
@@ -4295,10 +4295,6 @@
           "value": "2.48810"
         },
         {
-          "date": "2011-06-01",
-          "value": "2.78845"
-        },
-        {
           "date": "2011-07-01",
           "value": "2.87570"
         },
@@ -5008,30 +5004,34 @@
         },
         {
           "date": "2026-04-01",
-          "value": "3.79073"
+          "value": "3.80182"
         },
         {
           "date": "2026-05-01",
-          "value": "4.07897"
+          "value": "4.11141"
         },
         {
           "date": "2026-06-01",
-          "value": "3.66805"
+          "value": "3.71697"
+        },
+        {
+          "date": "2026-07-01",
+          "value": "3.70117"
         }
       ],
       "latest": {
-        "date": "2026-06-01",
-        "value": "3.66805"
+        "date": "2026-07-01",
+        "value": "3.70117"
       },
       "context": "The Personal Consumption Expenditures price index \u2014 the inflation gauge the Federal Reserve watches most closely when setting interest rates.",
       "read": "Running at 3.7% a year \u2014 still above the Fed's 2% goal.",
       "signal_status": "watch",
       "value_format": "decimal",
       "percentile": {
-        "p": 67.9,
+        "p": 68.2,
         "since": 1960
       },
-      "scale_now": 3.6681
+      "scale_now": 3.7012
     },
     {
       "id": "core-pce",
@@ -5882,10 +5882,6 @@
           "value": "1.39470"
         },
         {
-          "date": "2011-06-01",
-          "value": "1.58633"
-        },
-        {
           "date": "2011-07-01",
           "value": "1.73445"
         },
@@ -6595,30 +6591,34 @@
         },
         {
           "date": "2026-04-01",
-          "value": "3.31549"
+          "value": "3.32983"
         },
         {
           "date": "2026-05-01",
-          "value": "3.42158"
+          "value": "3.46371"
         },
         {
           "date": "2026-06-01",
-          "value": "3.28653"
+          "value": "3.34361"
+        },
+        {
+          "date": "2026-07-01",
+          "value": "3.34414"
         }
       ],
       "latest": {
-        "date": "2026-06-01",
-        "value": "3.28653"
+        "date": "2026-07-01",
+        "value": "3.34414"
       },
       "context": "PCE excluding food and energy \u2014 the measure the Fed's 2% target is actually stated in. When policymakers say \u201cinflation,\u201d this is the number they mean.",
       "read": "Running at 3.3% a year \u2014 still above the Fed's 2% goal.",
       "signal_status": "watch",
       "value_format": "decimal",
       "percentile": {
-        "p": 62.0,
+        "p": 62.8,
         "since": 1960
       },
-      "scale_now": 3.2865
+      "scale_now": 3.3441
     },
     {
       "id": "real-wages",

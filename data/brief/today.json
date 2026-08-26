@@ -1,6 +1,27 @@
 {
-  "generated_at": "2026-08-26T06:39:48Z",
-  "transitions": [],
+  "generated_at": "2026-08-26T13:59:02Z",
+  "transitions": [
+    {
+      "lens_id": "consumer-income-savings",
+      "lens_title": "Household Income & Savings",
+      "category": "consumer",
+      "href": "/dashboards/consumer/income-savings.html",
+      "from_status": "elevated",
+      "to_status": "watch",
+      "direction": "improving",
+      "headline": "Household finances are tightening \u2014 cushions are shrinking."
+    },
+    {
+      "lens_id": "energy-electricity",
+      "lens_title": "Electricity & the Grid",
+      "category": "energy",
+      "href": "/dashboards/energy/electricity.html",
+      "from_status": "watch",
+      "to_status": "ok",
+      "direction": "improving",
+      "headline": "Power bills are steady."
+    }
+  ],
   "top_moves": [
     {
       "lens_id": "housing-supply-construction",
@@ -113,61 +134,6 @@
       "why": ""
     },
     {
-      "lens_id": "business-investment",
-      "lens_title": "Business Investment",
-      "category": "business",
-      "href": "/dashboards/business/investment.html",
-      "headline": "Businesses are investing \u2014 orders and sales are growing.",
-      "accent": "#FBBF24",
-      "sparkline": [
-        -3.0,
-        -2.0,
-        -1.7,
-        -3.0,
-        -2.6,
-        -4.8,
-        -3.1,
-        -3.9,
-        -2.9,
-        -2.7,
-        -2.3,
-        -0.3,
-        0.2,
-        -0.5,
-        -3.0,
-        -1.6,
-        -2.3,
-        -0.9,
-        -0.1,
-        -1.0,
-        0.0,
-        0.7,
-        3.1,
-        2.2,
-        2.4,
-        0.8,
-        4.0,
-        2.8,
-        3.7,
-        4.2,
-        4.2,
-        6.1,
-        5.8,
-        6.3,
-        4.0,
-        6.2,
-        9.9,
-        10.9,
-        10.9,
-        12.9
-      ],
-      "stat_label": "Core capex",
-      "stat_value": "12.90%",
-      "delta": "2.00%",
-      "dir": "up",
-      "why": "Core capex: a fresh high in this view."
-    },
-    {
       "lens_id": "consumer-spending",
       "lens_title": "Consumer Spending",
       "category": "consumer",
@@ -220,61 +186,6 @@
       "stat_value": "5.01%",
       "delta": "1.74%",
       "dir": "down",
-      "why": ""
-    },
-    {
-      "lens_id": "business-profitability",
-      "lens_title": "Corporate Profits",
-      "category": "business",
-      "href": "/dashboards/business/profitability.html",
-      "headline": "Corporate America is profitable \u2014 earnings are growing.",
-      "accent": "#34D399",
-      "sparkline": [
-        -1.8,
-        0.8,
-        10.3,
-        13.3,
-        8.3,
-        11.0,
-        -3.2,
-        -2.9,
-        2.2,
-        -2.3,
-        8.1,
-        2.9,
-        -0.2,
-        3.6,
-        5.2,
-        -2.0,
-        -9.8,
-        22.4,
-        14.5,
-        33.9,
-        60.6,
-        16.3,
-        21.5,
-        9.1,
-        5.8,
-        2.7,
-        -2.0,
-        7.6,
-        0.6,
-        7.8,
-        16.0,
-        7.8,
-        9.2,
-        4.6,
-        10.0,
-        -1.7,
-        -3.3,
-        4.3,
-        2.8,
-        18.4
-      ],
-      "stat_label": "Profit growth",
-      "stat_value": "18.40%",
-      "delta": "15.60%",
-      "dir": "up",
       "why": ""
     }
   ],
@@ -340,8 +251,8 @@
       "lens_title": "Household Income & Savings",
       "category": "consumer",
       "href": "/dashboards/consumer/income-savings.html",
-      "status": "elevated",
-      "headline": "Household cushions are thin \u2014 savings or real incomes are stretched."
+      "status": "watch",
+      "headline": "Household finances are tightening \u2014 cushions are shrinking."
     },
     {
       "lens_id": "consumer-sentiment",
@@ -468,8 +379,8 @@
       "lens_title": "Electricity & the Grid",
       "category": "energy",
       "href": "/dashboards/energy/electricity.html",
-      "status": "watch",
-      "headline": "Electricity prices are climbing."
+      "status": "ok",
+      "headline": "Power bills are steady."
     },
     {
       "lens_id": "energy-commodities",
@@ -545,19 +456,33 @@
     }
   ],
   "status_counts": {
-    "ok": 17,
+    "ok": 18,
     "watch": 6,
-    "elevated": 5,
+    "elevated": 4,
     "alert": 3,
     "neutral": 2
   },
   "verdict": {
     "status": "watch",
     "shape": "contained-pressure",
-    "sentence": "The economy is holding up, but not without strain: household finances are stretched thin and the core economy is under real strain, while banks are solid and markets are calm.",
-    "short": "Holding up, but household finances are stretched thin."
+    "sentence": "The economy is holding up, but not without strain: the core economy is under real strain and household finances are stretched thin, while banks are solid and markets are calm.",
+    "short": "Holding up, but the core economy is under real strain."
   },
   "watching": [
+    {
+      "key": "energy/energy-electricity/electricity-price",
+      "indicator": "electricity-price",
+      "lens": "energy-electricity",
+      "category": "energy",
+      "title": "Retail Electricity \u00b7 Residential",
+      "lens_title": "Electricity & the Grid",
+      "due": "2026-08-15",
+      "point_fmt": "18.50\u00a2/kWh",
+      "implied_status": "watch",
+      "current_status": "ok",
+      "change": true,
+      "href": "/dashboards/energy/electricity.html"
+    },
     {
       "key": "housing/housing-supply-construction/housing-starts",
       "indicator": "housing-starts",
@@ -571,20 +496,6 @@
       "current_status": "watch",
       "change": true,
       "href": "/dashboards/housing/supply-construction.html"
-    },
-    {
-      "key": "energy/energy-electricity/electricity-price",
-      "indicator": "electricity-price",
-      "lens": "energy-electricity",
-      "category": "energy",
-      "title": "Retail Electricity \u00b7 Residential",
-      "lens_title": "Electricity & the Grid",
-      "due": "2026-07-15",
-      "point_fmt": "18.73\u00a2/kWh",
-      "implied_status": "watch",
-      "current_status": "watch",
-      "change": false,
-      "href": "/dashboards/energy/electricity.html"
     },
     {
       "key": "housing/housing-home-prices/case-shiller",
@@ -635,14 +546,6 @@
       "headline": "The U.S. is borrowing heavily \u2014 debt and interest costs are climbing."
     },
     {
-      "lens_id": "consumer-income-savings",
-      "lens_title": "Household Income & Savings",
-      "category": "consumer",
-      "href": "/dashboards/consumer/income-savings.html",
-      "status": "elevated",
-      "headline": "Household cushions are thin \u2014 savings or real incomes are stretched."
-    },
-    {
       "lens_id": "housing-affordability",
       "lens_title": "Affordability & Financing",
       "category": "housing",
@@ -691,20 +594,20 @@
       "headline": "Consumer credit bears watching \u2014 debt loads are creeping up."
     },
     {
+      "lens_id": "consumer-income-savings",
+      "lens_title": "Household Income & Savings",
+      "category": "consumer",
+      "href": "/dashboards/consumer/income-savings.html",
+      "status": "watch",
+      "headline": "Household finances are tightening \u2014 cushions are shrinking."
+    },
+    {
       "lens_id": "bank-concentrations-funding",
       "lens_title": "Concentrations & Funding",
       "category": "banking",
       "href": "/dashboards/banking/concentrations-funding.html",
       "status": "watch",
       "headline": "Some concentration and funding risks are building."
-    },
-    {
-      "lens_id": "energy-electricity",
-      "lens_title": "Electricity & the Grid",
-      "category": "energy",
-      "href": "/dashboards/energy/electricity.html",
-      "status": "watch",
-      "headline": "Electricity prices are climbing."
     },
     {
       "lens_id": "global-trade-supply",
@@ -774,7 +677,7 @@
     }
   ],
   "synthesis": {
-    "cooccurrence": "Three of today's pressure points are about the cost of living \u2014 fuel, overall inflation, and electricity.",
+    "cooccurrence": "Two of today's pressure points are about the housing market \u2014 affordability and housing supply.",
     "relationships": [
       "Real income is pay measured after inflation \u2014 so when the cost of living climbs faster than wages, real incomes fall by definition."
     ]
