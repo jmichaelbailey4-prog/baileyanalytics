@@ -2,7 +2,7 @@
   "id": "business-credit",
   "title": "Business Credit",
   "accent": "#F87171",
-  "last_updated": "2026-08-22T06:24:09Z",
+  "last_updated": "2026-08-26T06:36:21Z",
   "status": "ok",
   "headline_read": "Business credit is flowing \u2014 spreads and delinquencies are low.",
   "recessions": [
@@ -2944,11 +2944,11 @@
         },
         {
           "date": "2024-01-01",
-          "value": "1.12"
+          "value": "1.11"
         },
         {
           "date": "2024-04-01",
-          "value": "1.14"
+          "value": "1.15"
         },
         {
           "date": "2024-07-01",
@@ -2960,11 +2960,11 @@
         },
         {
           "date": "2025-01-01",
-          "value": "1.29"
+          "value": "1.28"
         },
         {
           "date": "2025-04-01",
-          "value": "1.28"
+          "value": "1.29"
         },
         {
           "date": "2025-07-01",
@@ -2976,22 +2976,26 @@
         },
         {
           "date": "2026-01-01",
-          "value": "1.34"
+          "value": "1.33"
+        },
+        {
+          "date": "2026-04-01",
+          "value": "1.27"
         }
       ],
       "latest": {
-        "date": "2026-01-01",
-        "value": "1.34"
+        "date": "2026-04-01",
+        "value": "1.27"
       },
       "context": "The share of commercial & industrial loans at banks that are past due (quarterly) \u2014 where business credit stress stops being a forecast and shows up as missed payments. The 2009 peak was about 4.4%.",
-      "read": "Just 1.34% of business loans are delinquent \u2014 borrowers are keeping up.",
+      "read": "Just 1.27% of business loans are delinquent \u2014 borrowers are keeping up.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 34.4,
+        "p": 28.5,
         "since": 1987
       },
-      "scale_now": 1.34
+      "scale_now": 1.27
     },
     {
       "id": "ci-loan-growth",

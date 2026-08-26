@@ -2,7 +2,7 @@
   "id": "market-liquidity",
   "title": "Liquidity & the Fed",
   "accent": "#2DD4BF",
-  "last_updated": "2026-08-25T06:29:59Z",
+  "last_updated": "2026-08-26T06:32:17Z",
   "status": "ok",
   "headline_read": "Liquidity is ample \u2014 no monetary squeeze in sight.",
   "recessions": [
@@ -905,10 +905,6 @@
           "value": "5.60303"
         },
         {
-          "date": "2011-06-01",
-          "value": "6.40945"
-        },
-        {
           "date": "2011-07-01",
           "value": "8.15292"
         },
@@ -1378,115 +1374,115 @@
         },
         {
           "date": "2021-04-01",
-          "value": "18.22609"
+          "value": "18.22668"
         },
         {
           "date": "2021-05-01",
-          "value": "14.08272"
+          "value": "14.08440"
         },
         {
           "date": "2021-06-01",
-          "value": "12.60781"
+          "value": "12.61111"
         },
         {
           "date": "2021-07-01",
-          "value": "12.53423"
+          "value": "12.53914"
         },
         {
           "date": "2021-08-01",
-          "value": "13.19644"
+          "value": "13.20133"
         },
         {
           "date": "2021-09-01",
-          "value": "12.78957"
+          "value": "12.79495"
         },
         {
           "date": "2021-10-01",
-          "value": "12.81137"
+          "value": "12.81617"
         },
         {
           "date": "2021-11-01",
-          "value": "12.30213"
+          "value": "12.30687"
         },
         {
           "date": "2021-12-01",
-          "value": "12.46169"
+          "value": "12.46587"
         },
         {
           "date": "2022-01-01",
-          "value": "11.72162"
+          "value": "11.72679"
         },
         {
           "date": "2022-02-01",
-          "value": "10.60668"
+          "value": "10.61126"
         },
         {
           "date": "2022-03-01",
-          "value": "9.62389"
+          "value": "9.62842"
         },
         {
           "date": "2022-04-01",
-          "value": "7.89874"
+          "value": "7.90217"
         },
         {
           "date": "2022-05-01",
-          "value": "6.16018"
+          "value": "6.16155"
         },
         {
           "date": "2022-06-01",
-          "value": "5.73756"
+          "value": "5.73593"
         },
         {
           "date": "2022-07-01",
-          "value": "4.94496"
+          "value": "4.94086"
         },
         {
           "date": "2022-08-01",
-          "value": "3.83195"
+          "value": "3.82746"
         },
         {
           "date": "2022-09-01",
-          "value": "2.65339"
+          "value": "2.64850"
         },
         {
           "date": "2022-10-01",
-          "value": "1.42133"
+          "value": "1.41702"
         },
         {
           "date": "2022-11-01",
-          "value": "0.32474"
+          "value": "0.32098"
         },
         {
           "date": "2022-12-01",
-          "value": "-0.97154"
+          "value": "-0.97476"
         },
         {
           "date": "2023-01-01",
-          "value": "-1.72038"
+          "value": "-1.72492"
         },
         {
           "date": "2023-02-01",
-          "value": "-2.23018"
+          "value": "-2.23423"
         },
         {
           "date": "2023-03-01",
-          "value": "-3.87797"
+          "value": "-3.88194"
         },
         {
           "date": "2023-04-01",
-          "value": "-4.63671"
+          "value": "-4.63975"
         },
         {
           "date": "2023-05-01",
-          "value": "-4.08797"
+          "value": "-4.09108"
         },
         {
           "date": "2023-06-01",
-          "value": "-3.91653"
+          "value": "-3.91786"
         },
         {
           "date": "2023-07-01",
-          "value": "-3.95858"
+          "value": "-3.95902"
         },
         {
           "date": "2023-08-01",
@@ -1502,11 +1498,11 @@
         },
         {
           "date": "2023-11-01",
-          "value": "-3.08136"
+          "value": "-3.08181"
         },
         {
           "date": "2023-12-01",
-          "value": "-2.41017"
+          "value": "-2.41063"
         },
         {
           "date": "2024-01-01",
@@ -1522,11 +1518,11 @@
         },
         {
           "date": "2024-04-01",
-          "value": "0.94998"
+          "value": "0.94950"
         },
         {
           "date": "2024-05-01",
-          "value": "0.92225"
+          "value": "0.92273"
         },
         {
           "date": "2024-06-01",
@@ -1558,11 +1554,11 @@
         },
         {
           "date": "2025-01-01",
-          "value": "3.37741"
+          "value": "3.37789"
         },
         {
           "date": "2025-02-01",
-          "value": "3.27650"
+          "value": "3.27698"
         },
         {
           "date": "2025-03-01",
@@ -1570,15 +1566,15 @@
         },
         {
           "date": "2025-04-01",
-          "value": "3.89110"
+          "value": "3.89063"
         },
         {
           "date": "2025-05-01",
-          "value": "3.87457"
+          "value": "3.87409"
         },
         {
           "date": "2025-06-01",
-          "value": "4.13845"
+          "value": "4.13797"
         },
         {
           "date": "2025-07-01",
@@ -1586,7 +1582,7 @@
         },
         {
           "date": "2025-08-01",
-          "value": "4.24974"
+          "value": "4.25021"
         },
         {
           "date": "2025-09-01",
@@ -1606,42 +1602,46 @@
         },
         {
           "date": "2026-01-01",
-          "value": "4.08975"
+          "value": "4.05816"
         },
         {
           "date": "2026-02-01",
-          "value": "4.68871"
+          "value": "4.58919"
         },
         {
           "date": "2026-03-01",
-          "value": "4.57478"
+          "value": "4.41014"
         },
         {
           "date": "2026-04-01",
-          "value": "4.72649"
+          "value": "4.52854"
         },
         {
           "date": "2026-05-01",
-          "value": "5.58430"
+          "value": "5.39382"
         },
         {
           "date": "2026-06-01",
-          "value": "5.52576"
+          "value": "5.34394"
+        },
+        {
+          "date": "2026-07-01",
+          "value": "5.41418"
         }
       ],
       "latest": {
-        "date": "2026-06-01",
-        "value": "5.52576"
+        "date": "2026-07-01",
+        "value": "5.41418"
       },
       "context": "How fast the broad money supply is growing versus a year ago. Double-digit growth (2020-21) preceded the inflation surge; the 2022-23 contraction was the first since the Great Depression.",
-      "read": "M2 is growing 5.5% a year \u2014 a normal pace.",
+      "read": "M2 is growing 5.4% a year \u2014 a normal pace.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 33.7,
+        "p": 32.4,
         "since": 1960
       },
-      "scale_now": 5.5258
+      "scale_now": 5.4142
     },
     {
       "id": "fed-balance-sheet",
@@ -4266,8 +4266,8 @@
       "series_id": "RRPONTSYD",
       "observations": [
         {
-          "date": "2021-08-31",
-          "value": "1189.616"
+          "date": "2021-09-01",
+          "value": "1084.115"
         },
         {
           "date": "2021-09-06",
@@ -6972,18 +6972,22 @@
         {
           "date": "2026-08-24",
           "value": "0.38"
+        },
+        {
+          "date": "2026-08-25",
+          "value": "0.405"
         }
       ],
       "latest": {
-        "date": "2026-08-24",
-        "value": "0.38"
+        "date": "2026-08-25",
+        "value": "0.405"
       },
       "context": "Spare cash money-market funds park at the Fed overnight. It acts as the system's overflow tank: a high balance means excess liquidity; near zero means the buffer is spent and QT bites reserves directly.",
       "read": "The overnight reverse-repo facility is down 99% from a year ago, now $0.4 billion.",
       "signal_status": "info",
       "value_format": "decimal",
       "percentile": {
-        "p": 2.3,
+        "p": 2.6,
         "since": 2021
       },
       "no_severity_reason": "A descriptive level of the monetary plumbing \u2014 this lens's verdict is carried by M2 money-supply growth."

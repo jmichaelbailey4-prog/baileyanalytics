@@ -383,6 +383,42 @@
         "naive_error": 8.1,
         "revised_to": null
       }
+    },
+    "business/business-credit/delinquency": {
+      "id": "business/business-credit/delinquency@2026-04-01",
+      "key": "business/business-credit/delinquency",
+      "category": "business",
+      "lens": "business-credit",
+      "indicator": "delinquency",
+      "series_id": "DRBLACBS",
+      "horizon": "next-print",
+      "target_period": "2026-04-01",
+      "due": "2026-07-28",
+      "made_at": "2026-06-12T14:20:54Z",
+      "model": "naive@1",
+      "point": 1.34,
+      "lo": 1.251,
+      "hi": 1.43,
+      "unit": "%",
+      "value_format": "decimal",
+      "prev_value": 1.34,
+      "why": "We expect roughly the last value \u2014 this series rarely rewards cleverness.",
+      "implied_status": "ok",
+      "current_status": "ok",
+      "title": "Business-Loan Delinquency Rate",
+      "short": "Delinquency",
+      "lens_title": "Business Credit",
+      "href": "/dashboards/business/credit.html",
+      "grade": {
+        "actual": 1.27,
+        "graded_at": "2026-08-26T06:39:48Z",
+        "hit": true,
+        "abs_error": 0.07000000000000006,
+        "direction_hit": false,
+        "status_hit": true,
+        "naive_error": 0.07000000000000006,
+        "revised_to": null
+      }
     }
   }
 }

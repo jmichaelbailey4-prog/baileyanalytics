@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-08-25T13:54:31Z",
+  "last_updated": "2026-08-26T06:36:09Z",
   "status": "elevated",
   "lenses": [
     {
@@ -17,7 +17,7 @@
         },
         {
           "k": "Diesel",
-          "v": "$5.65",
+          "v": "$5.45",
           "d": "$0.20",
           "dir": "up"
         }

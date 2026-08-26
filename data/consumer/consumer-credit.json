@@ -2,7 +2,7 @@
   "id": "consumer-credit",
   "title": "Consumer Credit Stress",
   "accent": "#F87171",
-  "last_updated": "2026-08-08T06:36:19Z",
+  "last_updated": "2026-08-26T06:36:17Z",
   "status": "watch",
   "headline_read": "Consumer credit bears watching \u2014 debt loads are creeping up.",
   "recessions": [
@@ -586,7 +586,7 @@
         },
         {
           "date": "2023-07-01",
-          "value": "2.94"
+          "value": "2.95"
         },
         {
           "date": "2023-10-01",
@@ -610,7 +610,7 @@
         },
         {
           "date": "2025-01-01",
-          "value": "3.06"
+          "value": "3.05"
         },
         {
           "date": "2025-04-01",
@@ -618,30 +618,34 @@
         },
         {
           "date": "2025-07-01",
-          "value": "2.98"
+          "value": "2.99"
         },
         {
           "date": "2025-10-01",
-          "value": "2.94"
+          "value": "2.95"
         },
         {
           "date": "2026-01-01",
-          "value": "2.92"
+          "value": "2.91"
+        },
+        {
+          "date": "2026-04-01",
+          "value": "2.85"
         }
       ],
       "latest": {
-        "date": "2026-01-01",
-        "value": "2.92"
+        "date": "2026-04-01",
+        "value": "2.85"
       },
       "context": "The share of bank credit-card balances 30+ days past due (quarterly). Cards go bad first \u2014 this is the earliest warning in consumer credit. The 2009 peak was about 6.8%.",
       "read": "Credit-card delinquencies are at 2.9%, creeping up off their lows.",
       "signal_status": "watch",
       "value_format": "decimal",
       "percentile": {
-        "p": 31.2,
+        "p": 31.0,
         "since": 1991
       },
-      "scale_now": 2.92
+      "scale_now": 2.85
     },
     {
       "id": "consumer-delinquency",
@@ -1241,7 +1245,7 @@
         },
         {
           "date": "2023-10-01",
-          "value": "2.61"
+          "value": "2.62"
         },
         {
           "date": "2024-01-01",
@@ -1273,26 +1277,30 @@
         },
         {
           "date": "2025-10-01",
-          "value": "2.62"
+          "value": "2.63"
         },
         {
           "date": "2026-01-01",
           "value": "2.64"
+        },
+        {
+          "date": "2026-04-01",
+          "value": "2.62"
         }
       ],
       "latest": {
-        "date": "2026-01-01",
-        "value": "2.64"
+        "date": "2026-04-01",
+        "value": "2.62"
       },
       "context": "Delinquency across all consumer loans at banks \u2014 cards, autos, and personal loans together (quarterly).",
       "read": "Consumer-loan delinquencies are at 2.6%, creeping up off their lows.",
       "signal_status": "watch",
       "value_format": "decimal",
       "percentile": {
-        "p": 29.3,
+        "p": 27.2,
         "since": 1987
       },
-      "scale_now": 2.64
+      "scale_now": 2.62
     },
     {
       "id": "revolving-credit",

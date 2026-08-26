@@ -2,7 +2,7 @@
   "id": "housing-affordability",
   "title": "Affordability & Financing",
   "accent": "#FBBF24",
-  "last_updated": "2026-08-21T06:32:08Z",
+  "last_updated": "2026-08-26T06:36:13Z",
   "status": "elevated",
   "headline_read": "Housing affordability is badly stretched.",
   "recessions": [
@@ -912,7 +912,7 @@
       "observations": [
         {
           "date": "1991-01-01",
-          "value": "3.09"
+          "value": "3.1"
         },
         {
           "date": "1991-04-01",
@@ -928,7 +928,7 @@
         },
         {
           "date": "1992-01-01",
-          "value": "3.12"
+          "value": "3.13"
         },
         {
           "date": "1992-04-01",
@@ -980,7 +980,7 @@
         },
         {
           "date": "1995-04-01",
-          "value": "2.11"
+          "value": "2.12"
         },
         {
           "date": "1995-07-01",
@@ -1068,7 +1068,7 @@
         },
         {
           "date": "2000-10-01",
-          "value": "2.23"
+          "value": "2.22"
         },
         {
           "date": "2001-01-01",
@@ -1184,23 +1184,23 @@
         },
         {
           "date": "2008-01-01",
-          "value": "3.67"
+          "value": "3.68"
         },
         {
           "date": "2008-04-01",
-          "value": "4.36"
+          "value": "4.37"
         },
         {
           "date": "2008-07-01",
-          "value": "5.27"
+          "value": "5.26"
         },
         {
           "date": "2008-10-01",
-          "value": "6.59"
+          "value": "6.6"
         },
         {
           "date": "2009-01-01",
-          "value": "8.0"
+          "value": "7.99"
         },
         {
           "date": "2009-04-01",
@@ -1224,7 +1224,7 @@
         },
         {
           "date": "2010-07-01",
-          "value": "10.66"
+          "value": "10.65"
         },
         {
           "date": "2010-10-01",
@@ -1272,7 +1272,7 @@
         },
         {
           "date": "2013-07-01",
-          "value": "8.66"
+          "value": "8.65"
         },
         {
           "date": "2013-10-01",
@@ -1296,7 +1296,7 @@
         },
         {
           "date": "2015-01-01",
-          "value": "6.23"
+          "value": "6.22"
         },
         {
           "date": "2015-04-01",
@@ -1304,7 +1304,7 @@
         },
         {
           "date": "2015-07-01",
-          "value": "5.4"
+          "value": "5.41"
         },
         {
           "date": "2015-10-01",
@@ -1352,7 +1352,7 @@
         },
         {
           "date": "2018-07-01",
-          "value": "2.99"
+          "value": "2.98"
         },
         {
           "date": "2018-10-01",
@@ -1384,7 +1384,7 @@
         },
         {
           "date": "2020-07-01",
-          "value": "2.83"
+          "value": "2.84"
         },
         {
           "date": "2020-10-01",
@@ -1412,7 +1412,7 @@
         },
         {
           "date": "2022-04-01",
-          "value": "1.95"
+          "value": "1.96"
         },
         {
           "date": "2022-07-01",
@@ -1452,7 +1452,7 @@
         },
         {
           "date": "2024-10-01",
-          "value": "1.78"
+          "value": "1.77"
         },
         {
           "date": "2025-01-01",
@@ -1472,22 +1472,26 @@
         },
         {
           "date": "2026-01-01",
-          "value": "1.89"
+          "value": "1.88"
+        },
+        {
+          "date": "2026-04-01",
+          "value": "1.86"
         }
       ],
       "latest": {
-        "date": "2026-01-01",
-        "value": "1.89"
+        "date": "2026-04-01",
+        "value": "1.86"
       },
       "context": "The share of single-family mortgages at commercial banks that are past due (quarterly) \u2014 where affordability stress turns into credit stress.",
       "read": "Just 1.9% of mortgages are delinquent \u2014 homeowners are keeping up.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 20.6,
+        "p": 19.7,
         "since": 1991
       },
-      "scale_now": 1.89
+      "scale_now": 1.86
     },
     {
       "id": "mortgage-rate",
