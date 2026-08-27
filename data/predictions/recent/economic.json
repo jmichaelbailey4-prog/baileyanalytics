@@ -161,24 +161,24 @@
       "now_date": "2026-08-14"
     },
     "economic/recession-watch/jobless-claims": {
-      "id": "economic/recession-watch/jobless-claims@2026-08-15",
+      "id": "economic/recession-watch/jobless-claims@2026-08-22",
       "key": "economic/recession-watch/jobless-claims",
       "category": "economic",
       "lens": "recession-watch",
       "indicator": "jobless-claims",
       "series_id": "ICSA",
       "horizon": "next-print",
-      "target_period": "2026-08-15",
-      "due": "2026-08-20",
-      "made_at": "2026-08-13T14:24:36Z",
+      "target_period": "2026-08-22",
+      "due": "2026-08-27",
+      "made_at": "2026-08-20T13:54:45Z",
       "model": "naive@1",
-      "point": 209000.0,
-      "lo": 198000.0,
-      "hi": 221400.0,
+      "point": 206000.0,
+      "lo": 195000.0,
+      "hi": 218400.0,
       "unit": "",
       "value_format": "thousands",
-      "prev_value": 209000.0,
-      "why": "Jobless claims: up 3 straight weeks. We expect roughly the last value \u2014 this series rarely rewards cleverness.",
+      "prev_value": 206000.0,
+      "why": "We expect roughly the last value \u2014 this series rarely rewards cleverness.",
       "implied_status": "ok",
       "current_status": "ok",
       "descriptive": false,
@@ -188,8 +188,8 @@
       "lens_title": "Recession Watch",
       "href": "/dashboards/recession-watch.html",
       "grade": {
-        "actual": 206000.0,
-        "graded_at": "2026-08-20T13:54:45Z",
+        "actual": 203000.0,
+        "graded_at": "2026-08-27T17:09:03Z",
         "hit": true,
         "abs_error": 3000.0,
         "direction_hit": false,
@@ -197,7 +197,7 @@
         "naive_error": 3000.0,
         "revised_to": null
       },
-      "prev_period": "2026-08-08"
+      "prev_period": "2026-08-15"
     },
     "economic/fiscal-health/debt-gdp": {
       "id": "economic/fiscal-health/debt-gdp@2026-01-01",

@@ -2,7 +2,7 @@
   "id": "energy-natural-gas",
   "title": "Natural Gas",
   "accent": "#60A5FA",
-  "last_updated": "2026-08-21T06:32:01Z",
+  "last_updated": "2026-08-27T17:08:44Z",
   "status": "ok",
   "headline_read": "Natural gas costs are stable or easing.",
   "recessions": [
@@ -65,12 +65,8 @@
       "series_id": "RNGWHHD",
       "observations": [
         {
-          "date": "2023-01-06",
+          "date": "2023-01-13",
           "value": "3.43"
-        },
-        {
-          "date": "2023-01-09",
-          "value": "3.65"
         },
         {
           "date": "2023-01-17",
@@ -407,22 +403,6 @@
         {
           "date": "2024-08-19",
           "value": "2.12"
-        },
-        {
-          "date": "2024-08-20",
-          "value": "2.18"
-        },
-        {
-          "date": "2024-08-21",
-          "value": "2.14"
-        },
-        {
-          "date": "2024-08-22",
-          "value": "1.93"
-        },
-        {
-          "date": "2024-08-23",
-          "value": "1.82"
         },
         {
           "date": "2024-08-26",
@@ -2387,21 +2367,41 @@
         {
           "date": "2026-08-18",
           "value": "2.82"
+        },
+        {
+          "date": "2026-08-19",
+          "value": "2.94"
+        },
+        {
+          "date": "2026-08-20",
+          "value": "2.94"
+        },
+        {
+          "date": "2026-08-21",
+          "value": "2.82"
+        },
+        {
+          "date": "2026-08-24",
+          "value": "2.83"
+        },
+        {
+          "date": "2026-08-25",
+          "value": "2.7"
         }
       ],
       "latest": {
-        "date": "2026-08-18",
-        "value": "2.82"
+        "date": "2026-08-25",
+        "value": "2.7"
       },
       "context": "The U.S. benchmark natural-gas price ($/MMBtu) \u2014 it drives home heating bills and a large share of electricity generation cost.",
-      "read": "Natural gas costs are down 5% over the past year.",
+      "read": "Natural gas costs are down 2% over the past year.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 53.7,
+        "p": 45.2,
         "since": 2023
       },
-      "scale_now": -4.7297
+      "scale_now": -2.1739
     },
     {
       "id": "gas-storage",
@@ -2412,8 +2412,8 @@
       "series_id": "NW2_EPG0_SWO_R48_BCF",
       "observations": [
         {
-          "date": "2016-09-02",
-          "value": "3437"
+          "date": "2016-09-09",
+          "value": "3499"
         },
         {
           "date": "2016-10-07",
@@ -2650,10 +2650,6 @@
         {
           "date": "2021-08-06",
           "value": "2776"
-        },
-        {
-          "date": "2021-08-20",
-          "value": "2851"
         },
         {
           "date": "2021-08-27",
@@ -3694,18 +3690,22 @@
         {
           "date": "2026-08-14",
           "value": "3169"
+        },
+        {
+          "date": "2026-08-21",
+          "value": "3184"
         }
       ],
       "latest": {
-        "date": "2026-08-14",
-        "value": "3169"
+        "date": "2026-08-21",
+        "value": "3184"
       },
       "context": "Working natural gas held in underground storage (Bcf) \u2014 the cushion that buffers winter demand; low storage means price risk.",
-      "read": "Gas in storage is little changed from a year ago, now 3,169.",
+      "read": "Gas in storage is little changed from a year ago, now 3,184.",
       "signal_status": "info",
       "value_format": "thousands",
       "percentile": {
-        "p": 66.3,
+        "p": 67.3,
         "since": 2016
       },
       "no_severity_reason": "A physical supply-and-demand reading, not a household cost \u2014 this lens's verdict comes from the price indicators."

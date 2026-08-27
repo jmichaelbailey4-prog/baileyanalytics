@@ -1,20 +1,20 @@
 {
-  "generated_at": "2026-08-26T13:59:02Z",
+  "generated_at": "2026-08-27T17:09:36Z",
   "since": "2026-06-12T14:20:31Z",
-  "graded": 403,
-  "coverage": 169,
-  "calibration": 0.8039702233250621,
-  "direction": 0.36324786324786323,
-  "status": 0.8803418803418803,
-  "skill": 0.0007589018864163632,
+  "graded": 415,
+  "coverage": 174,
+  "calibration": 0.8072289156626506,
+  "direction": 0.3651452282157676,
+  "status": 0.8838174273858921,
+  "skill": 0.0007512244698670845,
   "categories": {
     "business": {
-      "graded": 22,
-      "coverage": 5,
-      "calibration": 0.8636363636363636,
-      "direction": 0.23529411764705882,
-      "status": 0.9411764705882353,
-      "skill": -0.10879893238434168
+      "graded": 26,
+      "coverage": 6,
+      "calibration": 0.8846153846153846,
+      "direction": 0.25,
+      "status": 0.95,
+      "skill": -0.07062759029011234
     },
     "consumer": {
       "graded": 24,
@@ -25,20 +25,20 @@
       "skill": 0.0611475316913902
     },
     "economic": {
-      "graded": 83,
+      "graded": 84,
       "coverage": 14,
-      "calibration": 0.8192771084337349,
-      "direction": 0.2028985507246377,
-      "status": 0.8405797101449275,
-      "skill": -4.7098045885540785e-07
+      "calibration": 0.8214285714285714,
+      "direction": 0.2,
+      "status": 0.8428571428571429,
+      "skill": -4.656487380128027e-07
     },
     "energy": {
-      "graded": 74,
-      "coverage": 37,
-      "calibration": 0.6756756756756757,
-      "direction": 0.40540540540540543,
-      "status": 0.8108108108108109,
-      "skill": -0.1706806862421384
+      "graded": 78,
+      "coverage": 40,
+      "calibration": 0.6794871794871795,
+      "direction": 0.39473684210526316,
+      "status": 0.8157894736842105,
+      "skill": -0.17051211905133457
     },
     "global": {
       "graded": 50,
@@ -49,17 +49,17 @@
       "skill": 0.04267158334750831
     },
     "housing": {
-      "graded": 32,
+      "graded": 34,
       "coverage": 6,
-      "calibration": 0.90625,
-      "direction": 0.5,
-      "status": 0.8461538461538461,
-      "skill": 0.23172587535989586
+      "calibration": 0.9117647058823529,
+      "direction": 0.5357142857142857,
+      "status": 0.8571428571428571,
+      "skill": 0.23182728570268152
     },
     "markets": {
-      "graded": 118,
-      "coverage": 74,
-      "calibration": 0.7796610169491526,
+      "graded": 119,
+      "coverage": 75,
+      "calibration": 0.7815126050420168,
       "direction": 0.45454545454545453,
       "status": 1.0,
       "skill": -0.015158752390312502
