@@ -2,7 +2,7 @@
   "id": "business-credit",
   "title": "Business Credit",
   "accent": "#F87171",
-  "last_updated": "2026-08-26T06:36:21Z",
+  "last_updated": "2026-08-28T22:58:42Z",
   "status": "ok",
   "headline_read": "Business credit is flowing \u2014 spreads and delinquencies are low.",
   "recessions": [
@@ -4723,7 +4723,7 @@
         },
         {
           "date": "2026-03-01",
-          "value": "5.6"
+          "value": "5.7"
         },
         {
           "date": "2026-04-01",
@@ -4739,22 +4739,22 @@
         },
         {
           "date": "2026-07-01",
-          "value": "8.6"
+          "value": "8.7"
         }
       ],
       "latest": {
         "date": "2026-07-01",
-        "value": "8.6"
+        "value": "8.7"
       },
       "context": "How fast bank lending to businesses is growing. Outright contraction is a credit squeeze; double-digit booms (2020 hit +30%) have their own way of ending badly.",
-      "read": "C&I lending is up 8.6% from a year ago \u2014 a steady pace.",
+      "read": "C&I lending is up 8.7% from a year ago \u2014 a steady pace.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 53.1,
+        "p": 54.1,
         "since": 1948
       },
-      "scale_now": 8.6
+      "scale_now": 8.7
     }
   ]
 }
