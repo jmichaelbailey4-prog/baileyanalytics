@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-08-26T13:58:16Z",
-  "status": "elevated",
+  "last_updated": "2026-08-28T17:56:11Z",
+  "status": "watch",
   "lenses": [
     {
       "id": "consumer-spending",
@@ -195,24 +195,23 @@
       "id": "consumer-sentiment",
       "title": "Consumer Sentiment",
       "accent": "#38BDF8",
-      "status": "alert",
-      "headline_read": "Consumers are deeply pessimistic \u2014 sentiment is near record lows.",
+      "status": "elevated",
+      "headline_read": "Consumer mood is grim \u2014 confidence is at recession levels.",
       "key_stats": [
         {
           "k": "Sentiment",
-          "v": "49.50",
-          "d": "4.70",
+          "v": "55.20",
+          "d": "5.70",
           "dir": "up"
         },
         {
           "k": "Inflation exp.",
-          "v": "4.60%",
-          "d": "0.20%",
+          "v": "4.20%",
+          "d": "0.40%",
           "dir": "down"
         }
       ],
       "sparkline": [
-        62.0,
         63.7,
         59.0,
         64.2,
@@ -251,7 +250,8 @@
         53.3,
         49.8,
         44.8,
-        49.5
+        49.5,
+        55.2
       ]
     }
   ]

@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-08-26T13:59:02Z",
+  "captured_at": "2026-08-28T17:56:59Z",
   "statuses": {
     "recession-watch": "ok",
     "cost-of-money": "watch",
@@ -9,7 +9,7 @@
     "consumer-spending": "ok",
     "consumer-credit": "watch",
     "consumer-income-savings": "watch",
-    "consumer-sentiment": "alert",
+    "consumer-sentiment": "elevated",
     "bank-asset-quality": "ok",
     "bank-profitability": "ok",
     "bank-capital-solvency": "ok",

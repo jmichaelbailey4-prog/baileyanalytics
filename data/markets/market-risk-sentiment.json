@@ -2,7 +2,7 @@
   "id": "market-risk-sentiment",
   "title": "Risk Sentiment",
   "accent": "#FB7185",
-  "last_updated": "2026-08-27T17:08:06Z",
+  "last_updated": "2026-08-28T17:55:19Z",
   "status": "ok",
   "headline_read": "Markets are calm \u2014 volatility and credit stress are low.",
   "recessions": [
@@ -65,8 +65,8 @@
       "series_id": "VIXCLS",
       "observations": [
         {
-          "date": "1990-03-29",
-          "value": "18.46"
+          "date": "1990-03-30",
+          "value": "19.73"
         },
         {
           "date": "1990-04-02",
@@ -413,8 +413,8 @@
           "value": "15.87"
         },
         {
-          "date": "2011-08-26",
-          "value": "35.59"
+          "date": "2011-08-29",
+          "value": "32.28"
         },
         {
           "date": "2011-09-01",
@@ -897,8 +897,8 @@
           "value": "19.46"
         },
         {
-          "date": "2021-08-26",
-          "value": "18.84"
+          "date": "2021-08-27",
+          "value": "16.39"
         },
         {
           "date": "2021-08-30",
@@ -3615,21 +3615,25 @@
         {
           "date": "2026-08-26",
           "value": "15.21"
+        },
+        {
+          "date": "2026-08-27",
+          "value": "14.51"
         }
       ],
       "latest": {
-        "date": "2026-08-26",
-        "value": "15.21"
+        "date": "2026-08-27",
+        "value": "14.51"
       },
       "context": "The market's 'fear gauge' \u2014 the expected volatility of the S&P 500 over the coming month. It spikes when investors are scared and falls when calm.",
-      "read": "The VIX is at 15.2 \u2014 markets are calm.",
+      "read": "The VIX is at 14.5 \u2014 markets are calm.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 33.6,
+        "p": 28.6,
         "since": 1990
       },
-      "scale_now": 15.21
+      "scale_now": 14.51
     },
     {
       "id": "hy-spread",
@@ -6002,21 +6006,25 @@
         {
           "date": "2026-08-26",
           "value": "2.67"
+        },
+        {
+          "date": "2026-08-27",
+          "value": "2.63"
         }
       ],
       "latest": {
-        "date": "2026-08-26",
-        "value": "2.67"
+        "date": "2026-08-27",
+        "value": "2.63"
       },
       "context": "The extra yield investors demand to hold risky 'junk' corporate bonds over Treasuries. It widens when markets fear defaults \u2014 an early stress signal. Note: FRED serves only a rolling ~3-year window of this ICE BofA series, so its chart history is shorter than the other indicators here.",
-      "read": "The high-yield spread is 2.67% \u2014 tight, signaling calm credit conditions.",
+      "read": "The high-yield spread is 2.63% \u2014 tight, signaling calm credit conditions.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 4.8,
+        "p": 1.4,
         "since": 2023
       },
-      "scale_now": 2.67
+      "scale_now": 2.63
     },
     {
       "id": "ig-spread",
@@ -8389,21 +8397,25 @@
         {
           "date": "2026-08-26",
           "value": "0.8"
+        },
+        {
+          "date": "2026-08-27",
+          "value": "0.79"
         }
       ],
       "latest": {
-        "date": "2026-08-26",
-        "value": "0.8"
+        "date": "2026-08-27",
+        "value": "0.79"
       },
       "context": "The same risk premium for higher-quality corporate bonds. Because these borrowers are safer, widening here signals stress reaching the core of credit. Note: FRED serves only a rolling ~3-year window of this ICE BofA series, so its chart history is shorter than the other indicators here.",
-      "read": "The investment-grade spread is 0.80% \u2014 tight, signaling calm credit conditions.",
+      "read": "The investment-grade spread is 0.79% \u2014 tight, signaling calm credit conditions.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 23.0,
+        "p": 17.5,
         "since": 2023
       },
-      "scale_now": 0.8
+      "scale_now": 0.79
     },
     {
       "id": "nfci",
