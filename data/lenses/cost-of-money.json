@@ -2,7 +2,7 @@
   "id": "cost-of-money",
   "title": "The Cost of Money",
   "accent": "#34D399",
-  "last_updated": "2026-08-28T22:57:44Z",
+  "last_updated": "2026-08-29T11:59:32Z",
   "status": "watch",
   "headline_read": "Borrowing is still expensive \u2014 rates remain elevated.",
   "recessions": [
@@ -1698,12 +1698,12 @@
         },
         {
           "date": "2026-07-01",
-          "value": "3.6300000000"
+          "value": "3.63"
         }
       ],
       "latest": {
         "date": "2026-07-01",
-        "value": "3.6300000000"
+        "value": "3.63"
       },
       "context": "The interest rate the Federal Reserve sets to steer the economy \u2014 the anchor for nearly every other rate, from savings accounts to business loans.",
       "read": "The Fed's policy rate is 3.63%, and easing as the Fed pivots toward cuts.",
