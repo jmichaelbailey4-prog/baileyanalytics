@@ -2,7 +2,7 @@
   "id": "bank-capital-solvency",
   "title": "Capital & Solvency",
   "accent": "#38BDF8",
-  "last_updated": "2026-07-06T16:54:04Z",
+  "last_updated": "2026-08-31T14:49:49Z",
   "status": "ok",
   "headline_read": "Banks are well-capitalized.",
   "recessions": [],
@@ -336,22 +336,26 @@
         },
         {
           "date": "2026-03-31",
-          "value": "15.1605"
+          "value": "15.1603"
+        },
+        {
+          "date": "2026-06-30",
+          "value": "14.9368"
         }
       ],
       "latest": {
-        "date": "2026-03-31",
-        "value": "15.1605"
+        "date": "2026-06-30",
+        "value": "14.9368"
       },
       "context": "Capital measured against risk-weighted assets \u2014 the regulators' headline solvency gauge. Banks are 'well-capitalized' above 10%.",
-      "read": "The total risk-based capital ratio is 15.2% \u2014 comfortably 'well-capitalized'.",
+      "read": "The total risk-based capital ratio is 14.9% \u2014 comfortably 'well-capitalized'.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 35.8,
+        "p": 30.5,
         "since": 2006
       },
-      "scale_now": 15.1605
+      "scale_now": 14.9368
     },
     {
       "id": "equity-assets",
@@ -678,26 +682,30 @@
         },
         {
           "date": "2025-12-31",
-          "value": "10.2141"
+          "value": "10.2140"
         },
         {
           "date": "2026-03-31",
-          "value": "9.9747"
+          "value": "9.9745"
+        },
+        {
+          "date": "2026-06-30",
+          "value": "9.8614"
         }
       ],
       "latest": {
-        "date": "2026-03-31",
-        "value": "9.9747"
+        "date": "2026-06-30",
+        "value": "9.8614"
       },
       "context": "Shareholder equity as a share of total assets \u2014 a simpler, unweighted view of the cushion between losses and insolvency.",
-      "read": "Equity is 10.0% of assets \u2014 a healthy capital cushion.",
+      "read": "Equity is 9.9% of assets \u2014 a healthy capital cushion.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 18.5,
+        "p": 14.6,
         "since": 2006
       },
-      "scale_now": 9.9747
+      "scale_now": 9.8614
     }
   ],
   "tiers": {
@@ -718,11 +726,11 @@
         "tier": "Community (<$10B)",
         "values": [
           {
-            "value": "13.97%",
+            "value": "13.53%",
             "status": "ok"
           },
           {
-            "value": "11.24%",
+            "value": "11.34%",
             "status": "ok"
           }
         ]
@@ -731,11 +739,11 @@
         "tier": "Regional ($10B\u2013$250B)",
         "values": [
           {
-            "value": "16.38%",
+            "value": "15.20%",
             "status": "ok"
           },
           {
-            "value": "10.42%",
+            "value": "10.56%",
             "status": "ok"
           }
         ]
@@ -744,11 +752,11 @@
         "tier": "Large (>$250B)",
         "values": [
           {
-            "value": "14.93%",
+            "value": "15.14%",
             "status": "ok"
           },
           {
-            "value": "9.51%",
+            "value": "9.28%",
             "status": "ok"
           }
         ]
@@ -765,70 +773,70 @@
           "name": "BRANNEN BANK",
           "location": "INVERNESS, FL",
           "asset": "$1.0B",
-          "value": "3.64%",
+          "value": "3.59%",
           "status": "elevated"
         },
         {
           "name": "CITIZENS BANK&TRUST",
           "location": "FROSTPROOF, FL",
           "asset": "$1.5B",
-          "value": "3.91%",
+          "value": "4.11%",
           "status": "elevated"
         },
         {
           "name": "BANK OF LABOR",
           "location": "OVERLAND PARK, KS",
           "asset": "$1.1B",
-          "value": "4.54%",
+          "value": "4.61%",
           "status": "elevated"
         },
         {
           "name": "PRINCIPAL BANK",
           "location": "DES MOINES, IA",
-          "asset": "$9.6B",
-          "value": "5.03%",
+          "asset": "$9.8B",
+          "value": "5.02%",
           "status": "elevated"
         },
         {
           "name": "USAA FEDERAL SAVINGS BANK",
           "location": "PHOENIX, AZ",
-          "asset": "$109.7B",
-          "value": "5.08%",
+          "asset": "$106.2B",
+          "value": "5.48%",
           "status": "elevated"
         },
         {
-          "name": "GREEN DOT BK DBA BONNEVILLE",
-          "location": "PROVO, UT",
-          "asset": "$5.9B",
-          "value": "5.11%",
+          "name": "FIRST AMERICAN TRUST FSB",
+          "location": "SANTA ANA, CA",
+          "asset": "$9.2B",
+          "value": "5.56%",
           "status": "elevated"
         },
         {
-          "name": "CB&S BANK INC",
-          "location": "RUSSELLVILLE, AL",
-          "asset": "$2.9B",
-          "value": "5.20%",
+          "name": "BESSEMER TRUST CO",
+          "location": "WOODBRIDGE, NJ",
+          "asset": "$2.4B",
+          "value": "5.57%",
           "status": "elevated"
         },
         {
           "name": "CITIZENS BK PHILADELPHIA MS",
           "location": "PHILADELPHIA, MS",
-          "asset": "$1.5B",
-          "value": "5.25%",
+          "asset": "$1.6B",
+          "value": "5.58%",
           "status": "elevated"
         },
         {
-          "name": "COREFIRST BANK&TRUST",
-          "location": "TOPEKA, KS",
-          "asset": "$1.3B",
-          "value": "5.72%",
+          "name": "GREEN DOT BK DBA BONNEVILLE",
+          "location": "PROVO, UT",
+          "asset": "$5.4B",
+          "value": "5.82%",
           "status": "elevated"
         },
         {
-          "name": "JONESBORO STATE BANK",
-          "location": "JONESBORO, LA",
-          "asset": "$1.3B",
-          "value": "5.81%",
+          "name": "AMERIPRISE BANK FSB",
+          "location": "MINNEAPOLIS, MN",
+          "asset": "$25.5B",
+          "value": "5.84%",
           "status": "elevated"
         }
       ]

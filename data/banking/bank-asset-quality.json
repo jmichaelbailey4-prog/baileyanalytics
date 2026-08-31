@@ -2,7 +2,7 @@
   "id": "bank-asset-quality",
   "title": "Asset Quality",
   "accent": "#FBBF24",
-  "last_updated": "2026-07-06T16:54:04Z",
+  "last_updated": "2026-08-31T14:49:49Z",
   "status": "ok",
   "headline_read": "Bank loan quality is strong \u2014 few loans are going bad.",
   "recessions": [],
@@ -332,26 +332,30 @@
         },
         {
           "date": "2025-12-31",
-          "value": "0.9595"
+          "value": "0.9594"
         },
         {
           "date": "2026-03-31",
-          "value": "0.9766"
+          "value": "0.9769"
+        },
+        {
+          "date": "2026-06-30",
+          "value": "0.9274"
         }
       ],
       "latest": {
-        "date": "2026-03-31",
-        "value": "0.9766"
+        "date": "2026-06-30",
+        "value": "0.9274"
       },
       "context": "The share of all bank loans that are 90+ days late or no longer accruing interest \u2014 the broadest gauge of credit going bad.",
-      "read": "Just 0.98% of loans are 90+ days past due \u2014 low by historical standards.",
+      "read": "Just 0.93% of loans are 90+ days past due \u2014 low by historical standards.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 32.1,
+        "p": 25.6,
         "since": 2006
       },
-      "scale_now": 0.9766
+      "scale_now": 0.9274
     },
     {
       "id": "charge-offs",
@@ -682,22 +686,26 @@
         },
         {
           "date": "2026-03-31",
-          "value": "0.5672"
+          "value": "0.5673"
+        },
+        {
+          "date": "2026-06-30",
+          "value": "0.5606"
         }
       ],
       "latest": {
-        "date": "2026-03-31",
-        "value": "0.5672"
+        "date": "2026-06-30",
+        "value": "0.5606"
       },
       "context": "Loans banks have given up on and written off as losses, as a share of total loans \u2014 money that's gone, not just late.",
-      "read": "Banks are writing off 0.57% of loans as losses \u2014 a benign level.",
+      "read": "Banks are writing off 0.56% of loans as losses \u2014 a benign level.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 58.0,
+        "p": 57.3,
         "since": 2006
       },
-      "scale_now": 0.5672
+      "scale_now": 0.5606
     }
   ],
   "tiers": {
@@ -731,11 +739,11 @@
         "tier": "Regional ($10B\u2013$250B)",
         "values": [
           {
-            "value": "1.08%",
+            "value": "1.10%",
             "status": "watch"
           },
           {
-            "value": "0.54%",
+            "value": "0.56%",
             "status": "ok"
           }
         ]
@@ -744,11 +752,11 @@
         "tier": "Large (>$250B)",
         "values": [
           {
-            "value": "0.95%",
+            "value": "0.85%",
             "status": "ok"
           },
           {
-            "value": "0.70%",
+            "value": "0.67%",
             "status": "watch"
           }
         ]
@@ -762,73 +770,73 @@
       "value_label": "CRE delinq.",
       "rows": [
         {
-          "name": "BARRINGTON B&T CO NA",
-          "location": "BARRINGTON, IL",
-          "asset": "$4.9B",
-          "value": "11.29%",
+          "name": "MIDFIRST BANK",
+          "location": "OKLAHOMA CITY, OK",
+          "asset": "$42.8B",
+          "value": "19.86%",
           "status": "alert"
         },
         {
-          "name": "SIGNATURE BANK",
-          "location": "ROSEMONT, IL",
-          "asset": "$2.0B",
-          "value": "9.07%",
+          "name": "BARRINGTON B&T CO NA",
+          "location": "BARRINGTON, IL",
+          "asset": "$5.2B",
+          "value": "10.39%",
           "status": "alert"
         },
         {
           "name": "EMIGRANT BANK",
           "location": "MIAMI, FL",
-          "asset": "$5.9B",
-          "value": "8.65%",
-          "status": "alert"
-        },
-        {
-          "name": "MUTUALONE BANK",
-          "location": "FRAMINGHAM, MA",
-          "asset": "$1.3B",
-          "value": "8.08%",
-          "status": "alert"
-        },
-        {
-          "name": "FIRSTIER BANK",
-          "location": "KIMBALL, NE",
-          "asset": "$1.1B",
-          "value": "7.34%",
+          "asset": "$5.7B",
+          "value": "8.71%",
           "status": "alert"
         },
         {
           "name": "INDUSTRIAL&COMMERCIAL BK CHI",
           "location": "NEW YORK, NY",
           "asset": "$2.9B",
-          "value": "7.00%",
+          "value": "7.47%",
+          "status": "alert"
+        },
+        {
+          "name": "MUTUALONE BANK",
+          "location": "FRAMINGHAM, MA",
+          "asset": "$1.2B",
+          "value": "7.40%",
           "status": "alert"
         },
         {
           "name": "FLAGSTAR BANK NATIONAL ASSN",
           "location": "HICKSVILLE, NY",
-          "asset": "$87.1B",
-          "value": "6.29%",
+          "asset": "$87.7B",
+          "value": "6.89%",
           "status": "alert"
         },
         {
           "name": "NEWTEK BANK NATIONAL ASSN",
           "location": "MIAMI, FL",
-          "asset": "$2.2B",
-          "value": "6.04%",
+          "asset": "$2.5B",
+          "value": "6.71%",
           "status": "alert"
         },
         {
           "name": "NORTHWEST BANK",
           "location": "BOISE, ID",
           "asset": "$1.5B",
-          "value": "5.47%",
+          "value": "5.19%",
+          "status": "alert"
+        },
+        {
+          "name": "LINCOLN SAVINGS BANK",
+          "location": "REINBECK, IA",
+          "asset": "$1.7B",
+          "value": "4.93%",
           "status": "alert"
         },
         {
           "name": "CFG BANK",
           "location": "LUTHERVILLE, MD",
-          "asset": "$5.7B",
-          "value": "4.93%",
+          "asset": "$6.1B",
+          "value": "4.80%",
           "status": "alert"
         }
       ]
