@@ -2,7 +2,7 @@
   "id": "energy-natural-gas",
   "title": "Natural Gas",
   "accent": "#60A5FA",
-  "last_updated": "2026-08-27T17:08:44Z",
+  "last_updated": "2026-08-31T19:27:47Z",
   "status": "ok",
   "headline_read": "Natural gas costs are stable or easing.",
   "recessions": [
@@ -3719,10 +3719,6 @@
       "series_id": "N9070US2",
       "observations": [
         {
-          "date": "2006-06",
-          "value": "1538715"
-        },
-        {
           "date": "2006-07",
           "value": "1573274"
         },
@@ -4624,7 +4620,7 @@
         },
         {
           "date": "2025-04",
-          "value": "3205902"
+          "value": "3205791"
         },
         {
           "date": "2025-05",
@@ -4636,11 +4632,11 @@
         },
         {
           "date": "2025-07",
-          "value": "3347968"
+          "value": "3347972"
         },
         {
           "date": "2025-08",
-          "value": "3368101"
+          "value": "3368106"
         },
         {
           "date": "2025-09",
@@ -4648,47 +4644,51 @@
         },
         {
           "date": "2025-10",
-          "value": "3327289"
+          "value": "3327262"
         },
         {
           "date": "2025-11",
-          "value": "3308307"
+          "value": "3308309"
         },
         {
           "date": "2025-12",
-          "value": "3460485"
+          "value": "3460487"
         },
         {
           "date": "2026-01",
-          "value": "3371529"
+          "value": "3371505"
         },
         {
           "date": "2026-02",
-          "value": "3098695"
+          "value": "3098632"
         },
         {
           "date": "2026-03",
-          "value": "3432839"
+          "value": "3432813"
         },
         {
           "date": "2026-04",
-          "value": "3327990"
+          "value": "3330684"
         },
         {
           "date": "2026-05",
-          "value": "3418479"
+          "value": "3425339"
+        },
+        {
+          "date": "2026-06",
+          "value": "3369502"
         }
       ],
       "latest": {
-        "date": "2026-05",
-        "value": "3418479"
+        "date": "2026-06",
+        "value": "3369502"
       },
       "context": "U.S. dry natural-gas production \u2014 record output has reshaped both home energy costs and the country's role as an exporter.",
-      "read": "Dry gas production is up 4% from a year ago, now 3,418,479.",
+      "read": "Dry gas production is up 4% from a year ago, now 3,369,502.",
       "signal_status": "info",
       "value_format": "thousands",
       "percentile": {
-        "p": 98.8,
+        "p": 97.9,
         "since": 2006
       },
       "no_severity_reason": "A physical supply-and-demand reading, not a household cost \u2014 this lens's verdict comes from the price indicators."
@@ -4701,10 +4701,6 @@
       "color": "#A78BFA",
       "series_id": "N9133US2",
       "observations": [
-        {
-          "date": "2006-06",
-          "value": "5598"
-        },
         {
           "date": "2006-07",
           "value": "5607"
@@ -5647,7 +5643,7 @@
         },
         {
           "date": "2026-02",
-          "value": "493617"
+          "value": "493596"
         },
         {
           "date": "2026-03",
@@ -5660,18 +5656,22 @@
         {
           "date": "2026-05",
           "value": "502812"
+        },
+        {
+          "date": "2026-06",
+          "value": "521059"
         }
       ],
       "latest": {
-        "date": "2026-05",
-        "value": "502812"
+        "date": "2026-06",
+        "value": "521059"
       },
       "context": "U.S. liquefied natural gas exports \u2014 a fast-growing link between domestic gas prices and global demand.",
-      "read": "LNG exports is up 16% from a year ago, now 502,812.",
+      "read": "LNG exports is up 28% from a year ago, now 521,059.",
       "signal_status": "info",
       "value_format": "thousands",
       "percentile": {
-        "p": 97.1,
+        "p": 97.5,
         "since": 2006
       },
       "no_severity_reason": "A physical supply-and-demand reading, not a household cost \u2014 this lens's verdict comes from the price indicators."
