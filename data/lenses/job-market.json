@@ -2,7 +2,7 @@
   "id": "job-market",
   "title": "The Job Market",
   "accent": "#38BDF8",
-  "last_updated": "2026-08-07T14:14:57Z",
+  "last_updated": "2026-09-01T17:14:46Z",
   "status": "alert",
   "headline_read": "The job market is contracting \u2014 employers are cutting jobs.",
   "recessions": [
@@ -3907,10 +3907,6 @@
           "value": "3.3"
         },
         {
-          "date": "2011-06-01",
-          "value": "3.5"
-        },
-        {
           "date": "2011-07-01",
           "value": "3.6"
         },
@@ -4628,22 +4624,26 @@
         },
         {
           "date": "2026-06-01",
-          "value": "7.4"
+          "value": "7.2"
+        },
+        {
+          "date": "2026-07-01",
+          "value": "7.3"
         }
       ],
       "latest": {
-        "date": "2026-06-01",
-        "value": "7.4"
+        "date": "2026-07-01",
+        "value": "7.3"
       },
       "context": "The number of unfilled positions employers are trying to hire for \u2014 a direct read on how strong labor demand is.",
-      "read": "7.4 million open jobs, holding roughly steady.",
+      "read": "7.3 million open jobs, holding roughly steady.",
       "signal_status": "watch",
       "value_format": "decimal",
       "percentile": {
-        "p": 82.7,
+        "p": 80.5,
         "since": 2000
       },
-      "scale_now": 7.4
+      "scale_now": 7.3
     },
     {
       "id": "wage-growth",
@@ -5653,10 +5653,6 @@
           "value": "1.4"
         },
         {
-          "date": "2011-06-01",
-          "value": "1.5"
-        },
-        {
           "date": "2011-07-01",
           "value": "1.5"
         },
@@ -6375,18 +6371,22 @@
         {
           "date": "2026-06-01",
           "value": "2.0"
+        },
+        {
+          "date": "2026-07-01",
+          "value": "1.9"
         }
       ],
       "latest": {
-        "date": "2026-06-01",
-        "value": "2.0"
+        "date": "2026-07-01",
+        "value": "1.9"
       },
       "context": "The share of workers who voluntarily quit each month (since 2000). People quit when they're confident they can find something better \u2014 so a falling quits rate is the insiders' read on a cooling market.",
-      "read": "The quits rate is 2.0%, little changed from a year ago.",
+      "read": "The quits rate is 1.9%, little changed from a year ago.",
       "signal_status": "info",
       "value_format": "decimal",
       "percentile": {
-        "p": 39.4,
+        "p": 28.2,
         "since": 2000
       },
       "no_severity_reason": "The quits rate tends to track workers' confidence in finding another job \u2014 shown for context; the verdict is carried by unemployment, payrolls, and openings."
