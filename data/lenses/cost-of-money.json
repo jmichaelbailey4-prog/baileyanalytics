@@ -2,7 +2,7 @@
   "id": "cost-of-money",
   "title": "The Cost of Money",
   "accent": "#34D399",
-  "last_updated": "2026-08-31T19:26:58Z",
+  "last_updated": "2026-09-01T10:49:02Z",
   "status": "watch",
   "headline_read": "Borrowing is still expensive \u2014 rates remain elevated.",
   "recessions": [
@@ -1698,12 +1698,12 @@
         },
         {
           "date": "2026-07-01",
-          "value": "3.63"
+          "value": "3.6300000000"
         }
       ],
       "latest": {
         "date": "2026-07-01",
-        "value": "3.63"
+        "value": "3.6300000000"
       },
       "context": "The interest rate the Federal Reserve sets to steer the economy \u2014 the anchor for nearly every other rate, from savings accounts to business loans.",
       "read": "The Fed's policy rate is 3.63%, and easing as the Fed pivots toward cuts.",
@@ -1724,7 +1724,7 @@
       "series_id": "DGS10",
       "observations": [
         {
-          "date": "1962-08-24",
+          "date": "1962-08-27",
           "value": "3.95"
         },
         {
@@ -2996,10 +2996,6 @@
           "value": "1.20"
         },
         {
-          "date": "2021-08-27",
-          "value": "1.31"
-        },
-        {
           "date": "2021-08-30",
           "value": "1.29"
         },
@@ -3626,10 +3622,6 @@
         {
           "date": "2024-08-26",
           "value": "3.82"
-        },
-        {
-          "date": "2024-08-27",
-          "value": "3.83"
         },
         {
           "date": "2024-08-28",
@@ -5718,21 +5710,25 @@
         {
           "date": "2026-08-27",
           "value": "4.67"
+        },
+        {
+          "date": "2026-08-28",
+          "value": "4.73"
         }
       ],
       "latest": {
-        "date": "2026-08-27",
-        "value": "4.67"
+        "date": "2026-08-28",
+        "value": "4.73"
       },
       "context": "The yield on 10-year U.S. government debt \u2014 the benchmark that drives mortgage rates and long-term borrowing costs across the economy.",
-      "read": "The 10-year Treasury yield is 4.67% \u2014 above the comfortable range for borrowers.",
+      "read": "The 10-year Treasury yield is 4.73% \u2014 above the comfortable range for borrowers.",
       "signal_status": "watch",
       "value_format": "decimal",
       "percentile": {
-        "p": 41.7,
+        "p": 42.6,
         "since": 1962
       },
-      "scale_now": 4.67
+      "scale_now": 4.73
     },
     {
       "id": "treasury-2y",
@@ -5743,7 +5739,7 @@
       "series_id": "DGS2",
       "observations": [
         {
-          "date": "1976-10-29",
+          "date": "1976-11-01",
           "value": "6.030"
         },
         {
@@ -6787,10 +6783,6 @@
           "value": "0.17"
         },
         {
-          "date": "2021-08-27",
-          "value": "0.22"
-        },
-        {
           "date": "2021-08-30",
           "value": "0.20"
         },
@@ -7417,10 +7409,6 @@
         {
           "date": "2024-08-26",
           "value": "3.91"
-        },
-        {
-          "date": "2024-08-27",
-          "value": "3.83"
         },
         {
           "date": "2024-08-28",
@@ -9509,21 +9497,25 @@
         {
           "date": "2026-08-27",
           "value": "4.2"
+        },
+        {
+          "date": "2026-08-28",
+          "value": "4.34"
         }
       ],
       "latest": {
-        "date": "2026-08-27",
-        "value": "4.2"
+        "date": "2026-08-28",
+        "value": "4.34"
       },
       "context": "The yield on 2-year government debt \u2014 closely tied to where investors expect the Fed to set rates over the next couple of years.",
-      "read": "The 2-year Treasury yield is 4.20% \u2014 above the comfortable range for borrowers.",
+      "read": "The 2-year Treasury yield is 4.34% \u2014 above the comfortable range for borrowers.",
       "signal_status": "watch",
       "value_format": "decimal",
       "percentile": {
-        "p": 45.3,
+        "p": 47.5,
         "since": 1976
       },
-      "scale_now": 4.2
+      "scale_now": 4.34
     },
     {
       "id": "rate-expectations",
@@ -9534,8 +9526,8 @@
       "series_id": "DGS2_FEDFUNDS_SPREAD",
       "observations": [
         {
-          "date": "1976-10-29",
-          "value": "1.01"
+          "date": "1976-11-01",
+          "value": "1.08"
         },
         {
           "date": "1977-01-03",
@@ -10578,10 +10570,6 @@
           "value": "0.08"
         },
         {
-          "date": "2021-08-27",
-          "value": "0.13"
-        },
-        {
           "date": "2021-08-30",
           "value": "0.11"
         },
@@ -11208,10 +11196,6 @@
         {
           "date": "2024-08-26",
           "value": "-1.42"
-        },
-        {
-          "date": "2024-08-27",
-          "value": "-1.50"
         },
         {
           "date": "2024-08-28",
@@ -13208,18 +13192,22 @@
         {
           "date": "2026-08-27",
           "value": "0.57"
+        },
+        {
+          "date": "2026-08-28",
+          "value": "0.71"
         }
       ],
       "latest": {
-        "date": "2026-08-27",
-        "value": "0.57"
+        "date": "2026-08-28",
+        "value": "0.71"
       },
       "context": "The 2-year Treasury yield minus the Fed's current policy rate \u2014 the bond market's verdict on where the Fed goes next. Well below zero means markets are pricing rate cuts; above zero, hikes. Computed from the two series charted above.",
-      "read": "The 2-year yield is 0.57 points above the Fed's rate \u2014 markets are pricing rate hikes ahead.",
+      "read": "The 2-year yield is 0.71 points above the Fed's rate \u2014 markets are pricing rate hikes ahead.",
       "signal_status": "info",
       "value_format": "decimal",
       "percentile": {
-        "p": 60.6,
+        "p": 69.1,
         "since": 1976
       },
       "no_severity_reason": "Whether markets expect cuts or hikes isn't itself good or bad \u2014 it's the bond market's forecast, shown for context."
