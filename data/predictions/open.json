@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-01T17:18:19Z",
+  "generated_at": "2026-09-02T10:21:22Z",
   "predictions": [
     {
       "id": "economic/recession-watch/yield-curve@2026-09-04",
@@ -123,20 +123,20 @@
       "prev_period": "2026-07-01"
     },
     {
-      "id": "economic/cost-of-money/fed-funds@2026-08-01",
+      "id": "economic/cost-of-money/fed-funds@2026-09-01",
       "key": "economic/cost-of-money/fed-funds",
       "category": "economic",
       "lens": "cost-of-money",
       "indicator": "fed-funds",
       "series_id": "FEDFUNDS",
       "horizon": "next-print",
-      "target_period": "2026-08-01",
-      "due": "2026-09-15",
-      "made_at": "2026-08-04T08:24:08Z",
+      "target_period": "2026-09-01",
+      "due": "2026-10-15",
+      "made_at": "2026-09-02T10:18:00Z",
       "model": "ets@1",
-      "point": 3.6291,
-      "lo": 3.5215,
-      "hi": 3.7661,
+      "point": 3.6294,
+      "lo": 3.5218,
+      "hi": 3.7664,
       "unit": "%",
       "value_format": "decimal",
       "prev_value": 3.63,
@@ -150,7 +150,7 @@
       "lens_title": "The Cost of Money",
       "href": "/dashboards/cost-of-money.html",
       "grade": null,
-      "prev_period": "2026-07-01"
+      "prev_period": "2026-08-01"
     },
     {
       "id": "economic/cost-of-money/treasury-10y@2026-09-04",
@@ -3196,24 +3196,24 @@
       "prev_period": "2026-06-01"
     },
     {
-      "id": "business/business-credit/baa-spread@2026-08-01",
+      "id": "business/business-credit/baa-spread@2026-09-01",
       "key": "business/business-credit/baa-spread",
       "category": "business",
       "lens": "business-credit",
       "indicator": "baa-spread",
       "series_id": "BAA10YM",
       "horizon": "next-print",
-      "target_period": "2026-08-01",
-      "due": "2026-09-15",
-      "made_at": "2026-08-04T08:24:41Z",
+      "target_period": "2026-09-01",
+      "due": "2026-10-15",
+      "made_at": "2026-09-02T10:21:21Z",
       "model": "naive@1",
-      "point": 1.59,
-      "lo": 1.42,
-      "hi": 1.74,
+      "point": 1.64,
+      "lo": 1.47,
+      "hi": 1.79,
       "unit": "%",
       "value_format": "decimal",
-      "prev_value": 1.59,
-      "why": "We expect roughly the last value \u2014 this series rarely rewards cleverness.",
+      "prev_value": 1.64,
+      "why": "Baa spread: up 2 straight months. We expect roughly the last value \u2014 this series rarely rewards cleverness.",
       "implied_status": "ok",
       "current_status": "ok",
       "descriptive": false,
@@ -3223,7 +3223,7 @@
       "lens_title": "Business Credit",
       "href": "/dashboards/business/credit.html",
       "grade": null,
-      "prev_period": "2026-07-01"
+      "prev_period": "2026-08-01"
     },
     {
       "id": "business/business-credit/lending-standards@2026-10-01",

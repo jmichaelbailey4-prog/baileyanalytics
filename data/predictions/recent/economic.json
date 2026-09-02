@@ -314,20 +314,20 @@
       "prev_period": "2026-06-01"
     },
     "economic/cost-of-money/fed-funds": {
-      "id": "economic/cost-of-money/fed-funds@2026-07-01",
+      "id": "economic/cost-of-money/fed-funds@2026-08-01",
       "key": "economic/cost-of-money/fed-funds",
       "category": "economic",
       "lens": "cost-of-money",
       "indicator": "fed-funds",
       "series_id": "FEDFUNDS",
       "horizon": "next-print",
-      "target_period": "2026-07-01",
-      "due": "2026-08-15",
-      "made_at": "2026-07-02T08:43:58Z",
+      "target_period": "2026-08-01",
+      "due": "2026-09-15",
+      "made_at": "2026-08-04T08:24:08Z",
       "model": "ets@1",
-      "point": 3.6278,
-      "lo": 3.5202,
-      "hi": 3.7648,
+      "point": 3.6291,
+      "lo": 3.5215,
+      "hi": 3.7661,
       "unit": "%",
       "value_format": "decimal",
       "prev_value": 3.63,
@@ -342,15 +342,15 @@
       "href": "/dashboards/cost-of-money.html",
       "grade": {
         "actual": 3.63,
-        "graded_at": "2026-08-04T08:24:07Z",
+        "graded_at": "2026-09-02T10:17:59Z",
         "hit": true,
-        "abs_error": 0.0021999999999997577,
+        "abs_error": 0.0008999999999996788,
         "direction_hit": false,
         "status_hit": true,
         "naive_error": 0.0,
         "revised_to": null
       },
-      "prev_period": "2026-06-01"
+      "prev_period": "2026-07-01"
     },
     "economic/recession-watch/sahm-rule": {
       "id": "economic/recession-watch/sahm-rule@2026-07-01",

@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-09-02",
+    "title": "Today's Brief \u2014 2 alert \u00b7 5 elevated \u00b7 6 on watch",
+    "description": "Concentrations & Funding: Uninsured dep. 41.64% (\u25b21.16%)\nSupply & Construction: Months' supply 9.60 months (\u25b21.10 months)\nConsumer Spending: Retail sales 5.01% (\u25bc1.74%)\nConsumer Sentiment: Sentiment 55.20 (\u25b25.70)\nNatural Gas: Henry Hub $2.70 (\u25bc$0.13)"
+  },
+  {
     "date": "2026-09-01",
     "title": "Today's Brief \u2014 2 alert \u00b7 5 elevated \u00b7 6 on watch",
     "description": "Concentrations & Funding: Uninsured dep. 41.64% (\u25b21.16%)\nSupply & Construction: Months' supply 9.60 months (\u25b21.10 months)\nConsumer Spending: Retail sales 5.01% (\u25bc1.74%)\nConsumer Sentiment: Sentiment 55.20 (\u25b25.70)\nNatural Gas: Henry Hub $2.70 (\u25bc$0.13)"
@@ -141,11 +146,6 @@
   },
   {
     "date": "2026-08-02",
-    "title": "Today's Brief \u2014 1 alert \u00b7 6 elevated \u00b7 9 on watch",
-    "description": "Risk Sentiment: VIX 17.09 (\u25bc3.57)\nNatural Gas: Henry Hub $2.63 (\u25bc$0.24)\nThe Cost of Living: CPI 3.46% (\u25bc0.70%)\nTrade & Supply Chain: Supply chain 1.25\u03c3 (\u25bc0.56\u03c3)\nThe Dollar & Currencies: Dollar YoY 0.60% (\u25bc0.52%)"
-  },
-  {
-    "date": "2026-08-01",
     "title": "Today's Brief \u2014 1 alert \u00b7 6 elevated \u00b7 9 on watch",
     "description": "Risk Sentiment: VIX 17.09 (\u25bc3.57)\nNatural Gas: Henry Hub $2.63 (\u25bc$0.24)\nThe Cost of Living: CPI 3.46% (\u25bc0.70%)\nTrade & Supply Chain: Supply chain 1.25\u03c3 (\u25bc0.56\u03c3)\nThe Dollar & Currencies: Dollar YoY 0.60% (\u25bc0.52%)"
   }

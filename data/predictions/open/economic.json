@@ -122,20 +122,20 @@
       "prev_period": "2026-07-01"
     },
     {
-      "id": "economic/cost-of-money/fed-funds@2026-08-01",
+      "id": "economic/cost-of-money/fed-funds@2026-09-01",
       "key": "economic/cost-of-money/fed-funds",
       "category": "economic",
       "lens": "cost-of-money",
       "indicator": "fed-funds",
       "series_id": "FEDFUNDS",
       "horizon": "next-print",
-      "target_period": "2026-08-01",
-      "due": "2026-09-15",
-      "made_at": "2026-08-04T08:24:08Z",
+      "target_period": "2026-09-01",
+      "due": "2026-10-15",
+      "made_at": "2026-09-02T10:18:00Z",
       "model": "ets@1",
-      "point": 3.6291,
-      "lo": 3.5215,
-      "hi": 3.7661,
+      "point": 3.6294,
+      "lo": 3.5218,
+      "hi": 3.7664,
       "unit": "%",
       "value_format": "decimal",
       "prev_value": 3.63,
@@ -149,7 +149,7 @@
       "lens_title": "The Cost of Money",
       "href": "/dashboards/cost-of-money.html",
       "grade": null,
-      "prev_period": "2026-07-01"
+      "prev_period": "2026-08-01"
     },
     {
       "id": "economic/cost-of-money/treasury-10y@2026-09-04",

@@ -2,7 +2,7 @@
   "id": "energy-oil-fuels",
   "title": "Oil & Fuels",
   "accent": "#FB923C",
-  "last_updated": "2026-09-01T17:16:29Z",
+  "last_updated": "2026-09-02T10:17:39Z",
   "status": "alert",
   "headline_read": "Fuel costs are spiking \u2014 acute pressure at the pump.",
   "recessions": [
@@ -1358,7 +1358,7 @@
       "signal_status": "elevated",
       "value_format": "decimal",
       "percentile": {
-        "p": 93.5,
+        "p": 89.4,
         "since": 2016
       },
       "scale_now": 29.3613
@@ -2665,7 +2665,7 @@
       "signal_status": "alert",
       "value_format": "decimal",
       "percentile": {
-        "p": 97.5,
+        "p": 96.0,
         "since": 2016
       },
       "scale_now": 50.9978
@@ -3972,7 +3972,7 @@
       "signal_status": "info",
       "value_format": "thousands",
       "percentile": {
-        "p": 98.8,
+        "p": 98.1,
         "since": 2016
       },
       "no_severity_reason": "A physical supply-and-demand reading, not a household cost \u2014 this lens's verdict comes from the price indicators."
