@@ -2,7 +2,7 @@
   "id": "business-credit",
   "title": "Business Credit",
   "accent": "#F87171",
-  "last_updated": "2026-09-03T10:26:20Z",
+  "last_updated": "2026-09-03T16:59:47Z",
   "status": "ok",
   "headline_read": "Business credit is flowing \u2014 spreads and delinquencies are low.",
   "recessions": [
@@ -2329,12 +2329,12 @@
         },
         {
           "date": "2026-07-01",
-          "value": "0"
+          "value": "0.0000000000"
         }
       ],
       "latest": {
         "date": "2026-07-01",
-        "value": "0"
+        "value": "0.0000000000"
       },
       "context": "From the Fed's quarterly loan-officer survey: the share of banks tightening standards on commercial & industrial loans minus the share easing. Sustained tightening above ~20% has preceded every modern recession.",
       "read": "Banks are neither tightening nor easing business-loan standards on balance.",

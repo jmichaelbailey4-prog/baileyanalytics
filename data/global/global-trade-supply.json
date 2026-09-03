@@ -2,7 +2,7 @@
   "id": "global-trade-supply",
   "title": "Trade & Supply Chain",
   "accent": "#FBBF24",
-  "last_updated": "2026-08-18T13:50:23Z",
+  "last_updated": "2026-09-03T16:59:51Z",
   "status": "watch",
   "headline_read": "Trade frictions are building \u2014 supply chains or import costs bear watching.",
   "recessions": [
@@ -2687,8 +2687,8 @@
       "series_id": "BOPGSTB",
       "observations": [
         {
-          "date": "1992-05-01",
-          "value": "3.9"
+          "date": "1992-06-01",
+          "value": "2.8"
         },
         {
           "date": "1992-07-01",
@@ -2993,10 +2993,6 @@
         {
           "date": "2011-04-01",
           "value": "40.9"
-        },
-        {
-          "date": "2011-06-01",
-          "value": "48.1"
         },
         {
           "date": "2011-07-01",
@@ -3696,39 +3692,43 @@
         },
         {
           "date": "2026-01-01",
-          "value": "54.2"
+          "value": "52.7"
         },
         {
           "date": "2026-02-01",
-          "value": "55.0"
+          "value": "52.5"
         },
         {
           "date": "2026-03-01",
-          "value": "56.6"
+          "value": "53.7"
         },
         {
           "date": "2026-04-01",
-          "value": "54.6"
+          "value": "52.9"
         },
         {
           "date": "2026-05-01",
-          "value": "77.6"
+          "value": "75.8"
         },
         {
           "date": "2026-06-01",
-          "value": "73.3"
+          "value": "71.2"
+        },
+        {
+          "date": "2026-07-01",
+          "value": "88.6"
         }
       ],
       "latest": {
-        "date": "2026-06-01",
-        "value": "73.3"
+        "date": "2026-07-01",
+        "value": "88.6"
       },
       "context": "How much more the U.S. imports than it exports, in billions per month. The U.S. has run a deficit every year since 1976 \u2014 what matters is whether it is widening or narrowing, and why.",
-      "read": "The U.S. trade deficit is $73.3B a month, wider than a year ago.",
+      "read": "The U.S. trade deficit is $88.6B a month, wider than a year ago.",
       "signal_status": "info",
       "value_format": "decimal",
       "percentile": {
-        "p": 94.6,
+        "p": 98.5,
         "since": 1992
       },
       "no_severity_reason": "The U.S. has run a trade deficit every year since 1976 \u2014 the level isn't good or bad on its own; what matters is the trend shown here."

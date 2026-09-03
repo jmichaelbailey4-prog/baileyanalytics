@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-09-03T10:27:09Z",
+  "generated_at": "2026-09-03T17:02:53Z",
   "since": "2026-06-12T14:20:31Z",
-  "graded": 458,
-  "coverage": 191,
-  "calibration": 0.8144104803493449,
-  "direction": 0.36704119850187267,
-  "status": 0.8913857677902621,
-  "skill": 0.00075809511435454,
+  "graded": 462,
+  "coverage": 193,
+  "calibration": 0.8138528138528138,
+  "direction": 0.3680297397769517,
+  "status": 0.8921933085501859,
+  "skill": 0.0007496565449498505,
   "categories": {
     "banking": {
       "graded": 9,
@@ -33,36 +33,36 @@
       "skill": 0.02634668240655358
     },
     "economic": {
-      "graded": 91,
+      "graded": 92,
       "coverage": 16,
-      "calibration": 0.8241758241758241,
-      "direction": 0.18666666666666668,
-      "status": 0.8533333333333334,
-      "skill": -4.7281779913532773e-07
+      "calibration": 0.8260869565217391,
+      "direction": 0.18421052631578946,
+      "status": 0.8552631578947368,
+      "skill": -4.675251996655305e-07
     },
     "energy": {
-      "graded": 85,
-      "coverage": 44,
-      "calibration": 0.6941176470588235,
+      "graded": 86,
+      "coverage": 45,
+      "calibration": 0.6976744186046512,
       "direction": 0.3902439024390244,
       "status": 0.8292682926829268,
       "skill": -0.17415417726292381
     },
     "global": {
-      "graded": 55,
-      "coverage": 34,
-      "calibration": 0.8545454545454545,
+      "graded": 56,
+      "coverage": 35,
+      "calibration": 0.8392857142857143,
       "direction": 0.5238095238095238,
       "status": 0.9523809523809523,
       "skill": 0.05294673780260628
     },
     "housing": {
-      "graded": 34,
+      "graded": 35,
       "coverage": 6,
-      "calibration": 0.9117647058823529,
-      "direction": 0.5357142857142857,
-      "status": 0.8571428571428571,
-      "skill": 0.23182728570268152
+      "calibration": 0.9142857142857143,
+      "direction": 0.5517241379310345,
+      "status": 0.8620689655172413,
+      "skill": 0.2318174328746142
     },
     "markets": {
       "graded": 131,
