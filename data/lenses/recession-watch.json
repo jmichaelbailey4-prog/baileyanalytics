@@ -2,7 +2,7 @@
   "id": "recession-watch",
   "title": "Recession Watch",
   "accent": "#F87171",
-  "last_updated": "2026-09-03T16:58:50Z",
+  "last_updated": "2026-09-04T10:11:58Z",
   "status": "ok",
   "headline_read": "The economy looks steady \u2014 no major recession signals right now.",
   "recessions": [
@@ -65,8 +65,8 @@
       "series_id": "T10Y2Y",
       "observations": [
         {
-          "date": "1976-11-04",
-          "value": "1.43"
+          "date": "1976-11-05",
+          "value": "1.40"
         },
         {
           "date": "1977-01-03",
@@ -625,8 +625,8 @@
           "value": "2.72"
         },
         {
-          "date": "2011-09-02",
-          "value": "1.82"
+          "date": "2011-09-05",
+          "value": "."
         },
         {
           "date": "2011-10-03",
@@ -1109,8 +1109,8 @@
           "value": "1.11"
         },
         {
-          "date": "2021-09-02",
-          "value": "1.09"
+          "date": "2021-09-03",
+          "value": "1.12"
         },
         {
           "date": "2021-09-06",
@@ -3827,18 +3827,22 @@
         {
           "date": "2026-09-02",
           "value": "0.4"
+        },
+        {
+          "date": "2026-09-03",
+          "value": "0.43"
         }
       ],
       "latest": {
-        "date": "2026-09-02",
-        "value": "0.4"
+        "date": "2026-09-03",
+        "value": "0.43"
       },
       "context": "The gap between 10-year and 2-year Treasury yields. When it goes negative (\u201cinverts\u201d), investors expect rate cuts ahead \u2014 and every U.S. recession since the 1970s was preceded by an inversion.",
-      "read": "The curve is positive (+0.40) with no recent inversion \u2014 no recession warning from the curve right now.",
+      "read": "The curve is positive (+0.43) with no recent inversion \u2014 no recession warning from the curve right now.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 33.9,
+        "p": 35.3,
         "since": 1976
       }
     },

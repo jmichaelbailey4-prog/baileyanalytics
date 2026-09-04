@@ -2,7 +2,7 @@
   "id": "market-liquidity",
   "title": "Liquidity & the Fed",
   "accent": "#2DD4BF",
-  "last_updated": "2026-09-03T10:25:28Z",
+  "last_updated": "2026-09-04T10:12:04Z",
   "status": "ok",
   "headline_read": "Liquidity is ample \u2014 no monetary squeeze in sight.",
   "recessions": [
@@ -1652,8 +1652,8 @@
       "series_id": "WALCL",
       "observations": [
         {
-          "date": "2016-09-14",
-          "value": "4.48"
+          "date": "2016-09-21",
+          "value": "4.47"
         },
         {
           "date": "2016-10-05",
@@ -2934,18 +2934,22 @@
         {
           "date": "2026-08-26",
           "value": "6.73"
+        },
+        {
+          "date": "2026-09-02",
+          "value": "6.74"
         }
       ],
       "latest": {
-        "date": "2026-08-26",
-        "value": "6.73"
+        "date": "2026-09-02",
+        "value": "6.74"
       },
       "context": "Everything the Federal Reserve holds, in trillions. Rising means the Fed is injecting liquidity (QE); falling means it's draining (QT) \u2014 the tide that lifts or lowers all markets.",
-      "read": "The Fed's balance sheet is little changed from a year ago, now $6.73 trillion.",
+      "read": "The Fed's balance sheet is little changed from a year ago, now $6.74 trillion.",
       "signal_status": "info",
       "value_format": "decimal",
       "percentile": {
-        "p": 48.1,
+        "p": 49.0,
         "since": 2016
       },
       "no_severity_reason": "A descriptive level of the monetary plumbing \u2014 this lens's verdict is carried by M2 money-supply growth."
@@ -2959,8 +2963,8 @@
       "series_id": "WRESBAL",
       "observations": [
         {
-          "date": "2016-09-14",
-          "value": "2.37"
+          "date": "2016-09-21",
+          "value": "2.24"
         },
         {
           "date": "2016-10-05",
@@ -4241,18 +4245,22 @@
         {
           "date": "2026-08-26",
           "value": "2.92"
+        },
+        {
+          "date": "2026-09-02",
+          "value": "2.89"
         }
       ],
       "latest": {
-        "date": "2026-08-26",
-        "value": "2.92"
+        "date": "2026-09-02",
+        "value": "2.89"
       },
       "context": "Cash banks park at the Fed \u2014 the system's core liquidity buffer. When QT drains reserves too low, funding markets seize up (as in September 2019).",
-      "read": "The level of bank reserves is down 12% from a year ago, now $2.92 trillion.",
+      "read": "The level of bank reserves is down 10% from a year ago, now $2.89 trillion.",
       "signal_status": "info",
       "value_format": "decimal",
       "percentile": {
-        "p": 41.2,
+        "p": 40.0,
         "since": 2016
       },
       "no_severity_reason": "A descriptive level of the monetary plumbing \u2014 this lens's verdict is carried by M2 money-supply growth."
@@ -4266,8 +4274,8 @@
       "series_id": "RRPONTSYD",
       "observations": [
         {
-          "date": "2021-09-09",
-          "value": "1107.659"
+          "date": "2021-09-10",
+          "value": "1099.323"
         },
         {
           "date": "2021-09-13",
@@ -6980,18 +6988,22 @@
         {
           "date": "2026-09-02",
           "value": "0.525"
+        },
+        {
+          "date": "2026-09-03",
+          "value": "0.702"
         }
       ],
       "latest": {
-        "date": "2026-09-02",
-        "value": "0.525"
+        "date": "2026-09-03",
+        "value": "0.702"
       },
       "context": "Spare cash money-market funds park at the Fed overnight. It acts as the system's overflow tank: a high balance means excess liquidity; near zero means the buffer is spent and QT bites reserves directly.",
-      "read": "The overnight reverse-repo facility is down 98% from a year ago, now $0.5 billion.",
+      "read": "The overnight reverse-repo facility is down 96% from a year ago, now $0.7 billion.",
       "signal_status": "info",
       "value_format": "decimal",
       "percentile": {
-        "p": 3.5,
+        "p": 4.7,
         "since": 2021
       },
       "no_severity_reason": "A descriptive level of the monetary plumbing \u2014 this lens's verdict is carried by M2 money-supply growth."
