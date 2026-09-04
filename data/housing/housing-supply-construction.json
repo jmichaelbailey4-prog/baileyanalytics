@@ -2,7 +2,7 @@
   "id": "housing-supply-construction",
   "title": "Supply & Construction",
   "accent": "#34D399",
-  "last_updated": "2026-08-26T06:36:13Z",
+  "last_updated": "2026-09-04T16:48:27Z",
   "status": "elevated",
   "headline_read": "Housing supply is out of balance \u2014 inventory or construction is strained.",
   "recessions": [
@@ -4731,7 +4731,7 @@
       "observations": [
         {
           "date": "2016-07-01",
-          "value": "1.46"
+          "value": "1.47"
         },
         {
           "date": "2016-08-01",
@@ -5127,7 +5127,7 @@
         },
         {
           "date": "2024-10-01",
-          "value": "0.95"
+          "value": "0.96"
         },
         {
           "date": "2024-11-01",
@@ -5212,18 +5212,22 @@
         {
           "date": "2026-07-01",
           "value": "1.13"
+        },
+        {
+          "date": "2026-08-01",
+          "value": "1.14"
         }
       ],
       "latest": {
-        "date": "2026-07-01",
-        "value": "1.13"
+        "date": "2026-08-01",
+        "value": "1.14"
       },
       "context": "Homes listed for sale nationwide, in millions (Realtor.com count, since 2016) \u2014 the inventory buyers actually get to choose from.",
-      "read": "The number of homes for sale is little changed from a year ago, now 1.13 million.",
+      "read": "The number of homes for sale is up 4% from a year ago, now 1.14 million.",
       "signal_status": "info",
       "value_format": "decimal",
       "percentile": {
-        "p": 71.1,
+        "p": 72.1,
         "since": 2016
       },
       "no_severity_reason": "Months' supply, which adjusts for the sales pace, carries this lens's supply verdict; this is the raw count for context."

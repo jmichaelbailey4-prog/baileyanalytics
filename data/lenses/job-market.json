@@ -2,9 +2,9 @@
   "id": "job-market",
   "title": "The Job Market",
   "accent": "#38BDF8",
-  "last_updated": "2026-09-01T17:14:46Z",
-  "status": "alert",
-  "headline_read": "The job market is contracting \u2014 employers are cutting jobs.",
+  "last_updated": "2026-09-04T16:47:29Z",
+  "status": "watch",
+  "headline_read": "The job market is cooling \u2014 still solid, but losing momentum.",
   "recessions": [
     {
       "start": "1948-12-01",
@@ -1803,10 +1803,14 @@
         {
           "date": "2026-07-01",
           "value": "4.1"
+        },
+        {
+          "date": "2026-08-01",
+          "value": "4.1"
         }
       ],
       "latest": {
-        "date": "2026-07-01",
+        "date": "2026-08-01",
         "value": "4.1"
       },
       "context": "The share of the labor force without a job and actively looking \u2014 the single most-watched gauge of labor-market health.",
@@ -1814,7 +1818,7 @@
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 18.4,
+        "p": 18.3,
         "since": 1948
       },
       "scale_now": 0.0
@@ -1827,10 +1831,6 @@
       "color": "#34D399",
       "series_id": "PAYEMS",
       "observations": [
-        {
-          "date": "1939-03-01",
-          "value": "180000"
-        },
         {
           "date": "1939-04-01",
           "value": "-186000"
@@ -3705,26 +3705,30 @@
         },
         {
           "date": "2026-06-01",
-          "value": "20000"
+          "value": "31000"
         },
         {
           "date": "2026-07-01",
-          "value": "-23000"
+          "value": "21000"
+        },
+        {
+          "date": "2026-08-01",
+          "value": "162000"
         }
       ],
       "latest": {
-        "date": "2026-07-01",
-        "value": "-23000"
+        "date": "2026-08-01",
+        "value": "162000"
       },
       "context": "How many jobs U.S. employers added (or cut) last month \u2014 the headline number markets and the Fed react to most.",
-      "read": "Employers cut 23,000 jobs last month \u2014 an outright contraction.",
-      "signal_status": "alert",
+      "read": "Employers added 162,000 jobs last month \u2014 a healthy clip.",
+      "signal_status": "ok",
       "value_format": "thousands",
       "percentile": {
-        "p": 19.4,
+        "p": 50.9,
         "since": 1939
       },
-      "scale_now": -23000.0
+      "scale_now": 162000.0
     },
     {
       "id": "job-openings",
@@ -4654,7 +4658,7 @@
       "series_id": "CES0500000003",
       "observations": [
         {
-          "date": "2006-08-01",
+          "date": "2006-09-01",
           "value": "."
         },
         {
@@ -5451,26 +5455,30 @@
         },
         {
           "date": "2026-06-01",
-          "value": "3.41034"
+          "value": "3.38284"
         },
         {
           "date": "2026-07-01",
-          "value": "3.15328"
+          "value": "3.23554"
+        },
+        {
+          "date": "2026-08-01",
+          "value": "3.08575"
         }
       ],
       "latest": {
-        "date": "2026-07-01",
-        "value": "3.15328"
+        "date": "2026-08-01",
+        "value": "3.08575"
       },
       "context": "How fast average hourly pay is rising versus a year ago. When it outpaces inflation, workers' buying power grows.",
-      "read": "Pay is up 3.2% from a year ago, a solid pace.",
+      "read": "Pay is up 3.1% from a year ago, a solid pace.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 55.8,
+        "p": 53.4,
         "since": 2007
       },
-      "scale_now": 3.1533
+      "scale_now": 3.0857
     },
     {
       "id": "quits",
@@ -8138,18 +8146,22 @@
         {
           "date": "2026-07-01",
           "value": "61.4"
+        },
+        {
+          "date": "2026-08-01",
+          "value": "61.6"
         }
       ],
       "latest": {
-        "date": "2026-07-01",
-        "value": "61.4"
+        "date": "2026-08-01",
+        "value": "61.6"
       },
       "context": "The share of working-age adults either working or looking for work \u2014 how many people are in the labor force at all.",
-      "read": "Labor-force participation is 61.4%, down 0.8 points from a year ago.",
+      "read": "Labor-force participation is 61.6%, down 0.7 points from a year ago.",
       "signal_status": "info",
       "value_format": "decimal",
       "percentile": {
-        "p": 35.7,
+        "p": 37.4,
         "since": 1948
       },
       "no_severity_reason": "This level drifts with demographics \u2014 the job-market verdict is carried by unemployment, payrolls, and job openings."

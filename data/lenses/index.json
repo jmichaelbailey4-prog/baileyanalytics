@@ -1,6 +1,6 @@
 {
-  "last_updated": "2026-09-04T10:11:58Z",
-  "status": "elevated",
+  "last_updated": "2026-09-04T16:47:29Z",
+  "status": "watch",
   "lenses": [
     {
       "id": "recession-watch",
@@ -17,8 +17,8 @@
         },
         {
           "k": "Sahm rule",
-          "v": "-0.03",
-          "d": "0.10",
+          "v": "-0.07",
+          "d": "0.04",
           "dir": "down"
         }
       ],
@@ -128,24 +128,21 @@
       "id": "job-market",
       "title": "The Job Market",
       "accent": "#38BDF8",
-      "status": "alert",
-      "headline_read": "The job market is contracting \u2014 employers are cutting jobs.",
+      "status": "watch",
+      "headline_read": "The job market is cooling \u2014 still solid, but losing momentum.",
       "key_stats": [
         {
           "k": "Unemployment",
-          "v": "4.10%",
-          "d": "0.10%",
-          "dir": "down"
+          "v": "4.10%"
         },
         {
           "k": "Payrolls",
-          "v": "-23,000",
-          "d": "43,000",
-          "dir": "down"
+          "v": "162,000",
+          "d": "141,000",
+          "dir": "up"
         }
       ],
       "sparkline": [
-        3.5,
         3.4,
         3.6,
         3.6,
@@ -184,6 +181,7 @@
         4.3,
         4.3,
         4.2,
+        4.1,
         4.1
       ]
     },

@@ -1,6 +1,17 @@
 {
-  "generated_at": "2026-09-04T10:13:35Z",
-  "transitions": [],
+  "generated_at": "2026-09-04T16:49:20Z",
+  "transitions": [
+    {
+      "lens_id": "job-market",
+      "lens_title": "The Job Market",
+      "category": "economic",
+      "href": "/dashboards/job-market.html",
+      "from_status": "alert",
+      "to_status": "watch",
+      "direction": "improving",
+      "headline": "The job market is cooling \u2014 still solid, but losing momentum."
+    }
+  ],
   "top_moves": [
     {
       "lens_id": "bank-concentrations-funding",
@@ -221,61 +232,6 @@
       "delta": "1.74%",
       "dir": "down",
       "why": ""
-    },
-    {
-      "lens_id": "consumer-sentiment",
-      "lens_title": "Consumer Sentiment",
-      "category": "consumer",
-      "href": "/dashboards/consumer/sentiment.html",
-      "headline": "Consumer mood is grim \u2014 confidence is at recession levels.",
-      "accent": "#38BDF8",
-      "sparkline": [
-        63.7,
-        59.0,
-        64.2,
-        71.5,
-        69.4,
-        67.8,
-        63.8,
-        61.3,
-        69.7,
-        79.0,
-        76.9,
-        79.4,
-        77.2,
-        69.1,
-        68.2,
-        66.4,
-        67.9,
-        70.1,
-        70.5,
-        71.8,
-        74.0,
-        71.7,
-        64.7,
-        57.0,
-        52.2,
-        52.2,
-        60.7,
-        61.7,
-        58.2,
-        55.1,
-        53.6,
-        51.0,
-        52.9,
-        56.4,
-        56.6,
-        53.3,
-        49.8,
-        44.8,
-        49.5,
-        55.2
-      ],
-      "stat_label": "Sentiment",
-      "stat_value": "55.20",
-      "delta": "5.70",
-      "dir": "up",
-      "why": ""
     }
   ],
   "lenses": [
@@ -300,8 +256,8 @@
       "lens_title": "The Job Market",
       "category": "economic",
       "href": "/dashboards/job-market.html",
-      "status": "alert",
-      "headline": "The job market is contracting \u2014 employers are cutting jobs."
+      "status": "watch",
+      "headline": "The job market is cooling \u2014 still solid, but losing momentum."
     },
     {
       "lens_id": "cost-of-living",
@@ -546,16 +502,16 @@
   ],
   "status_counts": {
     "ok": 18,
-    "watch": 6,
+    "watch": 7,
     "elevated": 5,
-    "alert": 2,
+    "alert": 1,
     "neutral": 2
   },
   "verdict": {
     "status": "watch",
     "shape": "contained-pressure",
-    "sentence": "Most of the economy is on solid footing \u2014 banks are solid and markets are calm \u2014 but the core economy is under real strain and energy and commodity costs are squeezing budgets.",
-    "short": "Holding up, but the core economy is under real strain."
+    "sentence": "Most of the economy is on solid footing \u2014 banks are solid and markets are calm \u2014 but energy and commodity costs are squeezing budgets.",
+    "short": "Holding up, but energy and commodity costs are squeezing budgets."
   },
   "watching": [
     {
@@ -602,14 +558,6 @@
     }
   ],
   "pressure": [
-    {
-      "lens_id": "job-market",
-      "lens_title": "The Job Market",
-      "category": "economic",
-      "href": "/dashboards/job-market.html",
-      "status": "alert",
-      "headline": "The job market is contracting \u2014 employers are cutting jobs."
-    },
     {
       "lens_id": "energy-oil-fuels",
       "lens_title": "Oil & Fuels",
@@ -667,6 +615,14 @@
       "headline": "Borrowing is still expensive \u2014 rates remain elevated."
     },
     {
+      "lens_id": "job-market",
+      "lens_title": "The Job Market",
+      "category": "economic",
+      "href": "/dashboards/job-market.html",
+      "status": "watch",
+      "headline": "The job market is cooling \u2014 still solid, but losing momentum."
+    },
+    {
       "lens_id": "cost-of-living",
       "lens_title": "The Cost of Living",
       "category": "economic",
@@ -711,9 +667,9 @@
     {
       "category": "economic",
       "title": "Economic Lenses",
-      "status": "elevated",
+      "status": "watch",
       "href": "/dashboards/economic/",
-      "sentence": "The core economy is under real strain."
+      "sentence": "Mostly steady \u2014 a corner or two of the economy runs hot."
     },
     {
       "category": "consumer",
