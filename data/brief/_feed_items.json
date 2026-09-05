@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-09-05",
+    "title": "Today's Brief \u2014 1 alert \u00b7 5 elevated \u00b7 7 on watch",
+    "description": "Concentrations & Funding: Uninsured dep. 41.64% (\u25b21.16%)\nSupply & Construction: Months' supply 9.60 months (\u25b21.10 months)\nConsumer Spending: Retail sales 5.01% (\u25bc1.74%)\nConsumer Sentiment: Sentiment 55.20 (\u25b25.70)\nHousehold Income & Savings: Saving rate 3.00% (\u25b20.40%)"
+  },
+  {
     "date": "2026-09-04",
     "title": "Today's Brief \u2014 1 alert \u00b7 5 elevated \u00b7 7 on watch",
     "description": "The Job Market: alert \u2192 watch \u2014 The job market is cooling \u2014 still solid, but losing momentum.\nConcentrations & Funding: Uninsured dep. 41.64% (\u25b21.16%)\nSupply & Construction: Months' supply 9.60 months (\u25b21.10 months)\nAsset-Class Scoreboard: S&P 500 7,748 (\u25b281)\nConsumer Spending: Retail sales 5.01% (\u25bc1.74%)"
@@ -143,10 +148,5 @@
     "date": "2026-08-05",
     "title": "Today's Brief \u2014 2 alert \u00b7 5 elevated \u00b7 8 on watch",
     "description": "Natural Gas: Henry Hub $2.63 (\u25bc$0.24)\nAsset-Class Scoreboard: S&P 500 7,737 (\u25b2136)\nThe Cost of Living: CPI 3.46% (\u25bc0.70%)\nTrade & Supply Chain: Supply chain 1.25\u03c3 (\u25bc0.56\u03c3)\nBusiness Investment: Core capex 12.90% (\u25b22.00%)"
-  },
-  {
-    "date": "2026-08-04",
-    "title": "Today's Brief \u2014 2 alert \u00b7 5 elevated \u00b7 8 on watch",
-    "description": "Oil & Fuels: elevated \u2192 alert \u2014 Fuel costs are spiking \u2014 acute pressure at the pump.\nNatural Gas: Henry Hub $2.63 (\u25bc$0.24)\nThe Cost of Living: CPI 3.46% (\u25bc0.70%)\nAsset-Class Scoreboard: S&P 500 7,601 (\u25b2111)\nTrade & Supply Chain: Supply chain 1.25\u03c3 (\u25bc0.56\u03c3)"
   }
 ]
