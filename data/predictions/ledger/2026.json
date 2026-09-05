@@ -10620,7 +10620,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 24.409999999999997,
-      "revised_to": 222.25
+      "revised_to": 222.61
     },
     "prev_period": "2026-06"
   },
@@ -17522,7 +17522,7 @@
       "direction_hit": true,
       "status_hit": true,
       "naive_error": 3.890000000000015,
-      "revised_to": null
+      "revised_to": 219.21
     },
     "prev_period": "2026-07"
   },
