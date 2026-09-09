@@ -2,7 +2,7 @@
   "id": "market-liquidity",
   "title": "Liquidity & the Fed",
   "accent": "#2DD4BF",
-  "last_updated": "2026-09-05T09:41:07Z",
+  "last_updated": "2026-09-09T10:26:20Z",
   "status": "ok",
   "headline_read": "Liquidity is ample \u2014 no monetary squeeze in sight.",
   "recessions": [
@@ -4274,8 +4274,8 @@
       "series_id": "RRPONTSYD",
       "observations": [
         {
-          "date": "2021-09-13",
-          "value": "1087.108"
+          "date": "2021-09-15",
+          "value": "1081.342"
         },
         {
           "date": "2021-09-20",
@@ -4896,18 +4896,6 @@
         {
           "date": "2024-09-02",
           "value": "."
-        },
-        {
-          "date": "2024-09-04",
-          "value": "337.312"
-        },
-        {
-          "date": "2024-09-05",
-          "value": "291.091"
-        },
-        {
-          "date": "2024-09-06",
-          "value": "299.271"
         },
         {
           "date": "2024-09-09",
@@ -6988,18 +6976,26 @@
         {
           "date": "2026-09-04",
           "value": "0.675"
+        },
+        {
+          "date": "2026-09-07",
+          "value": "."
+        },
+        {
+          "date": "2026-09-08",
+          "value": "0.626"
         }
       ],
       "latest": {
-        "date": "2026-09-04",
-        "value": "0.675"
+        "date": "2026-09-08",
+        "value": "0.626"
       },
       "context": "Spare cash money-market funds park at the Fed overnight. It acts as the system's overflow tank: a high balance means excess liquidity; near zero means the buffer is spent and QT bites reserves directly.",
-      "read": "The overnight reverse-repo facility is down 97% from a year ago, now $0.7 billion.",
+      "read": "The overnight reverse-repo facility is down 97% from a year ago, now $0.6 billion.",
       "signal_status": "info",
       "value_format": "decimal",
       "percentile": {
-        "p": 4.6,
+        "p": 4.2,
         "since": 2021
       },
       "no_severity_reason": "A descriptive level of the monetary plumbing \u2014 this lens's verdict is carried by M2 money-supply growth."

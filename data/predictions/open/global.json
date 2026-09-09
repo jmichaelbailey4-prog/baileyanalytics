@@ -1,23 +1,23 @@
 {
   "predictions": [
     {
-      "id": "global/global-dollar-currencies/dollar-yoy@2026-09-04",
+      "id": "global/global-dollar-currencies/dollar-yoy@2026-09-11",
       "key": "global/global-dollar-currencies/dollar-yoy",
       "category": "global",
       "lens": "global-dollar-currencies",
       "indicator": "dollar-yoy",
       "series_id": "DTWEXBGS",
       "horizon": "next-print",
-      "target_period": "2026-09-04",
-      "due": "2026-09-09",
-      "made_at": "2026-09-01T10:52:24Z",
+      "target_period": "2026-09-11",
+      "due": "2026-09-16",
+      "made_at": "2026-09-09T10:27:44Z",
       "model": "naive@1",
-      "point": -1.2148,
-      "lo": -2.3939,
-      "hi": -0.1312,
+      "point": -1.7107,
+      "lo": -2.8898,
+      "hi": -0.6271,
       "unit": "%",
       "value_format": "decimal",
-      "prev_value": -1.21481,
+      "prev_value": -1.71067,
       "why": "We expect roughly the last value \u2014 this series rarely rewards cleverness.",
       "implied_status": "ok",
       "current_status": "ok",
@@ -28,8 +28,8 @@
       "lens_title": "The Dollar & Currencies",
       "href": "/dashboards/global/dollar-currencies.html",
       "grade": null,
-      "now_value": -1.2148,
-      "now_date": "2026-08-28"
+      "now_value": -1.7107,
+      "now_date": "2026-09-04"
     },
     {
       "id": "global/global-dollar-currencies/euro@2026-09-04",
