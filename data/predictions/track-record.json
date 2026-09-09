@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-09-09T10:27:48Z",
+  "generated_at": "2026-09-09T17:08:13Z",
   "since": "2026-06-12T14:20:31Z",
-  "graded": 487,
-  "coverage": 203,
-  "calibration": 0.8234086242299795,
-  "direction": 0.36971830985915494,
-  "status": 0.8943661971830986,
-  "skill": 0.0004440468869605363,
+  "graded": 492,
+  "coverage": 206,
+  "calibration": 0.8191056910569106,
+  "direction": 0.3706293706293706,
+  "status": 0.8951048951048951,
+  "skill": 0.0004441039130411717,
   "categories": {
     "banking": {
       "graded": 9,
@@ -41,17 +41,17 @@
       "skill": -2.494883351022992e-07
     },
     "energy": {
-      "graded": 86,
+      "graded": 88,
       "coverage": 45,
-      "calibration": 0.6976744186046512,
-      "direction": 0.3902439024390244,
-      "status": 0.8292682926829268,
-      "skill": -0.17415417726292381
+      "calibration": 0.6818181818181818,
+      "direction": 0.3953488372093023,
+      "status": 0.8372093023255814,
+      "skill": -0.17075043191699968
     },
     "global": {
-      "graded": 58,
-      "coverage": 35,
-      "calibration": 0.8448275862068966,
+      "graded": 61,
+      "coverage": 38,
+      "calibration": 0.8360655737704918,
       "direction": 0.5217391304347826,
       "status": 0.9565217391304348,
       "skill": 0.05272834139240068
