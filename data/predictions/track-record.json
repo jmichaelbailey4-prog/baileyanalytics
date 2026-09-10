@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-09-09T17:08:13Z",
+  "generated_at": "2026-09-10T16:57:59Z",
   "since": "2026-06-12T14:20:31Z",
-  "graded": 492,
-  "coverage": 206,
-  "calibration": 0.8191056910569106,
-  "direction": 0.3706293706293706,
-  "status": 0.8951048951048951,
-  "skill": 0.0004441039130411717,
+  "graded": 496,
+  "coverage": 207,
+  "calibration": 0.8185483870967742,
+  "direction": 0.3771626297577855,
+  "status": 0.8961937716262975,
+  "skill": 0.000444126097618347,
   "categories": {
     "banking": {
       "graded": 9,
@@ -33,17 +33,17 @@
       "skill": 0.018922650427496523
     },
     "economic": {
-      "graded": 102,
+      "graded": 103,
       "coverage": 18,
-      "calibration": 0.8431372549019608,
-      "direction": 0.21428571428571427,
-      "status": 0.8571428571428571,
+      "calibration": 0.8446601941747572,
+      "direction": 0.2235294117647059,
+      "status": 0.8588235294117647,
       "skill": -2.494883351022992e-07
     },
     "energy": {
-      "graded": 88,
-      "coverage": 45,
-      "calibration": 0.6818181818181818,
+      "graded": 89,
+      "coverage": 46,
+      "calibration": 0.6853932584269663,
       "direction": 0.3953488372093023,
       "status": 0.8372093023255814,
       "skill": -0.17075043191699968
@@ -57,20 +57,20 @@
       "skill": 0.05272834139240068
     },
     "housing": {
-      "graded": 36,
+      "graded": 37,
       "coverage": 7,
-      "calibration": 0.9166666666666666,
-      "direction": 0.5517241379310345,
-      "status": 0.8620689655172413,
-      "skill": 0.2318174328746142
+      "calibration": 0.918918918918919,
+      "direction": 0.5666666666666667,
+      "status": 0.8666666666666667,
+      "skill": 0.23181500690359325
     },
     "markets": {
-      "graded": 141,
+      "graded": 142,
       "coverage": 90,
-      "calibration": 0.8085106382978723,
-      "direction": 0.45098039215686275,
+      "calibration": 0.8028169014084507,
+      "direction": 0.46153846153846156,
       "status": 1.0,
-      "skill": -0.007719405540319801
+      "skill": -0.007686366004137302
     }
   }
 }

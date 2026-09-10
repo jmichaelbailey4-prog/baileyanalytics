@@ -2,7 +2,7 @@
   "id": "housing-affordability",
   "title": "Affordability & Financing",
   "accent": "#FBBF24",
-  "last_updated": "2026-09-03T16:59:39Z",
+  "last_updated": "2026-09-10T16:57:11Z",
   "status": "elevated",
   "headline_read": "Housing affordability is badly stretched.",
   "recessions": [
@@ -82,7 +82,7 @@
         },
         {
           "date": "2025-08-01",
-          "value": "101.2"
+          "value": "."
         },
         {
           "date": "2025-09-01",
@@ -126,18 +126,22 @@
         },
         {
           "date": "2026-07-01",
-          "value": "103.3"
+          "value": "102.8"
+        },
+        {
+          "date": "2026-08-01",
+          "value": "104.7"
         }
       ],
       "latest": {
-        "date": "2026-07-01",
-        "value": "103.3"
+        "date": "2026-08-01",
+        "value": "104.7"
       },
       "context": "The National Association of Realtors index: 100 means the median-income family can just barely afford the median home. Higher is better \u2014 the historical norm is 130-180. Note: FRED serves only a rolling ~1-year window of this NAR-licensed index, so its chart history is shorter than the other indicators here; we accumulate it forward from mid-2025.",
-      "read": "The affordability index is 103 \u2014 the median family barely qualifies for the median home.",
+      "read": "The affordability index is 105 \u2014 the median family barely qualifies for the median home.",
       "signal_status": "elevated",
       "value_format": "decimal",
-      "scale_now": 103.3
+      "scale_now": 104.7
     },
     {
       "id": "debt-service",
@@ -2150,8 +2154,8 @@
           "value": "4.60"
         },
         {
-          "date": "2011-09-08",
-          "value": "4.12"
+          "date": "2011-09-15",
+          "value": "4.09"
         },
         {
           "date": "2011-10-06",
@@ -2632,10 +2636,6 @@
         {
           "date": "2021-09-02",
           "value": "2.87"
-        },
-        {
-          "date": "2021-09-09",
-          "value": "2.88"
         },
         {
           "date": "2021-09-16",
@@ -3676,21 +3676,25 @@
         {
           "date": "2026-09-03",
           "value": "6.71"
+        },
+        {
+          "date": "2026-09-10",
+          "value": "6.76"
         }
       ],
       "latest": {
-        "date": "2026-09-03",
-        "value": "6.71"
+        "date": "2026-09-10",
+        "value": "6.76"
       },
       "context": "The average rate on a 30-year fixed home loan \u2014 the input behind the affordability squeeze above: it sets what a buyer can afford each month.",
-      "read": "30-year mortgages are at 6.71% \u2014 high enough to keep affordability stretched.",
+      "read": "30-year mortgages are at 6.76% \u2014 high enough to keep affordability stretched.",
       "signal_status": "elevated",
       "value_format": "decimal",
       "percentile": {
-        "p": 40.7,
+        "p": 41.6,
         "since": 1971
       },
-      "scale_now": 6.71
+      "scale_now": 6.76
     }
   ]
 }
