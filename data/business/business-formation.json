@@ -2,7 +2,7 @@
   "id": "business-formation",
   "title": "Business Formation",
   "accent": "#38BDF8",
-  "last_updated": "2026-08-13T07:14:42Z",
+  "last_updated": "2026-09-11T16:58:58Z",
   "status": "ok",
   "headline_read": "New businesses are forming at a healthy clip.",
   "recessions": [
@@ -834,11 +834,11 @@
         },
         {
           "date": "2025-07-01",
-          "value": "10.4"
+          "value": "10.1"
         },
         {
           "date": "2025-08-01",
-          "value": "9.6"
+          "value": "9.4"
         },
         {
           "date": "2025-09-01",
@@ -878,26 +878,30 @@
         },
         {
           "date": "2026-06-01",
-          "value": "15.8"
+          "value": "15.3"
         },
         {
           "date": "2026-07-01",
-          "value": "23.4"
+          "value": "23.3"
+        },
+        {
+          "date": "2026-08-01",
+          "value": "11.4"
         }
       ],
       "latest": {
-        "date": "2026-07-01",
-        "value": "23.4"
+        "date": "2026-08-01",
+        "value": "11.4"
       },
       "context": "How fast new business applications are growing versus a year ago (Census Business Formation Statistics \u2014 roughly half a million applications a month). Falling applications mean fading dynamism.",
-      "read": "Business applications are growing 23.4% a year.",
+      "read": "Business applications are growing 11.4% a year.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 94.1,
+        "p": 83.5,
         "since": 2005
       },
-      "scale_now": 23.4
+      "scale_now": 11.4
     },
     {
       "id": "high-propensity",
@@ -1677,11 +1681,11 @@
         },
         {
           "date": "2025-07-01",
-          "value": "2.9"
+          "value": "2.7"
         },
         {
           "date": "2025-08-01",
-          "value": "-1.7"
+          "value": "-1.4"
         },
         {
           "date": "2025-09-01",
@@ -1721,26 +1725,30 @@
         },
         {
           "date": "2026-06-01",
-          "value": "5.3"
+          "value": "5.2"
         },
         {
           "date": "2026-07-01",
-          "value": "5.9"
+          "value": "5.8"
+        },
+        {
+          "date": "2026-08-01",
+          "value": "1.9"
         }
       ],
       "latest": {
-        "date": "2026-07-01",
-        "value": "5.9"
+        "date": "2026-08-01",
+        "value": "1.9"
       },
       "context": "Growth in applications with characteristics that make them likely to become employer businesses \u2014 the quality signal inside the headline count.",
-      "read": "High-propensity applications are growing 5.9% a year.",
+      "read": "High-propensity applications are growing 1.9% a year.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 78.7,
+        "p": 55.5,
         "since": 2005
       },
-      "scale_now": 5.9
+      "scale_now": 1.9
     },
     {
       "id": "hp-share",
@@ -2540,7 +2548,7 @@
         },
         {
           "date": "2025-08-01",
-          "value": "29.7"
+          "value": "29.9"
         },
         {
           "date": "2025-09-01",
@@ -2580,23 +2588,27 @@
         },
         {
           "date": "2026-06-01",
-          "value": "28.0"
+          "value": "28.1"
         },
         {
           "date": "2026-07-01",
-          "value": "26.2"
+          "value": "26.3"
+        },
+        {
+          "date": "2026-08-01",
+          "value": "27.3"
         }
       ],
       "latest": {
-        "date": "2026-07-01",
-        "value": "26.2"
+        "date": "2026-08-01",
+        "value": "27.3"
       },
       "context": "What fraction of all business applications look likely to become employers \u2014 formation quality over time. It ran near half before the pandemic-era boom in solo ventures pushed it below a third.",
-      "read": "The high-propensity share of applications is 26.2%, down 4.4 points from a year ago.",
+      "read": "The high-propensity share of applications is 27.3%, down 2.6 points from a year ago.",
       "signal_status": "info",
       "value_format": "decimal",
       "percentile": {
-        "p": 0.0,
+        "p": 0.8,
         "since": 2004
       },
       "no_severity_reason": "A descriptive level shown for context \u2014 neither a high nor a low reading is simply good or bad."

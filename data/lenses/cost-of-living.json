@@ -2,7 +2,7 @@
   "id": "cost-of-living",
   "title": "The Cost of Living",
   "accent": "#FBBF24",
-  "last_updated": "2026-08-26T13:57:25Z",
+  "last_updated": "2026-09-11T16:57:57Z",
   "status": "watch",
   "headline_read": "Inflation has cooled but isn't beaten \u2014 still above target.",
   "recessions": [
@@ -64,10 +64,6 @@
       "color": "#FBBF24",
       "series_id": "CPIAUCSL",
       "observations": [
-        {
-          "date": "1947-06-01",
-          "value": "."
-        },
         {
           "date": "1947-07-01",
           "value": "."
@@ -1815,21 +1811,25 @@
         {
           "date": "2026-07-01",
           "value": "3.30386"
+        },
+        {
+          "date": "2026-08-01",
+          "value": "3.35302"
         }
       ],
       "latest": {
-        "date": "2026-07-01",
-        "value": "3.30386"
+        "date": "2026-08-01",
+        "value": "3.35302"
       },
       "context": "The Consumer Price Index \u2014 the headline measure of how fast the prices households actually pay are rising versus a year ago.",
-      "read": "Running at 3.3% a year \u2014 still above the Fed's 2% goal.",
+      "read": "Running at 3.4% a year \u2014 still above the Fed's 2% goal.",
       "signal_status": "watch",
       "value_format": "decimal",
       "percentile": {
-        "p": 59.6,
+        "p": 60.2,
         "since": 1948
       },
-      "scale_now": 3.3039
+      "scale_now": 3.353
     },
     {
       "id": "core-cpi",
@@ -1839,10 +1839,6 @@
       "color": "#FB923C",
       "series_id": "CPILFESL",
       "observations": [
-        {
-          "date": "1957-06-01",
-          "value": "."
-        },
         {
           "date": "1957-07-01",
           "value": "."
@@ -3430,21 +3426,25 @@
         {
           "date": "2026-07-01",
           "value": "2.46652"
+        },
+        {
+          "date": "2026-08-01",
+          "value": "2.44616"
         }
       ],
       "latest": {
-        "date": "2026-07-01",
-        "value": "2.46652"
+        "date": "2026-08-01",
+        "value": "2.44616"
       },
       "context": "CPI excluding volatile food and energy. Because it strips out the noisiest prices, it's a better read on the economy's underlying inflation trend.",
-      "read": "Running at 2.5% a year \u2014 close to the Fed's 2% goal.",
+      "read": "Running at 2.4% a year \u2014 close to the Fed's 2% goal.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 42.6,
+        "p": 42.0,
         "since": 1958
       },
-      "scale_now": 2.4665
+      "scale_now": 2.4462
     },
     {
       "id": "pce",

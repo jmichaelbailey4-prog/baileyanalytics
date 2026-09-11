@@ -2,7 +2,7 @@
   "id": "housing-rent-shelter",
   "title": "Rent & Shelter",
   "accent": "#A78BFA",
-  "last_updated": "2026-08-12T14:22:46Z",
+  "last_updated": "2026-09-11T16:58:49Z",
   "status": "ok",
   "headline_read": "The rental market is balanced \u2014 rents are behaving.",
   "recessions": [
@@ -1255,21 +1255,25 @@
         {
           "date": "2026-07-01",
           "value": "2.9"
+        },
+        {
+          "date": "2026-08-01",
+          "value": "2.8"
         }
       ],
       "latest": {
-        "date": "2026-07-01",
-        "value": "2.9"
+        "date": "2026-08-01",
+        "value": "2.8"
       },
       "context": "How fast the rent tenants actually pay is rising versus a year ago, from the rent component of the Consumer Price Index. It moves slowly but relentlessly, and it is a third of core CPI.",
-      "read": "Rent costs are rising 2.9% a year.",
+      "read": "Rent costs are rising 2.8% a year.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 27.2,
+        "p": 23.7,
         "since": 1982
       },
-      "scale_now": 2.9
+      "scale_now": 2.8
     },
     {
       "id": "owners-equivalent-rent",
@@ -2438,21 +2442,25 @@
         {
           "date": "2026-07-01",
           "value": "3.2"
+        },
+        {
+          "date": "2026-08-01",
+          "value": "3.1"
         }
       ],
       "latest": {
-        "date": "2026-07-01",
-        "value": "3.2"
+        "date": "2026-08-01",
+        "value": "3.1"
       },
       "context": "How fast the implied rent on owner-occupied homes is rising \u2014 the largest single component of the CPI, and the bridge between home prices and inflation.",
-      "read": "Owners' equivalent rent costs are rising 3.2% a year.",
+      "read": "Owners' equivalent rent costs are rising 3.1% a year.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 42.7,
+        "p": 38.0,
         "since": 1984
       },
-      "scale_now": 3.2
+      "scale_now": 3.1
     },
     {
       "id": "rental-vacancy",
