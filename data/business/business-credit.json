@@ -2,7 +2,7 @@
   "id": "business-credit",
   "title": "Business Credit",
   "accent": "#F87171",
-  "last_updated": "2026-09-11T16:58:58Z",
+  "last_updated": "2026-09-12T09:50:37Z",
   "status": "ok",
   "headline_read": "Business credit is flowing \u2014 spreads and delinquencies are low.",
   "recessions": [
@@ -2329,12 +2329,12 @@
         },
         {
           "date": "2026-07-01",
-          "value": "0"
+          "value": "0.0000000000"
         }
       ],
       "latest": {
         "date": "2026-07-01",
-        "value": "0"
+        "value": "0.0000000000"
       },
       "context": "From the Fed's quarterly loan-officer survey: the share of banks tightening standards on commercial & industrial loans minus the share easing. Sustained tightening above ~20% has preceded every modern recession.",
       "read": "Banks are neither tightening nor easing business-loan standards on balance.",
@@ -3009,10 +3009,6 @@
       "color": "#A78BFA",
       "series_id": "BUSLOANS",
       "observations": [
-        {
-          "date": "1948-06-01",
-          "value": "21.9"
-        },
         {
           "date": "1948-07-01",
           "value": "19.5"
@@ -4744,21 +4740,25 @@
         {
           "date": "2026-07-01",
           "value": "8.7"
+        },
+        {
+          "date": "2026-08-01",
+          "value": "9.8"
         }
       ],
       "latest": {
-        "date": "2026-07-01",
-        "value": "8.7"
+        "date": "2026-08-01",
+        "value": "9.8"
       },
       "context": "How fast bank lending to businesses is growing. Outright contraction is a credit squeeze; double-digit booms (2020 hit +30%) have their own way of ending badly.",
-      "read": "C&I lending is up 8.7% from a year ago \u2014 a steady pace.",
+      "read": "C&I lending is up 9.8% from a year ago \u2014 a steady pace.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 54.1,
+        "p": 61.1,
         "since": 1948
       },
-      "scale_now": 8.7
+      "scale_now": 9.8
     }
   ]
 }
