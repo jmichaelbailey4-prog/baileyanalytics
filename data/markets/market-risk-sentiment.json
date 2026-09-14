@@ -2,7 +2,7 @@
   "id": "market-risk-sentiment",
   "title": "Risk Sentiment",
   "accent": "#FB7185",
-  "last_updated": "2026-09-11T16:58:04Z",
+  "last_updated": "2026-09-14T18:27:12Z",
   "status": "ok",
   "headline_read": "Markets are calm \u2014 volatility and credit stress are low.",
   "recessions": [
@@ -65,8 +65,8 @@
       "series_id": "VIXCLS",
       "observations": [
         {
-          "date": "1990-04-13",
-          "value": "."
+          "date": "1990-04-16",
+          "value": "20.75"
         },
         {
           "date": "1990-07-02",
@@ -893,10 +893,6 @@
           "value": "16.11"
         },
         {
-          "date": "2021-09-10",
-          "value": "20.95"
-        },
-        {
           "date": "2021-09-13",
           "value": "19.37"
         },
@@ -1523,10 +1519,6 @@
         {
           "date": "2024-09-09",
           "value": "19.45"
-        },
-        {
-          "date": "2024-09-10",
-          "value": "19.08"
         },
         {
           "date": "2024-09-11",
@@ -3615,21 +3607,25 @@
         {
           "date": "2026-09-10",
           "value": "17.84"
+        },
+        {
+          "date": "2026-09-11",
+          "value": "15.84"
         }
       ],
       "latest": {
-        "date": "2026-09-10",
-        "value": "17.84"
+        "date": "2026-09-11",
+        "value": "15.84"
       },
       "context": "The market's 'fear gauge' \u2014 the expected volatility of the S&P 500 over the coming month. It spikes when investors are scared and falls when calm.",
-      "read": "The VIX is at 17.8 \u2014 markets are calm.",
+      "read": "The VIX is at 15.8 \u2014 markets are calm.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 51.9,
+        "p": 37.9,
         "since": 1990
       },
-      "scale_now": 17.84
+      "scale_now": 15.84
     },
     {
       "id": "hy-spread",
@@ -3890,10 +3886,6 @@
         {
           "date": "2024-09-09",
           "value": "3.36"
-        },
-        {
-          "date": "2024-09-10",
-          "value": "3.46"
         },
         {
           "date": "2024-09-11",
@@ -6010,21 +6002,25 @@
         {
           "date": "2026-09-10",
           "value": "2.7"
+        },
+        {
+          "date": "2026-09-11",
+          "value": "2.65"
         }
       ],
       "latest": {
-        "date": "2026-09-10",
-        "value": "2.7"
+        "date": "2026-09-11",
+        "value": "2.65"
       },
       "context": "The extra yield investors demand to hold risky 'junk' corporate bonds over Treasuries. It widens when markets fear defaults \u2014 an early stress signal. Note: FRED serves only a rolling ~3-year window of this ICE BofA series, so its chart history is shorter than the other indicators here.",
-      "read": "The high-yield spread is 2.70% \u2014 tight, signaling calm credit conditions.",
+      "read": "The high-yield spread is 2.65% \u2014 tight, signaling calm credit conditions.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 9.6,
+        "p": 2.9,
         "since": 2023
       },
-      "scale_now": 2.7
+      "scale_now": 2.65
     },
     {
       "id": "ig-spread",
@@ -6285,10 +6281,6 @@
         {
           "date": "2024-09-09",
           "value": "0.99"
-        },
-        {
-          "date": "2024-09-10",
-          "value": "1.01"
         },
         {
           "date": "2024-09-11",
@@ -8405,10 +8397,14 @@
         {
           "date": "2026-09-10",
           "value": "0.8"
+        },
+        {
+          "date": "2026-09-11",
+          "value": "0.8"
         }
       ],
       "latest": {
-        "date": "2026-09-10",
+        "date": "2026-09-11",
         "value": "0.8"
       },
       "context": "The same risk premium for higher-quality corporate bonds. Because these borrowers are safer, widening here signals stress reaching the core of credit. Note: FRED serves only a rolling ~3-year window of this ICE BofA series, so its chart history is shorter than the other indicators here.",
@@ -8416,7 +8412,7 @@
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 23.2,
+        "p": 23.3,
         "since": 2023
       },
       "scale_now": 0.8
