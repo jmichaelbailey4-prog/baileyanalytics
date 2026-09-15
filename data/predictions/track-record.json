@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-09-14T18:28:47Z",
+  "generated_at": "2026-09-15T10:45:48Z",
   "since": "2026-06-12T14:20:31Z",
-  "graded": 522,
-  "coverage": 219,
-  "calibration": 0.8180076628352491,
-  "direction": 0.38283828382838286,
-  "status": 0.900990099009901,
-  "skill": 0.00044547882076984013,
+  "graded": 529,
+  "coverage": 223,
+  "calibration": 0.8147448015122873,
+  "direction": 0.3790849673202614,
+  "status": 0.9019607843137255,
+  "skill": 0.0004454781553694387,
   "categories": {
     "banking": {
       "graded": 9,
@@ -33,12 +33,12 @@
       "skill": 0.018922650427496523
     },
     "economic": {
-      "graded": 107,
-      "coverage": 18,
-      "calibration": 0.8317757009345794,
-      "direction": 0.23595505617977527,
-      "status": 0.8651685393258427,
-      "skill": -4.915592111132128e-07
+      "graded": 110,
+      "coverage": 19,
+      "calibration": 0.8090909090909091,
+      "direction": 0.23076923076923078,
+      "status": 0.8681318681318682,
+      "skill": -4.915587337173122e-07
     },
     "energy": {
       "graded": 93,
@@ -49,12 +49,12 @@
       "skill": -0.16649658583777782
     },
     "global": {
-      "graded": 61,
-      "coverage": 38,
-      "calibration": 0.8360655737704918,
-      "direction": 0.5217391304347826,
-      "status": 0.9565217391304348,
-      "skill": 0.05272834139240068
+      "graded": 65,
+      "coverage": 41,
+      "calibration": 0.8461538461538461,
+      "direction": 0.5,
+      "status": 0.9583333333333334,
+      "skill": 0.052674781855997055
     },
     "housing": {
       "graded": 39,
