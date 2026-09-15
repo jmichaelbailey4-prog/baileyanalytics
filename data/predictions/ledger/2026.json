@@ -12588,7 +12588,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 35.599999999999454,
-      "revised_to": 4380.4
+      "revised_to": 4437.3
     },
     "now_value": 4353.8,
     "now_date": "2026-08-07"
@@ -14083,7 +14083,7 @@
       "direction_hit": true,
       "status_hit": true,
       "naive_error": 219.0,
-      "revised_to": 4624.1
+      "revised_to": 4680.6
     },
     "now_value": 4389.4,
     "now_date": "2026-08-14"
@@ -16111,7 +16111,7 @@
       "direction_hit": true,
       "status_hit": true,
       "naive_error": 86.19999999999982,
-      "revised_to": 4478.1
+      "revised_to": 4529.9
     },
     "now_value": 4608.4,
     "now_date": "2026-08-21"
@@ -17875,7 +17875,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 9.5,
-      "revised_to": 4429.8
+      "revised_to": 4476.6
     },
     "now_value": 4522.2,
     "now_date": "2026-08-28"
@@ -20485,5 +20485,83 @@
     },
     "now_value": 6.7108,
     "now_date": "2026-09-04"
+  },
+  {
+    "id": "energy/energy-oil-fuels/gasoline@2026-09-14",
+    "key": "energy/energy-oil-fuels/gasoline",
+    "category": "energy",
+    "lens": "energy-oil-fuels",
+    "indicator": "gasoline",
+    "series_id": "EMM_EPMR_PTE_NUS_DPG",
+    "horizon": "next-print",
+    "target_period": "2026-09-14",
+    "due": "2026-09-19",
+    "made_at": "2026-09-09T17:07:50Z",
+    "model": "ets@1",
+    "point": 4.2018,
+    "lo": 4.1258,
+    "hi": 4.2644,
+    "unit": "$",
+    "value_format": "decimal",
+    "prev_value": 4.157,
+    "why": "This projects the recent level and trend forward one week.",
+    "implied_status": "elevated",
+    "current_status": "elevated",
+    "descriptive": false,
+    "market_price": false,
+    "title": "Retail Gasoline \u00b7 Regular",
+    "short": "Gasoline",
+    "lens_title": "Oil & Fuels",
+    "href": "/dashboards/energy/oil-fuels.html",
+    "grade": {
+      "actual": 4.319,
+      "graded_at": "2026-09-15T17:35:58Z",
+      "hit": false,
+      "abs_error": 0.11719999999999953,
+      "direction_hit": true,
+      "status_hit": true,
+      "naive_error": 0.16199999999999992,
+      "revised_to": null
+    },
+    "prev_period": "2026-09-07"
+  },
+  {
+    "id": "energy/energy-oil-fuels/diesel@2026-09-14",
+    "key": "energy/energy-oil-fuels/diesel",
+    "category": "energy",
+    "lens": "energy-oil-fuels",
+    "indicator": "diesel",
+    "series_id": "EMD_EPD2D_PTE_NUS_DPG",
+    "horizon": "next-print",
+    "target_period": "2026-09-14",
+    "due": "2026-09-19",
+    "made_at": "2026-09-09T17:07:51Z",
+    "model": "ets@1",
+    "point": 6.1013,
+    "lo": 6.0018,
+    "hi": 6.1887,
+    "unit": "$",
+    "value_format": "decimal",
+    "prev_value": 5.967,
+    "why": "This projects the recent level and trend forward one week.",
+    "implied_status": "alert",
+    "current_status": "alert",
+    "descriptive": false,
+    "market_price": false,
+    "title": "Retail Diesel \u00b7 On-Highway",
+    "short": "Diesel",
+    "lens_title": "Oil & Fuels",
+    "href": "/dashboards/energy/oil-fuels.html",
+    "grade": {
+      "actual": 6.285,
+      "graded_at": "2026-09-15T17:36:02Z",
+      "hit": false,
+      "abs_error": 0.18369999999999997,
+      "direction_hit": true,
+      "status_hit": true,
+      "naive_error": 0.3180000000000005,
+      "revised_to": null
+    },
+    "prev_period": "2026-09-07"
   }
 ]
