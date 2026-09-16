@@ -2,7 +2,7 @@
   "id": "consumer-spending",
   "title": "Consumer Spending",
   "accent": "#34D399",
-  "last_updated": "2026-09-05T09:41:55Z",
+  "last_updated": "2026-09-16T17:34:29Z",
   "status": "ok",
   "headline_read": "Consumers are still spending at a healthy pace.",
   "recessions": [
@@ -1050,11 +1050,11 @@
         },
         {
           "date": "2025-07-01",
-          "value": "4.05546"
+          "value": "4.15005"
         },
         {
           "date": "2025-08-01",
-          "value": "4.97261"
+          "value": "4.73402"
         },
         {
           "date": "2025-09-01",
@@ -1094,26 +1094,30 @@
         },
         {
           "date": "2026-06-01",
-          "value": "6.75317"
+          "value": "6.82475"
         },
         {
           "date": "2026-07-01",
-          "value": "5.00924"
+          "value": "5.03203"
+        },
+        {
+          "date": "2026-08-01",
+          "value": "6.01476"
         }
       ],
       "latest": {
-        "date": "2026-07-01",
-        "value": "5.00924"
+        "date": "2026-08-01",
+        "value": "6.01476"
       },
       "context": "How fast retail and food-service sales are growing versus a year ago (nominal \u2014 inflation is part of the number). A stall here is how consumer recessions announce themselves.",
-      "read": "Retail sales are up 5.0% from a year ago \u2014 a steady pace.",
+      "read": "Retail sales are up 6.0% from a year ago \u2014 a steady pace.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 55.8,
+        "p": 68.3,
         "since": 1993
       },
-      "scale_now": 5.0092
+      "scale_now": 6.0148
     },
     {
       "id": "real-spending",

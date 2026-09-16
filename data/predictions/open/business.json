@@ -271,16 +271,16 @@
       "prev_period": "2026-06-01"
     },
     {
-      "id": "business/business-investment/inventories-sales@2026-07-01",
+      "id": "business/business-investment/inventories-sales@2026-08-01",
       "key": "business/business-investment/inventories-sales",
       "category": "business",
       "lens": "business-investment",
       "indicator": "inventories-sales",
       "series_id": "ISRATIO",
       "horizon": "next-print",
-      "target_period": "2026-07-01",
-      "due": "2026-08-15",
-      "made_at": "2026-08-14T14:18:32Z",
+      "target_period": "2026-08-01",
+      "due": "2026-09-15",
+      "made_at": "2026-09-16T17:35:16Z",
       "model": "naive@1",
       "point": 1.3,
       "lo": 1.28,
@@ -298,7 +298,7 @@
       "lens_title": "Business Investment",
       "href": "/dashboards/business/investment.html",
       "grade": null,
-      "prev_period": "2026-06-01"
+      "prev_period": "2026-07-01"
     },
     {
       "id": "business/business-credit/baa-spread@2026-09-01",

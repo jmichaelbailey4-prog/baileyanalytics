@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-09-15T10:44:32Z",
+  "last_updated": "2026-09-16T17:34:37Z",
   "status": "watch",
   "lenses": [
     {
@@ -143,9 +143,9 @@
         },
         {
           "k": "Import prices",
-          "v": "5.95%",
-          "d": "0.73%",
-          "dir": "down"
+          "v": "6.95%",
+          "d": "0.86%",
+          "dir": "up"
         }
       ],
       "sparkline": [

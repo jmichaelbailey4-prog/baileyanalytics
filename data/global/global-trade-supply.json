@@ -2,7 +2,7 @@
   "id": "global-trade-supply",
   "title": "Trade & Supply Chain",
   "accent": "#FBBF24",
-  "last_updated": "2026-09-04T16:48:40Z",
+  "last_updated": "2026-09-16T17:34:37Z",
   "status": "watch",
   "headline_read": "Trade frictions are building \u2014 supply chains or import costs bear watching.",
   "recessions": [
@@ -2657,30 +2657,34 @@
         },
         {
           "date": "2026-05-01",
-          "value": "6.80851"
+          "value": "6.87943"
         },
         {
           "date": "2026-06-01",
-          "value": "6.67614"
+          "value": "6.74716"
         },
         {
           "date": "2026-07-01",
-          "value": "5.94901"
+          "value": "6.09065"
+        },
+        {
+          "date": "2026-08-01",
+          "value": "6.95035"
         }
       ],
       "latest": {
-        "date": "2026-07-01",
-        "value": "5.94901"
+        "date": "2026-08-01",
+        "value": "6.95035"
       },
       "context": "How fast the prices of everything the U.S. imports are rising versus a year ago. Tariffs, a weaker dollar, and supply shocks all show up here first \u2014 before they reach store shelves.",
-      "read": "Import costs are rising 5.9% a year \u2014 climbing.",
+      "read": "Import costs are rising 7.0% a year \u2014 climbing.",
       "signal_status": "watch",
       "value_format": "decimal",
       "percentile": {
-        "p": 78.9,
+        "p": 83.2,
         "since": 1983
       },
-      "scale_now": 5.949
+      "scale_now": 6.9504
     },
     {
       "id": "trade-balance",
