@@ -2,7 +2,7 @@
   "id": "housing-affordability",
   "title": "Affordability & Financing",
   "accent": "#FBBF24",
-  "last_updated": "2026-09-10T16:57:11Z",
+  "last_updated": "2026-09-17T17:34:20Z",
   "status": "elevated",
   "headline_read": "Housing affordability is badly stretched.",
   "recessions": [
@@ -2154,7 +2154,7 @@
           "value": "4.60"
         },
         {
-          "date": "2011-09-15",
+          "date": "2011-09-22",
           "value": "4.09"
         },
         {
@@ -2636,10 +2636,6 @@
         {
           "date": "2021-09-02",
           "value": "2.87"
-        },
-        {
-          "date": "2021-09-16",
-          "value": "2.86"
         },
         {
           "date": "2021-09-23",
@@ -3680,21 +3676,25 @@
         {
           "date": "2026-09-10",
           "value": "6.76"
+        },
+        {
+          "date": "2026-09-17",
+          "value": "6.95"
         }
       ],
       "latest": {
-        "date": "2026-09-10",
-        "value": "6.76"
+        "date": "2026-09-17",
+        "value": "6.95"
       },
       "context": "The average rate on a 30-year fixed home loan \u2014 the input behind the affordability squeeze above: it sets what a buyer can afford each month.",
-      "read": "30-year mortgages are at 6.76% \u2014 high enough to keep affordability stretched.",
+      "read": "30-year mortgages are at 6.95% \u2014 high enough to keep affordability stretched.",
       "signal_status": "elevated",
       "value_format": "decimal",
       "percentile": {
-        "p": 41.6,
+        "p": 45.3,
         "since": 1971
       },
-      "scale_now": 6.76
+      "scale_now": 6.95
     }
   ]
 }

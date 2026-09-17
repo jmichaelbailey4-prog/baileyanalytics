@@ -2,7 +2,7 @@
   "id": "recession-watch",
   "title": "Recession Watch",
   "accent": "#F87171",
-  "last_updated": "2026-09-17T10:41:17Z",
+  "last_updated": "2026-09-17T17:33:10Z",
   "status": "ok",
   "headline_read": "The economy looks steady \u2014 no major recession signals right now.",
   "recessions": [
@@ -5430,8 +5430,8 @@
       "series_id": "ICSA",
       "observations": [
         {
-          "date": "1967-04-15",
-          "value": "299000"
+          "date": "1967-04-22",
+          "value": "245000"
         },
         {
           "date": "1967-07-01",
@@ -6142,8 +6142,8 @@
           "value": "418000"
         },
         {
-          "date": "2011-09-10",
-          "value": "429000"
+          "date": "2011-09-17",
+          "value": "422000"
         },
         {
           "date": "2011-10-01",
@@ -6624,10 +6624,6 @@
         {
           "date": "2021-09-04",
           "value": "335000"
-        },
-        {
-          "date": "2021-09-11",
-          "value": "342000"
         },
         {
           "date": "2021-09-18",
@@ -7668,21 +7664,25 @@
         {
           "date": "2026-09-05",
           "value": "206000"
+        },
+        {
+          "date": "2026-09-12",
+          "value": "196000"
         }
       ],
       "latest": {
-        "date": "2026-09-05",
-        "value": "206000"
+        "date": "2026-09-12",
+        "value": "196000"
       },
       "context": "How many people filed for unemployment benefits last week \u2014 the freshest read on layoffs. A sustained climb is one of the earliest signs of a weakening economy.",
-      "read": "Initial jobless claims are low at 206,000 \u2014 employers aren't shedding workers.",
+      "read": "Initial jobless claims are low at 196,000 \u2014 employers aren't shedding workers.",
       "signal_status": "ok",
       "value_format": "thousands",
       "percentile": {
-        "p": 4.3,
+        "p": 2.2,
         "since": 1967
       },
-      "scale_now": 206000.0
+      "scale_now": 196000.0
     },
     {
       "id": "unemployment",
