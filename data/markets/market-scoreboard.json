@@ -2,7 +2,7 @@
   "id": "market-scoreboard",
   "title": "Asset-Class Scoreboard",
   "accent": "#22D3EE",
-  "last_updated": "2026-09-21T11:30:08Z",
+  "last_updated": "2026-09-21T18:33:48Z",
   "status": "neutral",
   "headline_read": "How the major asset classes are moving right now.",
   "recessions": [
@@ -64,10 +64,6 @@
       "color": "#34D399",
       "series_id": "SP500",
       "observations": [
-        {
-          "date": "2016-09-30",
-          "value": "2168.27"
-        },
         {
           "date": "2016-10-03",
           "value": "2161.2"
@@ -307,10 +303,6 @@
         {
           "date": "2021-09-01",
           "value": "4524.09"
-        },
-        {
-          "date": "2021-09-17",
-          "value": "4432.99"
         },
         {
           "date": "2021-09-20",
@@ -939,10 +931,6 @@
         {
           "date": "2024-09-16",
           "value": "5633.09"
-        },
-        {
-          "date": "2024-09-17",
-          "value": "5634.58"
         },
         {
           "date": "2024-09-18",
@@ -3031,14 +3019,18 @@
         {
           "date": "2026-09-17",
           "value": "7637.76"
+        },
+        {
+          "date": "2026-09-18",
+          "value": "7650.5"
         }
       ],
       "latest": {
-        "date": "2026-09-17",
-        "value": "7637.76"
+        "date": "2026-09-18",
+        "value": "7650.5"
       },
       "context": "The benchmark index of 500 large U.S. companies \u2014 the headline gauge of U.S. stocks.",
-      "read": "The S&P 500 is up 16% over the past year, now 7,637.76.",
+      "read": "The S&P 500 is up 15% over the past year, now 7,650.50.",
       "signal_status": "up",
       "value_format": "thousands",
       "percentile": {
@@ -8916,15 +8908,15 @@
         },
         {
           "date": "2026-09-21",
-          "value": "4392.20"
+          "value": "4389.40"
         }
       ],
       "latest": {
         "date": "2026-09-21",
-        "value": "4392.20"
+        "value": "4389.40"
       },
       "context": "Gold (dollars per troy ounce) \u2014 the classic safe-haven asset investors flee to in times of stress. Sourced from Yahoo Finance (COMEX futures).",
-      "read": "Gold is up 19% over the past year, now 4,392.20.",
+      "read": "Gold is up 18% over the past year, now 4,389.40.",
       "signal_status": "up",
       "value_format": "thousands",
       "percentile": {

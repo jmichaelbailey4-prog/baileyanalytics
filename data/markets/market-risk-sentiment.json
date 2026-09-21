@@ -2,7 +2,7 @@
   "id": "market-risk-sentiment",
   "title": "Risk Sentiment",
   "accent": "#FB7185",
-  "last_updated": "2026-09-18T16:59:39Z",
+  "last_updated": "2026-09-21T18:33:48Z",
   "status": "ok",
   "headline_read": "Markets are calm \u2014 volatility and credit stress are low.",
   "recessions": [
@@ -65,8 +65,8 @@
       "series_id": "VIXCLS",
       "observations": [
         {
-          "date": "1990-04-20",
-          "value": "23.33"
+          "date": "1990-04-23",
+          "value": "24.16"
         },
         {
           "date": "1990-07-02",
@@ -893,10 +893,6 @@
           "value": "16.11"
         },
         {
-          "date": "2021-09-17",
-          "value": "20.81"
-        },
-        {
           "date": "2021-09-20",
           "value": "25.71"
         },
@@ -1523,10 +1519,6 @@
         {
           "date": "2024-09-16",
           "value": "17.14"
-        },
-        {
-          "date": "2024-09-17",
-          "value": "17.61"
         },
         {
           "date": "2024-09-18",
@@ -3615,21 +3607,25 @@
         {
           "date": "2026-09-17",
           "value": "15.44"
+        },
+        {
+          "date": "2026-09-18",
+          "value": "14.81"
         }
       ],
       "latest": {
-        "date": "2026-09-17",
-        "value": "15.44"
+        "date": "2026-09-18",
+        "value": "14.81"
       },
       "context": "The market's 'fear gauge' \u2014 the expected volatility of the S&P 500 over the coming month. It spikes when investors are scared and falls when calm.",
-      "read": "The VIX is at 15.4 \u2014 markets are calm.",
+      "read": "The VIX is at 14.8 \u2014 markets are calm.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 35.1,
+        "p": 30.9,
         "since": 1990
       },
-      "scale_now": 15.44
+      "scale_now": 14.81
     },
     {
       "id": "hy-spread",
@@ -3894,10 +3890,6 @@
         {
           "date": "2024-09-16",
           "value": "3.32"
-        },
-        {
-          "date": "2024-09-17",
-          "value": "3.25"
         },
         {
           "date": "2024-09-18",
@@ -6014,21 +6006,25 @@
         {
           "date": "2026-09-17",
           "value": "2.7"
+        },
+        {
+          "date": "2026-09-18",
+          "value": "2.68"
         }
       ],
       "latest": {
-        "date": "2026-09-17",
-        "value": "2.7"
+        "date": "2026-09-18",
+        "value": "2.68"
       },
       "context": "The extra yield investors demand to hold risky 'junk' corporate bonds over Treasuries. It widens when markets fear defaults \u2014 an early stress signal. Note: FRED serves only a rolling ~3-year window of this ICE BofA series, so its chart history is shorter than the other indicators here.",
-      "read": "The high-yield spread is 2.70% \u2014 tight, signaling calm credit conditions.",
+      "read": "The high-yield spread is 2.68% \u2014 tight, signaling calm credit conditions.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 9.8,
+        "p": 6.9,
         "since": 2023
       },
-      "scale_now": 2.7
+      "scale_now": 2.68
     },
     {
       "id": "ig-spread",
@@ -6293,10 +6289,6 @@
         {
           "date": "2024-09-16",
           "value": "0.98"
-        },
-        {
-          "date": "2024-09-17",
-          "value": "0.97"
         },
         {
           "date": "2024-09-18",
@@ -8413,21 +8405,25 @@
         {
           "date": "2026-09-17",
           "value": "0.78"
+        },
+        {
+          "date": "2026-09-18",
+          "value": "0.77"
         }
       ],
       "latest": {
-        "date": "2026-09-17",
-        "value": "0.78"
+        "date": "2026-09-18",
+        "value": "0.77"
       },
       "context": "The same risk premium for higher-quality corporate bonds. Because these borrowers are safer, widening here signals stress reaching the core of credit. Note: FRED serves only a rolling ~3-year window of this ICE BofA series, so its chart history is shorter than the other indicators here.",
-      "read": "The investment-grade spread is 0.78% \u2014 tight, signaling calm credit conditions.",
+      "read": "The investment-grade spread is 0.77% \u2014 tight, signaling calm credit conditions.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 13.0,
+        "p": 10.8,
         "since": 2023
       },
-      "scale_now": 0.78
+      "scale_now": 0.77
     },
     {
       "id": "nfci",
