@@ -1662,7 +1662,7 @@
       "direction_hit": true,
       "status_hit": true,
       "naive_error": 0.8557800000000002,
-      "revised_to": 5.39382
+      "revised_to": 5.3929
     }
   },
   {
@@ -8506,7 +8506,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 0.054549999999999876,
-      "revised_to": 5.34394
+      "revised_to": 5.34258
     }
   },
   {
@@ -14957,7 +14957,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 0.11158000000000001,
-      "revised_to": null
+      "revised_to": 5.41325
     },
     "prev_period": "2026-06-01"
   },
@@ -21790,5 +21790,122 @@
     },
     "now_value": 6.708,
     "now_date": "2026-09-11"
+  },
+  {
+    "id": "markets/market-liquidity/m2-growth@2026-08-01",
+    "key": "markets/market-liquidity/m2-growth",
+    "category": "markets",
+    "lens": "market-liquidity",
+    "indicator": "m2-growth",
+    "series_id": "M2SL",
+    "horizon": "next-print",
+    "target_period": "2026-08-01",
+    "due": "2026-09-15",
+    "made_at": "2026-08-26T06:36:38Z",
+    "model": "ets@1",
+    "point": 5.4659,
+    "lo": 4.7605,
+    "hi": 6.1984,
+    "unit": "%",
+    "value_format": "decimal",
+    "prev_value": 5.41418,
+    "why": "This projects the recent level and trend forward one month.",
+    "implied_status": "ok",
+    "current_status": "ok",
+    "descriptive": false,
+    "market_price": false,
+    "title": "M2 Money Supply \u00b7 year-over-year",
+    "short": "M2 growth",
+    "lens_title": "Liquidity & the Fed",
+    "href": "/dashboards/markets/liquidity.html",
+    "grade": {
+      "actual": 5.65891,
+      "graded_at": "2026-09-22T17:36:05Z",
+      "hit": true,
+      "abs_error": 0.19300999999999924,
+      "direction_hit": true,
+      "status_hit": true,
+      "naive_error": 0.24472999999999967,
+      "revised_to": null
+    },
+    "prev_period": "2026-07-01"
+  },
+  {
+    "id": "energy/energy-oil-fuels/gasoline@2026-09-21",
+    "key": "energy/energy-oil-fuels/gasoline",
+    "category": "energy",
+    "lens": "energy-oil-fuels",
+    "indicator": "gasoline",
+    "series_id": "EMM_EPMR_PTE_NUS_DPG",
+    "horizon": "next-print",
+    "target_period": "2026-09-21",
+    "due": "2026-09-26",
+    "made_at": "2026-09-15T17:35:59Z",
+    "model": "ets@1",
+    "point": 4.4177,
+    "lo": 4.3417,
+    "hi": 4.4827,
+    "unit": "$",
+    "value_format": "decimal",
+    "prev_value": 4.319,
+    "why": "Gasoline: up 2 straight weeks. This projects the recent level and trend forward one week.",
+    "implied_status": "elevated",
+    "current_status": "elevated",
+    "descriptive": false,
+    "market_price": false,
+    "title": "Retail Gasoline \u00b7 Regular",
+    "short": "Gasoline",
+    "lens_title": "Oil & Fuels",
+    "href": "/dashboards/energy/oil-fuels.html",
+    "grade": {
+      "actual": 4.478,
+      "graded_at": "2026-09-22T17:36:14Z",
+      "hit": true,
+      "abs_error": 0.0602999999999998,
+      "direction_hit": true,
+      "status_hit": false,
+      "naive_error": 0.1589999999999998,
+      "revised_to": null
+    },
+    "prev_period": "2026-09-14"
+  },
+  {
+    "id": "energy/energy-oil-fuels/diesel@2026-09-21",
+    "key": "energy/energy-oil-fuels/diesel",
+    "category": "energy",
+    "lens": "energy-oil-fuels",
+    "indicator": "diesel",
+    "series_id": "EMD_EPD2D_PTE_NUS_DPG",
+    "horizon": "next-print",
+    "target_period": "2026-09-21",
+    "due": "2026-09-26",
+    "made_at": "2026-09-15T17:36:02Z",
+    "model": "ets@1",
+    "point": 6.4593,
+    "lo": 6.3599,
+    "hi": 6.556,
+    "unit": "$",
+    "value_format": "decimal",
+    "prev_value": 6.285,
+    "why": "Diesel: up 2 straight weeks. This projects the recent level and trend forward one week.",
+    "implied_status": "alert",
+    "current_status": "alert",
+    "descriptive": false,
+    "market_price": false,
+    "title": "Retail Diesel \u00b7 On-Highway",
+    "short": "Diesel",
+    "lens_title": "Oil & Fuels",
+    "href": "/dashboards/energy/oil-fuels.html",
+    "grade": {
+      "actual": 6.529,
+      "graded_at": "2026-09-22T17:36:15Z",
+      "hit": true,
+      "abs_error": 0.0697000000000001,
+      "direction_hit": true,
+      "status_hit": true,
+      "naive_error": 0.24399999999999977,
+      "revised_to": null
+    },
+    "prev_period": "2026-09-14"
   }
 ]
