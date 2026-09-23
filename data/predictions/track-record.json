@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-09-22T17:36:41Z",
+  "generated_at": "2026-09-23T10:36:19Z",
   "since": "2026-06-12T14:20:31Z",
-  "graded": 565,
-  "coverage": 238,
-  "calibration": 0.8106194690265487,
-  "direction": 0.38837920489296635,
-  "status": 0.9051987767584098,
-  "skill": 0.0005012113345966851,
+  "graded": 567,
+  "coverage": 239,
+  "calibration": 0.8112874779541446,
+  "direction": 0.3902439024390244,
+  "status": 0.9054878048780488,
+  "skill": 0.0005012113595539436,
   "categories": {
     "banking": {
       "graded": 9,
@@ -25,12 +25,12 @@
       "skill": -0.03287917235994531
     },
     "consumer": {
-      "graded": 30,
+      "graded": 31,
       "coverage": 3,
-      "calibration": 0.9666666666666667,
-      "direction": 0.4074074074074074,
-      "status": 0.8148148148148148,
-      "skill": 0.01819808393540623
+      "calibration": 0.967741935483871,
+      "direction": 0.42857142857142855,
+      "status": 0.8214285714285714,
+      "skill": 0.018163154294464023
     },
     "economic": {
       "graded": 115,
@@ -57,9 +57,9 @@
       "skill": 0.050047524448610714
     },
     "housing": {
-      "graded": 42,
-      "coverage": 7,
-      "calibration": 0.9047619047619048,
+      "graded": 43,
+      "coverage": 8,
+      "calibration": 0.9069767441860465,
       "direction": 0.6,
       "status": 0.8857142857142857,
       "skill": 0.24267751198192666

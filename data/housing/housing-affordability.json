@@ -2,7 +2,7 @@
   "id": "housing-affordability",
   "title": "Affordability & Financing",
   "accent": "#FBBF24",
-  "last_updated": "2026-09-17T17:34:20Z",
+  "last_updated": "2026-09-23T10:34:30Z",
   "status": "elevated",
   "headline_read": "Housing affordability is badly stretched.",
   "recessions": [
@@ -889,22 +889,26 @@
         },
         {
           "date": "2026-01-01",
-          "value": "5.876343"
+          "value": "5.873599"
+        },
+        {
+          "date": "2026-04-01",
+          "value": "5.829946"
         }
       ],
       "latest": {
-        "date": "2026-01-01",
-        "value": "5.876343"
+        "date": "2026-04-01",
+        "value": "5.829946"
       },
       "context": "Mortgage payments as a share of household disposable income (quarterly) \u2014 how heavy the aggregate mortgage burden actually is.",
-      "read": "Mortgage payments take 5.9% of household income \u2014 a manageable, below-average burden.",
+      "read": "Mortgage payments take 5.8% of household income \u2014 a manageable, below-average burden.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 27.1,
+        "p": 24.4,
         "since": 2005
       },
-      "scale_now": 5.8763
+      "scale_now": 5.8299
     },
     {
       "id": "delinquency",

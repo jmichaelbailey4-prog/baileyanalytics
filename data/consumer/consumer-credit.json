@@ -2,7 +2,7 @@
   "id": "consumer-credit",
   "title": "Consumer Credit Stress",
   "accent": "#F87171",
-  "last_updated": "2026-09-09T10:27:09Z",
+  "last_updated": "2026-09-23T10:34:34Z",
   "status": "watch",
   "headline_read": "Consumer credit bears watching \u2014 debt loads are creeping up.",
   "recessions": [
@@ -3375,11 +3375,11 @@
         },
         {
           "date": "2018-10-01",
-          "value": "11.66641"
+          "value": "11.666416"
         },
         {
           "date": "2019-01-01",
-          "value": "11.49991"
+          "value": "11.49992"
         },
         {
           "date": "2019-04-01",
@@ -3395,7 +3395,7 @@
         },
         {
           "date": "2020-01-01",
-          "value": "11.591159"
+          "value": "11.591164"
         },
         {
           "date": "2020-04-01",
@@ -3419,7 +3419,7 @@
         },
         {
           "date": "2021-07-01",
-          "value": "10.009588"
+          "value": "10.009597"
         },
         {
           "date": "2021-10-01",
@@ -3459,7 +3459,7 @@
         },
         {
           "date": "2024-01-01",
-          "value": "11.058904"
+          "value": "11.058908"
         },
         {
           "date": "2024-04-01",
@@ -3467,46 +3467,50 @@
         },
         {
           "date": "2024-07-01",
-          "value": "11.138759"
+          "value": "11.138762"
         },
         {
           "date": "2024-10-01",
-          "value": "11.122486"
+          "value": "11.12249"
         },
         {
           "date": "2025-01-01",
-          "value": "11.105381"
+          "value": "11.105386"
         },
         {
           "date": "2025-04-01",
-          "value": "11.124241"
+          "value": "11.124247"
         },
         {
           "date": "2025-07-01",
-          "value": "11.229451"
+          "value": "11.229457"
         },
         {
           "date": "2025-10-01",
-          "value": "11.322759"
+          "value": "11.322763"
         },
         {
           "date": "2026-01-01",
-          "value": "11.164138"
+          "value": "11.158929"
+        },
+        {
+          "date": "2026-04-01",
+          "value": "11.111439"
         }
       ],
       "latest": {
-        "date": "2026-01-01",
-        "value": "11.164138"
+        "date": "2026-04-01",
+        "value": "11.111439"
       },
       "context": "All required debt payments \u2014 mortgage and consumer \u2014 as a share of disposable income (quarterly). The 2007 peak was about 13%.",
-      "read": "Debt payments take 11.2% of household income \u2014 above the comfortable range.",
+      "read": "Debt payments take 11.1% of household income \u2014 above the comfortable range.",
       "signal_status": "watch",
       "value_format": "decimal",
       "percentile": {
-        "p": 24.7,
+        "p": 20.9,
         "since": 2005
       },
-      "scale_now": 11.1641
+      "scale_now": 11.1114
     },
     {
       "id": "auto-loan-rate",

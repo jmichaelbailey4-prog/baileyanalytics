@@ -1094,7 +1094,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 0.15895800000000015,
-      "revised_to": null
+      "revised_to": 11.158929
     }
   },
   {
@@ -1132,7 +1132,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 0.046507000000000076,
-      "revised_to": null
+      "revised_to": 5.873599
     }
   },
   {
@@ -21907,5 +21907,81 @@
       "revised_to": null
     },
     "prev_period": "2026-09-14"
+  },
+  {
+    "id": "consumer/consumer-credit/debt-service@2026-04-01",
+    "key": "consumer/consumer-credit/debt-service",
+    "category": "consumer",
+    "lens": "consumer-credit",
+    "indicator": "debt-service",
+    "series_id": "TDSP",
+    "horizon": "next-print",
+    "target_period": "2026-04-01",
+    "due": "2026-07-28",
+    "made_at": "2026-06-22T18:59:39Z",
+    "model": "naive@1",
+    "point": 11.1641,
+    "lo": 10.9926,
+    "hi": 11.4753,
+    "unit": "%",
+    "value_format": "decimal",
+    "prev_value": 11.164138,
+    "why": "We expect roughly the last value \u2014 this series rarely rewards cleverness.",
+    "implied_status": "watch",
+    "current_status": "watch",
+    "descriptive": false,
+    "market_price": false,
+    "title": "Household Debt Service \u00b7 % of income",
+    "short": "Debt service",
+    "lens_title": "Consumer Credit Stress",
+    "href": "/dashboards/consumer/credit-stress.html",
+    "grade": {
+      "actual": 11.111439,
+      "graded_at": "2026-09-23T10:34:58Z",
+      "hit": true,
+      "abs_error": 0.05266099999999874,
+      "direction_hit": true,
+      "status_hit": true,
+      "naive_error": 0.05269899999999872,
+      "revised_to": null
+    }
+  },
+  {
+    "id": "housing/housing-affordability/debt-service@2026-04-01",
+    "key": "housing/housing-affordability/debt-service",
+    "category": "housing",
+    "lens": "housing-affordability",
+    "indicator": "debt-service",
+    "series_id": "MDSP",
+    "horizon": "next-print",
+    "target_period": "2026-04-01",
+    "due": "2026-07-28",
+    "made_at": "2026-06-22T18:59:54Z",
+    "model": "naive@1",
+    "point": 5.8763,
+    "lo": 5.8046,
+    "hi": 6.0546,
+    "unit": "%",
+    "value_format": "decimal",
+    "prev_value": 5.876343,
+    "why": "We expect roughly the last value \u2014 this series rarely rewards cleverness.",
+    "implied_status": "info",
+    "current_status": "info",
+    "descriptive": true,
+    "market_price": false,
+    "title": "Mortgage Debt Service \u00b7 % of income",
+    "short": "Debt service",
+    "lens_title": "Affordability & Financing",
+    "href": "/dashboards/housing/affordability.html",
+    "grade": {
+      "actual": 5.829946,
+      "graded_at": "2026-09-23T10:36:10Z",
+      "hit": true,
+      "abs_error": 0.046354000000000006,
+      "direction_hit": true,
+      "status_hit": false,
+      "naive_error": 0.04639700000000069,
+      "revised_to": null
+    }
   }
 ]
