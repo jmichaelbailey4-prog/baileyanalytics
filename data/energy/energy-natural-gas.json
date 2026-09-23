@@ -2,7 +2,7 @@
   "id": "energy-natural-gas",
   "title": "Natural Gas",
   "accent": "#60A5FA",
-  "last_updated": "2026-09-23T10:34:26Z",
+  "last_updated": "2026-09-23T17:47:24Z",
   "status": "ok",
   "headline_read": "Natural gas costs are stable or easing.",
   "recessions": [
@@ -65,12 +65,8 @@
       "series_id": "RNGWHHD",
       "observations": [
         {
-          "date": "2023-02-03",
-          "value": "2.4"
-        },
-        {
-          "date": "2023-02-06",
-          "value": "2.17"
+          "date": "2023-02-10",
+          "value": "2.37"
         },
         {
           "date": "2023-02-13",
@@ -407,22 +403,6 @@
         {
           "date": "2024-09-16",
           "value": "2.23"
-        },
-        {
-          "date": "2024-09-17",
-          "value": "2.33"
-        },
-        {
-          "date": "2024-09-18",
-          "value": "2.31"
-        },
-        {
-          "date": "2024-09-19",
-          "value": "2.24"
-        },
-        {
-          "date": "2024-09-20",
-          "value": "2.2"
         },
         {
           "date": "2024-09-23",
@@ -2387,21 +2367,41 @@
         {
           "date": "2026-09-15",
           "value": "2.97"
+        },
+        {
+          "date": "2026-09-16",
+          "value": "3"
+        },
+        {
+          "date": "2026-09-17",
+          "value": "2.9"
+        },
+        {
+          "date": "2026-09-18",
+          "value": "2.97"
+        },
+        {
+          "date": "2026-09-21",
+          "value": "2.93"
+        },
+        {
+          "date": "2026-09-22",
+          "value": "2.9"
         }
       ],
       "latest": {
-        "date": "2026-09-15",
-        "value": "2.97"
+        "date": "2026-09-22",
+        "value": "2.9"
       },
       "context": "The U.S. benchmark natural-gas price ($/MMBtu) \u2014 it drives home heating bills and a large share of electricity generation cost.",
       "read": "Natural gas costs are roughly flat over the past year.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 65.1,
+        "p": 59.2,
         "since": 2023
       },
-      "scale_now": -1.0
+      "scale_now": 0.0
     },
     {
       "id": "gas-storage",
@@ -3709,7 +3709,7 @@
       "signal_status": "info",
       "value_format": "thousands",
       "percentile": {
-        "p": 71.4,
+        "p": 73.1,
         "since": 2016
       },
       "no_severity_reason": "A physical supply-and-demand reading, not a household cost \u2014 this lens's verdict comes from the price indicators."
