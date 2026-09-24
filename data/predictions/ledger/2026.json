@@ -1964,7 +1964,7 @@
       "direction_hit": false,
       "status_hit": false,
       "naive_error": 0.9000000000000004,
-      "revised_to": 9.3
+      "revised_to": 9.2
     }
   },
   {
@@ -7678,7 +7678,7 @@
       "direction_hit": true,
       "status_hit": true,
       "naive_error": 1.0,
-      "revised_to": 8.5
+      "revised_to": 8.6
     }
   },
   {
@@ -15104,7 +15104,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 0.29999999999999893,
-      "revised_to": null
+      "revised_to": 9.0
     },
     "prev_period": "2026-06-01"
   },
@@ -19061,7 +19061,7 @@
       "direction_hit": true,
       "status_hit": true,
       "naive_error": 0.0,
-      "revised_to": null
+      "revised_to": 207000.0
     },
     "prev_period": "2026-08-29"
   },
@@ -20913,7 +20913,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 10000.0,
-      "revised_to": null
+      "revised_to": 198000.0
     },
     "prev_period": "2026-09-05"
   },
@@ -21069,7 +21069,7 @@
       "direction_hit": true,
       "status_hit": true,
       "naive_error": 49.0,
-      "revised_to": null
+      "revised_to": 1403.0
     },
     "prev_period": "2026-07-01"
   },
@@ -22180,5 +22180,161 @@
     },
     "now_value": 2.97,
     "now_date": "2026-09-15"
+  },
+  {
+    "id": "economic/recession-watch/jobless-claims@2026-09-19",
+    "key": "economic/recession-watch/jobless-claims",
+    "category": "economic",
+    "lens": "recession-watch",
+    "indicator": "jobless-claims",
+    "series_id": "ICSA",
+    "horizon": "next-print",
+    "target_period": "2026-09-19",
+    "due": "2026-09-24",
+    "made_at": "2026-09-17T17:34:38Z",
+    "model": "naive@1",
+    "point": 196000.0,
+    "lo": 185000.0,
+    "hi": 208700.0,
+    "unit": "",
+    "value_format": "thousands",
+    "prev_value": 196000.0,
+    "why": "Jobless claims: down 2 straight weeks. We expect roughly the last value \u2014 this series rarely rewards cleverness.",
+    "implied_status": "ok",
+    "current_status": "ok",
+    "descriptive": false,
+    "market_price": false,
+    "title": "Initial Jobless Claims \u00b7 weekly",
+    "short": "Jobless claims",
+    "lens_title": "Recession Watch",
+    "href": "/dashboards/recession-watch.html",
+    "grade": {
+      "actual": 197000.0,
+      "graded_at": "2026-09-24T17:49:28Z",
+      "hit": true,
+      "abs_error": 1000.0,
+      "direction_hit": false,
+      "status_hit": true,
+      "naive_error": 1000.0,
+      "revised_to": null
+    },
+    "prev_period": "2026-09-12"
+  },
+  {
+    "id": "energy/energy-natural-gas/gas-storage@2026-09-18",
+    "key": "energy/energy-natural-gas/gas-storage",
+    "category": "energy",
+    "lens": "energy-natural-gas",
+    "indicator": "gas-storage",
+    "series_id": "NW2_EPG0_SWO_R48_BCF",
+    "horizon": "next-print",
+    "target_period": "2026-09-18",
+    "due": "2026-09-23",
+    "made_at": "2026-09-17T17:35:08Z",
+    "model": "ets-seasonal@1",
+    "point": 3365.5977,
+    "lo": 3308.4384,
+    "hi": 3427.6727,
+    "unit": "Bcf",
+    "value_format": "thousands",
+    "prev_value": 3298.0,
+    "why": "Gas storage: up 25 straight weeks. This projects the recent trend with the usual seasonal pattern for the week.",
+    "implied_status": "info",
+    "current_status": "info",
+    "descriptive": true,
+    "market_price": false,
+    "title": "Working Gas in Storage \u00b7 Lower 48",
+    "short": "Gas storage",
+    "lens_title": "Natural Gas",
+    "href": "/dashboards/energy/natural-gas.html",
+    "grade": {
+      "actual": 3351.0,
+      "graded_at": "2026-09-24T17:49:58Z",
+      "hit": true,
+      "abs_error": 14.597699999999804,
+      "direction_hit": true,
+      "status_hit": true,
+      "naive_error": 53.0,
+      "revised_to": null
+    },
+    "prev_period": "2026-09-11"
+  },
+  {
+    "id": "housing/housing-affordability/mortgage-rate@2026-09-24",
+    "key": "housing/housing-affordability/mortgage-rate",
+    "category": "housing",
+    "lens": "housing-affordability",
+    "indicator": "mortgage-rate",
+    "series_id": "MORTGAGE30US",
+    "horizon": "next-print",
+    "target_period": "2026-09-24",
+    "due": "2026-09-29",
+    "made_at": "2026-09-17T17:35:16Z",
+    "model": "ets@1",
+    "point": 6.9879,
+    "lo": 6.9088,
+    "hi": 7.0767,
+    "unit": "%",
+    "value_format": "decimal",
+    "prev_value": 6.95,
+    "why": "30-yr mortgage: up 4 straight weeks. This projects the recent level and trend forward one week.",
+    "implied_status": "elevated",
+    "current_status": "elevated",
+    "descriptive": false,
+    "market_price": false,
+    "title": "30-Year Fixed Mortgage Rate",
+    "short": "30-yr mortgage",
+    "lens_title": "Affordability & Financing",
+    "href": "/dashboards/housing/affordability.html",
+    "grade": {
+      "actual": 7.03,
+      "graded_at": "2026-09-24T17:50:06Z",
+      "hit": true,
+      "abs_error": 0.04210000000000047,
+      "direction_hit": true,
+      "status_hit": true,
+      "naive_error": 0.08000000000000007,
+      "revised_to": null
+    },
+    "prev_period": "2026-09-17"
+  },
+  {
+    "id": "housing/housing-supply-construction/months-supply@2026-08-01",
+    "key": "housing/housing-supply-construction/months-supply",
+    "category": "housing",
+    "lens": "housing-supply-construction",
+    "indicator": "months-supply",
+    "series_id": "MSACSR",
+    "horizon": "next-print",
+    "target_period": "2026-08-01",
+    "due": "2026-09-15",
+    "made_at": "2026-08-26T06:39:42Z",
+    "model": "ets@1",
+    "point": 9.3437,
+    "lo": 8.6068,
+    "hi": 10.2585,
+    "unit": "months",
+    "value_format": "decimal",
+    "prev_value": 9.6,
+    "why": "This projects the recent level and trend forward one month.",
+    "implied_status": "elevated",
+    "current_status": "elevated",
+    "descriptive": false,
+    "market_price": false,
+    "title": "Months of New-Home Supply",
+    "short": "Months' supply",
+    "lens_title": "Supply & Construction",
+    "href": "/dashboards/housing/supply-construction.html",
+    "grade": {
+      "actual": 8.5,
+      "graded_at": "2026-09-24T17:50:07Z",
+      "hit": false,
+      "abs_error": 0.8437000000000001,
+      "direction_hit": true,
+      "status_hit": true,
+      "naive_error": 1.0999999999999996,
+      "revised_to": null
+    },
+    "prev_period": "2026-07-01"
   }
 ]

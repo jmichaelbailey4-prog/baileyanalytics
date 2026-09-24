@@ -2,7 +2,7 @@
   "id": "housing-supply-construction",
   "title": "Supply & Construction",
   "accent": "#34D399",
-  "last_updated": "2026-09-17T17:34:20Z",
+  "last_updated": "2026-09-24T17:49:07Z",
   "status": "elevated",
   "headline_read": "Housing supply is out of balance \u2014 inventory or construction is strained.",
   "recessions": [
@@ -65,8 +65,8 @@
       "series_id": "MSACSR",
       "observations": [
         {
-          "date": "1963-04-01",
-          "value": "5.3"
+          "date": "1963-05-01",
+          "value": "5.1"
         },
         {
           "date": "1963-07-01",
@@ -1550,30 +1550,34 @@
         },
         {
           "date": "2026-05-01",
-          "value": "9.3"
+          "value": "9.2"
         },
         {
           "date": "2026-06-01",
-          "value": "8.5"
+          "value": "8.6"
         },
         {
           "date": "2026-07-01",
-          "value": "9.6"
+          "value": "9"
+        },
+        {
+          "date": "2026-08-01",
+          "value": "8.5"
         }
       ],
       "latest": {
-        "date": "2026-07-01",
-        "value": "9.6"
+        "date": "2026-08-01",
+        "value": "8.5"
       },
       "context": "How many months it would take to sell every new home on the market at the current sales pace. Roughly 4-6 months is balanced; more is a glut, less is a squeeze.",
-      "read": "9.6 months of new-home supply \u2014 a glut that pressures prices and builders.",
+      "read": "8.5 months of new-home supply \u2014 a glut that pressures prices and builders.",
       "signal_status": "elevated",
       "value_format": "decimal",
       "percentile": {
-        "p": 95.3,
+        "p": 87.5,
         "since": 1963
       },
-      "scale_now": 9.6
+      "scale_now": 8.5
     },
     {
       "id": "housing-starts",
@@ -4712,22 +4716,22 @@
         },
         {
           "date": "2026-08-01",
-          "value": "1394"
+          "value": "1403"
         }
       ],
       "latest": {
         "date": "2026-08-01",
-        "value": "1394"
+        "value": "1403"
       },
       "context": "Permits pulled for new housing units, in thousands at an annual rate \u2014 the step before starts, so it leads the rest of the construction pipeline.",
-      "read": "Permitting: up 3% from a year ago \u2014 a steady pace.",
+      "read": "Permitting: up 4% from a year ago \u2014 a steady pace.",
       "signal_status": "ok",
       "value_format": "thousands",
       "percentile": {
-        "p": 51.4,
+        "p": 52.7,
         "since": 1960
       },
-      "scale_now": 3.4892
+      "scale_now": 4.1574
     },
     {
       "id": "active-listings",

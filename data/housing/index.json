@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-09-23T10:34:30Z",
+  "last_updated": "2026-09-24T17:49:07Z",
   "status": "watch",
   "lenses": [
     {
@@ -109,9 +109,9 @@
       "key_stats": [
         {
           "k": "Months' supply",
-          "v": "9.60 months",
-          "d": "1.10 months",
-          "dir": "up"
+          "v": "8.50 months",
+          "d": "0.50 months",
+          "dir": "down"
         },
         {
           "k": "Starts",
@@ -121,7 +121,6 @@
         }
       ],
       "sparkline": [
-        7.8,
         6.9,
         7.5,
         7.0,
@@ -158,9 +157,10 @@
         9.3,
         8.7,
         9.0,
-        9.3,
-        8.5,
-        9.6
+        9.2,
+        8.6,
+        9.0,
+        8.5
       ]
     },
     {
