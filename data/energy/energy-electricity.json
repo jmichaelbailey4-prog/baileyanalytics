@@ -2,7 +2,7 @@
   "id": "energy-electricity",
   "title": "Electricity & the Grid",
   "accent": "#FBBF24",
-  "last_updated": "2026-08-26T13:58:06Z",
+  "last_updated": "2026-09-25T10:52:18Z",
   "status": "ok",
   "headline_read": "Power bills are steady.",
   "recessions": [
@@ -64,10 +64,6 @@
       "color": "#FBBF24",
       "series_id": "ELEC_PRICE_RES_US",
       "observations": [
-        {
-          "date": "2006-07",
-          "value": "10.96"
-        },
         {
           "date": "2006-08",
           "value": "10.94"
@@ -1023,21 +1019,25 @@
         {
           "date": "2026-06",
           "value": "18.34"
+        },
+        {
+          "date": "2026-07",
+          "value": "18.31"
         }
       ],
       "latest": {
-        "date": "2026-06",
-        "value": "18.34"
+        "date": "2026-07",
+        "value": "18.31"
       },
       "context": "The U.S. average residential electricity price (cents per kWh) \u2014 the power bill households pay every month.",
       "read": "Electricity costs are up 5% over the past year.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 98.3,
+        "p": 97.9,
         "since": 2006
       },
-      "scale_now": 4.98
+      "scale_now": 4.9284
     },
     {
       "id": "renewables-share",
@@ -1047,10 +1047,6 @@
       "color": "#34D399",
       "series_id": "RENEW_SHARE",
       "observations": [
-        {
-          "date": "2006-07",
-          "value": "8.2"
-        },
         {
           "date": "2006-08",
           "value": "7.3"
@@ -1509,7 +1505,7 @@
         },
         {
           "date": "2016-02",
-          "value": "16.9"
+          "value": "16.8"
         },
         {
           "date": "2016-03",
@@ -1525,7 +1521,7 @@
         },
         {
           "date": "2016-06",
-          "value": "13.5"
+          "value": "13.4"
         },
         {
           "date": "2016-07",
@@ -1597,7 +1593,7 @@
         },
         {
           "date": "2017-12",
-          "value": "15.6"
+          "value": "15.5"
         },
         {
           "date": "2018-01",
@@ -1613,7 +1609,7 @@
         },
         {
           "date": "2018-04",
-          "value": "22.2"
+          "value": "22.1"
         },
         {
           "date": "2018-05",
@@ -1629,7 +1625,7 @@
         },
         {
           "date": "2018-08",
-          "value": "13.6"
+          "value": "13.5"
         },
         {
           "date": "2018-09",
@@ -1665,7 +1661,7 @@
         },
         {
           "date": "2019-05",
-          "value": "21.5"
+          "value": "21.4"
         },
         {
           "date": "2019-06",
@@ -1713,7 +1709,7 @@
         },
         {
           "date": "2020-05",
-          "value": "24.3"
+          "value": "24.2"
         },
         {
           "date": "2020-06",
@@ -2006,18 +2002,22 @@
         {
           "date": "2026-06",
           "value": "27.4"
+        },
+        {
+          "date": "2026-07",
+          "value": "21.9"
         }
       ],
       "latest": {
-        "date": "2026-06",
-        "value": "27.4"
+        "date": "2026-07",
+        "value": "21.9"
       },
       "context": "The share of U.S. electricity generated from renewables (wind, solar, hydro, and more) \u2014 the clearest single read on the energy transition.",
-      "read": "Renewables: 27.4% of U.S. electricity generation, up 3.2 points over the past year.",
+      "read": "Renewables: 21.9% of U.S. electricity generation, up 1.6 points over the past year.",
       "signal_status": "info",
       "value_format": "decimal",
       "percentile": {
-        "p": 95.8,
+        "p": 83.3,
         "since": 2006
       },
       "no_severity_reason": "A physical supply-and-demand reading, not a household cost \u2014 this lens's verdict comes from the price indicators.",
@@ -2031,10 +2031,6 @@
       "color": "#60A5FA",
       "series_id": "NG_SHARE",
       "observations": [
-        {
-          "date": "2006-07",
-          "value": "26.3"
-        },
         {
           "date": "2006-08",
           "value": "26.1"
@@ -2465,7 +2461,7 @@
         },
         {
           "date": "2015-07",
-          "value": "35.2"
+          "value": "35.3"
         },
         {
           "date": "2015-08",
@@ -2473,11 +2469,11 @@
         },
         {
           "date": "2015-09",
-          "value": "35.1"
+          "value": "35.2"
         },
         {
           "date": "2015-10",
-          "value": "35.2"
+          "value": "35.3"
         },
         {
           "date": "2015-11",
@@ -2485,7 +2481,7 @@
         },
         {
           "date": "2015-12",
-          "value": "33.8"
+          "value": "33.9"
         },
         {
           "date": "2016-01",
@@ -2521,7 +2517,7 @@
         },
         {
           "date": "2016-09",
-          "value": "35.7"
+          "value": "35.8"
         },
         {
           "date": "2016-10",
@@ -2541,7 +2537,7 @@
         },
         {
           "date": "2017-02",
-          "value": "28.4"
+          "value": "28.5"
         },
         {
           "date": "2017-03",
@@ -2549,7 +2545,7 @@
         },
         {
           "date": "2017-04",
-          "value": "29.9"
+          "value": "30.0"
         },
         {
           "date": "2017-05",
@@ -2569,7 +2565,7 @@
         },
         {
           "date": "2017-09",
-          "value": "35.1"
+          "value": "35.2"
         },
         {
           "date": "2017-10",
@@ -2593,15 +2589,15 @@
         },
         {
           "date": "2018-03",
-          "value": "33.1"
+          "value": "33.2"
         },
         {
           "date": "2018-04",
-          "value": "32.7"
+          "value": "32.8"
         },
         {
           "date": "2018-05",
-          "value": "34.0"
+          "value": "34.1"
         },
         {
           "date": "2018-06",
@@ -2613,7 +2609,7 @@
         },
         {
           "date": "2018-08",
-          "value": "39.6"
+          "value": "39.7"
         },
         {
           "date": "2018-09",
@@ -2633,7 +2629,7 @@
         },
         {
           "date": "2019-01",
-          "value": "33.8"
+          "value": "33.9"
         },
         {
           "date": "2019-02",
@@ -2649,15 +2645,15 @@
         },
         {
           "date": "2019-05",
-          "value": "35.4"
+          "value": "35.5"
         },
         {
           "date": "2019-06",
-          "value": "39.0"
+          "value": "39.1"
         },
         {
           "date": "2019-07",
-          "value": "41.9"
+          "value": "42.0"
         },
         {
           "date": "2019-08",
@@ -2665,7 +2661,7 @@
         },
         {
           "date": "2019-09",
-          "value": "41.5"
+          "value": "41.6"
         },
         {
           "date": "2019-10",
@@ -2709,7 +2705,7 @@
         },
         {
           "date": "2020-08",
-          "value": "43.5"
+          "value": "43.6"
         },
         {
           "date": "2020-09",
@@ -2990,18 +2986,22 @@
         {
           "date": "2026-06",
           "value": "40.8"
+        },
+        {
+          "date": "2026-07",
+          "value": "45.2"
         }
       ],
       "latest": {
-        "date": "2026-06",
-        "value": "40.8"
+        "date": "2026-07",
+        "value": "45.2"
       },
       "context": "The share of U.S. electricity generated from natural gas \u2014 still the single largest source, and the swing fuel that balances the grid.",
-      "read": "Natural gas: 40.8% of U.S. electricity generation, down 1.1 points over the past year.",
+      "read": "Natural gas: 45.2% of U.S. electricity generation, steady over the past year.",
       "signal_status": "info",
       "value_format": "decimal",
       "percentile": {
-        "p": 83.3,
+        "p": 95.4,
         "since": 2006
       },
       "no_severity_reason": "A physical supply-and-demand reading, not a household cost \u2014 this lens's verdict comes from the price indicators.",
@@ -3015,10 +3015,6 @@
       "color": "#38BDF8",
       "series_id": "NET_GEN_TOTAL",
       "observations": [
-        {
-          "date": "2006-07",
-          "value": "410420.79333"
-        },
         {
           "date": "2006-08",
           "value": "407762.53636"
@@ -3377,99 +3373,99 @@
         },
         {
           "date": "2014-01",
-          "value": "377249.83084"
+          "value": "377251.37842"
         },
         {
           "date": "2014-02",
-          "value": "324344.12066"
+          "value": "324347.01617"
         },
         {
           "date": "2014-03",
-          "value": "331817.54641"
+          "value": "331820.9692"
         },
         {
           "date": "2014-04",
-          "value": "297625.29265"
+          "value": "297628.2622"
         },
         {
           "date": "2014-05",
-          "value": "324718.20093"
+          "value": "324719.30714"
         },
         {
           "date": "2014-06",
-          "value": "357838.22997"
+          "value": "357840.17847"
         },
         {
           "date": "2014-07",
-          "value": "385773.27325"
+          "value": "385775.44987"
         },
         {
           "date": "2014-08",
-          "value": "384334.97824"
+          "value": "384336.56063"
         },
         {
           "date": "2014-09",
-          "value": "339880.57118"
+          "value": "339882.6659"
         },
         {
           "date": "2014-10",
-          "value": "314516.32764"
+          "value": "314518.00875"
         },
         {
           "date": "2014-11",
-          "value": "317489.02094"
+          "value": "317491.36447"
         },
         {
           "date": "2014-12",
-          "value": "337950.59111"
+          "value": "337952.98061"
         },
         {
           "date": "2015-01",
-          "value": "360449.2625"
+          "value": "360452.84324"
         },
         {
           "date": "2015-02",
-          "value": "334470.60698"
+          "value": "334595.61098"
         },
         {
           "date": "2015-03",
-          "value": "324186.09214"
+          "value": "324313.51714"
         },
         {
           "date": "2015-04",
-          "value": "294127.63929"
+          "value": "294177.18729"
         },
         {
           "date": "2015-05",
-          "value": "322080.75837"
+          "value": "322189.10137"
         },
         {
           "date": "2015-06",
-          "value": "362403.00441"
+          "value": "362493.0664"
         },
         {
           "date": "2015-07",
-          "value": "400412.40259"
+          "value": "400534.56759"
         },
         {
           "date": "2015-08",
-          "value": "392109.58745"
+          "value": "392241.71845"
         },
         {
           "date": "2015-09",
-          "value": "350115.31729"
+          "value": "350190.22629"
         },
         {
           "date": "2015-10",
-          "value": "312105.70168"
+          "value": "312210.41568"
         },
         {
           "date": "2015-11",
-          "value": "300646.80726"
+          "value": "300779.39425"
         },
         {
           "date": "2015-12",
-          "value": "324420.69959"
+          "value": "324536.1236"
         },
         {
           "date": "2016-01",
@@ -3477,35 +3473,35 @@
         },
         {
           "date": "2016-02",
-          "value": "313680.3803"
+          "value": "313816.4003"
         },
         {
           "date": "2016-03",
-          "value": "304384.23689"
+          "value": "304427.42189"
         },
         {
           "date": "2016-04",
-          "value": "292888.74563"
+          "value": "292986.59764"
         },
         {
           "date": "2016-05",
-          "value": "316778.65137"
+          "value": "316866.99237"
         },
         {
           "date": "2016-06",
-          "value": "367775.77376"
+          "value": "367903.54176"
         },
         {
           "date": "2016-07",
-          "value": "411881.0731"
+          "value": "412043.3651"
         },
         {
           "date": "2016-08",
-          "value": "409695.03402"
+          "value": "409861.38602"
         },
         {
           "date": "2016-09",
-          "value": "351479.33284"
+          "value": "351560.04384"
         },
         {
           "date": "2016-10",
@@ -3513,203 +3509,203 @@
         },
         {
           "date": "2016-11",
-          "value": "297056.26276"
+          "value": "297065.26075"
         },
         {
           "date": "2016-12",
-          "value": "345336.87453"
+          "value": "345389.34354"
         },
         {
           "date": "2017-01",
-          "value": "344324.95166"
+          "value": "344413.96966"
         },
         {
           "date": "2017-02",
-          "value": "291043.31412"
+          "value": "291112.63811"
         },
         {
           "date": "2017-03",
-          "value": "319328.74211"
+          "value": "319469.28011"
         },
         {
           "date": "2017-04",
-          "value": "295354.24916"
+          "value": "295461.51816"
         },
         {
           "date": "2017-05",
-          "value": "323439.21668"
+          "value": "323494.02168"
         },
         {
           "date": "2017-06",
-          "value": "358514.31016"
+          "value": "358630.10216"
         },
         {
           "date": "2017-07",
-          "value": "404424.64581"
+          "value": "404537.00981"
         },
         {
           "date": "2017-08",
-          "value": "384730.58633"
+          "value": "384837.27633"
         },
         {
           "date": "2017-09",
-          "value": "335907.98312"
+          "value": "336003.83612"
         },
         {
           "date": "2017-10",
-          "value": "318662.27709"
+          "value": "318731.20109"
         },
         {
           "date": "2017-11",
-          "value": "308044.71631"
+          "value": "308188.6823"
         },
         {
           "date": "2017-12",
-          "value": "350407.86529"
+          "value": "350563.35929"
         },
         {
           "date": "2018-01",
-          "value": "373230.27968"
+          "value": "373379.35268"
         },
         {
           "date": "2018-02",
-          "value": "306894.21345"
+          "value": "307057.65745"
         },
         {
           "date": "2018-03",
-          "value": "321546.95371"
+          "value": "321765.18971"
         },
         {
           "date": "2018-04",
-          "value": "300756.44042"
+          "value": "301056.94542"
         },
         {
           "date": "2018-05",
-          "value": "338947.60558"
+          "value": "339228.26158"
         },
         {
           "date": "2018-06",
-          "value": "371885.76125"
+          "value": "372145.08425"
         },
         {
           "date": "2018-07",
-          "value": "411290.31965"
+          "value": "411616.68565"
         },
         {
           "date": "2018-08",
-          "value": "408027.7567"
+          "value": "408352.1497"
         },
         {
           "date": "2018-09",
-          "value": "356258.30168"
+          "value": "356557.95968"
         },
         {
           "date": "2018-10",
-          "value": "324931.94313"
+          "value": "325070.15013"
         },
         {
           "date": "2018-11",
-          "value": "322368.65684"
+          "value": "322466.03384"
         },
         {
           "date": "2018-12",
-          "value": "342139.11163"
+          "value": "342292.23263"
         },
         {
           "date": "2019-01",
-          "value": "359509.23411"
+          "value": "359728.83511"
         },
         {
           "date": "2019-02",
-          "value": "315026.48424"
+          "value": "315281.73224"
         },
         {
           "date": "2019-03",
-          "value": "326657.20759"
+          "value": "326903.25259"
         },
         {
           "date": "2019-04",
-          "value": "296662.56944"
+          "value": "296952.61144"
         },
         {
           "date": "2019-05",
-          "value": "330423.04767"
+          "value": "330660.82267"
         },
         {
           "date": "2019-06",
-          "value": "352988.0739"
+          "value": "353239.3549"
         },
         {
           "date": "2019-07",
-          "value": "410037.81039"
+          "value": "410364.89139"
         },
         {
           "date": "2019-08",
-          "value": "401429.69356"
+          "value": "401731.65456"
         },
         {
           "date": "2019-09",
-          "value": "360518.46825"
+          "value": "360759.56925"
         },
         {
           "date": "2019-10",
-          "value": "320351.88482"
+          "value": "320517.64482"
         },
         {
           "date": "2019-11",
-          "value": "315849.09204"
+          "value": "315897.35204"
         },
         {
           "date": "2019-12",
-          "value": "338401.6474"
+          "value": "338536.1584"
         },
         {
           "date": "2020-01",
-          "value": "341850.20573"
+          "value": "342019.10952"
         },
         {
           "date": "2020-02",
-          "value": "319550.11366"
+          "value": "319698.10627"
         },
         {
           "date": "2020-03",
-          "value": "309586.72327"
+          "value": "309869.69613"
         },
         {
           "date": "2020-04",
-          "value": "279583.26477"
+          "value": "279846.21376"
         },
         {
           "date": "2020-05",
-          "value": "304593.23748"
+          "value": "304836.8258"
         },
         {
           "date": "2020-06",
-          "value": "351744.93031"
+          "value": "351967.18981"
         },
         {
           "date": "2020-07",
-          "value": "409561.69982"
+          "value": "409871.25996"
         },
         {
           "date": "2020-08",
-          "value": "398279.69734"
+          "value": "398535.59244"
         },
         {
           "date": "2020-09",
-          "value": "333258.04764"
+          "value": "333493.03669"
         },
         {
           "date": "2020-10",
-          "value": "313531.27121"
+          "value": "313703.43883"
         },
         {
           "date": "2020-11",
-          "value": "301250.18091"
+          "value": "301402.9637"
         },
         {
           "date": "2020-12",
-          "value": "344346.09465"
+          "value": "344523.41279"
         },
         {
           "date": "2021-01",
@@ -3974,18 +3970,22 @@
         {
           "date": "2026-06",
           "value": "399671.28516"
+        },
+        {
+          "date": "2026-07",
+          "value": "453744.39758"
         }
       ],
       "latest": {
-        "date": "2026-06",
-        "value": "399671.28516"
+        "date": "2026-07",
+        "value": "453744.39758"
       },
       "context": "Total U.S. net electricity generation (GWh) \u2014 a read on how much power the economy is consuming.",
-      "read": "Net generation is little changed from a year ago, now 399,671.",
+      "read": "Net generation is little changed from a year ago, now 453,744.",
       "signal_status": "info",
       "value_format": "thousands",
       "percentile": {
-        "p": 87.5,
+        "p": 99.6,
         "since": 2006
       },
       "no_severity_reason": "A physical supply-and-demand reading, not a household cost \u2014 this lens's verdict comes from the price indicators.",

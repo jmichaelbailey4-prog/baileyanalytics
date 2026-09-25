@@ -2,7 +2,7 @@
   "id": "market-liquidity",
   "title": "Liquidity & the Fed",
   "accent": "#2DD4BF",
-  "last_updated": "2026-09-24T10:46:52Z",
+  "last_updated": "2026-09-25T10:51:41Z",
   "status": "ok",
   "headline_read": "Liquidity is ample \u2014 no monetary squeeze in sight.",
   "recessions": [
@@ -1656,7 +1656,7 @@
       "series_id": "WALCL",
       "observations": [
         {
-          "date": "2016-10-05",
+          "date": "2016-10-12",
           "value": "4.46"
         },
         {
@@ -1894,10 +1894,6 @@
         {
           "date": "2021-09-01",
           "value": "8.35"
-        },
-        {
-          "date": "2021-09-22",
-          "value": "8.49"
         },
         {
           "date": "2021-09-29",
@@ -2938,10 +2934,14 @@
         {
           "date": "2026-09-16",
           "value": "6.75"
+        },
+        {
+          "date": "2026-09-23",
+          "value": "6.75"
         }
       ],
       "latest": {
-        "date": "2026-09-16",
+        "date": "2026-09-23",
         "value": "6.75"
       },
       "context": "Everything the Federal Reserve holds, in trillions. Rising means the Fed is injecting liquidity (QE); falling means it's draining (QT) \u2014 the tide that lifts or lowers all markets.",
@@ -2949,7 +2949,7 @@
       "signal_status": "info",
       "value_format": "decimal",
       "percentile": {
-        "p": 50.2,
+        "p": 50.0,
         "since": 2016
       },
       "no_severity_reason": "A descriptive level of the monetary plumbing \u2014 this lens's verdict is carried by M2 money-supply growth."
@@ -2963,8 +2963,8 @@
       "series_id": "WRESBAL",
       "observations": [
         {
-          "date": "2016-10-05",
-          "value": "2.00"
+          "date": "2016-10-12",
+          "value": "2.13"
         },
         {
           "date": "2016-11-02",
@@ -3201,10 +3201,6 @@
         {
           "date": "2021-09-01",
           "value": "4.19"
-        },
-        {
-          "date": "2021-09-22",
-          "value": "4.16"
         },
         {
           "date": "2021-09-29",
@@ -4245,18 +4241,22 @@
         {
           "date": "2026-09-16",
           "value": "3.01"
+        },
+        {
+          "date": "2026-09-23",
+          "value": "2.93"
         }
       ],
       "latest": {
-        "date": "2026-09-16",
-        "value": "3.01"
+        "date": "2026-09-23",
+        "value": "2.93"
       },
       "context": "Cash banks park at the Fed \u2014 the system's core liquidity buffer. When QT drains reserves too low, funding markets seize up (as in September 2019).",
-      "read": "The level of bank reserves is down 5% from a year ago, now $3.01 trillion.",
+      "read": "The level of bank reserves is down 5% from a year ago, now $2.93 trillion.",
       "signal_status": "info",
       "value_format": "decimal",
       "percentile": {
-        "p": 46.9,
+        "p": 41.3,
         "since": 2016
       },
       "no_severity_reason": "A descriptive level of the monetary plumbing \u2014 this lens's verdict is carried by M2 money-supply growth."
@@ -4270,8 +4270,8 @@
       "series_id": "RRPONTSYD",
       "observations": [
         {
-          "date": "2021-09-30",
-          "value": "1604.881"
+          "date": "2021-10-01",
+          "value": "1385.991"
         },
         {
           "date": "2021-10-04",
@@ -6984,18 +6984,22 @@
         {
           "date": "2026-09-23",
           "value": "0.461"
+        },
+        {
+          "date": "2026-09-24",
+          "value": "0.63"
         }
       ],
       "latest": {
-        "date": "2026-09-23",
-        "value": "0.461"
+        "date": "2026-09-24",
+        "value": "0.63"
       },
       "context": "Spare cash money-market funds park at the Fed overnight. It acts as the system's overflow tank: a high balance means excess liquidity; near zero means the buffer is spent and QT bites reserves directly.",
-      "read": "The overnight reverse-repo facility is down 97% from a year ago, now $0.5 billion.",
+      "read": "The overnight reverse-repo facility is down 98% from a year ago, now $0.6 billion.",
       "signal_status": "info",
       "value_format": "decimal",
       "percentile": {
-        "p": 3.5,
+        "p": 4.8,
         "since": 2021
       },
       "no_severity_reason": "A descriptive level of the monetary plumbing \u2014 this lens's verdict is carried by M2 money-supply growth."
