@@ -2,7 +2,7 @@
   "id": "business-investment",
   "title": "Business Investment",
   "accent": "#FBBF24",
-  "last_updated": "2026-09-16T17:34:33Z",
+  "last_updated": "2026-09-25T17:51:41Z",
   "status": "ok",
   "headline_read": "Businesses are investing \u2014 orders and sales are growing.",
   "recessions": [
@@ -1082,22 +1082,26 @@
         },
         {
           "date": "2026-07-01",
-          "value": "12.6"
+          "value": "13.3"
+        },
+        {
+          "date": "2026-08-01",
+          "value": "14.1"
         }
       ],
       "latest": {
-        "date": "2026-07-01",
-        "value": "12.6"
+        "date": "2026-08-01",
+        "value": "14.1"
       },
       "context": "Orders for nondefense capital goods excluding aircraft \u2014 the cleanest monthly read on whether businesses are investing in equipment. (Headline durable goods is skipped here: aircraft orders make it noise.)",
-      "read": "Core capital-goods orders are growing 12.6% a year.",
+      "read": "Core capital-goods orders are growing 14.1% a year.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 88.8,
+        "p": 93.1,
         "since": 1993
       },
-      "scale_now": 12.6
+      "scale_now": 14.1
     },
     {
       "id": "real-sales",

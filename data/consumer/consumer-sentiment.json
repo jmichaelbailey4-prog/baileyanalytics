@@ -2,9 +2,9 @@
   "id": "consumer-sentiment",
   "title": "Consumer Sentiment",
   "accent": "#38BDF8",
-  "last_updated": "2026-08-28T17:56:11Z",
-  "status": "elevated",
-  "headline_read": "Consumer mood is grim \u2014 confidence is at recession levels.",
+  "last_updated": "2026-09-25T17:51:37Z",
+  "status": "alert",
+  "headline_read": "Consumers are deeply pessimistic \u2014 sentiment is near record lows.",
   "recessions": [
     {
       "start": "1948-12-01",
@@ -1727,21 +1727,25 @@
         {
           "date": "2026-07-01",
           "value": "55.2"
+        },
+        {
+          "date": "2026-08-01",
+          "value": "51.7"
         }
       ],
       "latest": {
-        "date": "2026-07-01",
-        "value": "55.2"
+        "date": "2026-08-01",
+        "value": "51.7"
       },
       "context": "The University of Michigan's monthly survey of how households feel about their finances and the economy. Its long-run range is roughly 50-110 \u2014 readings in the low 50s or below have historically marked the deepest gloom on record.",
-      "read": "Consumer sentiment is 55 \u2014 recession-grade gloom.",
-      "signal_status": "elevated",
+      "read": "Consumer sentiment is 52 \u2014 near record lows; households are deeply pessimistic.",
+      "signal_status": "alert",
       "value_format": "decimal",
       "percentile": {
-        "p": 2.1,
+        "p": 0.9,
         "since": 1952
       },
-      "scale_now": 55.2
+      "scale_now": 51.7
     },
     {
       "id": "inflation-expectations",
@@ -3010,21 +3014,25 @@
         {
           "date": "2026-07-01",
           "value": "4.2"
+        },
+        {
+          "date": "2026-08-01",
+          "value": "4"
         }
       ],
       "latest": {
-        "date": "2026-07-01",
-        "value": "4.2"
+        "date": "2026-08-01",
+        "value": "4"
       },
       "context": "What households expect inflation to be over the next year, from the same Michigan survey. The Fed watches this closely: once expectations de-anchor, inflation feeds on itself.",
-      "read": "Households expect 4.2% inflation next year \u2014 well above the Fed's comfort zone.",
+      "read": "Households expect 4.0% inflation next year \u2014 well above the Fed's comfort zone.",
       "signal_status": "elevated",
       "value_format": "decimal",
       "percentile": {
-        "p": 79.4,
+        "p": 78.1,
         "since": 1978
       },
-      "scale_now": 4.2
+      "scale_now": 4.0
     }
   ]
 }
