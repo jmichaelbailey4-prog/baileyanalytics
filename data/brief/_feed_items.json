@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-09-26",
+    "title": "Today's Brief \u2014 2 alert \u00b7 4 elevated \u00b7 7 on watch",
+    "description": "Concentrations & Funding: Uninsured dep. 41.64% (\u25b21.16%)\nRecession Watch: Yield curve 0.36% (\u25b20.05%)\nBusiness Formation: Applications 11.40% (\u25bc11.90%)\nOil & Fuels: Gasoline $4.48 (\u25b2$0.16)\nHousehold Income & Savings: Saving rate 3.00% (\u25b20.40%)"
+  },
+  {
     "date": "2026-09-25",
     "title": "Today's Brief \u2014 2 alert \u00b7 4 elevated \u00b7 7 on watch",
     "description": "Consumer Sentiment: elevated \u2192 alert \u2014 Consumers are deeply pessimistic \u2014 sentiment is near record lows.\nRecession Watch: Yield curve 0.31% (\u25b20.05%)\nConcentrations & Funding: Uninsured dep. 41.64% (\u25b21.16%)\nBusiness Formation: Applications 11.40% (\u25bc11.90%)\nOil & Fuels: Gasoline $4.48 (\u25b2$0.16)"
@@ -143,10 +148,5 @@
     "date": "2026-08-28",
     "title": "Today's Brief \u2014 2 alert \u00b7 5 elevated \u00b7 6 on watch",
     "description": "Recession Watch: Yield curve 0.39% (\u25bc0.08%)\nSupply & Construction: Months' supply 9.60 months (\u25b21.10 months)\nThe Dollar & Currencies: Dollar YoY -1.84% (\u25b20.50%)\nConsumer Spending: Retail sales 5.01% (\u25bc1.74%)\nConsumer Sentiment: Sentiment 55.20 (\u25b25.70)"
-  },
-  {
-    "date": "2026-08-27",
-    "title": "Today's Brief \u2014 3 alert \u00b7 4 elevated \u00b7 6 on watch",
-    "description": "Supply & Construction: Months' supply 9.60 months (\u25b21.10 months)\nThe Dollar & Currencies: Dollar YoY -1.84% (\u25b20.50%)\nConsumer Spending: Retail sales 5.01% (\u25bc1.74%)\nNatural Gas: Henry Hub $2.70 (\u25bc$0.13)\nHousehold Income & Savings: Saving rate 3.00% (\u25b20.40%)"
   }
 ]
