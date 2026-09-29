@@ -2,7 +2,7 @@
   "id": "job-market",
   "title": "The Job Market",
   "accent": "#38BDF8",
-  "last_updated": "2026-09-04T16:47:29Z",
+  "last_updated": "2026-09-29T18:31:56Z",
   "status": "watch",
   "headline_read": "The job market is cooling \u2014 still solid, but losing momentum.",
   "recessions": [
@@ -4633,21 +4633,25 @@
         {
           "date": "2026-07-01",
           "value": "7.3"
+        },
+        {
+          "date": "2026-08-01",
+          "value": "7.1"
         }
       ],
       "latest": {
-        "date": "2026-07-01",
-        "value": "7.3"
+        "date": "2026-08-01",
+        "value": "7.1"
       },
       "context": "The number of unfilled positions employers are trying to hire for \u2014 a direct read on how strong labor demand is.",
-      "read": "7.3 million open jobs, holding roughly steady.",
+      "read": "7.1 million open jobs, holding roughly steady.",
       "signal_status": "watch",
       "value_format": "decimal",
       "percentile": {
-        "p": 80.5,
+        "p": 74.8,
         "since": 2000
       },
-      "scale_now": 7.3
+      "scale_now": 7.1
     },
     {
       "id": "wage-growth",
@@ -6383,10 +6387,14 @@
         {
           "date": "2026-07-01",
           "value": "1.9"
+        },
+        {
+          "date": "2026-08-01",
+          "value": "1.9"
         }
       ],
       "latest": {
-        "date": "2026-07-01",
+        "date": "2026-08-01",
         "value": "1.9"
       },
       "context": "The share of workers who voluntarily quit each month (since 2000). People quit when they're confident they can find something better \u2014 so a falling quits rate is the insiders' read on a cooling market.",

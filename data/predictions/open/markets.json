@@ -1,23 +1,23 @@
 {
   "predictions": [
     {
-      "id": "markets/market-risk-sentiment/vix@2026-09-25",
+      "id": "markets/market-risk-sentiment/vix@2026-10-02",
       "key": "markets/market-risk-sentiment/vix",
       "category": "markets",
       "lens": "market-risk-sentiment",
       "indicator": "vix",
       "series_id": "VIXCLS",
       "horizon": "next-print",
-      "target_period": "2026-09-25",
-      "due": "2026-09-30",
-      "made_at": "2026-09-21T18:35:50Z",
+      "target_period": "2026-10-02",
+      "due": "2026-10-07",
+      "made_at": "2026-09-29T18:34:42Z",
       "model": "ets@1",
-      "point": 14.8951,
-      "lo": 10.9078,
-      "hi": 18.5683,
+      "point": 14.8726,
+      "lo": 10.8853,
+      "hi": 18.5458,
       "unit": "",
       "value_format": "decimal",
-      "prev_value": 14.81,
+      "prev_value": 14.87,
       "why": "This projects the recent level and trend forward one week.",
       "implied_status": "ok",
       "current_status": "ok",
@@ -28,8 +28,8 @@
       "lens_title": "Risk Sentiment",
       "href": "/dashboards/markets/risk-sentiment.html",
       "grade": null,
-      "now_value": 14.81,
-      "now_date": "2026-09-18"
+      "now_value": 16.07,
+      "now_date": "2026-09-28"
     },
     {
       "id": "markets/market-risk-sentiment/hy-spread@2026-10-02",
