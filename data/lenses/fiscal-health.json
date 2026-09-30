@@ -2,7 +2,7 @@
   "id": "fiscal-health",
   "title": "Fiscal Health",
   "accent": "#A78BFA",
-  "last_updated": "2026-09-12T09:49:39Z",
+  "last_updated": "2026-09-30T18:19:36Z",
   "status": "elevated",
   "headline_read": "The U.S. is borrowing heavily \u2014 debt and interest costs are climbing.",
   "recessions": [
@@ -3472,7 +3472,7 @@
         },
         {
           "date": "2021-04-01",
-          "value": "12.8"
+          "value": "12.7"
         },
         {
           "date": "2021-07-01",
@@ -3484,11 +3484,11 @@
         },
         {
           "date": "2022-01-01",
-          "value": "12.5"
+          "value": "12.4"
         },
         {
           "date": "2022-04-01",
-          "value": "13.3"
+          "value": "13.2"
         },
         {
           "date": "2022-07-01",
@@ -3508,11 +3508,11 @@
         },
         {
           "date": "2023-07-01",
-          "value": "19.9"
+          "value": "19.8"
         },
         {
           "date": "2023-10-01",
-          "value": "20.8"
+          "value": "20.7"
         },
         {
           "date": "2024-01-01",
@@ -3528,46 +3528,46 @@
         },
         {
           "date": "2024-10-01",
-          "value": "21.6"
+          "value": "21.8"
         },
         {
           "date": "2025-01-01",
-          "value": "21.1"
+          "value": "21.5"
         },
         {
           "date": "2025-04-01",
-          "value": "20.6"
+          "value": "21.0"
         },
         {
           "date": "2025-07-01",
-          "value": "20.6"
+          "value": "21.1"
         },
         {
           "date": "2025-10-01",
-          "value": "20.7"
+          "value": "21.2"
         },
         {
           "date": "2026-01-01",
-          "value": "20.6"
+          "value": "20.8"
         },
         {
           "date": "2026-04-01",
-          "value": "20.7"
+          "value": "21.0"
         }
       ],
       "latest": {
         "date": "2026-04-01",
-        "value": "20.7"
+        "value": "21.0"
       },
       "context": "Federal interest payments as a share of total federal revenue (including payroll taxes) \u2014 how many cents of every revenue dollar go just to servicing the debt. It has climbed to a modern record (~20%) as rates rose, the highest since the 1990s.",
       "read": "Interest takes 21 cents of every dollar of federal revenue \u2014 a heavy, near-record claim that crowds out the budget.",
       "signal_status": "elevated",
       "value_format": "decimal",
       "percentile": {
-        "p": 76.1,
+        "p": 76.4,
         "since": 1947
       },
-      "scale_now": 20.7
+      "scale_now": 21.0
     },
     {
       "id": "receipts",
@@ -4747,106 +4747,106 @@
         },
         {
           "date": "2021-01-01",
-          "value": "14.2"
+          "value": "14.3"
         },
         {
           "date": "2021-04-01",
-          "value": "33.7"
+          "value": "33.9"
         },
         {
           "date": "2021-07-01",
-          "value": "26.2"
+          "value": "26.3"
         },
         {
           "date": "2021-10-01",
-          "value": "24.5"
+          "value": "24.3"
         },
         {
           "date": "2022-01-01",
-          "value": "30.7"
+          "value": "30.3"
         },
         {
           "date": "2022-04-01",
-          "value": "23.7"
+          "value": "23.1"
         },
         {
           "date": "2022-07-01",
-          "value": "19.6"
+          "value": "19.4"
         },
         {
           "date": "2022-10-01",
-          "value": "13.7"
+          "value": "14.4"
         },
         {
           "date": "2023-01-01",
-          "value": "-10.0"
+          "value": "-9.7"
         },
         {
           "date": "2023-04-01",
-          "value": "-11.6"
+          "value": "-11.0"
         },
         {
           "date": "2023-07-01",
-          "value": "-10.9"
+          "value": "-10.4"
         },
         {
           "date": "2023-10-01",
-          "value": "-8.7"
+          "value": "-8.8"
         },
         {
           "date": "2024-01-01",
-          "value": "4.6"
+          "value": "3.5"
         },
         {
           "date": "2024-04-01",
-          "value": "7.2"
+          "value": "6.1"
         },
         {
           "date": "2024-07-01",
-          "value": "7.5"
+          "value": "7.1"
         },
         {
           "date": "2024-10-01",
-          "value": "8.2"
+          "value": "9.0"
         },
         {
           "date": "2025-01-01",
-          "value": "7.0"
+          "value": "9.8"
         },
         {
           "date": "2025-04-01",
-          "value": "11.5"
-        },
-        {
-          "date": "2025-07-01",
           "value": "15.0"
         },
         {
+          "date": "2025-07-01",
+          "value": "17.3"
+        },
+        {
           "date": "2025-10-01",
-          "value": "15.7"
+          "value": "16.2"
         },
         {
           "date": "2026-01-01",
-          "value": "12.3"
+          "value": "12.5"
         },
         {
           "date": "2026-04-01",
-          "value": "8.2"
+          "value": "7.7"
         }
       ],
       "latest": {
         "date": "2026-04-01",
-        "value": "8.2"
+        "value": "7.7"
       },
       "context": "How fast federal tax revenue is growing versus a year ago. Healthy receipts growth shrinks the deficit without any policy change; shrinking receipts usually mean a weakening economy.",
-      "read": "The federal tax take is growing 8.2% a year.",
+      "read": "The federal tax take is growing 7.7% a year.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 56.7,
+        "p": 52.9,
         "since": 1948
       },
-      "scale_now": 8.2
+      "scale_now": 7.7
     },
     {
       "id": "interest-cost",
@@ -6042,99 +6042,99 @@
         },
         {
           "date": "2021-01-01",
-          "value": "533.518"
+          "value": "532.362"
         },
         {
           "date": "2021-04-01",
-          "value": "560.634"
+          "value": "559.508"
         },
         {
           "date": "2021-07-01",
-          "value": "587.92"
+          "value": "586.694"
         },
         {
           "date": "2021-10-01",
-          "value": "612.282"
+          "value": "610.825"
         },
         {
           "date": "2022-01-01",
-          "value": "636.968"
+          "value": "635.216"
         },
         {
           "date": "2022-04-01",
-          "value": "684.758"
+          "value": "683.051"
         },
         {
           "date": "2022-07-01",
-          "value": "752.081"
+          "value": "750.826"
         },
         {
           "date": "2022-10-01",
-          "value": "823.106"
+          "value": "822.708"
         },
         {
           "date": "2023-01-01",
-          "value": "861.267"
+          "value": "861.849"
         },
         {
           "date": "2023-04-01",
-          "value": "894.106"
+          "value": "894.443"
         },
         {
           "date": "2023-07-01",
-          "value": "966.899"
+          "value": "965.482"
         },
         {
           "date": "2023-10-01",
-          "value": "1031.478"
+          "value": "1026.798"
         },
         {
           "date": "2024-01-01",
-          "value": "1071.174"
+          "value": "1062.76"
         },
         {
           "date": "2024-04-01",
-          "value": "1103.565"
+          "value": "1095.97"
         },
         {
           "date": "2024-07-01",
-          "value": "1146.182"
+          "value": "1145.002"
         },
         {
           "date": "2024-10-01",
-          "value": "1155.616"
+          "value": "1166.444"
         },
         {
           "date": "2025-01-01",
-          "value": "1144.212"
+          "value": "1170.484"
         },
         {
           "date": "2025-04-01",
-          "value": "1160.9"
+          "value": "1197.132"
         },
         {
           "date": "2025-07-01",
-          "value": "1199.189"
+          "value": "1238.252"
         },
         {
           "date": "2025-10-01",
-          "value": "1227.495"
+          "value": "1265.05"
         },
         {
           "date": "2026-01-01",
-          "value": "1218.938"
+          "value": "1252.858"
         },
         {
           "date": "2026-04-01",
-          "value": "1247.033"
+          "value": "1279.734"
         }
       ],
       "latest": {
         "date": "2026-04-01",
-        "value": "1247.033"
+        "value": "1279.734"
       },
       "context": "What the government pays per year to service its debt (quarterly, annualized). Rising rates turned this into one of the largest items in the federal budget \u2014 crowding out everything else.",
-      "read": "The government's interest bill is up 7% from a year ago, now $1,247 billion.",
+      "read": "The government's interest bill is up 7% from a year ago, now $1,280 billion.",
       "signal_status": "info",
       "value_format": "thousands",
       "percentile": {

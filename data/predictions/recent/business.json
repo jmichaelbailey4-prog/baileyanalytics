@@ -118,23 +118,23 @@
       "prev_period": "2026-07-01"
     },
     "business/business-investment/real-sales": {
-      "id": "business/business-investment/real-sales@2026-06-01",
+      "id": "business/business-investment/real-sales@2026-07-01",
       "key": "business/business-investment/real-sales",
       "category": "business",
       "lens": "business-investment",
       "indicator": "real-sales",
       "series_id": "CMRMTSPL",
       "horizon": "next-print",
-      "target_period": "2026-06-01",
-      "due": "2026-07-15",
-      "made_at": "2026-07-31T08:37:20Z",
+      "target_period": "2026-07-01",
+      "due": "2026-08-15",
+      "made_at": "2026-08-27T17:09:34Z",
       "model": "naive@1",
-      "point": 2.3,
-      "lo": 0.85,
-      "hi": 4.2,
+      "point": 2.2,
+      "lo": 0.75,
+      "hi": 4.1,
       "unit": "%",
       "value_format": "decimal",
-      "prev_value": 2.3,
+      "prev_value": 2.2,
       "why": "We expect roughly the last value \u2014 this series rarely rewards cleverness.",
       "implied_status": "ok",
       "current_status": "ok",
@@ -145,8 +145,8 @@
       "lens_title": "Business Investment",
       "href": "/dashboards/business/investment.html",
       "grade": {
-        "actual": 2.2,
-        "graded_at": "2026-08-27T17:09:34Z",
+        "actual": 2.3,
+        "graded_at": "2026-09-30T18:21:53Z",
         "hit": true,
         "abs_error": 0.09999999999999964,
         "direction_hit": false,
@@ -154,7 +154,7 @@
         "naive_error": 0.09999999999999964,
         "revised_to": null
       },
-      "prev_period": "2026-05-01"
+      "prev_period": "2026-06-01"
     },
     "business/business-credit/baa-spread": {
       "id": "business/business-credit/baa-spread@2026-08-01",
@@ -347,7 +347,7 @@
         "direction_hit": true,
         "status_hit": true,
         "naive_error": 1.0000000000000002,
-        "revised_to": 2.5
+        "revised_to": 5.6
       }
     },
     "business/business-credit/lending-standards": {
@@ -457,7 +457,7 @@
         "direction_hit": false,
         "status_hit": true,
         "naive_error": 0.8999999999999986,
-        "revised_to": null
+        "revised_to": 13.1
       }
     },
     "business/business-profitability/profit-growth": {
@@ -493,7 +493,7 @@
         "direction_hit": true,
         "status_hit": true,
         "naive_error": 10.8,
-        "revised_to": null
+        "revised_to": 26.6
       }
     },
     "business/business-profitability/nonfinancial-profits": {
@@ -531,7 +531,7 @@
         "direction_hit": false,
         "status_hit": false,
         "naive_error": 12.0,
-        "revised_to": null
+        "revised_to": 29.2
       }
     }
   }
