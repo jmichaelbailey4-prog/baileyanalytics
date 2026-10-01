@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-30T18:21:55Z",
+  "generated_at": "2026-10-01T12:13:27Z",
   "predictions": [
     {
       "id": "economic/recession-watch/yield-curve@2026-10-02",
@@ -2175,24 +2175,24 @@
       "prev_period": "2026-07-01"
     },
     {
-      "id": "housing/housing-home-prices/case-shiller@2026-07-01",
+      "id": "housing/housing-home-prices/case-shiller@2026-08-01",
       "key": "housing/housing-home-prices/case-shiller",
       "category": "housing",
       "lens": "housing-home-prices",
       "indicator": "case-shiller",
       "series_id": "CSUSHPINSA",
       "horizon": "next-print",
-      "target_period": "2026-07-01",
-      "due": "2026-08-15",
-      "made_at": "2026-08-27T17:09:26Z",
+      "target_period": "2026-08-01",
+      "due": "2026-09-15",
+      "made_at": "2026-10-01T12:13:15Z",
       "model": "ets@1",
-      "point": 1.77,
-      "lo": 1.37,
-      "hi": 2.1573,
+      "point": 2.17,
+      "lo": 1.77,
+      "hi": 2.5573,
       "unit": "%",
       "value_format": "decimal",
-      "prev_value": 1.5,
-      "why": "Case-Shiller: up 3 straight months. This projects the recent level and trend forward one month.",
+      "prev_value": 1.9,
+      "why": "Case-Shiller: up 4 straight months. This projects the recent level and trend forward one month.",
       "implied_status": "ok",
       "current_status": "ok",
       "descriptive": false,
@@ -2202,7 +2202,7 @@
       "lens_title": "Home-Price Stability",
       "href": "/dashboards/housing/home-prices.html",
       "grade": null,
-      "prev_period": "2026-06-01"
+      "prev_period": "2026-07-01"
     },
     {
       "id": "housing/housing-home-prices/median-price@2026-07-01",

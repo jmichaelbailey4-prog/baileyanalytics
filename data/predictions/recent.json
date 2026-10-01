@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-30T18:21:55Z",
+  "generated_at": "2026-10-01T12:13:27Z",
   "last": {
     "business/business-credit/ci-loan-growth": {
       "id": "business/business-credit/ci-loan-growth@2026-08-01",
@@ -2355,24 +2355,24 @@
       "prev_period": "2026-07-01"
     },
     "housing/housing-home-prices/case-shiller": {
-      "id": "housing/housing-home-prices/case-shiller@2026-06-01",
+      "id": "housing/housing-home-prices/case-shiller@2026-07-01",
       "key": "housing/housing-home-prices/case-shiller",
       "category": "housing",
       "lens": "housing-home-prices",
       "indicator": "case-shiller",
       "series_id": "CSUSHPINSA",
       "horizon": "next-print",
-      "target_period": "2026-06-01",
-      "due": "2026-07-15",
-      "made_at": "2026-07-29T08:23:52Z",
+      "target_period": "2026-07-01",
+      "due": "2026-08-15",
+      "made_at": "2026-08-27T17:09:26Z",
       "model": "ets@1",
-      "point": 1.28,
-      "lo": 0.8799,
-      "hi": 1.6672,
+      "point": 1.77,
+      "lo": 1.37,
+      "hi": 2.1573,
       "unit": "%",
       "value_format": "decimal",
-      "prev_value": 1.1,
-      "why": "Case-Shiller: up 2 straight months. This projects the recent level and trend forward one month.",
+      "prev_value": 1.5,
+      "why": "Case-Shiller: up 3 straight months. This projects the recent level and trend forward one month.",
       "implied_status": "ok",
       "current_status": "ok",
       "descriptive": false,
@@ -2382,16 +2382,16 @@
       "lens_title": "Home-Price Stability",
       "href": "/dashboards/housing/home-prices.html",
       "grade": {
-        "actual": 1.5,
-        "graded_at": "2026-08-27T17:09:26Z",
+        "actual": 1.9,
+        "graded_at": "2026-10-01T12:13:14Z",
         "hit": true,
-        "abs_error": 0.21999999999999997,
+        "abs_error": 0.1299999999999999,
         "direction_hit": true,
         "status_hit": true,
         "naive_error": 0.3999999999999999,
         "revised_to": null
       },
-      "prev_period": "2026-05-01"
+      "prev_period": "2026-06-01"
     },
     "housing/housing-supply-construction/active-listings": {
       "id": "housing/housing-supply-construction/active-listings@2026-08-01",
@@ -4259,6 +4259,45 @@
     }
   },
   "feed": [
+    {
+      "id": "housing/housing-home-prices/case-shiller@2026-07-01",
+      "key": "housing/housing-home-prices/case-shiller",
+      "category": "housing",
+      "lens": "housing-home-prices",
+      "indicator": "case-shiller",
+      "series_id": "CSUSHPINSA",
+      "horizon": "next-print",
+      "target_period": "2026-07-01",
+      "due": "2026-08-15",
+      "made_at": "2026-08-27T17:09:26Z",
+      "model": "ets@1",
+      "point": 1.77,
+      "lo": 1.37,
+      "hi": 2.1573,
+      "unit": "%",
+      "value_format": "decimal",
+      "prev_value": 1.5,
+      "why": "Case-Shiller: up 3 straight months. This projects the recent level and trend forward one month.",
+      "implied_status": "ok",
+      "current_status": "ok",
+      "descriptive": false,
+      "market_price": false,
+      "title": "Case-Shiller Home Prices \u00b7 year-over-year",
+      "short": "Case-Shiller",
+      "lens_title": "Home-Price Stability",
+      "href": "/dashboards/housing/home-prices.html",
+      "grade": {
+        "actual": 1.9,
+        "graded_at": "2026-10-01T12:13:14Z",
+        "hit": true,
+        "abs_error": 0.1299999999999999,
+        "direction_hit": true,
+        "status_hit": true,
+        "naive_error": 0.3999999999999999,
+        "revised_to": null
+      },
+      "prev_period": "2026-06-01"
+    },
     {
       "id": "business/business-investment/real-sales@2026-07-01",
       "key": "business/business-investment/real-sales",
@@ -6189,44 +6228,6 @@
         "revised_to": -0.553
       },
       "prev_period": "2026-09-11"
-    },
-    {
-      "id": "housing/housing-affordability/debt-service@2026-04-01",
-      "key": "housing/housing-affordability/debt-service",
-      "category": "housing",
-      "lens": "housing-affordability",
-      "indicator": "debt-service",
-      "series_id": "MDSP",
-      "horizon": "next-print",
-      "target_period": "2026-04-01",
-      "due": "2026-07-28",
-      "made_at": "2026-06-22T18:59:54Z",
-      "model": "naive@1",
-      "point": 5.8763,
-      "lo": 5.8046,
-      "hi": 6.0546,
-      "unit": "%",
-      "value_format": "decimal",
-      "prev_value": 5.876343,
-      "why": "We expect roughly the last value \u2014 this series rarely rewards cleverness.",
-      "implied_status": "info",
-      "current_status": "info",
-      "descriptive": true,
-      "market_price": false,
-      "title": "Mortgage Debt Service \u00b7 % of income",
-      "short": "Debt service",
-      "lens_title": "Affordability & Financing",
-      "href": "/dashboards/housing/affordability.html",
-      "grade": {
-        "actual": 5.829946,
-        "graded_at": "2026-09-23T10:36:10Z",
-        "hit": true,
-        "abs_error": 0.046354000000000006,
-        "direction_hit": true,
-        "status_hit": false,
-        "naive_error": 0.04639700000000069,
-        "revised_to": null
-      }
     }
   ]
 }
