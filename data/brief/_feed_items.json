@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-10-02",
+    "title": "Today's Brief \u2014 2 alert \u00b7 4 elevated \u00b7 7 on watch",
+    "description": "Business Credit: Baa spread 1.48% (\u25bc0.16%)\nConcentrations & Funding: Uninsured dep. 41.64% (\u25b21.16%)\nHousehold Income & Savings: Saving rate 4.10% (\u25bc0.50%)\nRecession Watch: Yield curve 0.46% (\u25b20.05%)\nBusiness Formation: Applications 11.40% (\u25bc11.90%)"
+  },
+  {
     "date": "2026-10-01",
     "title": "Today's Brief \u2014 2 alert \u00b7 4 elevated \u00b7 7 on watch",
     "description": "Concentrations & Funding: Uninsured dep. 41.64% (\u25b21.16%)\nHousehold Income & Savings: Saving rate 4.10% (\u25bc0.50%)\nBusiness Formation: Applications 11.40% (\u25bc11.90%)\nRecession Watch: Yield curve 0.41% (\u25b20.04%)"
@@ -143,10 +148,5 @@
     "date": "2026-09-03",
     "title": "Today's Brief \u2014 2 alert \u00b7 5 elevated \u00b7 6 on watch",
     "description": "Concentrations & Funding: Uninsured dep. 41.64% (\u25b21.16%)\nSupply & Construction: Months' supply 9.60 months (\u25b21.10 months)\nConsumer Spending: Retail sales 5.01% (\u25bc1.74%)\nConsumer Sentiment: Sentiment 55.20 (\u25b25.70)\nHousehold Income & Savings: Saving rate 3.00% (\u25b20.40%)"
-  },
-  {
-    "date": "2026-09-02",
-    "title": "Today's Brief \u2014 2 alert \u00b7 5 elevated \u00b7 6 on watch",
-    "description": "Concentrations & Funding: Uninsured dep. 41.64% (\u25b21.16%)\nSupply & Construction: Months' supply 9.60 months (\u25b21.10 months)\nConsumer Spending: Retail sales 5.01% (\u25bc1.74%)\nConsumer Sentiment: Sentiment 55.20 (\u25b25.70)\nRisk Sentiment: VIX 16.34 (\u25b21.42)"
   }
 ]
