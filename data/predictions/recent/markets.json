@@ -312,26 +312,26 @@
         "direction_hit": false,
         "status_hit": true,
         "naive_error": 127.80000000000018,
-        "revised_to": null
+        "revised_to": 4167.8
       },
       "now_value": 4339.3,
       "now_date": "2026-09-25"
     },
     "markets/market-liquidity/reverse-repo": {
-      "id": "markets/market-liquidity/reverse-repo@2026-09-25",
+      "id": "markets/market-liquidity/reverse-repo@2026-10-02",
       "key": "markets/market-liquidity/reverse-repo",
       "category": "markets",
       "lens": "market-liquidity",
       "indicator": "reverse-repo",
       "series_id": "RRPONTSYD",
       "horizon": "next-print",
-      "target_period": "2026-09-25",
-      "due": "2026-09-30",
-      "made_at": "2026-09-19T10:01:55Z",
+      "target_period": "2026-10-02",
+      "due": "2026-10-07",
+      "made_at": "2026-09-26T10:34:51Z",
       "model": "ets@1",
-      "point": 1.616,
-      "lo": -54.9434,
-      "hi": 51.0245,
+      "point": 0.8241,
+      "lo": -55.0194,
+      "hi": 47.7696,
       "unit": "$B",
       "value_format": "decimal",
       "prev_value": 0.576,
@@ -345,17 +345,17 @@
       "lens_title": "Liquidity & the Fed",
       "href": "/dashboards/markets/liquidity.html",
       "grade": {
-        "actual": 0.576,
-        "graded_at": "2026-09-26T10:34:51Z",
+        "actual": 1.501,
+        "graded_at": "2026-10-02T18:20:05Z",
         "hit": true,
-        "abs_error": 1.04,
-        "direction_hit": false,
+        "abs_error": 0.6768999999999998,
+        "direction_hit": true,
         "status_hit": true,
-        "naive_error": 0.0,
+        "naive_error": 0.9249999999999999,
         "revised_to": null
       },
       "now_value": 0.576,
-      "now_date": "2026-09-18"
+      "now_date": "2026-09-25"
     },
     "markets/market-scoreboard/sp500": {
       "id": "markets/market-scoreboard/sp500@2026-09-25",

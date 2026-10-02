@@ -2,7 +2,7 @@
   "id": "consumer-spending",
   "title": "Consumer Spending",
   "accent": "#34D399",
-  "last_updated": "2026-09-30T18:20:43Z",
+  "last_updated": "2026-10-02T18:19:33Z",
   "status": "ok",
   "headline_read": "Consumers are still spending at a healthy pace.",
   "recessions": [
@@ -2531,10 +2531,6 @@
           "value": "12.72"
         },
         {
-          "date": "2011-08-01",
-          "value": "12.604"
-        },
-        {
           "date": "2011-09-01",
           "value": "13.356"
         },
@@ -3244,30 +3240,34 @@
         },
         {
           "date": "2026-06-01",
-          "value": "17.217"
+          "value": "17.218"
         },
         {
           "date": "2026-07-01",
-          "value": "16.58"
+          "value": "16.601"
         },
         {
           "date": "2026-08-01",
-          "value": "16.982"
+          "value": "16.98"
+        },
+        {
+          "date": "2026-09-01",
+          "value": "16.378"
         }
       ],
       "latest": {
-        "date": "2026-08-01",
-        "value": "16.982"
+        "date": "2026-09-01",
+        "value": "16.378"
       },
       "context": "Light-vehicle sales in millions at an annual rate \u2014 the classic big-ticket purchase. Households delay new cars first when budgets tighten.",
-      "read": "Vehicle sales are at 17.0 million a year \u2014 a healthy big-ticket pace.",
+      "read": "Vehicle sales are at 16.4 million a year \u2014 a healthy big-ticket pace.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 77.3,
+        "p": 65.8,
         "since": 1976
       },
-      "scale_now": 16.982
+      "scale_now": 16.378
     }
   ]
 }
