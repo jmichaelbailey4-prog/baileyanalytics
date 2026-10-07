@@ -18784,7 +18784,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 0.2068699999999999,
-      "revised_to": null
+      "revised_to": 3.58085
     },
     "prev_period": "2026-06-01"
   },
@@ -19100,7 +19100,7 @@
       "direction_hit": true,
       "status_hit": true,
       "naive_error": 0.005999999999999894,
-      "revised_to": -0.56
+      "revised_to": -0.545
     },
     "prev_period": "2026-08-28"
   },
@@ -20599,7 +20599,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 0.0039999999999998925,
-      "revised_to": -0.558
+      "revised_to": -0.536
     },
     "prev_period": "2026-09-04"
   },
@@ -22019,7 +22019,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 0.0050000000000000044,
-      "revised_to": -0.553
+      "revised_to": -0.524
     },
     "prev_period": "2026-09-11"
   },
@@ -23480,7 +23480,7 @@
       "direction_hit": true,
       "status_hit": true,
       "naive_error": 0.007000000000000006,
-      "revised_to": null
+      "revised_to": -0.51
     },
     "prev_period": "2026-09-18"
   },
@@ -25334,5 +25334,162 @@
       "revised_to": null
     },
     "prev_period": "2026-07-01"
+  },
+  {
+    "id": "markets/market-risk-sentiment/nfci@2026-10-02",
+    "key": "markets/market-risk-sentiment/nfci",
+    "category": "markets",
+    "lens": "market-risk-sentiment",
+    "indicator": "nfci",
+    "series_id": "NFCI",
+    "horizon": "next-print",
+    "target_period": "2026-10-02",
+    "due": "2026-10-07",
+    "made_at": "2026-09-30T18:21:11Z",
+    "model": "ets-seasonal@1",
+    "point": -0.5444,
+    "lo": -0.5471,
+    "hi": -0.5414,
+    "unit": "",
+    "value_format": "decimal",
+    "prev_value": -0.548,
+    "why": "NFCI: up 3 straight weeks. This projects the recent trend with the usual seasonal pattern for the week.",
+    "implied_status": "ok",
+    "current_status": "ok",
+    "descriptive": false,
+    "market_price": false,
+    "title": "Financial Conditions \u00b7 NFCI",
+    "short": "NFCI",
+    "lens_title": "Risk Sentiment",
+    "href": "/dashboards/markets/risk-sentiment.html",
+    "grade": {
+      "actual": -0.494,
+      "graded_at": "2026-10-07T19:19:54Z",
+      "hit": false,
+      "abs_error": 0.0504,
+      "direction_hit": true,
+      "status_hit": true,
+      "naive_error": 0.05400000000000005,
+      "revised_to": null
+    },
+    "prev_period": "2026-09-25"
+  },
+  {
+    "id": "markets/market-scoreboard/oil@2026-10-02",
+    "key": "markets/market-scoreboard/oil",
+    "category": "markets",
+    "lens": "market-scoreboard",
+    "indicator": "oil",
+    "series_id": "DCOILWTICO",
+    "horizon": "next-print",
+    "target_period": "2026-10-02",
+    "due": "2026-10-07",
+    "made_at": "2026-09-30T18:21:12Z",
+    "model": "drift@1",
+    "point": 85.3124,
+    "lo": 79.0968,
+    "hi": 91.9686,
+    "unit": "$",
+    "value_format": "decimal",
+    "prev_value": 85.23,
+    "why": "This projects the series' long-run average step from today's level.",
+    "implied_status": "up",
+    "current_status": "up",
+    "descriptive": true,
+    "market_price": true,
+    "title": "Crude Oil \u00b7 WTI",
+    "short": "WTI oil",
+    "lens_title": "Asset-Class Scoreboard",
+    "href": "/dashboards/markets/scoreboard.html",
+    "grade": {
+      "actual": 97.89,
+      "graded_at": "2026-10-07T19:19:56Z",
+      "hit": false,
+      "abs_error": 12.577600000000004,
+      "direction_hit": true,
+      "status_hit": true,
+      "naive_error": 12.659999999999997,
+      "revised_to": null
+    },
+    "now_value": 96.16,
+    "now_date": "2026-09-29"
+  },
+  {
+    "id": "consumer/consumer-credit/revolving-credit@2026-08-01",
+    "key": "consumer/consumer-credit/revolving-credit",
+    "category": "consumer",
+    "lens": "consumer-credit",
+    "indicator": "revolving-credit",
+    "series_id": "REVOLSL",
+    "horizon": "next-print",
+    "target_period": "2026-08-01",
+    "due": "2026-09-15",
+    "made_at": "2026-09-09T10:27:27Z",
+    "model": "ets@1",
+    "point": 3.6072,
+    "lo": 2.4982,
+    "hi": 4.8452,
+    "unit": "%",
+    "value_format": "decimal",
+    "prev_value": 3.58243,
+    "why": "This projects the recent level and trend forward one month.",
+    "implied_status": "ok",
+    "current_status": "ok",
+    "descriptive": false,
+    "market_price": false,
+    "title": "Card Balances \u00b7 year-over-year",
+    "short": "Card balances",
+    "lens_title": "Consumer Credit Stress",
+    "href": "/dashboards/consumer/credit-stress.html",
+    "grade": {
+      "actual": 3.37094,
+      "graded_at": "2026-10-07T19:20:02Z",
+      "hit": true,
+      "abs_error": 0.23626000000000014,
+      "direction_hit": false,
+      "status_hit": true,
+      "naive_error": 0.21148999999999996,
+      "revised_to": null
+    },
+    "prev_period": "2026-07-01"
+  },
+  {
+    "id": "consumer/consumer-credit/auto-loan-rate@2026-08-01",
+    "key": "consumer/consumer-credit/auto-loan-rate",
+    "category": "consumer",
+    "lens": "consumer-credit",
+    "indicator": "auto-loan-rate",
+    "series_id": "TERMCBAUTO48NS",
+    "horizon": "next-print",
+    "target_period": "2026-08-01",
+    "due": "2026-11-28",
+    "made_at": "2026-07-09T09:28:50Z",
+    "model": "ets-seasonal@1",
+    "point": 7.4579,
+    "lo": 7.2309,
+    "hi": 7.8009,
+    "unit": "%",
+    "value_format": "decimal",
+    "prev_value": 7.47,
+    "why": "This projects the recent trend with the usual seasonal pattern for the quarter.",
+    "implied_status": "info",
+    "current_status": "info",
+    "descriptive": true,
+    "market_price": false,
+    "title": "New-Car Loan Rate \u00b7 48-month",
+    "short": "Auto loan rate",
+    "lens_title": "Consumer Credit Stress",
+    "href": "/dashboards/consumer/credit-stress.html",
+    "grade": {
+      "actual": 7.47,
+      "graded_at": "2026-10-07T19:20:04Z",
+      "hit": true,
+      "abs_error": 0.012099999999999334,
+      "direction_hit": false,
+      "status_hit": true,
+      "naive_error": 0.0,
+      "revised_to": null
+    },
+    "prev_period": "2026-05-01"
   }
 ]

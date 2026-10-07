@@ -2,7 +2,7 @@
   "id": "consumer-credit",
   "title": "Consumer Credit Stress",
   "accent": "#F87171",
-  "last_updated": "2026-09-23T10:34:34Z",
+  "last_updated": "2026-10-07T19:19:35Z",
   "status": "watch",
   "headline_read": "Consumer credit bears watching \u2014 debt loads are creeping up.",
   "recessions": [
@@ -2728,22 +2728,26 @@
         },
         {
           "date": "2026-07-01",
-          "value": "3.58243"
+          "value": "3.58085"
+        },
+        {
+          "date": "2026-08-01",
+          "value": "3.37094"
         }
       ],
       "latest": {
-        "date": "2026-07-01",
-        "value": "3.58243"
+        "date": "2026-08-01",
+        "value": "3.37094"
       },
       "context": "How fast revolving credit (mostly credit cards) is growing. Balances growing much faster than incomes mean households are borrowing to keep up.",
-      "read": "Card balances are growing 3.6% a year \u2014 a sustainable pace.",
+      "read": "Card balances are growing 3.4% a year \u2014 a sustainable pace.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 22.4,
+        "p": 21.1,
         "since": 1969
       },
-      "scale_now": 3.5824
+      "scale_now": 3.3709
     },
     {
       "id": "debt-service",
@@ -4153,14 +4157,6 @@
           "value": "."
         },
         {
-          "date": "2011-05-01",
-          "value": "5.79"
-        },
-        {
-          "date": "2011-06-01",
-          "value": "."
-        },
-        {
           "date": "2011-07-01",
           "value": "."
         },
@@ -4875,10 +4871,22 @@
         {
           "date": "2026-05-01",
           "value": "7.47"
+        },
+        {
+          "date": "2026-06-01",
+          "value": "."
+        },
+        {
+          "date": "2026-07-01",
+          "value": "."
+        },
+        {
+          "date": "2026-08-01",
+          "value": "7.47"
         }
       ],
       "latest": {
-        "date": "2026-05-01",
+        "date": "2026-08-01",
         "value": "7.47"
       },
       "context": "What banks charge on a 48-month new-car loan (quarterly, since 1972) \u2014 the interest rate households actually meet when they finance a car, as opposed to the Treasury rates markets watch.",
@@ -4886,7 +4894,7 @@
       "signal_status": "info",
       "value_format": "decimal",
       "percentile": {
-        "p": 34.9,
+        "p": 34.7,
         "since": 1972
       },
       "no_severity_reason": "A retail borrowing rate shown for context \u2014 the scored consumer-stress reads here are delinquencies, balances, and debt service."
