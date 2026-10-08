@@ -2,7 +2,7 @@
   "id": "energy-natural-gas",
   "title": "Natural Gas",
   "accent": "#60A5FA",
-  "last_updated": "2026-10-07T19:19:25Z",
+  "last_updated": "2026-10-08T12:32:04Z",
   "status": "ok",
   "headline_read": "Natural gas costs are stable or easing.",
   "recessions": [
@@ -3701,7 +3701,7 @@
       "signal_status": "info",
       "value_format": "thousands",
       "percentile": {
-        "p": 77.6,
+        "p": 78.7,
         "since": 2016
       },
       "no_severity_reason": "A physical supply-and-demand reading, not a household cost \u2014 this lens's verdict comes from the price indicators."
@@ -3714,10 +3714,6 @@
       "color": "#34D399",
       "series_id": "N9070US2",
       "observations": [
-        {
-          "date": "2006-07",
-          "value": "1573274"
-        },
         {
           "date": "2006-08",
           "value": "1578728"
@@ -4668,23 +4664,27 @@
         },
         {
           "date": "2026-05",
-          "value": "3425339"
+          "value": "3424309"
         },
         {
           "date": "2026-06",
-          "value": "3369502"
+          "value": "3369876"
+        },
+        {
+          "date": "2026-07",
+          "value": "3524896"
         }
       ],
       "latest": {
-        "date": "2026-06",
-        "value": "3369502"
+        "date": "2026-07",
+        "value": "3524896"
       },
       "context": "U.S. dry natural-gas production \u2014 record output has reshaped both home energy costs and the country's role as an exporter.",
-      "read": "Dry gas production is up 4% from a year ago, now 3,369,502.",
+      "read": "Dry gas production is up 5% from a year ago, now 3,524,896.",
       "signal_status": "info",
       "value_format": "thousands",
       "percentile": {
-        "p": 97.9,
+        "p": 99.6,
         "since": 2006
       },
       "no_severity_reason": "A physical supply-and-demand reading, not a household cost \u2014 this lens's verdict comes from the price indicators."
@@ -4697,10 +4697,6 @@
       "color": "#A78BFA",
       "series_id": "N9133US2",
       "observations": [
-        {
-          "date": "2006-07",
-          "value": "5607"
-        },
         {
           "date": "2006-08",
           "value": "5640"
@@ -5656,18 +5652,22 @@
         {
           "date": "2026-06",
           "value": "521059"
+        },
+        {
+          "date": "2026-07",
+          "value": "518777"
         }
       ],
       "latest": {
-        "date": "2026-06",
-        "value": "521059"
+        "date": "2026-07",
+        "value": "518777"
       },
       "context": "U.S. liquefied natural gas exports \u2014 a fast-growing link between domestic gas prices and global demand.",
-      "read": "LNG exports is up 28% from a year ago, now 521,059.",
+      "read": "LNG exports is up 19% from a year ago, now 518,777.",
       "signal_status": "info",
       "value_format": "thousands",
       "percentile": {
-        "p": 97.5,
+        "p": 97.1,
         "since": 2006
       },
       "no_severity_reason": "A physical supply-and-demand reading, not a household cost \u2014 this lens's verdict comes from the price indicators."
