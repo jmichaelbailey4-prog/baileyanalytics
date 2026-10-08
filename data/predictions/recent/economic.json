@@ -161,16 +161,16 @@
       "now_date": "2026-09-25"
     },
     "economic/recession-watch/jobless-claims": {
-      "id": "economic/recession-watch/jobless-claims@2026-09-26",
+      "id": "economic/recession-watch/jobless-claims@2026-10-03",
       "key": "economic/recession-watch/jobless-claims",
       "category": "economic",
       "lens": "recession-watch",
       "indicator": "jobless-claims",
       "series_id": "ICSA",
       "horizon": "next-print",
-      "target_period": "2026-09-26",
-      "due": "2026-10-01",
-      "made_at": "2026-09-24T17:49:28Z",
+      "target_period": "2026-10-03",
+      "due": "2026-10-08",
+      "made_at": "2026-10-01T18:46:15Z",
       "model": "naive@1",
       "point": 197000.0,
       "lo": 186000.0,
@@ -178,7 +178,7 @@
       "unit": "",
       "value_format": "thousands",
       "prev_value": 197000.0,
-      "why": "Jobless claims: down 2 straight weeks. We expect roughly the last value \u2014 this series rarely rewards cleverness.",
+      "why": "We expect roughly the last value \u2014 this series rarely rewards cleverness.",
       "implied_status": "ok",
       "current_status": "ok",
       "descriptive": false,
@@ -189,7 +189,7 @@
       "href": "/dashboards/recession-watch.html",
       "grade": {
         "actual": 197000.0,
-        "graded_at": "2026-10-01T18:46:15Z",
+        "graded_at": "2026-10-08T19:13:24Z",
         "hit": true,
         "abs_error": 0.0,
         "direction_hit": true,
@@ -197,7 +197,7 @@
         "naive_error": 0.0,
         "revised_to": null
       },
-      "prev_period": "2026-09-19"
+      "prev_period": "2026-09-26"
     },
     "economic/fiscal-health/debt-gdp": {
       "id": "economic/fiscal-health/debt-gdp@2026-01-01",

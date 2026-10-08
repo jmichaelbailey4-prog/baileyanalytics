@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-08T12:33:34Z",
+  "generated_at": "2026-10-08T19:14:43Z",
   "predictions": [
     {
       "id": "economic/recession-watch/yield-curve@2026-10-09",
@@ -63,16 +63,16 @@
       "prev_period": "2026-09-01"
     },
     {
-      "id": "economic/recession-watch/jobless-claims@2026-10-03",
+      "id": "economic/recession-watch/jobless-claims@2026-10-10",
       "key": "economic/recession-watch/jobless-claims",
       "category": "economic",
       "lens": "recession-watch",
       "indicator": "jobless-claims",
       "series_id": "ICSA",
       "horizon": "next-print",
-      "target_period": "2026-10-03",
-      "due": "2026-10-08",
-      "made_at": "2026-10-01T18:46:15Z",
+      "target_period": "2026-10-10",
+      "due": "2026-10-15",
+      "made_at": "2026-10-08T19:13:24Z",
       "model": "naive@1",
       "point": 197000.0,
       "lo": 186000.0,
@@ -90,7 +90,7 @@
       "lens_title": "Recession Watch",
       "href": "/dashboards/recession-watch.html",
       "grade": null,
-      "prev_period": "2026-09-26"
+      "prev_period": "2026-10-03"
     },
     {
       "id": "economic/recession-watch/unemployment@2026-10-01",
@@ -1935,24 +1935,24 @@
       "now_date": "2026-10-06"
     },
     {
-      "id": "energy/energy-natural-gas/gas-storage@2026-10-02",
+      "id": "energy/energy-natural-gas/gas-storage@2026-10-09",
       "key": "energy/energy-natural-gas/gas-storage",
       "category": "energy",
       "lens": "energy-natural-gas",
       "indicator": "gas-storage",
       "series_id": "NW2_EPG0_SWO_R48_BCF",
       "horizon": "next-print",
-      "target_period": "2026-10-02",
-      "due": "2026-10-07",
-      "made_at": "2026-10-01T18:46:50Z",
+      "target_period": "2026-10-09",
+      "due": "2026-10-14",
+      "made_at": "2026-10-08T19:14:11Z",
       "model": "ets-seasonal@1",
-      "point": 3490.4718,
-      "lo": 3435.6207,
-      "hi": 3545.0467,
+      "point": 3566.89,
+      "lo": 3509.7307,
+      "hi": 3628.965,
       "unit": "Bcf",
       "value_format": "thousands",
-      "prev_value": 3415.0,
-      "why": "Gas storage: up 27 straight weeks. This projects the recent trend with the usual seasonal pattern for the week.",
+      "prev_value": 3500.0,
+      "why": "Gas storage: up 28 straight weeks. This projects the recent trend with the usual seasonal pattern for the week.",
       "implied_status": "info",
       "current_status": "info",
       "descriptive": true,
@@ -1962,7 +1962,7 @@
       "lens_title": "Natural Gas",
       "href": "/dashboards/energy/natural-gas.html",
       "grade": null,
-      "prev_period": "2026-09-25"
+      "prev_period": "2026-10-02"
     },
     {
       "id": "energy/energy-natural-gas/gas-production@2026-08",
@@ -2295,24 +2295,24 @@
       "prev_period": "2026-04-01"
     },
     {
-      "id": "housing/housing-affordability/mortgage-rate@2026-10-08",
+      "id": "housing/housing-affordability/mortgage-rate@2026-10-15",
       "key": "housing/housing-affordability/mortgage-rate",
       "category": "housing",
       "lens": "housing-affordability",
       "indicator": "mortgage-rate",
       "series_id": "MORTGAGE30US",
       "horizon": "next-print",
-      "target_period": "2026-10-08",
-      "due": "2026-10-13",
-      "made_at": "2026-10-01T18:46:59Z",
+      "target_period": "2026-10-15",
+      "due": "2026-10-20",
+      "made_at": "2026-10-08T19:14:31Z",
       "model": "ets@1",
-      "point": 7.3445,
-      "lo": 7.2654,
-      "hi": 7.4404,
+      "point": 7.4613,
+      "lo": 7.3822,
+      "hi": 7.5606,
       "unit": "%",
       "value_format": "decimal",
-      "prev_value": 7.28,
-      "why": "30-yr mortgage: up 6 straight weeks. This projects the recent level and trend forward one week.",
+      "prev_value": 7.4,
+      "why": "30-yr mortgage: up 7 straight weeks. This projects the recent level and trend forward one week.",
       "implied_status": "elevated",
       "current_status": "elevated",
       "descriptive": false,
@@ -2322,7 +2322,7 @@
       "lens_title": "Affordability & Financing",
       "href": "/dashboards/housing/affordability.html",
       "grade": null,
-      "prev_period": "2026-10-01"
+      "prev_period": "2026-10-08"
     },
     {
       "id": "housing/housing-supply-construction/months-supply@2026-09-01",

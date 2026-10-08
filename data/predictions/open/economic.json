@@ -62,16 +62,16 @@
       "prev_period": "2026-09-01"
     },
     {
-      "id": "economic/recession-watch/jobless-claims@2026-10-03",
+      "id": "economic/recession-watch/jobless-claims@2026-10-10",
       "key": "economic/recession-watch/jobless-claims",
       "category": "economic",
       "lens": "recession-watch",
       "indicator": "jobless-claims",
       "series_id": "ICSA",
       "horizon": "next-print",
-      "target_period": "2026-10-03",
-      "due": "2026-10-08",
-      "made_at": "2026-10-01T18:46:15Z",
+      "target_period": "2026-10-10",
+      "due": "2026-10-15",
+      "made_at": "2026-10-08T19:13:24Z",
       "model": "naive@1",
       "point": 197000.0,
       "lo": 186000.0,
@@ -89,7 +89,7 @@
       "lens_title": "Recession Watch",
       "href": "/dashboards/recession-watch.html",
       "grade": null,
-      "prev_period": "2026-09-26"
+      "prev_period": "2026-10-03"
     },
     {
       "id": "economic/recession-watch/unemployment@2026-10-01",
