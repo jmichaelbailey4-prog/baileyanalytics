@@ -369,23 +369,23 @@
       "prev_period": "2026-10-07"
     },
     {
-      "id": "markets/market-liquidity/reverse-repo@2026-10-09",
+      "id": "markets/market-liquidity/reverse-repo@2026-10-16",
       "key": "markets/market-liquidity/reverse-repo",
       "category": "markets",
       "lens": "market-liquidity",
       "indicator": "reverse-repo",
       "series_id": "RRPONTSYD",
       "horizon": "next-print",
-      "target_period": "2026-10-09",
-      "due": "2026-10-14",
-      "made_at": "2026-10-02T18:20:05Z",
+      "target_period": "2026-10-16",
+      "due": "2026-10-21",
+      "made_at": "2026-10-09T18:44:01Z",
       "model": "ets@1",
-      "point": 1.2241,
-      "lo": -54.6194,
-      "hi": 44.2863,
+      "point": 0.5681,
+      "lo": -55.1482,
+      "hi": 43.3496,
       "unit": "$B",
       "value_format": "decimal",
-      "prev_value": 1.501,
+      "prev_value": 0.3,
       "why": "This projects the recent level and trend forward one week.",
       "implied_status": "info",
       "current_status": "info",
@@ -396,8 +396,8 @@
       "lens_title": "Liquidity & the Fed",
       "href": "/dashboards/markets/liquidity.html",
       "grade": null,
-      "now_value": 1.501,
-      "now_date": "2026-10-02"
+      "now_value": 0.3,
+      "now_date": "2026-10-09"
     }
   ]
 }
