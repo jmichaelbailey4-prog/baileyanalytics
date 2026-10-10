@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-09-25T17:52:17Z",
+  "captured_at": "2026-10-10T11:39:07Z",
   "statuses": {
     "recession-watch": "ok",
     "cost-of-money": "watch",
@@ -17,7 +17,7 @@
     "business-profitability": "ok",
     "business-formation": "ok",
     "business-investment": "ok",
-    "business-credit": "ok",
+    "business-credit": "watch",
     "market-risk-sentiment": "ok",
     "market-scoreboard": "neutral",
     "market-liquidity": "ok",
