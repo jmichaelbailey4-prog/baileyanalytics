@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-11T11:52:05Z",
+  "generated_at": "2026-10-12T13:58:45Z",
   "last": {
     "business/business-credit/ci-loan-growth": {
       "id": "business/business-credit/ci-loan-growth@2026-09-01",
@@ -238,24 +238,24 @@
       "prev_period": "2026-07-01"
     },
     "markets/market-risk-sentiment/vix": {
-      "id": "markets/market-risk-sentiment/vix@2026-10-02",
+      "id": "markets/market-risk-sentiment/vix@2026-10-09",
       "key": "markets/market-risk-sentiment/vix",
       "category": "markets",
       "lens": "market-risk-sentiment",
       "indicator": "vix",
       "series_id": "VIXCLS",
       "horizon": "next-print",
-      "target_period": "2026-10-02",
-      "due": "2026-10-07",
-      "made_at": "2026-09-29T18:34:42Z",
+      "target_period": "2026-10-09",
+      "due": "2026-10-14",
+      "made_at": "2026-10-05T21:13:04Z",
       "model": "ets@1",
-      "point": 14.8726,
-      "lo": 10.8853,
-      "hi": 18.5458,
+      "point": 15.2695,
+      "lo": 11.2822,
+      "hi": 18.9428,
       "unit": "",
       "value_format": "decimal",
-      "prev_value": 14.87,
-      "why": "This projects the recent level and trend forward one week.",
+      "prev_value": 15.31,
+      "why": "VIX: up 2 straight weeks. This projects the recent level and trend forward one week.",
       "implied_status": "ok",
       "current_status": "ok",
       "descriptive": false,
@@ -265,17 +265,17 @@
       "lens_title": "Risk Sentiment",
       "href": "/dashboards/markets/risk-sentiment.html",
       "grade": {
-        "actual": 15.31,
-        "graded_at": "2026-10-05T21:13:03Z",
+        "actual": 14.84,
+        "graded_at": "2026-10-12T13:58:07Z",
         "hit": true,
-        "abs_error": 0.43740000000000023,
+        "abs_error": 0.4295000000000009,
         "direction_hit": true,
         "status_hit": true,
-        "naive_error": 0.4400000000000013,
+        "naive_error": 0.47000000000000064,
         "revised_to": null
       },
-      "now_value": 16.07,
-      "now_date": "2026-09-28"
+      "now_value": 15.31,
+      "now_date": "2026-10-02"
     },
     "markets/market-risk-sentiment/hy-spread": {
       "id": "markets/market-risk-sentiment/hy-spread@2026-10-02",
@@ -1412,7 +1412,7 @@
         "direction_hit": false,
         "status_hit": true,
         "naive_error": 1935.2399999999907,
-        "revised_to": 82926.27
+        "revised_to": 83683.56
       },
       "now_value": 84478.54,
       "now_date": "2026-10-02"
@@ -1452,7 +1452,7 @@
         "direction_hit": false,
         "status_hit": true,
         "naive_error": 182.1300000000001,
-        "revised_to": 2504.06
+        "revised_to": 2535.04
       },
       "now_value": 2666.83,
       "now_date": "2026-10-02"
@@ -4260,6 +4260,46 @@
   },
   "feed": [
     {
+      "id": "markets/market-risk-sentiment/vix@2026-10-09",
+      "key": "markets/market-risk-sentiment/vix",
+      "category": "markets",
+      "lens": "market-risk-sentiment",
+      "indicator": "vix",
+      "series_id": "VIXCLS",
+      "horizon": "next-print",
+      "target_period": "2026-10-09",
+      "due": "2026-10-14",
+      "made_at": "2026-10-05T21:13:04Z",
+      "model": "ets@1",
+      "point": 15.2695,
+      "lo": 11.2822,
+      "hi": 18.9428,
+      "unit": "",
+      "value_format": "decimal",
+      "prev_value": 15.31,
+      "why": "VIX: up 2 straight weeks. This projects the recent level and trend forward one week.",
+      "implied_status": "ok",
+      "current_status": "ok",
+      "descriptive": false,
+      "market_price": false,
+      "title": "Volatility \u00b7 VIX",
+      "short": "VIX",
+      "lens_title": "Risk Sentiment",
+      "href": "/dashboards/markets/risk-sentiment.html",
+      "grade": {
+        "actual": 14.84,
+        "graded_at": "2026-10-12T13:58:07Z",
+        "hit": true,
+        "abs_error": 0.4295000000000009,
+        "direction_hit": true,
+        "status_hit": true,
+        "naive_error": 0.47000000000000064,
+        "revised_to": null
+      },
+      "now_value": 15.31,
+      "now_date": "2026-10-02"
+    },
+    {
       "id": "business/business-credit/ci-loan-growth@2026-09-01",
       "key": "business/business-credit/ci-loan-growth",
       "category": "business",
@@ -4333,7 +4373,7 @@
         "direction_hit": false,
         "status_hit": true,
         "naive_error": 182.1300000000001,
-        "revised_to": 2504.06
+        "revised_to": 2535.04
       },
       "now_value": 2666.83,
       "now_date": "2026-10-02"
@@ -4373,7 +4413,7 @@
         "direction_hit": false,
         "status_hit": true,
         "naive_error": 1935.2399999999907,
-        "revised_to": 82926.27
+        "revised_to": 83683.56
       },
       "now_value": 84478.54,
       "now_date": "2026-10-02"
@@ -6192,46 +6232,6 @@
         "revised_to": null
       },
       "prev_period": "2026-09-23"
-    },
-    {
-      "id": "markets/market-scoreboard/gold@2026-10-02",
-      "key": "markets/market-scoreboard/gold",
-      "category": "markets",
-      "lens": "market-scoreboard",
-      "indicator": "gold",
-      "series_id": "XAUUSD",
-      "horizon": "next-print",
-      "target_period": "2026-10-02",
-      "due": "2026-10-07",
-      "made_at": "2026-09-25T10:52:43Z",
-      "model": "drift@1",
-      "point": 4345.7405,
-      "lo": 4214.2634,
-      "hi": 4504.5691,
-      "unit": "$",
-      "value_format": "thousands",
-      "prev_value": 4339.3,
-      "why": "This projects the series' long-run average step from today's level.",
-      "implied_status": "up",
-      "current_status": "up",
-      "descriptive": true,
-      "market_price": true,
-      "title": "Gold",
-      "short": "Gold",
-      "lens_title": "Asset-Class Scoreboard",
-      "href": "/dashboards/markets/scoreboard.html",
-      "grade": {
-        "actual": 4211.5,
-        "graded_at": "2026-10-02T11:39:09Z",
-        "hit": false,
-        "abs_error": 134.24049999999988,
-        "direction_hit": false,
-        "status_hit": true,
-        "naive_error": 127.80000000000018,
-        "revised_to": 4162.3
-      },
-      "now_value": 4339.3,
-      "now_date": "2026-09-25"
     }
   ]
 }

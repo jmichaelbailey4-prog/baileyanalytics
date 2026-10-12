@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-10T11:39:07Z",
+  "generated_at": "2026-10-12T13:58:45Z",
   "predictions": [
     {
       "id": "economic/recession-watch/yield-curve@2026-10-16",
@@ -995,24 +995,24 @@
       "prev_period": "2026-06-30"
     },
     {
-      "id": "markets/market-risk-sentiment/vix@2026-10-09",
+      "id": "markets/market-risk-sentiment/vix@2026-10-16",
       "key": "markets/market-risk-sentiment/vix",
       "category": "markets",
       "lens": "market-risk-sentiment",
       "indicator": "vix",
       "series_id": "VIXCLS",
       "horizon": "next-print",
-      "target_period": "2026-10-09",
-      "due": "2026-10-14",
-      "made_at": "2026-10-05T21:13:04Z",
+      "target_period": "2026-10-16",
+      "due": "2026-10-21",
+      "made_at": "2026-10-12T13:58:08Z",
       "model": "ets@1",
-      "point": 15.2695,
-      "lo": 11.2822,
-      "hi": 18.9428,
+      "point": 14.8806,
+      "lo": 10.8933,
+      "hi": 18.5539,
       "unit": "",
       "value_format": "decimal",
-      "prev_value": 15.31,
-      "why": "VIX: up 2 straight weeks. This projects the recent level and trend forward one week.",
+      "prev_value": 14.84,
+      "why": "This projects the recent level and trend forward one week.",
       "implied_status": "ok",
       "current_status": "ok",
       "descriptive": false,
@@ -1022,8 +1022,8 @@
       "lens_title": "Risk Sentiment",
       "href": "/dashboards/markets/risk-sentiment.html",
       "grade": null,
-      "now_value": 15.31,
-      "now_date": "2026-10-02"
+      "now_value": 14.84,
+      "now_date": "2026-10-09"
     },
     {
       "id": "markets/market-risk-sentiment/hy-spread@2026-10-09",

@@ -26000,7 +26000,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 1935.2399999999907,
-      "revised_to": 82926.27
+      "revised_to": 83683.56
     },
     "now_value": 84478.54,
     "now_date": "2026-10-02"
@@ -26040,7 +26040,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 182.1300000000001,
-      "revised_to": 2504.06
+      "revised_to": 2535.04
     },
     "now_value": 2666.83,
     "now_date": "2026-10-02"
@@ -26083,5 +26083,45 @@
       "revised_to": null
     },
     "prev_period": "2026-08-01"
+  },
+  {
+    "id": "markets/market-risk-sentiment/vix@2026-10-09",
+    "key": "markets/market-risk-sentiment/vix",
+    "category": "markets",
+    "lens": "market-risk-sentiment",
+    "indicator": "vix",
+    "series_id": "VIXCLS",
+    "horizon": "next-print",
+    "target_period": "2026-10-09",
+    "due": "2026-10-14",
+    "made_at": "2026-10-05T21:13:04Z",
+    "model": "ets@1",
+    "point": 15.2695,
+    "lo": 11.2822,
+    "hi": 18.9428,
+    "unit": "",
+    "value_format": "decimal",
+    "prev_value": 15.31,
+    "why": "VIX: up 2 straight weeks. This projects the recent level and trend forward one week.",
+    "implied_status": "ok",
+    "current_status": "ok",
+    "descriptive": false,
+    "market_price": false,
+    "title": "Volatility \u00b7 VIX",
+    "short": "VIX",
+    "lens_title": "Risk Sentiment",
+    "href": "/dashboards/markets/risk-sentiment.html",
+    "grade": {
+      "actual": 14.84,
+      "graded_at": "2026-10-12T13:58:07Z",
+      "hit": true,
+      "abs_error": 0.4295000000000009,
+      "direction_hit": true,
+      "status_hit": true,
+      "naive_error": 0.47000000000000064,
+      "revised_to": null
+    },
+    "now_value": 15.31,
+    "now_date": "2026-10-02"
   }
 ]
