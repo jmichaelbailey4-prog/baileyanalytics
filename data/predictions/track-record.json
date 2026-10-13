@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-10-12T13:58:45Z",
+  "generated_at": "2026-10-13T19:49:44Z",
   "since": "2026-06-12T14:20:31Z",
-  "graded": 672,
+  "graded": 674,
   "coverage": 287,
-  "calibration": 0.8050595238095238,
-  "direction": 0.38701298701298703,
-  "status": 0.9116883116883117,
-  "skill": 0.0003906734700402925,
+  "calibration": 0.8056379821958457,
+  "direction": 0.3850129198966408,
+  "status": 0.9121447028423773,
+  "skill": 0.00039066024599976323,
   "categories": {
     "banking": {
       "graded": 9,
@@ -65,12 +65,12 @@
       "skill": 0.2428802899253062
     },
     "markets": {
-      "graded": 200,
+      "graded": 202,
       "coverage": 130,
-      "calibration": 0.795,
-      "direction": 0.45714285714285713,
+      "calibration": 0.7970297029702971,
+      "direction": 0.4444444444444444,
       "status": 1.0,
-      "skill": 0.0035213043960815593
+      "skill": 0.0031851680169834307
     }
   }
 }
