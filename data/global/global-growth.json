@@ -2,7 +2,7 @@
   "id": "global-growth",
   "title": "Global Growth",
   "accent": "#34D399",
-  "last_updated": "2026-09-07T11:06:39Z",
+  "last_updated": "2026-10-13T13:14:16Z",
   "status": "ok",
   "headline_read": "The world economy is growing around its long-run trend.",
   "recessions": [
@@ -66,195 +66,195 @@
       "observations": [
         {
           "date": "1980",
-          "value": "2.218072"
+          "value": "2.220094"
         },
         {
           "date": "1981",
-          "value": "2.313797"
+          "value": "2.316901"
         },
         {
           "date": "1982",
-          "value": "0.755833"
+          "value": "0.754089"
         },
         {
           "date": "1983",
-          "value": "2.713492"
+          "value": "2.712717"
         },
         {
           "date": "1984",
-          "value": "4.620673"
+          "value": "4.622906"
         },
         {
           "date": "1985",
-          "value": "3.657274"
+          "value": "3.659358"
         },
         {
           "date": "1986",
-          "value": "3.370384"
+          "value": "3.371098"
         },
         {
           "date": "1987",
-          "value": "3.947889"
+          "value": "3.947896"
         },
         {
           "date": "1988",
-          "value": "4.527897"
+          "value": "4.529614"
         },
         {
           "date": "1989",
-          "value": "3.728091"
+          "value": "3.729437"
         },
         {
           "date": "1990",
-          "value": "3.225943"
+          "value": "3.226084"
         },
         {
           "date": "1991",
-          "value": "2.47484"
+          "value": "2.476264"
         },
         {
           "date": "1992",
-          "value": "2.174445"
+          "value": "2.176408"
         },
         {
           "date": "1993",
-          "value": "1.948188"
+          "value": "1.949511"
         },
         {
           "date": "1994",
-          "value": "3.133931"
+          "value": "3.13724"
         },
         {
           "date": "1995",
-          "value": "3.271934"
+          "value": "3.273134"
         },
         {
           "date": "1996",
-          "value": "3.865221"
+          "value": "3.866309"
         },
         {
           "date": "1997",
-          "value": "4.042233"
+          "value": "4.04441"
         },
         {
           "date": "1998",
-          "value": "2.60649"
+          "value": "2.608051"
         },
         {
           "date": "1999",
-          "value": "3.56726"
+          "value": "3.568452"
         },
         {
           "date": "2000",
-          "value": "4.797814"
+          "value": "4.799425"
         },
         {
           "date": "2001",
-          "value": "2.480328"
+          "value": "2.483621"
         },
         {
           "date": "2002",
-          "value": "2.832609"
+          "value": "2.834043"
         },
         {
           "date": "2003",
-          "value": "3.798842"
+          "value": "3.802245"
         },
         {
           "date": "2004",
-          "value": "5.263439"
+          "value": "5.266177"
         },
         {
           "date": "2005",
-          "value": "4.712692"
+          "value": "4.712567"
         },
         {
           "date": "2006",
-          "value": "5.286045"
+          "value": "5.289664"
         },
         {
           "date": "2007",
-          "value": "5.364044"
+          "value": "5.368411"
         },
         {
           "date": "2008",
-          "value": "2.930436"
+          "value": "2.923431"
         },
         {
           "date": "2009",
-          "value": "-0.357571"
+          "value": "-0.352525"
         },
         {
           "date": "2010",
-          "value": "5.252209"
+          "value": "5.264004"
         },
         {
           "date": "2011",
-          "value": "4.100359"
+          "value": "4.10063"
         },
         {
           "date": "2012",
-          "value": "3.387123"
+          "value": "3.385589"
         },
         {
           "date": "2013",
-          "value": "3.380306"
+          "value": "3.38374"
         },
         {
           "date": "2014",
-          "value": "3.559024"
+          "value": "3.574916"
         },
         {
           "date": "2015",
-          "value": "3.447288"
+          "value": "3.464967"
         },
         {
           "date": "2016",
-          "value": "3.22461"
+          "value": "3.231732"
         },
         {
           "date": "2017",
-          "value": "3.842261"
+          "value": "3.862409"
         },
         {
           "date": "2018",
-          "value": "3.642673"
+          "value": "3.647736"
         },
         {
           "date": "2019",
-          "value": "2.956766"
+          "value": "2.965087"
         },
         {
           "date": "2020",
-          "value": "-2.706997"
+          "value": "-2.712788"
         },
         {
           "date": "2021",
-          "value": "6.653434"
+          "value": "6.674811"
         },
         {
           "date": "2022",
-          "value": "3.773925"
+          "value": "3.769546"
         },
         {
           "date": "2023",
-          "value": "3.327812"
+          "value": "3.341657"
         },
         {
           "date": "2024",
-          "value": "3.416268"
+          "value": "3.530256"
         },
         {
           "date": "2025",
-          "value": "3.441279"
+          "value": "3.504572"
         }
       ],
       "latest": {
         "date": "2025",
-        "value": "3.441279"
+        "value": "3.504572"
       },
       "context": "The IMF's measure of how fast the whole world economy is growing each year. The long-run trend is about 3.5%; below 2% is what economists call a global recession \u2014 it has happened only a handful of times since 1980.",
-      "read": "The world economy grew 3.4% in 2025 \u2014 around its long-run trend. The IMF projects 3.1% for 2026.",
+      "read": "The world economy grew 3.5% in 2025 \u2014 around its long-run trend. The IMF projects 3.1% for 2026.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
@@ -262,7 +262,7 @@
         "since": 1980
       },
       "no_prediction_reason": "This series updates only once or twice a year \u2014 too few data points to build an honest forecast range. (The IMF's own projection is noted in the read above.)",
-      "scale_now": 3.4413
+      "scale_now": 3.5046
     },
     {
       "id": "ea-gdp-quarterly",
@@ -953,16 +953,16 @@
         },
         {
           "date": "2024",
-          "value": "5.002785"
+          "value": "5"
         },
         {
           "date": "2025",
-          "value": "4.958804"
+          "value": "4.995927"
         }
       ],
       "latest": {
         "date": "2025",
-        "value": "4.958804"
+        "value": "4.995927"
       },
       "context": "China's annual growth rate (IMF WEO). The world's second-largest economy and its biggest growth engine \u2014 China's slowdown from double digits to under 5% reshapes demand for everything.",
       "read": "China's economy grew 5.0% in 2025, matching the year before.",
@@ -1001,131 +1001,131 @@
         },
         {
           "date": "1996",
-          "value": "1.683282"
+          "value": "1.681329"
         },
         {
           "date": "1997",
-          "value": "2.65602"
+          "value": "2.656267"
         },
         {
           "date": "1998",
-          "value": "2.957973"
+          "value": "2.958871"
         },
         {
           "date": "1999",
-          "value": "2.96123"
+          "value": "2.962255"
         },
         {
           "date": "2000",
-          "value": "3.858228"
+          "value": "3.857147"
         },
         {
           "date": "2001",
-          "value": "2.161804"
+          "value": "2.161856"
         },
         {
           "date": "2002",
-          "value": "0.923115"
+          "value": "0.9226"
         },
         {
           "date": "2003",
-          "value": "0.731254"
+          "value": "0.730081"
         },
         {
           "date": "2004",
-          "value": "2.306881"
+          "value": "2.307946"
         },
         {
           "date": "2005",
-          "value": "1.766895"
+          "value": "1.765511"
         },
         {
           "date": "2006",
-          "value": "3.323388"
+          "value": "3.321633"
         },
         {
           "date": "2007",
-          "value": "3.007588"
+          "value": "3.007517"
         },
         {
           "date": "2008",
-          "value": "0.428756"
+          "value": "0.430637"
         },
         {
           "date": "2009",
-          "value": "-4.452534"
+          "value": "-4.454915"
         },
         {
           "date": "2010",
-          "value": "2.071357"
+          "value": "2.07372"
         },
         {
           "date": "2011",
-          "value": "1.725513"
+          "value": "1.730205"
         },
         {
           "date": "2012",
-          "value": "-0.946767"
+          "value": "-0.936694"
         },
         {
           "date": "2013",
-          "value": "-0.181225"
+          "value": "-0.162258"
         },
         {
           "date": "2014",
-          "value": "1.43963"
+          "value": "1.456128"
         },
         {
           "date": "2015",
-          "value": "2.116761"
+          "value": "2.149857"
         },
         {
           "date": "2016",
-          "value": "1.806748"
+          "value": "1.82498"
         },
         {
           "date": "2017",
-          "value": "2.621503"
+          "value": "2.65136"
         },
         {
           "date": "2018",
-          "value": "1.781492"
+          "value": "1.81037"
         },
         {
           "date": "2019",
-          "value": "1.631503"
+          "value": "1.662442"
         },
         {
           "date": "2020",
-          "value": "-6.009644"
+          "value": "-5.982301"
         },
         {
           "date": "2021",
-          "value": "6.415062"
+          "value": "6.432936"
         },
         {
           "date": "2022",
-          "value": "3.640754"
+          "value": "3.68591"
         },
         {
           "date": "2023",
-          "value": "0.441889"
+          "value": "0.396492"
         },
         {
           "date": "2024",
-          "value": "0.921892"
+          "value": "1.167136"
         },
         {
           "date": "2025",
-          "value": "1.401599"
+          "value": "1.236817"
         }
       ],
       "latest": {
         "date": "2025",
-        "value": "1.401599"
+        "value": "1.236817"
       },
       "context": "The euro area's annual growth rate (IMF WEO) \u2014 the world's third-largest economic bloc, and the one most exposed to energy shocks and trade disruption.",
-      "read": "The euro area's economy grew 1.4% in 2025, up from 0.9% the year before.",
+      "read": "The euro area's economy grew 1.2% in 2025, matching the year before.",
       "signal_status": "info",
       "value_format": "decimal",
       "no_severity_reason": "Shown for context alongside this lens's lead growth reading.",
@@ -1141,192 +1141,192 @@
       "observations": [
         {
           "date": "1980",
-          "value": "17.248575"
+          "value": "17.254212"
         },
         {
           "date": "1981",
-          "value": "15.00595"
+          "value": "15.016856"
         },
         {
           "date": "1982",
-          "value": "14.281342"
+          "value": "14.282751"
         },
         {
           "date": "1983",
-          "value": "13.420175"
+          "value": "13.423944"
         },
         {
           "date": "1984",
-          "value": "13.983106"
+          "value": "13.986703"
         },
         {
           "date": "1985",
-          "value": "13.711634"
+          "value": "13.715625"
         },
         {
           "date": "1986",
-          "value": "11.741196"
+          "value": "11.748133"
         },
         {
           "date": "1987",
-          "value": "14.483165"
+          "value": "14.487488"
         },
         {
           "date": "1988",
-          "value": "19.060049"
+          "value": "19.067917"
         },
         {
           "date": "1989",
-          "value": "21.986798"
+          "value": "21.993846"
         },
         {
           "date": "1990",
-          "value": "25.392807"
+          "value": "25.396248"
         },
         {
           "date": "1991",
-          "value": "16.813716"
+          "value": "16.80842"
         },
         {
           "date": "1992",
-          "value": "39.33748"
+          "value": "39.347276"
         },
         {
           "date": "1993",
-          "value": "39.762878"
+          "value": "39.773303"
         },
         {
           "date": "1994",
-          "value": "30.733455"
+          "value": "30.760908"
         },
         {
           "date": "1995",
-          "value": "16.182797"
+          "value": "16.191811"
         },
         {
           "date": "1996",
-          "value": "9.504531"
+          "value": "9.507173"
         },
         {
           "date": "1997",
-          "value": "6.640335"
+          "value": "6.643881"
         },
         {
           "date": "1998",
-          "value": "6.313151"
+          "value": "6.311832"
         },
         {
           "date": "1999",
-          "value": "6.187812"
+          "value": "6.187035"
         },
         {
           "date": "2000",
-          "value": "4.963142"
+          "value": "4.968353"
         },
         {
           "date": "2001",
-          "value": "4.686158"
+          "value": "4.684467"
         },
         {
           "date": "2002",
-          "value": "3.751645"
+          "value": "3.744202"
         },
         {
           "date": "2003",
-          "value": "3.900565"
+          "value": "3.900898"
         },
         {
           "date": "2004",
-          "value": "3.773577"
+          "value": "3.778213"
         },
         {
           "date": "2005",
-          "value": "3.986288"
+          "value": "3.984957"
         },
         {
           "date": "2006",
-          "value": "3.924177"
+          "value": "3.926461"
         },
         {
           "date": "2007",
-          "value": "4.18905"
+          "value": "4.190197"
         },
         {
           "date": "2008",
-          "value": "6.256572"
+          "value": "6.241765"
         },
         {
           "date": "2009",
-          "value": "2.641172"
+          "value": "2.669572"
         },
         {
           "date": "2010",
-          "value": "3.626575"
+          "value": "3.624103"
         },
         {
           "date": "2011",
-          "value": "4.949552"
+          "value": "4.933758"
         },
         {
           "date": "2012",
-          "value": "4.007413"
+          "value": "4.022944"
         },
         {
           "date": "2013",
-          "value": "3.550649"
+          "value": "3.556741"
         },
         {
           "date": "2014",
-          "value": "3.170929"
+          "value": "3.170863"
         },
         {
           "date": "2015",
-          "value": "2.720364"
+          "value": "2.720649"
         },
         {
           "date": "2016",
-          "value": "2.72158"
+          "value": "2.729528"
         },
         {
           "date": "2017",
-          "value": "3.265317"
+          "value": "3.257087"
         },
         {
           "date": "2018",
-          "value": "3.643548"
+          "value": "3.641758"
         },
         {
           "date": "2019",
-          "value": "3.558459"
+          "value": "3.555852"
         },
         {
           "date": "2020",
-          "value": "3.317146"
+          "value": "3.320617"
         },
         {
           "date": "2021",
-          "value": "4.706378"
+          "value": "4.694418"
         },
         {
           "date": "2022",
-          "value": "8.67364"
+          "value": "8.6667"
         },
         {
           "date": "2023",
-          "value": "6.749274"
+          "value": "6.745109"
         },
         {
           "date": "2024",
-          "value": "5.792186"
+          "value": "5.799324"
         },
         {
           "date": "2025",
-          "value": "4.133379"
+          "value": "4.131001"
         }
       ],
       "latest": {
         "date": "2025",
-        "value": "4.133379"
+        "value": "4.131001"
       },
       "context": "World consumer-price inflation (IMF WEO) \u2014 the global backdrop behind every central bank's rate decisions. The pre-pandemic norm was about 3-4%.",
       "read": "World consumer prices are rising 4.1% in 2025, easing from 5.8% the year before.",
