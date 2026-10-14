@@ -2,7 +2,7 @@
   "id": "housing-rent-shelter",
   "title": "Rent & Shelter",
   "accent": "#A78BFA",
-  "last_updated": "2026-09-11T16:58:49Z",
+  "last_updated": "2026-10-14T17:53:22Z",
   "status": "ok",
   "headline_read": "The rental market is balanced \u2014 rents are behaving.",
   "recessions": [
@@ -539,10 +539,6 @@
         {
           "date": "2011-07-01",
           "value": "1.6"
-        },
-        {
-          "date": "2011-08-01",
-          "value": "2.0"
         },
         {
           "date": "2011-09-01",
@@ -1259,10 +1255,14 @@
         {
           "date": "2026-08-01",
           "value": "2.8"
+        },
+        {
+          "date": "2026-09-01",
+          "value": "2.8"
         }
       ],
       "latest": {
-        "date": "2026-08-01",
+        "date": "2026-09-01",
         "value": "2.8"
       },
       "context": "How fast the rent tenants actually pay is rising versus a year ago, from the rent component of the Consumer Price Index. It moves slowly but relentlessly, and it is a third of core CPI.",
@@ -1726,10 +1726,6 @@
         {
           "date": "2011-07-01",
           "value": "1.2"
-        },
-        {
-          "date": "2011-08-01",
-          "value": "1.4"
         },
         {
           "date": "2011-09-01",
@@ -2446,21 +2442,25 @@
         {
           "date": "2026-08-01",
           "value": "3.1"
+        },
+        {
+          "date": "2026-09-01",
+          "value": "3.3"
         }
       ],
       "latest": {
-        "date": "2026-08-01",
-        "value": "3.1"
+        "date": "2026-09-01",
+        "value": "3.3"
       },
       "context": "How fast the implied rent on owner-occupied homes is rising \u2014 the largest single component of the CPI, and the bridge between home prices and inflation.",
-      "read": "Owners' equivalent rent costs are rising 3.1% a year.",
+      "read": "Owners' equivalent rent costs are rising 3.3% a year.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 38.0,
+        "p": 50.0,
         "since": 1984
       },
-      "scale_now": 3.1
+      "scale_now": 3.3
     },
     {
       "id": "rental-vacancy",
