@@ -2,7 +2,7 @@
   "id": "housing-affordability",
   "title": "Affordability & Financing",
   "accent": "#FBBF24",
-  "last_updated": "2026-10-13T19:48:52Z",
+  "last_updated": "2026-10-15T17:42:26Z",
   "status": "elevated",
   "headline_read": "Housing affordability is badly stretched.",
   "recessions": [
@@ -2166,8 +2166,8 @@
           "value": "3.94"
         },
         {
-          "date": "2011-10-13",
-          "value": "4.12"
+          "date": "2011-10-20",
+          "value": "4.11"
         },
         {
           "date": "2011-11-03",
@@ -2648,10 +2648,6 @@
         {
           "date": "2021-10-07",
           "value": "2.99"
-        },
-        {
-          "date": "2021-10-14",
-          "value": "3.05"
         },
         {
           "date": "2021-10-21",
@@ -3692,10 +3688,14 @@
         {
           "date": "2026-10-08",
           "value": "7.4"
+        },
+        {
+          "date": "2026-10-15",
+          "value": "7.4"
         }
       ],
       "latest": {
-        "date": "2026-10-08",
+        "date": "2026-10-15",
         "value": "7.4"
       },
       "context": "The average rate on a 30-year fixed home loan \u2014 the input behind the affordability squeeze above: it sets what a buyer can afford each month.",
