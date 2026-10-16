@@ -2,7 +2,7 @@
   "id": "global-trade-supply",
   "title": "Trade & Supply Chain",
   "accent": "#FBBF24",
-  "last_updated": "2026-10-06T18:51:41Z",
+  "last_updated": "2026-10-16T10:23:17Z",
   "status": "watch",
   "headline_read": "Trade frictions are building \u2014 supply chains or import costs bear watching.",
   "recessions": [
@@ -3754,8 +3754,8 @@
       "series_id": "XTEXVA01CNM667S",
       "observations": [
         {
-          "date": "2001-07-01",
-          "value": "5.35372"
+          "date": "2001-09-01",
+          "value": "4.85927"
         },
         {
           "date": "2001-10-01",
@@ -3912,10 +3912,6 @@
         {
           "date": "2011-04-01",
           "value": "30.76109"
-        },
-        {
-          "date": "2011-06-01",
-          "value": "17.42372"
         },
         {
           "date": "2011-07-01",
@@ -4443,211 +4439,219 @@
         },
         {
           "date": "2022-06-01",
-          "value": "17.35419"
+          "value": "14.57068"
         },
         {
           "date": "2022-07-01",
-          "value": "19.85795"
+          "value": "17.87767"
         },
         {
           "date": "2022-08-01",
-          "value": "6.67600"
+          "value": "5.13998"
         },
         {
           "date": "2022-09-01",
-          "value": "6.05991"
+          "value": "4.57711"
         },
         {
           "date": "2022-10-01",
-          "value": "0.51342"
+          "value": "-1.08934"
         },
         {
           "date": "2022-11-01",
-          "value": "-7.38571"
+          "value": "-8.91699"
         },
         {
           "date": "2022-12-01",
-          "value": "-7.73218"
+          "value": "-10.49915"
         },
         {
           "date": "2023-01-01",
-          "value": "-10.43177"
+          "value": "-12.84249"
         },
         {
           "date": "2023-02-01",
-          "value": "-0.61984"
+          "value": "-3.12022"
         },
         {
           "date": "2023-03-01",
-          "value": "12.71634"
+          "value": "8.02279"
         },
         {
           "date": "2023-04-01",
-          "value": "9.36890"
+          "value": "6.65114"
         },
         {
           "date": "2023-05-01",
-          "value": "-8.00115"
+          "value": "-8.83354"
         },
         {
           "date": "2023-06-01",
-          "value": "-13.98505"
+          "value": "-12.49578"
         },
         {
           "date": "2023-07-01",
-          "value": "-14.54548"
+          "value": "-13.41118"
         },
         {
           "date": "2023-08-01",
-          "value": "-9.16395"
+          "value": "-8.14498"
         },
         {
           "date": "2023-09-01",
-          "value": "-5.80137"
+          "value": "-5.32059"
         },
         {
           "date": "2023-10-01",
-          "value": "-8.12783"
+          "value": "-6.85282"
         },
         {
           "date": "2023-11-01",
-          "value": "-0.49721"
+          "value": "1.41629"
         },
         {
           "date": "2023-12-01",
-          "value": "0.60657"
+          "value": "3.59991"
         },
         {
           "date": "2024-01-01",
-          "value": "3.98457"
+          "value": "6.33618"
         },
         {
           "date": "2024-02-01",
-          "value": "0.41131"
+          "value": "3.64801"
         },
         {
           "date": "2024-03-01",
-          "value": "-10.61464"
+          "value": "-6.91215"
         },
         {
           "date": "2024-04-01",
-          "value": "-4.03248"
+          "value": "-1.83469"
         },
         {
           "date": "2024-05-01",
-          "value": "6.22415"
+          "value": "6.92991"
         },
         {
           "date": "2024-06-01",
-          "value": "9.90725"
+          "value": "10.43902"
         },
         {
           "date": "2024-07-01",
-          "value": "5.14051"
+          "value": "5.38948"
         },
         {
           "date": "2024-08-01",
-          "value": "9.48448"
+          "value": "9.70758"
         },
         {
           "date": "2024-09-01",
-          "value": "2.11085"
+          "value": "2.91757"
         },
         {
           "date": "2024-10-01",
-          "value": "11.93678"
+          "value": "12.11994"
         },
         {
           "date": "2024-11-01",
-          "value": "8.16111"
+          "value": "7.75483"
         },
         {
           "date": "2024-12-01",
-          "value": "9.15803"
+          "value": "9.28741"
         },
         {
           "date": "2025-01-01",
-          "value": "5.40622"
+          "value": "5.76089"
         },
         {
           "date": "2025-02-01",
-          "value": "0.77457"
+          "value": "-0.03899"
         },
         {
           "date": "2025-03-01",
-          "value": "11.57449"
+          "value": "11.48261"
         },
         {
           "date": "2025-04-01",
-          "value": "7.56049"
+          "value": "7.63505"
         },
         {
           "date": "2025-05-01",
-          "value": "5.44495"
+          "value": "5.54828"
         },
         {
           "date": "2025-06-01",
-          "value": "4.28748"
+          "value": "4.29980"
         },
         {
           "date": "2025-07-01",
-          "value": "7.37503"
+          "value": "7.30444"
         },
         {
           "date": "2025-08-01",
-          "value": "5.28283"
+          "value": "5.24771"
         },
         {
           "date": "2025-09-01",
-          "value": "7.35706"
+          "value": "7.34101"
         },
         {
           "date": "2025-10-01",
-          "value": "-0.61436"
+          "value": "-0.69158"
         },
         {
           "date": "2025-11-01",
-          "value": "6.80459"
+          "value": "6.83628"
         },
         {
           "date": "2025-12-01",
-          "value": "5.24637"
+          "value": "5.09054"
         },
         {
           "date": "2026-01-01",
-          "value": "10.99186"
+          "value": "11.12414"
         },
         {
           "date": "2026-02-01",
-          "value": "39.63637"
+          "value": "39.85396"
         },
         {
           "date": "2026-03-01",
-          "value": "0.92848"
+          "value": "1.19964"
         },
         {
           "date": "2026-04-01",
-          "value": "13.75159"
+          "value": "13.86598"
         },
         {
           "date": "2026-05-01",
-          "value": "20.45306"
+          "value": "20.49333"
         },
         {
           "date": "2026-06-01",
-          "value": "25.38658"
+          "value": "25.48249"
+        },
+        {
+          "date": "2026-07-01",
+          "value": "23.90009"
+        },
+        {
+          "date": "2026-08-01",
+          "value": "24.89603"
         }
       ],
       "latest": {
-        "date": "2026-06-01",
-        "value": "25.38658"
+        "date": "2026-08-01",
+        "value": "24.89603"
       },
       "context": "The growth of China's exports versus a year ago \u2014 the single best pulse on global goods demand, since China ships roughly a seventh of the world's exports.",
-      "read": "China's export trade is rising 25.4% a year.",
+      "read": "China's export trade is rising 24.9% a year.",
       "signal_status": "info",
       "value_format": "decimal",
       "percentile": {
-        "p": 73.7,
+        "p": 73.0,
         "since": 2001
       },
       "no_severity_reason": "Shown for context \u2014 a noisy global-demand pulse the lens's scored indicators read more cleanly."
