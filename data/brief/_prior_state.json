@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-10-10T11:39:07Z",
+  "captured_at": "2026-10-16T17:19:59Z",
   "statuses": {
     "recession-watch": "ok",
     "cost-of-money": "watch",
@@ -32,7 +32,7 @@
     "housing-rent-shelter": "ok",
     "global-dollar-currencies": "ok",
     "global-growth": "ok",
-    "global-trade-supply": "watch",
+    "global-trade-supply": "elevated",
     "global-uncertainty": "elevated"
   }
 }

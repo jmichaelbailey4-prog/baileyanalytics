@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-14T10:55:19Z",
+  "last_updated": "2026-10-16T17:17:36Z",
   "status": "watch",
   "lenses": [
     {
@@ -132,8 +132,8 @@
       "id": "global-trade-supply",
       "title": "Trade & Supply Chain",
       "accent": "#FBBF24",
-      "status": "watch",
-      "headline_read": "Trade frictions are building \u2014 supply chains or import costs bear watching.",
+      "status": "elevated",
+      "headline_read": "Global trade is under real strain \u2014 supply chains or import costs are stressed.",
       "key_stats": [
         {
           "k": "Supply chain",
@@ -143,8 +143,8 @@
         },
         {
           "k": "Import prices",
-          "v": "6.95%",
-          "d": "0.86%",
+          "v": "8.10%",
+          "d": "1.36%",
           "dir": "up"
         }
       ],

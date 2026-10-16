@@ -1,62 +1,18 @@
 {
-  "generated_at": "2026-10-16T10:24:37Z",
-  "transitions": [],
-  "top_moves": [
+  "generated_at": "2026-10-16T17:19:59Z",
+  "transitions": [
     {
-      "lens_id": "market-risk-sentiment",
-      "lens_title": "Risk Sentiment",
-      "category": "markets",
-      "href": "/dashboards/markets/risk-sentiment.html",
-      "headline": "Markets are calm \u2014 volatility and credit stress are low.",
-      "accent": "#FB7185",
-      "sparkline": [
-        16.01,
-        15.13,
-        15.85,
-        15.45,
-        15.21,
-        14.51,
-        14.43,
-        14.92,
-        16.34,
-        15.2,
-        14.32,
-        14.53,
-        15.3,
-        15.72,
-        16.46,
-        17.84,
-        15.84,
-        17.1,
-        17.2,
-        17.71,
-        15.44,
-        14.81,
-        14.87,
-        14.21,
-        15.18,
-        15.67,
-        14.87,
-        16.07,
-        16.04,
-        16.34,
-        16.39,
-        15.31,
-        15.52,
-        15.01,
-        15.08,
-        15.41,
-        14.84,
-        15.21,
-        15.27,
-        16.87
-      ],
-      "stat_label": "VIX",
-      "stat_value": "16.87",
-      "delta": "1.60",
-      "dir": "up",
-      "why": "VIX: up 3 readings in a row."
-    },
+      "lens_id": "global-trade-supply",
+      "lens_title": "Trade & Supply Chain",
+      "category": "global",
+      "href": "/dashboards/global/trade-supply.html",
+      "from_status": "watch",
+      "to_status": "elevated",
+      "direction": "worsening",
+      "headline": "Global trade is under real strain \u2014 supply chains or import costs are stressed."
+    }
+  ],
+  "top_moves": [
     {
       "lens_id": "business-credit",
       "lens_title": "Business Credit",
@@ -532,8 +488,8 @@
       "lens_title": "Trade & Supply Chain",
       "category": "global",
       "href": "/dashboards/global/trade-supply.html",
-      "status": "watch",
-      "headline": "Trade frictions are building \u2014 supply chains or import costs bear watching."
+      "status": "elevated",
+      "headline": "Global trade is under real strain \u2014 supply chains or import costs are stressed."
     },
     {
       "lens_id": "global-uncertainty",
@@ -546,8 +502,8 @@
   ],
   "status_counts": {
     "ok": 17,
-    "watch": 8,
-    "elevated": 4,
+    "watch": 7,
+    "elevated": 5,
     "alert": 2,
     "neutral": 2
   },
@@ -643,6 +599,14 @@
       "headline": "Housing supply is out of balance \u2014 inventory or construction is strained."
     },
     {
+      "lens_id": "global-trade-supply",
+      "lens_title": "Trade & Supply Chain",
+      "category": "global",
+      "href": "/dashboards/global/trade-supply.html",
+      "status": "elevated",
+      "headline": "Global trade is under real strain \u2014 supply chains or import costs are stressed."
+    },
+    {
       "lens_id": "global-uncertainty",
       "lens_title": "Uncertainty & Risk",
       "category": "global",
@@ -705,14 +669,6 @@
       "href": "/dashboards/business/credit.html",
       "status": "watch",
       "headline": "Business credit bears watching \u2014 conditions are tightening at the margin."
-    },
-    {
-      "lens_id": "global-trade-supply",
-      "lens_title": "Trade & Supply Chain",
-      "category": "global",
-      "href": "/dashboards/global/trade-supply.html",
-      "status": "watch",
-      "headline": "Trade frictions are building \u2014 supply chains or import costs bear watching."
     }
   ],
   "categories": [

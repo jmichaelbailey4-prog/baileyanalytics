@@ -13730,7 +13730,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 1.1532599999999995,
-      "revised_to": 6.09065
+      "revised_to": 6.01983
     },
     "prev_period": "2026-06-01"
   },
@@ -20835,7 +20835,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 1.00134,
-      "revised_to": null
+      "revised_to": 6.73759
     },
     "prev_period": "2026-07-01"
   },
@@ -27183,7 +27183,7 @@
       "direction_hit": true,
       "status_hit": true,
       "naive_error": 6.300000000000182,
-      "revised_to": null
+      "revised_to": 4179.4
     },
     "now_value": 4209.2,
     "now_date": "2026-10-09"
@@ -27422,5 +27422,44 @@
       "revised_to": null
     },
     "prev_period": "2026-06-01"
+  },
+  {
+    "id": "global/global-trade-supply/import-prices@2026-09-01",
+    "key": "global/global-trade-supply/import-prices",
+    "category": "global",
+    "lens": "global-trade-supply",
+    "indicator": "import-prices",
+    "series_id": "IR",
+    "horizon": "next-print",
+    "target_period": "2026-09-01",
+    "due": "2026-10-15",
+    "made_at": "2026-09-16T17:35:13Z",
+    "model": "ets@1",
+    "point": 7.3586,
+    "lo": 5.9331,
+    "hi": 8.8039,
+    "unit": "%",
+    "value_format": "decimal",
+    "prev_value": 6.95035,
+    "why": "This projects the recent level and trend forward one month.",
+    "implied_status": "watch",
+    "current_status": "watch",
+    "descriptive": false,
+    "market_price": false,
+    "title": "Import Prices \u00b7 year-over-year",
+    "short": "Import prices",
+    "lens_title": "Trade & Supply Chain",
+    "href": "/dashboards/global/trade-supply.html",
+    "grade": {
+      "actual": 8.09659,
+      "graded_at": "2026-10-16T17:19:38Z",
+      "hit": true,
+      "abs_error": 0.7379900000000008,
+      "direction_hit": true,
+      "status_hit": false,
+      "naive_error": 1.1462400000000006,
+      "revised_to": null
+    },
+    "prev_period": "2026-08-01"
   }
 ]

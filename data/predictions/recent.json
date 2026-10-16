@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-16T10:24:37Z",
+  "generated_at": "2026-10-16T17:19:59Z",
   "last": {
     "business/business-credit/ci-loan-growth": {
       "id": "business/business-credit/ci-loan-growth@2026-09-01",
@@ -199,24 +199,24 @@
       "prev_period": "2026-07-01"
     },
     "global/global-trade-supply/import-prices": {
-      "id": "global/global-trade-supply/import-prices@2026-08-01",
+      "id": "global/global-trade-supply/import-prices@2026-09-01",
       "key": "global/global-trade-supply/import-prices",
       "category": "global",
       "lens": "global-trade-supply",
       "indicator": "import-prices",
       "series_id": "IR",
       "horizon": "next-print",
-      "target_period": "2026-08-01",
-      "due": "2026-09-15",
-      "made_at": "2026-08-18T13:53:25Z",
+      "target_period": "2026-09-01",
+      "due": "2026-10-15",
+      "made_at": "2026-09-16T17:35:13Z",
       "model": "ets@1",
-      "point": 5.6209,
-      "lo": 4.3159,
-      "hi": 7.0368,
+      "point": 7.3586,
+      "lo": 5.9331,
+      "hi": 8.8039,
       "unit": "%",
       "value_format": "decimal",
-      "prev_value": 5.94901,
-      "why": "Import prices: down 2 straight months. This projects the recent level and trend forward one month.",
+      "prev_value": 6.95035,
+      "why": "This projects the recent level and trend forward one month.",
       "implied_status": "watch",
       "current_status": "watch",
       "descriptive": false,
@@ -226,16 +226,16 @@
       "lens_title": "Trade & Supply Chain",
       "href": "/dashboards/global/trade-supply.html",
       "grade": {
-        "actual": 6.95035,
-        "graded_at": "2026-09-16T17:35:13Z",
+        "actual": 8.09659,
+        "graded_at": "2026-10-16T17:19:38Z",
         "hit": true,
-        "abs_error": 1.3294500000000005,
-        "direction_hit": false,
-        "status_hit": true,
-        "naive_error": 1.00134,
+        "abs_error": 0.7379900000000008,
+        "direction_hit": true,
+        "status_hit": false,
+        "naive_error": 1.1462400000000006,
         "revised_to": null
       },
-      "prev_period": "2026-07-01"
+      "prev_period": "2026-08-01"
     },
     "markets/market-risk-sentiment/vix": {
       "id": "markets/market-risk-sentiment/vix@2026-10-09",
@@ -1096,7 +1096,7 @@
         "direction_hit": true,
         "status_hit": true,
         "naive_error": 6.300000000000182,
-        "revised_to": null
+        "revised_to": 4179.4
       },
       "now_value": 4209.2,
       "now_date": "2026-10-09"
@@ -4261,6 +4261,45 @@
   },
   "feed": [
     {
+      "id": "global/global-trade-supply/import-prices@2026-09-01",
+      "key": "global/global-trade-supply/import-prices",
+      "category": "global",
+      "lens": "global-trade-supply",
+      "indicator": "import-prices",
+      "series_id": "IR",
+      "horizon": "next-print",
+      "target_period": "2026-09-01",
+      "due": "2026-10-15",
+      "made_at": "2026-09-16T17:35:13Z",
+      "model": "ets@1",
+      "point": 7.3586,
+      "lo": 5.9331,
+      "hi": 8.8039,
+      "unit": "%",
+      "value_format": "decimal",
+      "prev_value": 6.95035,
+      "why": "This projects the recent level and trend forward one month.",
+      "implied_status": "watch",
+      "current_status": "watch",
+      "descriptive": false,
+      "market_price": false,
+      "title": "Import Prices \u00b7 year-over-year",
+      "short": "Import prices",
+      "lens_title": "Trade & Supply Chain",
+      "href": "/dashboards/global/trade-supply.html",
+      "grade": {
+        "actual": 8.09659,
+        "graded_at": "2026-10-16T17:19:38Z",
+        "hit": true,
+        "abs_error": 0.7379900000000008,
+        "direction_hit": true,
+        "status_hit": false,
+        "naive_error": 1.1462400000000006,
+        "revised_to": null
+      },
+      "prev_period": "2026-08-01"
+    },
+    {
       "id": "global/global-trade-supply/china-exports@2026-07-01",
       "key": "global/global-trade-supply/china-exports",
       "category": "global",
@@ -4530,7 +4569,7 @@
         "direction_hit": true,
         "status_hit": true,
         "naive_error": 6.300000000000182,
-        "revised_to": null
+        "revised_to": 4179.4
       },
       "now_value": 4209.2,
       "now_date": "2026-10-09"
@@ -6190,45 +6229,6 @@
         "revised_to": null
       },
       "prev_period": "2026-09-25"
-    },
-    {
-      "id": "consumer/consumer-credit/auto-loan-rate@2026-08-01",
-      "key": "consumer/consumer-credit/auto-loan-rate",
-      "category": "consumer",
-      "lens": "consumer-credit",
-      "indicator": "auto-loan-rate",
-      "series_id": "TERMCBAUTO48NS",
-      "horizon": "next-print",
-      "target_period": "2026-08-01",
-      "due": "2026-11-28",
-      "made_at": "2026-07-09T09:28:50Z",
-      "model": "ets-seasonal@1",
-      "point": 7.4579,
-      "lo": 7.2309,
-      "hi": 7.8009,
-      "unit": "%",
-      "value_format": "decimal",
-      "prev_value": 7.47,
-      "why": "This projects the recent trend with the usual seasonal pattern for the quarter.",
-      "implied_status": "info",
-      "current_status": "info",
-      "descriptive": true,
-      "market_price": false,
-      "title": "New-Car Loan Rate \u00b7 48-month",
-      "short": "Auto loan rate",
-      "lens_title": "Consumer Credit Stress",
-      "href": "/dashboards/consumer/credit-stress.html",
-      "grade": {
-        "actual": 7.47,
-        "graded_at": "2026-10-07T19:20:04Z",
-        "hit": true,
-        "abs_error": 0.012099999999999334,
-        "direction_hit": false,
-        "status_hit": true,
-        "naive_error": 0.0,
-        "revised_to": null
-      },
-      "prev_period": "2026-05-01"
     }
   ]
 }
