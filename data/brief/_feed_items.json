@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-10-17",
+    "title": "Today's Brief \u2014 2 alert \u00b7 5 elevated \u00b7 7 on watch",
+    "description": "Asset-Class Scoreboard: S&P 500 7,659 (\u25bc85)\nBusiness Credit: Baa spread 1.48% (\u25bc0.16%)\nConcentrations & Funding: Uninsured dep. 41.64% (\u25b21.16%)\nHousehold Income & Savings: Saving rate 4.10% (\u25bc0.50%)\nThe Cost of Money: Fed funds 3.75% (\u25b20.12%)"
+  },
+  {
     "date": "2026-10-16",
     "title": "Today's Brief \u2014 2 alert \u00b7 5 elevated \u00b7 7 on watch",
     "description": "Trade & Supply Chain: watch \u2192 elevated \u2014 Global trade is under real strain \u2014 supply chains or import costs are stressed.\nBusiness Credit: Baa spread 1.48% (\u25bc0.16%)\nConcentrations & Funding: Uninsured dep. 41.64% (\u25b21.16%)\nHousehold Income & Savings: Saving rate 4.10% (\u25bc0.50%)\nThe Cost of Money: Fed funds 3.75% (\u25b20.12%)"
@@ -143,10 +148,5 @@
     "date": "2026-09-18",
     "title": "Today's Brief \u2014 1 alert \u00b7 5 elevated \u00b7 7 on watch",
     "description": "Risk Sentiment: VIX 15.44 (\u25bc2.27)\nConcentrations & Funding: Uninsured dep. 41.64% (\u25b21.16%)\nAsset-Class Scoreboard: S&P 500 7,638 (\u25b286)\nSupply & Construction: Months' supply 9.60 months (\u25b21.10 months)\nBusiness Formation: Applications 11.40% (\u25bc11.90%)"
-  },
-  {
-    "date": "2026-09-17",
-    "title": "Today's Brief \u2014 1 alert \u00b7 5 elevated \u00b7 7 on watch",
-    "description": "Recession Watch: Yield curve 0.27% (\u25bc0.06%)\nConcentrations & Funding: Uninsured dep. 41.64% (\u25b21.16%)\nSupply & Construction: Months' supply 9.60 months (\u25b21.10 months)\nBusiness Formation: Applications 11.40% (\u25bc11.90%)\nConsumer Sentiment: Sentiment 55.20 (\u25b25.70)"
   }
 ]

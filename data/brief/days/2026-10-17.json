@@ -1,0 +1,782 @@
+{
+  "generated_at": "2026-10-17T10:02:16Z",
+  "transitions": [],
+  "top_moves": [
+    {
+      "lens_id": "market-scoreboard",
+      "lens_title": "Asset-Class Scoreboard",
+      "category": "markets",
+      "href": "/dashboards/markets/scoreboard.html",
+      "headline": "How the major asset classes are moving right now.",
+      "accent": "#22D3EE",
+      "sparkline": [
+        7674.37,
+        7652.86,
+        7677.28,
+        7675.7,
+        7730.99,
+        7711.76,
+        7686.14,
+        7631.47,
+        7666.6,
+        7747.71,
+        7718.6,
+        7673.52,
+        7636.36,
+        7591.7,
+        7656.98,
+        7619.98,
+        7585.73,
+        7551.81,
+        7637.76,
+        7650.5,
+        7764.7,
+        7764.64,
+        7706.03,
+        7704.13,
+        7743.41,
+        7683.69,
+        7670.84,
+        7651.54,
+        7666.45,
+        7722.72,
+        7773.95,
+        7818.93,
+        7801.77,
+        7765.36,
+        7811.54,
+        7807.24,
+        7805.45,
+        7718.94,
+        7744.06,
+        7659.44
+      ],
+      "stat_label": "S&P 500",
+      "stat_value": "7,659",
+      "delta": "85",
+      "dir": "down",
+      "why": ""
+    },
+    {
+      "lens_id": "business-credit",
+      "lens_title": "Business Credit",
+      "category": "business",
+      "href": "/dashboards/business/credit.html",
+      "headline": "Business credit bears watching \u2014 conditions are tightening at the margin.",
+      "accent": "#F87171",
+      "sparkline": [
+        2.0,
+        1.84,
+        1.85,
+        1.78,
+        1.83,
+        1.79,
+        1.62,
+        1.62,
+        1.56,
+        1.54,
+        1.46,
+        1.47,
+        1.51,
+        1.59,
+        1.73,
+        1.7,
+        1.53,
+        1.42,
+        1.41,
+        1.45,
+        1.47,
+        1.65,
+        1.9,
+        1.87,
+        1.77,
+        1.71,
+        1.74,
+        1.71,
+        1.68,
+        1.77,
+        1.76,
+        1.67,
+        1.68,
+        1.79,
+        1.71,
+        1.62,
+        1.53,
+        1.59,
+        1.64,
+        1.48
+      ],
+      "stat_label": "Baa spread",
+      "stat_value": "1.48%",
+      "delta": "0.16%",
+      "dir": "down",
+      "why": ""
+    },
+    {
+      "lens_id": "bank-concentrations-funding",
+      "lens_title": "Concentrations & Funding",
+      "category": "banking",
+      "href": "/dashboards/banking/concentrations-funding.html",
+      "headline": "Some concentration and funding risks are building.",
+      "accent": "#A78BFA",
+      "sparkline": [
+        38.8041,
+        39.0264,
+        38.7255,
+        38.3209,
+        38.6403,
+        39.1764,
+        38.6526,
+        38.578,
+        39.0225,
+        39.3634,
+        38.5975,
+        38.8443,
+        39.6742,
+        40.1367,
+        41.6751,
+        42.1284,
+        42.2962,
+        42.8583,
+        42.8043,
+        43.6794,
+        43.7072,
+        44.4271,
+        43.7206,
+        43.2841,
+        42.6432,
+        42.2699,
+        39.9156,
+        39.0794,
+        39.2695,
+        38.1606,
+        38.1562,
+        38.0584,
+        38.5874,
+        39.3092,
+        39.0365,
+        39.5994,
+        39.8557,
+        40.2287,
+        40.4797,
+        41.641
+      ],
+      "stat_label": "Uninsured dep.",
+      "stat_value": "41.64%",
+      "delta": "1.16%",
+      "dir": "up",
+      "why": "Uninsured dep.: up 5 readings in a row."
+    },
+    {
+      "lens_id": "consumer-income-savings",
+      "lens_title": "Household Income & Savings",
+      "category": "consumer",
+      "href": "/dashboards/consumer/income-savings.html",
+      "headline": "Household finances are tightening \u2014 cushions are shrinking.",
+      "accent": "#FBBF24",
+      "sparkline": [
+        6.4,
+        6.3,
+        6.2,
+        6.3,
+        6.0,
+        6.2,
+        6.4,
+        6.6,
+        7.2,
+        6.9,
+        6.7,
+        6.7,
+        6.6,
+        6.6,
+        6.2,
+        6.2,
+        5.7,
+        5.8,
+        5.7,
+        5.1,
+        5.7,
+        5.7,
+        5.7,
+        6.2,
+        5.7,
+        5.5,
+        5.3,
+        5.2,
+        5.1,
+        4.9,
+        4.9,
+        5.0,
+        5.6,
+        5.3,
+        5.1,
+        4.4,
+        4.4,
+        4.4,
+        4.6,
+        4.1
+      ],
+      "stat_label": "Saving rate",
+      "stat_value": "4.10%",
+      "delta": "0.50%",
+      "dir": "down",
+      "why": "Saving rate: its lowest in this view."
+    },
+    {
+      "lens_id": "cost-of-money",
+      "lens_title": "The Cost of Money",
+      "category": "economic",
+      "href": "/dashboards/cost-of-money.html",
+      "headline": "Borrowing is still expensive \u2014 rates remain elevated.",
+      "accent": "#34D399",
+      "sparkline": [
+        5.08,
+        5.12,
+        5.33,
+        5.33,
+        5.33,
+        5.33,
+        5.33,
+        5.33,
+        5.33,
+        5.33,
+        5.33,
+        5.33,
+        5.33,
+        5.33,
+        5.33,
+        5.13,
+        4.83,
+        4.64,
+        4.48,
+        4.33,
+        4.33,
+        4.33,
+        4.33,
+        4.33,
+        4.33,
+        4.33,
+        4.33,
+        4.22,
+        4.09,
+        3.88,
+        3.72,
+        3.64,
+        3.64,
+        3.64,
+        3.64,
+        3.63,
+        3.63,
+        3.63,
+        3.63,
+        3.75
+      ],
+      "stat_label": "Fed funds",
+      "stat_value": "3.75%",
+      "delta": "0.12%",
+      "dir": "up",
+      "why": ""
+    }
+  ],
+  "lenses": [
+    {
+      "lens_id": "recession-watch",
+      "lens_title": "Recession Watch",
+      "category": "economic",
+      "href": "/dashboards/recession-watch.html",
+      "status": "ok",
+      "headline": "The economy looks steady \u2014 no major recession signals right now."
+    },
+    {
+      "lens_id": "cost-of-money",
+      "lens_title": "The Cost of Money",
+      "category": "economic",
+      "href": "/dashboards/cost-of-money.html",
+      "status": "watch",
+      "headline": "Borrowing is still expensive \u2014 rates remain elevated."
+    },
+    {
+      "lens_id": "job-market",
+      "lens_title": "The Job Market",
+      "category": "economic",
+      "href": "/dashboards/job-market.html",
+      "status": "watch",
+      "headline": "The job market is cooling \u2014 still solid, but losing momentum."
+    },
+    {
+      "lens_id": "cost-of-living",
+      "lens_title": "The Cost of Living",
+      "category": "economic",
+      "href": "/dashboards/cost-of-living.html",
+      "status": "watch",
+      "headline": "Inflation has cooled but isn't beaten \u2014 still above target."
+    },
+    {
+      "lens_id": "fiscal-health",
+      "lens_title": "Fiscal Health",
+      "category": "economic",
+      "href": "/dashboards/fiscal-health.html",
+      "status": "elevated",
+      "headline": "The U.S. is borrowing heavily \u2014 debt and interest costs are climbing."
+    },
+    {
+      "lens_id": "consumer-spending",
+      "lens_title": "Consumer Spending",
+      "category": "consumer",
+      "href": "/dashboards/consumer/spending.html",
+      "status": "ok",
+      "headline": "Consumers are still spending at a healthy pace."
+    },
+    {
+      "lens_id": "consumer-credit",
+      "lens_title": "Consumer Credit Stress",
+      "category": "consumer",
+      "href": "/dashboards/consumer/credit-stress.html",
+      "status": "watch",
+      "headline": "Consumer credit bears watching \u2014 debt loads are creeping up."
+    },
+    {
+      "lens_id": "consumer-income-savings",
+      "lens_title": "Household Income & Savings",
+      "category": "consumer",
+      "href": "/dashboards/consumer/income-savings.html",
+      "status": "watch",
+      "headline": "Household finances are tightening \u2014 cushions are shrinking."
+    },
+    {
+      "lens_id": "consumer-sentiment",
+      "lens_title": "Consumer Sentiment",
+      "category": "consumer",
+      "href": "/dashboards/consumer/sentiment.html",
+      "status": "alert",
+      "headline": "Consumers are deeply pessimistic \u2014 sentiment is near record lows."
+    },
+    {
+      "lens_id": "bank-asset-quality",
+      "lens_title": "Asset Quality",
+      "category": "banking",
+      "href": "/dashboards/banking/asset-quality.html",
+      "status": "ok",
+      "headline": "Bank loan quality is strong \u2014 few loans are going bad."
+    },
+    {
+      "lens_id": "bank-profitability",
+      "lens_title": "Bank Profitability",
+      "category": "banking",
+      "href": "/dashboards/banking/profitability.html",
+      "status": "ok",
+      "headline": "Banks are solidly profitable."
+    },
+    {
+      "lens_id": "bank-capital-solvency",
+      "lens_title": "Capital & Solvency",
+      "category": "banking",
+      "href": "/dashboards/banking/capital-solvency.html",
+      "status": "ok",
+      "headline": "Banks are well-capitalized."
+    },
+    {
+      "lens_id": "bank-concentrations-funding",
+      "lens_title": "Concentrations & Funding",
+      "category": "banking",
+      "href": "/dashboards/banking/concentrations-funding.html",
+      "status": "watch",
+      "headline": "Some concentration and funding risks are building."
+    },
+    {
+      "lens_id": "business-profitability",
+      "lens_title": "Corporate Profits",
+      "category": "business",
+      "href": "/dashboards/business/profitability.html",
+      "status": "ok",
+      "headline": "Corporate America is profitable \u2014 earnings are growing."
+    },
+    {
+      "lens_id": "business-formation",
+      "lens_title": "Business Formation",
+      "category": "business",
+      "href": "/dashboards/business/formation.html",
+      "status": "ok",
+      "headline": "New businesses are forming at a healthy clip."
+    },
+    {
+      "lens_id": "business-investment",
+      "lens_title": "Business Investment",
+      "category": "business",
+      "href": "/dashboards/business/investment.html",
+      "status": "ok",
+      "headline": "Businesses are investing \u2014 orders and sales are growing."
+    },
+    {
+      "lens_id": "business-credit",
+      "lens_title": "Business Credit",
+      "category": "business",
+      "href": "/dashboards/business/credit.html",
+      "status": "watch",
+      "headline": "Business credit bears watching \u2014 conditions are tightening at the margin."
+    },
+    {
+      "lens_id": "market-risk-sentiment",
+      "lens_title": "Risk Sentiment",
+      "category": "markets",
+      "href": "/dashboards/markets/risk-sentiment.html",
+      "status": "ok",
+      "headline": "Markets are calm \u2014 volatility and credit stress are low."
+    },
+    {
+      "lens_id": "market-scoreboard",
+      "lens_title": "Asset-Class Scoreboard",
+      "category": "markets",
+      "href": "/dashboards/markets/scoreboard.html",
+      "status": "neutral",
+      "headline": "How the major asset classes are moving right now."
+    },
+    {
+      "lens_id": "market-liquidity",
+      "lens_title": "Liquidity & the Fed",
+      "category": "markets",
+      "href": "/dashboards/markets/liquidity.html",
+      "status": "ok",
+      "headline": "Liquidity is ample \u2014 no monetary squeeze in sight."
+    },
+    {
+      "lens_id": "crypto-structure",
+      "lens_title": "Crypto Market Structure",
+      "category": "markets",
+      "href": "/dashboards/markets/crypto-structure.html",
+      "status": "neutral",
+      "headline": "How capital is rotating across the crypto market."
+    },
+    {
+      "lens_id": "energy-oil-fuels",
+      "lens_title": "Oil & Fuels",
+      "category": "energy",
+      "href": "/dashboards/energy/oil-fuels.html",
+      "status": "alert",
+      "headline": "Fuel costs are spiking \u2014 acute pressure at the pump."
+    },
+    {
+      "lens_id": "energy-natural-gas",
+      "lens_title": "Natural Gas",
+      "category": "energy",
+      "href": "/dashboards/energy/natural-gas.html",
+      "status": "ok",
+      "headline": "Natural gas costs are stable or easing."
+    },
+    {
+      "lens_id": "energy-electricity",
+      "lens_title": "Electricity & the Grid",
+      "category": "energy",
+      "href": "/dashboards/energy/electricity.html",
+      "status": "ok",
+      "headline": "Power bills are steady."
+    },
+    {
+      "lens_id": "energy-commodities",
+      "lens_title": "Commodities & Materials",
+      "category": "energy",
+      "href": "/dashboards/energy/commodities.html",
+      "status": "ok",
+      "headline": "Commodity costs are stable or easing."
+    },
+    {
+      "lens_id": "housing-home-prices",
+      "lens_title": "Home-Price Stability",
+      "category": "housing",
+      "href": "/dashboards/housing/home-prices.html",
+      "status": "ok",
+      "headline": "The housing market looks balanced \u2014 prices and sales are steady."
+    },
+    {
+      "lens_id": "housing-affordability",
+      "lens_title": "Affordability & Financing",
+      "category": "housing",
+      "href": "/dashboards/housing/affordability.html",
+      "status": "elevated",
+      "headline": "Housing affordability is badly stretched."
+    },
+    {
+      "lens_id": "housing-supply-construction",
+      "lens_title": "Supply & Construction",
+      "category": "housing",
+      "href": "/dashboards/housing/supply-construction.html",
+      "status": "elevated",
+      "headline": "Housing supply is out of balance \u2014 inventory or construction is strained."
+    },
+    {
+      "lens_id": "housing-rent-shelter",
+      "lens_title": "Rent & Shelter",
+      "category": "housing",
+      "href": "/dashboards/housing/rent-shelter.html",
+      "status": "ok",
+      "headline": "The rental market is balanced \u2014 rents are behaving."
+    },
+    {
+      "lens_id": "global-dollar-currencies",
+      "lens_title": "The Dollar & Currencies",
+      "category": "global",
+      "href": "/dashboards/global/dollar-currencies.html",
+      "status": "ok",
+      "headline": "Currency markets are calm \u2014 the dollar is near where it was a year ago."
+    },
+    {
+      "lens_id": "global-growth",
+      "lens_title": "Global Growth",
+      "category": "global",
+      "href": "/dashboards/global/growth.html",
+      "status": "ok",
+      "headline": "The world economy is growing around its long-run trend."
+    },
+    {
+      "lens_id": "global-trade-supply",
+      "lens_title": "Trade & Supply Chain",
+      "category": "global",
+      "href": "/dashboards/global/trade-supply.html",
+      "status": "elevated",
+      "headline": "Global trade is under real strain \u2014 supply chains or import costs are stressed."
+    },
+    {
+      "lens_id": "global-uncertainty",
+      "lens_title": "Uncertainty & Risk",
+      "category": "global",
+      "href": "/dashboards/global/uncertainty.html",
+      "status": "elevated",
+      "headline": "Policy uncertainty is high \u2014 what governments do next is a major source of risk."
+    }
+  ],
+  "status_counts": {
+    "ok": 17,
+    "watch": 7,
+    "elevated": 5,
+    "alert": 2,
+    "neutral": 2
+  },
+  "verdict": {
+    "status": "watch",
+    "shape": "contained-pressure",
+    "sentence": "Pressure is real but contained: household finances are stretched thin and energy and commodity costs are squeezing budgets; meanwhile banks are solid and markets are calm.",
+    "short": "Holding up, but household finances are stretched thin."
+  },
+  "watching": [
+    {
+      "key": "energy/energy-electricity/electricity-price",
+      "indicator": "electricity-price",
+      "lens": "energy-electricity",
+      "category": "energy",
+      "title": "Retail Electricity \u00b7 Residential",
+      "lens_title": "Electricity & the Grid",
+      "due": "2026-09-15",
+      "point_fmt": "18.51\u00a2/kWh",
+      "implied_status": "watch",
+      "current_status": "ok",
+      "change": true,
+      "href": "/dashboards/energy/electricity.html"
+    },
+    {
+      "key": "energy/energy-oil-fuels/gasoline",
+      "indicator": "gasoline",
+      "lens": "energy-oil-fuels",
+      "category": "energy",
+      "title": "Retail Gasoline \u00b7 Regular",
+      "lens_title": "Oil & Fuels",
+      "due": "2026-10-24",
+      "point_fmt": "$4.30",
+      "implied_status": "alert",
+      "current_status": "elevated",
+      "change": true,
+      "href": "/dashboards/energy/oil-fuels.html"
+    },
+    {
+      "key": "consumer/consumer-sentiment/inflation-expectations",
+      "indicator": "inflation-expectations",
+      "lens": "consumer-sentiment",
+      "category": "consumer",
+      "title": "Inflation Expectations \u00b7 1-year ahead",
+      "lens_title": "Consumer Sentiment",
+      "due": "2026-10-15",
+      "point_fmt": "3.94%",
+      "implied_status": "watch",
+      "current_status": "elevated",
+      "change": true,
+      "href": "/dashboards/consumer/sentiment.html"
+    }
+  ],
+  "pressure": [
+    {
+      "lens_id": "consumer-sentiment",
+      "lens_title": "Consumer Sentiment",
+      "category": "consumer",
+      "href": "/dashboards/consumer/sentiment.html",
+      "status": "alert",
+      "headline": "Consumers are deeply pessimistic \u2014 sentiment is near record lows."
+    },
+    {
+      "lens_id": "energy-oil-fuels",
+      "lens_title": "Oil & Fuels",
+      "category": "energy",
+      "href": "/dashboards/energy/oil-fuels.html",
+      "status": "alert",
+      "headline": "Fuel costs are spiking \u2014 acute pressure at the pump."
+    },
+    {
+      "lens_id": "fiscal-health",
+      "lens_title": "Fiscal Health",
+      "category": "economic",
+      "href": "/dashboards/fiscal-health.html",
+      "status": "elevated",
+      "headline": "The U.S. is borrowing heavily \u2014 debt and interest costs are climbing."
+    },
+    {
+      "lens_id": "housing-affordability",
+      "lens_title": "Affordability & Financing",
+      "category": "housing",
+      "href": "/dashboards/housing/affordability.html",
+      "status": "elevated",
+      "headline": "Housing affordability is badly stretched."
+    },
+    {
+      "lens_id": "housing-supply-construction",
+      "lens_title": "Supply & Construction",
+      "category": "housing",
+      "href": "/dashboards/housing/supply-construction.html",
+      "status": "elevated",
+      "headline": "Housing supply is out of balance \u2014 inventory or construction is strained."
+    },
+    {
+      "lens_id": "global-trade-supply",
+      "lens_title": "Trade & Supply Chain",
+      "category": "global",
+      "href": "/dashboards/global/trade-supply.html",
+      "status": "elevated",
+      "headline": "Global trade is under real strain \u2014 supply chains or import costs are stressed."
+    },
+    {
+      "lens_id": "global-uncertainty",
+      "lens_title": "Uncertainty & Risk",
+      "category": "global",
+      "href": "/dashboards/global/uncertainty.html",
+      "status": "elevated",
+      "headline": "Policy uncertainty is high \u2014 what governments do next is a major source of risk."
+    },
+    {
+      "lens_id": "cost-of-money",
+      "lens_title": "The Cost of Money",
+      "category": "economic",
+      "href": "/dashboards/cost-of-money.html",
+      "status": "watch",
+      "headline": "Borrowing is still expensive \u2014 rates remain elevated."
+    },
+    {
+      "lens_id": "job-market",
+      "lens_title": "The Job Market",
+      "category": "economic",
+      "href": "/dashboards/job-market.html",
+      "status": "watch",
+      "headline": "The job market is cooling \u2014 still solid, but losing momentum."
+    },
+    {
+      "lens_id": "cost-of-living",
+      "lens_title": "The Cost of Living",
+      "category": "economic",
+      "href": "/dashboards/cost-of-living.html",
+      "status": "watch",
+      "headline": "Inflation has cooled but isn't beaten \u2014 still above target."
+    },
+    {
+      "lens_id": "consumer-credit",
+      "lens_title": "Consumer Credit Stress",
+      "category": "consumer",
+      "href": "/dashboards/consumer/credit-stress.html",
+      "status": "watch",
+      "headline": "Consumer credit bears watching \u2014 debt loads are creeping up."
+    },
+    {
+      "lens_id": "consumer-income-savings",
+      "lens_title": "Household Income & Savings",
+      "category": "consumer",
+      "href": "/dashboards/consumer/income-savings.html",
+      "status": "watch",
+      "headline": "Household finances are tightening \u2014 cushions are shrinking."
+    },
+    {
+      "lens_id": "bank-concentrations-funding",
+      "lens_title": "Concentrations & Funding",
+      "category": "banking",
+      "href": "/dashboards/banking/concentrations-funding.html",
+      "status": "watch",
+      "headline": "Some concentration and funding risks are building."
+    },
+    {
+      "lens_id": "business-credit",
+      "lens_title": "Business Credit",
+      "category": "business",
+      "href": "/dashboards/business/credit.html",
+      "status": "watch",
+      "headline": "Business credit bears watching \u2014 conditions are tightening at the margin."
+    }
+  ],
+  "categories": [
+    {
+      "category": "economic",
+      "title": "Economic Lenses",
+      "status": "watch",
+      "href": "/dashboards/economic/",
+      "sentence": "Mostly steady \u2014 a corner or two of the economy runs hot."
+    },
+    {
+      "category": "consumer",
+      "title": "The Consumer",
+      "status": "elevated",
+      "href": "/dashboards/consumer/",
+      "sentence": "Household finances are stretched thin."
+    },
+    {
+      "category": "banking",
+      "title": "Banking System Health",
+      "status": "ok",
+      "href": "/dashboards/banking/",
+      "sentence": "Banks are solid \u2014 capital, profits, and loan books look healthy."
+    },
+    {
+      "category": "business",
+      "title": "Corporate & Business Health",
+      "status": "ok",
+      "href": "/dashboards/business/",
+      "sentence": "Business health is holding up \u2014 profits and investment look solid."
+    },
+    {
+      "category": "markets",
+      "title": "Markets & Financial Conditions",
+      "status": "ok",
+      "href": "/dashboards/markets/",
+      "sentence": "Markets are calm \u2014 no stress in financial conditions."
+    },
+    {
+      "category": "energy",
+      "title": "Energy & Commodities",
+      "status": "elevated",
+      "href": "/dashboards/energy/",
+      "sentence": "Energy and commodity costs are squeezing budgets."
+    },
+    {
+      "category": "housing",
+      "title": "Housing & Real Estate",
+      "status": "watch",
+      "href": "/dashboards/housing/",
+      "sentence": "Housing is mostly balanced, but parts of the market are drifting out of balance."
+    },
+    {
+      "category": "global",
+      "title": "Global Economy",
+      "status": "watch",
+      "href": "/dashboards/global/",
+      "sentence": "The global backdrop is mostly quiet, but risks are ticking up."
+    }
+  ],
+  "synthesis": {
+    "cooccurrence": "Two of today's pressure points are about the housing market \u2014 affordability and housing supply.",
+    "relationships": [
+      "Real income is pay measured after inflation \u2014 so when the cost of living climbs faster than wages, real incomes fall by definition."
+    ]
+  }
+}
