@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-18T10:13:23Z",
+  "generated_at": "2026-10-18T16:32:45Z",
   "transitions": [],
   "top_moves": [
     {
@@ -49,11 +49,11 @@
         59.358968209756405,
         59.28735843300459,
         59.436342800117416,
-        60.08941951220794
+        60.133666212006
       ],
       "stat_label": "BTC dominance",
-      "stat_value": "60.09%",
-      "delta": "0.65%",
+      "stat_value": "60.13%",
+      "delta": "0.70%",
       "dir": "up",
       "why": "BTC dominance: a fresh high in this view \u2014 its sharpest jump in this view."
     },
