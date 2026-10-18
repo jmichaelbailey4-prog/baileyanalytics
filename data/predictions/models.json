@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-18T09:49:03Z",
+  "generated_at": "2026-10-18T15:51:56Z",
   "indicators": {
     "economic/recession-watch/yield-curve": {
       "champion": "ets@1",
@@ -768,19 +768,6 @@
       "season": 12,
       "explain": "this projects the recent trend with the usual seasonal pattern for the {period}"
     },
-    "energy/energy-oil-fuels/gasoline": {
-      "champion": "ets@1",
-      "mae": 0.04934714559680905,
-      "naive_mae": 0.05267307692307694,
-      "snaive_mae": 0.45063461538461536,
-      "err_lo": -0.08354004165333481,
-      "err_hi": 0.0659486795572799,
-      "n_origins": 104,
-      "skill": 0.8904941078379178,
-      "cadence": "weekly",
-      "season": 52,
-      "explain": "this projects the recent level and trend forward one {period}"
-    },
     "energy/energy-oil-fuels/diesel": {
       "champion": "ets@1",
       "mae": 0.08171964753512731,
@@ -796,39 +783,26 @@
     },
     "energy/energy-natural-gas/henry-hub": {
       "champion": "naive@1",
-      "mae": 0.9124038461538462,
-      "naive_mae": 0.9124038461538462,
-      "snaive_mae": 1.43875,
+      "mae": 0.9125961538461538,
+      "naive_mae": 0.9125961538461538,
+      "snaive_mae": 1.4329807692307692,
       "err_lo": -0.5169999999999997,
       "err_hi": 0.48699999999999977,
       "n_origins": 104,
-      "skill": 0.3658357281293858,
+      "skill": 0.36314835939072676,
       "cadence": "daily",
       "season": 52,
       "explain": "we expect roughly the last value \u2014 this series rarely rewards cleverness"
     },
-    "energy/energy-natural-gas/gas-production": {
+    "energy/energy-natural-gas/lng-exports": {
       "champion": "ets-seasonal@1",
-      "mae": 42348.380936290865,
-      "naive_mae": 120165.46875,
-      "snaive_mae": 152299.86458333334,
-      "err_lo": -52378.141810764326,
-      "err_hi": 61756.16711242753,
+      "mae": 22440.020967779918,
+      "naive_mae": 25006.71875,
+      "snaive_mae": 60983.583333333336,
+      "err_lo": -32644.901463643502,
+      "err_hi": 37065.290983173174,
       "n_origins": 96,
-      "skill": 0.7219407840437096,
-      "cadence": "monthly",
-      "season": 12,
-      "explain": "this projects the recent trend with the usual seasonal pattern for the {period}"
-    },
-    "energy/energy-electricity/electricity-price": {
-      "champion": "ets-seasonal@1",
-      "mae": 0.20506110764732863,
-      "naive_mae": 0.24812500000000007,
-      "snaive_mae": 0.6682291666666665,
-      "err_lo": -0.2469739378823963,
-      "err_hi": 0.44583129546739375,
-      "n_origins": 96,
-      "skill": 0.6931275707849798,
+      "skill": 0.6320317741067487,
       "cadence": "monthly",
       "season": 12,
       "explain": "this projects the recent trend with the usual seasonal pattern for the {period}"
