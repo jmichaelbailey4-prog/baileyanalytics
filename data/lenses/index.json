@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-17T09:54:55Z",
+  "last_updated": "2026-10-19T19:10:50Z",
   "status": "watch",
   "lenses": [
     {
@@ -126,69 +126,6 @@
         3.63,
         3.63,
         3.75
-      ]
-    },
-    {
-      "id": "job-market",
-      "title": "The Job Market",
-      "accent": "#38BDF8",
-      "status": "watch",
-      "headline_read": "The job market is cooling \u2014 still solid, but losing momentum.",
-      "key_stats": [
-        {
-          "k": "Unemployment",
-          "v": "4.20%",
-          "d": "0.10%",
-          "dir": "up"
-        },
-        {
-          "k": "Payrolls",
-          "v": "29,000",
-          "d": "104,000",
-          "dir": "down"
-        }
-      ],
-      "sparkline": [
-        3.6,
-        3.6,
-        3.5,
-        3.7,
-        3.7,
-        3.9,
-        3.7,
-        3.8,
-        3.7,
-        3.9,
-        3.9,
-        3.9,
-        3.9,
-        4.1,
-        4.2,
-        4.2,
-        4.1,
-        4.1,
-        4.2,
-        4.1,
-        4.0,
-        4.2,
-        4.2,
-        4.2,
-        4.3,
-        4.1,
-        4.3,
-        4.3,
-        4.4,
-        4.5,
-        4.4,
-        4.3,
-        4.4,
-        4.3,
-        4.3,
-        4.3,
-        4.2,
-        4.1,
-        4.1,
-        4.2
       ]
     },
     {
