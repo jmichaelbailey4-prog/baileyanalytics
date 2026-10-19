@@ -27616,7 +27616,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 1068.25,
-      "revised_to": 81310.49
+      "revised_to": 81977.73
     },
     "now_value": 82543.3,
     "now_date": "2026-10-09"
@@ -27656,7 +27656,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 66.36999999999989,
-      "revised_to": 2396.86
+      "revised_to": 2408.97
     },
     "now_value": 2484.7,
     "now_date": "2026-10-09"

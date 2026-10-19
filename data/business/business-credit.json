@@ -2,7 +2,7 @@
   "id": "business-credit",
   "title": "Business Credit",
   "accent": "#F87171",
-  "last_updated": "2026-10-18T16:29:09Z",
+  "last_updated": "2026-10-19T11:41:32Z",
   "status": "watch",
   "headline_read": "Business credit bears watching \u2014 conditions are tightening at the margin.",
   "recessions": [
@@ -2329,12 +2329,12 @@
         },
         {
           "date": "2026-07-01",
-          "value": "0.0000000000"
+          "value": "0"
         }
       ],
       "latest": {
         "date": "2026-07-01",
-        "value": "0.0000000000"
+        "value": "0"
       },
       "context": "From the Fed's quarterly loan-officer survey: the share of banks tightening standards on commercial & industrial loans minus the share easing. Sustained tightening above ~20% has preceded every modern recession.",
       "read": "Banks are neither tightening nor easing business-loan standards on balance.",
