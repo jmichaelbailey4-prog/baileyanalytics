@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-10-20",
+    "title": "Today's Brief \u2014 2 alert \u00b7 5 elevated \u00b7 7 on watch",
+    "description": "Risk Sentiment: VIX 19.99 (\u25b23.53)\nBusiness Credit: Baa spread 1.48% (\u25bc0.16%)\nConcentrations & Funding: Uninsured dep. 41.64% (\u25b21.16%)\nHousehold Income & Savings: Saving rate 4.10% (\u25bc0.50%)\nThe Cost of Money: Fed funds 3.75% (\u25b20.12%)"
+  },
+  {
     "date": "2026-10-19",
     "title": "Today's Brief \u2014 2 alert \u00b7 5 elevated \u00b7 6 on watch",
     "description": "Risk Sentiment: VIX 19.99 (\u25b23.53)\nAsset-Class Scoreboard: S&P 500 7,659 (\u25bc85)\nBusiness Credit: Baa spread 1.48% (\u25bc0.16%)\nCrypto Market Structure: BTC dominance 59.63% (\u25bc0.51%)\nConcentrations & Funding: Uninsured dep. 41.64% (\u25b21.16%)"
@@ -143,10 +148,5 @@
     "date": "2026-09-21",
     "title": "Today's Brief \u2014 1 alert \u00b7 5 elevated \u00b7 7 on watch",
     "description": "Concentrations & Funding: Uninsured dep. 41.64% (\u25b21.16%)\nSupply & Construction: Months' supply 9.60 months (\u25b21.10 months)\nBusiness Formation: Applications 11.40% (\u25bc11.90%)\nConsumer Sentiment: Sentiment 55.20 (\u25b25.70)\nNatural Gas: Henry Hub $2.97 (\u25b2$0.12)"
-  },
-  {
-    "date": "2026-09-20",
-    "title": "Today's Brief \u2014 1 alert \u00b7 5 elevated \u00b7 7 on watch",
-    "description": "Risk Sentiment: VIX 15.44 (\u25bc2.27)\nConcentrations & Funding: Uninsured dep. 41.64% (\u25b21.16%)\nAsset-Class Scoreboard: S&P 500 7,638 (\u25b286)\nSupply & Construction: Months' supply 9.60 months (\u25b21.10 months)\nBusiness Formation: Applications 11.40% (\u25bc11.90%)"
   }
 ]
