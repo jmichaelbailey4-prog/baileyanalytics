@@ -1,7 +1,62 @@
 {
-  "generated_at": "2026-10-21T10:58:21Z",
+  "generated_at": "2026-10-21T17:58:18Z",
   "transitions": [],
   "top_moves": [
+    {
+      "lens_id": "energy-natural-gas",
+      "lens_title": "Natural Gas",
+      "category": "energy",
+      "href": "/dashboards/energy/natural-gas.html",
+      "headline": "Natural gas costs are stable or easing.",
+      "accent": "#60A5FA",
+      "sparkline": [
+        2.81,
+        2.89,
+        2.82,
+        2.9,
+        2.9,
+        2.88,
+        2.95,
+        2.92,
+        2.92,
+        2.9,
+        2.81,
+        2.76,
+        2.71,
+        2.85,
+        2.97,
+        3.0,
+        2.9,
+        2.97,
+        2.93,
+        2.9,
+        3.06,
+        3.0,
+        3.21,
+        3.13,
+        3.18,
+        3.02,
+        3.0,
+        2.9,
+        2.96,
+        3.03,
+        3.16,
+        3.24,
+        3.1,
+        3.1,
+        3.14,
+        3.22,
+        3.3,
+        3.22,
+        3.28,
+        3.1
+      ],
+      "stat_label": "Henry Hub",
+      "stat_value": "$3.10",
+      "delta": "$0.18",
+      "dir": "down",
+      "why": "Henry Hub: its sharpest drop in this view."
+    },
     {
       "lens_id": "business-credit",
       "lens_title": "Business Credit",
@@ -166,61 +221,6 @@
       "delta": "0.50%",
       "dir": "down",
       "why": "Saving rate: its lowest in this view."
-    },
-    {
-      "lens_id": "market-risk-sentiment",
-      "lens_title": "Risk Sentiment",
-      "category": "markets",
-      "href": "/dashboards/markets/risk-sentiment.html",
-      "headline": "Markets are calm \u2014 volatility and credit stress are low.",
-      "accent": "#FB7185",
-      "sparkline": [
-        15.45,
-        15.21,
-        14.51,
-        14.43,
-        14.92,
-        16.34,
-        15.2,
-        14.32,
-        14.53,
-        15.3,
-        15.72,
-        16.46,
-        17.84,
-        15.84,
-        17.1,
-        17.2,
-        17.71,
-        15.44,
-        14.81,
-        14.87,
-        14.21,
-        15.18,
-        15.67,
-        14.87,
-        16.07,
-        16.04,
-        16.34,
-        16.39,
-        15.31,
-        15.52,
-        15.01,
-        15.08,
-        15.41,
-        14.84,
-        15.21,
-        15.27,
-        16.87,
-        16.46,
-        19.99,
-        18.44
-      ],
-      "stat_label": "VIX",
-      "stat_value": "18.44",
-      "delta": "1.55",
-      "dir": "down",
-      "why": ""
     },
     {
       "lens_id": "recession-watch",
@@ -416,30 +416,6 @@
       "headline": "Business credit bears watching \u2014 conditions are tightening at the margin."
     },
     {
-      "lens_id": "market-risk-sentiment",
-      "lens_title": "Risk Sentiment",
-      "category": "markets",
-      "href": "/dashboards/markets/risk-sentiment.html",
-      "status": "ok",
-      "headline": "Markets are calm \u2014 volatility and credit stress are low."
-    },
-    {
-      "lens_id": "market-scoreboard",
-      "lens_title": "Asset-Class Scoreboard",
-      "category": "markets",
-      "href": "/dashboards/markets/scoreboard.html",
-      "status": "neutral",
-      "headline": "How the major asset classes are moving right now."
-    },
-    {
-      "lens_id": "market-liquidity",
-      "lens_title": "Liquidity & the Fed",
-      "category": "markets",
-      "href": "/dashboards/markets/liquidity.html",
-      "status": "ok",
-      "headline": "Liquidity is ample \u2014 no monetary squeeze in sight."
-    },
-    {
       "lens_id": "crypto-structure",
       "lens_title": "Crypto Market Structure",
       "category": "markets",
@@ -470,14 +446,6 @@
       "href": "/dashboards/energy/electricity.html",
       "status": "ok",
       "headline": "Power bills are steady."
-    },
-    {
-      "lens_id": "energy-commodities",
-      "lens_title": "Commodities & Materials",
-      "category": "energy",
-      "href": "/dashboards/energy/commodities.html",
-      "status": "ok",
-      "headline": "Commodity costs are stable or easing."
     },
     {
       "lens_id": "housing-home-prices",
@@ -512,30 +480,6 @@
       "headline": "The rental market is balanced \u2014 rents are behaving."
     },
     {
-      "lens_id": "global-dollar-currencies",
-      "lens_title": "The Dollar & Currencies",
-      "category": "global",
-      "href": "/dashboards/global/dollar-currencies.html",
-      "status": "ok",
-      "headline": "Currency markets are calm \u2014 the dollar is near where it was a year ago."
-    },
-    {
-      "lens_id": "global-growth",
-      "lens_title": "Global Growth",
-      "category": "global",
-      "href": "/dashboards/global/growth.html",
-      "status": "ok",
-      "headline": "The world economy is growing around its long-run trend."
-    },
-    {
-      "lens_id": "global-trade-supply",
-      "lens_title": "Trade & Supply Chain",
-      "category": "global",
-      "href": "/dashboards/global/trade-supply.html",
-      "status": "elevated",
-      "headline": "Global trade is under real strain \u2014 supply chains or import costs are stressed."
-    },
-    {
       "lens_id": "global-uncertainty",
       "lens_title": "Uncertainty & Risk",
       "category": "global",
@@ -545,17 +489,17 @@
     }
   ],
   "status_counts": {
-    "ok": 17,
+    "ok": 12,
     "watch": 7,
-    "elevated": 5,
+    "elevated": 4,
     "alert": 2,
-    "neutral": 2
+    "neutral": 1
   },
   "verdict": {
     "status": "watch",
     "shape": "contained-pressure",
-    "sentence": "Pressure is real but contained: household finances are stretched thin and energy and commodity costs are squeezing budgets; meanwhile banks are solid and markets are calm.",
-    "short": "Holding up, but household finances are stretched thin."
+    "sentence": "Pressure is real but contained: the global backdrop is turning hostile and energy and commodity costs are squeezing budgets; meanwhile banks are solid and business health is holding up.",
+    "short": "Holding up, but the global backdrop is turning hostile."
   },
   "watching": [
     {
@@ -573,6 +517,20 @@
       "href": "/dashboards/energy/electricity.html"
     },
     {
+      "key": "energy/energy-natural-gas/henry-hub",
+      "indicator": "henry-hub",
+      "lens": "energy-natural-gas",
+      "category": "energy",
+      "title": "Henry Hub Spot Price",
+      "lens_title": "Natural Gas",
+      "due": "2026-10-28",
+      "point_fmt": "$3.22",
+      "implied_status": "watch",
+      "current_status": "ok",
+      "change": true,
+      "href": "/dashboards/energy/natural-gas.html"
+    },
+    {
       "key": "consumer/consumer-sentiment/inflation-expectations",
       "indicator": "inflation-expectations",
       "lens": "consumer-sentiment",
@@ -585,20 +543,6 @@
       "current_status": "elevated",
       "change": true,
       "href": "/dashboards/consumer/sentiment.html"
-    },
-    {
-      "key": "economic/fiscal-health/debt-gdp",
-      "indicator": "debt-gdp",
-      "lens": "fiscal-health",
-      "category": "economic",
-      "title": "Federal Debt \u00b7 % of GDP",
-      "lens_title": "Fiscal Health",
-      "due": "2026-07-28",
-      "point_fmt": "122.30%",
-      "implied_status": "elevated",
-      "current_status": "elevated",
-      "change": false,
-      "href": "/dashboards/fiscal-health.html"
     }
   ],
   "pressure": [
@@ -641,14 +585,6 @@
       "href": "/dashboards/housing/supply-construction.html",
       "status": "elevated",
       "headline": "Housing supply is out of balance \u2014 inventory or construction is strained."
-    },
-    {
-      "lens_id": "global-trade-supply",
-      "lens_title": "Trade & Supply Chain",
-      "category": "global",
-      "href": "/dashboards/global/trade-supply.html",
-      "status": "elevated",
-      "headline": "Global trade is under real strain \u2014 supply chains or import costs are stressed."
     },
     {
       "lens_id": "global-uncertainty",
@@ -747,9 +683,9 @@
     {
       "category": "markets",
       "title": "Markets & Financial Conditions",
-      "status": "ok",
+      "status": "neutral",
       "href": "/dashboards/markets/",
-      "sentence": "Markets are calm \u2014 no stress in financial conditions."
+      "sentence": "Markets & Financial Conditions reads neutral right now."
     },
     {
       "category": "energy",
@@ -768,9 +704,9 @@
     {
       "category": "global",
       "title": "Global Economy",
-      "status": "watch",
+      "status": "elevated",
       "href": "/dashboards/global/",
-      "sentence": "The global backdrop is mostly quiet, but risks are ticking up."
+      "sentence": "The global backdrop is turning hostile."
     }
   ],
   "synthesis": {

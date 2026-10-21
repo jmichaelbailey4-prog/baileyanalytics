@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-10-20T10:47:00Z",
+  "captured_at": "2026-10-21T17:58:18Z",
   "statuses": {
     "recession-watch": "ok",
     "cost-of-money": "watch",
@@ -18,21 +18,14 @@
     "business-formation": "ok",
     "business-investment": "ok",
     "business-credit": "watch",
-    "market-risk-sentiment": "ok",
-    "market-scoreboard": "neutral",
-    "market-liquidity": "ok",
     "crypto-structure": "neutral",
     "energy-oil-fuels": "alert",
     "energy-natural-gas": "ok",
     "energy-electricity": "ok",
-    "energy-commodities": "ok",
     "housing-home-prices": "ok",
     "housing-affordability": "elevated",
     "housing-supply-construction": "elevated",
     "housing-rent-shelter": "ok",
-    "global-dollar-currencies": "ok",
-    "global-growth": "ok",
-    "global-trade-supply": "elevated",
     "global-uncertainty": "elevated"
   }
 }
