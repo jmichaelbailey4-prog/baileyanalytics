@@ -2,7 +2,7 @@
   "id": "cost-of-living",
   "title": "The Cost of Living",
   "accent": "#FBBF24",
-  "last_updated": "2026-10-14T17:52:33Z",
+  "last_updated": "2026-10-22T10:52:55Z",
   "status": "watch",
   "headline_read": "Inflation has cooled but isn't beaten \u2014 still above target.",
   "recessions": [
@@ -7395,21 +7395,25 @@
         {
           "date": "2026-04-01",
           "value": "0.53191"
+        },
+        {
+          "date": "2026-07-01",
+          "value": "-1.59574"
         }
       ],
       "latest": {
-        "date": "2026-04-01",
-        "value": "0.53191"
+        "date": "2026-07-01",
+        "value": "-1.59574"
       },
       "context": "The typical worker's weekly paycheck adjusted for inflation (real median earnings). When it rises, pay is outpacing prices; when it falls, the opposite.",
-      "read": "Up 0.5% from a year ago \u2014 paychecks are outpacing inflation.",
-      "signal_status": "ok",
+      "read": "Down 1.6% from a year ago \u2014 pay isn't keeping up with prices.",
+      "signal_status": "watch",
       "value_format": "decimal",
       "percentile": {
-        "p": 54.6,
+        "p": 11.3,
         "since": 1980
       },
-      "scale_now": 0.5319
+      "scale_now": -1.5957
     }
   ]
 }

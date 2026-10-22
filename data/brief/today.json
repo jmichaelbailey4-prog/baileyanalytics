@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-21T17:58:18Z",
+  "generated_at": "2026-10-22T10:56:31Z",
   "transitions": [],
   "top_moves": [
     {
@@ -168,6 +168,61 @@
       "why": "Uninsured dep.: up 5 readings in a row."
     },
     {
+      "lens_id": "crypto-structure",
+      "lens_title": "Crypto Market Structure",
+      "category": "markets",
+      "href": "/dashboards/markets/crypto-structure.html",
+      "headline": "How capital is rotating across the crypto market.",
+      "accent": "#818CF8",
+      "sparkline": [
+        58.84762231102067,
+        58.578711858125885,
+        58.42453886242761,
+        58.537718329909914,
+        58.201128904355706,
+        58.10557736683787,
+        58.386468929817624,
+        58.854225416881214,
+        58.918016633320256,
+        58.905190168635954,
+        58.790981907980274,
+        58.58477979384927,
+        58.25431514852772,
+        58.217612789854925,
+        58.80773371037048,
+        58.54862133505977,
+        58.33498510686732,
+        58.39609004056051,
+        58.68018996309792,
+        58.662229001114596,
+        58.70095952443267,
+        59.124993422561744,
+        58.661789178616985,
+        58.71457365574436,
+        58.82189530763586,
+        59.16450866991041,
+        59.187357923858954,
+        59.12755181844441,
+        59.58642463842722,
+        59.17063859685703,
+        59.208528639419164,
+        59.264033729347474,
+        59.358968209756405,
+        59.28735843300459,
+        59.436342800117416,
+        60.133666212006,
+        59.62820370117793,
+        59.545489560474905,
+        59.578936101289614,
+        60.03950823946557
+      ],
+      "stat_label": "BTC dominance",
+      "stat_value": "60.04%",
+      "delta": "0.46%",
+      "dir": "up",
+      "why": ""
+    },
+    {
       "lens_id": "consumer-income-savings",
       "lens_title": "Household Income & Savings",
       "category": "consumer",
@@ -221,61 +276,6 @@
       "delta": "0.50%",
       "dir": "down",
       "why": "Saving rate: its lowest in this view."
-    },
-    {
-      "lens_id": "recession-watch",
-      "lens_title": "Recession Watch",
-      "category": "economic",
-      "href": "/dashboards/recession-watch.html",
-      "headline": "The economy looks steady \u2014 no major recession signals right now.",
-      "accent": "#F87171",
-      "sparkline": [
-        0.46,
-        0.47,
-        0.47,
-        0.47,
-        0.39,
-        0.41,
-        0.4,
-        0.4,
-        0.43,
-        0.41,
-        0.41,
-        0.4,
-        0.39,
-        0.33,
-        0.32,
-        0.33,
-        0.27,
-        0.27,
-        0.25,
-        0.2,
-        0.25,
-        0.26,
-        0.31,
-        0.36,
-        0.32,
-        0.37,
-        0.41,
-        0.46,
-        0.45,
-        0.47,
-        0.48,
-        0.51,
-        0.47,
-        0.44,
-        0.42,
-        0.37,
-        0.33,
-        0.35,
-        0.38,
-        0.33
-      ],
-      "stat_label": "Yield curve",
-      "stat_value": "0.33%",
-      "delta": "0.05%",
-      "dir": "down",
-      "why": ""
     }
   ],
   "lenses": [
@@ -416,6 +416,30 @@
       "headline": "Business credit bears watching \u2014 conditions are tightening at the margin."
     },
     {
+      "lens_id": "market-risk-sentiment",
+      "lens_title": "Risk Sentiment",
+      "category": "markets",
+      "href": "/dashboards/markets/risk-sentiment.html",
+      "status": "ok",
+      "headline": "Markets are calm \u2014 volatility and credit stress are low."
+    },
+    {
+      "lens_id": "market-scoreboard",
+      "lens_title": "Asset-Class Scoreboard",
+      "category": "markets",
+      "href": "/dashboards/markets/scoreboard.html",
+      "status": "neutral",
+      "headline": "How the major asset classes are moving right now."
+    },
+    {
+      "lens_id": "market-liquidity",
+      "lens_title": "Liquidity & the Fed",
+      "category": "markets",
+      "href": "/dashboards/markets/liquidity.html",
+      "status": "ok",
+      "headline": "Liquidity is ample \u2014 no monetary squeeze in sight."
+    },
+    {
       "lens_id": "crypto-structure",
       "lens_title": "Crypto Market Structure",
       "category": "markets",
@@ -446,6 +470,14 @@
       "href": "/dashboards/energy/electricity.html",
       "status": "ok",
       "headline": "Power bills are steady."
+    },
+    {
+      "lens_id": "energy-commodities",
+      "lens_title": "Commodities & Materials",
+      "category": "energy",
+      "href": "/dashboards/energy/commodities.html",
+      "status": "ok",
+      "headline": "Commodity costs are stable or easing."
     },
     {
       "lens_id": "housing-home-prices",
@@ -480,6 +512,30 @@
       "headline": "The rental market is balanced \u2014 rents are behaving."
     },
     {
+      "lens_id": "global-dollar-currencies",
+      "lens_title": "The Dollar & Currencies",
+      "category": "global",
+      "href": "/dashboards/global/dollar-currencies.html",
+      "status": "ok",
+      "headline": "Currency markets are calm \u2014 the dollar is near where it was a year ago."
+    },
+    {
+      "lens_id": "global-growth",
+      "lens_title": "Global Growth",
+      "category": "global",
+      "href": "/dashboards/global/growth.html",
+      "status": "ok",
+      "headline": "The world economy is growing around its long-run trend."
+    },
+    {
+      "lens_id": "global-trade-supply",
+      "lens_title": "Trade & Supply Chain",
+      "category": "global",
+      "href": "/dashboards/global/trade-supply.html",
+      "status": "elevated",
+      "headline": "Global trade is under real strain \u2014 supply chains or import costs are stressed."
+    },
+    {
       "lens_id": "global-uncertainty",
       "lens_title": "Uncertainty & Risk",
       "category": "global",
@@ -489,17 +545,17 @@
     }
   ],
   "status_counts": {
-    "ok": 12,
+    "ok": 17,
     "watch": 7,
-    "elevated": 4,
+    "elevated": 5,
     "alert": 2,
-    "neutral": 1
+    "neutral": 2
   },
   "verdict": {
     "status": "watch",
     "shape": "contained-pressure",
-    "sentence": "Pressure is real but contained: the global backdrop is turning hostile and energy and commodity costs are squeezing budgets; meanwhile banks are solid and business health is holding up.",
-    "short": "Holding up, but the global backdrop is turning hostile."
+    "sentence": "Pressure is real but contained: household finances are stretched thin and energy and commodity costs are squeezing budgets; meanwhile banks are solid and markets are calm.",
+    "short": "Holding up, but household finances are stretched thin."
   },
   "watching": [
     {
@@ -585,6 +641,14 @@
       "href": "/dashboards/housing/supply-construction.html",
       "status": "elevated",
       "headline": "Housing supply is out of balance \u2014 inventory or construction is strained."
+    },
+    {
+      "lens_id": "global-trade-supply",
+      "lens_title": "Trade & Supply Chain",
+      "category": "global",
+      "href": "/dashboards/global/trade-supply.html",
+      "status": "elevated",
+      "headline": "Global trade is under real strain \u2014 supply chains or import costs are stressed."
     },
     {
       "lens_id": "global-uncertainty",
@@ -683,9 +747,9 @@
     {
       "category": "markets",
       "title": "Markets & Financial Conditions",
-      "status": "neutral",
+      "status": "ok",
       "href": "/dashboards/markets/",
-      "sentence": "Markets & Financial Conditions reads neutral right now."
+      "sentence": "Markets are calm \u2014 no stress in financial conditions."
     },
     {
       "category": "energy",
@@ -704,9 +768,9 @@
     {
       "category": "global",
       "title": "Global Economy",
-      "status": "elevated",
+      "status": "watch",
       "href": "/dashboards/global/",
-      "sentence": "The global backdrop is turning hostile."
+      "sentence": "The global backdrop is mostly quiet, but risks are ticking up."
     }
   ],
   "synthesis": {

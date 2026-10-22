@@ -22019,7 +22019,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 0.0050000000000000044,
-      "revised_to": -0.527
+      "revised_to": -0.528
     },
     "prev_period": "2026-09-11"
   },
@@ -23480,7 +23480,7 @@
       "direction_hit": true,
       "status_hit": true,
       "naive_error": 0.007000000000000006,
-      "revised_to": -0.517
+      "revised_to": -0.518
     },
     "prev_period": "2026-09-18"
   },
@@ -25370,7 +25370,7 @@
       "direction_hit": true,
       "status_hit": true,
       "naive_error": 0.05400000000000005,
-      "revised_to": -0.507
+      "revised_to": -0.508
     },
     "prev_period": "2026-09-25"
   },
@@ -26948,7 +26948,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 0.0050000000000000044,
-      "revised_to": null
+      "revised_to": -0.502
     },
     "prev_period": "2026-10-02"
   },
@@ -28373,6 +28373,124 @@
       "revised_to": null
     },
     "now_value": 3.22,
+    "now_date": "2026-10-14"
+  },
+  {
+    "id": "economic/cost-of-living/real-wages@2026-07-01",
+    "key": "economic/cost-of-living/real-wages",
+    "category": "economic",
+    "lens": "cost-of-living",
+    "indicator": "real-wages",
+    "series_id": "LES1252881600Q",
+    "horizon": "next-print",
+    "target_period": "2026-07-01",
+    "due": "2026-10-28",
+    "made_at": "2026-07-21T15:09:45Z",
+    "model": "ets@1",
+    "point": 0.5853,
+    "lo": -0.9462,
+    "hi": 2.371,
+    "unit": "%",
+    "value_format": "decimal",
+    "prev_value": 0.53191,
+    "why": "Real wages: down 4 straight quarters. This projects the recent level and trend forward one quarter.",
+    "implied_status": "ok",
+    "current_status": "ok",
+    "descriptive": false,
+    "market_price": false,
+    "title": "Real Wage Growth (year-over-year)",
+    "short": "Real wages",
+    "lens_title": "The Cost of Living",
+    "href": "/dashboards/cost-of-living.html",
+    "grade": {
+      "actual": -1.59574,
+      "graded_at": "2026-10-22T10:54:48Z",
+      "hit": false,
+      "abs_error": 2.18104,
+      "direction_hit": false,
+      "status_hit": false,
+      "naive_error": 2.12765,
+      "revised_to": null
+    },
+    "prev_period": "2026-04-01"
+  },
+  {
+    "id": "markets/market-risk-sentiment/nfci@2026-10-16",
+    "key": "markets/market-risk-sentiment/nfci",
+    "category": "markets",
+    "lens": "market-risk-sentiment",
+    "indicator": "nfci",
+    "series_id": "NFCI",
+    "horizon": "next-print",
+    "target_period": "2026-10-16",
+    "due": "2026-10-21",
+    "made_at": "2026-10-15T17:42:56Z",
+    "model": "ets-seasonal@1",
+    "point": -0.4923,
+    "lo": -0.4949,
+    "hi": -0.4892,
+    "unit": "",
+    "value_format": "decimal",
+    "prev_value": -0.499,
+    "why": "NFCI: up 7 straight weeks. This projects the recent trend with the usual seasonal pattern for the week.",
+    "implied_status": "ok",
+    "current_status": "ok",
+    "descriptive": false,
+    "market_price": false,
+    "title": "Financial Conditions \u00b7 NFCI",
+    "short": "NFCI",
+    "lens_title": "Risk Sentiment",
+    "href": "/dashboards/markets/risk-sentiment.html",
+    "grade": {
+      "actual": -0.496,
+      "graded_at": "2026-10-22T10:54:53Z",
+      "hit": false,
+      "abs_error": 0.003699999999999981,
+      "direction_hit": true,
+      "status_hit": true,
+      "naive_error": 0.0030000000000000027,
+      "revised_to": null
+    },
+    "prev_period": "2026-10-09"
+  },
+  {
+    "id": "markets/market-scoreboard/oil@2026-10-16",
+    "key": "markets/market-scoreboard/oil",
+    "category": "markets",
+    "lens": "market-scoreboard",
+    "indicator": "oil",
+    "series_id": "DCOILWTICO",
+    "horizon": "next-print",
+    "target_period": "2026-10-16",
+    "due": "2026-10-21",
+    "made_at": "2026-10-16T10:23:26Z",
+    "model": "drift@1",
+    "point": 98.8326,
+    "lo": 92.387,
+    "hi": 106.2353,
+    "unit": "$",
+    "value_format": "decimal",
+    "prev_value": 98.73,
+    "why": "WTI oil: up 2 straight weeks. This projects the series' long-run average step from today's level.",
+    "implied_status": "up",
+    "current_status": "up",
+    "descriptive": true,
+    "market_price": true,
+    "title": "Crude Oil \u00b7 WTI",
+    "short": "WTI oil",
+    "lens_title": "Asset-Class Scoreboard",
+    "href": "/dashboards/markets/scoreboard.html",
+    "grade": {
+      "actual": 108.21,
+      "graded_at": "2026-10-22T10:54:54Z",
+      "hit": false,
+      "abs_error": 9.377399999999994,
+      "direction_hit": true,
+      "status_hit": true,
+      "naive_error": 9.47999999999999,
+      "revised_to": null
+    },
+    "now_value": 101.91,
     "now_date": "2026-10-14"
   }
 ]
