@@ -2,9 +2,9 @@
   "id": "energy-electricity",
   "title": "Electricity & the Grid",
   "accent": "#FBBF24",
-  "last_updated": "2026-10-22T10:54:17Z",
-  "status": "ok",
-  "headline_read": "Power bills are steady.",
+  "last_updated": "2026-10-22T17:54:39Z",
+  "status": "watch",
+  "headline_read": "Electricity prices are climbing.",
   "recessions": [
     {
       "start": "1948-12-01",
@@ -950,51 +950,51 @@
         },
         {
           "date": "2025-01",
-          "value": "15.94"
+          "value": "15.92"
         },
         {
           "date": "2025-02",
-          "value": "16.43"
+          "value": "16.4"
         },
         {
           "date": "2025-03",
-          "value": "17.09"
+          "value": "17.03"
         },
         {
           "date": "2025-04",
-          "value": "17.55"
+          "value": "17.2"
         },
         {
           "date": "2025-05",
-          "value": "17.37"
+          "value": "17.33"
         },
         {
           "date": "2025-06",
-          "value": "17.47"
+          "value": "17.44"
         },
         {
           "date": "2025-07",
-          "value": "17.45"
+          "value": "17.39"
         },
         {
           "date": "2025-08",
-          "value": "17.61"
+          "value": "17.57"
         },
         {
           "date": "2025-09",
-          "value": "18.08"
+          "value": "18.05"
         },
         {
           "date": "2025-10",
-          "value": "17.97"
+          "value": "17.95"
         },
         {
           "date": "2025-11",
-          "value": "17.78"
+          "value": "17.77"
         },
         {
           "date": "2025-12",
-          "value": "17.24"
+          "value": "17.11"
         },
         {
           "date": "2026-01",
@@ -1030,14 +1030,14 @@
         "value": "18.31"
       },
       "context": "The U.S. average residential electricity price (cents per kWh) \u2014 the power bill households pay every month.",
-      "read": "Electricity costs are up 5% over the past year.",
-      "signal_status": "ok",
+      "read": "Electricity costs are up 5% over the past year \u2014 climbing.",
+      "signal_status": "watch",
       "value_format": "decimal",
       "percentile": {
         "p": 97.9,
         "since": 2006
       },
-      "scale_now": 4.9284
+      "scale_now": 5.2904
     },
     {
       "id": "renewables-share",
@@ -1933,31 +1933,31 @@
         },
         {
           "date": "2025-01",
-          "value": "21.3"
+          "value": "21.0"
         },
         {
           "date": "2025-02",
-          "value": "23.7"
+          "value": "23.4"
         },
         {
           "date": "2025-03",
-          "value": "30.5"
+          "value": "30.4"
         },
         {
           "date": "2025-04",
-          "value": "31.3"
+          "value": "31.5"
         },
         {
           "date": "2025-05",
-          "value": "27.9"
+          "value": "28.3"
         },
         {
           "date": "2025-06",
-          "value": "24.2"
+          "value": "24.5"
         },
         {
           "date": "2025-07",
-          "value": "20.3"
+          "value": "20.5"
         },
         {
           "date": "2025-08",
@@ -1969,15 +1969,15 @@
         },
         {
           "date": "2025-10",
-          "value": "24.8"
+          "value": "24.6"
         },
         {
           "date": "2025-11",
-          "value": "24.8"
+          "value": "24.2"
         },
         {
           "date": "2025-12",
-          "value": "24.0"
+          "value": "23.3"
         },
         {
           "date": "2026-01",
@@ -2013,7 +2013,7 @@
         "value": "21.9"
       },
       "context": "The share of U.S. electricity generated from renewables (wind, solar, hydro, and more) \u2014 the clearest single read on the energy transition.",
-      "read": "Renewables: 21.9% of U.S. electricity generation, up 1.6 points over the past year.",
+      "read": "Renewables: 21.9% of U.S. electricity generation, up 1.4 points over the past year.",
       "signal_status": "info",
       "value_format": "decimal",
       "percentile": {
@@ -2917,23 +2917,23 @@
         },
         {
           "date": "2025-01",
-          "value": "39.0"
+          "value": "39.4"
         },
         {
           "date": "2025-02",
-          "value": "38.8"
+          "value": "39.2"
         },
         {
           "date": "2025-03",
-          "value": "35.4"
+          "value": "35.5"
         },
         {
           "date": "2025-04",
-          "value": "35.8"
+          "value": "35.6"
         },
         {
           "date": "2025-05",
-          "value": "39.3"
+          "value": "39.1"
         },
         {
           "date": "2025-06",
@@ -2941,15 +2941,15 @@
         },
         {
           "date": "2025-07",
-          "value": "45.3"
+          "value": "45.1"
         },
         {
           "date": "2025-08",
-          "value": "45.9"
+          "value": "46.0"
         },
         {
           "date": "2025-09",
-          "value": "45.6"
+          "value": "45.7"
         },
         {
           "date": "2025-10",
@@ -2957,11 +2957,11 @@
         },
         {
           "date": "2025-11",
-          "value": "39.3"
+          "value": "39.6"
         },
         {
           "date": "2025-12",
-          "value": "38.7"
+          "value": "39.3"
         },
         {
           "date": "2026-01",
@@ -3001,7 +3001,7 @@
       "signal_status": "info",
       "value_format": "decimal",
       "percentile": {
-        "p": 95.4,
+        "p": 95.8,
         "since": 2006
       },
       "no_severity_reason": "A physical supply-and-demand reading, not a household cost \u2014 this lens's verdict comes from the price indicators.",
@@ -3901,51 +3901,51 @@
         },
         {
           "date": "2025-01",
-          "value": "402345.40122"
+          "value": "402013.0898"
         },
         {
           "date": "2025-02",
-          "value": "338591.66991"
+          "value": "338691.75558"
         },
         {
           "date": "2025-03",
-          "value": "333628.94265"
+          "value": "333396.77812"
         },
         {
           "date": "2025-04",
-          "value": "320477.90475"
+          "value": "320773.33348"
         },
         {
           "date": "2025-05",
-          "value": "344033.96501"
+          "value": "345569.32117"
         },
         {
           "date": "2025-06",
-          "value": "393284.83316"
+          "value": "395109.00876"
         },
         {
           "date": "2025-07",
-          "value": "446319.52576"
+          "value": "446243.57328"
         },
         {
           "date": "2025-08",
-          "value": "420241.83475"
+          "value": "420651.37476"
         },
         {
           "date": "2025-09",
-          "value": "368144.84419"
+          "value": "368432.05558"
         },
         {
           "date": "2025-10",
-          "value": "345253.27074"
+          "value": "342490.05543"
         },
         {
           "date": "2025-11",
-          "value": "334985.60344"
+          "value": "331636.66833"
         },
         {
           "date": "2025-12",
-          "value": "382193.80755"
+          "value": "380021.51169"
         },
         {
           "date": "2026-01",

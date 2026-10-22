@@ -2,7 +2,7 @@
   "id": "recession-watch",
   "title": "Recession Watch",
   "accent": "#F87171",
-  "last_updated": "2026-10-22T10:52:55Z",
+  "last_updated": "2026-10-22T17:53:54Z",
   "status": "ok",
   "headline_read": "The economy looks steady \u2014 no major recession signals right now.",
   "recessions": [
@@ -5434,8 +5434,8 @@
       "series_id": "ICSA",
       "observations": [
         {
-          "date": "1967-05-20",
-          "value": "230000"
+          "date": "1967-05-27",
+          "value": "228000"
         },
         {
           "date": "1967-07-01",
@@ -6150,8 +6150,8 @@
           "value": "405000"
         },
         {
-          "date": "2011-10-15",
-          "value": "395000"
+          "date": "2011-10-22",
+          "value": "403000"
         },
         {
           "date": "2011-11-05",
@@ -6632,10 +6632,6 @@
         {
           "date": "2021-10-02",
           "value": "312000"
-        },
-        {
-          "date": "2021-10-16",
-          "value": "289000"
         },
         {
           "date": "2021-10-23",
@@ -7675,22 +7671,26 @@
         },
         {
           "date": "2026-10-10",
-          "value": "199000"
+          "value": "200000"
+        },
+        {
+          "date": "2026-10-17",
+          "value": "194000"
         }
       ],
       "latest": {
-        "date": "2026-10-10",
-        "value": "199000"
+        "date": "2026-10-17",
+        "value": "194000"
       },
       "context": "How many people filed for unemployment benefits last week \u2014 the freshest read on layoffs. A sustained climb is one of the earliest signs of a weakening economy.",
-      "read": "Initial jobless claims are low at 199,000 \u2014 employers aren't shedding workers.",
+      "read": "Initial jobless claims are low at 194,000 \u2014 employers aren't shedding workers.",
       "signal_status": "ok",
       "value_format": "thousands",
       "percentile": {
-        "p": 2.6,
+        "p": 1.8,
         "since": 1967
       },
-      "scale_now": 199000.0
+      "scale_now": 194000.0
     },
     {
       "id": "unemployment",
