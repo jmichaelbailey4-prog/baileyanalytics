@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-22T17:54:39Z",
+  "last_updated": "2026-10-23T10:45:10Z",
   "status": "elevated",
   "lenses": [
     {
@@ -195,14 +195,14 @@
       "id": "energy-commodities",
       "title": "Commodities & Materials",
       "accent": "#A3E635",
-      "status": "ok",
-      "headline_read": "Commodity costs are stable or easing.",
+      "status": "watch",
+      "headline_read": "Commodity costs are climbing.",
       "key_stats": [
         {
           "k": "Global food",
-          "v": "4.80%",
-          "d": "0.40%",
-          "dir": "up"
+          "v": "8.30%",
+          "d": "1.30%",
+          "dir": "down"
         },
         {
           "k": "Groceries",
@@ -212,8 +212,6 @@
         }
       ],
       "sparkline": [
-        -11.9,
-        -14.7,
         -12.9,
         -5.3,
         -6.4,
@@ -251,7 +249,9 @@
         7.8,
         7.9,
         4.4,
-        4.8
+        6.3,
+        9.6,
+        8.3
       ]
     }
   ]
