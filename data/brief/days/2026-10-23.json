@@ -1,18 +1,73 @@
 {
-  "generated_at": "2026-10-23T10:46:31Z",
+  "generated_at": "2026-10-23T17:49:57Z",
   "transitions": [
     {
-      "lens_id": "energy-commodities",
-      "lens_title": "Commodities & Materials",
+      "lens_id": "energy-electricity",
+      "lens_title": "Electricity & the Grid",
       "category": "energy",
-      "href": "/dashboards/energy/commodities.html",
-      "from_status": "ok",
-      "to_status": "watch",
-      "direction": "worsening",
-      "headline": "Commodity costs are climbing."
+      "href": "/dashboards/energy/electricity.html",
+      "from_status": "watch",
+      "to_status": "ok",
+      "direction": "improving",
+      "headline": "Power bills are steady."
     }
   ],
   "top_moves": [
+    {
+      "lens_id": "market-risk-sentiment",
+      "lens_title": "Risk Sentiment",
+      "category": "markets",
+      "href": "/dashboards/markets/risk-sentiment.html",
+      "headline": "Markets are calm \u2014 volatility and credit stress are low.",
+      "accent": "#FB7185",
+      "sparkline": [
+        14.43,
+        14.92,
+        16.34,
+        15.2,
+        14.32,
+        14.53,
+        15.3,
+        15.72,
+        16.46,
+        17.84,
+        15.84,
+        17.1,
+        17.2,
+        17.71,
+        15.44,
+        14.81,
+        14.87,
+        14.21,
+        15.18,
+        15.67,
+        14.87,
+        16.07,
+        16.04,
+        16.34,
+        16.39,
+        15.31,
+        15.52,
+        15.01,
+        15.08,
+        15.41,
+        14.84,
+        15.21,
+        15.27,
+        16.87,
+        16.46,
+        19.99,
+        18.44,
+        17.31,
+        16.68,
+        19.03
+      ],
+      "stat_label": "VIX",
+      "stat_value": "19.03",
+      "delta": "2.35",
+      "dir": "up",
+      "why": "VIX: its sharpest jump in this view."
+    },
     {
       "lens_id": "energy-natural-gas",
       "lens_title": "Natural Gas",
@@ -67,61 +122,6 @@
       "delta": "$0.18",
       "dir": "down",
       "why": "Henry Hub: its sharpest drop in this view."
-    },
-    {
-      "lens_id": "crypto-structure",
-      "lens_title": "Crypto Market Structure",
-      "category": "markets",
-      "href": "/dashboards/markets/crypto-structure.html",
-      "headline": "How capital is rotating across the crypto market.",
-      "accent": "#818CF8",
-      "sparkline": [
-        58.578711858125885,
-        58.42453886242761,
-        58.537718329909914,
-        58.201128904355706,
-        58.10557736683787,
-        58.386468929817624,
-        58.854225416881214,
-        58.918016633320256,
-        58.905190168635954,
-        58.790981907980274,
-        58.58477979384927,
-        58.25431514852772,
-        58.217612789854925,
-        58.80773371037048,
-        58.54862133505977,
-        58.33498510686732,
-        58.39609004056051,
-        58.68018996309792,
-        58.662229001114596,
-        58.70095952443267,
-        59.124993422561744,
-        58.661789178616985,
-        58.71457365574436,
-        58.82189530763586,
-        59.16450866991041,
-        59.187357923858954,
-        59.12755181844441,
-        59.58642463842722,
-        59.17063859685703,
-        59.208528639419164,
-        59.264033729347474,
-        59.358968209756405,
-        59.28735843300459,
-        59.436342800117416,
-        60.133666212006,
-        59.62820370117793,
-        59.545489560474905,
-        59.578936101289614,
-        59.4784334384993,
-        59.99174026641462
-      ],
-      "stat_label": "BTC dominance",
-      "stat_value": "59.99%",
-      "delta": "0.51%",
-      "dir": "up",
-      "why": ""
     },
     {
       "lens_id": "business-credit",
@@ -424,8 +424,8 @@
       "lens_title": "Electricity & the Grid",
       "category": "energy",
       "href": "/dashboards/energy/electricity.html",
-      "status": "watch",
-      "headline": "Electricity prices are climbing."
+      "status": "ok",
+      "headline": "Power bills are steady."
     },
     {
       "lens_id": "energy-commodities",
@@ -501,8 +501,8 @@
     }
   ],
   "status_counts": {
-    "ok": 15,
-    "watch": 9,
+    "ok": 16,
+    "watch": 8,
     "elevated": 5,
     "alert": 2,
     "neutral": 2
@@ -514,20 +514,6 @@
     "short": "Holding up, but household finances are stretched thin."
   },
   "watching": [
-    {
-      "key": "energy/energy-electricity/electricity-price",
-      "indicator": "electricity-price",
-      "lens": "energy-electricity",
-      "category": "energy",
-      "title": "Retail Electricity \u00b7 Residential",
-      "lens_title": "Electricity & the Grid",
-      "due": "2026-09-15",
-      "point_fmt": "18.51\u00a2/kWh",
-      "implied_status": "watch",
-      "current_status": "ok",
-      "change": true,
-      "href": "/dashboards/energy/electricity.html"
-    },
     {
       "key": "energy/energy-natural-gas/henry-hub",
       "indicator": "henry-hub",
@@ -543,18 +529,32 @@
       "href": "/dashboards/energy/natural-gas.html"
     },
     {
-      "key": "consumer/consumer-sentiment/inflation-expectations",
-      "indicator": "inflation-expectations",
-      "lens": "consumer-sentiment",
-      "category": "consumer",
-      "title": "Inflation Expectations \u00b7 1-year ahead",
-      "lens_title": "Consumer Sentiment",
-      "due": "2026-10-15",
-      "point_fmt": "3.94%",
-      "implied_status": "watch",
+      "key": "economic/fiscal-health/debt-gdp",
+      "indicator": "debt-gdp",
+      "lens": "fiscal-health",
+      "category": "economic",
+      "title": "Federal Debt \u00b7 % of GDP",
+      "lens_title": "Fiscal Health",
+      "due": "2026-07-28",
+      "point_fmt": "122.30%",
+      "implied_status": "elevated",
       "current_status": "elevated",
-      "change": true,
-      "href": "/dashboards/consumer/sentiment.html"
+      "change": false,
+      "href": "/dashboards/fiscal-health.html"
+    },
+    {
+      "key": "housing/housing-home-prices/case-shiller",
+      "indicator": "case-shiller",
+      "lens": "housing-home-prices",
+      "category": "housing",
+      "title": "Case-Shiller Home Prices \u00b7 year-over-year",
+      "lens_title": "Home-Price Stability",
+      "due": "2026-09-15",
+      "point_fmt": "2.17%",
+      "implied_status": "ok",
+      "current_status": "ok",
+      "change": false,
+      "href": "/dashboards/housing/home-prices.html"
     }
   ],
   "pressure": [
@@ -671,14 +671,6 @@
       "headline": "Business credit bears watching \u2014 conditions are tightening at the margin."
     },
     {
-      "lens_id": "energy-electricity",
-      "lens_title": "Electricity & the Grid",
-      "category": "energy",
-      "href": "/dashboards/energy/electricity.html",
-      "status": "watch",
-      "headline": "Electricity prices are climbing."
-    },
-    {
       "lens_id": "energy-commodities",
       "lens_title": "Commodities & Materials",
       "category": "energy",
@@ -746,7 +738,7 @@
     }
   ],
   "synthesis": {
-    "cooccurrence": "Four of today's pressure points are about the cost of living \u2014 fuel, overall inflation, electricity, and food and commodities.",
+    "cooccurrence": "Three of today's pressure points are about the cost of living \u2014 fuel, overall inflation, and food and commodities.",
     "relationships": [
       "Real income is pay measured after inflation \u2014 so when the cost of living climbs faster than wages, real incomes fall by definition."
     ]

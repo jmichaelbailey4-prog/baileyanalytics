@@ -2,9 +2,9 @@
   "id": "energy-electricity",
   "title": "Electricity & the Grid",
   "accent": "#FBBF24",
-  "last_updated": "2026-10-22T17:54:39Z",
-  "status": "watch",
-  "headline_read": "Electricity prices are climbing.",
+  "last_updated": "2026-10-23T17:48:38Z",
+  "status": "ok",
+  "headline_read": "Power bills are steady.",
   "recessions": [
     {
       "start": "1948-12-01",
@@ -64,10 +64,6 @@
       "color": "#FBBF24",
       "series_id": "ELEC_PRICE_RES_US",
       "observations": [
-        {
-          "date": "2006-08",
-          "value": "10.94"
-        },
         {
           "date": "2006-09",
           "value": "10.94"
@@ -1006,11 +1002,11 @@
         },
         {
           "date": "2026-03",
-          "value": "18.83"
+          "value": "18.6"
         },
         {
           "date": "2026-04",
-          "value": "18.83"
+          "value": "18.86"
         },
         {
           "date": "2026-05",
@@ -1018,26 +1014,30 @@
         },
         {
           "date": "2026-06",
-          "value": "18.34"
+          "value": "18.35"
         },
         {
           "date": "2026-07",
           "value": "18.31"
+        },
+        {
+          "date": "2026-08",
+          "value": "18.16"
         }
       ],
       "latest": {
-        "date": "2026-07",
-        "value": "18.31"
+        "date": "2026-08",
+        "value": "18.16"
       },
       "context": "The U.S. average residential electricity price (cents per kWh) \u2014 the power bill households pay every month.",
-      "read": "Electricity costs are up 5% over the past year \u2014 climbing.",
-      "signal_status": "watch",
+      "read": "Electricity costs are up 3% over the past year.",
+      "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 97.9,
+        "p": 97.5,
         "since": 2006
       },
-      "scale_now": 5.2904
+      "scale_now": 3.358
     },
     {
       "id": "renewables-share",
@@ -1047,10 +1047,6 @@
       "color": "#34D399",
       "series_id": "RENEW_SHARE",
       "observations": [
-        {
-          "date": "2006-08",
-          "value": "7.3"
-        },
         {
           "date": "2006-09",
           "value": "7.5"
@@ -1981,7 +1977,7 @@
         },
         {
           "date": "2026-01",
-          "value": "24.0"
+          "value": "23.9"
         },
         {
           "date": "2026-02",
@@ -1989,35 +1985,39 @@
         },
         {
           "date": "2026-03",
-          "value": "32.5"
+          "value": "32.6"
         },
         {
           "date": "2026-04",
-          "value": "32.4"
+          "value": "32.3"
         },
         {
           "date": "2026-05",
-          "value": "29.7"
+          "value": "29.4"
         },
         {
           "date": "2026-06",
-          "value": "27.4"
+          "value": "27.3"
         },
         {
           "date": "2026-07",
-          "value": "21.9"
+          "value": "21.6"
+        },
+        {
+          "date": "2026-08",
+          "value": "21.4"
         }
       ],
       "latest": {
-        "date": "2026-07",
-        "value": "21.9"
+        "date": "2026-08",
+        "value": "21.4"
       },
       "context": "The share of U.S. electricity generated from renewables (wind, solar, hydro, and more) \u2014 the clearest single read on the energy transition.",
-      "read": "Renewables: 21.9% of U.S. electricity generation, up 1.4 points over the past year.",
+      "read": "Renewables: 21.4% of U.S. electricity generation, up 1.3 points over the past year.",
       "signal_status": "info",
       "value_format": "decimal",
       "percentile": {
-        "p": 83.3,
+        "p": 80.0,
         "since": 2006
       },
       "no_severity_reason": "A physical supply-and-demand reading, not a household cost \u2014 this lens's verdict comes from the price indicators.",
@@ -2031,10 +2031,6 @@
       "color": "#60A5FA",
       "series_id": "NG_SHARE",
       "observations": [
-        {
-          "date": "2006-08",
-          "value": "26.1"
-        },
         {
           "date": "2006-09",
           "value": "21.9"
@@ -2969,11 +2965,11 @@
         },
         {
           "date": "2026-02",
-          "value": "38.5"
+          "value": "38.6"
         },
         {
           "date": "2026-03",
-          "value": "36.5"
+          "value": "36.6"
         },
         {
           "date": "2026-04",
@@ -2981,27 +2977,31 @@
         },
         {
           "date": "2026-05",
-          "value": "38.7"
+          "value": "38.9"
         },
         {
           "date": "2026-06",
-          "value": "40.8"
+          "value": "41.0"
         },
         {
           "date": "2026-07",
-          "value": "45.2"
+          "value": "45.4"
+        },
+        {
+          "date": "2026-08",
+          "value": "46.7"
         }
       ],
       "latest": {
-        "date": "2026-07",
-        "value": "45.2"
+        "date": "2026-08",
+        "value": "46.7"
       },
       "context": "The share of U.S. electricity generated from natural gas \u2014 still the single largest source, and the swing fuel that balances the grid.",
-      "read": "Natural gas: 45.2% of U.S. electricity generation, steady over the past year.",
+      "read": "Natural gas: 46.7% of U.S. electricity generation, up 0.7 points over the past year.",
       "signal_status": "info",
       "value_format": "decimal",
       "percentile": {
-        "p": 95.8,
+        "p": 97.5,
         "since": 2006
       },
       "no_severity_reason": "A physical supply-and-demand reading, not a household cost \u2014 this lens's verdict comes from the price indicators.",
@@ -3015,10 +3015,6 @@
       "color": "#38BDF8",
       "series_id": "NET_GEN_TOTAL",
       "observations": [
-        {
-          "date": "2006-08",
-          "value": "407762.53636"
-        },
         {
           "date": "2006-09",
           "value": "332055.32084"
@@ -3949,43 +3945,47 @@
         },
         {
           "date": "2026-01",
-          "value": "399529.18195"
+          "value": "399301.75793"
         },
         {
           "date": "2026-02",
-          "value": "342800.61492"
+          "value": "342712.91323"
         },
         {
           "date": "2026-03",
-          "value": "348756.32952"
+          "value": "349451.48239"
         },
         {
           "date": "2026-04",
-          "value": "330706.51949"
+          "value": "328855.21544"
         },
         {
           "date": "2026-05",
-          "value": "354690.52571"
+          "value": "353845.02238"
         },
         {
           "date": "2026-06",
-          "value": "399671.28516"
+          "value": "397565.95856"
         },
         {
           "date": "2026-07",
-          "value": "453744.39758"
+          "value": "451966.70113"
+        },
+        {
+          "date": "2026-08",
+          "value": "449405.55472"
         }
       ],
       "latest": {
-        "date": "2026-07",
-        "value": "453744.39758"
+        "date": "2026-08",
+        "value": "449405.55472"
       },
       "context": "Total U.S. net electricity generation (GWh) \u2014 a read on how much power the economy is consuming.",
-      "read": "Net generation is little changed from a year ago, now 453,744.",
+      "read": "Net generation is up 7% from a year ago, now 449,406.",
       "signal_status": "info",
       "value_format": "thousands",
       "percentile": {
-        "p": 99.6,
+        "p": 99.2,
         "since": 2006
       },
       "no_severity_reason": "A physical supply-and-demand reading, not a household cost \u2014 this lens's verdict comes from the price indicators.",

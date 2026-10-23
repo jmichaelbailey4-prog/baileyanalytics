@@ -2258,7 +2258,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 0.0,
-      "revised_to": null
+      "revised_to": 18.86
     }
   },
   {
@@ -15490,7 +15490,7 @@
       "direction_hit": false,
       "status_hit": false,
       "naive_error": 0.10000000000000142,
-      "revised_to": null
+      "revised_to": 18.35
     },
     "prev_period": "2026-05"
   },
@@ -28645,7 +28645,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 166.19999999999982,
-      "revised_to": null
+      "revised_to": 4007.5
     },
     "now_value": 4202.9,
     "now_date": "2026-10-16"
@@ -28844,5 +28844,122 @@
       "revised_to": null
     },
     "prev_period": "2026-07-01"
+  },
+  {
+    "id": "consumer/consumer-sentiment/sentiment@2026-09-01",
+    "key": "consumer/consumer-sentiment/sentiment",
+    "category": "consumer",
+    "lens": "consumer-sentiment",
+    "indicator": "sentiment",
+    "series_id": "UMCSENT",
+    "horizon": "next-print",
+    "target_period": "2026-09-01",
+    "due": "2026-10-15",
+    "made_at": "2026-09-25T17:51:58Z",
+    "model": "ets-seasonal@1",
+    "point": 51.7902,
+    "lo": 45.8761,
+    "hi": 56.934,
+    "unit": "",
+    "value_format": "decimal",
+    "prev_value": 51.7,
+    "why": "This projects the recent trend with the usual seasonal pattern for the month.",
+    "implied_status": "alert",
+    "current_status": "alert",
+    "descriptive": false,
+    "market_price": false,
+    "title": "Consumer Sentiment (U. Michigan)",
+    "short": "Sentiment",
+    "lens_title": "Consumer Sentiment",
+    "href": "/dashboards/consumer/sentiment.html",
+    "grade": {
+      "actual": 48.1,
+      "graded_at": "2026-10-23T17:49:26Z",
+      "hit": true,
+      "abs_error": 3.6901999999999973,
+      "direction_hit": false,
+      "status_hit": true,
+      "naive_error": 3.6000000000000014,
+      "revised_to": null
+    },
+    "prev_period": "2026-08-01"
+  },
+  {
+    "id": "consumer/consumer-sentiment/inflation-expectations@2026-09-01",
+    "key": "consumer/consumer-sentiment/inflation-expectations",
+    "category": "consumer",
+    "lens": "consumer-sentiment",
+    "indicator": "inflation-expectations",
+    "series_id": "MICH",
+    "horizon": "next-print",
+    "target_period": "2026-09-01",
+    "due": "2026-10-15",
+    "made_at": "2026-09-25T17:51:59Z",
+    "model": "ets-seasonal@1",
+    "point": 3.9371,
+    "lo": 3.4846,
+    "hi": 4.473,
+    "unit": "%",
+    "value_format": "decimal",
+    "prev_value": 4.0,
+    "why": "Inflation exp.: down 3 straight months. This projects the recent trend with the usual seasonal pattern for the month.",
+    "implied_status": "watch",
+    "current_status": "elevated",
+    "descriptive": false,
+    "market_price": false,
+    "title": "Inflation Expectations \u00b7 1-year ahead",
+    "short": "Inflation exp.",
+    "lens_title": "Consumer Sentiment",
+    "href": "/dashboards/consumer/sentiment.html",
+    "grade": {
+      "actual": 4.6,
+      "graded_at": "2026-10-23T17:49:28Z",
+      "hit": false,
+      "abs_error": 0.6628999999999996,
+      "direction_hit": false,
+      "status_hit": false,
+      "naive_error": 0.5999999999999996,
+      "revised_to": null
+    },
+    "prev_period": "2026-08-01"
+  },
+  {
+    "id": "energy/energy-electricity/electricity-price@2026-08",
+    "key": "energy/energy-electricity/electricity-price",
+    "category": "energy",
+    "lens": "energy-electricity",
+    "indicator": "electricity-price",
+    "series_id": "ELEC_PRICE_RES_US",
+    "horizon": "next-print",
+    "target_period": "2026-08",
+    "due": "2026-09-15",
+    "made_at": "2026-09-25T10:52:55Z",
+    "model": "ets-seasonal@1",
+    "point": 18.5073,
+    "lo": 18.2603,
+    "hi": 18.9531,
+    "unit": "\u00a2/kWh",
+    "value_format": "decimal",
+    "prev_value": 18.31,
+    "why": "Power price: down 3 straight months. This projects the recent trend with the usual seasonal pattern for the month.",
+    "implied_status": "watch",
+    "current_status": "ok",
+    "descriptive": false,
+    "market_price": false,
+    "title": "Retail Electricity \u00b7 Residential",
+    "short": "Power price",
+    "lens_title": "Electricity & the Grid",
+    "href": "/dashboards/energy/electricity.html",
+    "grade": {
+      "actual": 18.16,
+      "graded_at": "2026-10-23T17:49:41Z",
+      "hit": false,
+      "abs_error": 0.3473000000000006,
+      "direction_hit": false,
+      "status_hit": false,
+      "naive_error": 0.14999999999999858,
+      "revised_to": null
+    },
+    "prev_period": "2026-07"
   }
 ]
