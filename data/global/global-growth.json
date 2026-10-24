@@ -2,7 +2,7 @@
   "id": "global-growth",
   "title": "Global Growth",
   "accent": "#34D399",
-  "last_updated": "2026-10-20T10:45:39Z",
+  "last_updated": "2026-10-24T10:02:27Z",
   "status": "ok",
   "headline_read": "The world economy is growing around its long-run trend.",
   "recessions": [
@@ -254,7 +254,7 @@
         "value": "3.504572"
       },
       "context": "The IMF's measure of how fast the whole world economy is growing each year. The long-run trend is about 3.5%; below 2% is what economists call a global recession \u2014 it has happened only a handful of times since 1980.",
-      "read": "The world economy grew 3.5% in 2025 \u2014 around its long-run trend. The IMF projects 3.1% for 2026.",
+      "read": "The world economy grew 3.5% in 2025 \u2014 around its long-run trend.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
