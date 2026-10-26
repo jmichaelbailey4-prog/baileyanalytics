@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-10-26",
+    "title": "Today's Brief \u2014 2 alert \u00b7 5 elevated \u00b7 8 on watch",
+    "description": "Risk Sentiment: VIX 19.03 (\u25b22.35)\nNatural Gas: Henry Hub $3.10 (\u25bc$0.18)\nBusiness Credit: Baa spread 1.48% (\u25bc0.16%)\nConcentrations & Funding: Uninsured dep. 41.64% (\u25b21.16%)\nHousehold Income & Savings: Saving rate 4.10% (\u25bc0.50%)"
+  },
+  {
     "date": "2026-10-25",
     "title": "Today's Brief \u2014 2 alert \u00b7 5 elevated \u00b7 8 on watch",
     "description": "Risk Sentiment: VIX 19.03 (\u25b22.35)\nNatural Gas: Henry Hub $3.10 (\u25bc$0.18)\nCrypto Market Structure: BTC dominance 60.08% (\u25b20.49%)\nBusiness Credit: Baa spread 1.48% (\u25bc0.16%)\nConcentrations & Funding: Uninsured dep. 41.64% (\u25b21.16%)"
@@ -143,10 +148,5 @@
     "date": "2026-09-27",
     "title": "Today's Brief \u2014 2 alert \u00b7 4 elevated \u00b7 7 on watch",
     "description": "Concentrations & Funding: Uninsured dep. 41.64% (\u25b21.16%)\nRecession Watch: Yield curve 0.36% (\u25b20.05%)\nBusiness Formation: Applications 11.40% (\u25bc11.90%)\nCrypto Market Structure: BTC dominance 58.81% (\u25b20.59%)\nOil & Fuels: Gasoline $4.48 (\u25b2$0.16)"
-  },
-  {
-    "date": "2026-09-26",
-    "title": "Today's Brief \u2014 2 alert \u00b7 4 elevated \u00b7 7 on watch",
-    "description": "Concentrations & Funding: Uninsured dep. 41.64% (\u25b21.16%)\nRecession Watch: Yield curve 0.36% (\u25b20.05%)\nBusiness Formation: Applications 11.40% (\u25bc11.90%)\nOil & Fuels: Gasoline $4.48 (\u25b2$0.16)\nHousehold Income & Savings: Saving rate 3.00% (\u25b20.40%)"
   }
 ]
