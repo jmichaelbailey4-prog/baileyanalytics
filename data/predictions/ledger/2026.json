@@ -1662,7 +1662,7 @@
       "direction_hit": true,
       "status_hit": true,
       "naive_error": 0.8557800000000002,
-      "revised_to": 5.3929
+      "revised_to": 5.37444
     }
   },
   {
@@ -7640,7 +7640,7 @@
       "direction_hit": true,
       "status_hit": false,
       "naive_error": 7500.0,
-      "revised_to": null
+      "revised_to": 413500.0
     }
   },
   {
@@ -7678,7 +7678,7 @@
       "direction_hit": true,
       "status_hit": true,
       "naive_error": 1.0,
-      "revised_to": 8.6
+      "revised_to": 8.5
     }
   },
   {
@@ -8506,7 +8506,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 0.054549999999999876,
-      "revised_to": 5.34258
+      "revised_to": 5.30021
     }
   },
   {
@@ -14957,7 +14957,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 0.11158000000000001,
-      "revised_to": 5.41325
+      "revised_to": 5.36092
     },
     "prev_period": "2026-06-01"
   },
@@ -15104,7 +15104,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 0.29999999999999893,
-      "revised_to": 9.0
+      "revised_to": 8.9
     },
     "prev_period": "2026-06-01"
   },
@@ -21826,7 +21826,7 @@
       "direction_hit": true,
       "status_hit": true,
       "naive_error": 0.24472999999999967,
-      "revised_to": null
+      "revised_to": 5.59687
     },
     "prev_period": "2026-07-01"
   },
@@ -28214,7 +28214,7 @@
       "direction_hit": true,
       "status_hit": true,
       "naive_error": 6.0,
-      "revised_to": null
+      "revised_to": 1398.0
     },
     "prev_period": "2026-08-01"
   },
@@ -29561,5 +29561,239 @@
     },
     "now_value": 6.6861,
     "now_date": "2026-10-16"
+  },
+  {
+    "id": "markets/market-liquidity/m2-growth@2026-09-01",
+    "key": "markets/market-liquidity/m2-growth",
+    "category": "markets",
+    "lens": "market-liquidity",
+    "indicator": "m2-growth",
+    "series_id": "M2SL",
+    "horizon": "next-print",
+    "target_period": "2026-09-01",
+    "due": "2026-10-15",
+    "made_at": "2026-09-22T17:36:06Z",
+    "model": "ets@1",
+    "point": 5.8379,
+    "lo": 5.1332,
+    "hi": 6.5811,
+    "unit": "%",
+    "value_format": "decimal",
+    "prev_value": 5.65891,
+    "why": "M2 growth: up 2 straight months. This projects the recent level and trend forward one month.",
+    "implied_status": "ok",
+    "current_status": "ok",
+    "descriptive": false,
+    "market_price": false,
+    "title": "M2 Money Supply \u00b7 year-over-year",
+    "short": "M2 growth",
+    "lens_title": "Liquidity & the Fed",
+    "href": "/dashboards/markets/liquidity.html",
+    "grade": {
+      "actual": 5.70991,
+      "graded_at": "2026-10-27T18:37:43Z",
+      "hit": true,
+      "abs_error": 0.1279900000000005,
+      "direction_hit": true,
+      "status_hit": true,
+      "naive_error": 0.051000000000000156,
+      "revised_to": null
+    },
+    "prev_period": "2026-08-01"
+  },
+  {
+    "id": "energy/energy-oil-fuels/gasoline@2026-10-26",
+    "key": "energy/energy-oil-fuels/gasoline",
+    "category": "energy",
+    "lens": "energy-oil-fuels",
+    "indicator": "gasoline",
+    "series_id": "EMM_EPMR_PTE_NUS_DPG",
+    "horizon": "next-print",
+    "target_period": "2026-10-26",
+    "due": "2026-10-31",
+    "made_at": "2026-10-25T10:26:55Z",
+    "model": "ets@1",
+    "point": 4.2517,
+    "lo": 4.1682,
+    "hi": 4.3177,
+    "unit": "$",
+    "value_format": "decimal",
+    "prev_value": 4.284,
+    "why": "Gasoline: down 4 straight weeks. This projects the recent level and trend forward one week.",
+    "implied_status": "alert",
+    "current_status": "elevated",
+    "descriptive": false,
+    "market_price": false,
+    "title": "Retail Gasoline \u00b7 Regular",
+    "short": "Gasoline",
+    "lens_title": "Oil & Fuels",
+    "href": "/dashboards/energy/oil-fuels.html",
+    "grade": {
+      "actual": 4.269,
+      "graded_at": "2026-10-27T18:37:51Z",
+      "hit": true,
+      "abs_error": 0.017300000000000537,
+      "direction_hit": true,
+      "status_hit": true,
+      "naive_error": 0.01499999999999968,
+      "revised_to": null
+    },
+    "prev_period": "2026-10-19"
+  },
+  {
+    "id": "energy/energy-oil-fuels/diesel@2026-10-26",
+    "key": "energy/energy-oil-fuels/diesel",
+    "category": "energy",
+    "lens": "energy-oil-fuels",
+    "indicator": "diesel",
+    "series_id": "EMD_EPD2D_PTE_NUS_DPG",
+    "horizon": "next-print",
+    "target_period": "2026-10-26",
+    "due": "2026-10-31",
+    "made_at": "2026-10-21T17:58:03Z",
+    "model": "ets@1",
+    "point": 6.2951,
+    "lo": 6.1631,
+    "hi": 6.412,
+    "unit": "$",
+    "value_format": "decimal",
+    "prev_value": 6.276,
+    "why": "This projects the recent level and trend forward one week.",
+    "implied_status": "alert",
+    "current_status": "alert",
+    "descriptive": false,
+    "market_price": false,
+    "title": "Retail Diesel \u00b7 On-Highway",
+    "short": "Diesel",
+    "lens_title": "Oil & Fuels",
+    "href": "/dashboards/energy/oil-fuels.html",
+    "grade": {
+      "actual": 6.352,
+      "graded_at": "2026-10-27T18:37:52Z",
+      "hit": true,
+      "abs_error": 0.05690000000000062,
+      "direction_hit": true,
+      "status_hit": true,
+      "naive_error": 0.07600000000000051,
+      "revised_to": null
+    },
+    "prev_period": "2026-10-19"
+  },
+  {
+    "id": "housing/housing-home-prices/median-price@2026-07-01",
+    "key": "housing/housing-home-prices/median-price",
+    "category": "housing",
+    "lens": "housing-home-prices",
+    "indicator": "median-price",
+    "series_id": "MSPUS",
+    "horizon": "next-print",
+    "target_period": "2026-07-01",
+    "due": "2026-10-28",
+    "made_at": "2026-07-24T15:03:23Z",
+    "model": "drift@1",
+    "point": 412252.9644,
+    "lo": 398393.4153,
+    "hi": 427467.6999,
+    "unit": "$",
+    "value_format": "thousands",
+    "prev_value": 410700.0,
+    "why": "This projects the series' long-run average step from today's level.",
+    "implied_status": "ok",
+    "current_status": "ok",
+    "descriptive": false,
+    "market_price": false,
+    "title": "Median Sales Price of Houses Sold",
+    "short": "Median price",
+    "lens_title": "Home-Price Stability",
+    "href": "/dashboards/housing/home-prices.html",
+    "grade": {
+      "actual": 393300.0,
+      "graded_at": "2026-10-27T18:38:01Z",
+      "hit": false,
+      "abs_error": 18952.964399999997,
+      "direction_hit": false,
+      "status_hit": false,
+      "naive_error": 17400.0,
+      "revised_to": null
+    },
+    "prev_period": "2026-04-01"
+  },
+  {
+    "id": "housing/housing-supply-construction/months-supply@2026-09-01",
+    "key": "housing/housing-supply-construction/months-supply",
+    "category": "housing",
+    "lens": "housing-supply-construction",
+    "indicator": "months-supply",
+    "series_id": "MSACSR",
+    "horizon": "next-print",
+    "target_period": "2026-09-01",
+    "due": "2026-10-15",
+    "made_at": "2026-09-24T17:50:07Z",
+    "model": "ets@1",
+    "point": 8.6185,
+    "lo": 7.8728,
+    "hi": 9.5354,
+    "unit": "months",
+    "value_format": "decimal",
+    "prev_value": 8.5,
+    "why": "This projects the recent level and trend forward one month.",
+    "implied_status": "elevated",
+    "current_status": "elevated",
+    "descriptive": false,
+    "market_price": false,
+    "title": "Months of New-Home Supply",
+    "short": "Months' supply",
+    "lens_title": "Supply & Construction",
+    "href": "/dashboards/housing/supply-construction.html",
+    "grade": {
+      "actual": 8.4,
+      "graded_at": "2026-10-27T18:38:02Z",
+      "hit": true,
+      "abs_error": 0.2184999999999988,
+      "direction_hit": false,
+      "status_hit": true,
+      "naive_error": 0.09999999999999964,
+      "revised_to": null
+    },
+    "prev_period": "2026-08-01"
+  },
+  {
+    "id": "business/business-investment/core-capex@2026-09-01",
+    "key": "business/business-investment/core-capex",
+    "category": "business",
+    "lens": "business-investment",
+    "indicator": "core-capex",
+    "series_id": "NEWORDER",
+    "horizon": "next-print",
+    "target_period": "2026-09-01",
+    "due": "2026-10-15",
+    "made_at": "2026-09-25T17:52:16Z",
+    "model": "naive@1",
+    "point": 14.1,
+    "lo": 11.55,
+    "hi": 16.65,
+    "unit": "%",
+    "value_format": "decimal",
+    "prev_value": 14.1,
+    "why": "We expect roughly the last value \u2014 this series rarely rewards cleverness.",
+    "implied_status": "ok",
+    "current_status": "ok",
+    "descriptive": false,
+    "market_price": false,
+    "title": "Core Capital-Goods Orders \u00b7 year-over-year",
+    "short": "Core capex",
+    "lens_title": "Business Investment",
+    "href": "/dashboards/business/investment.html",
+    "grade": {
+      "actual": 13.5,
+      "graded_at": "2026-10-27T18:38:11Z",
+      "hit": true,
+      "abs_error": 0.5999999999999996,
+      "direction_hit": false,
+      "status_hit": true,
+      "naive_error": 0.5999999999999996,
+      "revised_to": null
+    },
+    "prev_period": "2026-08-01"
   }
 ]

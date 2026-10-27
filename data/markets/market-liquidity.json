@@ -2,7 +2,7 @@
   "id": "market-liquidity",
   "title": "Liquidity & the Fed",
   "accent": "#2DD4BF",
-  "last_updated": "2026-10-26T19:05:08Z",
+  "last_updated": "2026-10-27T18:36:28Z",
   "status": "ok",
   "headline_read": "Liquidity is ample \u2014 no monetary squeeze in sight.",
   "recessions": [
@@ -909,10 +909,6 @@
           "value": "8.15292"
         },
         {
-          "date": "2011-08-01",
-          "value": "9.68874"
-        },
-        {
           "date": "2011-09-01",
           "value": "9.56122"
         },
@@ -1374,278 +1370,282 @@
         },
         {
           "date": "2021-04-01",
-          "value": "18.22609"
+          "value": "18.22668"
         },
         {
           "date": "2021-05-01",
-          "value": "14.08440"
+          "value": "14.08551"
         },
         {
           "date": "2021-06-01",
-          "value": "12.61111"
+          "value": "12.60726"
         },
         {
           "date": "2021-07-01",
-          "value": "12.53914"
+          "value": "12.57624"
         },
         {
           "date": "2021-08-01",
-          "value": "13.20078"
+          "value": "13.46907"
         },
         {
           "date": "2021-09-01",
-          "value": "12.79441"
+          "value": "13.20613"
         },
         {
           "date": "2021-10-01",
-          "value": "12.81617"
+          "value": "12.73941"
         },
         {
           "date": "2021-11-01",
-          "value": "12.30634"
+          "value": "12.23951"
         },
         {
           "date": "2021-12-01",
-          "value": "12.46587"
+          "value": "12.38951"
         },
         {
           "date": "2022-01-01",
-          "value": "11.72679"
+          "value": "11.60343"
         },
         {
           "date": "2022-02-01",
-          "value": "10.61126"
+          "value": "10.51147"
         },
         {
           "date": "2022-03-01",
-          "value": "9.62842"
+          "value": "9.54087"
         },
         {
           "date": "2022-04-01",
-          "value": "7.90271"
+          "value": "7.81493"
         },
         {
           "date": "2022-05-01",
-          "value": "6.16155"
+          "value": "6.07351"
         },
         {
           "date": "2022-06-01",
-          "value": "5.73593"
+          "value": "5.66090"
         },
         {
           "date": "2022-07-01",
-          "value": "4.94038"
+          "value": "4.82148"
         },
         {
           "date": "2022-08-01",
-          "value": "3.82796"
+          "value": "3.48675"
         },
         {
           "date": "2022-09-01",
-          "value": "2.64898"
+          "value": "2.17833"
         },
         {
           "date": "2022-10-01",
-          "value": "1.41749"
+          "value": "1.38961"
         },
         {
           "date": "2022-11-01",
-          "value": "0.32145"
+          "value": "0.28272"
         },
         {
           "date": "2022-12-01",
-          "value": "-0.97476"
+          "value": "-1.00241"
         },
         {
           "date": "2023-01-01",
-          "value": "-1.72492"
+          "value": "-1.67364"
         },
         {
           "date": "2023-02-01",
-          "value": "-2.23423"
+          "value": "-2.13950"
         },
         {
           "date": "2023-03-01",
-          "value": "-3.88194"
+          "value": "-3.84967"
         },
         {
           "date": "2023-04-01",
-          "value": "-4.64067"
+          "value": "-4.65730"
         },
         {
           "date": "2023-05-01",
-          "value": "-4.09154"
+          "value": "-4.11148"
         },
         {
           "date": "2023-06-01",
-          "value": "-3.91786"
+          "value": "-3.94621"
         },
         {
           "date": "2023-07-01",
-          "value": "-3.95858"
+          "value": "-3.98256"
         },
         {
           "date": "2023-08-01",
-          "value": "-3.97331"
+          "value": "-3.98994"
         },
         {
           "date": "2023-09-01",
-          "value": "-3.65670"
+          "value": "-3.67551"
         },
         {
           "date": "2023-10-01",
-          "value": "-3.38610"
+          "value": "-3.41079"
         },
         {
           "date": "2023-11-01",
-          "value": "-3.08181"
+          "value": "-3.10681"
         },
         {
           "date": "2023-12-01",
-          "value": "-2.41063"
+          "value": "-2.44068"
         },
         {
           "date": "2024-01-01",
-          "value": "-2.06120"
+          "value": "-2.13107"
         },
         {
           "date": "2024-02-01",
-          "value": "-1.49952"
+          "value": "-1.62700"
         },
         {
           "date": "2024-03-01",
-          "value": "0.11269"
+          "value": "0.03965"
         },
         {
           "date": "2024-04-01",
-          "value": "0.94999"
+          "value": "0.92633"
         },
         {
           "date": "2024-05-01",
-          "value": "0.92273"
+          "value": "0.90013"
         },
         {
           "date": "2024-06-01",
-          "value": "1.30680"
+          "value": "1.28843"
         },
         {
           "date": "2024-07-01",
-          "value": "1.47507"
+          "value": "1.45593"
         },
         {
           "date": "2024-08-01",
-          "value": "1.97286"
+          "value": "1.95865"
         },
         {
           "date": "2024-09-01",
-          "value": "2.51523"
+          "value": "2.50895"
         },
         {
           "date": "2024-10-01",
-          "value": "2.88947"
+          "value": "2.89104"
         },
         {
           "date": "2024-11-01",
-          "value": "3.39764"
+          "value": "3.40330"
         },
         {
           "date": "2024-12-01",
-          "value": "3.40569"
+          "value": "3.41338"
         },
         {
           "date": "2025-01-01",
-          "value": "3.37789"
+          "value": "3.38852"
         },
         {
           "date": "2025-02-01",
-          "value": "3.27650"
+          "value": "3.27862"
         },
         {
           "date": "2025-03-01",
-          "value": "3.42556"
+          "value": "3.42153"
         },
         {
           "date": "2025-04-01",
-          "value": "3.89112"
+          "value": "3.88631"
         },
         {
           "date": "2025-05-01",
-          "value": "3.87459"
+          "value": "3.87468"
         },
         {
           "date": "2025-06-01",
-          "value": "4.13797"
+          "value": "4.13923"
         },
         {
           "date": "2025-07-01",
-          "value": "4.39217"
+          "value": "4.39146"
         },
         {
           "date": "2025-08-01",
-          "value": "4.24972"
+          "value": "4.25262"
         },
         {
           "date": "2025-09-01",
-          "value": "4.23255"
+          "value": "4.23202"
         },
         {
           "date": "2025-10-01",
-          "value": "4.27997"
+          "value": "4.27946"
         },
         {
           "date": "2025-11-01",
-          "value": "3.84578"
+          "value": "3.84474"
         },
         {
           "date": "2025-12-01",
-          "value": "4.03814"
+          "value": "4.03877"
         },
         {
           "date": "2026-01-01",
-          "value": "4.05816"
+          "value": "4.05790"
         },
         {
           "date": "2026-02-01",
-          "value": "4.58875"
+          "value": "4.59291"
         },
         {
           "date": "2026-03-01",
-          "value": "4.40968"
+          "value": "4.41650"
         },
         {
           "date": "2026-04-01",
-          "value": "4.52808"
+          "value": "4.52875"
         },
         {
           "date": "2026-05-01",
-          "value": "5.39290"
+          "value": "5.37444"
         },
         {
           "date": "2026-06-01",
-          "value": "5.34258"
+          "value": "5.30021"
         },
         {
           "date": "2026-07-01",
-          "value": "5.41325"
+          "value": "5.36092"
         },
         {
           "date": "2026-08-01",
-          "value": "5.65891"
+          "value": "5.59687"
+        },
+        {
+          "date": "2026-09-01",
+          "value": "5.70991"
         }
       ],
       "latest": {
-        "date": "2026-08-01",
-        "value": "5.65891"
+        "date": "2026-09-01",
+        "value": "5.70991"
       },
       "context": "How fast the broad money supply is growing versus a year ago. Double-digit growth (2020-21) preceded the inflation surge; the 2022-23 contraction was the first since the Great Depression.",
       "read": "M2 is growing 5.7% a year \u2014 a normal pace.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 35.9,
+        "p": 36.8,
         "since": 1960
       },
-      "scale_now": 5.6589
+      "scale_now": 5.7099
     },
     {
       "id": "fed-balance-sheet",
@@ -4270,8 +4270,8 @@
       "series_id": "RRPONTSYD",
       "observations": [
         {
-          "date": "2021-11-02",
-          "value": "1329.913"
+          "date": "2021-11-03",
+          "value": "1343.985"
         },
         {
           "date": "2021-11-08",
@@ -6976,18 +6976,22 @@
         {
           "date": "2026-10-26",
           "value": "0.2"
+        },
+        {
+          "date": "2026-10-27",
+          "value": "0.226"
         }
       ],
       "latest": {
-        "date": "2026-10-26",
-        "value": "0.2"
+        "date": "2026-10-27",
+        "value": "0.226"
       },
       "context": "Spare cash money-market funds park at the Fed overnight. It acts as the system's overflow tank: a high balance means excess liquidity; near zero means the buffer is spent and QT bites reserves directly.",
-      "read": "The overnight reverse-repo facility is down 92% from a year ago, now $0.2 billion.",
+      "read": "The overnight reverse-repo facility is down 98% from a year ago, now $0.2 billion.",
       "signal_status": "info",
       "value_format": "decimal",
       "percentile": {
-        "p": 1.0,
+        "p": 1.5,
         "since": 2021
       },
       "no_severity_reason": "A descriptive level of the monetary plumbing \u2014 this lens's verdict is carried by M2 money-supply growth."

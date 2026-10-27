@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-10-27T11:19:39Z",
+  "generated_at": "2026-10-27T18:38:13Z",
   "since": "2026-06-12T14:20:31Z",
-  "graded": 759,
+  "graded": 765,
   "coverage": 325,
-  "calibration": 0.7957839262187089,
-  "direction": 0.3709677419354839,
-  "status": 0.9055299539170507,
-  "skill": 0.0003429898748916749,
+  "calibration": 0.796078431372549,
+  "direction": 0.37272727272727274,
+  "status": 0.9045454545454545,
+  "skill": -0.002160502937542441,
   "categories": {
     "banking": {
       "graded": 9,
@@ -17,12 +17,12 @@
       "skill": 0.16125352062462261
     },
     "business": {
-      "graded": 40,
+      "graded": 41,
       "coverage": 8,
-      "calibration": 0.875,
-      "direction": 0.28125,
-      "status": 0.96875,
-      "skill": -0.034167212041884776
+      "calibration": 0.8780487804878049,
+      "direction": 0.2727272727272727,
+      "status": 0.9696969696969697,
+      "skill": -0.03383506156837335
     },
     "consumer": {
       "graded": 42,
@@ -41,12 +41,12 @@
       "skill": -6.392076916661438e-07
     },
     "energy": {
-      "graded": 137,
+      "graded": 139,
       "coverage": 70,
-      "calibration": 0.6934306569343066,
-      "direction": 0.3880597014925373,
-      "status": 0.8059701492537313,
-      "skill": -0.13549555859865658
+      "calibration": 0.697841726618705,
+      "direction": 0.4057971014492754,
+      "status": 0.8115942028985508,
+      "skill": -0.13476327958361067
     },
     "global": {
       "graded": 95,
@@ -57,20 +57,20 @@
       "skill": 0.05009835814723118
     },
     "housing": {
-      "graded": 55,
+      "graded": 57,
       "coverage": 9,
-      "calibration": 0.8545454545454545,
-      "direction": 0.5869565217391305,
-      "status": 0.9130434782608695,
-      "skill": 0.2020485591734439
+      "calibration": 0.8421052631578947,
+      "direction": 0.5625,
+      "status": 0.8958333333333334,
+      "skill": -0.07328337567539522
     },
     "markets": {
-      "graded": 226,
+      "graded": 227,
       "coverage": 146,
-      "calibration": 0.7831858407079646,
-      "direction": 0.4375,
+      "calibration": 0.7841409691629956,
+      "direction": 0.4444444444444444,
       "status": 1.0,
-      "skill": 0.018502148360067583
+      "skill": 0.015897035797997616
     }
   }
 }

@@ -2,7 +2,7 @@
   "id": "housing-home-prices",
   "title": "Home-Price Stability",
   "accent": "#F472B6",
-  "last_updated": "2026-10-13T19:48:52Z",
+  "last_updated": "2026-10-27T18:37:12Z",
   "status": "ok",
   "headline_read": "The housing market looks balanced \u2014 prices and sales are steady.",
   "recessions": [
@@ -2272,22 +2272,26 @@
         },
         {
           "date": "2026-04-01",
-          "value": "410700.0"
+          "value": "413500"
+        },
+        {
+          "date": "2026-07-01",
+          "value": "393300"
         }
       ],
       "latest": {
-        "date": "2026-04-01",
-        "value": "410700.0"
+        "date": "2026-07-01",
+        "value": "393300"
       },
       "context": "The median price of homes actually sold (quarterly) \u2014 a dollars-and-cents companion to the Case-Shiller index.",
-      "read": "Median home price: down 1% from a year ago.",
-      "signal_status": "ok",
+      "read": "Median home price: down 4% from a year ago \u2014 cooling.",
+      "signal_status": "watch",
       "value_format": "thousands",
       "percentile": {
-        "p": 93.3,
+        "p": 91.8,
         "since": 1963
       },
-      "scale_now": -1.2978
+      "scale_now": -4.0966
     }
   ]
 }
