@@ -2,7 +2,7 @@
   "id": "global-dollar-currencies",
   "title": "The Dollar & Currencies",
   "accent": "#38BDF8",
-  "last_updated": "2026-10-20T10:45:39Z",
+  "last_updated": "2026-10-27T11:18:55Z",
   "status": "ok",
   "headline_read": "Currency markets are calm \u2014 the dollar is near where it was a year ago.",
   "recessions": [
@@ -65,12 +65,8 @@
       "series_id": "DTWEXBGS",
       "observations": [
         {
-          "date": "2016-10-31",
-          "value": "3.44769"
-        },
-        {
-          "date": "2016-11-01",
-          "value": "3.39928"
+          "date": "2016-11-07",
+          "value": "1.45928"
         },
         {
           "date": "2016-12-01",
@@ -307,10 +303,6 @@
         {
           "date": "2021-10-01",
           "value": "-2.01513"
-        },
-        {
-          "date": "2021-10-18",
-          "value": "-1.22458"
         },
         {
           "date": "2021-10-25",
@@ -937,24 +929,8 @@
           "value": "."
         },
         {
-          "date": "2024-10-16",
-          "value": "0.08779"
-        },
-        {
-          "date": "2024-10-17",
-          "value": "0.25380"
-        },
-        {
-          "date": "2024-10-18",
-          "value": "0.24795"
-        },
-        {
           "date": "2024-10-21",
           "value": "0.96614"
-        },
-        {
-          "date": "2024-10-22",
-          "value": "0.62204"
         },
         {
           "date": "2024-10-23",
@@ -3027,21 +3003,41 @@
         {
           "date": "2026-10-16",
           "value": "0.58159"
+        },
+        {
+          "date": "2026-10-19",
+          "value": "0.58356"
+        },
+        {
+          "date": "2026-10-20",
+          "value": "0.18736"
+        },
+        {
+          "date": "2026-10-21",
+          "value": "0.36924"
+        },
+        {
+          "date": "2026-10-22",
+          "value": "0.33071"
+        },
+        {
+          "date": "2026-10-23",
+          "value": "0.31893"
         }
       ],
       "latest": {
-        "date": "2026-10-16",
-        "value": "0.58159"
+        "date": "2026-10-23",
+        "value": "0.31893"
       },
       "context": "How fast the trade-weighted dollar is rising or falling versus a year ago. Big moves in either direction are destabilizing: a surging dollar squeezes the world's dollar borrowers and crushes emerging markets; a sliding one imports inflation.",
-      "read": "The dollar is little changed against major currencies over the past year (+0.6%).",
+      "read": "The dollar is little changed against major currencies over the past year (+0.3%).",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 48.0,
+        "p": 45.5,
         "since": 2016
       },
-      "scale_now": 0.5816
+      "scale_now": 0.3189
     },
     {
       "id": "euro",
@@ -3052,12 +3048,8 @@
       "series_id": "DEXUSEU",
       "observations": [
         {
-          "date": "2016-10-31",
-          "value": "1.0962"
-        },
-        {
-          "date": "2016-11-01",
-          "value": "1.1042"
+          "date": "2016-11-07",
+          "value": "1.1038"
         },
         {
           "date": "2016-12-01",
@@ -3294,10 +3286,6 @@
         {
           "date": "2021-10-01",
           "value": "1.1598"
-        },
-        {
-          "date": "2021-10-18",
-          "value": "1.1609"
         },
         {
           "date": "2021-10-25",
@@ -3924,24 +3912,8 @@
           "value": "."
         },
         {
-          "date": "2024-10-16",
-          "value": "1.0873"
-        },
-        {
-          "date": "2024-10-17",
-          "value": "1.0837"
-        },
-        {
-          "date": "2024-10-18",
-          "value": "1.0854"
-        },
-        {
           "date": "2024-10-21",
           "value": "1.082"
-        },
-        {
-          "date": "2024-10-22",
-          "value": "1.0805"
         },
         {
           "date": "2024-10-23",
@@ -6014,14 +5986,34 @@
         {
           "date": "2026-10-16",
           "value": "1.1231"
+        },
+        {
+          "date": "2026-10-19",
+          "value": "1.1209"
+        },
+        {
+          "date": "2026-10-20",
+          "value": "1.1232"
+        },
+        {
+          "date": "2026-10-21",
+          "value": "1.1219"
+        },
+        {
+          "date": "2026-10-22",
+          "value": "1.1212"
+        },
+        {
+          "date": "2026-10-23",
+          "value": "1.1199"
         }
       ],
       "latest": {
-        "date": "2026-10-16",
-        "value": "1.1231"
+        "date": "2026-10-23",
+        "value": "1.1199"
       },
       "context": "How many dollars one euro buys. The world's second currency \u2014 a rising number means a stronger euro (and a weaker dollar) \u2014 and the cleanest mirror on dollar strength.",
-      "read": "The euro has weakened 3.7% against the dollar over the past year.",
+      "read": "The euro has weakened 3.6% against the dollar over the past year.",
       "signal_status": "info",
       "value_format": "decimal",
       "no_severity_reason": "A market price has no inherent good-or-bad level \u2014 higher or lower isn't itself better or worse."
@@ -6035,12 +6027,8 @@
       "series_id": "DEXJPUS",
       "observations": [
         {
-          "date": "2016-10-31",
-          "value": "105.0700"
-        },
-        {
-          "date": "2016-11-01",
-          "value": "104.5900"
+          "date": "2016-11-07",
+          "value": "104.6000"
         },
         {
           "date": "2016-12-01",
@@ -6277,10 +6265,6 @@
         {
           "date": "2021-10-01",
           "value": "110.97"
-        },
-        {
-          "date": "2021-10-18",
-          "value": "114.22"
         },
         {
           "date": "2021-10-25",
@@ -6907,24 +6891,8 @@
           "value": "."
         },
         {
-          "date": "2024-10-16",
-          "value": "149.71"
-        },
-        {
-          "date": "2024-10-17",
-          "value": "150.12"
-        },
-        {
-          "date": "2024-10-18",
-          "value": "149.58"
-        },
-        {
           "date": "2024-10-21",
           "value": "150.47"
-        },
-        {
-          "date": "2024-10-22",
-          "value": "151.11"
         },
         {
           "date": "2024-10-23",
@@ -8997,14 +8965,34 @@
         {
           "date": "2026-10-16",
           "value": "158"
+        },
+        {
+          "date": "2026-10-19",
+          "value": "158.49"
+        },
+        {
+          "date": "2026-10-20",
+          "value": "158.2"
+        },
+        {
+          "date": "2026-10-21",
+          "value": "158.13"
+        },
+        {
+          "date": "2026-10-22",
+          "value": "157.11"
+        },
+        {
+          "date": "2026-10-23",
+          "value": "156.87"
         }
       ],
       "latest": {
-        "date": "2026-10-16",
-        "value": "158"
+        "date": "2026-10-23",
+        "value": "156.87"
       },
       "context": "How many yen one dollar buys \u2014 a rising number means a WEAKER yen. Japan's currency anchors Asia's funding markets; a violent yen move tends to ripple through global markets.",
-      "read": "The yen has weakened 4.8% against the dollar over the past year.",
+      "read": "The yen has weakened 2.7% against the dollar over the past year.",
       "signal_status": "info",
       "value_format": "decimal",
       "no_severity_reason": "A market price has no inherent good-or-bad level \u2014 higher or lower isn't itself better or worse."
@@ -9018,12 +9006,8 @@
       "series_id": "DEXCHUS",
       "observations": [
         {
-          "date": "2016-10-31",
-          "value": "6.7735"
-        },
-        {
-          "date": "2016-11-01",
-          "value": "6.7630"
+          "date": "2016-11-07",
+          "value": "6.7740"
         },
         {
           "date": "2016-12-01",
@@ -9260,10 +9244,6 @@
         {
           "date": "2021-10-01",
           "value": "6.4434"
-        },
-        {
-          "date": "2021-10-18",
-          "value": "6.429"
         },
         {
           "date": "2021-10-25",
@@ -9890,24 +9870,8 @@
           "value": "."
         },
         {
-          "date": "2024-10-16",
-          "value": "7.1192"
-        },
-        {
-          "date": "2024-10-17",
-          "value": "7.1216"
-        },
-        {
-          "date": "2024-10-18",
-          "value": "7.1015"
-        },
-        {
           "date": "2024-10-21",
           "value": "7.1189"
-        },
-        {
-          "date": "2024-10-22",
-          "value": "7.123"
         },
         {
           "date": "2024-10-23",
@@ -11980,14 +11944,34 @@
         {
           "date": "2026-10-16",
           "value": "6.6861"
+        },
+        {
+          "date": "2026-10-19",
+          "value": "6.6806"
+        },
+        {
+          "date": "2026-10-20",
+          "value": "6.6779"
+        },
+        {
+          "date": "2026-10-21",
+          "value": "6.6758"
+        },
+        {
+          "date": "2026-10-22",
+          "value": "6.6745"
+        },
+        {
+          "date": "2026-10-23",
+          "value": "6.6702"
         }
       ],
       "latest": {
-        "date": "2026-10-16",
-        "value": "6.6861"
+        "date": "2026-10-23",
+        "value": "6.6702"
       },
       "context": "How many yuan one dollar buys \u2014 a rising number means a WEAKER yuan. Beijing manages this rate; a deliberate slide makes Chinese exports cheaper and tends to escalate trade tensions.",
-      "read": "The yuan has strengthened 6.1% against the dollar over the past year.",
+      "read": "The yuan has strengthened 6.3% against the dollar over the past year.",
       "signal_status": "info",
       "value_format": "decimal",
       "no_severity_reason": "A market price has no inherent good-or-bad level \u2014 higher or lower isn't itself better or worse."
