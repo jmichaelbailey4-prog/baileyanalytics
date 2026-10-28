@@ -2,7 +2,7 @@
   "id": "market-risk-sentiment",
   "title": "Risk Sentiment",
   "accent": "#FB7185",
-  "last_updated": "2026-10-27T18:36:28Z",
+  "last_updated": "2026-10-28T18:42:40Z",
   "status": "ok",
   "headline_read": "Markets are calm \u2014 volatility and credit stress are low.",
   "recessions": [
@@ -65,8 +65,8 @@
       "series_id": "VIXCLS",
       "observations": [
         {
-          "date": "1990-05-29",
-          "value": "18.75"
+          "date": "1990-05-30",
+          "value": "17.44"
         },
         {
           "date": "1990-07-02",
@@ -413,8 +413,8 @@
           "value": "45.45"
         },
         {
-          "date": "2011-10-26",
-          "value": "29.86"
+          "date": "2011-10-27",
+          "value": "25.46"
         },
         {
           "date": "2011-11-01",
@@ -897,8 +897,8 @@
           "value": "21.15"
         },
         {
-          "date": "2021-10-26",
-          "value": "15.98"
+          "date": "2021-10-27",
+          "value": "16.98"
         },
         {
           "date": "2021-11-01",
@@ -3607,21 +3607,25 @@
         {
           "date": "2026-10-26",
           "value": "18.39"
+        },
+        {
+          "date": "2026-10-27",
+          "value": "17.52"
         }
       ],
       "latest": {
-        "date": "2026-10-26",
-        "value": "18.39"
+        "date": "2026-10-27",
+        "value": "17.52"
       },
       "context": "The market's 'fear gauge' \u2014 the expected volatility of the S&P 500 over the coming month. It spikes when investors are scared and falls when calm.",
-      "read": "The VIX is at 18.4 \u2014 markets are calm.",
+      "read": "The VIX is at 17.5 \u2014 markets are calm.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 55.0,
+        "p": 50.2,
         "since": 1990
       },
-      "scale_now": 18.39
+      "scale_now": 17.52
     },
     {
       "id": "hy-spread",
@@ -6018,21 +6022,25 @@
         {
           "date": "2026-10-26",
           "value": "3.3"
+        },
+        {
+          "date": "2026-10-27",
+          "value": "3.18"
         }
       ],
       "latest": {
-        "date": "2026-10-26",
-        "value": "3.3"
+        "date": "2026-10-27",
+        "value": "3.18"
       },
       "context": "The extra yield investors demand to hold risky 'junk' corporate bonds over Treasuries. It widens when markets fear defaults \u2014 an early stress signal. Note: FRED serves only a rolling ~3-year window of this ICE BofA series, so its chart history is shorter than the other indicators here.",
-      "read": "The high-yield spread is 3.30% \u2014 tight, signaling calm credit conditions.",
+      "read": "The high-yield spread is 3.18% \u2014 tight, signaling calm credit conditions.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 78.9,
+        "p": 65.6,
         "since": 2023
       },
-      "scale_now": 3.3
+      "scale_now": 3.18
     },
     {
       "id": "ig-spread",
@@ -8429,21 +8437,25 @@
         {
           "date": "2026-10-26",
           "value": "0.9"
+        },
+        {
+          "date": "2026-10-27",
+          "value": "0.88"
         }
       ],
       "latest": {
-        "date": "2026-10-26",
-        "value": "0.9"
+        "date": "2026-10-27",
+        "value": "0.88"
       },
       "context": "The same risk premium for higher-quality corporate bonds. Because these borrowers are safer, widening here signals stress reaching the core of credit. Note: FRED serves only a rolling ~3-year window of this ICE BofA series, so its chart history is shorter than the other indicators here.",
-      "read": "The investment-grade spread is 0.90% \u2014 tight, signaling calm credit conditions.",
+      "read": "The investment-grade spread is 0.88% \u2014 tight, signaling calm credit conditions.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 60.9,
+        "p": 55.1,
         "since": 2023
       },
-      "scale_now": 0.9
+      "scale_now": 0.88
     },
     {
       "id": "nfci",
@@ -8454,28 +8466,24 @@
       "series_id": "NFCI",
       "observations": [
         {
-          "date": "1971-03-26",
-          "value": "1.08100"
-        },
-        {
           "date": "1971-04-02",
-          "value": "1.14800"
+          "value": "1.147"
         },
         {
           "date": "1971-07-02",
-          "value": "0.97600"
+          "value": "0.975"
         },
         {
           "date": "1971-10-01",
-          "value": "2.10900"
+          "value": "2.11"
         },
         {
           "date": "1972-01-07",
-          "value": "1.26200"
+          "value": "1.263"
         },
         {
           "date": "1972-04-07",
-          "value": "0.29800"
+          "value": "0.299"
         },
         {
           "date": "1972-07-07",
@@ -8507,7 +8515,7 @@
         },
         {
           "date": "1974-04-05",
-          "value": "1.03400"
+          "value": "1.035"
         },
         {
           "date": "1974-07-05",
@@ -8515,7 +8523,7 @@
         },
         {
           "date": "1974-10-04",
-          "value": "3.83700"
+          "value": "3.838"
         },
         {
           "date": "1975-01-03",
@@ -8523,7 +8531,7 @@
         },
         {
           "date": "1975-04-04",
-          "value": "0.58600"
+          "value": "0.587"
         },
         {
           "date": "1975-07-04",
@@ -8531,7 +8539,7 @@
         },
         {
           "date": "1975-10-03",
-          "value": "0.09400"
+          "value": "0.095"
         },
         {
           "date": "1976-01-02",
@@ -8543,7 +8551,7 @@
         },
         {
           "date": "1976-07-02",
-          "value": "-0.49900"
+          "value": "-0.498"
         },
         {
           "date": "1976-10-01",
@@ -8551,15 +8559,15 @@
         },
         {
           "date": "1977-01-07",
-          "value": "-0.79800"
+          "value": "-0.797"
         },
         {
           "date": "1977-04-01",
-          "value": "-0.81500"
+          "value": "-0.814"
         },
         {
           "date": "1977-07-01",
-          "value": "-0.49100"
+          "value": "-0.49"
         },
         {
           "date": "1977-10-07",
@@ -8587,7 +8595,7 @@
         },
         {
           "date": "1979-04-06",
-          "value": "0.24300"
+          "value": "0.242"
         },
         {
           "date": "1979-07-06",
@@ -8619,7 +8627,7 @@
         },
         {
           "date": "1981-04-03",
-          "value": "1.68500"
+          "value": "1.686"
         },
         {
           "date": "1981-07-03",
@@ -8635,7 +8643,7 @@
         },
         {
           "date": "1982-04-02",
-          "value": "2.12800"
+          "value": "2.129"
         },
         {
           "date": "1982-07-02",
@@ -8643,11 +8651,11 @@
         },
         {
           "date": "1982-10-01",
-          "value": "3.25200"
+          "value": "3.253"
         },
         {
           "date": "1983-01-07",
-          "value": "0.45700"
+          "value": "0.458"
         },
         {
           "date": "1983-04-01",
@@ -8659,7 +8667,7 @@
         },
         {
           "date": "1983-10-07",
-          "value": "-0.06500"
+          "value": "-0.064"
         },
         {
           "date": "1984-01-06",
@@ -8675,15 +8683,15 @@
         },
         {
           "date": "1984-10-05",
-          "value": "0.26900"
+          "value": "0.27"
         },
         {
           "date": "1985-01-04",
-          "value": "-0.31700"
+          "value": "-0.316"
         },
         {
           "date": "1985-04-05",
-          "value": "-0.27100"
+          "value": "-0.27"
         },
         {
           "date": "1985-07-05",
@@ -8723,19 +8731,19 @@
         },
         {
           "date": "1987-10-02",
-          "value": "0.64000"
+          "value": "0.641"
         },
         {
           "date": "1988-01-01",
-          "value": "0.74200"
+          "value": "0.743"
         },
         {
           "date": "1988-04-01",
-          "value": "0.15800"
+          "value": "0.159"
         },
         {
           "date": "1988-07-01",
-          "value": "0.33200"
+          "value": "0.333"
         },
         {
           "date": "1988-10-07",
@@ -8755,11 +8763,11 @@
         },
         {
           "date": "1989-10-06",
-          "value": "0.38700"
+          "value": "0.388"
         },
         {
           "date": "1990-01-05",
-          "value": "0.03600"
+          "value": "0.037"
         },
         {
           "date": "1990-04-06",
@@ -8775,11 +8783,11 @@
         },
         {
           "date": "1991-01-04",
-          "value": "0.51500"
+          "value": "0.516"
         },
         {
           "date": "1991-04-05",
-          "value": "-0.17800"
+          "value": "-0.177"
         },
         {
           "date": "1991-07-05",
@@ -8799,7 +8807,7 @@
         },
         {
           "date": "1992-07-03",
-          "value": "-0.92500"
+          "value": "-0.926"
         },
         {
           "date": "1992-10-02",
@@ -8899,7 +8907,7 @@
         },
         {
           "date": "1998-10-02",
-          "value": "-0.01500"
+          "value": "-0.014"
         },
         {
           "date": "1999-01-01",
@@ -8911,11 +8919,11 @@
         },
         {
           "date": "1999-07-02",
-          "value": "-0.30500"
+          "value": "-0.304"
         },
         {
           "date": "1999-10-01",
-          "value": "-0.08300"
+          "value": "-0.082"
         },
         {
           "date": "2000-01-07",
@@ -8927,7 +8935,7 @@
         },
         {
           "date": "2000-07-07",
-          "value": "-0.02000"
+          "value": "-0.019"
         },
         {
           "date": "2000-10-06",
@@ -8951,7 +8959,7 @@
         },
         {
           "date": "2002-01-04",
-          "value": "-0.38500"
+          "value": "-0.384"
         },
         {
           "date": "2002-04-05",
@@ -8963,7 +8971,7 @@
         },
         {
           "date": "2002-10-04",
-          "value": "-0.32100"
+          "value": "-0.32"
         },
         {
           "date": "2003-01-03",
@@ -9051,27 +9059,27 @@
         },
         {
           "date": "2008-04-04",
-          "value": "0.91700"
+          "value": "0.918"
         },
         {
           "date": "2008-07-04",
-          "value": "0.76700"
+          "value": "0.768"
         },
         {
           "date": "2008-10-03",
-          "value": "2.09100"
+          "value": "2.093"
         },
         {
           "date": "2009-01-02",
-          "value": "2.58700"
+          "value": "2.589"
         },
         {
           "date": "2009-04-03",
-          "value": "1.79100"
+          "value": "1.792"
         },
         {
           "date": "2009-07-03",
-          "value": "0.67600"
+          "value": "0.677"
         },
         {
           "date": "2009-10-02",
@@ -9087,7 +9095,7 @@
         },
         {
           "date": "2010-07-02",
-          "value": "-0.13000"
+          "value": "-0.129"
         },
         {
           "date": "2010-10-01",
@@ -9110,8 +9118,8 @@
           "value": "-0.10500"
         },
         {
-          "date": "2011-10-21",
-          "value": "-0.14300"
+          "date": "2011-10-28",
+          "value": "-0.15700"
         },
         {
           "date": "2011-11-04",
@@ -9119,7 +9127,7 @@
         },
         {
           "date": "2011-12-02",
-          "value": "-0.13200"
+          "value": "-0.131"
         },
         {
           "date": "2012-01-06",
@@ -9183,7 +9191,7 @@
         },
         {
           "date": "2013-04-05",
-          "value": "-0.69900"
+          "value": "-0.7"
         },
         {
           "date": "2013-05-03",
@@ -9199,7 +9207,7 @@
         },
         {
           "date": "2013-08-02",
-          "value": "-0.69200"
+          "value": "-0.693"
         },
         {
           "date": "2013-09-06",
@@ -9239,11 +9247,11 @@
         },
         {
           "date": "2014-06-06",
-          "value": "-0.80500"
+          "value": "-0.806"
         },
         {
           "date": "2014-07-04",
-          "value": "-0.78500"
+          "value": "-0.786"
         },
         {
           "date": "2014-08-01",
@@ -9251,7 +9259,7 @@
         },
         {
           "date": "2014-09-05",
-          "value": "-0.72700"
+          "value": "-0.728"
         },
         {
           "date": "2014-10-03",
@@ -9331,7 +9339,7 @@
         },
         {
           "date": "2016-05-06",
-          "value": "-0.39100"
+          "value": "-0.39"
         },
         {
           "date": "2016-06-03",
@@ -9355,7 +9363,7 @@
         },
         {
           "date": "2016-11-04",
-          "value": "-0.39900"
+          "value": "-0.398"
         },
         {
           "date": "2016-12-02",
@@ -9387,7 +9395,7 @@
         },
         {
           "date": "2017-07-07",
-          "value": "-0.57400"
+          "value": "-0.573"
         },
         {
           "date": "2017-08-04",
@@ -9515,7 +9523,7 @@
         },
         {
           "date": "2020-03-06",
-          "value": "-0.13000"
+          "value": "-0.129"
         },
         {
           "date": "2020-04-03",
@@ -9523,7 +9531,7 @@
         },
         {
           "date": "2020-05-01",
-          "value": "0.06400"
+          "value": "0.065"
         },
         {
           "date": "2020-06-05",
@@ -9592,10 +9600,6 @@
         {
           "date": "2021-10-01",
           "value": "-0.65800"
-        },
-        {
-          "date": "2021-10-22",
-          "value": "-0.64000"
         },
         {
           "date": "2021-10-29",
@@ -9719,11 +9723,11 @@
         },
         {
           "date": "2022-05-27",
-          "value": "-0.25300"
+          "value": "-0.252"
         },
         {
           "date": "2022-06-03",
-          "value": "-0.22900"
+          "value": "-0.228"
         },
         {
           "date": "2022-06-10",
@@ -9743,7 +9747,7 @@
         },
         {
           "date": "2022-07-08",
-          "value": "-0.16100"
+          "value": "-0.16"
         },
         {
           "date": "2022-07-15",
@@ -9775,7 +9779,7 @@
         },
         {
           "date": "2022-09-02",
-          "value": "-0.19800"
+          "value": "-0.197"
         },
         {
           "date": "2022-09-09",
@@ -9783,7 +9787,7 @@
         },
         {
           "date": "2022-09-16",
-          "value": "-0.14300"
+          "value": "-0.142"
         },
         {
           "date": "2022-09-23",
@@ -9807,7 +9811,7 @@
         },
         {
           "date": "2022-10-28",
-          "value": "-0.11700"
+          "value": "-0.116"
         },
         {
           "date": "2022-11-04",
@@ -9815,7 +9819,7 @@
         },
         {
           "date": "2022-11-11",
-          "value": "-0.15300"
+          "value": "-0.152"
         },
         {
           "date": "2022-11-18",
@@ -9839,7 +9843,7 @@
         },
         {
           "date": "2022-12-23",
-          "value": "-0.20100"
+          "value": "-0.2"
         },
         {
           "date": "2022-12-30",
@@ -9851,7 +9855,7 @@
         },
         {
           "date": "2023-01-13",
-          "value": "-0.26600"
+          "value": "-0.265"
         },
         {
           "date": "2023-01-20",
@@ -9875,7 +9879,7 @@
         },
         {
           "date": "2023-02-24",
-          "value": "-0.26700"
+          "value": "-0.266"
         },
         {
           "date": "2023-03-03",
@@ -9891,7 +9895,7 @@
         },
         {
           "date": "2023-03-24",
-          "value": "-0.15100"
+          "value": "-0.15"
         },
         {
           "date": "2023-03-31",
@@ -9911,7 +9915,7 @@
         },
         {
           "date": "2023-04-28",
-          "value": "-0.18600"
+          "value": "-0.185"
         },
         {
           "date": "2023-05-05",
@@ -9935,15 +9939,15 @@
         },
         {
           "date": "2023-06-09",
-          "value": "-0.21500"
+          "value": "-0.214"
         },
         {
           "date": "2023-06-16",
-          "value": "-0.21700"
+          "value": "-0.216"
         },
         {
           "date": "2023-06-23",
-          "value": "-0.22100"
+          "value": "-0.22"
         },
         {
           "date": "2023-06-30",
@@ -9951,7 +9955,7 @@
         },
         {
           "date": "2023-07-07",
-          "value": "-0.23600"
+          "value": "-0.235"
         },
         {
           "date": "2023-07-14",
@@ -9995,7 +9999,7 @@
         },
         {
           "date": "2023-09-22",
-          "value": "-0.32300"
+          "value": "-0.322"
         },
         {
           "date": "2023-09-29",
@@ -10043,11 +10047,11 @@
         },
         {
           "date": "2023-12-15",
-          "value": "-0.34900"
+          "value": "-0.348"
         },
         {
           "date": "2023-12-22",
-          "value": "-0.35800"
+          "value": "-0.357"
         },
         {
           "date": "2023-12-29",
@@ -10067,7 +10071,7 @@
         },
         {
           "date": "2024-01-26",
-          "value": "-0.39600"
+          "value": "-0.395"
         },
         {
           "date": "2024-02-02",
@@ -10147,11 +10151,11 @@
         },
         {
           "date": "2024-06-14",
-          "value": "-0.39500"
+          "value": "-0.394"
         },
         {
           "date": "2024-06-21",
-          "value": "-0.38700"
+          "value": "-0.386"
         },
         {
           "date": "2024-06-28",
@@ -10163,11 +10167,11 @@
         },
         {
           "date": "2024-07-12",
-          "value": "-0.36800"
+          "value": "-0.367"
         },
         {
           "date": "2024-07-19",
-          "value": "-0.36300"
+          "value": "-0.362"
         },
         {
           "date": "2024-07-26",
@@ -10183,7 +10187,7 @@
         },
         {
           "date": "2024-08-16",
-          "value": "-0.36800"
+          "value": "-0.367"
         },
         {
           "date": "2024-08-23",
@@ -10219,7 +10223,7 @@
         },
         {
           "date": "2024-10-18",
-          "value": "-0.44000"
+          "value": "-0.439"
         },
         {
           "date": "2024-10-25",
@@ -10303,7 +10307,7 @@
         },
         {
           "date": "2025-03-14",
-          "value": "-0.44400"
+          "value": "-0.443"
         },
         {
           "date": "2025-03-21",
@@ -10323,7 +10327,7 @@
         },
         {
           "date": "2025-04-18",
-          "value": "-0.38200"
+          "value": "-0.381"
         },
         {
           "date": "2025-04-25",
@@ -10387,7 +10391,7 @@
         },
         {
           "date": "2025-08-08",
-          "value": "-0.52300"
+          "value": "-0.522"
         },
         {
           "date": "2025-08-15",
@@ -10591,7 +10595,7 @@
         },
         {
           "date": "2026-07-31",
-          "value": "-0.54300"
+          "value": "-0.542"
         },
         {
           "date": "2026-08-07",
@@ -10611,7 +10615,7 @@
         },
         {
           "date": "2026-09-04",
-          "value": "-0.54400"
+          "value": "-0.545"
         },
         {
           "date": "2026-09-11",
@@ -10631,26 +10635,30 @@
         },
         {
           "date": "2026-10-09",
-          "value": "-0.50200"
+          "value": "-0.501"
         },
         {
           "date": "2026-10-16",
-          "value": "-0.49600"
+          "value": "-0.494"
+        },
+        {
+          "date": "2026-10-23",
+          "value": "-0.487"
         }
       ],
       "latest": {
-        "date": "2026-10-16",
-        "value": "-0.49600"
+        "date": "2026-10-23",
+        "value": "-0.487"
       },
       "context": "The Chicago Fed's broad gauge of financial conditions across money, debt, and equity markets. Zero is average; positive means tighter (more stressed) than normal.",
-      "read": "The NFCI is -0.50 \u2014 financial conditions are looser than average.",
+      "read": "The NFCI is -0.49 \u2014 financial conditions are looser than average.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 39.6,
+        "p": 40.9,
         "since": 1971
       },
-      "scale_now": -0.496
+      "scale_now": -0.487
     }
   ]
 }
