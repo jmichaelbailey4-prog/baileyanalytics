@@ -29795,5 +29795,44 @@
       "revised_to": null
     },
     "prev_period": "2026-08-01"
+  },
+  {
+    "id": "housing/housing-home-prices/case-shiller@2026-08-01",
+    "key": "housing/housing-home-prices/case-shiller",
+    "category": "housing",
+    "lens": "housing-home-prices",
+    "indicator": "case-shiller",
+    "series_id": "CSUSHPINSA",
+    "horizon": "next-print",
+    "target_period": "2026-08-01",
+    "due": "2026-09-15",
+    "made_at": "2026-10-01T12:13:15Z",
+    "model": "ets@1",
+    "point": 2.17,
+    "lo": 1.77,
+    "hi": 2.5573,
+    "unit": "%",
+    "value_format": "decimal",
+    "prev_value": 1.9,
+    "why": "Case-Shiller: up 4 straight months. This projects the recent level and trend forward one month.",
+    "implied_status": "ok",
+    "current_status": "ok",
+    "descriptive": false,
+    "market_price": false,
+    "title": "Case-Shiller Home Prices \u00b7 year-over-year",
+    "short": "Case-Shiller",
+    "lens_title": "Home-Price Stability",
+    "href": "/dashboards/housing/home-prices.html",
+    "grade": {
+      "actual": 2.1,
+      "graded_at": "2026-10-28T11:53:35Z",
+      "hit": true,
+      "abs_error": 0.06999999999999984,
+      "direction_hit": true,
+      "status_hit": true,
+      "naive_error": 0.20000000000000018,
+      "revised_to": null
+    },
+    "prev_period": "2026-07-01"
   }
 ]
