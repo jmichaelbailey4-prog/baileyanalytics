@@ -2,7 +2,7 @@
   "id": "business-investment",
   "title": "Business Investment",
   "accent": "#FBBF24",
-  "last_updated": "2026-10-27T18:37:23Z",
+  "last_updated": "2026-10-29T18:52:20Z",
   "status": "ok",
   "headline_read": "Businesses are investing \u2014 orders and sales are growing.",
   "recessions": [
@@ -2530,21 +2530,25 @@
         {
           "date": "2026-07-01",
           "value": "2.3"
+        },
+        {
+          "date": "2026-08-01",
+          "value": "2.5"
         }
       ],
       "latest": {
-        "date": "2026-07-01",
-        "value": "2.3"
+        "date": "2026-08-01",
+        "value": "2.5"
       },
       "context": "Real manufacturing and trade sales \u2014 total business volume adjusted for inflation, one of the inputs NBER uses to date recessions.",
-      "read": "Real business sales are growing 2.3% a year.",
+      "read": "Real business sales are growing 2.5% a year.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 39.0,
+        "p": 41.9,
         "since": 1968
       },
-      "scale_now": 2.3
+      "scale_now": 2.5
     },
     {
       "id": "inventories-sales",

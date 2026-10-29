@@ -2,7 +2,7 @@
   "id": "consumer-spending",
   "title": "Consumer Spending",
   "accent": "#34D399",
-  "last_updated": "2026-10-15T17:42:32Z",
+  "last_updated": "2026-10-29T18:52:15Z",
   "status": "ok",
   "headline_read": "Consumers are still spending at a healthy pace.",
   "recessions": [
@@ -1128,10 +1128,6 @@
       "series_id": "PCEC96",
       "observations": [
         {
-          "date": "2006-09-01",
-          "value": "."
-        },
-        {
           "date": "2006-10-01",
           "value": "."
         },
@@ -1210,10 +1206,6 @@
         {
           "date": "2011-07-01",
           "value": "1.58955"
-        },
-        {
-          "date": "2011-08-01",
-          "value": "1.28279"
         },
         {
           "date": "2011-09-01",
@@ -1929,26 +1921,30 @@
         },
         {
           "date": "2026-07-01",
-          "value": "2.25150"
+          "value": "2.37096"
         },
         {
           "date": "2026-08-01",
-          "value": "2.57476"
+          "value": "2.69394"
+        },
+        {
+          "date": "2026-09-01",
+          "value": "2.53660"
         }
       ],
       "latest": {
-        "date": "2026-08-01",
-        "value": "2.57476"
+        "date": "2026-09-01",
+        "value": "2.53660"
       },
       "context": "Total household consumption adjusted for inflation \u2014 the cleanest read on whether people are actually buying more, or just paying more.",
-      "read": "Real consumer spending is up 2.6% from a year ago \u2014 a steady pace.",
+      "read": "Real consumer spending is up 2.5% from a year ago \u2014 a steady pace.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 63.8,
+        "p": 60.9,
         "since": 2008
       },
-      "scale_now": 2.5748
+      "scale_now": 2.5366
     },
     {
       "id": "auto-sales",

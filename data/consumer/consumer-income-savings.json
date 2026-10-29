@@ -2,7 +2,7 @@
   "id": "consumer-income-savings",
   "title": "Household Income & Savings",
   "accent": "#FBBF24",
-  "last_updated": "2026-09-30T18:20:43Z",
+  "last_updated": "2026-10-29T18:52:15Z",
   "status": "watch",
   "headline_read": "Household finances are tightening \u2014 cushions are shrinking.",
   "recessions": [
@@ -909,10 +909,6 @@
           "value": "6.7"
         },
         {
-          "date": "2011-08-01",
-          "value": "6.7"
-        },
-        {
           "date": "2011-09-01",
           "value": "6.4"
         },
@@ -1626,26 +1622,30 @@
         },
         {
           "date": "2026-07-01",
-          "value": "4.6"
+          "value": "4.5"
         },
         {
           "date": "2026-08-01",
-          "value": "4.1"
+          "value": "4"
+        },
+        {
+          "date": "2026-09-01",
+          "value": "3.8"
         }
       ],
       "latest": {
-        "date": "2026-08-01",
-        "value": "4.1"
+        "date": "2026-09-01",
+        "value": "3.8"
       },
       "context": "The share of after-tax income households save each month. A thin saving rate means no shock absorber \u2014 the historical norm is 5-8%.",
-      "read": "The saving rate is 4.1% \u2014 thinner than the historical norm.",
+      "read": "The saving rate is 3.8% \u2014 thinner than the historical norm.",
       "signal_status": "watch",
       "value_format": "decimal",
       "percentile": {
-        "p": 7.6,
+        "p": 6.9,
         "since": 1959
       },
-      "scale_now": 4.1
+      "scale_now": 3.8
     },
     {
       "id": "real-income",
@@ -2500,10 +2500,6 @@
           "value": "2.00252"
         },
         {
-          "date": "2011-08-01",
-          "value": "1.65430"
-        },
-        {
           "date": "2011-09-01",
           "value": "1.52344"
         },
@@ -3217,26 +3213,30 @@
         },
         {
           "date": "2026-07-01",
-          "value": "1.49357"
+          "value": "1.48641"
         },
         {
           "date": "2026-08-01",
-          "value": "1.30131"
+          "value": "1.33267"
+        },
+        {
+          "date": "2026-09-01",
+          "value": "0.95313"
         }
       ],
       "latest": {
-        "date": "2026-08-01",
-        "value": "1.30131"
+        "date": "2026-09-01",
+        "value": "0.95313"
       },
       "context": "After-tax household income adjusted for inflation. When it falls, spending can only be sustained by savings or debt \u2014 and both run out.",
-      "read": "Real income is up 1.3% from a year ago \u2014 purchasing power is growing.",
+      "read": "Real income is up 1.0% from a year ago \u2014 purchasing power is growing.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 14.4,
+        "p": 11.1,
         "since": 1960
       },
-      "scale_now": 1.3013
+      "scale_now": 0.9531
     },
     {
       "id": "net-worth",

@@ -2,7 +2,7 @@
   "id": "recession-watch",
   "title": "Recession Watch",
   "accent": "#F87171",
-  "last_updated": "2026-10-29T11:59:18Z",
+  "last_updated": "2026-10-29T18:51:15Z",
   "status": "ok",
   "headline_read": "The economy looks steady \u2014 no major recession signals right now.",
   "recessions": [
@@ -5434,8 +5434,8 @@
       "series_id": "ICSA",
       "observations": [
         {
-          "date": "1967-05-27",
-          "value": "228000"
+          "date": "1967-06-03",
+          "value": "248000"
         },
         {
           "date": "1967-07-01",
@@ -6150,8 +6150,8 @@
           "value": "405000"
         },
         {
-          "date": "2011-10-22",
-          "value": "403000"
+          "date": "2011-10-29",
+          "value": "399000"
         },
         {
           "date": "2011-11-05",
@@ -6632,10 +6632,6 @@
         {
           "date": "2021-10-02",
           "value": "312000"
-        },
-        {
-          "date": "2021-10-23",
-          "value": "269000"
         },
         {
           "date": "2021-10-30",
@@ -7675,11 +7671,15 @@
         },
         {
           "date": "2026-10-17",
+          "value": "195000"
+        },
+        {
+          "date": "2026-10-24",
           "value": "194000"
         }
       ],
       "latest": {
-        "date": "2026-10-17",
+        "date": "2026-10-24",
         "value": "194000"
       },
       "context": "How many people filed for unemployment benefits last week \u2014 the freshest read on layoffs. A sustained climb is one of the earliest signs of a weakening economy.",
