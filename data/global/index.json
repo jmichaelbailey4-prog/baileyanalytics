@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-10-27T11:18:55Z",
+  "last_updated": "2026-10-30T11:54:06Z",
   "status": "watch",
   "lenses": [
     {
@@ -195,14 +195,14 @@
       "id": "global-uncertainty",
       "title": "Uncertainty & Risk",
       "accent": "#A78BFA",
-      "status": "elevated",
-      "headline_read": "Policy uncertainty is high \u2014 what governments do next is a major source of risk.",
+      "status": "watch",
+      "headline_read": "Policy uncertainty is above its historical norm.",
       "key_stats": [
         {
           "k": "US uncertainty",
-          "v": "219",
-          "d": "3",
-          "dir": "up"
+          "v": "188",
+          "d": "20",
+          "dir": "down"
         },
         {
           "k": "Global uncertainty",
@@ -212,7 +212,6 @@
         }
       ],
       "sparkline": [
-        179.31,
         132.71,
         76.84,
         117.7,
@@ -251,7 +250,8 @@
         269.79,
         222.61,
         215.82,
-        218.94
+        207.65,
+        187.92
       ]
     }
   ]

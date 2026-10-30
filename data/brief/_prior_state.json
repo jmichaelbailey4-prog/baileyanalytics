@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-10-26T11:56:32Z",
+  "captured_at": "2026-10-30T11:54:38Z",
   "statuses": {
     "recession-watch": "ok",
     "cost-of-money": "watch",
@@ -33,6 +33,6 @@
     "global-dollar-currencies": "ok",
     "global-growth": "ok",
     "global-trade-supply": "elevated",
-    "global-uncertainty": "elevated"
+    "global-uncertainty": "watch"
   }
 }

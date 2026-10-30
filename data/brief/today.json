@@ -1,62 +1,18 @@
 {
-  "generated_at": "2026-10-29T18:53:10Z",
-  "transitions": [],
-  "top_moves": [
+  "generated_at": "2026-10-30T11:54:38Z",
+  "transitions": [
     {
-      "lens_id": "recession-watch",
-      "lens_title": "Recession Watch",
-      "category": "economic",
-      "href": "/dashboards/recession-watch.html",
-      "headline": "The economy looks steady \u2014 no major recession signals right now.",
-      "accent": "#F87171",
-      "sparkline": [
-        0.4,
-        0.4,
-        0.43,
-        0.41,
-        0.41,
-        0.4,
-        0.39,
-        0.33,
-        0.32,
-        0.33,
-        0.27,
-        0.27,
-        0.25,
-        0.2,
-        0.25,
-        0.26,
-        0.31,
-        0.36,
-        0.32,
-        0.37,
-        0.41,
-        0.46,
-        0.45,
-        0.47,
-        0.48,
-        0.51,
-        0.47,
-        0.44,
-        0.42,
-        0.37,
-        0.33,
-        0.35,
-        0.38,
-        0.33,
-        0.32,
-        0.31,
-        0.31,
-        0.32,
-        0.29,
-        0.38
-      ],
-      "stat_label": "Yield curve",
-      "stat_value": "0.38%",
-      "delta": "0.09%",
-      "dir": "up",
-      "why": "Yield curve: its sharpest jump in this view."
-    },
+      "lens_id": "global-uncertainty",
+      "lens_title": "Uncertainty & Risk",
+      "category": "global",
+      "href": "/dashboards/global/uncertainty.html",
+      "from_status": "elevated",
+      "to_status": "watch",
+      "direction": "improving",
+      "headline": "Policy uncertainty is above its historical norm."
+    }
+  ],
+  "top_moves": [
     {
       "lens_id": "energy-natural-gas",
       "lens_title": "Natural Gas",
@@ -540,24 +496,38 @@
       "lens_title": "Uncertainty & Risk",
       "category": "global",
       "href": "/dashboards/global/uncertainty.html",
-      "status": "elevated",
-      "headline": "Policy uncertainty is high \u2014 what governments do next is a major source of risk."
+      "status": "watch",
+      "headline": "Policy uncertainty is above its historical norm."
     }
   ],
   "status_counts": {
     "ok": 16,
-    "watch": 8,
-    "elevated": 5,
+    "watch": 9,
+    "elevated": 4,
     "alert": 2,
     "neutral": 2
   },
   "verdict": {
     "status": "watch",
     "shape": "contained-pressure",
-    "sentence": "Pressure is real but contained: household finances are stretched thin and energy and commodity costs are squeezing budgets; meanwhile banks are solid and markets are calm.",
+    "sentence": "The economy is holding up, but not without strain: household finances are stretched thin and energy and commodity costs are squeezing budgets, while banks are solid and markets are calm.",
     "short": "Holding up, but household finances are stretched thin."
   },
   "watching": [
+    {
+      "key": "global/global-uncertainty/us-epu",
+      "indicator": "us-epu",
+      "lens": "global-uncertainty",
+      "category": "global",
+      "title": "U.S. Economic Policy Uncertainty",
+      "lens_title": "Uncertainty & Risk",
+      "due": "2026-12-15",
+      "point_fmt": "206",
+      "implied_status": "elevated",
+      "current_status": "watch",
+      "change": true,
+      "href": "/dashboards/global/uncertainty.html"
+    },
     {
       "key": "global/global-uncertainty/gepu",
       "indicator": "gepu",
@@ -585,20 +555,6 @@
       "current_status": "watch",
       "change": false,
       "href": "/dashboards/job-market.html"
-    },
-    {
-      "key": "consumer/consumer-credit/revolving-credit",
-      "indicator": "revolving-credit",
-      "lens": "consumer-credit",
-      "category": "consumer",
-      "title": "Card Balances \u00b7 year-over-year",
-      "lens_title": "Consumer Credit Stress",
-      "due": "2026-10-15",
-      "point_fmt": "3.35%",
-      "implied_status": "ok",
-      "current_status": "ok",
-      "change": false,
-      "href": "/dashboards/consumer/credit-stress.html"
     }
   ],
   "pressure": [
@@ -649,14 +605,6 @@
       "href": "/dashboards/global/trade-supply.html",
       "status": "elevated",
       "headline": "Global trade is under real strain \u2014 supply chains or import costs are stressed."
-    },
-    {
-      "lens_id": "global-uncertainty",
-      "lens_title": "Uncertainty & Risk",
-      "category": "global",
-      "href": "/dashboards/global/uncertainty.html",
-      "status": "elevated",
-      "headline": "Policy uncertainty is high \u2014 what governments do next is a major source of risk."
     },
     {
       "lens_id": "cost-of-money",
@@ -721,6 +669,14 @@
       "href": "/dashboards/energy/commodities.html",
       "status": "watch",
       "headline": "Commodity costs are climbing."
+    },
+    {
+      "lens_id": "global-uncertainty",
+      "lens_title": "Uncertainty & Risk",
+      "category": "global",
+      "href": "/dashboards/global/uncertainty.html",
+      "status": "watch",
+      "headline": "Policy uncertainty is above its historical norm."
     }
   ],
   "categories": [

@@ -2,7 +2,7 @@
   "id": "market-liquidity",
   "title": "Liquidity & the Fed",
   "accent": "#2DD4BF",
-  "last_updated": "2026-10-29T18:51:21Z",
+  "last_updated": "2026-10-30T11:53:12Z",
   "status": "ok",
   "headline_read": "Liquidity is ample \u2014 no monetary squeeze in sight.",
   "recessions": [
@@ -1656,8 +1656,8 @@
       "series_id": "WALCL",
       "observations": [
         {
-          "date": "2016-11-09",
-          "value": "4.46"
+          "date": "2016-11-16",
+          "value": "4.45"
         },
         {
           "date": "2016-12-07",
@@ -1894,10 +1894,6 @@
         {
           "date": "2021-10-06",
           "value": "8.46"
-        },
-        {
-          "date": "2021-10-27",
-          "value": "8.56"
         },
         {
           "date": "2021-11-03",
@@ -2938,10 +2934,14 @@
         {
           "date": "2026-10-21",
           "value": "6.75"
+        },
+        {
+          "date": "2026-10-28",
+          "value": "6.75"
         }
       ],
       "latest": {
-        "date": "2026-10-21",
+        "date": "2026-10-28",
         "value": "6.75"
       },
       "context": "Everything the Federal Reserve holds, in trillions. Rising means the Fed is injecting liquidity (QE); falling means it's draining (QT) \u2014 the tide that lifts or lowers all markets.",
@@ -2949,7 +2949,7 @@
       "signal_status": "info",
       "value_format": "decimal",
       "percentile": {
-        "p": 49.4,
+        "p": 49.2,
         "since": 2016
       },
       "no_severity_reason": "A descriptive level of the monetary plumbing \u2014 this lens's verdict is carried by M2 money-supply growth."
@@ -2963,8 +2963,8 @@
       "series_id": "WRESBAL",
       "observations": [
         {
-          "date": "2016-11-09",
-          "value": "2.18"
+          "date": "2016-11-16",
+          "value": "2.17"
         },
         {
           "date": "2016-12-07",
@@ -3201,10 +3201,6 @@
         {
           "date": "2021-10-06",
           "value": "4.13"
-        },
-        {
-          "date": "2021-10-27",
-          "value": "4.08"
         },
         {
           "date": "2021-11-03",
@@ -4245,18 +4241,22 @@
         {
           "date": "2026-10-21",
           "value": "2.96"
+        },
+        {
+          "date": "2026-10-28",
+          "value": "2.89"
         }
       ],
       "latest": {
-        "date": "2026-10-21",
-        "value": "2.96"
+        "date": "2026-10-28",
+        "value": "2.89"
       },
       "context": "Cash banks park at the Fed \u2014 the system's core liquidity buffer. When QT drains reserves too low, funding markets seize up (as in September 2019).",
-      "read": "The level of bank reserves is little changed from a year ago, now $2.96 trillion.",
+      "read": "The level of bank reserves is little changed from a year ago, now $2.89 trillion.",
       "signal_status": "info",
       "value_format": "decimal",
       "percentile": {
-        "p": 42.7,
+        "p": 38.5,
         "since": 2016
       },
       "no_severity_reason": "A descriptive level of the monetary plumbing \u2014 this lens's verdict is carried by M2 money-supply growth."
