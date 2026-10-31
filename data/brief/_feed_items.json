@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-10-31",
+    "title": "Today's Brief \u2014 2 alert \u00b7 4 elevated \u00b7 9 on watch",
+    "description": "Natural Gas: Henry Hub $2.76 (\u25b2$0.24)\nCrypto Market Structure: BTC dominance 59.83% (\u25b20.63%)\nBusiness Credit: Baa spread 1.48% (\u25bc0.16%)\nConcentrations & Funding: Uninsured dep. 41.64% (\u25b21.16%)\nThe Cost of Money: Fed funds 3.75% (\u25b20.12%)"
+  },
+  {
     "date": "2026-10-30",
     "title": "Today's Brief \u2014 2 alert \u00b7 4 elevated \u00b7 9 on watch",
     "description": "Natural Gas: Henry Hub $2.76 (\u25b2$0.24)\nBusiness Credit: Baa spread 1.48% (\u25bc0.16%)\nConcentrations & Funding: Uninsured dep. 41.64% (\u25b21.16%)\nThe Cost of Money: Fed funds 3.75% (\u25b20.12%)\nThe Cost of Living: CPI 3.72% (\u25b20.36%)"
@@ -143,10 +148,5 @@
     "date": "2026-10-02",
     "title": "Today's Brief \u2014 2 alert \u00b7 4 elevated \u00b7 7 on watch",
     "description": "Business Credit: Baa spread 1.48% (\u25bc0.16%)\nConcentrations & Funding: Uninsured dep. 41.64% (\u25b21.16%)\nHousehold Income & Savings: Saving rate 4.10% (\u25bc0.50%)\nRecession Watch: Yield curve 0.46% (\u25b20.05%)\nBusiness Formation: Applications 11.40% (\u25bc11.90%)"
-  },
-  {
-    "date": "2026-10-01",
-    "title": "Today's Brief \u2014 2 alert \u00b7 4 elevated \u00b7 7 on watch",
-    "description": "Concentrations & Funding: Uninsured dep. 41.64% (\u25b21.16%)\nHousehold Income & Savings: Saving rate 4.10% (\u25bc0.50%)\nBusiness Formation: Applications 11.40% (\u25bc11.90%)\nRecession Watch: Yield curve 0.41% (\u25b20.04%)"
   }
 ]
