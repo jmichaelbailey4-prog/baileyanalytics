@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-31T11:29:15Z",
+  "generated_at": "2026-11-01T12:23:41Z",
   "last": {
     "business/business-credit/ci-loan-growth": {
       "id": "business/business-credit/ci-loan-growth@2026-09-01",
@@ -1414,7 +1414,7 @@
         "direction_hit": false,
         "status_hit": true,
         "naive_error": 3835.449999999997,
-        "revised_to": null
+        "revised_to": 77403.92
       },
       "now_value": 81026.7,
       "now_date": "2026-10-23"
@@ -1454,7 +1454,7 @@
         "direction_hit": false,
         "status_hit": true,
         "naive_error": 141.61000000000013,
-        "revised_to": null
+        "revised_to": 2252.88
       },
       "now_value": 2383.3,
       "now_date": "2026-10-23"
@@ -4311,7 +4311,7 @@
         "direction_hit": false,
         "status_hit": true,
         "naive_error": 141.61000000000013,
-        "revised_to": null
+        "revised_to": 2252.88
       },
       "now_value": 2383.3,
       "now_date": "2026-10-23"
@@ -4351,7 +4351,7 @@
         "direction_hit": false,
         "status_hit": true,
         "naive_error": 3835.449999999997,
-        "revised_to": null
+        "revised_to": 77403.92
       },
       "now_value": 81026.7,
       "now_date": "2026-10-23"
