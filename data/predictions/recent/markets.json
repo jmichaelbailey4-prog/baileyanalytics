@@ -432,7 +432,7 @@
         "direction_hit": false,
         "status_hit": true,
         "naive_error": 3835.449999999997,
-        "revised_to": 77403.92
+        "revised_to": 78110.97
       },
       "now_value": 81026.7,
       "now_date": "2026-10-23"
@@ -472,7 +472,7 @@
         "direction_hit": false,
         "status_hit": true,
         "naive_error": 141.61000000000013,
-        "revised_to": 2252.88
+        "revised_to": 2272.44
       },
       "now_value": 2383.3,
       "now_date": "2026-10-23"
