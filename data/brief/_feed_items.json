@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-11-03",
+    "title": "Today's Brief \u2014 2 alert \u00b7 4 elevated \u00b7 9 on watch",
+    "description": "Asset-Class Scoreboard: S&P 500 7,580 (\u25bc140)\nNatural Gas: Henry Hub $2.76 (\u25b2$0.24)\nRisk Sentiment: VIX 19.42 (\u25b22.22)\nConcentrations & Funding: Uninsured dep. 41.64% (\u25b21.16%)\nRecession Watch: Yield curve 0.32% (\u25bc0.06%)"
+  },
+  {
     "date": "2026-11-02",
     "title": "Today's Brief \u2014 2 alert \u00b7 4 elevated \u00b7 9 on watch",
     "description": "Asset-Class Scoreboard: S&P 500 7,580 (\u25bc140)\nCrypto Market Structure: BTC dominance 59.19% (\u25bc0.79%)\nNatural Gas: Henry Hub $2.76 (\u25b2$0.24)\nRisk Sentiment: VIX 19.42 (\u25b22.22)\nConcentrations & Funding: Uninsured dep. 41.64% (\u25b21.16%)"
@@ -143,10 +148,5 @@
     "date": "2026-10-05",
     "title": "Today's Brief \u2014 2 alert \u00b7 4 elevated \u00b7 7 on watch",
     "description": "Business Credit: Baa spread 1.48% (\u25bc0.16%)\nConcentrations & Funding: Uninsured dep. 41.64% (\u25b21.16%)\nHousehold Income & Savings: Saving rate 4.10% (\u25bc0.50%)\nCrypto Market Structure: BTC dominance 58.66% (\u25bc0.46%)\nBusiness Formation: Applications 11.40% (\u25bc11.90%)"
-  },
-  {
-    "date": "2026-10-04",
-    "title": "Today's Brief \u2014 2 alert \u00b7 4 elevated \u00b7 7 on watch",
-    "description": "Business Credit: Baa spread 1.48% (\u25bc0.16%)\nConcentrations & Funding: Uninsured dep. 41.64% (\u25b21.16%)\nHousehold Income & Savings: Saving rate 4.10% (\u25bc0.50%)\nCrypto Market Structure: BTC dominance 59.12% (\u25b20.42%)\nBusiness Formation: Applications 11.40% (\u25bc11.90%)"
   }
 ]
