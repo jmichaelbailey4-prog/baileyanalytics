@@ -2,7 +2,7 @@
   "id": "energy-oil-fuels",
   "title": "Oil & Fuels",
   "accent": "#FB923C",
-  "last_updated": "2026-10-28T18:43:27Z",
+  "last_updated": "2026-11-03T20:02:00Z",
   "status": "alert",
   "headline_read": "Fuel costs are spiking \u2014 acute pressure at the pump.",
   "recessions": [
@@ -65,8 +65,8 @@
       "series_id": "EMM_EPMR_PTE_NUS_DPG",
       "observations": [
         {
-          "date": "2016-11-14",
-          "value": "2.184"
+          "date": "2016-11-21",
+          "value": "2.155"
         },
         {
           "date": "2016-12-05",
@@ -1347,21 +1347,25 @@
         {
           "date": "2026-10-26",
           "value": "4.269"
+        },
+        {
+          "date": "2026-11-02",
+          "value": "4.153"
         }
       ],
       "latest": {
-        "date": "2026-10-26",
-        "value": "4.269"
+        "date": "2026-11-02",
+        "value": "4.153"
       },
       "context": "The U.S. average retail price for a gallon of regular gasoline \u2014 the energy cost households feel most directly.",
-      "read": "Gasoline costs have surged 41% over the past year \u2014 acute pressure on households.",
-      "signal_status": "alert",
+      "read": "Gasoline costs are up 37% over the past year \u2014 a real squeeze.",
+      "signal_status": "elevated",
       "value_format": "decimal",
       "percentile": {
-        "p": 95.2,
+        "p": 93.8,
         "since": 2016
       },
-      "scale_now": 41.4044
+      "scale_now": 36.8369
     },
     {
       "id": "diesel",
@@ -1372,8 +1376,8 @@
       "series_id": "EMD_EPD2D_PTE_NUS_DPG",
       "observations": [
         {
-          "date": "2016-11-14",
-          "value": "2.443"
+          "date": "2016-11-21",
+          "value": "2.421"
         },
         {
           "date": "2016-12-05",
@@ -2654,21 +2658,25 @@
         {
           "date": "2026-10-26",
           "value": "6.352"
+        },
+        {
+          "date": "2026-11-02",
+          "value": "6.292"
         }
       ],
       "latest": {
-        "date": "2026-10-26",
-        "value": "6.352"
+        "date": "2026-11-02",
+        "value": "6.292"
       },
       "context": "The U.S. average on-highway diesel price \u2014 the fuel that moves freight, so it feeds into the price of nearly everything.",
-      "read": "Diesel costs have surged 75% over the past year \u2014 acute pressure on households.",
+      "read": "Diesel costs have surged 69% over the past year \u2014 acute pressure on households.",
       "signal_status": "alert",
       "value_format": "decimal",
       "percentile": {
-        "p": 99.4,
+        "p": 99.2,
         "since": 2016
       },
-      "scale_now": 75.4696
+      "scale_now": 69.2308
     },
     {
       "id": "crude-production",

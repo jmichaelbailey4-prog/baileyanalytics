@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-11-02T22:14:54Z",
+  "generated_at": "2026-11-03T20:03:25Z",
   "since": "2026-06-12T14:20:31Z",
-  "graded": 804,
-  "coverage": 342,
-  "calibration": 0.7947761194029851,
-  "direction": 0.37445887445887444,
-  "status": 0.9047619047619048,
-  "skill": -0.0021591752854381863,
+  "graded": 813,
+  "coverage": 346,
+  "calibration": 0.7945879458794588,
+  "direction": 0.37259100642398285,
+  "status": 0.8993576017130621,
+  "skill": -0.0021591963873579534,
   "categories": {
     "banking": {
       "graded": 9,
@@ -17,12 +17,12 @@
       "skill": 0.16125352062462261
     },
     "business": {
-      "graded": 43,
+      "graded": 45,
       "coverage": 9,
-      "calibration": 0.8604651162790697,
-      "direction": 0.2647058823529412,
-      "status": 0.9705882352941176,
-      "skill": -0.03372577519379849
+      "calibration": 0.8666666666666667,
+      "direction": 0.25,
+      "status": 0.9444444444444444,
+      "skill": -0.03281426775612828
     },
     "consumer": {
       "graded": 45,
@@ -33,25 +33,25 @@
       "skill": 0.03971306019628151
     },
     "economic": {
-      "graded": 165,
-      "coverage": 29,
-      "calibration": 0.793939393939394,
-      "direction": 0.2426470588235294,
-      "status": 0.8897058823529411,
-      "skill": 2.045807749873063e-07
+      "graded": 167,
+      "coverage": 30,
+      "calibration": 0.7904191616766467,
+      "direction": 0.24087591240875914,
+      "status": 0.8832116788321168,
+      "skill": 2.04580639429075e-07
     },
     "energy": {
-      "graded": 145,
+      "graded": 147,
       "coverage": 75,
-      "calibration": 0.696551724137931,
-      "direction": 0.4,
-      "status": 0.8,
-      "skill": -0.13328899392218596
+      "calibration": 0.6938775510204082,
+      "direction": 0.4027777777777778,
+      "status": 0.7916666666666666,
+      "skill": -0.13315633582986486
     },
     "global": {
-      "graded": 97,
-      "coverage": 61,
-      "calibration": 0.8350515463917526,
+      "graded": 100,
+      "coverage": 64,
+      "calibration": 0.84,
       "direction": 0.4722222222222222,
       "status": 0.9166666666666666,
       "skill": 0.04269240410534969
