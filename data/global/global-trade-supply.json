@@ -2,7 +2,7 @@
   "id": "global-trade-supply",
   "title": "Trade & Supply Chain",
   "accent": "#FBBF24",
-  "last_updated": "2026-10-16T17:17:36Z",
+  "last_updated": "2026-11-04T20:21:58Z",
   "status": "elevated",
   "headline_read": "Global trade is under real strain \u2014 supply chains or import costs are stressed.",
   "recessions": [
@@ -2699,8 +2699,8 @@
       "series_id": "BOPGSTB",
       "observations": [
         {
-          "date": "1992-07-01",
-          "value": "2.8"
+          "date": "1992-08-01",
+          "value": "4.5"
         },
         {
           "date": "1992-10-01",
@@ -3005,10 +3005,6 @@
         {
           "date": "2011-07-01",
           "value": "44.1"
-        },
-        {
-          "date": "2011-08-01",
-          "value": "43.1"
         },
         {
           "date": "2011-09-01",
@@ -3728,19 +3724,23 @@
         },
         {
           "date": "2026-08-01",
-          "value": "105.6"
+          "value": "105.7"
+        },
+        {
+          "date": "2026-09-01",
+          "value": "105.0"
         }
       ],
       "latest": {
-        "date": "2026-08-01",
-        "value": "105.6"
+        "date": "2026-09-01",
+        "value": "105.0"
       },
       "context": "How much more the U.S. imports than it exports, in billions per month. The U.S. has run a deficit every year since 1976 \u2014 what matters is whether it is widening or narrowing, and why.",
-      "read": "The U.S. trade deficit is $105.6B a month, wider than a year ago.",
+      "read": "The U.S. trade deficit is $105.0B a month, wider than a year ago.",
       "signal_status": "info",
       "value_format": "decimal",
       "percentile": {
-        "p": 99.0,
+        "p": 98.8,
         "since": 1992
       },
       "no_severity_reason": "The U.S. has run a trade deficit every year since 1976 \u2014 the level isn't good or bad on its own; what matters is the trend shown here."

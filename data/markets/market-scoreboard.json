@@ -2,7 +2,7 @@
   "id": "market-scoreboard",
   "title": "Asset-Class Scoreboard",
   "accent": "#22D3EE",
-  "last_updated": "2026-11-04T13:29:58Z",
+  "last_updated": "2026-11-04T20:20:22Z",
   "status": "neutral",
   "headline_read": "How the major asset classes are moving right now.",
   "recessions": [
@@ -65,8 +65,8 @@
       "series_id": "SP500",
       "observations": [
         {
-          "date": "2016-11-15",
-          "value": "2180.39"
+          "date": "2016-11-16",
+          "value": "2176.94"
         },
         {
           "date": "2016-12-01",
@@ -309,8 +309,8 @@
           "value": "4613.67"
         },
         {
-          "date": "2021-11-02",
-          "value": "4630.65"
+          "date": "2021-11-03",
+          "value": "4660.57"
         },
         {
           "date": "2021-11-08",
@@ -3019,18 +3019,22 @@
         {
           "date": "2026-11-02",
           "value": "7541.4"
+        },
+        {
+          "date": "2026-11-03",
+          "value": "7568.92"
         }
       ],
       "latest": {
-        "date": "2026-11-02",
-        "value": "7541.4"
+        "date": "2026-11-03",
+        "value": "7568.92"
       },
       "context": "The benchmark index of 500 large U.S. companies \u2014 the headline gauge of U.S. stocks.",
-      "read": "The S&P 500 is up 10% over the past year, now 7,541.40.",
+      "read": "The S&P 500 is up 10% over the past year, now 7,568.92.",
       "signal_status": "up",
       "value_format": "thousands",
       "percentile": {
-        "p": 97.0,
+        "p": 97.2,
         "since": 2016
       },
       "no_severity_reason": "Part of a neutral scoreboard \u2014 it shows which way the price is moving, not whether that's good or bad."
@@ -3044,8 +3048,8 @@
       "series_id": "DCOILWTICO",
       "observations": [
         {
-          "date": "2016-11-09",
-          "value": "45.20"
+          "date": "2016-11-16",
+          "value": "45.56"
         },
         {
           "date": "2016-12-01",
@@ -3284,12 +3288,12 @@
           "value": "76.01"
         },
         {
-          "date": "2021-10-27",
-          "value": "82.66"
-        },
-        {
           "date": "2021-11-01",
           "value": "84.08"
+        },
+        {
+          "date": "2021-11-03",
+          "value": "80.82"
         },
         {
           "date": "2021-11-08",
@@ -3914,22 +3918,6 @@
         {
           "date": "2024-10-28",
           "value": "67.65"
-        },
-        {
-          "date": "2024-10-29",
-          "value": "67.48"
-        },
-        {
-          "date": "2024-10-30",
-          "value": "68.91"
-        },
-        {
-          "date": "2024-10-31",
-          "value": "69.58"
-        },
-        {
-          "date": "2024-11-01",
-          "value": "69.81"
         },
         {
           "date": "2024-11-04",
@@ -5998,18 +5986,38 @@
         {
           "date": "2026-10-27",
           "value": "103.37"
+        },
+        {
+          "date": "2026-10-28",
+          "value": "106.25"
+        },
+        {
+          "date": "2026-10-29",
+          "value": "105.51"
+        },
+        {
+          "date": "2026-10-30",
+          "value": "107.56"
+        },
+        {
+          "date": "2026-11-02",
+          "value": "100.06"
+        },
+        {
+          "date": "2026-11-03",
+          "value": "99.64"
         }
       ],
       "latest": {
-        "date": "2026-10-27",
-        "value": "103.37"
+        "date": "2026-11-03",
+        "value": "99.64"
       },
       "context": "West Texas Intermediate, the U.S. benchmark oil price (dollars per barrel) \u2014 a read on energy costs and global demand.",
-      "read": "WTI crude is up 66% over the past year, now 103.37.",
+      "read": "WTI crude is up 61% over the past year, now 99.64.",
       "signal_status": "up",
       "value_format": "decimal",
       "percentile": {
-        "p": 96.1,
+        "p": 94.5,
         "since": 2016
       },
       "no_severity_reason": "Part of a neutral scoreboard \u2014 it shows which way the price is moving, not whether that's good or bad."
@@ -8908,19 +8916,19 @@
         },
         {
           "date": "2026-11-04",
-          "value": "4050.60"
+          "value": "4075.70"
         }
       ],
       "latest": {
         "date": "2026-11-04",
-        "value": "4050.60"
+        "value": "4075.70"
       },
       "context": "Gold (dollars per troy ounce) \u2014 the classic safe-haven asset investors flee to in times of stress. Sourced from Yahoo Finance (COMEX futures).",
-      "read": "Gold is little changed over the past year, now 4,050.60.",
+      "read": "Gold is little changed over the past year, now 4,075.70.",
       "signal_status": "flat",
       "value_format": "thousands",
       "percentile": {
-        "p": 90.4,
+        "p": 90.8,
         "since": 2016
       },
       "no_severity_reason": "Part of a neutral scoreboard \u2014 it shows which way the price is moving, not whether that's good or bad."
