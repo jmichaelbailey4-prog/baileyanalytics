@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-06T13:28:40Z",
+  "last_updated": "2026-11-06T19:53:38Z",
   "status": "watch",
   "lenses": [
     {
@@ -17,9 +17,7 @@
         },
         {
           "k": "Sahm rule",
-          "v": "0.00",
-          "d": "0.07",
-          "dir": "up"
+          "v": "0.00"
         }
       ],
       "sparkline": [
@@ -132,24 +130,23 @@
       "id": "job-market",
       "title": "The Job Market",
       "accent": "#38BDF8",
-      "status": "watch",
-      "headline_read": "The job market is cooling \u2014 still solid, but losing momentum.",
+      "status": "ok",
+      "headline_read": "The job market is healthy \u2014 hiring and pay are holding up.",
       "key_stats": [
         {
           "k": "Unemployment",
-          "v": "4.20%",
+          "v": "4.10%",
           "d": "0.10%",
-          "dir": "up"
+          "dir": "down"
         },
         {
           "k": "Payrolls",
-          "v": "29,000",
-          "d": "104,000",
-          "dir": "down"
+          "v": "165,000",
+          "d": "105,000",
+          "dir": "up"
         }
       ],
       "sparkline": [
-        3.6,
         3.6,
         3.5,
         3.7,
@@ -188,7 +185,8 @@
         4.2,
         4.1,
         4.1,
-        4.2
+        4.2,
+        4.1
       ]
     },
     {

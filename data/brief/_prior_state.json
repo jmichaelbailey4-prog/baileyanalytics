@@ -1,9 +1,9 @@
 {
-  "captured_at": "2026-11-06T13:31:49Z",
+  "captured_at": "2026-11-06T19:55:30Z",
   "statuses": {
     "recession-watch": "ok",
     "cost-of-money": "watch",
-    "job-market": "watch",
+    "job-market": "ok",
     "cost-of-living": "watch",
     "fiscal-health": "elevated",
     "consumer-spending": "ok",
@@ -18,7 +18,7 @@
     "business-formation": "ok",
     "business-investment": "ok",
     "business-credit": "watch",
-    "market-risk-sentiment": "ok",
+    "market-risk-sentiment": "watch",
     "market-scoreboard": "neutral",
     "market-liquidity": "ok",
     "crypto-structure": "neutral",

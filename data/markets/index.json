@@ -1,29 +1,28 @@
 {
-  "last_updated": "2026-11-06T13:29:11Z",
-  "status": "ok",
+  "last_updated": "2026-11-06T19:54:09Z",
+  "status": "watch",
   "lenses": [
     {
       "id": "market-risk-sentiment",
       "title": "Risk Sentiment",
       "accent": "#FB7185",
-      "status": "ok",
-      "headline_read": "Markets are calm \u2014 volatility and credit stress are low.",
+      "status": "watch",
+      "headline_read": "A few cracks are showing \u2014 sentiment is no longer all calm.",
       "key_stats": [
         {
           "k": "VIX",
-          "v": "16.61",
-          "d": "4.22",
-          "dir": "down"
+          "v": "28.18",
+          "d": "11.57",
+          "dir": "up"
         },
         {
           "k": "HY spread",
-          "v": "3.32%",
-          "d": "0.08%",
-          "dir": "down"
+          "v": "3.48%",
+          "d": "0.16%",
+          "dir": "up"
         }
       ],
       "sparkline": [
-        17.84,
         15.84,
         17.1,
         17.2,
@@ -62,7 +61,8 @@
         19.42,
         21.15,
         20.83,
-        16.61
+        16.61,
+        28.18
       ]
     },
     {
@@ -74,9 +74,9 @@
       "key_stats": [
         {
           "k": "S&P 500",
-          "v": "7,689",
-          "d": "120",
-          "dir": "up"
+          "v": "7,354",
+          "d": "335",
+          "dir": "down"
         },
         {
           "k": "WTI oil",
@@ -86,7 +86,6 @@
         }
       ],
       "sparkline": [
-        7591.7,
         7656.98,
         7619.98,
         7585.73,
@@ -125,7 +124,8 @@
         7580.07,
         7541.4,
         7568.92,
-        7688.62
+        7688.62,
+        7353.73
       ]
     },
     {
@@ -199,13 +199,13 @@
         {
           "k": "BTC dominance",
           "v": "59.19%",
-          "d": "0.02%",
+          "d": "0.01%",
           "dir": "up"
         },
         {
           "k": "Alt rotation",
-          "v": "98.91",
-          "d": "0.99",
+          "v": "98.97",
+          "d": "1.05",
           "dir": "up"
         }
       ],
@@ -249,7 +249,7 @@
         59.29690453676692,
         59.54558593154458,
         59.1781120150993,
-        59.19327277276134
+        59.18895692218384
       ]
     }
   ]

@@ -2,9 +2,9 @@
   "id": "job-market",
   "title": "The Job Market",
   "accent": "#38BDF8",
-  "last_updated": "2026-11-03T20:01:05Z",
-  "status": "watch",
-  "headline_read": "The job market is cooling \u2014 still solid, but losing momentum.",
+  "last_updated": "2026-11-06T19:53:38Z",
+  "status": "ok",
+  "headline_read": "The job market is healthy \u2014 hiring and pay are holding up.",
   "recessions": [
     {
       "start": "1948-12-01",
@@ -1085,10 +1085,6 @@
           "value": "9.0"
         },
         {
-          "date": "2011-09-01",
-          "value": "9.0"
-        },
-        {
           "date": "2011-10-01",
           "value": "8.8"
         },
@@ -1807,21 +1803,25 @@
         {
           "date": "2026-09-01",
           "value": "4.2"
+        },
+        {
+          "date": "2026-10-01",
+          "value": "4.1"
         }
       ],
       "latest": {
-        "date": "2026-09-01",
-        "value": "4.2"
+        "date": "2026-10-01",
+        "value": "4.1"
       },
       "context": "The share of the labor force without a job and actively looking \u2014 the single most-watched gauge of labor-market health.",
-      "read": "Unemployment is steady at 4.2%, near its recent lows.",
+      "read": "Unemployment is steady at 4.1%, near its recent lows.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 20.3,
+        "p": 18.3,
         "since": 1948
       },
-      "scale_now": 0.1
+      "scale_now": 0.0
     },
     {
       "id": "payrolls",
@@ -1832,8 +1832,8 @@
       "series_id": "PAYEMS",
       "observations": [
         {
-          "date": "1939-05-01",
-          "value": "205000"
+          "date": "1939-06-01",
+          "value": "203000"
         },
         {
           "date": "1939-07-01",
@@ -2992,10 +2992,6 @@
           "value": "61000"
         },
         {
-          "date": "2011-09-01",
-          "value": "219000"
-        },
-        {
           "date": "2011-10-01",
           "value": "209000"
         },
@@ -3709,26 +3705,30 @@
         },
         {
           "date": "2026-08-01",
-          "value": "133000"
+          "value": "186000"
         },
         {
           "date": "2026-09-01",
-          "value": "29000"
+          "value": "60000"
+        },
+        {
+          "date": "2026-10-01",
+          "value": "165000"
         }
       ],
       "latest": {
-        "date": "2026-09-01",
-        "value": "29000"
+        "date": "2026-10-01",
+        "value": "165000"
       },
       "context": "How many jobs U.S. employers added (or cut) last month \u2014 the headline number markets and the Fed react to most.",
-      "read": "Employers added just 29,000 jobs last month \u2014 hiring has slowed sharply.",
-      "signal_status": "watch",
+      "read": "Employers added 165,000 jobs last month \u2014 a healthy clip.",
+      "signal_status": "ok",
       "value_format": "thousands",
       "percentile": {
-        "p": 25.7,
+        "p": 51.5,
         "since": 1939
       },
-      "scale_now": 29000.0
+      "scale_now": 165000.0
     },
     {
       "id": "job-openings",
@@ -4662,7 +4662,7 @@
       "series_id": "CES0500000003",
       "observations": [
         {
-          "date": "2006-10-01",
+          "date": "2006-11-01",
           "value": "."
         },
         {
@@ -4740,10 +4740,6 @@
         {
           "date": "2011-07-01",
           "value": "2.30190"
-        },
-        {
-          "date": "2011-09-01",
-          "value": "1.94089"
         },
         {
           "date": "2011-10-01",
@@ -5463,22 +5459,26 @@
         },
         {
           "date": "2026-09-01",
-          "value": "3.02452"
+          "value": "3.16076"
+        },
+        {
+          "date": "2026-10-01",
+          "value": "3.12076"
         }
       ],
       "latest": {
-        "date": "2026-09-01",
-        "value": "3.02452"
+        "date": "2026-10-01",
+        "value": "3.12076"
       },
       "context": "How fast average hourly pay is rising versus a year ago. When it outpaces inflation, workers' buying power grows.",
-      "read": "Pay is up 3.0% from a year ago, a solid pace.",
+      "read": "Pay is up 3.1% from a year ago, a solid pace.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 50.6,
+        "p": 53.8,
         "since": 2007
       },
-      "scale_now": 3.0245
+      "scale_now": 3.1208
     },
     {
       "id": "quits",
@@ -7432,10 +7432,6 @@
           "value": "64.0"
         },
         {
-          "date": "2011-09-01",
-          "value": "64.2"
-        },
-        {
           "date": "2011-10-01",
           "value": "64.1"
         },
@@ -8154,18 +8150,22 @@
         {
           "date": "2026-09-01",
           "value": "61.8"
+        },
+        {
+          "date": "2026-10-01",
+          "value": "61.9"
         }
       ],
       "latest": {
-        "date": "2026-09-01",
-        "value": "61.8"
+        "date": "2026-10-01",
+        "value": "61.9"
       },
       "context": "The share of working-age adults either working or looking for work \u2014 how many people are in the labor force at all.",
-      "read": "Labor-force participation is 61.8%, down 0.7 points from a year ago.",
+      "read": "Labor-force participation is 61.9%, down 0.6 points from a year ago.",
       "signal_status": "info",
       "value_format": "decimal",
       "percentile": {
-        "p": 38.7,
+        "p": 39.5,
         "since": 1948
       },
       "no_severity_reason": "This level drifts with demographics \u2014 the job-market verdict is carried by unemployment, payrolls, and job openings."

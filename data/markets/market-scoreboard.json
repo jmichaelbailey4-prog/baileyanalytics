@@ -2,7 +2,7 @@
   "id": "market-scoreboard",
   "title": "Asset-Class Scoreboard",
   "accent": "#22D3EE",
-  "last_updated": "2026-11-06T13:28:44Z",
+  "last_updated": "2026-11-06T19:53:42Z",
   "status": "neutral",
   "headline_read": "How the major asset classes are moving right now.",
   "recessions": [
@@ -65,8 +65,8 @@
       "series_id": "SP500",
       "observations": [
         {
-          "date": "2016-11-17",
-          "value": "2187.12"
+          "date": "2016-11-18",
+          "value": "2181.9"
         },
         {
           "date": "2016-12-01",
@@ -309,8 +309,8 @@
           "value": "4613.67"
         },
         {
-          "date": "2021-11-04",
-          "value": "4680.06"
+          "date": "2021-11-05",
+          "value": "4697.53"
         },
         {
           "date": "2021-11-08",
@@ -3027,18 +3027,22 @@
         {
           "date": "2026-11-04",
           "value": "7688.62"
+        },
+        {
+          "date": "2026-11-05",
+          "value": "7353.73"
         }
       ],
       "latest": {
-        "date": "2026-11-04",
-        "value": "7688.62"
+        "date": "2026-11-05",
+        "value": "7353.73"
       },
       "context": "The benchmark index of 500 large U.S. companies \u2014 the headline gauge of U.S. stocks.",
-      "read": "The S&P 500 is up 14% over the past year, now 7,688.62.",
+      "read": "The S&P 500 is up 8% over the past year, now 7,353.73.",
       "signal_status": "up",
       "value_format": "thousands",
       "percentile": {
-        "p": 98.5,
+        "p": 95.0,
         "since": 2016
       },
       "no_severity_reason": "Part of a neutral scoreboard \u2014 it shows which way the price is moving, not whether that's good or bad."
@@ -8920,19 +8924,19 @@
         },
         {
           "date": "2026-11-06",
-          "value": "4068.70"
+          "value": "4074.00"
         }
       ],
       "latest": {
         "date": "2026-11-06",
-        "value": "4068.70"
+        "value": "4074.00"
       },
       "context": "Gold (dollars per troy ounce) \u2014 the classic safe-haven asset investors flee to in times of stress. Sourced from Yahoo Finance (COMEX futures).",
-      "read": "Gold is little changed over the past year, now 4,068.70.",
+      "read": "Gold is little changed over the past year, now 4,074.00.",
       "signal_status": "flat",
       "value_format": "thousands",
       "percentile": {
-        "p": 90.5,
+        "p": 90.7,
         "since": 2016
       },
       "no_severity_reason": "Part of a neutral scoreboard \u2014 it shows which way the price is moving, not whether that's good or bad."

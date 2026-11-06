@@ -1,62 +1,28 @@
 {
-  "generated_at": "2026-11-06T13:31:49Z",
-  "transitions": [],
-  "top_moves": [
+  "generated_at": "2026-11-06T19:55:30Z",
+  "transitions": [
     {
       "lens_id": "market-risk-sentiment",
       "lens_title": "Risk Sentiment",
       "category": "markets",
       "href": "/dashboards/markets/risk-sentiment.html",
-      "headline": "Markets are calm \u2014 volatility and credit stress are low.",
-      "accent": "#FB7185",
-      "sparkline": [
-        17.84,
-        15.84,
-        17.1,
-        17.2,
-        17.71,
-        15.44,
-        14.81,
-        14.87,
-        14.21,
-        15.18,
-        15.67,
-        14.87,
-        16.07,
-        16.04,
-        16.34,
-        16.39,
-        15.31,
-        15.52,
-        15.01,
-        15.08,
-        15.41,
-        14.84,
-        15.21,
-        15.27,
-        16.87,
-        16.46,
-        19.99,
-        18.44,
-        17.31,
-        16.68,
-        19.03,
-        19.45,
-        18.39,
-        17.52,
-        16.91,
-        17.2,
-        19.42,
-        21.15,
-        20.83,
-        16.61
-      ],
-      "stat_label": "VIX",
-      "stat_value": "16.61",
-      "delta": "4.22",
-      "dir": "down",
-      "why": "VIX: its sharpest drop in this view."
+      "from_status": "ok",
+      "to_status": "watch",
+      "direction": "worsening",
+      "headline": "A few cracks are showing \u2014 sentiment is no longer all calm."
     },
+    {
+      "lens_id": "job-market",
+      "lens_title": "The Job Market",
+      "category": "economic",
+      "href": "/dashboards/job-market.html",
+      "from_status": "watch",
+      "to_status": "ok",
+      "direction": "improving",
+      "headline": "The job market is healthy \u2014 hiring and pay are holding up."
+    }
+  ],
+  "top_moves": [
     {
       "lens_id": "market-scoreboard",
       "lens_title": "Asset-Class Scoreboard",
@@ -65,7 +31,6 @@
       "headline": "How the major asset classes are moving right now.",
       "accent": "#22D3EE",
       "sparkline": [
-        7591.7,
         7656.98,
         7619.98,
         7585.73,
@@ -104,13 +69,14 @@
         7580.07,
         7541.4,
         7568.92,
-        7688.62
+        7688.62,
+        7353.73
       ],
       "stat_label": "S&P 500",
-      "stat_value": "7,689",
-      "delta": "120",
-      "dir": "up",
-      "why": "S&P 500: its sharpest jump in this view."
+      "stat_value": "7,354",
+      "delta": "335",
+      "dir": "down",
+      "why": "S&P 500: its lowest in this view \u2014 its sharpest drop in this view."
     },
     {
       "lens_id": "bank-concentrations-funding",
@@ -221,61 +187,6 @@
       "delta": "0.06%",
       "dir": "up",
       "why": ""
-    },
-    {
-      "lens_id": "cost-of-money",
-      "lens_title": "The Cost of Money",
-      "category": "economic",
-      "href": "/dashboards/cost-of-money.html",
-      "headline": "Borrowing is still expensive \u2014 rates remain elevated.",
-      "accent": "#34D399",
-      "sparkline": [
-        5.12,
-        5.33,
-        5.33,
-        5.33,
-        5.33,
-        5.33,
-        5.33,
-        5.33,
-        5.33,
-        5.33,
-        5.33,
-        5.33,
-        5.33,
-        5.33,
-        5.13,
-        4.83,
-        4.64,
-        4.48,
-        4.33,
-        4.33,
-        4.33,
-        4.33,
-        4.33,
-        4.33,
-        4.33,
-        4.33,
-        4.22,
-        4.09,
-        3.88,
-        3.72,
-        3.64,
-        3.64,
-        3.64,
-        3.64,
-        3.63,
-        3.63,
-        3.63,
-        3.63,
-        3.75,
-        3.88
-      ],
-      "stat_label": "Fed funds",
-      "stat_value": "3.88%",
-      "delta": "0.13%",
-      "dir": "up",
-      "why": ""
     }
   ],
   "lenses": [
@@ -300,8 +211,8 @@
       "lens_title": "The Job Market",
       "category": "economic",
       "href": "/dashboards/job-market.html",
-      "status": "watch",
-      "headline": "The job market is cooling \u2014 still solid, but losing momentum."
+      "status": "ok",
+      "headline": "The job market is healthy \u2014 hiring and pay are holding up."
     },
     {
       "lens_id": "cost-of-living",
@@ -420,8 +331,8 @@
       "lens_title": "Risk Sentiment",
       "category": "markets",
       "href": "/dashboards/markets/risk-sentiment.html",
-      "status": "ok",
-      "headline": "Markets are calm \u2014 volatility and credit stress are low."
+      "status": "watch",
+      "headline": "A few cracks are showing \u2014 sentiment is no longer all calm."
     },
     {
       "lens_id": "market-scoreboard",
@@ -554,7 +465,7 @@
   "verdict": {
     "status": "watch",
     "shape": "contained-pressure",
-    "sentence": "The economy is holding up, but not without strain: household finances are stretched thin and energy and commodity costs are squeezing budgets, while banks are solid and markets are calm.",
+    "sentence": "The economy is holding up, but not without strain: household finances are stretched thin and energy and commodity costs are squeezing budgets, while banks are solid and business health is holding up.",
     "short": "Holding up, but household finances are stretched thin."
   },
   "watching": [
@@ -659,14 +570,6 @@
       "headline": "Borrowing is still expensive \u2014 rates remain elevated."
     },
     {
-      "lens_id": "job-market",
-      "lens_title": "The Job Market",
-      "category": "economic",
-      "href": "/dashboards/job-market.html",
-      "status": "watch",
-      "headline": "The job market is cooling \u2014 still solid, but losing momentum."
-    },
-    {
       "lens_id": "cost-of-living",
       "lens_title": "The Cost of Living",
       "category": "economic",
@@ -705,6 +608,14 @@
       "href": "/dashboards/business/credit.html",
       "status": "watch",
       "headline": "Business credit bears watching \u2014 conditions are tightening at the margin."
+    },
+    {
+      "lens_id": "market-risk-sentiment",
+      "lens_title": "Risk Sentiment",
+      "category": "markets",
+      "href": "/dashboards/markets/risk-sentiment.html",
+      "status": "watch",
+      "headline": "A few cracks are showing \u2014 sentiment is no longer all calm."
     },
     {
       "lens_id": "energy-commodities",
@@ -755,9 +666,9 @@
     {
       "category": "markets",
       "title": "Markets & Financial Conditions",
-      "status": "ok",
+      "status": "watch",
       "href": "/dashboards/markets/",
-      "sentence": "Markets are calm \u2014 no stress in financial conditions."
+      "sentence": "Markets are mostly calm, but a few cracks are showing."
     },
     {
       "category": "energy",
