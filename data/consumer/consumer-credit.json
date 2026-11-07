@@ -2,7 +2,7 @@
   "id": "consumer-credit",
   "title": "Consumer Credit Stress",
   "accent": "#F87171",
-  "last_updated": "2026-10-07T19:19:35Z",
+  "last_updated": "2026-11-07T12:09:18Z",
   "status": "watch",
   "headline_read": "Consumer credit bears watching \u2014 debt loads are creeping up.",
   "recessions": [
@@ -2011,10 +2011,6 @@
           "value": "-4.21016"
         },
         {
-          "date": "2011-08-01",
-          "value": "-3.52698"
-        },
-        {
           "date": "2011-09-01",
           "value": "-2.76045"
         },
@@ -2572,7 +2568,7 @@
         },
         {
           "date": "2023-04-01",
-          "value": "12.96046"
+          "value": "12.96051"
         },
         {
           "date": "2023-05-01",
@@ -2620,7 +2616,7 @@
         },
         {
           "date": "2024-04-01",
-          "value": "7.32996"
+          "value": "7.32992"
         },
         {
           "date": "2024-05-01",
@@ -2656,11 +2652,11 @@
         },
         {
           "date": "2025-01-01",
-          "value": "-0.49103"
+          "value": "-0.49090"
         },
         {
           "date": "2025-02-01",
-          "value": "-1.15842"
+          "value": "-1.15818"
         },
         {
           "date": "2025-03-01",
@@ -2668,11 +2664,11 @@
         },
         {
           "date": "2025-04-01",
-          "value": "-1.77465"
+          "value": "-1.77476"
         },
         {
           "date": "2025-05-01",
-          "value": "-2.33313"
+          "value": "-2.33329"
         },
         {
           "date": "2025-06-01",
@@ -2680,7 +2676,7 @@
         },
         {
           "date": "2025-07-01",
-          "value": "-2.03391"
+          "value": "-2.03385"
         },
         {
           "date": "2025-08-01",
@@ -2692,35 +2688,35 @@
         },
         {
           "date": "2025-10-01",
-          "value": "-2.61424"
+          "value": "-2.61301"
         },
         {
           "date": "2025-11-01",
-          "value": "-1.91897"
+          "value": "-1.91646"
         },
         {
           "date": "2025-12-01",
-          "value": "2.10929"
+          "value": "2.10928"
         },
         {
           "date": "2026-01-01",
-          "value": "1.85145"
+          "value": "1.85559"
         },
         {
           "date": "2026-02-01",
-          "value": "1.75889"
+          "value": "1.77144"
         },
         {
           "date": "2026-03-01",
-          "value": "3.51018"
+          "value": "3.51019"
         },
         {
           "date": "2026-04-01",
-          "value": "3.88589"
+          "value": "3.89163"
         },
         {
           "date": "2026-05-01",
-          "value": "3.65112"
+          "value": "3.66259"
         },
         {
           "date": "2026-06-01",
@@ -2728,26 +2724,30 @@
         },
         {
           "date": "2026-07-01",
-          "value": "3.58085"
+          "value": "3.57485"
         },
         {
           "date": "2026-08-01",
-          "value": "3.37094"
+          "value": "3.35109"
+        },
+        {
+          "date": "2026-09-01",
+          "value": "4.24612"
         }
       ],
       "latest": {
-        "date": "2026-08-01",
-        "value": "3.37094"
+        "date": "2026-09-01",
+        "value": "4.24612"
       },
       "context": "How fast revolving credit (mostly credit cards) is growing. Balances growing much faster than incomes mean households are borrowing to keep up.",
-      "read": "Card balances are growing 3.4% a year \u2014 a sustainable pace.",
+      "read": "Card balances are growing 4.2% a year \u2014 a sustainable pace.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 21.1,
+        "p": 27.8,
         "since": 1969
       },
-      "scale_now": 3.3709
+      "scale_now": 4.2461
     },
     {
       "id": "debt-service",

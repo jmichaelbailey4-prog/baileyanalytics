@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-11-07",
+    "title": "Today's Brief \u2014 2 alert \u00b7 4 elevated \u00b7 9 on watch",
+    "description": "Risk Sentiment: VIX 28.18 (\u25b211.57)\nAsset-Class Scoreboard: S&P 500 7,354 (\u25bc335)\nConcentrations & Funding: Uninsured dep. 41.64% (\u25b21.16%)\nThe Cost of Money: Fed funds 3.88% (\u25b20.13%)\nThe Cost of Living: CPI 3.72% (\u25b20.36%)"
+  },
+  {
     "date": "2026-11-06",
     "title": "Today's Brief \u2014 2 alert \u00b7 4 elevated \u00b7 9 on watch",
     "description": "Risk Sentiment: ok \u2192 watch \u2014 A few cracks are showing \u2014 sentiment is no longer all calm.\nThe Job Market: watch \u2192 ok \u2014 The job market is healthy \u2014 hiring and pay are holding up.\nAsset-Class Scoreboard: S&P 500 7,354 (\u25bc335)\nConcentrations & Funding: Uninsured dep. 41.64% (\u25b21.16%)\nRecession Watch: Yield curve 0.38% (\u25b20.06%)"
@@ -141,11 +146,6 @@
   },
   {
     "date": "2026-10-09",
-    "title": "Today's Brief \u2014 2 alert \u00b7 4 elevated \u00b7 7 on watch",
-    "description": "Business Credit: Baa spread 1.48% (\u25bc0.16%)\nConcentrations & Funding: Uninsured dep. 41.64% (\u25b21.16%)\nHousehold Income & Savings: Saving rate 4.10% (\u25bc0.50%)\nBusiness Formation: Applications 11.40% (\u25bc11.90%)\nThe Cost of Money: Fed funds 3.75% (\u25b20.12%)"
-  },
-  {
-    "date": "2026-10-08",
     "title": "Today's Brief \u2014 2 alert \u00b7 4 elevated \u00b7 7 on watch",
     "description": "Business Credit: Baa spread 1.48% (\u25bc0.16%)\nConcentrations & Funding: Uninsured dep. 41.64% (\u25b21.16%)\nHousehold Income & Savings: Saving rate 4.10% (\u25bc0.50%)\nBusiness Formation: Applications 11.40% (\u25bc11.90%)\nThe Cost of Money: Fed funds 3.75% (\u25b20.12%)"
   }
