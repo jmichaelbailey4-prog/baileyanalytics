@@ -2,7 +2,7 @@
   "id": "market-scoreboard",
   "title": "Asset-Class Scoreboard",
   "accent": "#22D3EE",
-  "last_updated": "2026-11-07T12:08:24Z",
+  "last_updated": "2026-11-08T12:29:41Z",
   "status": "neutral",
   "headline_read": "How the major asset classes are moving right now.",
   "recessions": [
@@ -6039,8 +6039,8 @@
       "series_id": "XAUUSD",
       "observations": [
         {
-          "date": "2016-11-07",
-          "value": "1278.30"
+          "date": "2016-11-08",
+          "value": "1273.40"
         },
         {
           "date": "2016-12-01",
@@ -8950,8 +8950,8 @@
       "series_id": "CBBTCUSD",
       "observations": [
         {
-          "date": "2019-09-25",
-          "value": "8446.57"
+          "date": "2019-09-26",
+          "value": "8063.0"
         },
         {
           "date": "2019-10-01",
@@ -9058,8 +9058,8 @@
           "value": "60950.0"
         },
         {
-          "date": "2021-11-06",
-          "value": "61539.3"
+          "date": "2021-11-07",
+          "value": "63433.66"
         },
         {
           "date": "2021-11-08",
@@ -9688,10 +9688,6 @@
         {
           "date": "2024-11-04",
           "value": "69380.73"
-        },
-        {
-          "date": "2024-11-06",
-          "value": "75920.0"
         },
         {
           "date": "2024-11-07",
@@ -12612,18 +12608,22 @@
         {
           "date": "2026-11-06",
           "value": "75860.14"
+        },
+        {
+          "date": "2026-11-07",
+          "value": "75695.61"
         }
       ],
       "latest": {
-        "date": "2026-11-06",
-        "value": "75860.14"
+        "date": "2026-11-07",
+        "value": "75695.61"
       },
       "context": "The price of Bitcoin in U.S. dollars (Coinbase) \u2014 the largest cryptocurrency and a barometer of risk appetite in digital assets.",
-      "read": "Bitcoin is down 25% over the past year, now 75,860.14.",
+      "read": "Bitcoin is down 26% over the past year, now 75,695.61.",
       "signal_status": "down",
       "value_format": "thousands",
       "percentile": {
-        "p": 78.3,
+        "p": 78.1,
         "since": 2019
       },
       "no_severity_reason": "Part of a neutral scoreboard \u2014 it shows which way the price is moving, not whether that's good or bad."
@@ -12637,8 +12637,8 @@
       "series_id": "CBETHUSD",
       "observations": [
         {
-          "date": "2019-09-25",
-          "value": "170.28"
+          "date": "2019-09-26",
+          "value": "165.86"
         },
         {
           "date": "2019-10-01",
@@ -12745,8 +12745,8 @@
           "value": "4324.21"
         },
         {
-          "date": "2021-11-06",
-          "value": "4520.32"
+          "date": "2021-11-07",
+          "value": "4620.81"
         },
         {
           "date": "2021-11-08",
@@ -13375,10 +13375,6 @@
         {
           "date": "2024-11-04",
           "value": "2422.24"
-        },
-        {
-          "date": "2024-11-06",
-          "value": "2897.65"
         },
         {
           "date": "2024-11-07",
@@ -16299,18 +16295,22 @@
         {
           "date": "2026-11-06",
           "value": "2239.48"
+        },
+        {
+          "date": "2026-11-07",
+          "value": "2233.97"
         }
       ],
       "latest": {
-        "date": "2026-11-06",
-        "value": "2239.48"
+        "date": "2026-11-07",
+        "value": "2233.97"
       },
       "context": "The price of Ether in U.S. dollars (Coinbase) \u2014 the second-largest cryptocurrency and the backbone of most decentralized applications.",
-      "read": "Ethereum is down 33% over the past year, now 2,239.48.",
+      "read": "Ethereum is down 35% over the past year, now 2,233.97.",
       "signal_status": "down",
       "value_format": "thousands",
       "percentile": {
-        "p": 54.7,
+        "p": 54.5,
         "since": 2019
       },
       "no_severity_reason": "Part of a neutral scoreboard \u2014 it shows which way the price is moving, not whether that's good or bad."
