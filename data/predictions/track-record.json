@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-11-09T14:46:27Z",
+  "generated_at": "2026-11-09T22:56:39Z",
   "since": "2026-06-12T14:20:31Z",
-  "graded": 841,
-  "coverage": 359,
-  "calibration": 0.7990487514863258,
-  "direction": 0.36929460580912865,
-  "status": 0.9004149377593361,
-  "skill": -0.0017606835420631572,
+  "graded": 849,
+  "coverage": 363,
+  "calibration": 0.7985865724381626,
+  "direction": 0.3683127572016461,
+  "status": 0.8991769547325102,
+  "skill": -0.0017606631593949373,
   "categories": {
     "banking": {
       "graded": 9,
@@ -33,12 +33,12 @@
       "skill": 0.0378380249908008
     },
     "economic": {
-      "graded": 175,
-      "coverage": 31,
-      "calibration": 0.8,
-      "direction": 0.2361111111111111,
-      "status": 0.8819444444444444,
-      "skill": 1.0248096182774447e-07
+      "graded": 178,
+      "coverage": 32,
+      "calibration": 0.8033707865168539,
+      "direction": 0.2328767123287671,
+      "status": 0.8835616438356164,
+      "skill": 1.0248094395315377e-07
     },
     "energy": {
       "graded": 151,
@@ -49,12 +49,12 @@
       "skill": -0.1319801600007855
     },
     "global": {
-      "graded": 102,
-      "coverage": 65,
-      "calibration": 0.8431372549019608,
-      "direction": 0.4594594594594595,
-      "status": 0.918918918918919,
-      "skill": 0.04267029059967142
+      "graded": 106,
+      "coverage": 68,
+      "calibration": 0.839622641509434,
+      "direction": 0.4473684210526316,
+      "status": 0.9210526315789473,
+      "skill": 0.04263471470943392
     },
     "housing": {
       "graded": 63,
@@ -65,12 +65,12 @@
       "skill": -0.07326706401821137
     },
     "markets": {
-      "graded": 249,
+      "graded": 250,
       "coverage": 161,
-      "calibration": 0.7951807228915663,
-      "direction": 0.4431818181818182,
-      "status": 1.0,
-      "skill": 0.015864721499509904
+      "calibration": 0.792,
+      "direction": 0.449438202247191,
+      "status": 0.9887640449438202,
+      "skill": 0.013260875310825648
     }
   }
 }

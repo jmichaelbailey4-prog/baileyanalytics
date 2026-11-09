@@ -2,7 +2,7 @@
   "id": "market-risk-sentiment",
   "title": "Risk Sentiment",
   "accent": "#FB7185",
-  "last_updated": "2026-11-09T14:44:23Z",
+  "last_updated": "2026-11-09T22:55:21Z",
   "status": "watch",
   "headline_read": "A few cracks are showing \u2014 sentiment is no longer all calm.",
   "recessions": [
@@ -65,8 +65,8 @@
       "series_id": "VIXCLS",
       "observations": [
         {
-          "date": "1990-06-08",
-          "value": "17.58"
+          "date": "1990-06-11",
+          "value": "16.34"
         },
         {
           "date": "1990-07-02",
@@ -897,10 +897,6 @@
           "value": "16.41"
         },
         {
-          "date": "2021-11-05",
-          "value": "16.48"
-        },
-        {
           "date": "2021-11-08",
           "value": "17.22"
         },
@@ -1527,10 +1523,6 @@
         {
           "date": "2024-11-04",
           "value": "21.98"
-        },
-        {
-          "date": "2024-11-05",
-          "value": "20.49"
         },
         {
           "date": "2024-11-06",
@@ -3619,21 +3611,25 @@
         {
           "date": "2026-11-05",
           "value": "28.18"
+        },
+        {
+          "date": "2026-11-06",
+          "value": "25.64"
         }
       ],
       "latest": {
-        "date": "2026-11-05",
-        "value": "28.18"
+        "date": "2026-11-06",
+        "value": "25.64"
       },
       "context": "The market's 'fear gauge' \u2014 the expected volatility of the S&P 500 over the coming month. It spikes when investors are scared and falls when calm.",
-      "read": "The VIX is at 28.2 \u2014 some nervousness, but not panic.",
+      "read": "The VIX is at 25.6 \u2014 some nervousness, but not panic.",
       "signal_status": "watch",
       "value_format": "decimal",
       "percentile": {
-        "p": 89.4,
+        "p": 84.3,
         "since": 1990
       },
-      "scale_now": 28.18
+      "scale_now": 25.64
     },
     {
       "id": "hy-spread",
