@@ -32583,7 +32583,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 1331.1100000000006,
-      "revised_to": 75695.61
+      "revised_to": 75239.55
     },
     "now_value": 77191.25,
     "now_date": "2026-10-30"
@@ -32623,7 +32623,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 2.2100000000000364,
-      "revised_to": 2233.97
+      "revised_to": 2140.86
     },
     "now_value": 2241.69,
     "now_date": "2026-10-30"
@@ -32705,5 +32705,85 @@
       "revised_to": null
     },
     "prev_period": "2026-08-01"
+  },
+  {
+    "id": "markets/market-risk-sentiment/hy-spread@2026-11-06",
+    "key": "markets/market-risk-sentiment/hy-spread",
+    "category": "markets",
+    "lens": "market-risk-sentiment",
+    "indicator": "hy-spread",
+    "series_id": "BAMLH0A0HYM2",
+    "horizon": "next-print",
+    "target_period": "2026-11-06",
+    "due": "2026-11-11",
+    "made_at": "2026-11-02T22:14:32Z",
+    "model": "drift@1",
+    "point": 3.4362,
+    "lo": 3.2674,
+    "hi": 3.6414,
+    "unit": "%",
+    "value_format": "decimal",
+    "prev_value": 3.44,
+    "why": "HY spread: up 7 straight weeks. This projects the series' long-run average step from today's level.",
+    "implied_status": "ok",
+    "current_status": "ok",
+    "descriptive": false,
+    "market_price": false,
+    "title": "High-Yield Credit Spread",
+    "short": "HY spread",
+    "lens_title": "Risk Sentiment",
+    "href": "/dashboards/markets/risk-sentiment.html",
+    "grade": {
+      "actual": 3.42,
+      "graded_at": "2026-11-09T14:45:51Z",
+      "hit": true,
+      "abs_error": 0.016199999999999992,
+      "direction_hit": true,
+      "status_hit": true,
+      "naive_error": 0.020000000000000018,
+      "revised_to": null
+    },
+    "now_value": 3.44,
+    "now_date": "2026-10-30"
+  },
+  {
+    "id": "markets/market-risk-sentiment/ig-spread@2026-11-06",
+    "key": "markets/market-risk-sentiment/ig-spread",
+    "category": "markets",
+    "lens": "market-risk-sentiment",
+    "indicator": "ig-spread",
+    "series_id": "BAMLC0A0CM",
+    "horizon": "next-print",
+    "target_period": "2026-11-06",
+    "due": "2026-11-11",
+    "made_at": "2026-11-02T22:14:32Z",
+    "model": "naive@1",
+    "point": 0.94,
+    "lo": 0.9,
+    "hi": 0.98,
+    "unit": "%",
+    "value_format": "decimal",
+    "prev_value": 0.94,
+    "why": "IG spread: up 3 straight weeks. We expect roughly the last value \u2014 this series rarely rewards cleverness.",
+    "implied_status": "ok",
+    "current_status": "ok",
+    "descriptive": false,
+    "market_price": false,
+    "title": "Investment-Grade Credit Spread",
+    "short": "IG spread",
+    "lens_title": "Risk Sentiment",
+    "href": "/dashboards/markets/risk-sentiment.html",
+    "grade": {
+      "actual": 0.93,
+      "graded_at": "2026-11-09T14:45:51Z",
+      "hit": true,
+      "abs_error": 0.009999999999999898,
+      "direction_hit": false,
+      "status_hit": true,
+      "naive_error": 0.009999999999999898,
+      "revised_to": null
+    },
+    "now_value": 0.94,
+    "now_date": "2026-10-30"
   }
 ]
