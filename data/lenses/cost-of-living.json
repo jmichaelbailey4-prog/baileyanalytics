@@ -2,7 +2,7 @@
   "id": "cost-of-living",
   "title": "The Cost of Living",
   "accent": "#FBBF24",
-  "last_updated": "2026-10-29T18:51:15Z",
+  "last_updated": "2026-11-10T20:20:45Z",
   "status": "watch",
   "headline_read": "Inflation has cooled but isn't beaten \u2014 still above target.",
   "recessions": [
@@ -65,7 +65,7 @@
       "series_id": "CPIAUCSL",
       "observations": [
         {
-          "date": "1947-08-01",
+          "date": "1947-09-01",
           "value": "."
         },
         {
@@ -1093,10 +1093,6 @@
           "value": "3.57988"
         },
         {
-          "date": "2011-09-01",
-          "value": "3.81262"
-        },
-        {
           "date": "2011-10-01",
           "value": "3.52227"
         },
@@ -1815,6 +1811,10 @@
         {
           "date": "2026-09-01",
           "value": "3.71725"
+        },
+        {
+          "date": "2026-10-01",
+          "value": "."
         }
       ],
       "latest": {
@@ -1840,7 +1840,7 @@
       "series_id": "CPILFESL",
       "observations": [
         {
-          "date": "1957-08-01",
+          "date": "1957-09-01",
           "value": "."
         },
         {
@@ -2708,10 +2708,6 @@
           "value": "1.74148"
         },
         {
-          "date": "2011-09-01",
-          "value": "1.98772"
-        },
-        {
           "date": "2011-10-01",
           "value": "2.10792"
         },
@@ -3430,6 +3426,10 @@
         {
           "date": "2026-09-01",
           "value": "2.56584"
+        },
+        {
+          "date": "2026-10-01",
+          "value": "."
         }
       ],
       "latest": {

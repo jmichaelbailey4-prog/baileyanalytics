@@ -1,29 +1,28 @@
 {
-  "last_updated": "2026-11-10T13:59:30Z",
-  "status": "watch",
+  "last_updated": "2026-11-10T20:21:17Z",
+  "status": "ok",
   "lenses": [
     {
       "id": "market-risk-sentiment",
       "title": "Risk Sentiment",
       "accent": "#FB7185",
-      "status": "watch",
-      "headline_read": "A few cracks are showing \u2014 sentiment is no longer all calm.",
+      "status": "ok",
+      "headline_read": "Markets are calm \u2014 volatility and credit stress are low.",
       "key_stats": [
         {
           "k": "VIX",
-          "v": "25.64",
-          "d": "2.54",
+          "v": "19.92",
+          "d": "5.72",
           "dir": "down"
         },
         {
           "k": "HY spread",
-          "v": "3.42%",
-          "d": "0.06%",
+          "v": "3.34%",
+          "d": "0.08%",
           "dir": "down"
         }
       ],
       "sparkline": [
-        17.1,
         17.2,
         17.71,
         15.44,
@@ -62,7 +61,8 @@
         20.83,
         16.61,
         28.18,
-        25.64
+        25.64,
+        19.92
       ]
     },
     {
@@ -74,9 +74,9 @@
       "key_stats": [
         {
           "k": "S&P 500",
-          "v": "7,354",
-          "d": "335",
-          "dir": "down"
+          "v": "7,550",
+          "d": "173",
+          "dir": "up"
         },
         {
           "k": "WTI oil",
@@ -86,8 +86,6 @@
         }
       ],
       "sparkline": [
-        7656.98,
-        7619.98,
         7585.73,
         7551.81,
         7637.76,
@@ -125,7 +123,9 @@
         7541.4,
         7568.92,
         7688.62,
-        7353.73
+        7353.73,
+        7376.86,
+        7549.94
       ]
     },
     {
@@ -198,14 +198,14 @@
       "key_stats": [
         {
           "k": "BTC dominance",
-          "v": "59.63%",
-          "d": "0.03%",
-          "dir": "down"
+          "v": "59.72%",
+          "d": "0.06%",
+          "dir": "up"
         },
         {
           "k": "Alt rotation",
-          "v": "93.44",
-          "d": "0.72",
+          "v": "93.01",
+          "d": "1.22",
           "dir": "down"
         }
       ],
@@ -249,7 +249,7 @@
         59.307938201319175,
         60.01701127440765,
         59.66002965852522,
-        59.62617326121607
+        59.72409832666532
       ]
     }
   ]

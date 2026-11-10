@@ -2,7 +2,7 @@
   "id": "energy-commodities",
   "title": "Commodities & Materials",
   "accent": "#A3E635",
-  "last_updated": "2026-10-23T10:45:10Z",
+  "last_updated": "2026-11-10T20:21:32Z",
   "status": "watch",
   "headline_read": "Commodity costs are climbing.",
   "recessions": [
@@ -2068,10 +2068,6 @@
           "value": "5.44300"
         },
         {
-          "date": "2011-09-01",
-          "value": "6.36594"
-        },
-        {
           "date": "2011-10-01",
           "value": "6.21519"
         },
@@ -2790,6 +2786,10 @@
         {
           "date": "2026-09-01",
           "value": "1.76554"
+        },
+        {
+          "date": "2026-10-01",
+          "value": "."
         }
       ],
       "latest": {
