@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-09T22:56:39Z",
+  "generated_at": "2026-11-10T14:03:47Z",
   "predictions": [
     {
       "id": "economic/recession-watch/yield-curve@2026-11-13",
@@ -1785,24 +1785,24 @@
       "prev_period": "2026-09-01"
     },
     {
-      "id": "energy/energy-oil-fuels/gasoline@2026-11-09",
+      "id": "energy/energy-oil-fuels/gasoline@2026-11-16",
       "key": "energy/energy-oil-fuels/gasoline",
       "category": "energy",
       "lens": "energy-oil-fuels",
       "indicator": "gasoline",
       "series_id": "EMM_EPMR_PTE_NUS_DPG",
       "horizon": "next-print",
-      "target_period": "2026-11-09",
-      "due": "2026-11-14",
-      "made_at": "2026-11-03T20:02:59Z",
+      "target_period": "2026-11-16",
+      "due": "2026-11-21",
+      "made_at": "2026-11-10T14:02:09Z",
       "model": "ets@1",
-      "point": 4.0833,
-      "lo": 3.9998,
-      "hi": 4.1493,
+      "point": 3.8896,
+      "lo": 3.804,
+      "hi": 3.9555,
       "unit": "$",
       "value_format": "decimal",
-      "prev_value": 4.153,
-      "why": "Gasoline: down 6 straight weeks. This projects the recent level and trend forward one week.",
+      "prev_value": 3.995,
+      "why": "Gasoline: down 7 straight weeks. This projects the recent level and trend forward one week.",
       "implied_status": "elevated",
       "current_status": "elevated",
       "descriptive": false,
@@ -1812,7 +1812,7 @@
       "lens_title": "Oil & Fuels",
       "href": "/dashboards/energy/oil-fuels.html",
       "grade": null,
-      "prev_period": "2026-11-02"
+      "prev_period": "2026-11-09"
     },
     {
       "id": "energy/energy-oil-fuels/diesel@2026-11-09",
