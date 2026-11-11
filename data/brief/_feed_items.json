@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-11-11",
+    "title": "Today's Brief \u2014 2 alert \u00b7 4 elevated \u00b7 8 on watch",
+    "description": "Risk Sentiment: VIX 19.92 (\u25bc5.72)\nRecession Watch: Yield curve 0.25% (\u25bc0.07%)\nThe Dollar & Currencies: Dollar YoY 0.41% (\u25b20.56%)\nConcentrations & Funding: Uninsured dep. 41.64% (\u25b21.16%)\nThe Cost of Money: Fed funds 3.88% (\u25b20.13%)"
+  },
+  {
     "date": "2026-11-10",
     "title": "Today's Brief \u2014 2 alert \u00b7 4 elevated \u00b7 8 on watch",
     "description": "Risk Sentiment: watch \u2192 ok \u2014 Markets are calm \u2014 volatility and credit stress are low.\nAsset-Class Scoreboard: S&P 500 7,550 (\u25b2173)\nThe Dollar & Currencies: Dollar YoY 0.41% (\u25b20.56%)\nConcentrations & Funding: Uninsured dep. 41.64% (\u25b21.16%)\nThe Cost of Money: Fed funds 3.88% (\u25b20.13%)"
@@ -143,10 +148,5 @@
     "date": "2026-10-13",
     "title": "Today's Brief \u2014 2 alert \u00b7 4 elevated \u00b7 8 on watch",
     "description": "Business Credit: Baa spread 1.48% (\u25bc0.16%)\nConcentrations & Funding: Uninsured dep. 41.64% (\u25b21.16%)\nHousehold Income & Savings: Saving rate 4.10% (\u25bc0.50%)\nBusiness Formation: Applications 11.40% (\u25bc11.90%)\nThe Cost of Money: Fed funds 3.75% (\u25b20.12%)"
-  },
-  {
-    "date": "2026-10-12",
-    "title": "Today's Brief \u2014 2 alert \u00b7 4 elevated \u00b7 8 on watch",
-    "description": "Business Credit: Baa spread 1.48% (\u25bc0.16%)\nConcentrations & Funding: Uninsured dep. 41.64% (\u25b21.16%)\nHousehold Income & Savings: Saving rate 4.10% (\u25bc0.50%)\nBusiness Formation: Applications 11.40% (\u25bc11.90%)\nCrypto Market Structure: BTC dominance 59.17% (\u25bc0.42%)"
   }
 ]
