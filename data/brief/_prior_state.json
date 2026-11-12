@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-11-10T20:22:45Z",
+  "captured_at": "2026-11-12T20:43:08Z",
   "statuses": {
     "recession-watch": "ok",
     "cost-of-money": "watch",
@@ -15,7 +15,7 @@
     "bank-capital-solvency": "ok",
     "bank-concentrations-funding": "watch",
     "business-profitability": "ok",
-    "business-formation": "ok",
+    "business-formation": "watch",
     "business-investment": "ok",
     "business-credit": "watch",
     "market-risk-sentiment": "ok",

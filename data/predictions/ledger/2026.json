@@ -4783,7 +4783,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 1.4000000000000004,
-      "revised_to": 15.3
+      "revised_to": 15.0
     }
   },
   {
@@ -4821,7 +4821,7 @@
       "direction_hit": false,
       "status_hit": false,
       "naive_error": 1.5,
-      "revised_to": 5.3
+      "revised_to": 7.4
     }
   },
   {
@@ -12393,7 +12393,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 7.799999999999999,
-      "revised_to": 23.2
+      "revised_to": 22.3
     },
     "prev_period": "2026-06-01"
   },
@@ -12432,7 +12432,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 0.7000000000000002,
-      "revised_to": 5.8
+      "revised_to": 7.7
     },
     "prev_period": "2026-06-01"
   },
@@ -12471,7 +12471,7 @@
       "direction_hit": true,
       "status_hit": true,
       "naive_error": 2.0,
-      "revised_to": 26.3
+      "revised_to": 26.4
     },
     "prev_period": "2026-06-01"
   },
@@ -19726,7 +19726,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 11.999999999999998,
-      "revised_to": null
+      "revised_to": 10.6
     },
     "prev_period": "2026-07-01"
   },
@@ -19765,7 +19765,7 @@
       "direction_hit": true,
       "status_hit": true,
       "naive_error": 4.0,
-      "revised_to": null
+      "revised_to": 3.2
     },
     "prev_period": "2026-07-01"
   },
@@ -19804,7 +19804,7 @@
       "direction_hit": true,
       "status_hit": true,
       "naive_error": 1.1000000000000014,
-      "revised_to": null
+      "revised_to": 27.4
     },
     "prev_period": "2026-07-01"
   },
@@ -26792,7 +26792,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 7.0,
-      "revised_to": null
+      "revised_to": 3.9
     },
     "prev_period": "2026-08-01"
   },
@@ -26831,7 +26831,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 1.2000000000000002,
-      "revised_to": null
+      "revised_to": 4.6
     },
     "prev_period": "2026-08-01"
   },
@@ -26870,7 +26870,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 0.1999999999999993,
-      "revised_to": null
+      "revised_to": 27.6
     },
     "prev_period": "2026-08-01"
   },
@@ -33301,5 +33301,318 @@
       "revised_to": null
     },
     "prev_period": "2026-10-30"
+  },
+  {
+    "id": "economic/fiscal-health/deficit-12m@2026-10-01",
+    "key": "economic/fiscal-health/deficit-12m",
+    "category": "economic",
+    "lens": "fiscal-health",
+    "indicator": "deficit-12m",
+    "series_id": "MTSDS133FMS",
+    "horizon": "next-print",
+    "target_period": "2026-10-01",
+    "due": "2026-11-15",
+    "made_at": "2026-10-17T09:58:46Z",
+    "model": "naive@1",
+    "point": 1.99,
+    "lo": 1.805,
+    "hi": 2.17,
+    "unit": "$T",
+    "value_format": "decimal",
+    "prev_value": 1.99,
+    "why": "We expect roughly the last value \u2014 this series rarely rewards cleverness.",
+    "implied_status": "elevated",
+    "current_status": "elevated",
+    "descriptive": false,
+    "market_price": false,
+    "title": "Federal Deficit \u00b7 trailing 12 months",
+    "short": "Deficit",
+    "lens_title": "Fiscal Health",
+    "href": "/dashboards/fiscal-health.html",
+    "grade": {
+      "actual": 2.11,
+      "graded_at": "2026-11-12T20:42:44Z",
+      "hit": true,
+      "abs_error": 0.11999999999999988,
+      "direction_hit": false,
+      "status_hit": true,
+      "naive_error": 0.11999999999999988,
+      "revised_to": null
+    },
+    "prev_period": "2026-09-01"
+  },
+  {
+    "id": "energy/energy-oil-fuels/crude-production@2026-11-06",
+    "key": "energy/energy-oil-fuels/crude-production",
+    "category": "energy",
+    "lens": "energy-oil-fuels",
+    "indicator": "crude-production",
+    "series_id": "WCRFPUS2",
+    "horizon": "next-print",
+    "target_period": "2026-11-06",
+    "due": "2026-11-11",
+    "made_at": "2026-11-04T20:22:47Z",
+    "model": "naive@1",
+    "point": 14003.0,
+    "lo": 13940.6,
+    "hi": 14073.5,
+    "unit": "",
+    "value_format": "thousands",
+    "prev_value": 14003.0,
+    "why": "Crude output: up 2 straight weeks. We expect roughly the last value \u2014 this series rarely rewards cleverness.",
+    "implied_status": "info",
+    "current_status": "info",
+    "descriptive": true,
+    "market_price": false,
+    "title": "U.S. Crude Oil Production",
+    "short": "Crude output",
+    "lens_title": "Oil & Fuels",
+    "href": "/dashboards/energy/oil-fuels.html",
+    "grade": {
+      "actual": 14013.0,
+      "graded_at": "2026-11-12T20:42:55Z",
+      "hit": true,
+      "abs_error": 10.0,
+      "direction_hit": false,
+      "status_hit": true,
+      "naive_error": 10.0,
+      "revised_to": null
+    },
+    "prev_period": "2026-10-30"
+  },
+  {
+    "id": "energy/energy-oil-fuels/crude-stocks@2026-11-06",
+    "key": "energy/energy-oil-fuels/crude-stocks",
+    "category": "energy",
+    "lens": "energy-oil-fuels",
+    "indicator": "crude-stocks",
+    "series_id": "WCESTUS1",
+    "horizon": "next-print",
+    "target_period": "2026-11-06",
+    "due": "2026-11-11",
+    "made_at": "2026-11-04T20:23:03Z",
+    "model": "ets@1",
+    "point": 408114.2601,
+    "lo": 402827.8382,
+    "hi": 413527.9661,
+    "unit": "",
+    "value_format": "thousands",
+    "prev_value": 409760.0,
+    "why": "Crude stocks: down 5 straight weeks. This projects the recent level and trend forward one week.",
+    "implied_status": "info",
+    "current_status": "info",
+    "descriptive": true,
+    "market_price": false,
+    "title": "Crude Inventories \u00b7 excl. SPR",
+    "short": "Crude stocks",
+    "lens_title": "Oil & Fuels",
+    "href": "/dashboards/energy/oil-fuels.html",
+    "grade": {
+      "actual": 414417.0,
+      "graded_at": "2026-11-12T20:42:56Z",
+      "hit": false,
+      "abs_error": 6302.739899999986,
+      "direction_hit": false,
+      "status_hit": true,
+      "naive_error": 4657.0,
+      "revised_to": null
+    },
+    "prev_period": "2026-10-30"
+  },
+  {
+    "id": "energy/energy-natural-gas/henry-hub@2026-11-06",
+    "key": "energy/energy-natural-gas/henry-hub",
+    "category": "energy",
+    "lens": "energy-natural-gas",
+    "indicator": "henry-hub",
+    "series_id": "RNGWHHD",
+    "horizon": "next-print",
+    "target_period": "2026-11-06",
+    "due": "2026-11-11",
+    "made_at": "2026-11-04T20:23:06Z",
+    "model": "naive@1",
+    "point": 2.42,
+    "lo": 1.903,
+    "hi": 2.907,
+    "unit": "$",
+    "value_format": "decimal",
+    "prev_value": 2.42,
+    "why": "Henry Hub: down 2 straight weeks. We expect roughly the last value \u2014 this series rarely rewards cleverness.",
+    "implied_status": "ok",
+    "current_status": "ok",
+    "descriptive": false,
+    "market_price": false,
+    "title": "Henry Hub Spot Price",
+    "short": "Henry Hub",
+    "lens_title": "Natural Gas",
+    "href": "/dashboards/energy/natural-gas.html",
+    "grade": {
+      "actual": 2.6,
+      "graded_at": "2026-11-12T20:42:57Z",
+      "hit": true,
+      "abs_error": 0.18000000000000016,
+      "direction_hit": false,
+      "status_hit": true,
+      "naive_error": 0.18000000000000016,
+      "revised_to": null
+    },
+    "now_value": 2.63,
+    "now_date": "2026-11-03"
+  },
+  {
+    "id": "housing/housing-affordability/mortgage-rate@2026-11-12",
+    "key": "housing/housing-affordability/mortgage-rate",
+    "category": "housing",
+    "lens": "housing-affordability",
+    "indicator": "mortgage-rate",
+    "series_id": "MORTGAGE30US",
+    "horizon": "next-print",
+    "target_period": "2026-11-12",
+    "due": "2026-11-17",
+    "made_at": "2026-11-05T20:32:37Z",
+    "model": "ets@1",
+    "point": 7.1671,
+    "lo": 7.0853,
+    "hi": 7.2474,
+    "unit": "%",
+    "value_format": "decimal",
+    "prev_value": 7.18,
+    "why": "30-yr mortgage: down 3 straight weeks. This projects the recent level and trend forward one week.",
+    "implied_status": "elevated",
+    "current_status": "elevated",
+    "descriptive": false,
+    "market_price": false,
+    "title": "30-Year Fixed Mortgage Rate",
+    "short": "30-yr mortgage",
+    "lens_title": "Affordability & Financing",
+    "href": "/dashboards/housing/affordability.html",
+    "grade": {
+      "actual": 7.11,
+      "graded_at": "2026-11-12T20:43:02Z",
+      "hit": true,
+      "abs_error": 0.05709999999999926,
+      "direction_hit": true,
+      "status_hit": true,
+      "naive_error": 0.0699999999999994,
+      "revised_to": null
+    },
+    "prev_period": "2026-11-05"
+  },
+  {
+    "id": "business/business-formation/applications@2026-10-01",
+    "key": "business/business-formation/applications",
+    "category": "business",
+    "lens": "business-formation",
+    "indicator": "applications",
+    "series_id": "BABATOTALSAUS",
+    "horizon": "next-print",
+    "target_period": "2026-10-01",
+    "due": "2026-11-15",
+    "made_at": "2026-10-14T17:54:13Z",
+    "model": "naive@1",
+    "point": 4.4,
+    "lo": -12.4,
+    "hi": 15.7,
+    "unit": "%",
+    "value_format": "decimal",
+    "prev_value": 4.4,
+    "why": "Applications: down 2 straight months. We expect roughly the last value \u2014 this series rarely rewards cleverness.",
+    "implied_status": "ok",
+    "current_status": "ok",
+    "descriptive": false,
+    "market_price": false,
+    "title": "Business Applications \u00b7 year-over-year",
+    "short": "Applications",
+    "lens_title": "Business Formation",
+    "href": "/dashboards/business/formation.html",
+    "grade": {
+      "actual": -1.0,
+      "graded_at": "2026-11-12T20:43:06Z",
+      "hit": true,
+      "abs_error": 5.4,
+      "direction_hit": false,
+      "status_hit": false,
+      "naive_error": 5.4,
+      "revised_to": null
+    },
+    "prev_period": "2026-09-01"
+  },
+  {
+    "id": "business/business-formation/high-propensity@2026-10-01",
+    "key": "business/business-formation/high-propensity",
+    "category": "business",
+    "lens": "business-formation",
+    "indicator": "high-propensity",
+    "series_id": "BAHBATOTALSAUS",
+    "horizon": "next-print",
+    "target_period": "2026-10-01",
+    "due": "2026-11-15",
+    "made_at": "2026-10-14T17:54:13Z",
+    "model": "ets@1",
+    "point": 3.1029,
+    "lo": -7.0183,
+    "hi": 11.8135,
+    "unit": "%",
+    "value_format": "decimal",
+    "prev_value": 3.1,
+    "why": "This projects the recent level and trend forward one month.",
+    "implied_status": "ok",
+    "current_status": "ok",
+    "descriptive": false,
+    "market_price": false,
+    "title": "High-Propensity Applications \u00b7 year-over-year",
+    "short": "High-propensity",
+    "lens_title": "Business Formation",
+    "href": "/dashboards/business/formation.html",
+    "grade": {
+      "actual": 3.2,
+      "graded_at": "2026-11-12T20:43:07Z",
+      "hit": true,
+      "abs_error": 0.09710000000000019,
+      "direction_hit": true,
+      "status_hit": true,
+      "naive_error": 0.10000000000000009,
+      "revised_to": null
+    },
+    "prev_period": "2026-09-01"
+  },
+  {
+    "id": "business/business-formation/hp-share@2026-10-01",
+    "key": "business/business-formation/hp-share",
+    "category": "business",
+    "lens": "business-formation",
+    "indicator": "hp-share",
+    "series_id": "BFS_HP_SHARE",
+    "horizon": "next-print",
+    "target_period": "2026-10-01",
+    "due": "2026-11-15",
+    "made_at": "2026-10-14T17:54:13Z",
+    "model": "ets@1",
+    "point": 27.4687,
+    "lo": 26.4039,
+    "hi": 28.2065,
+    "unit": "%",
+    "value_format": "decimal",
+    "prev_value": 27.5,
+    "why": "HP share: up 2 straight months. This projects the recent level and trend forward one month.",
+    "implied_status": "info",
+    "current_status": "info",
+    "descriptive": true,
+    "market_price": false,
+    "title": "High-Propensity Share of Applications",
+    "short": "HP share",
+    "lens_title": "Business Formation",
+    "href": "/dashboards/business/formation.html",
+    "grade": {
+      "actual": 28.8,
+      "graded_at": "2026-11-12T20:43:07Z",
+      "hit": false,
+      "abs_error": 1.3313000000000024,
+      "direction_hit": false,
+      "status_hit": true,
+      "naive_error": 1.3000000000000007,
+      "revised_to": null
+    },
+    "prev_period": "2026-09-01"
   }
 ]
