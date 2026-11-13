@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-12T20:42:26Z",
+  "last_updated": "2026-11-13T20:26:33Z",
   "status": "elevated",
   "lenses": [
     {
@@ -78,8 +78,8 @@
         },
         {
           "k": "Gas storage",
-          "v": "3,801 Bcf",
-          "d": "77 Bcf",
+          "v": "3,862 Bcf",
+          "d": "61 Bcf",
           "dir": "up"
         }
       ],

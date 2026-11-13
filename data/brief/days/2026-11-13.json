@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-13T13:44:11Z",
+  "generated_at": "2026-11-13T20:30:36Z",
   "transitions": [],
   "top_moves": [
     {
@@ -113,34 +113,6 @@
       "why": "Uninsured dep.: up 5 readings in a row."
     },
     {
-      "lens_id": "housing-affordability",
-      "lens_title": "Affordability & Financing",
-      "category": "housing",
-      "href": "/dashboards/housing/affordability.html",
-      "headline": "Housing affordability is badly stretched.",
-      "accent": "#FBBF24",
-      "sparkline": [
-        107.3,
-        109.1,
-        111.4,
-        116.6,
-        116.5,
-        112.5,
-        108.6,
-        104.6,
-        101.4,
-        102.7,
-        103.7,
-        105.2,
-        100.7
-      ],
-      "stat_label": "Affordability",
-      "stat_value": "100.70",
-      "delta": "4.50",
-      "dir": "down",
-      "why": "Affordability: its lowest in this view."
-    },
-    {
       "lens_id": "crypto-structure",
       "lens_title": "Crypto Market Structure",
       "category": "markets",
@@ -187,13 +159,41 @@
         59.72409832666532,
         59.86204502639665,
         59.48082970809458,
-        58.98969130559822
+        58.941235923938606
       ],
       "stat_label": "BTC dominance",
-      "stat_value": "58.99%",
-      "delta": "0.49%",
+      "stat_value": "58.94%",
+      "delta": "0.54%",
       "dir": "down",
       "why": ""
+    },
+    {
+      "lens_id": "housing-affordability",
+      "lens_title": "Affordability & Financing",
+      "category": "housing",
+      "href": "/dashboards/housing/affordability.html",
+      "headline": "Housing affordability is badly stretched.",
+      "accent": "#FBBF24",
+      "sparkline": [
+        107.3,
+        109.1,
+        111.4,
+        116.6,
+        116.5,
+        112.5,
+        108.6,
+        104.6,
+        101.4,
+        102.7,
+        103.7,
+        105.2,
+        100.7
+      ],
+      "stat_label": "Affordability",
+      "stat_value": "100.70",
+      "delta": "4.50",
+      "dir": "down",
+      "why": "Affordability: its lowest in this view."
     },
     {
       "lens_id": "cost-of-money",
