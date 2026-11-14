@@ -2,7 +2,7 @@
   "id": "market-scoreboard",
   "title": "Asset-Class Scoreboard",
   "accent": "#22D3EE",
-  "last_updated": "2026-11-13T20:23:59Z",
+  "last_updated": "2026-11-14T12:44:13Z",
   "status": "neutral",
   "headline_read": "How the major asset classes are moving right now.",
   "recessions": [
@@ -65,8 +65,8 @@
       "series_id": "SP500",
       "observations": [
         {
-          "date": "2016-11-25",
-          "value": "2213.35"
+          "date": "2016-11-28",
+          "value": "2201.72"
         },
         {
           "date": "2016-12-01",
@@ -307,10 +307,6 @@
         {
           "date": "2021-11-01",
           "value": "4613.67"
-        },
-        {
-          "date": "2021-11-12",
-          "value": "4682.85"
         },
         {
           "date": "2021-11-15",
@@ -939,10 +935,6 @@
         {
           "date": "2024-11-11",
           "value": "6001.35"
-        },
-        {
-          "date": "2024-11-12",
-          "value": "5983.99"
         },
         {
           "date": "2024-11-13",
@@ -3031,18 +3023,22 @@
         {
           "date": "2026-11-12",
           "value": "7592.4"
+        },
+        {
+          "date": "2026-11-13",
+          "value": "7561.67"
         }
       ],
       "latest": {
-        "date": "2026-11-12",
-        "value": "7592.4"
+        "date": "2026-11-13",
+        "value": "7561.67"
       },
       "context": "The benchmark index of 500 large U.S. companies \u2014 the headline gauge of U.S. stocks.",
-      "read": "The S&P 500 is up 11% over the past year, now 7,592.40.",
+      "read": "The S&P 500 is up 12% over the past year, now 7,561.67.",
       "signal_status": "up",
       "value_format": "thousands",
       "percentile": {
-        "p": 97.4,
+        "p": 97.0,
         "since": 2016
       },
       "no_severity_reason": "Part of a neutral scoreboard \u2014 it shows which way the price is moving, not whether that's good or bad."
@@ -8928,15 +8924,15 @@
         },
         {
           "date": "2026-11-13",
-          "value": "3879.50"
+          "value": "3886.30"
         }
       ],
       "latest": {
         "date": "2026-11-13",
-        "value": "3879.50"
+        "value": "3886.30"
       },
       "context": "Gold (dollars per troy ounce) \u2014 the classic safe-haven asset investors flee to in times of stress. Sourced from Yahoo Finance (COMEX futures).",
-      "read": "Gold is little changed over the past year, now 3,879.50.",
+      "read": "Gold is little changed over the past year, now 3,886.30.",
       "signal_status": "flat",
       "value_format": "thousands",
       "percentile": {
@@ -8954,8 +8950,8 @@
       "series_id": "CBBTCUSD",
       "observations": [
         {
-          "date": "2019-10-01",
-          "value": "8323.43"
+          "date": "2019-10-02",
+          "value": "8396.0"
         },
         {
           "date": "2019-11-01",
@@ -9058,8 +9054,8 @@
           "value": "60950.0"
         },
         {
-          "date": "2021-11-12",
-          "value": "64158.51"
+          "date": "2021-11-13",
+          "value": "64482.54"
         },
         {
           "date": "2021-11-15",
@@ -9688,10 +9684,6 @@
         {
           "date": "2024-11-11",
           "value": "88035.43"
-        },
-        {
-          "date": "2024-11-12",
-          "value": "90493.82"
         },
         {
           "date": "2024-11-13",
@@ -12612,18 +12604,22 @@
         {
           "date": "2026-11-12",
           "value": "70822.24"
+        },
+        {
+          "date": "2026-11-13",
+          "value": "68178.05"
         }
       ],
       "latest": {
-        "date": "2026-11-12",
-        "value": "70822.24"
+        "date": "2026-11-13",
+        "value": "68178.05"
       },
       "context": "The price of Bitcoin in U.S. dollars (Coinbase) \u2014 the largest cryptocurrency and a barometer of risk appetite in digital assets.",
-      "read": "Bitcoin is down 31% over the past year, now 70,822.24.",
+      "read": "Bitcoin is down 31% over the past year, now 68,178.05.",
       "signal_status": "down",
       "value_format": "thousands",
       "percentile": {
-        "p": 76.3,
+        "p": 73.5,
         "since": 2019
       },
       "no_severity_reason": "Part of a neutral scoreboard \u2014 it shows which way the price is moving, not whether that's good or bad."
@@ -12637,8 +12633,8 @@
       "series_id": "CBETHUSD",
       "observations": [
         {
-          "date": "2019-10-01",
-          "value": "176.25"
+          "date": "2019-10-02",
+          "value": "181.21"
         },
         {
           "date": "2019-11-01",
@@ -12741,8 +12737,8 @@
           "value": "4324.21"
         },
         {
-          "date": "2021-11-12",
-          "value": "4668.34"
+          "date": "2021-11-13",
+          "value": "4640.01"
         },
         {
           "date": "2021-11-15",
@@ -13371,10 +13367,6 @@
         {
           "date": "2024-11-11",
           "value": "3247.21"
-        },
-        {
-          "date": "2024-11-12",
-          "value": "3191.45"
         },
         {
           "date": "2024-11-13",
@@ -16295,18 +16287,22 @@
         {
           "date": "2026-11-12",
           "value": "2006.46"
+        },
+        {
+          "date": "2026-11-13",
+          "value": "1927.12"
         }
       ],
       "latest": {
-        "date": "2026-11-12",
-        "value": "2006.46"
+        "date": "2026-11-13",
+        "value": "1927.12"
       },
       "context": "The price of Ether in U.S. dollars (Coinbase) \u2014 the second-largest cryptocurrency and the backbone of most decentralized applications.",
-      "read": "Ethereum is down 41% over the past year, now 2,006.46.",
+      "read": "Ethereum is down 40% over the past year, now 1,927.12.",
       "signal_status": "down",
       "value_format": "thousands",
       "percentile": {
-        "p": 48.6,
+        "p": 45.8,
         "since": 2019
       },
       "no_severity_reason": "Part of a neutral scoreboard \u2014 it shows which way the price is moving, not whether that's good or bad."

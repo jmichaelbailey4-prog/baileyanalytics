@@ -391,24 +391,24 @@
       "prev_period": "2026-04-01"
     },
     {
-      "id": "business/business-credit/ci-loan-growth@2026-10-01",
+      "id": "business/business-credit/ci-loan-growth@2026-11-01",
       "key": "business/business-credit/ci-loan-growth",
       "category": "business",
       "lens": "business-credit",
       "indicator": "ci-loan-growth",
       "series_id": "BUSLOANS",
       "horizon": "next-print",
-      "target_period": "2026-10-01",
-      "due": "2026-11-15",
-      "made_at": "2026-10-10T11:39:07Z",
+      "target_period": "2026-11-01",
+      "due": "2026-12-15",
+      "made_at": "2026-11-14T12:49:39Z",
       "model": "ets@1",
-      "point": 10.4335,
-      "lo": 8.9482,
-      "hi": 11.6266,
+      "point": 12.0922,
+      "lo": 10.6069,
+      "hi": 13.2853,
       "unit": "%",
       "value_format": "decimal",
-      "prev_value": 10.0,
-      "why": "C&I loans: up 11 straight months. This projects the recent level and trend forward one month.",
+      "prev_value": 11.2,
+      "why": "C&I loans: up 12 straight months. This projects the recent level and trend forward one month.",
       "implied_status": "watch",
       "current_status": "watch",
       "descriptive": false,
@@ -418,7 +418,7 @@
       "lens_title": "Business Credit",
       "href": "/dashboards/business/credit.html",
       "grade": null,
-      "prev_period": "2026-09-01"
+      "prev_period": "2026-10-01"
     }
   ]
 }

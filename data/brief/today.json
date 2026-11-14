@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-13T20:30:36Z",
+  "generated_at": "2026-11-14T12:49:39Z",
   "transitions": [],
   "top_moves": [
     {
@@ -120,7 +120,6 @@
       "headline": "How capital is rotating across the crypto market.",
       "accent": "#818CF8",
       "sparkline": [
-        58.661789178616985,
         58.71457365574436,
         58.82189530763586,
         59.16450866991041,
@@ -159,12 +158,13 @@
         59.72409832666532,
         59.86204502639665,
         59.48082970809458,
-        58.941235923938606
+        58.941235923938606,
+        59.49808238797991
       ],
       "stat_label": "BTC dominance",
-      "stat_value": "58.94%",
-      "delta": "0.54%",
-      "dir": "down",
+      "stat_value": "59.50%",
+      "delta": "0.56%",
+      "dir": "up",
       "why": ""
     },
     {
@@ -527,7 +527,7 @@
   "verdict": {
     "status": "watch",
     "shape": "contained-pressure",
-    "sentence": "The economy is holding up, but not without strain: household finances are stretched thin and energy and commodity costs are squeezing budgets, while banks are solid and markets are calm.",
+    "sentence": "Pressure is real but contained: household finances are stretched thin and energy and commodity costs are squeezing budgets; meanwhile banks are solid and markets are calm.",
     "short": "Holding up, but household finances are stretched thin."
   },
   "watching": [
