@@ -2,7 +2,7 @@
   "id": "energy-natural-gas",
   "title": "Natural Gas",
   "accent": "#60A5FA",
-  "last_updated": "2026-11-15T13:13:23Z",
+  "last_updated": "2026-11-15T19:21:20Z",
   "status": "ok",
   "headline_read": "Natural gas costs are stable or easing.",
   "recessions": [
@@ -3721,7 +3721,7 @@
       "signal_status": "info",
       "value_format": "thousands",
       "percentile": {
-        "p": 95.6,
+        "p": 95.0,
         "since": 2016
       },
       "no_severity_reason": "A physical supply-and-demand reading, not a household cost \u2014 this lens's verdict comes from the price indicators."
