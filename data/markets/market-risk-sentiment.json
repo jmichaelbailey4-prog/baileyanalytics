@@ -2,7 +2,7 @@
   "id": "market-risk-sentiment",
   "title": "Risk Sentiment",
   "accent": "#FB7185",
-  "last_updated": "2026-11-13T20:23:59Z",
+  "last_updated": "2026-11-16T22:47:44Z",
   "status": "ok",
   "headline_read": "Markets are calm \u2014 volatility and credit stress are low.",
   "recessions": [
@@ -65,8 +65,8 @@
       "series_id": "VIXCLS",
       "observations": [
         {
-          "date": "1990-06-15",
-          "value": "15.90"
+          "date": "1990-06-18",
+          "value": "17.71"
         },
         {
           "date": "1990-07-02",
@@ -897,10 +897,6 @@
           "value": "16.41"
         },
         {
-          "date": "2021-11-12",
-          "value": "16.29"
-        },
-        {
           "date": "2021-11-15",
           "value": "16.49"
         },
@@ -1527,10 +1523,6 @@
         {
           "date": "2024-11-11",
           "value": "14.97"
-        },
-        {
-          "date": "2024-11-12",
-          "value": "14.71"
         },
         {
           "date": "2024-11-13",
@@ -3619,21 +3611,25 @@
         {
           "date": "2026-11-12",
           "value": "18.7"
+        },
+        {
+          "date": "2026-11-13",
+          "value": "19.3"
         }
       ],
       "latest": {
-        "date": "2026-11-12",
-        "value": "18.7"
+        "date": "2026-11-13",
+        "value": "19.3"
       },
       "context": "The market's 'fear gauge' \u2014 the expected volatility of the S&P 500 over the coming month. It spikes when investors are scared and falls when calm.",
-      "read": "The VIX is at 18.7 \u2014 markets are calm.",
+      "read": "The VIX is at 19.3 \u2014 markets are calm.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 56.8,
+        "p": 59.7,
         "since": 1990
       },
-      "scale_now": 18.7
+      "scale_now": 19.3
     },
     {
       "id": "hy-spread",
@@ -3930,10 +3926,6 @@
         {
           "date": "2024-11-11",
           "value": "2.63"
-        },
-        {
-          "date": "2024-11-12",
-          "value": "2.61"
         },
         {
           "date": "2024-11-13",
@@ -6040,27 +6032,35 @@
           "value": "3.34"
         },
         {
+          "date": "2026-11-10",
+          "value": "3.3"
+        },
+        {
           "date": "2026-11-11",
           "value": "3.3"
         },
         {
           "date": "2026-11-12",
           "value": "3.2"
+        },
+        {
+          "date": "2026-11-13",
+          "value": "3.23"
         }
       ],
       "latest": {
-        "date": "2026-11-12",
-        "value": "3.2"
+        "date": "2026-11-13",
+        "value": "3.23"
       },
       "context": "The extra yield investors demand to hold risky 'junk' corporate bonds over Treasuries. It widens when markets fear defaults \u2014 an early stress signal. Note: FRED serves only a rolling ~3-year window of this ICE BofA series, so its chart history is shorter than the other indicators here.",
-      "read": "The high-yield spread is 3.20% \u2014 tight, signaling calm credit conditions.",
+      "read": "The high-yield spread is 3.23% \u2014 tight, signaling calm credit conditions.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 68.8,
+        "p": 72.9,
         "since": 2023
       },
-      "scale_now": 3.2
+      "scale_now": 3.23
     },
     {
       "id": "ig-spread",
@@ -6356,10 +6356,6 @@
         },
         {
           "date": "2024-11-11",
-          "value": "0.77"
-        },
-        {
-          "date": "2024-11-12",
           "value": "0.77"
         },
         {
@@ -8467,16 +8463,24 @@
           "value": "0.91"
         },
         {
+          "date": "2026-11-10",
+          "value": "0.9"
+        },
+        {
           "date": "2026-11-11",
           "value": "0.9"
         },
         {
           "date": "2026-11-12",
           "value": "0.89"
+        },
+        {
+          "date": "2026-11-13",
+          "value": "0.89"
         }
       ],
       "latest": {
-        "date": "2026-11-12",
+        "date": "2026-11-13",
         "value": "0.89"
       },
       "context": "The same risk premium for higher-quality corporate bonds. Because these borrowers are safer, widening here signals stress reaching the core of credit. Note: FRED serves only a rolling ~3-year window of this ICE BofA series, so its chart history is shorter than the other indicators here.",
@@ -8484,7 +8488,7 @@
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 58.1,
+        "p": 58.2,
         "since": 2023
       },
       "scale_now": 0.89
