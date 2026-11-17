@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-11-17",
+    "title": "Today's Brief \u2014 2 alert \u00b7 4 elevated \u00b7 10 on watch",
+    "description": "Risk Sentiment: ok \u2192 watch \u2014 A few cracks are showing \u2014 sentiment is no longer all calm.\nAsset-Class Scoreboard: S&P 500 7,417 (\u25bc145)\nConcentrations & Funding: Uninsured dep. 41.64% (\u25b21.16%)\nAffordability & Financing: Affordability 100.70 (\u25bc4.50)\nThe Cost of Money: Fed funds 3.88% (\u25b20.13%)"
+  },
+  {
     "date": "2026-11-16",
     "title": "Today's Brief \u2014 2 alert \u00b7 4 elevated \u00b7 9 on watch",
     "description": "Crypto Market Structure: BTC dominance 58.70% (\u25bc0.63%)\nConcentrations & Funding: Uninsured dep. 41.64% (\u25b21.16%)\nAffordability & Financing: Affordability 100.70 (\u25bc4.50)\nThe Cost of Money: Fed funds 3.88% (\u25b20.13%)\nOil & Fuels: Gasoline $4.00 (\u25bc$0.16)"
@@ -143,10 +148,5 @@
     "date": "2026-10-19",
     "title": "Today's Brief \u2014 2 alert \u00b7 5 elevated \u00b7 6 on watch",
     "description": "Risk Sentiment: VIX 19.99 (\u25b23.53)\nAsset-Class Scoreboard: S&P 500 7,659 (\u25bc85)\nBusiness Credit: Baa spread 1.48% (\u25bc0.16%)\nCrypto Market Structure: BTC dominance 59.63% (\u25bc0.51%)\nConcentrations & Funding: Uninsured dep. 41.64% (\u25b21.16%)"
-  },
-  {
-    "date": "2026-10-18",
-    "title": "Today's Brief \u2014 2 alert \u00b7 5 elevated \u00b7 7 on watch",
-    "description": "Crypto Market Structure: BTC dominance 60.13% (\u25b20.70%)\nAsset-Class Scoreboard: S&P 500 7,659 (\u25bc85)\nBusiness Credit: Baa spread 1.48% (\u25bc0.16%)\nConcentrations & Funding: Uninsured dep. 41.64% (\u25b21.16%)\nHousehold Income & Savings: Saving rate 4.10% (\u25bc0.50%)"
   }
 ]
