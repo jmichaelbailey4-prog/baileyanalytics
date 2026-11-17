@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-16T22:47:40Z",
+  "last_updated": "2026-11-17T21:37:01Z",
   "status": "watch",
   "lenses": [
     {
@@ -78,9 +78,9 @@
         },
         {
           "k": "10-year",
-          "v": "5.15%",
-          "d": "0.05%",
-          "dir": "up"
+          "v": "5.12%",
+          "d": "0.03%",
+          "dir": "down"
         }
       ],
       "sparkline": [

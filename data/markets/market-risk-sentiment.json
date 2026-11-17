@@ -2,7 +2,7 @@
   "id": "market-risk-sentiment",
   "title": "Risk Sentiment",
   "accent": "#FB7185",
-  "last_updated": "2026-11-17T15:12:54Z",
+  "last_updated": "2026-11-17T21:37:07Z",
   "status": "watch",
   "headline_read": "A few cracks are showing \u2014 sentiment is no longer all calm.",
   "recessions": [
@@ -3920,18 +3920,6 @@
           "value": "2.63"
         },
         {
-          "date": "2024-11-13",
-          "value": "2.64"
-        },
-        {
-          "date": "2024-11-14",
-          "value": "2.60"
-        },
-        {
-          "date": "2024-11-15",
-          "value": "2.72"
-        },
-        {
           "date": "2024-11-18",
           "value": "2.72"
         },
@@ -6038,21 +6026,25 @@
         {
           "date": "2026-11-13",
           "value": "3.23"
+        },
+        {
+          "date": "2026-11-16",
+          "value": "3.34"
         }
       ],
       "latest": {
-        "date": "2026-11-13",
-        "value": "3.23"
+        "date": "2026-11-16",
+        "value": "3.34"
       },
       "context": "The extra yield investors demand to hold risky 'junk' corporate bonds over Treasuries. It widens when markets fear defaults \u2014 an early stress signal. Note: FRED serves only a rolling ~3-year window of this ICE BofA series, so its chart history is shorter than the other indicators here.",
-      "read": "The high-yield spread is 3.23% \u2014 tight, signaling calm credit conditions.",
+      "read": "The high-yield spread is 3.34% \u2014 tight, signaling calm credit conditions.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 72.9,
+        "p": 81.3,
         "since": 2023
       },
-      "scale_now": 3.23
+      "scale_now": 3.34
     },
     {
       "id": "ig-spread",
@@ -6349,18 +6341,6 @@
         {
           "date": "2024-11-11",
           "value": "0.77"
-        },
-        {
-          "date": "2024-11-13",
-          "value": "0.78"
-        },
-        {
-          "date": "2024-11-14",
-          "value": "0.80"
-        },
-        {
-          "date": "2024-11-15",
-          "value": "0.80"
         },
         {
           "date": "2024-11-18",
@@ -8469,21 +8449,25 @@
         {
           "date": "2026-11-13",
           "value": "0.89"
+        },
+        {
+          "date": "2026-11-16",
+          "value": "0.9"
         }
       ],
       "latest": {
-        "date": "2026-11-13",
-        "value": "0.89"
+        "date": "2026-11-16",
+        "value": "0.9"
       },
       "context": "The same risk premium for higher-quality corporate bonds. Because these borrowers are safer, widening here signals stress reaching the core of credit. Note: FRED serves only a rolling ~3-year window of this ICE BofA series, so its chart history is shorter than the other indicators here.",
-      "read": "The investment-grade spread is 0.89% \u2014 tight, signaling calm credit conditions.",
+      "read": "The investment-grade spread is 0.90% \u2014 tight, signaling calm credit conditions.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 58.2,
+        "p": 61.3,
         "since": 2023
       },
-      "scale_now": 0.89
+      "scale_now": 0.9
     },
     {
       "id": "nfci",
