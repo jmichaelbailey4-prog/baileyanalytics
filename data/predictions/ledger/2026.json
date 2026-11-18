@@ -21030,7 +21030,7 @@
       "direction_hit": true,
       "status_hit": true,
       "naive_error": 36.0,
-      "revised_to": 1288.0
+      "revised_to": 1280.0
     },
     "prev_period": "2026-07-01"
   },
@@ -28175,7 +28175,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 54.0,
-      "revised_to": null
+      "revised_to": 1191.0
     },
     "prev_period": "2026-08-01"
   },
@@ -28449,7 +28449,7 @@
       "direction_hit": true,
       "status_hit": true,
       "naive_error": 0.0030000000000000027,
-      "revised_to": -0.479
+      "revised_to": -0.476
     },
     "prev_period": "2026-10-09"
   },
@@ -31720,7 +31720,7 @@
       "direction_hit": true,
       "status_hit": true,
       "naive_error": 0.02799999999999997,
-      "revised_to": -0.465
+      "revised_to": -0.47
     },
     "prev_period": "2026-10-23"
   },
@@ -33298,7 +33298,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 0.0030000000000000027,
-      "revised_to": null
+      "revised_to": -0.473
     },
     "prev_period": "2026-10-30"
   },
@@ -34684,5 +34684,122 @@
       "revised_to": null
     },
     "prev_period": "2026-08-01"
+  },
+  {
+    "id": "markets/market-risk-sentiment/nfci@2026-11-13",
+    "key": "markets/market-risk-sentiment/nfci",
+    "category": "markets",
+    "lens": "market-risk-sentiment",
+    "indicator": "nfci",
+    "series_id": "NFCI",
+    "horizon": "next-print",
+    "target_period": "2026-11-13",
+    "due": "2026-11-18",
+    "made_at": "2026-11-12T14:19:56Z",
+    "model": "ets-seasonal@1",
+    "point": -0.458,
+    "lo": -0.4604,
+    "hi": -0.4548,
+    "unit": "",
+    "value_format": "decimal",
+    "prev_value": -0.462,
+    "why": "NFCI: up 11 straight weeks. This projects the recent trend with the usual seasonal pattern for the week.",
+    "implied_status": "ok",
+    "current_status": "ok",
+    "descriptive": false,
+    "market_price": false,
+    "title": "Financial Conditions \u00b7 NFCI",
+    "short": "NFCI",
+    "lens_title": "Risk Sentiment",
+    "href": "/dashboards/markets/risk-sentiment.html",
+    "grade": {
+      "actual": -0.478,
+      "graded_at": "2026-11-18T14:51:22Z",
+      "hit": false,
+      "abs_error": 0.019999999999999962,
+      "direction_hit": false,
+      "status_hit": true,
+      "naive_error": 0.01599999999999996,
+      "revised_to": null
+    },
+    "prev_period": "2026-11-06"
+  },
+  {
+    "id": "housing/housing-supply-construction/housing-starts@2026-10-01",
+    "key": "housing/housing-supply-construction/housing-starts",
+    "category": "housing",
+    "lens": "housing-supply-construction",
+    "indicator": "housing-starts",
+    "series_id": "HOUST",
+    "horizon": "next-print",
+    "target_period": "2026-10-01",
+    "due": "2026-11-15",
+    "made_at": "2026-10-20T17:56:57Z",
+    "model": "ets@1",
+    "point": 1266.531,
+    "lo": 1143.6783,
+    "hi": 1394.9425,
+    "unit": "",
+    "value_format": "thousands",
+    "prev_value": 1221.0,
+    "why": "Starts: down 3 straight months. This projects the recent level and trend forward one month.",
+    "implied_status": "ok",
+    "current_status": "ok",
+    "descriptive": false,
+    "market_price": false,
+    "title": "Housing Starts \u00b7 thousands, annual rate",
+    "short": "Starts",
+    "lens_title": "Supply & Construction",
+    "href": "/dashboards/housing/supply-construction.html",
+    "grade": {
+      "actual": 1309.0,
+      "graded_at": "2026-11-18T14:51:40Z",
+      "hit": true,
+      "abs_error": 42.46900000000005,
+      "direction_hit": true,
+      "status_hit": true,
+      "naive_error": 88.0,
+      "revised_to": null
+    },
+    "prev_period": "2026-09-01"
+  },
+  {
+    "id": "housing/housing-supply-construction/building-permits@2026-10-01",
+    "key": "housing/housing-supply-construction/building-permits",
+    "category": "housing",
+    "lens": "housing-supply-construction",
+    "indicator": "building-permits",
+    "series_id": "PERMIT",
+    "horizon": "next-print",
+    "target_period": "2026-10-01",
+    "due": "2026-11-15",
+    "made_at": "2026-10-20T17:56:57Z",
+    "model": "ets@1",
+    "point": 1400.3597,
+    "lo": 1311.7001,
+    "hi": 1494.3049,
+    "unit": "",
+    "value_format": "thousands",
+    "prev_value": 1400.0,
+    "why": "Permits: down 2 straight months. This projects the recent level and trend forward one month.",
+    "implied_status": "ok",
+    "current_status": "ok",
+    "descriptive": false,
+    "market_price": false,
+    "title": "Building Permits \u00b7 thousands, annual rate",
+    "short": "Permits",
+    "lens_title": "Supply & Construction",
+    "href": "/dashboards/housing/supply-construction.html",
+    "grade": {
+      "actual": 1295.0,
+      "graded_at": "2026-11-18T14:51:40Z",
+      "hit": false,
+      "abs_error": 105.35969999999998,
+      "direction_hit": false,
+      "status_hit": true,
+      "naive_error": 105.0,
+      "revised_to": null
+    },
+    "prev_period": "2026-09-01"
   }
 ]

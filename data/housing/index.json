@@ -1,5 +1,5 @@
 {
-  "last_updated": "2026-11-12T20:42:29Z",
+  "last_updated": "2026-11-18T14:51:05Z",
   "status": "watch",
   "lenses": [
     {
@@ -116,9 +116,9 @@
         },
         {
           "k": "Starts",
-          "v": "1,221",
-          "d": "67",
-          "dir": "down"
+          "v": "1,309",
+          "d": "118",
+          "dir": "up"
         }
       ],
       "sparkline": [

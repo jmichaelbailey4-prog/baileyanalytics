@@ -2,7 +2,7 @@
   "id": "housing-supply-construction",
   "title": "Supply & Construction",
   "accent": "#34D399",
-  "last_updated": "2026-11-06T13:29:46Z",
+  "last_updated": "2026-11-18T14:51:04Z",
   "status": "elevated",
   "headline_read": "Housing supply is out of balance \u2014 inventory or construction is strained.",
   "recessions": [
@@ -2432,10 +2432,6 @@
           "value": "623"
         },
         {
-          "date": "2011-09-01",
-          "value": "650"
-        },
-        {
           "date": "2011-10-01",
           "value": "610"
         },
@@ -3149,26 +3145,30 @@
         },
         {
           "date": "2026-08-01",
-          "value": "1288"
+          "value": "1280"
         },
         {
           "date": "2026-09-01",
-          "value": "1221"
+          "value": "1191"
+        },
+        {
+          "date": "2026-10-01",
+          "value": "1309"
         }
       ],
       "latest": {
-        "date": "2026-09-01",
-        "value": "1221"
+        "date": "2026-10-01",
+        "value": "1309"
       },
       "context": "New homes started each month, in thousands of units at an annual rate (1,465 means ~1.47 million homes/year) \u2014 the construction industry's output, and a classic leading indicator.",
-      "read": "Homebuilding: down 7% from a year ago.",
+      "read": "Homebuilding: up 3% from a year ago \u2014 a steady pace.",
       "signal_status": "ok",
       "value_format": "thousands",
       "percentile": {
-        "p": 25.1,
+        "p": 34.2,
         "since": 1959
       },
-      "scale_now": -7.4299
+      "scale_now": 2.828
     },
     {
       "id": "building-permits",
@@ -3178,10 +3178,6 @@
       "color": "#A78BFA",
       "series_id": "PERMIT",
       "observations": [
-        {
-          "date": "1960-12-01",
-          "value": "951"
-        },
         {
           "date": "1961-01-01",
           "value": "969"
@@ -3995,10 +3991,6 @@
           "value": "621"
         },
         {
-          "date": "2011-09-01",
-          "value": "610"
-        },
-        {
           "date": "2011-10-01",
           "value": "671"
         },
@@ -4717,21 +4709,25 @@
         {
           "date": "2026-09-01",
           "value": "1398"
+        },
+        {
+          "date": "2026-10-01",
+          "value": "1295"
         }
       ],
       "latest": {
-        "date": "2026-09-01",
-        "value": "1398"
+        "date": "2026-10-01",
+        "value": "1295"
       },
       "context": "Permits pulled for new housing units, in thousands at an annual rate \u2014 the step before starts, so it leads the rest of the construction pipeline.",
-      "read": "Permitting: down 3% from a year ago.",
+      "read": "Permitting: down 9% from a year ago.",
       "signal_status": "ok",
       "value_format": "thousands",
       "percentile": {
-        "p": 51.8,
-        "since": 1960
+        "p": 39.6,
+        "since": 1961
       },
-      "scale_now": -3.1856
+      "scale_now": -8.6742
     },
     {
       "id": "active-listings",
