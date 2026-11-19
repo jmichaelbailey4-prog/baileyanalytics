@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-18T21:14:23Z",
+  "generated_at": "2026-11-19T14:58:19Z",
   "last": {
     "business/business-credit/ci-loan-growth": {
       "id": "business/business-credit/ci-loan-growth@2026-10-01",
@@ -752,23 +752,23 @@
       "now_date": "2026-11-11"
     },
     "economic/recession-watch/jobless-claims": {
-      "id": "economic/recession-watch/jobless-claims@2026-11-07",
+      "id": "economic/recession-watch/jobless-claims@2026-11-14",
       "key": "economic/recession-watch/jobless-claims",
       "category": "economic",
       "lens": "recession-watch",
       "indicator": "jobless-claims",
       "series_id": "ICSA",
       "horizon": "next-print",
-      "target_period": "2026-11-07",
-      "due": "2026-11-12",
-      "made_at": "2026-11-05T13:46:01Z",
+      "target_period": "2026-11-14",
+      "due": "2026-11-19",
+      "made_at": "2026-11-12T14:19:47Z",
       "model": "naive@1",
-      "point": 189000.0,
-      "lo": 178000.0,
-      "hi": 200700.0,
+      "point": 200000.0,
+      "lo": 189000.0,
+      "hi": 211700.0,
       "unit": "",
       "value_format": "thousands",
-      "prev_value": 189000.0,
+      "prev_value": 200000.0,
       "why": "We expect roughly the last value \u2014 this series rarely rewards cleverness.",
       "implied_status": "ok",
       "current_status": "ok",
@@ -779,16 +779,16 @@
       "lens_title": "Recession Watch",
       "href": "/dashboards/recession-watch.html",
       "grade": {
-        "actual": 200000.0,
-        "graded_at": "2026-11-12T14:19:47Z",
+        "actual": 203000.0,
+        "graded_at": "2026-11-19T14:57:32Z",
         "hit": true,
-        "abs_error": 11000.0,
+        "abs_error": 3000.0,
         "direction_hit": false,
         "status_hit": true,
-        "naive_error": 11000.0,
+        "naive_error": 3000.0,
         "revised_to": null
       },
-      "prev_period": "2026-10-31"
+      "prev_period": "2026-11-07"
     },
     "markets/market-scoreboard/oil": {
       "id": "markets/market-scoreboard/oil@2026-11-13",
@@ -4281,6 +4281,45 @@
   },
   "feed": [
     {
+      "id": "economic/recession-watch/jobless-claims@2026-11-14",
+      "key": "economic/recession-watch/jobless-claims",
+      "category": "economic",
+      "lens": "recession-watch",
+      "indicator": "jobless-claims",
+      "series_id": "ICSA",
+      "horizon": "next-print",
+      "target_period": "2026-11-14",
+      "due": "2026-11-19",
+      "made_at": "2026-11-12T14:19:47Z",
+      "model": "naive@1",
+      "point": 200000.0,
+      "lo": 189000.0,
+      "hi": 211700.0,
+      "unit": "",
+      "value_format": "thousands",
+      "prev_value": 200000.0,
+      "why": "We expect roughly the last value \u2014 this series rarely rewards cleverness.",
+      "implied_status": "ok",
+      "current_status": "ok",
+      "descriptive": false,
+      "market_price": false,
+      "title": "Initial Jobless Claims \u00b7 weekly",
+      "short": "Jobless claims",
+      "lens_title": "Recession Watch",
+      "href": "/dashboards/recession-watch.html",
+      "grade": {
+        "actual": 203000.0,
+        "graded_at": "2026-11-19T14:57:32Z",
+        "hit": true,
+        "abs_error": 3000.0,
+        "direction_hit": false,
+        "status_hit": true,
+        "naive_error": 3000.0,
+        "revised_to": null
+      },
+      "prev_period": "2026-11-07"
+    },
+    {
       "id": "energy/energy-natural-gas/henry-hub@2026-11-13",
       "key": "energy/energy-natural-gas/henry-hub",
       "category": "energy",
@@ -6012,7 +6051,7 @@
         "direction_hit": false,
         "status_hit": true,
         "naive_error": 11000.0,
-        "revised_to": null
+        "revised_to": 202000.0
       },
       "prev_period": "2026-10-31"
     },
@@ -6212,46 +6251,6 @@
         "revised_to": null
       },
       "now_value": 157.47,
-      "now_date": "2026-10-30"
-    },
-    {
-      "id": "global/global-dollar-currencies/euro@2026-11-06",
-      "key": "global/global-dollar-currencies/euro",
-      "category": "global",
-      "lens": "global-dollar-currencies",
-      "indicator": "euro",
-      "series_id": "DEXUSEU",
-      "horizon": "next-print",
-      "target_period": "2026-11-06",
-      "due": "2026-11-11",
-      "made_at": "2026-11-03T20:03:17Z",
-      "model": "drift@1",
-      "point": 1.1162,
-      "lo": 1.1028,
-      "hi": 1.1307,
-      "unit": "$",
-      "value_format": "decimal",
-      "prev_value": 1.1163,
-      "why": "Euro: down 2 straight weeks. This projects the series' long-run average step from today's level.",
-      "implied_status": "info",
-      "current_status": "info",
-      "descriptive": true,
-      "market_price": true,
-      "title": "Euro \u00b7 dollars per euro",
-      "short": "Euro",
-      "lens_title": "The Dollar & Currencies",
-      "href": "/dashboards/global/dollar-currencies.html",
-      "grade": {
-        "actual": 1.1154,
-        "graded_at": "2026-11-09T22:56:36Z",
-        "hit": true,
-        "abs_error": 0.0008000000000001339,
-        "direction_hit": true,
-        "status_hit": true,
-        "naive_error": 0.0009000000000001229,
-        "revised_to": null
-      },
-      "now_value": 1.1163,
       "now_date": "2026-10-30"
     }
   ]

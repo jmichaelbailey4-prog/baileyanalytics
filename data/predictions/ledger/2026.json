@@ -33259,7 +33259,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 11000.0,
-      "revised_to": null
+      "revised_to": 202000.0
     },
     "prev_period": "2026-10-31"
   },
@@ -34959,5 +34959,44 @@
     },
     "now_value": 3.0,
     "now_date": "2026-11-11"
+  },
+  {
+    "id": "economic/recession-watch/jobless-claims@2026-11-14",
+    "key": "economic/recession-watch/jobless-claims",
+    "category": "economic",
+    "lens": "recession-watch",
+    "indicator": "jobless-claims",
+    "series_id": "ICSA",
+    "horizon": "next-print",
+    "target_period": "2026-11-14",
+    "due": "2026-11-19",
+    "made_at": "2026-11-12T14:19:47Z",
+    "model": "naive@1",
+    "point": 200000.0,
+    "lo": 189000.0,
+    "hi": 211700.0,
+    "unit": "",
+    "value_format": "thousands",
+    "prev_value": 200000.0,
+    "why": "We expect roughly the last value \u2014 this series rarely rewards cleverness.",
+    "implied_status": "ok",
+    "current_status": "ok",
+    "descriptive": false,
+    "market_price": false,
+    "title": "Initial Jobless Claims \u00b7 weekly",
+    "short": "Jobless claims",
+    "lens_title": "Recession Watch",
+    "href": "/dashboards/recession-watch.html",
+    "grade": {
+      "actual": 203000.0,
+      "graded_at": "2026-11-19T14:57:32Z",
+      "hit": true,
+      "abs_error": 3000.0,
+      "direction_hit": false,
+      "status_hit": true,
+      "naive_error": 3000.0,
+      "revised_to": null
+    },
+    "prev_period": "2026-11-07"
   }
 ]
