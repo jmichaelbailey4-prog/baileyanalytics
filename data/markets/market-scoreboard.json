@@ -2,7 +2,7 @@
   "id": "market-scoreboard",
   "title": "Asset-Class Scoreboard",
   "accent": "#22D3EE",
-  "last_updated": "2026-11-20T14:38:26Z",
+  "last_updated": "2026-11-20T20:58:29Z",
   "status": "neutral",
   "headline_read": "How the major asset classes are moving right now.",
   "recessions": [
@@ -65,8 +65,8 @@
       "series_id": "SP500",
       "observations": [
         {
-          "date": "2016-12-01",
-          "value": "2191.08"
+          "date": "2016-12-02",
+          "value": "2191.95"
         },
         {
           "date": "2017-01-02",
@@ -305,8 +305,8 @@
           "value": "4613.67"
         },
         {
-          "date": "2021-11-18",
-          "value": "4704.54"
+          "date": "2021-11-19",
+          "value": "4697.96"
         },
         {
           "date": "2021-11-22",
@@ -3023,18 +3023,22 @@
         {
           "date": "2026-11-18",
           "value": "7323.63"
+        },
+        {
+          "date": "2026-11-19",
+          "value": "7175.83"
         }
       ],
       "latest": {
-        "date": "2026-11-18",
-        "value": "7323.63"
+        "date": "2026-11-19",
+        "value": "7175.83"
       },
       "context": "The benchmark index of 500 large U.S. companies \u2014 the headline gauge of U.S. stocks.",
-      "read": "The S&P 500 is up 11% over the past year, now 7,323.63.",
+      "read": "The S&P 500 is up 8% over the past year, now 7,175.83.",
       "signal_status": "up",
       "value_format": "thousands",
       "percentile": {
-        "p": 94.6,
+        "p": 94.3,
         "since": 2016
       },
       "no_severity_reason": "Part of a neutral scoreboard \u2014 it shows which way the price is moving, not whether that's good or bad."
@@ -8916,15 +8920,15 @@
         },
         {
           "date": "2026-11-20",
-          "value": "3571.10"
+          "value": "3518.00"
         }
       ],
       "latest": {
         "date": "2026-11-20",
-        "value": "3571.10"
+        "value": "3518.00"
       },
       "context": "Gold (dollars per troy ounce) \u2014 the classic safe-haven asset investors flee to in times of stress. Sourced from Yahoo Finance (COMEX futures).",
-      "read": "Gold is down 12% over the past year, now 3,571.10.",
+      "read": "Gold is down 13% over the past year, now 3,518.00.",
       "signal_status": "down",
       "value_format": "thousands",
       "percentile": {
