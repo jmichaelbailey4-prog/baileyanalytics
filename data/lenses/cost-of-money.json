@@ -2,7 +2,7 @@
   "id": "cost-of-money",
   "title": "The Cost of Money",
   "accent": "#34D399",
-  "last_updated": "2026-11-19T14:56:21Z",
+  "last_updated": "2026-11-20T14:38:21Z",
   "status": "watch",
   "headline_read": "Borrowing is still expensive \u2014 rates remain elevated.",
   "recessions": [
@@ -1728,7 +1728,7 @@
       "series_id": "DGS10",
       "observations": [
         {
-          "date": "1962-11-14",
+          "date": "1962-11-15",
           "value": "3.91"
         },
         {
@@ -2516,8 +2516,8 @@
           "value": "1.80"
         },
         {
-          "date": "2011-11-17",
-          "value": "1.96"
+          "date": "2011-11-18",
+          "value": "2.01"
         },
         {
           "date": "2011-12-01",
@@ -3000,8 +3000,8 @@
           "value": "1.58"
         },
         {
-          "date": "2021-11-17",
-          "value": "1.60"
+          "date": "2021-11-18",
+          "value": "1.59"
         },
         {
           "date": "2021-11-22",
@@ -5714,21 +5714,25 @@
         {
           "date": "2026-11-17",
           "value": "5.1"
+        },
+        {
+          "date": "2026-11-18",
+          "value": "5.07"
         }
       ],
       "latest": {
-        "date": "2026-11-17",
-        "value": "5.1"
+        "date": "2026-11-18",
+        "value": "5.07"
       },
       "context": "The yield on 10-year U.S. government debt \u2014 the benchmark that drives mortgage rates and long-term borrowing costs across the economy.",
-      "read": "The 10-year Treasury yield is 5.10% \u2014 above the comfortable range for borrowers.",
+      "read": "The 10-year Treasury yield is 5.07% \u2014 above the comfortable range for borrowers.",
       "signal_status": "watch",
       "value_format": "decimal",
       "percentile": {
-        "p": 46.5,
+        "p": 46.1,
         "since": 1962
       },
-      "scale_now": 5.1
+      "scale_now": 5.07
     },
     {
       "id": "treasury-2y",
@@ -5739,8 +5743,8 @@
       "series_id": "DGS2",
       "observations": [
         {
-          "date": "1977-01-19",
-          "value": "6.020"
+          "date": "1977-01-20",
+          "value": "6.010"
         },
         {
           "date": "1977-04-01",
@@ -6299,8 +6303,8 @@
           "value": "0.24"
         },
         {
-          "date": "2011-11-17",
-          "value": "0.27"
+          "date": "2011-11-18",
+          "value": "0.29"
         },
         {
           "date": "2011-12-01",
@@ -6783,7 +6787,7 @@
           "value": "0.50"
         },
         {
-          "date": "2021-11-17",
+          "date": "2021-11-18",
           "value": "0.52"
         },
         {
@@ -9497,10 +9501,14 @@
         {
           "date": "2026-11-17",
           "value": "4.8"
+        },
+        {
+          "date": "2026-11-18",
+          "value": "4.8"
         }
       ],
       "latest": {
-        "date": "2026-11-17",
+        "date": "2026-11-18",
         "value": "4.8"
       },
       "context": "The yield on 2-year government debt \u2014 closely tied to where investors expect the Fed to set rates over the next couple of years.",
@@ -9522,8 +9530,8 @@
       "series_id": "DGS2_FEDFUNDS_SPREAD",
       "observations": [
         {
-          "date": "1977-01-19",
-          "value": "1.41"
+          "date": "1977-01-20",
+          "value": "1.40"
         },
         {
           "date": "1977-04-01",
@@ -10082,8 +10090,8 @@
           "value": "0.17"
         },
         {
-          "date": "2011-11-17",
-          "value": "0.19"
+          "date": "2011-11-18",
+          "value": "0.21"
         },
         {
           "date": "2011-12-01",
@@ -10566,7 +10574,7 @@
           "value": "0.42"
         },
         {
-          "date": "2021-11-17",
+          "date": "2021-11-18",
           "value": "0.44"
         },
         {
@@ -13188,10 +13196,14 @@
         {
           "date": "2026-11-17",
           "value": "0.92"
+        },
+        {
+          "date": "2026-11-18",
+          "value": "0.92"
         }
       ],
       "latest": {
-        "date": "2026-11-17",
+        "date": "2026-11-18",
         "value": "0.92"
       },
       "context": "The 2-year Treasury yield minus the Fed's current policy rate \u2014 the bond market's verdict on where the Fed goes next. Well below zero means markets are pricing rate cuts; above zero, hikes. Computed from the two series charted above.",
