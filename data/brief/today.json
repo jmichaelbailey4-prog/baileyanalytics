@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-20T21:00:48Z",
+  "generated_at": "2026-11-21T20:02:06Z",
   "transitions": [],
   "top_moves": [
     {
@@ -373,14 +373,6 @@
       "headline": "Business formation is losing steam."
     },
     {
-      "lens_id": "business-investment",
-      "lens_title": "Business Investment",
-      "category": "business",
-      "href": "/dashboards/business/investment.html",
-      "status": "ok",
-      "headline": "Businesses are investing \u2014 orders and sales are growing."
-    },
-    {
       "lens_id": "business-credit",
       "lens_title": "Business Credit",
       "category": "business",
@@ -518,7 +510,7 @@
     }
   ],
   "status_counts": {
-    "ok": 15,
+    "ok": 14,
     "watch": 10,
     "elevated": 4,
     "alert": 2,
