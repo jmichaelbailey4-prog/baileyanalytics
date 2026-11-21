@@ -2,7 +2,7 @@
   "id": "market-scoreboard",
   "title": "Asset-Class Scoreboard",
   "accent": "#22D3EE",
-  "last_updated": "2026-11-20T20:58:29Z",
+  "last_updated": "2026-11-21T13:55:20Z",
   "status": "neutral",
   "headline_read": "How the major asset classes are moving right now.",
   "recessions": [
@@ -8920,15 +8920,15 @@
         },
         {
           "date": "2026-11-20",
-          "value": "3518.00"
+          "value": "3515.40"
         }
       ],
       "latest": {
         "date": "2026-11-20",
-        "value": "3518.00"
+        "value": "3515.40"
       },
       "context": "Gold (dollars per troy ounce) \u2014 the classic safe-haven asset investors flee to in times of stress. Sourced from Yahoo Finance (COMEX futures).",
-      "read": "Gold is down 13% over the past year, now 3,518.00.",
+      "read": "Gold is down 13% over the past year, now 3,515.40.",
       "signal_status": "down",
       "value_format": "thousands",
       "percentile": {
@@ -8946,8 +8946,8 @@
       "series_id": "CBBTCUSD",
       "observations": [
         {
-          "date": "2019-10-08",
-          "value": "8186.73"
+          "date": "2019-10-09",
+          "value": "8600.0"
         },
         {
           "date": "2019-11-01",
@@ -9050,8 +9050,8 @@
           "value": "60950.0"
         },
         {
-          "date": "2021-11-19",
-          "value": "58187.85"
+          "date": "2021-11-20",
+          "value": "59771.71"
         },
         {
           "date": "2021-11-22",
@@ -9680,10 +9680,6 @@
         {
           "date": "2024-11-18",
           "value": "92435.89"
-        },
-        {
-          "date": "2024-11-19",
-          "value": "94393.15"
         },
         {
           "date": "2024-11-20",
@@ -12604,18 +12600,22 @@
         {
           "date": "2026-11-19",
           "value": "62017.68"
+        },
+        {
+          "date": "2026-11-20",
+          "value": "58830.52"
         }
       ],
       "latest": {
-        "date": "2026-11-19",
-        "value": "62017.68"
+        "date": "2026-11-20",
+        "value": "58830.52"
       },
       "context": "The price of Bitcoin in U.S. dollars (Coinbase) \u2014 the largest cryptocurrency and a barometer of risk appetite in digital assets.",
-      "read": "Bitcoin is down 32% over the past year, now 62,017.68.",
+      "read": "Bitcoin is down 33% over the past year, now 58,830.52.",
       "signal_status": "down",
       "value_format": "thousands",
       "percentile": {
-        "p": 64.3,
+        "p": 60.9,
         "since": 2019
       },
       "no_severity_reason": "Part of a neutral scoreboard \u2014 it shows which way the price is moving, not whether that's good or bad."
@@ -12629,8 +12629,8 @@
       "series_id": "CBETHUSD",
       "observations": [
         {
-          "date": "2019-10-08",
-          "value": "180.95"
+          "date": "2019-10-09",
+          "value": "193.41"
         },
         {
           "date": "2019-11-01",
@@ -12733,8 +12733,8 @@
           "value": "4324.21"
         },
         {
-          "date": "2021-11-19",
-          "value": "4303.6"
+          "date": "2021-11-20",
+          "value": "4416.39"
         },
         {
           "date": "2021-11-22",
@@ -13363,10 +13363,6 @@
         {
           "date": "2024-11-18",
           "value": "3111.7"
-        },
-        {
-          "date": "2024-11-19",
-          "value": "3072.24"
         },
         {
           "date": "2024-11-20",
@@ -16287,18 +16283,22 @@
         {
           "date": "2026-11-19",
           "value": "1753.78"
+        },
+        {
+          "date": "2026-11-20",
+          "value": "1616.72"
         }
       ],
       "latest": {
-        "date": "2026-11-19",
-        "value": "1753.78"
+        "date": "2026-11-20",
+        "value": "1616.72"
       },
       "context": "The price of Ether in U.S. dollars (Coinbase) \u2014 the second-largest cryptocurrency and the backbone of most decentralized applications.",
-      "read": "Ethereum is down 42% over the past year, now 1,753.78.",
+      "read": "Ethereum is down 44% over the past year, now 1,616.72.",
       "signal_status": "down",
       "value_format": "thousands",
       "percentile": {
-        "p": 34.8,
+        "p": 29.0,
         "since": 2019
       },
       "no_severity_reason": "Part of a neutral scoreboard \u2014 it shows which way the price is moving, not whether that's good or bad."

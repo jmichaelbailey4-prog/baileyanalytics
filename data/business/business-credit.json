@@ -2,7 +2,7 @@
   "id": "business-credit",
   "title": "Business Credit",
   "accent": "#F87171",
-  "last_updated": "2026-11-14T12:47:14Z",
+  "last_updated": "2026-11-21T13:56:14Z",
   "status": "watch",
   "headline_read": "Business credit bears watching \u2014 conditions are tightening at the margin.",
   "recessions": [
@@ -4739,30 +4739,30 @@
         },
         {
           "date": "2026-08-01",
-          "value": "9.5"
+          "value": "9.6"
         },
         {
           "date": "2026-09-01",
-          "value": "10.0"
+          "value": "10.3"
         },
         {
           "date": "2026-10-01",
-          "value": "11.2"
+          "value": "11.3"
         }
       ],
       "latest": {
         "date": "2026-10-01",
-        "value": "11.2"
+        "value": "11.3"
       },
       "context": "How fast bank lending to businesses is growing. Outright contraction is a credit squeeze; double-digit booms (2020 hit +30%) have their own way of ending badly.",
-      "read": "C&I lending is up 11.2% from a year ago \u2014 heating up.",
+      "read": "C&I lending is up 11.3% from a year ago \u2014 heating up.",
       "signal_status": "watch",
       "value_format": "decimal",
       "percentile": {
-        "p": 68.7,
+        "p": 68.9,
         "since": 1948
       },
-      "scale_now": 11.2
+      "scale_now": 11.3
     }
   ]
 }
