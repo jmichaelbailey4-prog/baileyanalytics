@@ -2,7 +2,7 @@
   "id": "bank-capital-solvency",
   "title": "Capital & Solvency",
   "accent": "#38BDF8",
-  "last_updated": "2026-08-31T14:49:49Z",
+  "last_updated": "2026-11-23T18:59:39Z",
   "status": "ok",
   "headline_read": "Banks are well-capitalized.",
   "recessions": [],
@@ -292,7 +292,7 @@
         },
         {
           "date": "2023-06-30",
-          "value": "15.5201"
+          "value": "15.5202"
         },
         {
           "date": "2023-09-30",

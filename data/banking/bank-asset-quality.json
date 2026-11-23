@@ -2,7 +2,7 @@
   "id": "bank-asset-quality",
   "title": "Asset Quality",
   "accent": "#FBBF24",
-  "last_updated": "2026-08-31T14:49:49Z",
+  "last_updated": "2026-11-23T18:59:39Z",
   "status": "ok",
   "headline_read": "Bank loan quality is strong \u2014 few loans are going bad.",
   "recessions": [],
@@ -614,7 +614,7 @@
         },
         {
           "date": "2021-09-30",
-          "value": "0.2594"
+          "value": "0.2595"
         },
         {
           "date": "2021-12-31",
@@ -642,7 +642,7 @@
         },
         {
           "date": "2023-06-30",
-          "value": "0.4350"
+          "value": "0.4351"
         },
         {
           "date": "2023-09-30",
