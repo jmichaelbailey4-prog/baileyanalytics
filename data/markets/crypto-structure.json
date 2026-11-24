@@ -2,7 +2,7 @@
   "id": "crypto-structure",
   "title": "Crypto Market Structure",
   "accent": "#818CF8",
-  "last_updated": "2026-11-24T00:39:50Z",
+  "last_updated": "2026-11-24T16:44:46Z",
   "status": "neutral",
   "headline_read": "How capital is rotating across the crypto market.",
   "recessions": [],
@@ -696,12 +696,12 @@
         },
         {
           "date": "2026-11-24",
-          "value": 58.038936978683765
+          "value": 57.78573111277008
         }
       ],
       "latest": {
         "date": "2026-11-24",
-        "value": 58.038936978683765
+        "value": 57.78573111277008
       },
       "context": "Bitcoin's share of total cryptocurrency market value. A rising share signals caution; a falling share signals risk appetite. History accumulates daily.",
       "read": "Bitcoin is 58% of total crypto market value.",
@@ -2855,12 +2855,12 @@
         },
         {
           "date": "2026-11-24",
-          "value": 91.58
+          "value": 91.38
         }
       ],
       "latest": {
         "date": "2026-11-24",
-        "value": 91.58
+        "value": 91.38
       },
       "context": "Small- and mid-cap coins' market value relative to Bitcoin and Ether, indexed to 100 at the start of the window. Rising means alts are outperforming (risk-on); falling means a flight to the majors.",
       "read": "Large and small caps are moving roughly in step \u2014 no clear rotation.",
@@ -2877,8 +2877,8 @@
       "color": "#A78BFA",
       "observations": [
         {
-          "date": "2019-10-11",
-          "value": 45.6933
+          "date": "2019-10-12",
+          "value": 46.2341
         },
         {
           "date": "2019-11-01",
@@ -2981,8 +2981,8 @@
           "value": 14.0951
         },
         {
-          "date": "2021-11-22",
-          "value": 13.7781
+          "date": "2021-11-23",
+          "value": 13.2651
         },
         {
           "date": "2021-11-29",
@@ -3607,10 +3607,6 @@
         {
           "date": "2024-11-18",
           "value": 29.7059
-        },
-        {
-          "date": "2024-11-22",
-          "value": 28.7795
         },
         {
           "date": "2024-11-23",
@@ -6531,14 +6527,18 @@
         {
           "date": "2026-11-22",
           "value": 35.593
+        },
+        {
+          "date": "2026-11-23",
+          "value": 35.7888
         }
       ],
       "latest": {
-        "date": "2026-11-22",
-        "value": 35.593
+        "date": "2026-11-23",
+        "value": 35.7888
       },
       "context": "The price of Bitcoin divided by the price of Ether \u2014 which of the two largest coins is leading. Sourced from FRED's decade-long price history.",
-      "read": "Bitcoin has gained on Ether over the past year (ratio 35.59).",
+      "read": "Bitcoin has gained on Ether over the past year (ratio 35.79).",
       "signal_status": "info",
       "value_format": "decimal",
       "no_severity_reason": "A structural read on how money is rotating within crypto \u2014 not a good-or-bad verdict.",

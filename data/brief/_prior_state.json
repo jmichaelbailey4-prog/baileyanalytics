@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-11-23T16:55:47Z",
+  "captured_at": "2026-11-24T16:46:06Z",
   "statuses": {
     "recession-watch": "ok",
     "cost-of-money": "watch",
@@ -9,7 +9,6 @@
     "consumer-spending": "ok",
     "consumer-credit": "watch",
     "consumer-income-savings": "watch",
-    "consumer-sentiment": "alert",
     "bank-asset-quality": "ok",
     "bank-profitability": "ok",
     "bank-capital-solvency": "ok",
@@ -18,7 +17,7 @@
     "business-formation": "watch",
     "business-investment": "ok",
     "business-credit": "watch",
-    "market-risk-sentiment": "elevated",
+    "market-risk-sentiment": "watch",
     "market-scoreboard": "neutral",
     "market-liquidity": "ok",
     "crypto-structure": "neutral",
