@@ -8506,7 +8506,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 0.054549999999999876,
-      "revised_to": 5.30021
+      "revised_to": 5.29976
     }
   },
   {
@@ -14957,7 +14957,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 0.11158000000000001,
-      "revised_to": 5.36092
+      "revised_to": 5.36046
     },
     "prev_period": "2026-06-01"
   },
@@ -21826,7 +21826,7 @@
       "direction_hit": true,
       "status_hit": true,
       "naive_error": 0.24472999999999967,
-      "revised_to": 5.59687
+      "revised_to": 5.59642
     },
     "prev_period": "2026-07-01"
   },
@@ -29597,7 +29597,7 @@
       "direction_hit": true,
       "status_hit": true,
       "naive_error": 0.051000000000000156,
-      "revised_to": null
+      "revised_to": 5.71172
     },
     "prev_period": "2026-08-01"
   },
@@ -35989,5 +35989,83 @@
       "revised_to": null
     },
     "prev_period": "2026-08"
+  },
+  {
+    "id": "markets/market-liquidity/m2-growth@2026-10-01",
+    "key": "markets/market-liquidity/m2-growth",
+    "category": "markets",
+    "lens": "market-liquidity",
+    "indicator": "m2-growth",
+    "series_id": "M2SL",
+    "horizon": "next-print",
+    "target_period": "2026-10-01",
+    "due": "2026-11-15",
+    "made_at": "2026-10-27T18:37:45Z",
+    "model": "ets@1",
+    "point": 5.8054,
+    "lo": 5.1002,
+    "hi": 6.5486,
+    "unit": "%",
+    "value_format": "decimal",
+    "prev_value": 5.70991,
+    "why": "M2 growth: up 3 straight months. This projects the recent level and trend forward one month.",
+    "implied_status": "ok",
+    "current_status": "ok",
+    "descriptive": false,
+    "market_price": false,
+    "title": "M2 Money Supply \u00b7 year-over-year",
+    "short": "M2 growth",
+    "lens_title": "Liquidity & the Fed",
+    "href": "/dashboards/markets/liquidity.html",
+    "grade": {
+      "actual": 5.89342,
+      "graded_at": "2026-11-24T22:58:28Z",
+      "hit": true,
+      "abs_error": 0.08802000000000021,
+      "direction_hit": true,
+      "status_hit": true,
+      "naive_error": 0.18351000000000006,
+      "revised_to": null
+    },
+    "prev_period": "2026-09-01"
+  },
+  {
+    "id": "housing/housing-home-prices/case-shiller@2026-09-01",
+    "key": "housing/housing-home-prices/case-shiller",
+    "category": "housing",
+    "lens": "housing-home-prices",
+    "indicator": "case-shiller",
+    "series_id": "CSUSHPINSA",
+    "horizon": "next-print",
+    "target_period": "2026-09-01",
+    "due": "2026-10-15",
+    "made_at": "2026-10-28T11:53:36Z",
+    "model": "ets@1",
+    "point": 2.28,
+    "lo": 1.8799,
+    "hi": 2.6846,
+    "unit": "%",
+    "value_format": "decimal",
+    "prev_value": 2.1,
+    "why": "Case-Shiller: up 5 straight months. This projects the recent level and trend forward one month.",
+    "implied_status": "ok",
+    "current_status": "ok",
+    "descriptive": false,
+    "market_price": false,
+    "title": "Case-Shiller Home Prices \u00b7 year-over-year",
+    "short": "Case-Shiller",
+    "lens_title": "Home-Price Stability",
+    "href": "/dashboards/housing/home-prices.html",
+    "grade": {
+      "actual": 2.1,
+      "graded_at": "2026-11-24T22:58:46Z",
+      "hit": true,
+      "abs_error": 0.17999999999999972,
+      "direction_hit": false,
+      "status_hit": true,
+      "naive_error": 0.0,
+      "revised_to": null
+    },
+    "prev_period": "2026-08-01"
   }
 ]

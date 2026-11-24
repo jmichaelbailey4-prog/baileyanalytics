@@ -2,7 +2,7 @@
   "id": "market-liquidity",
   "title": "Liquidity & the Fed",
   "accent": "#2DD4BF",
-  "last_updated": "2026-11-24T00:39:24Z",
+  "last_updated": "2026-11-24T22:57:19Z",
   "status": "ok",
   "headline_read": "Liquidity is ample \u2014 no monetary squeeze in sight.",
   "recessions": [
@@ -909,10 +909,6 @@
           "value": "8.15292"
         },
         {
-          "date": "2011-09-01",
-          "value": "9.56122"
-        },
-        {
           "date": "2011-10-01",
           "value": "9.30922"
         },
@@ -1598,7 +1594,7 @@
         },
         {
           "date": "2026-01-01",
-          "value": "4.05790"
+          "value": "4.05836"
         },
         {
           "date": "2026-02-01",
@@ -1614,38 +1610,42 @@
         },
         {
           "date": "2026-05-01",
-          "value": "5.37444"
+          "value": "5.37398"
         },
         {
           "date": "2026-06-01",
-          "value": "5.30021"
+          "value": "5.29976"
         },
         {
           "date": "2026-07-01",
-          "value": "5.36092"
+          "value": "5.36046"
         },
         {
           "date": "2026-08-01",
-          "value": "5.59687"
+          "value": "5.59642"
         },
         {
           "date": "2026-09-01",
-          "value": "5.70991"
+          "value": "5.71172"
+        },
+        {
+          "date": "2026-10-01",
+          "value": "5.89342"
         }
       ],
       "latest": {
-        "date": "2026-09-01",
-        "value": "5.70991"
+        "date": "2026-10-01",
+        "value": "5.89342"
       },
       "context": "How fast the broad money supply is growing versus a year ago. Double-digit growth (2020-21) preceded the inflation surge; the 2022-23 contraction was the first since the Great Depression.",
-      "read": "M2 is growing 5.7% a year \u2014 a normal pace.",
+      "read": "M2 is growing 5.9% a year \u2014 a normal pace.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 36.8,
+        "p": 40.6,
         "since": 1960
       },
-      "scale_now": 5.7099
+      "scale_now": 5.8934
     },
     {
       "id": "fed-balance-sheet",
@@ -4270,8 +4270,8 @@
       "series_id": "RRPONTSYD",
       "observations": [
         {
-          "date": "2021-11-30",
-          "value": "1517.956"
+          "date": "2021-12-01",
+          "value": "1427.347"
         },
         {
           "date": "2021-12-06",
@@ -6976,18 +6976,22 @@
         {
           "date": "2026-11-23",
           "value": "0.35"
+        },
+        {
+          "date": "2026-11-24",
+          "value": "0.301"
         }
       ],
       "latest": {
-        "date": "2026-11-23",
-        "value": "0.35"
+        "date": "2026-11-24",
+        "value": "0.301"
       },
       "context": "Spare cash money-market funds park at the Fed overnight. It acts as the system's overflow tank: a high balance means excess liquidity; near zero means the buffer is spent and QT bites reserves directly.",
-      "read": "The overnight reverse-repo facility is down 86% from a year ago, now $0.3 billion.",
+      "read": "The overnight reverse-repo facility is down 72% from a year ago, now $0.3 billion.",
       "signal_status": "info",
       "value_format": "decimal",
       "percentile": {
-        "p": 3.9,
+        "p": 3.3,
         "since": 2021
       },
       "no_severity_reason": "A descriptive level of the monetary plumbing \u2014 this lens's verdict is carried by M2 money-supply growth."

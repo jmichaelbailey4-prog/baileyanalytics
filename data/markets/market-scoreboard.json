@@ -2,7 +2,7 @@
   "id": "market-scoreboard",
   "title": "Asset-Class Scoreboard",
   "accent": "#22D3EE",
-  "last_updated": "2026-11-24T16:44:20Z",
+  "last_updated": "2026-11-24T22:57:19Z",
   "status": "neutral",
   "headline_read": "How the major asset classes are moving right now.",
   "recessions": [
@@ -65,8 +65,8 @@
       "series_id": "SP500",
       "observations": [
         {
-          "date": "2016-12-05",
-          "value": "2204.71"
+          "date": "2016-12-06",
+          "value": "2212.23"
         },
         {
           "date": "2017-01-02",
@@ -305,8 +305,8 @@
           "value": "4613.67"
         },
         {
-          "date": "2021-11-22",
-          "value": "4682.94"
+          "date": "2021-11-23",
+          "value": "4690.7"
         },
         {
           "date": "2021-11-29",
@@ -931,18 +931,6 @@
         {
           "date": "2024-11-18",
           "value": "5893.62"
-        },
-        {
-          "date": "2024-11-20",
-          "value": "5917.11"
-        },
-        {
-          "date": "2024-11-21",
-          "value": "5948.71"
-        },
-        {
-          "date": "2024-11-22",
-          "value": "5969.34"
         },
         {
           "date": "2024-11-25",
@@ -3023,18 +3011,22 @@
         {
           "date": "2026-11-20",
           "value": "6910.39"
+        },
+        {
+          "date": "2026-11-23",
+          "value": "7237.17"
         }
       ],
       "latest": {
-        "date": "2026-11-20",
-        "value": "6910.39"
+        "date": "2026-11-23",
+        "value": "7237.17"
       },
       "context": "The benchmark index of 500 large U.S. companies \u2014 the headline gauge of U.S. stocks.",
-      "read": "The S&P 500 is up 6% over the past year, now 6,910.39.",
+      "read": "The S&P 500 is up 10% over the past year, now 7,237.17.",
       "signal_status": "up",
       "value_format": "thousands",
       "percentile": {
-        "p": 92.8,
+        "p": 94.5,
         "since": 2016
       },
       "no_severity_reason": "Part of a neutral scoreboard \u2014 it shows which way the price is moving, not whether that's good or bad."
@@ -8912,15 +8904,15 @@
         },
         {
           "date": "2026-11-24",
-          "value": "3566.20"
+          "value": "3555.10"
         }
       ],
       "latest": {
         "date": "2026-11-24",
-        "value": "3566.20"
+        "value": "3555.10"
       },
       "context": "Gold (dollars per troy ounce) \u2014 the classic safe-haven asset investors flee to in times of stress. Sourced from Yahoo Finance (COMEX futures).",
-      "read": "Gold is down 13% over the past year, now 3,566.20.",
+      "read": "Gold is down 13% over the past year, now 3,555.10.",
       "signal_status": "down",
       "value_format": "thousands",
       "percentile": {

@@ -1,17 +1,6 @@
 {
-  "generated_at": "2026-11-24T16:46:06Z",
-  "transitions": [
-    {
-      "lens_id": "market-risk-sentiment",
-      "lens_title": "Risk Sentiment",
-      "category": "markets",
-      "href": "/dashboards/markets/risk-sentiment.html",
-      "from_status": "elevated",
-      "to_status": "watch",
-      "direction": "improving",
-      "headline": "A few cracks are showing \u2014 sentiment is no longer all calm."
-    }
-  ],
+  "generated_at": "2026-11-24T22:58:57Z",
+  "transitions": [],
   "top_moves": [
     {
       "lens_id": "market-scoreboard",
@@ -21,7 +10,6 @@
       "headline": "How the major asset classes are moving right now.",
       "accent": "#22D3EE",
       "sparkline": [
-        7683.69,
         7670.84,
         7651.54,
         7666.45,
@@ -60,13 +48,69 @@
         7340.53,
         7323.63,
         7175.83,
-        6910.39
+        6910.39,
+        7237.17
       ],
       "stat_label": "S&P 500",
-      "stat_value": "6,910",
-      "delta": "265",
+      "stat_value": "7,237",
+      "delta": "327",
+      "dir": "up",
+      "why": "S&P 500: its sharpest jump in this view."
+    },
+    {
+      "lens_id": "market-risk-sentiment",
+      "lens_title": "Risk Sentiment",
+      "category": "markets",
+      "href": "/dashboards/markets/risk-sentiment.html",
+      "headline": "A few cracks are showing \u2014 sentiment is no longer all calm.",
+      "accent": "#FB7185",
+      "sparkline": [
+        16.04,
+        16.34,
+        16.39,
+        15.31,
+        15.52,
+        15.01,
+        15.08,
+        15.41,
+        14.84,
+        15.21,
+        15.27,
+        16.87,
+        16.46,
+        19.99,
+        18.44,
+        17.31,
+        16.68,
+        19.03,
+        19.45,
+        18.39,
+        17.52,
+        16.91,
+        17.2,
+        19.42,
+        21.15,
+        20.83,
+        16.61,
+        28.18,
+        25.64,
+        19.92,
+        19.46,
+        17.49,
+        18.7,
+        19.3,
+        22.91,
+        25.46,
+        24.56,
+        28.44,
+        35.89,
+        26.62
+      ],
+      "stat_label": "VIX",
+      "stat_value": "26.62",
+      "delta": "9.27",
       "dir": "down",
-      "why": "S&P 500: down 7 readings in a row, to its lowest in this view."
+      "why": "VIX: its sharpest drop in this view."
     },
     {
       "lens_id": "bank-concentrations-funding",
@@ -273,6 +317,14 @@
       "headline": "Household finances are tightening \u2014 cushions are shrinking."
     },
     {
+      "lens_id": "consumer-sentiment",
+      "lens_title": "Consumer Sentiment",
+      "category": "consumer",
+      "href": "/dashboards/consumer/sentiment.html",
+      "status": "alert",
+      "headline": "Consumers are deeply pessimistic \u2014 sentiment is near record lows."
+    },
+    {
       "lens_id": "bank-asset-quality",
       "lens_title": "Asset Quality",
       "category": "banking",
@@ -469,14 +521,14 @@
     "ok": 15,
     "watch": 10,
     "elevated": 4,
-    "alert": 1,
+    "alert": 2,
     "neutral": 2
   },
   "verdict": {
     "status": "watch",
     "shape": "contained-pressure",
-    "sentence": "Most of the economy is on solid footing \u2014 banks are solid \u2014 but energy and commodity costs are squeezing budgets.",
-    "short": "Holding up, but energy and commodity costs are squeezing budgets."
+    "sentence": "Most of the economy is on solid footing \u2014 banks are solid \u2014 but household finances are stretched thin and energy and commodity costs are squeezing budgets.",
+    "short": "Holding up, but household finances are stretched thin."
   },
   "watching": [
     {
@@ -508,21 +560,29 @@
       "href": "/dashboards/global/uncertainty.html"
     },
     {
-      "key": "housing/housing-home-prices/case-shiller",
-      "indicator": "case-shiller",
-      "lens": "housing-home-prices",
-      "category": "housing",
-      "title": "Case-Shiller Home Prices \u00b7 year-over-year",
-      "lens_title": "Home-Price Stability",
+      "key": "business/business-investment/real-sales",
+      "indicator": "real-sales",
+      "lens": "business-investment",
+      "category": "business",
+      "title": "Real Business Sales \u00b7 year-over-year",
+      "lens_title": "Business Investment",
       "due": "2026-10-15",
-      "point_fmt": "2.28%",
+      "point_fmt": "2.50%",
       "implied_status": "ok",
       "current_status": "ok",
       "change": false,
-      "href": "/dashboards/housing/home-prices.html"
+      "href": "/dashboards/business/investment.html"
     }
   ],
   "pressure": [
+    {
+      "lens_id": "consumer-sentiment",
+      "lens_title": "Consumer Sentiment",
+      "category": "consumer",
+      "href": "/dashboards/consumer/sentiment.html",
+      "status": "alert",
+      "headline": "Consumers are deeply pessimistic \u2014 sentiment is near record lows."
+    },
     {
       "lens_id": "energy-oil-fuels",
       "lens_title": "Oil & Fuels",
@@ -655,9 +715,9 @@
     {
       "category": "consumer",
       "title": "The Consumer",
-      "status": "watch",
+      "status": "elevated",
       "href": "/dashboards/consumer/",
-      "sentence": "Households are keeping up, but cracks are starting to show."
+      "sentence": "Household finances are stretched thin."
     },
     {
       "category": "banking",

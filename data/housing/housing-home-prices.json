@@ -2,7 +2,7 @@
   "id": "housing-home-prices",
   "title": "Home-Price Stability",
   "accent": "#F472B6",
-  "last_updated": "2026-11-12T20:42:29Z",
+  "last_updated": "2026-11-24T22:58:03Z",
   "status": "ok",
   "headline_read": "The housing market looks balanced \u2014 prices and sales are steady.",
   "recessions": [
@@ -443,10 +443,6 @@
         {
           "date": "2011-07-01",
           "value": "-3.5"
-        },
-        {
-          "date": "2011-08-01",
-          "value": "-3.2"
         },
         {
           "date": "2011-09-01",
@@ -1167,10 +1163,14 @@
         {
           "date": "2026-08-01",
           "value": "2.1"
+        },
+        {
+          "date": "2026-09-01",
+          "value": "2.1"
         }
       ],
       "latest": {
-        "date": "2026-08-01",
+        "date": "2026-09-01",
         "value": "2.1"
       },
       "context": "How fast U.S. home prices are rising or falling versus a year ago, from the S&P Case-Shiller national index \u2014 the most-watched measure of home prices. Roughly 0-5% a year is normal; reported with a ~2-month lag.",
@@ -1178,7 +1178,7 @@
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 29.3,
+        "p": 29.2,
         "since": 1988
       },
       "scale_now": 2.1
