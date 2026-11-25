@@ -2,7 +2,7 @@
   "id": "business-profitability",
   "title": "Corporate Profits",
   "accent": "#34D399",
-  "last_updated": "2026-10-29T18:52:20Z",
+  "last_updated": "2026-11-25T16:33:34Z",
   "status": "ok",
   "headline_read": "Corporate America is profitable \u2014 earnings are growing.",
   "recessions": [
@@ -1319,21 +1319,25 @@
         {
           "date": "2026-04-01",
           "value": "26.6"
+        },
+        {
+          "date": "2026-07-01",
+          "value": "23.1"
         }
       ],
       "latest": {
-        "date": "2026-04-01",
-        "value": "26.6"
+        "date": "2026-07-01",
+        "value": "23.1"
       },
       "context": "How fast after-tax corporate profits are growing versus a year ago (quarterly, all U.S. corporations \u2014 about $3.9 trillion a year). Falling profits are how downturns reach hiring and investment.",
-      "read": "Corporate profits are growing 26.6% a year.",
+      "read": "Corporate profits are growing 23.1% a year.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 88.9,
+        "p": 85.4,
         "since": 1948
       },
-      "scale_now": 26.6
+      "scale_now": 23.1
     },
     {
       "id": "nonfinancial-profits",
@@ -2598,21 +2602,25 @@
         {
           "date": "2026-04-01",
           "value": "29.2"
+        },
+        {
+          "date": "2026-07-01",
+          "value": "28.1"
         }
       ],
       "latest": {
-        "date": "2026-04-01",
-        "value": "29.2"
+        "date": "2026-07-01",
+        "value": "28.1"
       },
       "context": "The same after-tax profit growth for nonfinancial corporations only \u2014 the 'Main Street corporates' read, with banks stripped out.",
-      "read": "Nonfinancial corporate profits are growing 29.2% a year.",
+      "read": "Nonfinancial corporate profits are growing 28.1% a year.",
       "signal_status": "ok",
       "value_format": "decimal",
       "percentile": {
-        "p": 84.1,
+        "p": 83.5,
         "since": 1948
       },
-      "scale_now": 29.2
+      "scale_now": 28.1
     },
     {
       "id": "profit-share",
@@ -3893,14 +3901,18 @@
         {
           "date": "2026-04-01",
           "value": "13.1"
+        },
+        {
+          "date": "2026-07-01",
+          "value": "13.4"
         }
       ],
       "latest": {
-        "date": "2026-04-01",
-        "value": "13.1"
+        "date": "2026-07-01",
+        "value": "13.4"
       },
       "context": "After-tax corporate profits as a share of GDP \u2014 the closest public proxy for economy-wide profit margins. The post-war norm is 5-7%; the 2020s have run near record highs above 11%.",
-      "read": "The corporate-profit share of GDP is 13.1%, up 2.1 points from a year ago.",
+      "read": "The corporate-profit share of GDP is 13.4%, up 1.9 points from a year ago.",
       "signal_status": "info",
       "value_format": "decimal",
       "percentile": {
@@ -5175,19 +5187,19 @@
         },
         {
           "date": "2026-07-01",
-          "value": "5.6"
+          "value": "5.9"
         }
       ],
       "latest": {
         "date": "2026-07-01",
-        "value": "5.6"
+        "value": "5.9"
       },
       "context": "Income of unincorporated businesses \u2014 sole proprietors and partnerships. The closest thing to a small-business earnings line.",
-      "read": "Proprietors' income is rising 5.6% a year.",
+      "read": "Proprietors' income is rising 5.9% a year.",
       "signal_status": "info",
       "value_format": "decimal",
       "percentile": {
-        "p": 54.6,
+        "p": 56.8,
         "since": 1948
       },
       "no_severity_reason": "Shown for context \u2014 proprietors' income (which includes farm income) is too volatile to score cleanly."

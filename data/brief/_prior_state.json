@@ -1,5 +1,5 @@
 {
-  "captured_at": "2026-11-24T22:58:57Z",
+  "captured_at": "2026-11-25T16:37:31Z",
   "statuses": {
     "recession-watch": "ok",
     "cost-of-money": "watch",
@@ -28,7 +28,7 @@
     "energy-commodities": "watch",
     "housing-home-prices": "ok",
     "housing-affordability": "elevated",
-    "housing-supply-construction": "elevated",
+    "housing-supply-construction": "watch",
     "housing-rent-shelter": "ok",
     "global-dollar-currencies": "ok",
     "global-growth": "ok",

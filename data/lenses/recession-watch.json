@@ -2,7 +2,7 @@
   "id": "recession-watch",
   "title": "Recession Watch",
   "accent": "#F87171",
-  "last_updated": "2026-11-24T22:57:14Z",
+  "last_updated": "2026-11-25T16:30:33Z",
   "status": "ok",
   "headline_read": "The economy looks steady \u2014 no major recession signals right now.",
   "recessions": [
@@ -5426,10 +5426,6 @@
       "series_id": "ICSA",
       "observations": [
         {
-          "date": "1967-06-24",
-          "value": "218000"
-        },
-        {
           "date": "1967-07-01",
           "value": "209000"
         },
@@ -6142,8 +6138,8 @@
           "value": "405000"
         },
         {
-          "date": "2011-11-19",
-          "value": "385000"
+          "date": "2011-11-26",
+          "value": "397000"
         },
         {
           "date": "2011-12-03",
@@ -6624,10 +6620,6 @@
         {
           "date": "2021-11-06",
           "value": "251000"
-        },
-        {
-          "date": "2021-11-20",
-          "value": "224000"
         },
         {
           "date": "2021-11-27",
@@ -7667,22 +7659,26 @@
         },
         {
           "date": "2026-11-14",
-          "value": "203000"
+          "value": "202000"
+        },
+        {
+          "date": "2026-11-21",
+          "value": "189000"
         }
       ],
       "latest": {
-        "date": "2026-11-14",
-        "value": "203000"
+        "date": "2026-11-21",
+        "value": "189000"
       },
       "context": "How many people filed for unemployment benefits last week \u2014 the freshest read on layoffs. A sustained climb is one of the earliest signs of a weakening economy.",
-      "read": "Initial jobless claims are low at 203,000 \u2014 employers aren't shedding workers.",
+      "read": "Initial jobless claims are low at 189,000 \u2014 employers aren't shedding workers.",
       "signal_status": "ok",
       "value_format": "thousands",
       "percentile": {
-        "p": 3.7,
+        "p": 0.8,
         "since": 1967
       },
-      "scale_now": 203000.0
+      "scale_now": 189000.0
     },
     {
       "id": "unemployment",

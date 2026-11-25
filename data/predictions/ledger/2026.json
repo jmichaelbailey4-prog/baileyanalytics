@@ -8857,7 +8857,7 @@
       "direction_hit": false,
       "status_hit": false,
       "naive_error": 0.2999999999999998,
-      "revised_to": 4.4
+      "revised_to": 4.2
     }
   },
   {
@@ -8895,7 +8895,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 0.50719,
-      "revised_to": 1.49155
+      "revised_to": 1.36384
     }
   },
   {
@@ -15104,7 +15104,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 0.29999999999999893,
-      "revised_to": 8.9
+      "revised_to": 9.0
     },
     "prev_period": "2026-06-01"
   },
@@ -15179,7 +15179,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 0.033119999999999816,
-      "revised_to": 3.37336
+      "revised_to": 3.37179
     },
     "prev_period": "2026-06-01"
   },
@@ -15296,7 +15296,7 @@
       "direction_hit": true,
       "status_hit": false,
       "naive_error": 4.100000000000001,
-      "revised_to": 7.7
+      "revised_to": 7.6
     }
   },
   {
@@ -15373,7 +15373,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 0.40588999999999986,
-      "revised_to": 2.37096
+      "revised_to": 2.37945
     },
     "prev_period": "2026-06-01"
   },
@@ -15412,7 +15412,7 @@
       "direction_hit": false,
       "status_hit": false,
       "naive_error": 0.2999999999999998,
-      "revised_to": 4.5
+      "revised_to": 4.4
     },
     "prev_period": "2026-06-01"
   },
@@ -15451,7 +15451,7 @@
       "direction_hit": true,
       "status_hit": true,
       "naive_error": 0.07101000000000002,
-      "revised_to": 1.48641
+      "revised_to": 1.37563
     },
     "prev_period": "2026-06-01"
   },
@@ -23402,7 +23402,7 @@
       "direction_hit": true,
       "status_hit": true,
       "naive_error": 0.28214000000000006,
-      "revised_to": 3.44418
+      "revised_to": 3.45519
     },
     "prev_period": "2026-07-01"
   },
@@ -23441,7 +23441,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 0.33653999999999984,
-      "revised_to": 3.03444
+      "revised_to": 3.04708
     },
     "prev_period": "2026-07-01"
   },
@@ -23559,7 +23559,7 @@
       "direction_hit": true,
       "status_hit": true,
       "naive_error": 0.4366699999999999,
-      "revised_to": 2.69394
+      "revised_to": 2.78226
     },
     "prev_period": "2026-07-01"
   },
@@ -23598,7 +23598,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 1.0999999999999996,
-      "revised_to": 4.0
+      "revised_to": 3.9
     },
     "prev_period": "2026-07-01"
   },
@@ -23637,7 +23637,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 0.849,
-      "revised_to": 1.33267
+      "revised_to": 1.25179
     },
     "prev_period": "2026-07-01"
   },
@@ -23911,7 +23911,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 0.09999999999999964,
-      "revised_to": null
+      "revised_to": 2.4
     },
     "prev_period": "2026-06-01"
   },
@@ -29753,7 +29753,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 0.09999999999999964,
-      "revised_to": null
+      "revised_to": 9.3
     },
     "prev_period": "2026-08-01"
   },
@@ -29792,7 +29792,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 0.5999999999999996,
-      "revised_to": 13.7
+      "revised_to": 13.9
     },
     "prev_period": "2026-08-01"
   },
@@ -29870,7 +29870,7 @@
       "direction_hit": true,
       "status_hit": true,
       "naive_error": 0.009000000000000008,
-      "revised_to": -0.471
+      "revised_to": -0.466
     },
     "prev_period": "2026-10-16"
   },
@@ -30222,7 +30222,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 0.22984000000000027,
-      "revised_to": null
+      "revised_to": 3.66925
     },
     "prev_period": "2026-08-01"
   },
@@ -30261,7 +30261,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 0.1135600000000001,
-      "revised_to": null
+      "revised_to": 3.14243
     },
     "prev_period": "2026-08-01"
   },
@@ -30339,7 +30339,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 0.03815999999999997,
-      "revised_to": null
+      "revised_to": 2.72503
     },
     "prev_period": "2026-08-01"
   },
@@ -30378,7 +30378,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 0.2999999999999998,
-      "revised_to": null
+      "revised_to": 3.6
     },
     "prev_period": "2026-08-01"
   },
@@ -30417,7 +30417,7 @@
       "direction_hit": true,
       "status_hit": true,
       "naive_error": 0.34817999999999993,
-      "revised_to": null
+      "revised_to": 0.96082
     },
     "prev_period": "2026-08-01"
   },
@@ -30534,7 +30534,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 2.8999999999999995,
-      "revised_to": null
+      "revised_to": 5.9
     },
     "prev_period": "2026-04-01"
   },
@@ -30573,7 +30573,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 0.20000000000000018,
-      "revised_to": null
+      "revised_to": 2.8
     },
     "prev_period": "2026-07-01"
   },
@@ -31720,7 +31720,7 @@
       "direction_hit": true,
       "status_hit": true,
       "naive_error": 0.02799999999999997,
-      "revised_to": -0.47
+      "revised_to": -0.46
     },
     "prev_period": "2026-10-23"
   },
@@ -32663,7 +32663,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 0.375,
-      "revised_to": null
+      "revised_to": 16.058
     },
     "prev_period": "2026-09-01"
   },
@@ -33298,7 +33298,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 0.0030000000000000027,
-      "revised_to": -0.473
+      "revised_to": -0.455
     },
     "prev_period": "2026-10-30"
   },
@@ -34720,7 +34720,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 0.01599999999999996,
-      "revised_to": null
+      "revised_to": -0.45
     },
     "prev_period": "2026-11-06"
   },
@@ -34798,7 +34798,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 105.0,
-      "revised_to": null
+      "revised_to": 1297.0
     },
     "prev_period": "2026-09-01"
   },
@@ -34995,7 +34995,7 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 3000.0,
-      "revised_to": null
+      "revised_to": 202000.0
     },
     "prev_period": "2026-11-07"
   },
@@ -36064,6 +36064,591 @@
       "direction_hit": false,
       "status_hit": true,
       "naive_error": 0.0,
+      "revised_to": null
+    },
+    "prev_period": "2026-08-01"
+  },
+  {
+    "id": "economic/recession-watch/jobless-claims@2026-11-21",
+    "key": "economic/recession-watch/jobless-claims",
+    "category": "economic",
+    "lens": "recession-watch",
+    "indicator": "jobless-claims",
+    "series_id": "ICSA",
+    "horizon": "next-print",
+    "target_period": "2026-11-21",
+    "due": "2026-11-26",
+    "made_at": "2026-11-19T14:57:32Z",
+    "model": "naive@1",
+    "point": 203000.0,
+    "lo": 192000.0,
+    "hi": 214700.0,
+    "unit": "",
+    "value_format": "thousands",
+    "prev_value": 203000.0,
+    "why": "Jobless claims: up 2 straight weeks. We expect roughly the last value \u2014 this series rarely rewards cleverness.",
+    "implied_status": "ok",
+    "current_status": "ok",
+    "descriptive": false,
+    "market_price": false,
+    "title": "Initial Jobless Claims \u00b7 weekly",
+    "short": "Jobless claims",
+    "lens_title": "Recession Watch",
+    "href": "/dashboards/recession-watch.html",
+    "grade": {
+      "actual": 189000.0,
+      "graded_at": "2026-11-25T16:33:44Z",
+      "hit": false,
+      "abs_error": 14000.0,
+      "direction_hit": false,
+      "status_hit": true,
+      "naive_error": 14000.0,
+      "revised_to": null
+    },
+    "prev_period": "2026-11-14"
+  },
+  {
+    "id": "economic/cost-of-living/pce@2026-10-01",
+    "key": "economic/cost-of-living/pce",
+    "category": "economic",
+    "lens": "cost-of-living",
+    "indicator": "pce",
+    "series_id": "PCEPI",
+    "horizon": "next-print",
+    "target_period": "2026-10-01",
+    "due": "2026-11-15",
+    "made_at": "2026-10-29T18:52:33Z",
+    "model": "ets-seasonal@1",
+    "point": 3.715,
+    "lo": 3.3866,
+    "hi": 3.9573,
+    "unit": "%",
+    "value_format": "decimal",
+    "prev_value": 3.64887,
+    "why": "PCE: up 2 straight months. This projects the recent trend with the usual seasonal pattern for the month.",
+    "implied_status": "watch",
+    "current_status": "watch",
+    "descriptive": false,
+    "market_price": false,
+    "title": "PCE Inflation (year-over-year)",
+    "short": "PCE",
+    "lens_title": "The Cost of Living",
+    "href": "/dashboards/cost-of-living.html",
+    "grade": {
+      "actual": 3.84459,
+      "graded_at": "2026-11-25T16:33:51Z",
+      "hit": true,
+      "abs_error": 0.12959000000000032,
+      "direction_hit": true,
+      "status_hit": true,
+      "naive_error": 0.19572000000000012,
+      "revised_to": null
+    },
+    "prev_period": "2026-09-01"
+  },
+  {
+    "id": "economic/cost-of-living/core-pce@2026-10-01",
+    "key": "economic/cost-of-living/core-pce",
+    "category": "economic",
+    "lens": "cost-of-living",
+    "indicator": "core-pce",
+    "series_id": "PCEPILFE",
+    "horizon": "next-print",
+    "target_period": "2026-10-01",
+    "due": "2026-11-15",
+    "made_at": "2026-10-29T18:52:33Z",
+    "model": "ets@1",
+    "point": 3.133,
+    "lo": 2.9622,
+    "hi": 3.3103,
+    "unit": "%",
+    "value_format": "decimal",
+    "prev_value": 3.12116,
+    "why": "Core PCE: up 2 straight months. This projects the recent level and trend forward one month.",
+    "implied_status": "watch",
+    "current_status": "watch",
+    "descriptive": false,
+    "market_price": false,
+    "title": "Core PCE Inflation (year-over-year)",
+    "short": "Core PCE",
+    "lens_title": "The Cost of Living",
+    "href": "/dashboards/cost-of-living.html",
+    "grade": {
+      "actual": 3.26112,
+      "graded_at": "2026-11-25T16:33:54Z",
+      "hit": true,
+      "abs_error": 0.12812,
+      "direction_hit": true,
+      "status_hit": true,
+      "naive_error": 0.13995999999999986,
+      "revised_to": null
+    },
+    "prev_period": "2026-09-01"
+  },
+  {
+    "id": "economic/fiscal-health/interest-burden@2026-07-01",
+    "key": "economic/fiscal-health/interest-burden",
+    "category": "economic",
+    "lens": "fiscal-health",
+    "indicator": "interest-burden",
+    "series_id": "INTEREST_RECEIPTS_SHARE",
+    "horizon": "next-print",
+    "target_period": "2026-07-01",
+    "due": "2026-10-28",
+    "made_at": "2026-08-26T13:58:36Z",
+    "model": "ets-seasonal@1",
+    "point": 20.744,
+    "lo": 20.1323,
+    "hi": 21.6463,
+    "unit": "%",
+    "value_format": "decimal",
+    "prev_value": 20.7,
+    "why": "This projects the recent trend with the usual seasonal pattern for the quarter.",
+    "implied_status": "elevated",
+    "current_status": "elevated",
+    "descriptive": false,
+    "market_price": false,
+    "title": "Interest Cost \u00b7 share of federal revenue",
+    "short": "Interest/revenue",
+    "lens_title": "Fiscal Health",
+    "href": "/dashboards/fiscal-health.html",
+    "grade": {
+      "actual": 21.6,
+      "graded_at": "2026-11-25T16:33:56Z",
+      "hit": true,
+      "abs_error": 0.8560000000000016,
+      "direction_hit": true,
+      "status_hit": true,
+      "naive_error": 0.9000000000000021,
+      "revised_to": null
+    },
+    "prev_period": "2026-04-01"
+  },
+  {
+    "id": "economic/fiscal-health/receipts@2026-07-01",
+    "key": "economic/fiscal-health/receipts",
+    "category": "economic",
+    "lens": "fiscal-health",
+    "indicator": "receipts",
+    "series_id": "W006RC1Q027SBEA",
+    "horizon": "next-print",
+    "target_period": "2026-07-01",
+    "due": "2026-10-28",
+    "made_at": "2026-08-26T13:58:36Z",
+    "model": "ets@1",
+    "point": 8.2,
+    "lo": 1.31,
+    "hi": 16.2,
+    "unit": "%",
+    "value_format": "decimal",
+    "prev_value": 8.2,
+    "why": "Receipts: down 2 straight quarters. This projects the recent level and trend forward one quarter.",
+    "implied_status": "ok",
+    "current_status": "ok",
+    "descriptive": false,
+    "market_price": false,
+    "title": "Federal Receipts \u00b7 year-over-year",
+    "short": "Receipts",
+    "lens_title": "Fiscal Health",
+    "href": "/dashboards/fiscal-health.html",
+    "grade": {
+      "actual": 4.2,
+      "graded_at": "2026-11-25T16:33:57Z",
+      "hit": true,
+      "abs_error": 3.999999999999999,
+      "direction_hit": false,
+      "status_hit": true,
+      "naive_error": 3.999999999999999,
+      "revised_to": null
+    },
+    "prev_period": "2026-04-01"
+  },
+  {
+    "id": "markets/market-risk-sentiment/nfci@2026-11-20",
+    "key": "markets/market-risk-sentiment/nfci",
+    "category": "markets",
+    "lens": "market-risk-sentiment",
+    "indicator": "nfci",
+    "series_id": "NFCI",
+    "horizon": "next-print",
+    "target_period": "2026-11-20",
+    "due": "2026-11-25",
+    "made_at": "2026-11-18T14:51:23Z",
+    "model": "ets-seasonal@1",
+    "point": -0.4813,
+    "lo": -0.4839,
+    "hi": -0.4787,
+    "unit": "",
+    "value_format": "decimal",
+    "prev_value": -0.478,
+    "why": "NFCI: down 2 straight weeks. This projects the recent trend with the usual seasonal pattern for the week.",
+    "implied_status": "ok",
+    "current_status": "ok",
+    "descriptive": false,
+    "market_price": false,
+    "title": "Financial Conditions \u00b7 NFCI",
+    "short": "NFCI",
+    "lens_title": "Risk Sentiment",
+    "href": "/dashboards/markets/risk-sentiment.html",
+    "grade": {
+      "actual": -0.444,
+      "graded_at": "2026-11-25T16:33:58Z",
+      "hit": false,
+      "abs_error": 0.0373,
+      "direction_hit": false,
+      "status_hit": true,
+      "naive_error": 0.033999999999999975,
+      "revised_to": null
+    },
+    "prev_period": "2026-11-13"
+  },
+  {
+    "id": "consumer/consumer-spending/real-spending@2026-10-01",
+    "key": "consumer/consumer-spending/real-spending",
+    "category": "consumer",
+    "lens": "consumer-spending",
+    "indicator": "real-spending",
+    "series_id": "PCEC96",
+    "horizon": "next-print",
+    "target_period": "2026-10-01",
+    "due": "2026-11-15",
+    "made_at": "2026-10-29T18:52:40Z",
+    "model": "naive@1",
+    "point": 2.5366,
+    "lo": 1.5605,
+    "hi": 3.3192,
+    "unit": "%",
+    "value_format": "decimal",
+    "prev_value": 2.5366,
+    "why": "We expect roughly the last value \u2014 this series rarely rewards cleverness.",
+    "implied_status": "ok",
+    "current_status": "ok",
+    "descriptive": false,
+    "market_price": false,
+    "title": "Real Consumer Spending \u00b7 year-over-year",
+    "short": "Real spending",
+    "lens_title": "Consumer Spending",
+    "href": "/dashboards/consumer/spending.html",
+    "grade": {
+      "actual": 2.50366,
+      "graded_at": "2026-11-25T16:34:09Z",
+      "hit": true,
+      "abs_error": 0.03293999999999997,
+      "direction_hit": false,
+      "status_hit": true,
+      "naive_error": 0.03293999999999997,
+      "revised_to": null
+    },
+    "prev_period": "2026-09-01"
+  },
+  {
+    "id": "consumer/consumer-income-savings/saving-rate@2026-10-01",
+    "key": "consumer/consumer-income-savings/saving-rate",
+    "category": "consumer",
+    "lens": "consumer-income-savings",
+    "indicator": "saving-rate",
+    "series_id": "PSAVERT",
+    "horizon": "next-print",
+    "target_period": "2026-10-01",
+    "due": "2026-11-15",
+    "made_at": "2026-10-29T18:52:43Z",
+    "model": "naive@1",
+    "point": 3.8,
+    "lo": 2.95,
+    "hi": 4.4,
+    "unit": "%",
+    "value_format": "decimal",
+    "prev_value": 3.8,
+    "why": "Saving rate: down 2 straight months. We expect roughly the last value \u2014 this series rarely rewards cleverness.",
+    "implied_status": "watch",
+    "current_status": "watch",
+    "descriptive": false,
+    "market_price": false,
+    "title": "Personal Saving Rate",
+    "short": "Saving rate",
+    "lens_title": "Household Income & Savings",
+    "href": "/dashboards/consumer/income-savings.html",
+    "grade": {
+      "actual": 4.1,
+      "graded_at": "2026-11-25T16:34:15Z",
+      "hit": true,
+      "abs_error": 0.2999999999999998,
+      "direction_hit": false,
+      "status_hit": true,
+      "naive_error": 0.2999999999999998,
+      "revised_to": null
+    },
+    "prev_period": "2026-09-01"
+  },
+  {
+    "id": "consumer/consumer-income-savings/real-income@2026-10-01",
+    "key": "consumer/consumer-income-savings/real-income",
+    "category": "consumer",
+    "lens": "consumer-income-savings",
+    "indicator": "real-income",
+    "series_id": "DSPIC96",
+    "horizon": "next-print",
+    "target_period": "2026-10-01",
+    "due": "2026-11-15",
+    "made_at": "2026-10-29T18:52:43Z",
+    "model": "naive@1",
+    "point": 0.9531,
+    "lo": -0.4436,
+    "hi": 2.2097,
+    "unit": "%",
+    "value_format": "decimal",
+    "prev_value": 0.95313,
+    "why": "Real income: down 3 straight months. We expect roughly the last value \u2014 this series rarely rewards cleverness.",
+    "implied_status": "ok",
+    "current_status": "ok",
+    "descriptive": false,
+    "market_price": false,
+    "title": "Real Disposable Income \u00b7 year-over-year",
+    "short": "Real income",
+    "lens_title": "Household Income & Savings",
+    "href": "/dashboards/consumer/income-savings.html",
+    "grade": {
+      "actual": 1.60664,
+      "graded_at": "2026-11-25T16:34:15Z",
+      "hit": true,
+      "abs_error": 0.6535400000000001,
+      "direction_hit": false,
+      "status_hit": true,
+      "naive_error": 0.65351,
+      "revised_to": null
+    },
+    "prev_period": "2026-09-01"
+  },
+  {
+    "id": "housing/housing-supply-construction/months-supply@2026-10-01",
+    "key": "housing/housing-supply-construction/months-supply",
+    "category": "housing",
+    "lens": "housing-supply-construction",
+    "indicator": "months-supply",
+    "series_id": "MSACSR",
+    "horizon": "next-print",
+    "target_period": "2026-10-01",
+    "due": "2026-11-15",
+    "made_at": "2026-10-27T18:38:03Z",
+    "model": "ets@1",
+    "point": 8.4507,
+    "lo": 7.7137,
+    "hi": 9.3655,
+    "unit": "months",
+    "value_format": "decimal",
+    "prev_value": 8.4,
+    "why": "Months' supply: down 2 straight months. This projects the recent level and trend forward one month.",
+    "implied_status": "elevated",
+    "current_status": "elevated",
+    "descriptive": false,
+    "market_price": false,
+    "title": "Months of New-Home Supply",
+    "short": "Months' supply",
+    "lens_title": "Supply & Construction",
+    "href": "/dashboards/housing/supply-construction.html",
+    "grade": {
+      "actual": 8.0,
+      "graded_at": "2026-11-25T16:37:18Z",
+      "hit": true,
+      "abs_error": 0.45069999999999943,
+      "direction_hit": false,
+      "status_hit": false,
+      "naive_error": 0.40000000000000036,
+      "revised_to": null
+    },
+    "prev_period": "2026-09-01"
+  },
+  {
+    "id": "business/business-profitability/profit-growth@2026-07-01",
+    "key": "business/business-profitability/profit-growth",
+    "category": "business",
+    "lens": "business-profitability",
+    "indicator": "profit-growth",
+    "series_id": "CP",
+    "horizon": "next-print",
+    "target_period": "2026-07-01",
+    "due": "2026-10-28",
+    "made_at": "2026-08-27T17:09:32Z",
+    "model": "ets-seasonal@1",
+    "point": 28.0366,
+    "lo": 19.5812,
+    "hi": 43.7676,
+    "unit": "%",
+    "value_format": "decimal",
+    "prev_value": 28.2,
+    "why": "Profit growth: up 2 straight quarters. This projects the recent trend with the usual seasonal pattern for the quarter.",
+    "implied_status": "ok",
+    "current_status": "ok",
+    "descriptive": false,
+    "market_price": false,
+    "title": "Corporate Profits \u00b7 year-over-year",
+    "short": "Profit growth",
+    "lens_title": "Corporate Profits",
+    "href": "/dashboards/business/profitability.html",
+    "grade": {
+      "actual": 23.1,
+      "graded_at": "2026-11-25T16:37:26Z",
+      "hit": true,
+      "abs_error": 4.9365999999999985,
+      "direction_hit": true,
+      "status_hit": true,
+      "naive_error": 5.099999999999998,
+      "revised_to": null
+    },
+    "prev_period": "2026-04-01"
+  },
+  {
+    "id": "business/business-profitability/nonfinancial-profits@2026-07-01",
+    "key": "business/business-profitability/nonfinancial-profits",
+    "category": "business",
+    "lens": "business-profitability",
+    "indicator": "nonfinancial-profits",
+    "series_id": "NFCPATAX",
+    "horizon": "next-print",
+    "target_period": "2026-07-01",
+    "due": "2026-10-28",
+    "made_at": "2026-08-27T17:09:33Z",
+    "model": "naive@1",
+    "point": 29.4,
+    "lo": 12.07,
+    "hi": 52.38,
+    "unit": "%",
+    "value_format": "decimal",
+    "prev_value": 29.4,
+    "why": "Nonfin. profits: up 2 straight quarters. We expect roughly the last value \u2014 this series rarely rewards cleverness.",
+    "implied_status": "ok",
+    "current_status": "ok",
+    "descriptive": false,
+    "market_price": false,
+    "title": "Nonfinancial Corporate Profits \u00b7 year-over-year",
+    "short": "Nonfin. profits",
+    "lens_title": "Corporate Profits",
+    "href": "/dashboards/business/profitability.html",
+    "grade": {
+      "actual": 28.1,
+      "graded_at": "2026-11-25T16:37:27Z",
+      "hit": true,
+      "abs_error": 1.2999999999999972,
+      "direction_hit": false,
+      "status_hit": true,
+      "naive_error": 1.2999999999999972,
+      "revised_to": null
+    },
+    "prev_period": "2026-04-01"
+  },
+  {
+    "id": "business/business-profitability/profit-share@2026-07-01",
+    "key": "business/business-profitability/profit-share",
+    "category": "business",
+    "lens": "business-profitability",
+    "indicator": "profit-share",
+    "series_id": "CP_GDP_SHARE",
+    "horizon": "next-print",
+    "target_period": "2026-07-01",
+    "due": "2026-10-28",
+    "made_at": "2026-08-26T13:58:58Z",
+    "model": "naive@1",
+    "point": 13.2,
+    "lo": 12.61,
+    "hi": 13.99,
+    "unit": "%",
+    "value_format": "decimal",
+    "prev_value": 13.2,
+    "why": "Profit share: up 4 straight quarters. We expect roughly the last value \u2014 this series rarely rewards cleverness.",
+    "implied_status": "info",
+    "current_status": "info",
+    "descriptive": true,
+    "market_price": false,
+    "title": "Corporate Profits \u00b7 share of GDP",
+    "short": "Profit share",
+    "lens_title": "Corporate Profits",
+    "href": "/dashboards/business/profitability.html",
+    "grade": {
+      "actual": 13.4,
+      "graded_at": "2026-11-25T16:37:27Z",
+      "hit": true,
+      "abs_error": 0.20000000000000107,
+      "direction_hit": false,
+      "status_hit": true,
+      "naive_error": 0.20000000000000107,
+      "revised_to": null
+    },
+    "prev_period": "2026-04-01"
+  },
+  {
+    "id": "business/business-investment/core-capex@2026-10-01",
+    "key": "business/business-investment/core-capex",
+    "category": "business",
+    "lens": "business-investment",
+    "indicator": "core-capex",
+    "series_id": "NEWORDER",
+    "horizon": "next-print",
+    "target_period": "2026-10-01",
+    "due": "2026-11-15",
+    "made_at": "2026-10-27T18:38:11Z",
+    "model": "naive@1",
+    "point": 13.5,
+    "lo": 10.95,
+    "hi": 16.05,
+    "unit": "%",
+    "value_format": "decimal",
+    "prev_value": 13.5,
+    "why": "We expect roughly the last value \u2014 this series rarely rewards cleverness.",
+    "implied_status": "ok",
+    "current_status": "ok",
+    "descriptive": false,
+    "market_price": false,
+    "title": "Core Capital-Goods Orders \u00b7 year-over-year",
+    "short": "Core capex",
+    "lens_title": "Business Investment",
+    "href": "/dashboards/business/investment.html",
+    "grade": {
+      "actual": 14.7,
+      "graded_at": "2026-11-25T16:37:29Z",
+      "hit": true,
+      "abs_error": 1.1999999999999993,
+      "direction_hit": false,
+      "status_hit": true,
+      "naive_error": 1.1999999999999993,
+      "revised_to": null
+    },
+    "prev_period": "2026-09-01"
+  },
+  {
+    "id": "business/business-investment/real-sales@2026-09-01",
+    "key": "business/business-investment/real-sales",
+    "category": "business",
+    "lens": "business-investment",
+    "indicator": "real-sales",
+    "series_id": "CMRMTSPL",
+    "horizon": "next-print",
+    "target_period": "2026-09-01",
+    "due": "2026-10-15",
+    "made_at": "2026-10-29T18:53:08Z",
+    "model": "naive@1",
+    "point": 2.5,
+    "lo": 1.05,
+    "hi": 4.5,
+    "unit": "%",
+    "value_format": "decimal",
+    "prev_value": 2.5,
+    "why": "Real sales: up 2 straight months. We expect roughly the last value \u2014 this series rarely rewards cleverness.",
+    "implied_status": "ok",
+    "current_status": "ok",
+    "descriptive": false,
+    "market_price": false,
+    "title": "Real Business Sales \u00b7 year-over-year",
+    "short": "Real sales",
+    "lens_title": "Business Investment",
+    "href": "/dashboards/business/investment.html",
+    "grade": {
+      "actual": 3.3,
+      "graded_at": "2026-11-25T16:37:29Z",
+      "hit": true,
+      "abs_error": 0.7999999999999998,
+      "direction_hit": false,
+      "status_hit": true,
+      "naive_error": 0.7999999999999998,
       "revised_to": null
     },
     "prev_period": "2026-08-01"
