@@ -2,7 +2,7 @@
   "id": "market-scoreboard",
   "title": "Asset-Class Scoreboard",
   "accent": "#22D3EE",
-  "last_updated": "2026-11-25T16:30:43Z",
+  "last_updated": "2026-11-25T22:14:15Z",
   "status": "neutral",
   "headline_read": "How the major asset classes are moving right now.",
   "recessions": [
@@ -3044,12 +3044,8 @@
       "series_id": "DCOILWTICO",
       "observations": [
         {
-          "date": "2016-11-30",
-          "value": "49.41"
-        },
-        {
-          "date": "2016-12-01",
-          "value": "51.08"
+          "date": "2016-12-07",
+          "value": "49.85"
         },
         {
           "date": "2017-01-02",
@@ -3288,12 +3284,8 @@
           "value": "84.08"
         },
         {
-          "date": "2021-11-17",
+          "date": "2021-11-24",
           "value": "78.32"
-        },
-        {
-          "date": "2021-11-22",
-          "value": "76.74"
         },
         {
           "date": "2021-11-29",
@@ -3918,22 +3910,6 @@
         {
           "date": "2024-11-18",
           "value": "69.46"
-        },
-        {
-          "date": "2024-11-19",
-          "value": "69.75"
-        },
-        {
-          "date": "2024-11-20",
-          "value": "69.25"
-        },
-        {
-          "date": "2024-11-21",
-          "value": "70.39"
-        },
-        {
-          "date": "2024-11-22",
-          "value": "71.68"
         },
         {
           "date": "2024-11-25",
@@ -6002,18 +5978,38 @@
         {
           "date": "2026-11-17",
           "value": "89.53"
+        },
+        {
+          "date": "2026-11-18",
+          "value": "86.81"
+        },
+        {
+          "date": "2026-11-19",
+          "value": "86.78"
+        },
+        {
+          "date": "2026-11-20",
+          "value": "87.59"
+        },
+        {
+          "date": "2026-11-23",
+          "value": "81.42"
+        },
+        {
+          "date": "2026-11-24",
+          "value": "82.24"
         }
       ],
       "latest": {
-        "date": "2026-11-17",
-        "value": "89.53"
+        "date": "2026-11-24",
+        "value": "82.24"
       },
       "context": "West Texas Intermediate, the U.S. benchmark oil price (dollars per barrel) \u2014 a read on energy costs and global demand.",
-      "read": "WTI crude is up 48% over the past year, now 89.53.",
+      "read": "WTI crude is up 39% over the past year, now 82.24.",
       "signal_status": "up",
       "value_format": "decimal",
       "percentile": {
-        "p": 88.7,
+        "p": 81.1,
         "since": 2016
       },
       "no_severity_reason": "Part of a neutral scoreboard \u2014 it shows which way the price is moving, not whether that's good or bad."
@@ -8912,19 +8908,19 @@
         },
         {
           "date": "2026-11-25",
-          "value": "3479.70"
+          "value": "3617.80"
         }
       ],
       "latest": {
         "date": "2026-11-25",
-        "value": "3479.70"
+        "value": "3617.80"
       },
       "context": "Gold (dollars per troy ounce) \u2014 the classic safe-haven asset investors flee to in times of stress. Sourced from Yahoo Finance (COMEX futures).",
-      "read": "Gold is down 16% over the past year, now 3,479.70.",
+      "read": "Gold is down 13% over the past year, now 3,617.80.",
       "signal_status": "down",
       "value_format": "thousands",
       "percentile": {
-        "p": 87.5,
+        "p": 87.8,
         "since": 2016
       },
       "no_severity_reason": "Part of a neutral scoreboard \u2014 it shows which way the price is moving, not whether that's good or bad."
