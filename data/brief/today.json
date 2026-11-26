@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-25T22:21:31Z",
+  "generated_at": "2026-11-26T16:11:09Z",
   "transitions": [],
   "top_moves": [
     {
@@ -527,7 +527,7 @@
   "verdict": {
     "status": "watch",
     "shape": "contained-pressure",
-    "sentence": "The economy is holding up, but not without strain: household finances are stretched thin and energy and commodity costs are squeezing budgets, while banks are solid.",
+    "sentence": "Pressure is real but contained: household finances are stretched thin and energy and commodity costs are squeezing budgets; meanwhile banks are solid.",
     "short": "Holding up, but household finances are stretched thin."
   },
   "watching": [

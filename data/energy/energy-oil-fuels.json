@@ -2,7 +2,7 @@
   "id": "energy-oil-fuels",
   "title": "Oil & Fuels",
   "accent": "#FB923C",
-  "last_updated": "2026-11-25T22:17:47Z",
+  "last_updated": "2026-11-26T16:07:20Z",
   "status": "alert",
   "headline_read": "Fuel costs are spiking \u2014 acute pressure at the pump.",
   "recessions": [
@@ -2665,7 +2665,7 @@
       "signal_status": "alert",
       "value_format": "decimal",
       "percentile": {
-        "p": 96.9,
+        "p": 95.0,
         "since": 2016
       },
       "scale_now": 47.2337
