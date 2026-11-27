@@ -2,7 +2,7 @@
   "id": "market-scoreboard",
   "title": "Asset-Class Scoreboard",
   "accent": "#22D3EE",
-  "last_updated": "2026-11-27T15:51:57Z",
+  "last_updated": "2026-11-27T21:51:27Z",
   "status": "neutral",
   "headline_read": "How the major asset classes are moving right now.",
   "recessions": [
@@ -65,8 +65,8 @@
       "series_id": "SP500",
       "observations": [
         {
-          "date": "2016-12-07",
-          "value": "2241.35"
+          "date": "2016-12-08",
+          "value": "2246.19"
         },
         {
           "date": "2017-01-02",
@@ -305,8 +305,8 @@
           "value": "4613.67"
         },
         {
-          "date": "2021-11-24",
-          "value": "4701.46"
+          "date": "2021-11-25",
+          "value": "."
         },
         {
           "date": "2021-11-29",
@@ -3019,14 +3019,18 @@
         {
           "date": "2026-11-24",
           "value": "7201.09"
+        },
+        {
+          "date": "2026-11-25",
+          "value": "7182.78"
         }
       ],
       "latest": {
-        "date": "2026-11-24",
-        "value": "7201.09"
+        "date": "2026-11-25",
+        "value": "7182.78"
       },
       "context": "The benchmark index of 500 large U.S. companies \u2014 the headline gauge of U.S. stocks.",
-      "read": "The S&P 500 is up 7% over the past year, now 7,201.09.",
+      "read": "The S&P 500 is up 6% over the past year, now 7,182.78.",
       "signal_status": "up",
       "value_format": "thousands",
       "percentile": {
@@ -8904,15 +8908,15 @@
         },
         {
           "date": "2026-11-27",
-          "value": "3657.80"
+          "value": "3668.50"
         }
       ],
       "latest": {
         "date": "2026-11-27",
-        "value": "3657.80"
+        "value": "3668.50"
       },
       "context": "Gold (dollars per troy ounce) \u2014 the classic safe-haven asset investors flee to in times of stress. Sourced from Yahoo Finance (COMEX futures).",
-      "read": "Gold is down 12% over the past year, now 3,657.80.",
+      "read": "Gold is down 12% over the past year, now 3,668.50.",
       "signal_status": "down",
       "value_format": "thousands",
       "percentile": {
